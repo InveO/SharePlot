@@ -1,0 +1,15 @@
+<DOCUMENT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="http://jet.inveo.be/ui/JETComponentExtension.xsd" >
+
+    <ALGORITHMS>
+        <ALGORITHM name="alternatingRows">
+            var groupIndex = Math.floor(row / 2);
+            if (groupIndex % 2 == 0) {
+                result = "tableEvenRowStyleLight";
+            } else {
+                result = "tableOddRowStyleLight";
+            }
+        </ALGORITHM>
+    </ALGORITHMS>
+    
+</DOCUMENT>

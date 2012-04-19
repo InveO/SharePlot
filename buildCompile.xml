@@ -1,0 +1,56 @@
+<project basedir="." default="runCompile" name="SharePlot">
+
+    <target name="runCompile" depends="chkProps, fail" unless="missingProp">
+        <echo message="Compiling..."/>
+        <antcall target="compile" />
+    </target>
+
+    <target name="chkProps">
+        <property name="chk0" value="$${classes}"/>
+        <property name="chk1" value="$${JetBase}"/>
+        <property name="chk2" value="$${JetLib}"/>
+        <property name="chk3" value="$${JetFrameworkBase}"/>
+        <property name="chk4" value="$${JetFrameworkLib}"/>
+        <condition property="missingProp">
+            <or>
+                <equals arg1="${chk0}" arg2="${classes}"/>
+                <equals arg1="" arg2="${classes}"/>
+			    <equals arg1="${chk1}" arg2="${JetBase}"/>
+			    <equals arg1="" arg2="${JetBase}"/>
+			    <equals arg1="${chk2}" arg2="${JetLib}"/>
+	    		<equals arg1="" arg2="${JetLib}"/>
+			    <equals arg1="${chk3}" arg2="${JetFrameworkBase}"/>
+			    <equals arg1="" arg2="${JetFrameworkBase}"/>
+			    <equals arg1="${chk4}" arg2="${JetFrameworkLib}"/>
+	    		<equals arg1="" arg2="${JetFrameworkLib}"/>
+            </or>
+        </condition>
+    </target>
+    
+    <target name="fail" if="missingProp">
+        <fail message="missing property(ies) : classes, JetBase, JetLib, JetFrameworkBase, JetFrameworkLib"/>
+    </target>
+	
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+
+    <import file="classpath.xml" />
+    
+    <target name="compile">
+		<echo>
+			********************************************************
+			*
+			*  Compile ${ant.project.name}
+			*
+			********************************************************
+		</echo>
+        <delete dir="${classes}"/>
+        <mkdir dir="${classes}"/>
+
+        <javac encoding="8859_1" debug="true" debuglevel="${debuglevel}" destdir="${classes}" source="${source}" target="${target}" includeantruntime="false" >
+            <src path="SharePlot/javasource"/>
+            <classpath refid="SharePlot.classpath"/>
+        </javac>
+    </target>
+</project>

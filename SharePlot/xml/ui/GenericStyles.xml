@@ -1,0 +1,30 @@
+<DOCUMENT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="http://jet.inveo.be/ui/JETComponentExtension.xsd" >
+
+    <UISTYLES>
+        
+       
+        <STYLE type="basic" name="textFieldStyle">
+            <ATTRIBUTE name="BackgroundColor" value="red" />
+            <ATTRIBUTE name="ForegroundColor" value="red" />
+
+            <ATTRIBUTE name="NonEditableBackgroundColor" value="red" />
+            <ATTRIBUTE name="NonEditableForegroundColor" value="red" />
+            
+            <ATTRIBUTE name="Font" value="font" />
+
+            <ATTRIBUTE name="BorderPainted" value="true" />
+            <ATTRIBUTE name="BorderColor" value="red" />
+            <ATTRIBUTE name="NonEditableBorderColor" value="red" />
+            
+            <ATTRIBUTE name="SelectionBackground" value="red" />
+            <ATTRIBUTE name="SelectionForeground" value="red" />
+            
+            <ATTRIBUTE name="PopupBackground" value="red" />
+            <ATTRIBUTE name="PopupForeground" value="red" />
+        </STYLE>
+
+
+    </UISTYLES>
+
+</DOCUMENT>

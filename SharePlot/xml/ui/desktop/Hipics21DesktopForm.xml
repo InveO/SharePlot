@@ -1,0 +1,27 @@
+<DOCUMENT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="http://jet.inveo.be/ui/JETComponentExtension.xsd" >
+
+    <GENERIC name="SharePlot/xml/ui/GenericComponent.xml" />
+    
+    <GROUP name="SharePlotDesktopForm" scrollable="false" layoutmanager="gridbaglayout" >
+		<GROUP name="amandaMenuGroup" >
+			<GROUP name="mainMenuBarGroup" >
+				<GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="0" anchor="NORTHWEST" />
+			</GROUP>
+			<GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="0" anchor="NORTH" fill="HORIZONTAL" />
+		</GROUP>
+        <GROUP name="bodyGroup" >
+			<GRIDBAGCONSTRAINTS gridx="0" gridy="1" gridwidth="1" gridheight="1" weightx="1" weighty="1" anchor="NORTH" fill="BOTH" insettop="15" />
+        </GROUP>
+		<GROUP name="statusBarGroup" preferredheight="20" preferredwidth="200" >
+			<LABEL name="labelVersion" alignment="left" localizedDisplayableText="SharePlot/properties/desktop/Global/label.Version" >
+				<GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="1" insetleft="3" anchor="SOUTHWEST" fill="NONE" />
+		    </LABEL>
+			<LABEL name="labelVersionNumber" alignment="left" >
+				<GRIDBAGCONSTRAINTS gridx="1" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="1" insetleft="3" anchor="SOUTHWEST" fill="NONE" />
+		    </LABEL>
+			<GRIDBAGCONSTRAINTS gridx="0" gridy="2" gridwidth="1" gridheight="1" weightx="1" weighty="0" anchor="SOUTH" fill="HORIZONTAL" />
+		</GROUP>
+		<GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="1" anchor="NORTH" fill="BOTH"/>
+	</GROUP>
+</DOCUMENT>

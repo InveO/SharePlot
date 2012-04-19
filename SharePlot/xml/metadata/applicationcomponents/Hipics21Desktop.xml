@@ -1,0 +1,18 @@
+<APPLICATION_COMPONENT class="jet.components.ApplicationComponentImpl" depends="JetFrameworkAC" initialNutName="BaseFrame" >
+    <NUTS>
+        
+        <NUT name="BaseFrame" className="jet.framework.ui.desktop.DesktopBaseFrameNut">
+            <PARAMETER name="formName" value="BaseFrame" />
+            <PARAMETER name="formXmlFile" value="SharePlot/xml/ui/desktop/BaseFrame.xml" />
+            <PARAMETER name="childNutName" value="SharePlotDesktopNut" />
+            <PARAMETER name="childNutApp" value="SharePlot" />
+        </NUT>
+
+        <NUT name="SharePlotDesktopNut" className="jet.shareplot.ui.desktop.SharePlotDesktopNut">
+            <PARAMETER name="formName" value="SharePlotDesktopForm" />
+            <PARAMETER name="formXmlFile" value="SharePlot/xml/ui/desktop/SharePlotDesktopForm.xml" />
+        </NUT>
+        
+    </NUTS>
+</APPLICATION_COMPONENT>
+        

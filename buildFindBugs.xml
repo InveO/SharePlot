@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<project name="FindBugs" default="runFindBugs" basedir=".">
+
+    <target name="runFindBugs" depends="chkProps, fail" unless="missingProp">
+        <echo message="Running FindBugs..."/>
+        <antcall target="findbugs" />
+    </target>
+
+    <target name="chkProps">
+        <property name="chk0" value="$${findbugs.home}"/>
+        <property name="chk1" value="$${JetBase}"/>
+        <property name="chk2" value="$${JetLib}"/>
+        <property name="chk3" value="$${JetFrameworkBase}"/>
+        <property name="chk4" value="$${JetFrameworkLib}"/>
+        <property name="chk5" value="$${classes}"/>
+        <condition property="missingProp">
+            <or>
+                <equals arg1="${chk0}" arg2="${findbugs.home}"/>
+                <equals arg1="" arg2="${findbugs.home}"/>
+			    <equals arg1="${chk1}" arg2="${JetBase}"/>
+			    <equals arg1="" arg2="${JetBase}"/>
+			    <equals arg1="${chk2}" arg2="${JetLib}"/>
+	    		<equals arg1="" arg2="${JetLib}"/>
+			    <equals arg1="${chk3}" arg2="${JetFrameworkBase}"/>
+			    <equals arg1="" arg2="${JetFrameworkBase}"/>
+			    <equals arg1="${chk4}" arg2="${JetFrameworkLib}"/>
+	    		<equals arg1="" arg2="${JetFrameworkLib}"/>
+                <equals arg1="${chk5}" arg2="${classes}"/>
+                <equals arg1="" arg2="${classes}"/>
+            </or>
+        </condition>
+    </target>
+    
+    <target name="fail" if="missingProp">
+        <fail message="missing property(ies) : findbugs.home, classes, JetBase, JetLib, JetFrameworkBase, JetFrameworkLib"/>
+    </target>
+
+    <path id="findbugs.classpath">
+        <fileset dir="${findbugs.home}/lib/">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask" classpathref="findbugs.classpath" />
+        
+    <import file="classpath.xml" />
+
+    <target name="findbugs">
+        <findbugs home="${findbugs.home}"
+  	      		  excludeFilter="findbugsExclude.xml"
+                  output="xml:withMessages"
+                  outputFile="findbugs.xml" jvmargs="-Xms512m -Xmx1024m" timeout="1800000" >
+            
+            <auxClasspath refid="SharePlot.classpath" />
+
+            <class location="${classes}" />
+        </findbugs>
+    </target>
+    
+</project>	

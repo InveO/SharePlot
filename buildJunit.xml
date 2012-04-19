@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<project name="SharePlot JUnit tests" default="runJunit" basedir=".">
+
+	<target name="runJunit" depends="chkProps, fail" unless="missingProp">
+		<echo message="Running JUnit tests..." />
+		<antcall target="allJunit" />
+	</target>
+
+	<target name="chkProps">
+		<property name="chk0" value="$${classes}" />
+        <property name="chk1" value="$${JetBase}"/>
+        <property name="chk2" value="$${JetLib}"/>
+        <property name="chk3" value="$${JetFrameworkBase}"/>
+        <property name="chk4" value="$${JetFrameworkLib}"/>
+		<condition property="missingProp">
+			<or>
+				<equals arg1="${chk0}" arg2="${classes}" />
+                <equals arg1="" arg2="${classes}" />
+			    <equals arg1="${chk1}" arg2="${JetBase}"/>
+			    <equals arg1="" arg2="${JetBase}"/>
+			    <equals arg1="${chk2}" arg2="${JetLib}"/>
+	    		<equals arg1="" arg2="${JetLib}"/>
+			    <equals arg1="${chk3}" arg2="${JetFrameworkBase}"/>
+			    <equals arg1="" arg2="${JetFrameworkBase}"/>
+			    <equals arg1="${chk4}" arg2="${JetFrameworkLib}"/>
+	    		<equals arg1="" arg2="${JetFrameworkLib}"/>
+			</or>
+		</condition>
+	</target>
+
+	<target name="fail" if="missingProp">
+		<fail message="missing property(ies) : classes, JetBase, JetLib, JetFrameworkBase, JetFrameworkLib" />
+	</target>
+
+    <import file="classpath.xml" />
+
+	<target name="allJunit">
+		<path id="JUnit.classpath">
+            <pathelement location="${classes}" />
+			
+            <path refid="SharePlot.classpath" />
+		</path>
+
+		<mkdir dir="junit/reports/" />
+					
+		<junit printsummary="yes" haltonfailure="no" showoutput="no" >
+			<classpath refid="JUnit.classpath" />
+
+			<formatter type="xml" />
+
+			<batchtest fork="no" todir="junit/reports/" haltonfailure="no" >
+				<fileset dir="${classes}" >
+					<include name="**/*_JUnitTest.class"/>
+				</fileset>
+			</batchtest>
+
+			<!--
+			<test name="test.junit.TestSharePlotMath" haltonfailure="no" filtertrace="off" />
+			-->
+		</junit>
+
+	</target>
+
+
+</project>

@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<project name="NCSS" default="runNCSS" basedir=".">
+
+	<target name="runNCSS" depends="chkProps, fail" unless="missingProp">
+		<echo message="Running NCSS..." />
+		<antcall target="ncss" />
+		<antcall target="batik" />
+	</target>
+
+	<target name="chkProps">
+		<property name="chk_ncss.home" value="$${ncss.home}" />
+		<property name="chk_batik.home" value="$${batik.home}" />
+		<condition property="missingProp">
+			<or>
+				<equals arg1="${chk_ncss.home}" arg2="${ncss.home}" />
+				<equals arg1="" arg2="${ncss.home}" />
+				<equals arg1="${chk_batik.home}" arg2="${batik.home}" />
+				<equals arg1="" arg2="${batik.home}" />
+			</or>
+		</condition>
+	</target>
+
+	<target name="fail" if="missingProp">
+		<fail message="missing property(ies) : ncss.home, batik.home" />
+	</target>
+
+	<path id="ncss.classpath">
+		<fileset dir="${ncss.home}/lib/">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<taskdef name="javancss" classname="javancss.JavancssAntTask" classpathref="ncss.classpath" />
+
+	<path id="batik.classpath">
+		<fileset dir="${batik.home}">
+			<include name="*.jar" />
+			<include name="lib/*.jar" />
+		</fileset>
+		<fileset dir="doc/javancss">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<taskdef name="rasterize" classname="org.apache.tools.ant.taskdefs.optional.RasterizerTask" classpathref="batik.classpath" />
+
+	<target name="ncss">
+		<javancss srcdir="SharePlot/javasource/" 
+			includes="**/*.java" 
+			excludes="jet/shareplot/persistence/**/*.java,tool/**/*.java,jet/**/*_JUnitTest.java" 
+			generateReport="true" 
+			outputfile="javancss/javancss_metrics.xml" 
+			format="xml" />
+
+
+		<!--xslt in="javancss/javancss_metrics.xml" out="javancss/reportHTML.html" style="${ncss.home}/xslt/javancss2html.xsl" /-->
+		<xslt in="javancss/javancss_metrics.xml" out="javancss/reportHTML.html" style="doc/javancss/javancss2html_CCN.xsl" />
+		<xslt in="javancss/javancss_metrics.xml" out="javancss/CCNgt5.html" style="doc/javancss/javancss2html_CCN2.xsl">
+			<param name="minccn" expression="5" />
+		</xslt>
+		<xslt in="javancss/javancss_metrics.xml" out="javancss/CCNgt10.html" style="doc/javancss/javancss2html_CCN2.xsl">
+			<param name="minccn" expression="10" />
+		</xslt>
+		<xslt in="javancss/javancss_metrics.xml" out="javancss/CCNgt15.html" style="doc/javancss/javancss2html_CCN2.xsl">
+			<param name="minccn" expression="15" />
+		</xslt>
+		<xslt in="javancss/javancss_metrics.xml" out="javancss/CCNgt20.html" style="doc/javancss/javancss2html_CCN2.xsl">
+			<param name="minccn" expression="20" />
+		</xslt>
+
+
+		<xslt in="javancss/javancss_metrics.xml" out="javancss/chart_ccn.svg" style="doc/javancss/chart_ccn.xsl" />
+		<xslt in="javancss/javancss_metrics.xml" out="javancss/chart_function_package.svg" style="${ncss.home}/xslt/svg/chart_function_package.xsl" />
+		<xslt in="javancss/javancss_metrics.xml" out="javancss/chart_ncss.svg" style="${ncss.home}/xslt/svg/chart_ncss.xsl" />
+		<xslt in="javancss/javancss_metrics.xml" out="javancss/chart_ncss_package.svg" style="${ncss.home}/xslt/svg/chart_ncss_package.xsl" />
+
+
+	</target>
+	<target name="batik">
+
+		<copy file="doc/javancss/charts.html" tofile="javancss/charts.html" overwrite="true" />
+
+		<rasterize result="image/png" src="javancss/chart_ccn.svg" dest="javancss/chart_ccn.png" />
+		<rasterize result="image/png" src="javancss/chart_function_package.svg" dest="javancss/chart_function_package.png" />
+		<rasterize result="image/png" src="javancss/chart_ncss.svg" dest="javancss/chart_ncss.png" />
+		<rasterize result="image/png" src="javancss/chart_ncss_package.svg" dest="javancss/chart_ncss_package.png" />
+
+	</target>
+
+	<!-- abortOnFail="false" ccnPerFuncMax="10" 
+		Not interesting
+	   	<xslt in="javancss/javancss_metrics.xml" out="javancss/reportMethodHTML.html" style="${ncss.home}/xslt/javancss2methodhtml.xsl" />
+	   	<xslt in="javancss/javancss_metrics.xml" out="javancss/javancss_graph.html" style="${ncss.home}/xslt/svg/javancss_graph.xsl" />
+	   	<xslt in="javancss/javancss_metrics.xml" out="javancss/reportNFO.html" style="${ncss.home}/xslt/javancss_no_functions_overloading.xsl" />
+	   	<xslt in="javancss/javancss_metrics.xml" out="javancss/reportDoc11.html" style="${ncss.home}/xslt/javancss2document11.xsl" />
+	   	<xslt in="javancss/javancss_metrics.xml" out="javancss/reportTest.html" style="${ncss.home}/xslt/xmltest.xsl" />
+		-->
+
+	<!--
+		These fail
+	   	<xslt in="javancss/javancss_metrics.xml" out="javancss/reportText.html" style="${ncss.home}/xslt/javancss2text.xsl" />
+	   	<xslt in="javancss/javancss_metrics.xml" out="javancss/reportWFNCSS.html" style="${ncss.home}/xslt/wfncss.xsl" />
+	   	-->
+</project>

@@ -1,0 +1,15 @@
+<DOCUMENT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="http://jet.inveo.be/ui/JETComponentExtension.xsd" >
+
+    <!--	
+	The BaseFrame defines the frame (window) in which the environment is to be displayed.
+	The height and width are used (in Swing) to define the size in caracters of this frame
+	The resizable and scrollable attributes define the type of frame to use
+
+	Author : Daniel Robinson
+	Version : 1.0
+-->
+
+	<BASE_SCREEN name="BaseFrame" title="SharePlot Desktop" icon="SharePlot/icons/cloud-ico.png" height="768" width="1024" resizable="true" scrollable="false" />
+
+</DOCUMENT>

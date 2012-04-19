@@ -1,0 +1,6 @@
+<FindBugsFilter>
+	<!--  ignore all bugs in the tool package -->
+    <Match>
+      <Package name="~tool.*" />
+    </Match>
+</FindBugsFilter>

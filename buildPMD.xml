@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<project name="PMD" default="runPMD" basedir=".">
+
+    <target name="runPMD" depends="chkProps, fail" unless="missingProp">
+        <echo message="Running PMD..."/>
+        <antcall target="pmd" />
+    </target>
+
+    <target name="chkProps">
+        <property name="chk0" value="$${pmd.home}"/>
+        <condition property="missingProp">
+            <or>
+                <equals arg1="${chk0}" arg2="${pmd.home}"/>
+                <equals arg1="" arg2="${pmd.home}"/>
+            </or>
+        </condition>
+    </target>
+    
+    <target name="fail" if="missingProp">
+        <fail message="missing property(ies) : pmd.home"/>
+    </target>
+
+    <path id="pmd.classpath">
+        <fileset dir="${pmd.home}/lib/">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+	
+    <taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="pmd.classpath"/>
+
+	<target name="pmd">
+        <delete dir="./pmd0"/>
+        <delete dir="./pmd1"/>
+        <delete dir="./pmd2"/>
+	    
+        <pmd>
+            <ruleset>pmdruleset.xml</ruleset>
+            <formatter type="xml" toFile="pmd.xml"/>
+            <fileset dir="./SharePlot/javasource">
+                <include name="**/*.java"/>
+            </fileset>
+        </pmd>
+        
+	    <mkdir dir="./pmdJUnit"/>
+        <pmd>
+            <ruleset>pmdjunit.xml</ruleset>
+            <formatter type="xml" toFile="pmdJUnit/pmd.xml"/>
+            <fileset dir="./SharePlot/javasource">
+                <include name="**/*_JUnitTest.java"/>
+            </fileset>
+        </pmd>
+
+	    <mkdir dir="./pmdGen"/>
+        <pmd>
+            <ruleset>pmdpersistence.xml</ruleset>
+            <formatter type="xml" toFile="pmdGen/pmd.xml"/>
+            <fileset dir="./SharePlot/javasource">
+                <include name="jet/shareplot/persistence/**/*.java"/>
+            </fileset>
+        </pmd>
+    </target>
+
+</project>

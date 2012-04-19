@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<project name="SharePlot" default="versionDeploy" basedir=".">
+
+	<target name="chkTestVersion" >
+        <condition property="notTestVersion">
+            <or>
+    	        <equals arg1="${version}" arg2="${version_dir}"/>
+            </or>
+        </condition>
+	</target>
+			
+   	<target name="chkFolder" if="notTestVersion" >
+		<available file="${jet_app_builds}/${ant.project.name}/${version_dir}" type="dir" property="deploy.dir.present"/>
+	</target>
+   		
+	<target name="chkProps" >
+        <property name="chk_jet_app_builds" value="$${jet_app_builds}"/>
+        <property name="chk_version" value="$${version}"/>
+        <property name="chk_version_dir" value="$${version_dir}"/>
+        <condition property="missingProp">
+            <or>
+    	        <equals arg1="${chk_jet_app_builds}" arg2="${jet_app_builds}"/>
+	            <equals arg1="" arg2="${jet_app_builds}"/>
+                <equals arg1="${chk_version}" arg2="${version}"/>
+                <equals arg1="" arg2="${version}"/>
+                <equals arg1="${chk_version_dir}" arg2="${version_dir}"/>
+                <equals arg1="" arg2="${version_dir}"/>
+            </or>
+        </condition>
+	</target>
+			
+    <target name="failProps" if="missingProp">
+        <fail message="missing property(ies) : version, jet_app_builds"/>
+    </target>
+        	
+    <target name="failFolder" if="deploy.dir.present">
+        <fail message="deployment version folder already exists : ${jet_app_builds}/${ant.project.name}/${version_dir}"/>
+    </target>
+                	
+	<target name="cleanupTestVersion" unless="notTestVersion">
+		<echo message="Deleting test version"/>
+		<ant target="versionDelete" />
+    </target>
+	
+	<target name="copyTestJetLibs" unless="notTestVersion">
+		<echo message="Copying test jet libs"/>
+		<ant target="versionDelete" />
+    </target>
+	
+	<target name="versionDeploy" depends="chkProps, chkTestVersion, chkFolder, failProps, failFolder, cleanupTestVersion" unless="missingProp,deploy.dir.present" >
+        <echo message="Copying to JetAppBuilds repository..."/>
+
+		<property name="deploy_dir" value="${jet_app_builds}/${ant.project.name}/${version_dir}"/>
+		<mkdir dir="${deploy_dir}" />
+		<mkdir dir="${deploy_dir}/SharePlot" />
+		<copy todir="${deploy_dir}/SharePlot" >
+			<fileset dir="${jars_dest}" includes="**/*" />
+		</copy>
+		<mkdir dir="${deploy_dir}/configs/shareplot_conf" />
+        <copy todir="${deploy_dir}/configs/shareplot_conf" overwrite="true" >
+            <fileset dir="conf" includes="**/*" excludes="**/CVS/**" />
+        </copy>
+        <copy todir="${deploy_dir}/configs/shareplot_conf/ext" >
+            <fileset dir="conf/ext" includes="**/*.jar,**/*.zip" />
+        </copy>
+		<mkdir dir="${deploy_dir}/JetFramework6.0.0" />
+		<copy todir="${deploy_dir}/JetFramework6.0.0" >
+			<fileset dir="${jars_dest}/../JetFramework6.0.0" includes="**/*" />
+		</copy>
+		<mkdir dir="${deploy_dir}/JetLib" />
+		<copy todir="${deploy_dir}/JetLib" >
+			<fileset dir="${jars_dest}/../JetLib" includes="**/*" />
+		</copy>
+		<mkdir dir="${deploy_dir}/JetLogin5.0.0" />
+		<copy todir="${deploy_dir}/JetLogin5.0.0" >
+			<fileset dir="${jars_dest}/../JetLogin5.0.0" includes="**/*" />
+		</copy>
+		<mkdir dir="${deploy_dir}/JetServlet" />
+		<copy file="${jars_dest}/../JetServlet/jet-servlet.war" todir="${deploy_dir}/JetServlet" />
+	</target>
+	
+	<target name="chkCVSFolder" >
+		<available file="${jet_app_builds}/${ant.project.name}/${version_dir}/CVS" type="dir" property="cvs.dir.present"/>
+	</target>
+			
+    <target name="failCVSFolder" if="cvs.dir.present">
+        <fail message="Version has already been commited to cvs, can not be deleted."/>
+    </target>
+        	
+	<target name="versionDelete" depends="chkProps, failProps, chkCVSFolder, failCVSFolder" unless="missingProp, cvs.dir.present" >
+		<echo message="Deleting folder : ${jet_app_builds}/${ant.project.name}/${version_dir}"/>
+		<delete dir="${jet_app_builds}/${ant.project.name}/${version_dir}" verbose="true" />
+	</target>
+
+    <target name="chkCopyProps">
+        <property name="chkjet_lib_shareplot" value="$${jet_lib_shareplot}"/>
+        <condition property="missingCopyProp">
+            <or>
+                <equals arg1="${chkjet_lib_shareplot}" arg2="${jet_lib_shareplot}"/>
+                <equals arg1="" arg2="${jet_lib_shareplot}"/>
+            </or>
+        </condition>
+    </target>
+    
+    <target name="failCopy" if="missingCopyProp">
+        <fail message="missing property(ies) : jet_lib_shareplot"/>
+    </target>
+
+	<target name="versionCopy" depends="chkCopyProps, failCopy, versionDeploy" unless="missingCopyProp" >
+        <echo message="Copying to SharePlotJetLib repository..."/>
+
+		<property name="source_dir" value="${jet_app_builds}/${ant.project.name}/${version_dir}"/>
+		<property name="copy_dir" value="${jet_lib_shareplot}"/>
+		<echo message="Copy to dir : ${copy_dir}" />
+		<mkdir dir="${copy_dir}" />
+		<mkdir dir="${copy_dir}/JetFramework6.0.0" />
+		<copy todir="${copy_dir}/JetFramework6.0.0" >
+			<fileset dir="${source_dir}/JetFramework6.0.0" includes="**/*" />
+		</copy>
+		<mkdir dir="${copy_dir}/JetLib" />
+		<copy todir="${copy_dir}/JetLib" >
+			<fileset dir="${source_dir}/JetLib" includes="**/*" />
+		</copy>
+		<mkdir dir="${copy_dir}/JetLogin5.0.0" />
+		<copy todir="${copy_dir}/JetLogin5.0.0" >
+			<fileset dir="${source_dir}/JetLogin5.0.0" includes="**/*" />
+		</copy>
+		<mkdir dir="${copy_dir}/JetServlet" />
+		<copy todir="${copy_dir}/JetServlet" >
+			<fileset dir="${source_dir}/JetServlet" includes="**/*" />
+		</copy>
+	</target>
+
+</project>

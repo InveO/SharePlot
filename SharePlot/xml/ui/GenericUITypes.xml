@@ -1,0 +1,15 @@
+<DOCUMENT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="http://jet.inveo.be/ui/JETComponentExtension.xsd" >
+
+    <UITYPES>
+    
+        <GRADIENTCOLOR name="gradient" red1="255" green1="0" blue1="0" red2="0" green2="255" blue2="0" orientation="vertical" />
+        
+        <COLOR name="red" red="255" green="0" blue="0" />
+        
+        <FONT name="font" font_name="Arial" size="12" style="PLAIN"  />
+
+    </UITYPES>
+
+</DOCUMENT>
+    

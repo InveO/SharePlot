@@ -1,0 +1,8 @@
+<DOCUMENT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="http://jet.inveo.be/ui/JETComponentExtension.xsd" >
+    
+    <IMPORT name="SharePlot/xml/ui/GenericUITypes.xml" />	
+    <IMPORT name="SharePlot/xml/ui/GenericStyles.xml" /> 
+    <IMPORT name="SharePlot/xml/ui/GenericAlgos.xml" /> 
+    
+</DOCUMENT>

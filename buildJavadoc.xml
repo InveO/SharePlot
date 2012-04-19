@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<project name="Javadoc" default="runJavadoc" basedir=".">
+	
+    <target name="runJavadoc" depends="chkPropsJavadoc, failJavadoc" unless="missingPropJavadoc">
+        <echo message="Compiling Javadoc..."/>
+        <antcall target="javadoc" />
+    </target>
+
+    <target name="chkPropsJavadoc">
+        <property name="chk0" value="$${javadoc_dest}"/>
+        <property name="chk1" value="$${JetBase}"/>
+        <property name="chk2" value="$${JetLib}"/>
+        <property name="chk3" value="$${JetFrameworkBase}"/>
+        <property name="chk4" value="$${JetFrameworkLib}"/>
+        <property name="chk5" value="$${version}"/>
+        <condition property="missingPropJavadoc">
+            <or>
+                <equals arg1="${chk0}" arg2="${javadoc_dest}"/>
+                <equals arg1="" arg2="${javadoc_dest}"/>
+			    <equals arg1="${chk1}" arg2="${JetBase}"/>
+			    <equals arg1="" arg2="${JetBase}"/>
+			    <equals arg1="${chk2}" arg2="${JetLib}"/>
+	    		<equals arg1="" arg2="${JetLib}"/>
+			    <equals arg1="${chk3}" arg2="${JetFrameworkBase}"/>
+			    <equals arg1="" arg2="${JetFrameworkBase}"/>
+			    <equals arg1="${chk4}" arg2="${JetFrameworkLib}"/>
+	    		<equals arg1="" arg2="${JetFrameworkLib}"/>
+                <equals arg1="${chk5}" arg2="${version}"/>
+                <equals arg1="" arg2="${version}"/>
+            </or>
+        </condition>
+    </target>
+    
+    <target name="failJavadoc" if="missingPropJavadoc">
+        <fail message="missing property(ies) : javadoc_dest, version, JetBase, JetLib, JetFrameworkBase, JetFrameworkLib"/>
+    </target>
+    	
+    <import file="classpath.xml" />
+
+    <path id="SharePlot.source">
+		<pathelement location="SharePlot/javasource/" />
+	</path>
+
+
+	<target name="javadoc">
+        <delete dir="${javadoc_dest}" />
+        <mkdir dir="${javadoc_dest}" />
+	    <javadoc destdir="${javadoc_dest}" 
+			author="true" 
+			version="true" 
+			use="true" 
+			windowtitle="SharePlot" 
+			source="1.6" 
+			linksource="false" 
+			classpathref="SharePlot.classpath"
+			sourcepathref="SharePlot.source"
+			packagenames="jet/shareplot/**/*.*"
+			breakiterator="true" 
+			private="true" >
+
+			<doctitle><![CDATA[<h1>SharePlot ${version}</h1>]]></doctitle>
+			<bottom><![CDATA[<i>Copyright &#169; 2011 InveO sprl. All Rights Reserved.</i>]]></bottom>
+			<header><![CDATA[<b>SharePlot</b><br>v${version}]]></header>
+			<link href="http://download.oracle.com/javase/6/docs/api/" />
+			<link href="http://jet.inveo.be/api/jet/" />
+			<link href="http://jet.inveo.be/api/jetframework/" />
+		</javadoc>
+	</target>
+
+</project>

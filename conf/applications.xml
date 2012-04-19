@@ -1,0 +1,25 @@
+<APPLICATIONS>
+
+    <APPLICATION location="JetFramework6.0.0" />
+
+    <APPLICATION location="SharePlot" />
+
+    <APPLICATION location="JetLogin5.0.0" />
+
+<!--     <APPLICATION_CONFIG name="SharePlot" > -->
+<!--         <LOGIN_CONFIGURATION classname="jet.amanda.security.AmandaApplicationSecurity"> -->
+<!--             <LOGIN_MODULE class="jet.framework.security.login.ParamToSessionLoginModule" flag="REQUIRED" > -->
+<!--             </LOGIN_MODULE> -->
+<!--             <LOGIN_MODULE class="jet.amanda.security.login.AmandaLoginModule" flag="REQUIRED" > -->
+                
+<!--                 <OPTION name="classLoader" value="Amanda" /> -->
+<!--                 <OPTION name="loginNutPlugin" value="jet.amanda.security.login.AmandaLoginNutPlugin" /> -->
+
+<!--                 <OPTION name="screenClassLoader" value="Amanda" /> -->
+<!--                 <OPTION name="screenName" value="LoginBaseFrame" /> -->
+<!--                 <OPTION name="screenXmlFile" value="Amanda/xml/ui/login/LoginFrameLight.xml" /> -->
+<!--             </LOGIN_MODULE> -->
+<!--         </LOGIN_CONFIGURATION> -->
+<!--     </APPLICATION_CONFIG> -->
+
+</APPLICATIONS>

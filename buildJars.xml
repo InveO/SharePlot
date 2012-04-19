@@ -1,0 +1,189 @@
+<?xml version="1.0"?>
+<project name="SharePlot Jars" default="runBuildJars" basedir=".">
+
+    <target name="runBuildJars" depends="chkProps, fail" unless="missingProp">
+        <echo message="Build jars..."/>
+        <antcall target="allJars" />
+    </target>
+
+    <target name="chkProps">
+        <property name="chk0" value="$${classes}"/>
+        <property name="chk1" value="$${jars_dest}"/>
+        <condition property="missingProp">
+            <or>
+                <equals arg1="${chk0}" arg2="${classes}"/>
+                <equals arg1="" arg2="${classes}"/>
+                <equals arg1="${chk1}" arg2="${jars_dest}"/>
+                <equals arg1="" arg2="${jars_dest}"/>
+            </or>
+        </condition>
+    </target>
+    
+    <target name="fail" if="missingProp">
+        <fail message="missing property(ies) : classes, jars_dest"/>
+    </target>
+
+	<property name="project" value="SharePlot"/>	
+	<property name="pkg_base" value="jet"/>	
+
+    <property name="xml" value="${project}/xml"/>
+    <property name="configs" value="${project}/configs"/>
+    
+    <property name="target.managers" value="${jars_dest}/managers"/>
+    <property name="target.applications" value="${jars_dest}/applications"/>
+
+    <target name="clean">
+        <delete dir="${jars_dest}" />
+    </target>
+    
+	<!--
+    <target name="allJars" depends="jar, jar-ejb, managers, copyGlobalConf"/>
+    -->
+    <target name="allJars" depends="jar, copyGlobalConf"/>
+
+    <target name="jar">
+        <echo message="Building : SharePlot" />
+        
+        <tstamp>
+            <format property="TODAY_UK" pattern="yyyy-MM-dd HH:mm" locale="en,UK"/>
+        </tstamp>
+        
+        <mkdir dir="${target.applications}/${project}" />
+
+        <jar jarfile="${target.applications}/${project}/${project}.jar" basedir="${classes}"
+             includes="${pkg_base}/**" 
+            excludes="${pkg_base}/shareplot/managers/**,
+                    ${pkg_base}/**/*Bean.*,
+                    ${pkg_base}/**/*Home.*,
+                    ${pkg_base}/**/*Remote.*,
+                    ${pkg_base}/**/*PK.*,
+            		${pkg_base}/**/*_JUnitTest.*"/>
+                
+        <jar jarfile="${target.applications}/${project}/${project}-JET.jar">
+            <fileset dir="."
+                     includes="${project}/icons/**,
+                               ${project}/xml/**,
+                               ${project}/resource/**,
+                               ${project}/vtl/**,
+                               ${project}/properties/**"
+                     excludes="${project}/xml/META-INF/**,
+                               ${project}/xml/applicationconfig.xml"
+            />
+            <fileset dir="${project}/xml"
+                     includes="applicationconfig.xml"
+            />
+            <manifest>
+                <attribute name="version" value="${version}" />
+                <attribute name="time" value="${TODAY_UK}" />
+            </manifest>
+        </jar>
+    </target>
+    
+	<!--
+    <target name="jar-ejb">
+        <mkdir dir="${target.applications}/${project}" />
+
+        <jar jarfile="${target.applications}/${project}/${project}-ejb-bean.jar" basedir="${classes}" 
+            includes="${pkg_base}/**/*Bean.*,
+        		    ${pkg_base}/**/*_JUnitTest.*"/>
+        
+        <jar jarfile="${target.applications}/${project}/${project}-ejb-interface.jar" basedir="${classes}" 
+            includes="${pkg_base}/**/*Home.*,
+                    ${pkg_base}/**/*Remote.*,
+                    ${pkg_base}/**/*PK.*,
+                	${pkg_base}/**/*_JUnitTest.*" />
+        
+        <jar jarfile="${target.applications}/${project}/${project}-ejb-deploy.jar" basedir="${xml}" 
+            includes="META-INF/**" 
+            excludes="**/*.dtd"/>
+    </target>
+    -->
+
+    <!--
+    <target name="managers" depends="jar-helpfiles" />
+
+    <target name="jar-helpfiles">
+        <mkdir dir="${target.managers}/helpfiles" />
+
+        <jar index="false" jarfile="${target.managers}/helpfiles/HelpFilesManager.jar">
+            <fileset dir="${classes}"
+                     includes="${pkg_base}/shareplot/managers/helpfiles/**" 
+                     excludes="${pkg_base}/shareplot/managers/helpfiles/common/**,
+                        ${pkg_base}/**/*_JUnitTest.*"
+            />
+            <fileset dir="${configs}/helpfiles"
+                     includes="managerconfig.xml"
+            />
+        </jar>
+        <jar jarfile="${target.managers}/helpfiles/HelpFilesManager-common.jar" basedir="${classes}"
+            includes="${pkg_base}/shareplot/managers/helpfiles/common/**" excludes="${pkg_base}/**/*_JUnitTest.*" />
+    </target>
+    -->
+    
+    <target name="copyGlobalConf">
+        <mkdir dir="${jars_dest}/../Logs" />
+        <mkdir dir="${jars_dest}/../configs/shareplot_conf" />
+        <copy todir="${jars_dest}/../configs/shareplot_conf" >
+            <fileset dir="conf" includes="**/*.xml" />
+        </copy>
+    	<!--
+        <copy todir="${jars_dest}/../configs/shareplot_conf/ext" >
+            <fileset dir="conf/ext" includes="**/*.jar,**/*.zip" />
+        </copy>
+        <copy todir="${jars_dest}/../configs/shareplot_conf/ocr" >
+            <fileset dir="conf/ocr" includes="**/*" />
+        </copy>
+    	-->
+    	
+    	<mkdir dir="conf/JetServlet" />
+        <echo message="Updating war file" />
+        <war destfile="${jars_dest}/../JetServlet/shareplot.war" update="true" needxmlfile="false"  >
+            <fileset dir="conf/JetServlet" includes="**/*" excludes="**/CVS/**" />
+        </war>
+    	<delete dir="conf/JetServlet" />
+    </target>
+	
+    <target name="chkLocalProps">
+        <property name="chk_jars_dest" value="$${jars_dest}"/>
+        <property name="chk_local_conf" value="$${local_conf}"/>
+        <property name="chk_web_apps_dir" value="$${web_apps_dir}"/>
+        <condition property="missingLocalProp">
+            <or>
+                <equals arg1="${chk_jars_dest}" arg2="${jars_dest}"/>
+                <equals arg1="" arg2="${jars_dest}"/>
+			    <equals arg1="${chk_local_conf}" arg2="${local_conf}"/>
+			    <equals arg1="" arg2="${local_conf}"/>
+				<equals arg1="${chk_web_apps_dir}" arg2="${web_apps_dir}"/>
+				<equals arg1="" arg2="${web_apps_dir}"/>
+            </or>
+        </condition>
+    </target>
+    
+    <target name="failLocalProps" if="missingLocalProp">
+        <fail message="missing property(ies) : jars_dest, local_conf, web_apps_dir"/>
+    </target>
+
+    <target name="copyLocalConf" depends="chkLocalProps, failLocalProps" unless="missingLocalProp">
+        <copy todir="${jars_dest}/../configs/shareplot_conf" overwrite="true" >
+            <fileset dir="${local_conf}/conf" includes="**/*" excludes="**CVS**" />
+        </copy>
+        <mkdir dir="${local_conf}/wrapper" />
+        <copy todir="${jars_dest}/../wrapper" overwrite="true" >
+            <fileset dir="${local_conf}/wrapper" includes="**/*" excludes="**CVS**" />
+        </copy>
+
+        <copy file="${jars_dest}/../JetServlet/jet-servlet.war" tofile="${web_apps_dir}/jet-servlet.war" overwrite="true" />
+        <echo message="Touching files that are to be included in war" />
+        <tstamp>
+            <format property="touch.time" pattern="MM/dd/yyyy hh:mm aa"/>
+        </tstamp>
+        <touch datetime="${touch.time}">
+            <fileset dir="${local_conf}/JetServlet" includes="**/*" excludes="**/CVS/**" />
+        </touch>
+        <echo message="Updating war file" />
+        <war destfile="${web_apps_dir}/jet-servlet.war" update="true"  >
+            <fileset dir="${local_conf}/JetServlet" includes="**/*" excludes="**/CVS/**" />
+        </war>
+    </target>
+
+</project>

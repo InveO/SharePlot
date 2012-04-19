@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<ruleset name="Custom ruleset"
+    xmlns="http://pmd.sf.net/ruleset/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
+    xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+
+    <description>
+        This ruleset checks my code for bad stuff
+    </description>
+
+    <exclude-pattern>.*_JUnitTest.*</exclude-pattern>
+    <exclude-pattern>.*/jet/shareplot/persistence/.*</exclude-pattern>
+
+    <rule ref="rulesets/basic.xml" />
+  
+    <rule ref="rulesets/imports.xml" />
+  
+    <rule ref="rulesets/design.xml">
+        <exclude name="ConfusingTernary" />
+        <exclude name="UnnecessaryLocalBeforeReturn" />
+    </rule>
+    
+    <rule ref="rulesets/design.xml/ConfusingTernary">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="rulesets/braces.xml" />
+    
+    <rule ref="rulesets/optimizations.xml">
+        <!-- later -->
+        <exclude name="MethodArgumentCouldBeFinal" />
+        <exclude name="LocalVariableCouldBeFinal" />
+    </rule>
+
+    <rule ref="rulesets/strings.xml">
+        <!-- lower priority -->
+        <exclude name="AvoidDuplicateLiterals" />
+    </rule>
+
+    <rule ref="rulesets/strings.xml/AvoidDuplicateLiterals">
+        <priority>5</priority>
+    </rule>
+
+    <!--rule ref="rulesets/clone.xml" />
+
+    <rule ref="rulesets/codesize.xml" />
+
+    <rule ref="rulesets/controversial.xml" />
+    
+    <rule ref="rulesets/coupling.xml" />    
+    
+    <rule ref="rulesets/finalizers.xml" />    
+    
+    <rule ref="rulesets/j2ee.xml" />
+ 
+    <rule ref="rulesets/logging-jakarta-commons.xml" />
+    
+    <rule ref="rulesets/logging-java.xml" />
+    
+    <rule ref="rulesets/javabeans.xml" />
+    
+    <rule ref="rulesets/junit.xml" />
+    
+    <rule ref="rulesets/migrating.xml" />
+    
+    <rule ref="rulesets/naming.xml" />
+    
+    <rule ref="rulesets/optimizations.xml" />
+    
+    <rule ref="rulesets/sunsecure.xml" />
+    
+    <rule ref="rulesets/strictexception.xml" />
+    
+    <rule ref="rulesets/strings.xml" />
+    
+    <rule ref="rulesets/typeresolution.xml" />
+    
+    <rule ref="rulesets/unusedcode.xml" /-->
+    
+    
+    
+    
+    
+    
+   
+  <!-- Here's some rules we'll specify one at a time -->
+  <!-- 
+  <rule ref="rulesets/unusedcode.xml/UnusedLocalVariable"/> 
+  -->
+
+  <!-- Note we want everything from braces.xml except WhileLoopsMustUseBraces -->
+  <!-- 
+  <rule ref="rulesets/braces.xml">
+    <exclude name="WhileLoopsMustUseBraces"/>
+  </rule>
+   -->
+  
+  <!-- We want to customize this rule a bit, change the message and raise the priority  -->
+  <!--    
+  <rule ref="rulesets/basic.xml/EmptyCatchBlock"
+   	message="Must handle exceptions">
+    <priority>2</priority>
+  </rule>
+   -->
+   
+  <!-- Now we'll customize a rule's property value -->
+  <!--    
+  <rule ref="rulesets/codesize.xml/CyclomaticComplexity">
+    <properties>
+        <property name="reportLevel" value="5"/>
+    </properties>
+  </rule>
+   -->
+
+  <!--    
+  <exclude-pattern>.*/some/package/.*</exclude-pattern>
+  <exclude-pattern>.*/some/other/package/FunkyClassNamePrefix.*</exclude-pattern>
+  <include-pattern>.*/some/package/ButNotThisClass.*</include-pattern>
+   -->
+   
+</ruleset>
