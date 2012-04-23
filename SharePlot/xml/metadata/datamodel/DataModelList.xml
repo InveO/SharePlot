@@ -1,0 +1,5 @@
+<DATA_MODELS>
+    <DATA_MODEL application="SharePlot" xmlfile="SharePlot/xml/metadata/datamodel/dm_ShareValue.xml"/>
+    <DATA_MODEL application="SharePlot" xmlfile="SharePlot/xml/metadata/datamodel/dm_Share.xml"/>
+    <DATA_MODEL application="SharePlot" xmlfile="SharePlot/xml/metadata/datamodel/dm_ShareQuantity.xml"/>
+</DATA_MODELS>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated from dse_AccountPlanStruct.xml by XMLBuddy -->
+<!ELEMENT EJB EMPTY>
+<!ATTLIST EJB name NMTOKEN #REQUIRED>
+<!ELEMENT EJB_CONVERSION (MAPPING+)>
+<!ATTLIST EJB_CONVERSION datamodel NMTOKEN #REQUIRED>
+<!ELEMENT EJB_FINDERS (EJB,FINDER+,EJB_CONVERSION)>
+<!ELEMENT FINDER (INPUT*)>
+<!ATTLIST FINDER
+	name NMTOKEN #REQUIRED
+	primarykey (true | false) "false"
+>
+<!ELEMENT INPUT EMPTY>
+<!ATTLIST INPUT
+	dataconverter CDATA #REQUIRED
+	source NMTOKEN #REQUIRED
+	subelement CDATA #REQUIRED
+>
+<!ELEMENT MAPPING EMPTY>
+<!ATTLIST MAPPING
+	autoincrement (true | false) "false"
+	primarykey (true | false) "false"
+	default CDATA #FIXED ""
+	defaulttype (INTEGER | TEXT | DATE | DOUBLE | BLOB ) "TEXT"
+	name NMTOKEN #REQUIRED
+	readconverter CDATA #FIXED ""
+	readmultikey CDATA #FIXED ""
+	subelement CDATA #FIXED ""
+	target NMTOKEN #REQUIRED
+	writeconverter CDATA #FIXED ""
+>

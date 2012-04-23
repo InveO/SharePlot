@@ -126,10 +126,10 @@
         <copy todir="${jars_dest}/../configs/shareplot_conf" >
             <fileset dir="conf" includes="**/*.xml" />
         </copy>
-    	<!--
         <copy todir="${jars_dest}/../configs/shareplot_conf/ext" >
             <fileset dir="conf/ext" includes="**/*.jar,**/*.zip" />
         </copy>
+    	<!--
         <copy todir="${jars_dest}/../configs/shareplot_conf/ocr" >
             <fileset dir="conf/ocr" includes="**/*" />
         </copy>

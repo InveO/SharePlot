@@ -1,0 +1,40 @@
+<!ENTITY % Formula "CDATA">
+<!--
+A FINDERBODY:
+  sql:	A boolean value where true indicates an sql string
+  sql_string: 	The SQL Statement for the finder.
+-->
+<!ATTLIST FINDERBODY
+	type (sql | nosql) "nosql"
+	sql_string CDATA ""
+	buffersize CDATA ""
+>
+<!ELEMENT FINDERBODY EMPTY>
+<!--
+A INPUT:
+   name         is the name of the table inside the java enabling tool  (used i.e. in MAPPING element). 
+   type		is the type of the input
+-->
+<!ATTLIST INPUT
+	name CDATA #REQUIRED
+	type CDATA #REQUIRED
+	localizedDisplayableText CDATA ""
+>
+<!ELEMENT INPUT EMPTY>
+<!--
+A view:
+   name         is the name of this finder
+-->
+<!ATTLIST FINDER
+	name CDATA #REQUIRED
+>
+<!ELEMENT FINDER (INPUT*, FINDERBODY)>
+<!--
+A Bean:
+   name          is the ejb-name of the nut
+-->
+<!ATTLIST BEAN
+	name CDATA #REQUIRED
+>
+<!ELEMENT BEAN (FINDER)*>
+<!ELEMENT JET-FINDERS (BEAN)*>

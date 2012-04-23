@@ -1,0 +1,25 @@
+    <MAPPING_LIST>
+        <MAPPING database="SharePlot">
+            <TABLE name="ShareValue" localname="SHARE_VALUE" >
+                <COLUMN name="idShareValue" localname="ID_SHARE_VALUE" />
+                <COLUMN name="isShare" localname="IS_SHARE" />
+                <COLUMN name="valueDate" localname="VALUE_DATE" />
+                <COLUMN name="value" localname="VALUE" />
+            </TABLE>
+            <TABLE name="Share" localname="SHARE" >
+                <COLUMN name="idShare" localname="ID_SHARE" />
+                <COLUMN name="name" localname="NAME" />
+                <COLUMN name="description" localname="DESCRIPTION" />
+                <COLUMN name="code" localname="CODE" />
+                <COLUMN name="datePurchase" localname="DATE_PURCHASE" />
+                <COLUMN name="purchasePrice" localname="PURCHASE_PRICE" />
+                <COLUMN name="entryFee" localname="ENTRY_FEE" />
+            </TABLE>
+            <TABLE name="ShareQuantity" localname="SHARE_QUANTITY" >
+                <COLUMN name="idShareQuantity" localname="ID_SHARE_QUANTITY" />
+                <COLUMN name="idShare" localname="ID_SHARE" />
+                <COLUMN name="valueDate" localname="VALUE_DATE" />
+                <COLUMN name="changeType" localname="CHANGE_TYPE" />
+            </TABLE>
+        </MAPPING>
+    </MAPPING_LIST>

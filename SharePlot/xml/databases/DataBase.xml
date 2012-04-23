@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE DATABASE SYSTEM "database2.dtd">
+<!-- 
+    Warning : The Column name must match the name of the field in the java classes
+
+-->
+<DATABASE name="SharePlot" >
+    <TABLE name="ShareValue" localname="ShareValue">
+        <COLUMN name="idShareValue" localname="idShareValue" dbtype="INTEGER"/>
+        <COLUMN name="isShare" localname="isShare" dbtype="INTEGER"/>
+        <COLUMN name="valueDate" localname="valueDate" dbtype="DATE"/>
+        <COLUMN name="value" localname="value" dbtype="DECIMAL"/>
+    </TABLE>
+    <TABLE name="Share" localname="Share">
+        <COLUMN name="idShare" localname="idShare" dbtype="INTEGER"/>
+        <COLUMN name="name" localname="name" dbtype="VARCHAR"/>
+        <COLUMN name="description" localname="description" dbtype="VARCHAR"/>
+        <COLUMN name="code" localname="code" dbtype="VARCHAR"/>
+        <COLUMN name="datePurchase" localname="datePurchase" dbtype="DATE"/>
+        <COLUMN name="purchasePrice" localname="purchasePrice" dbtype="DECIMAL"/>
+        <COLUMN name="entryFee" localname="entryFee" dbtype="DECIMAL"/>
+    </TABLE>
+    <TABLE name="ShareQuantity" localname="ShareQuantity">
+        <COLUMN name="idShareQuantity" localname="idShareQuantity" dbtype="INTEGER"/>
+        <COLUMN name="idShare" localname="idShare" dbtype="INTEGER"/>
+        <COLUMN name="valueDate" localname="valueDate" dbtype="DATE"/>
+        <COLUMN name="changeType" localname="changeType" dbtype="CHAR"/>
+    </TABLE>
+    <!--DBTYPES descriptif="">
+        <DBTYPE dbtype="VARCHAR" java-type="String"/>
+        <DBTYPE dbtype="BIT" java-type="Boolean"/>
+        <DBTYPE dbtype="BIT" java-type="boolean"/>
+        <DBTYPE dbtype="SMALLINT" java-type="Byte"/>
+        <DBTYPE dbtype="INTEGER" java-type="Integer"/>
+        <DBTYPE dbtype="DOUBLE" java-type="Double"/>
+        <DBTYPE dbtype="DATE" java-type="Date"/>
+        <DBTYPE dbtype="DATE" java-type="java.util.Date"/>
+        <DBTYPE dbtype="REAL" java-type="Float"/>
+        <DBTYPE dbtype="BIGINT" java-type="Long"/>
+        <DBTYPE dbtype="DECIMAL" java-type="java.math.BigDecimal"/>
+        <DBTYPE dbtype="SMALLINT" java-type="Short"/>
+        <DBTYPE dbtype="CHAR" java-type="Char"/>
+        <DBTYPE dbtype="SMALLINT" java-type="byte"/>
+        <DBTYPE dbtype="INTEGER" java-type="int"/>
+        <DBTYPE dbtype="DOUBLE" java-type="double"/>
+        <DBTYPE dbtype="REAL" java-type="float"/>
+        <DBTYPE dbtype="BIGINT" java-type="long"/>
+        <DBTYPE dbtype="SMALLINT" java-type="short"/>
+        <DBTYPE dbtype="CHAR" java-type="char"/>
+        <DBTYPE dbtype="OBJECT" java-type="Object"/>
+    </DBTYPES-->
+</DATABASE>

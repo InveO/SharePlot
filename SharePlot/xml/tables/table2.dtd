@@ -1,0 +1,69 @@
+<!--
+// @Title			Table.dtd 
+// @Version			2.0
+// @Author			Melinda Gentizon
+// @Company		Yellow-B
+// @Description		Definition of the database tables
+//
+-->
+<!--
+Generic Column Types in Java Enabling Tool:
+  name 			is the unique name of this generic column type
+  type 			the type of the column
+  dbtype 		the SQL type of the column
+  length		the length of the column
+  nullable		Boolean value, if true indicates the column can hold null values
+-->
+<!ATTLIST TYPE
+	name ID #REQUIRED
+	type CDATA #REQUIRED
+	dbtype CDATA ""
+	length CDATA ""
+	nullable (true | false) "true"
+>
+<!ELEMENT TYPE EMPTY>
+<!ELEMENT GENERIC (TYPE)*>
+<!--
+Column of a table:
+  name is used to refer to this COLUMN in the Java Enabling Tool.
+  implements		the name of the generic column type, that is referenced by this column
+  type 			the type of the column
+  dbtype 		the SQL type of the column
+  length			the length of the column
+  nullable		Boolean value, if true indicates the column can hold null values
+-->
+<!ATTLIST COLUMN
+	name CDATA #REQUIRED
+	type CDATA #REQUIRED
+	length CDATA #IMPLIED
+	nullable (true | false) "true"
+    autoincrement (true | false) "false"
+>
+<!ELEMENT COLUMN EMPTY>
+<!--
+The component that compose a primary key of a table.
+-->
+<!ATTLIST KEYITEM
+	component CDATA #REQUIRED
+>
+<!ELEMENT KEYITEM EMPTY>
+<!ELEMENT PRIMARYKEY (KEYITEM+)>
+<!--
+A database table:
+   name         is the name of the table inside the Java Enabling Tool (used i.e. in MAPPING element). 
+-->
+<!ATTLIST TABLE
+	name CDATA #REQUIRED
+>
+<!ELEMENT TABLE (COLUMN*, PRIMARYKEY)>
+<!--
+A view:
+   name         is the name of the view inside the Java Enabling Tool (used i.e. in MAPPING element). 
+   sql          is the SQL command that defines the view.
+-->
+<!ATTLIST VIEW
+	name CDATA #REQUIRED
+	sql CDATA ""
+>
+<!ELEMENT VIEW (COLUMN*, PRIMARYKEY?)>
+<!ELEMENT TABLES (GENERIC*, (VIEW | TABLE)*)>

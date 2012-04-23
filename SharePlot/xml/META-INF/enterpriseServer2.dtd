@@ -1,0 +1,42 @@
+<!--
+// @Title			enterpriseServer.dtd 
+// @Version		2.0
+// @Author		Melinda Gentizon
+// @Company	Yellow-B   
+// @Description
+//
+-->
+<!ENTITY % BasicElement "ENTITYNUT| PERSISTENCE_TABLE | SESSIONNUT">
+<!ATTLIST TRIGGER
+	name CDATA ""
+>
+<!ELEMENT TRIGGER EMPTY>
+<!-- ENTITYNUT -->
+<!ATTLIST ENTITYNUT
+	ejbName CDATA #REQUIRED
+	table CDATA #REQUIRED
+	type CDATA #REQUIRED
+>
+<!ELEMENT ENTITYNUT (TRIGGER)*>
+<!-- Persistence Component -->
+<!ATTLIST PERSISTENCE_TABLE
+	name CDATA #REQUIRED
+	xmlFile CDATA #REQUIRED
+>
+<!ELEMENT PERSISTENCE_TABLE EMPTY>
+<!-- SESSIONNUT -->
+<!ATTLIST SESSIONNUT
+	name CDATA #REQUIRED
+	ejbName CDATA #IMPLIED
+	homePath CDATA #IMPLIED
+	timeOut CDATA ""
+>
+<!ELEMENT SESSIONNUT (TRIGGER)*>
+<!ATTLIST ENTERPRISE_SERVER
+	name CDATA #REQUIRED
+	ipAddress CDATA #REQUIRED
+	jndi_initialfactory CDATA ""
+	jndi_urlprovider CDATA ""
+	dbName CDATA ""
+>
+<!ELEMENT ENTERPRISE_SERVER (%BasicElement;)+>

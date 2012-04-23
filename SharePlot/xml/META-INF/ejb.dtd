@@ -1,0 +1,101 @@
+<!--
+The ID mechanism is to allow tools that produce additional deployment
+information (i.e information beyond the standard EJB deployment
+descriptor information) to store the non-standard information in a
+separate file, and easily refer from these tools-specific files to the
+information in the standard deployment descriptor.
+The EJB architecture does not allow the tools to add the non-standard
+information into the EJB deployment descriptor.
+-->
+<!ATTLIST	assembly-descriptor		id	ID #IMPLIED>
+<!ELEMENT	assembly-descriptor		(security-role*, method-permission*,container-transaction*)>
+<!ATTLIST	cmp-field				id	ID #IMPLIED>
+<!ELEMENT	cmp-field				(description?, field-name)>
+<!ATTLIST	container-transaction	id	ID #IMPLIED>
+<!ELEMENT	container-transaction	(description?, method+,trans-attribute)>
+<!ATTLIST	description				id	ID #IMPLIED>
+<!ELEMENT	description				(#PCDATA)>
+<!ATTLIST	display-name			id	ID #IMPLIED>
+<!ELEMENT	display-name			(#PCDATA)>
+<!ATTLIST	ejb-class				id	ID #IMPLIED>
+<!ELEMENT	ejb-class				(#PCDATA)>
+<!ATTLIST	ejb-client-jar				id	ID #IMPLIED>
+<!ELEMENT	ejb-client-jar				(#PCDATA)>
+<!ATTLIST	ejb-jar					id	ID #IMPLIED>
+<!ELEMENT	ejb-jar					(description?, display-name?, small-icon?,large-icon?, enterprise-beans, assembly-descriptor?,ejb-client-jar?)>
+<!ATTLIST	ejb-link					id	ID #IMPLIED>
+<!ELEMENT	ejb-link					(#PCDATA)>
+<!ATTLIST	ejb-name				id	ID #IMPLIED>
+<!ELEMENT	ejb-name				(#PCDATA)>
+<!ATTLIST	ejb-ref					id	ID #IMPLIED>
+<!ELEMENT	ejb-ref					(description?, ejb-ref-name, ejb-ref-type, home,remote, ejb-link?)>
+<!ATTLIST	ejb-ref-name			id	ID #IMPLIED>
+<!ELEMENT	ejb-ref-name			(#PCDATA)>
+<!ATTLIST	ejb-ref-type				id	ID #IMPLIED>
+<!ELEMENT	ejb-ref-type				(#PCDATA)>
+<!ATTLIST	enterprise-beans		id	ID #IMPLIED>
+<!ELEMENT	enterprise-beans		(session | entity)+>
+<!ATTLIST	entity					id	ID #IMPLIED>
+<!ELEMENT	entity					(description?, display-name?, small-icon?,large-icon?, ejb-name, home, remote, ejb-class, persistence-type, prim-key-class, reentrant, cmp-field*, primkey-field?, env-entry*, ejb-ref*, security-role-ref*, resource-ref*)>
+<!ATTLIST	env-entry				id	ID #IMPLIED>
+<!ELEMENT	env-entry				(description?, env-entry-name, env-entry-type,env-entry-value?)>
+<!ATTLIST	env-entry-name			id	ID #IMPLIED>
+<!ELEMENT	env-entry-name			(#PCDATA)>
+<!ATTLIST	env-entry-type			id	ID #IMPLIED>
+<!ELEMENT	env-entry-type			(#PCDATA)>
+<!ATTLIST	env-entry-value			id	ID #IMPLIED>
+<!ELEMENT	env-entry-value			(#PCDATA)>
+<!ATTLIST	field-name				id	ID #IMPLIED>
+<!ELEMENT	field-name				(#PCDATA)>
+<!ATTLIST	home					id	ID #IMPLIED>
+<!ELEMENT	home					(#PCDATA)>
+<!ATTLIST	large-icon				id	ID #IMPLIED>
+<!ELEMENT	large-icon				(#PCDATA)>
+<!ATTLIST method					id	ID #IMPLIED>
+<!ELEMENT	method					(description?, ejb-name, method-intf?, method-name,method-params?)>
+<!ATTLIST	method-intf				id	ID #IMPLIED>
+<!ELEMENT	method-intf				(#PCDATA)>
+<!ATTLIST	method-name			id	ID #IMPLIED>
+<!ELEMENT	method-name			(#PCDATA)>
+<!ATTLIST	method-param			id	ID #IMPLIED>
+<!ELEMENT	method-param			(#PCDATA)>
+<!ATTLIST	method-params			id	ID #IMPLIED>
+<!ELEMENT	method-params			(method-param*)>
+<!ATTLIST	method-permission		id	ID #IMPLIED>
+<!ELEMENT	method-permission		(description?, role-name+, method+)>
+<!ATTLIST	persistence-type		id	ID #IMPLIED>
+<!ELEMENT	persistence-type		(#PCDATA)>
+<!ATTLIST	prim-key-class			id	ID #IMPLIED>
+<!ELEMENT	prim-key-class			(#PCDATA)>
+<!ATTLIST	primkey-field			id	ID #IMPLIED>
+<!ELEMENT	primkey-field			(#PCDATA)>
+<!ATTLIST	reentrant				id	ID #IMPLIED>
+<!ELEMENT	reentrant				(#PCDATA)>
+<!ATTLIST	remote					id	ID #IMPLIED>
+<!ELEMENT	remote					(#PCDATA)>
+<!ATTLIST	res-auth				id	ID #IMPLIED>
+<!ELEMENT	res-auth				(#PCDATA)>
+<!ATTLIST	res-ref-name			id	ID #IMPLIED>
+<!ELEMENT	res-ref-name			(#PCDATA)>
+<!ATTLIST	res-type				id	ID #IMPLIED>
+<!ELEMENT	res-type				(#PCDATA)>
+<!ATTLIST	resource-ref			id	ID #IMPLIED>
+<!ELEMENT	resource-ref			(description?, res-ref-name, res-type,res-auth)>
+<!ATTLIST	role-link					id	ID #IMPLIED>
+<!ELEMENT	role-link					(#PCDATA)>
+<!ATTLIST	role-name				id	ID #IMPLIED>
+<!ELEMENT	role-name				(#PCDATA)>
+<!ATTLIST	security-role			id	ID #IMPLIED>
+<!ELEMENT	security-role			(description?, role-name)>
+<!ATTLIST	security-role-ref			id	ID #IMPLIED>
+<!ELEMENT	security-role-ref			(description?, role-name, role-link?)>
+<!ATTLIST	session-type			id	ID #IMPLIED>
+<!ELEMENT	session-type			(#PCDATA)>
+<!ATTLIST	session					id	ID #IMPLIED>
+<!ELEMENT	session					(description?, display-name?, small-icon?,large-icon?, ejb-name, home, remote, ejb-class,session-type, transaction-type, env-entry*,ejb-ref*, security-role-ref*, resource-ref*)>
+<!ATTLIST	small-icon				id	ID #IMPLIED>
+<!ELEMENT	small-icon				(#PCDATA)>
+<!ATTLIST	transaction-type			id	ID #IMPLIED>
+<!ELEMENT	transaction-type			(#PCDATA)>
+<!ATTLIST	trans-attribute			id	ID #IMPLIED>
+<!ELEMENT	trans-attribute			(#PCDATA)>

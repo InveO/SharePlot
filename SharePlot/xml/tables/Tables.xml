@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TABLES SYSTEM "table2.dtd">
+<!-- 
+    Warning : The Column name must match the name of the field in the java classes
+
+-->
+<TABLES>
+    <TABLE name="ShareValue">
+        <COLUMN name="idShareValue" type="Long" length="10" nullable="false" autoincrement="true" />
+        <COLUMN name="isShare" type="Long" length="10" nullable="false" autoincrement="false" />
+        <COLUMN name="valueDate" type="java.util.Date" length="10" nullable="false" autoincrement="false" />
+        <COLUMN name="value" type="java.math.BigDecimal" length="10" nullable="false" autoincrement="false" />
+        <PRIMARYKEY>
+            <KEYITEM component="idShareValue"/>
+        </PRIMARYKEY>
+    </TABLE>
+    <TABLE name="Share">
+        <COLUMN name="idShare" type="Long" length="10" nullable="false" autoincrement="true" />
+        <COLUMN name="name" type="String" length="255" nullable="false" autoincrement="false" />
+        <COLUMN name="description" type="String" length="4000" nullable="true" autoincrement="false" />
+        <COLUMN name="code" type="String" length="45" nullable="true" autoincrement="false" />
+        <COLUMN name="datePurchase" type="java.util.Date" length="10" nullable="false" autoincrement="false" />
+        <COLUMN name="purchasePrice" type="java.math.BigDecimal" length="12" nullable="false" autoincrement="false" />
+        <COLUMN name="entryFee" type="java.math.BigDecimal" length="12" nullable="true" autoincrement="false" />
+        <PRIMARYKEY>
+            <KEYITEM component="idShare"/>
+        </PRIMARYKEY>
+    </TABLE>
+    <TABLE name="ShareQuantity">
+        <COLUMN name="idShareQuantity" type="Long" length="10" nullable="false" autoincrement="true" />
+        <COLUMN name="idShare" type="Long" length="10" nullable="false" autoincrement="false" />
+        <COLUMN name="valueDate" type="java.util.Date" length="10" nullable="false" autoincrement="false" />
+        <COLUMN name="changeType" type="String" length="1" nullable="false" autoincrement="false" />
+        <PRIMARYKEY>
+            <KEYITEM component="idShareQuantity"/>
+        </PRIMARYKEY>
+    </TABLE>
+</TABLES>
