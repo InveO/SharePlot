@@ -5,4 +5,15 @@
     <IMPORT name="SharePlot/xml/ui/GenericStyles.xml" /> 
     <IMPORT name="SharePlot/xml/ui/GenericAlgos.xml" /> 
     
+    <LABEL name="EditorHeaderLabel" font="editorHeaderFont" foregroundColor="labelColor" /> 
+    
+    <DISPLAY2 name="EmptyTable" style="tableStyle" cellSpacing="0" verticalLines="dotted" opaque="false" borderWidth="0" borderColor="tableBorderColor" />
+    
+    <GROUP name="GenericTitleGroup" layoutmanager="gridbaglayout" backgroundColor="editorHeaderBackColor" foregroundColor="editorHeaderForeColor" >
+		<LABEL name="titleLabel" extends="EditorHeaderLabel" >
+			<GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="0" insettop="20" insetleft="10" insetbottom="5" anchor="CENTER" />
+		</LABEL>
+	</GROUP>
+	
+    
 </DOCUMENT>

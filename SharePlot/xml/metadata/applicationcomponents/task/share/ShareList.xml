@@ -1,0 +1,25 @@
+<APPLICATION_COMPONENT class="jet.framework.component.SimpleApplicationComponent" initialNutName="ShareListNut">
+
+	<!-- SimpleApplicationComponent specific declarations -->
+	<APPLICATION_COMPONENT_CONFIG>
+	
+		<SHARE_LIST>
+        	<COLUMN name="selectColumn" datamodelfield="" type="CHECKBOX" editable="true" width="0" />
+     	    <COLUMN name="nameColumn" datamodelfield="name" type="TEXT" editable="true" width="0" localizedlabel="SharePlot/properties/desktop/Global/list.name" />
+			<COLUMN name="descrColumn" datamodelfield="description" type="TEXT" editable="true" width="10" localizedlabel="SharePlot/properties/desktop/Global/list.description" />
+			<COLUMN name="codeColumn" datamodelfield="code" type="TEXT" editable="true" width="0" localizedlabel="SharePlot/properties/task/Share/list.code" />
+			<COLUMN name="dateColumn" datamodelfield="datePurchase" type="DATE" editable="true" width="0" localizedlabel="SharePlot/properties/task/Share/list.purchaseDate" />
+			<COLUMN name="priceColumn" datamodelfield="purchasePrice" type="NUMBER" class="java.lang.Double" editable="true" width="0" localizedlabel="SharePlot/properties/task/Share/list.purchasePrice" />
+			<COLUMN name="feeColumn" datamodelfield="entryFee" type="NUMBER" class="java.lang.Double" editable="true" width="0" localizedlabel="SharePlot/properties/task/Share/list.entryFee" />
+		</SHARE_LIST>
+
+	</APPLICATION_COMPONENT_CONFIG>
+
+	<NUTS>
+		<NUT name="ShareListNut" className="jet.shareplot.ui.task.share.ShareListNut">
+			<PARAMETER name="formName" value="ShareListForm" />
+			<PARAMETER name="formXmlFile" value="SharePlot/xml/ui/task/share/ShareListForm.xml" />
+		</NUT>
+	</NUTS>
+
+</APPLICATION_COMPONENT>

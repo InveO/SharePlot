@@ -1,0 +1,24 @@
+<DATA_MODEL_MANAGER>
+	<DATA_CONVERTERS>
+		<!--DATA_CONVERTER name="BigDecimalToDate" class="com.sai.business.converters.BigDecimalToDateConverter" application="SaiFramework"/-->
+	</DATA_CONVERTERS>
+	<DATA_MODEL_CONVERTERS>
+		<DATA_MODEL_CONVERTER name="EJBDataModelConverter" class="jet.framework.util.ejb.EJBDataModelConverter" application="JetFramework"/>
+	</DATA_MODEL_CONVERTERS>
+	<DATA_SOURCE_EXECUTORS>
+		<DATA_SOURCE_EXECUTOR name="EJBDataSourceExecutor" class="jet.framework.util.ejb.EJBDataSourceExecutor" application="JetFramework"/>
+		<DATA_SOURCE_EXECUTOR name="LocalizedDataSourceExecutor" class="jet.framework.util.ejb.LocalizedDataSourceExecutor" application="JetFramework"/>
+	</DATA_SOURCE_EXECUTORS>
+	<DATA_MODELS>
+		<EXT_FILE xmlfile="SharePlot/xml/metadata/datamodel/DataModelList.xml" application="SharePlot" />
+	</DATA_MODELS>
+	<DATA_MODEL_WRAPPERS>
+		<DATA_MODEL_WRAPPER name="DateToAgeWrapper" class="jet.framework.manager.datamodel.wrapper.DateToAgeWrapperModel" application="JetFramework" />
+		<DATA_MODEL_WRAPPER name="CheckBoxTableWrapperModel" class="jet.framework.manager.datamodel.wrapper.CheckBoxTableWrapperModel" application="JetFramework" />
+		<DATA_MODEL_WRAPPER name="PreviousDateWrapper" class="jet.framework.manager.datamodel.wrapper.PreviousDateWrapperModel" application="JetFramework" />
+		<DATA_MODEL_WRAPPER name="YearToAgeWrapper" class="jet.framework.manager.datamodel.wrapper.YearToAgeWrapperModel" application="JetFramework" />
+		<DATA_MODEL_WRAPPER name="MergeStringWrapper" class="jet.framework.manager.datamodel.wrapper.MergeStringWrapperModel" application="JetFramework" />
+		<DATA_MODEL_WRAPPER name="SelectNutWrapper" class="jet.framework.util.models.SelectNutWrapperModel" application="JetFramework" />
+		<DATA_MODEL_WRAPPER name="DoubleExpressionWrapper" class="jet.framework.manager.datamodel.wrapper.DoubleExpressionWrapperModel" application="JetFramework" />
+	</DATA_MODEL_WRAPPERS>    
+</DATA_MODEL_MANAGER>

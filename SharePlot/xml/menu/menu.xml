@@ -4,8 +4,8 @@
     <MENUACTIONS>
         
         <!-- DOMAIN MENU -->
-        <action id="Test.TestAction" label="SharePlot/properties/desktop/Menu/item.TestAction" type="LaunchAC"  >
-            <parameter name="component" value="TestAction" />
+        <action id="Shares.Shares" label="SharePlot/properties/desktop/Menu/item.Shares" type="LaunchAC"  >
+            <parameter name="component" value="ShareList" />
         </action>
         
     </MENUACTIONS>
@@ -15,8 +15,8 @@
 		<!-- a menu bar is a list of menus -->
 		<menubar id="SharePlotMainMenuBar" separator="true" >
 			<!-- a menu may contain other menus as well as menu items -->
-            <menu id="Test" label="SharePlot/properties/desktop/Menu/menu.Test">
-                <item id="Test_TestAction" action-ref="Test.TestAction" />
+            <menu id="Shares" label="SharePlot/properties/desktop/Menu/menu.Shares">
+                <item id="Shares_Shares" action-ref="Shares.Shares" />
             </menu>
 		</menubar>
 	</MENUROOT>

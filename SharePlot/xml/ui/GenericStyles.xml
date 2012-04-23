@@ -4,26 +4,67 @@
     <UISTYLES>
         
        
-        <STYLE type="basic" name="textFieldStyle">
-            <ATTRIBUTE name="BackgroundColor" value="red" />
-            <ATTRIBUTE name="ForegroundColor" value="red" />
+<!--         <STYLE type="basic" name="textFieldStyle"> -->
+<!--             <ATTRIBUTE name="BackgroundColor" value="red" /> -->
+<!--             <ATTRIBUTE name="ForegroundColor" value="red" /> -->
 
-            <ATTRIBUTE name="NonEditableBackgroundColor" value="red" />
-            <ATTRIBUTE name="NonEditableForegroundColor" value="red" />
+<!--             <ATTRIBUTE name="NonEditableBackgroundColor" value="red" /> -->
+<!--             <ATTRIBUTE name="NonEditableForegroundColor" value="red" /> -->
             
-            <ATTRIBUTE name="Font" value="font" />
+<!--             <ATTRIBUTE name="Font" value="font" /> -->
 
-            <ATTRIBUTE name="BorderPainted" value="true" />
-            <ATTRIBUTE name="BorderColor" value="red" />
-            <ATTRIBUTE name="NonEditableBorderColor" value="red" />
+<!--             <ATTRIBUTE name="BorderPainted" value="true" /> -->
+<!--             <ATTRIBUTE name="BorderColor" value="red" /> -->
+<!--             <ATTRIBUTE name="NonEditableBorderColor" value="red" /> -->
             
-            <ATTRIBUTE name="SelectionBackground" value="red" />
-            <ATTRIBUTE name="SelectionForeground" value="red" />
+<!--             <ATTRIBUTE name="SelectionBackground" value="red" /> -->
+<!--             <ATTRIBUTE name="SelectionForeground" value="red" /> -->
             
-            <ATTRIBUTE name="PopupBackground" value="red" />
-            <ATTRIBUTE name="PopupForeground" value="red" />
+<!--             <ATTRIBUTE name="PopupBackground" value="red" /> -->
+<!--             <ATTRIBUTE name="PopupForeground" value="red" /> -->
+<!--         </STYLE> -->
+
+        <!-- TABLE STYLES -->
+        <STYLE type="table" name="tableStyle">
+            <COMPONENT type="header" style="tableHeaderStyle" />
+            <COMPONENT type="cell" style="tableRowStyle" algorithm="alternatingRows" />
+
+            <ATTRIBUTE name="SelectionBackground" value="tableSelectionColor" />
+            <ATTRIBUTE name="SelectionForeground" value="tableSelectionForeColor" />
+            <ATTRIBUTE name="SelectedCellBorderColor" value="tableSelCellBorderColor"/>
         </STYLE>
-
+        
+        <STYLE type="basic" name="tableHeaderStyle">
+            <ATTRIBUTE name="BackgroundColor" value="tableHeaderBackColor" />
+            <ATTRIBUTE name="ForegroundColor" value="tableHeaderForeColor" />
+            <ATTRIBUTE name="Font" value="tableFont" />
+            <ATTRIBUTE name="Alignment" value="center" />
+        </STYLE>
+        
+        <STYLE type="basic" name="tableRowStyle">
+            <ATTRIBUTE name="BackgroundColor" value="tableEvenBackColor" />
+            <ATTRIBUTE name="ForegroundColor" value="tableForeColor" />
+            <ATTRIBUTE name="Font" value="tableFont" />
+            <ATTRIBUTE name="Alignment" value="left" />
+            
+            <ATTRIBUTE name="PopupBackground" value="editorBackColor" />
+            <ATTRIBUTE name="PopupForeground" value="editorForeColor" />
+        </STYLE>
+                
+        <STYLE type="basic" name="tableEvenRowStyle">
+            <ATTRIBUTE name="BackgroundColor" value="tableEvenBackColor" />
+        </STYLE>
+        
+        <STYLE type="basic" name="tableOddRowStyle">
+            <ATTRIBUTE name="BackgroundColor" value="tableOddBackColor" />
+        </STYLE>
+                
+        <STYLE type="basic" name="tableColumnButton">
+            <ATTRIBUTE name="Alignment" value="left" />
+            <ATTRIBUTE name="ForegroundColor" value="tableButtonForeColor" />
+        </STYLE>
+        
+        <!-- END TABLE STYLES -->
 
     </UISTYLES>
 

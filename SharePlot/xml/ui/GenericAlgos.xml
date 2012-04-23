@@ -5,9 +5,9 @@
         <ALGORITHM name="alternatingRows">
             var groupIndex = Math.floor(row / 2);
             if (groupIndex % 2 == 0) {
-                result = "tableEvenRowStyleLight";
+                result = "tableEvenRowStyle";
             } else {
-                result = "tableOddRowStyleLight";
+                result = "tableOddRowStyle";
             }
         </ALGORITHM>
     </ALGORITHMS>
