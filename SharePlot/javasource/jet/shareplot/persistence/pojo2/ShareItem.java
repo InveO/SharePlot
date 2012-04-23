@@ -256,7 +256,7 @@ public class ShareItem implements Cloneable, Serializable {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "name");
                 this.nameDispatcherModel = new DispatcherModel<ShareItem, String>(this, sourceModel);
 
-                this.nameDispatcherModel.addInterceptor(new StringLengthInterceptor(255));
+                this.nameDispatcherModel.addInterceptor(new StringLengthInterceptor<ShareItem>(255));
             } catch (final JETException e) {
                 throw new JETSystemError("Share data model does not have a child named name. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
             }
