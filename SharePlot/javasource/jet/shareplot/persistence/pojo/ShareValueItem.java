@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import jet.framework.manager.datamodel.interfaces.DataModelRootNode;
 import jet.framework.util.models.ModelHelper;
+import jet.framework.util.pojo2.DispatcherModel;
+import jet.framework.util.pojo2.interceptor.StringLengthInterceptor;
 import jet.util.logger.JETLevel;
 import jet.util.logger.JETLoggerManager;
 import jet.util.logger.Logger;
@@ -27,6 +29,11 @@ public class ShareValueItem implements Cloneable, Serializable {
 
     private Model dataModel;
     private Logger logger;
+
+    private DispatcherModel<ShareValueItem, Long> idShareValueDispatcherModel;
+    private DispatcherModel<ShareValueItem, Long> isShareDispatcherModel;
+    private DispatcherModel<ShareValueItem, java.util.Date> valueDateDispatcherModel;
+    private DispatcherModel<ShareValueItem, java.math.BigDecimal> valueDispatcherModel;
 
     /**
      * Constructor used to create a new ShareValue Data Model
@@ -158,13 +165,7 @@ public class ShareValueItem implements Cloneable, Serializable {
      * @return Long value of Data Model node idShareValue
      */
     public Long getIdShareValue() {
-        try {
-            final Model model = ModelHelper.getChildNode(this.dataModel, "idShareValue");
-            return (Long) model.getNodeValue();
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareValue data model does not have a child named idShareValue. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
-        }
+        return (Long) get_IdShareValue_Model().getNodeValue();
     }
     
     /**
@@ -172,26 +173,23 @@ public class ShareValueItem implements Cloneable, Serializable {
      * @param idShareValue Long value of Data Model node idShareValue
      */
     private final void setIdShareValue(final Long idShareValue) {
-        Long tmp = idShareValue;
-        try {
-            ModelHelper.setChildNodeValue(this.dataModel, "idShareValue", tmp);
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareValue data model does not have a child named idShareValue. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
-        }
+        get_IdShareValue_Model().setNodeValue(idShareValue);
     }
     
     /**
      * Get Model of Data Model node idShareValue
      * @return Model of Data Model node idShareValue
      */
-    public Model get_IdShareValue_Model() {
-        try {
-            return ModelHelper.getChildNode(this.dataModel, "idShareValue");
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareValue data model does not have a child named idShareValue. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
+    public DispatcherModel<ShareValueItem, Long> get_IdShareValue_Model() {
+        if (this.idShareValueDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idShareValue");
+                this.idShareValueDispatcherModel = new DispatcherModel<ShareValueItem, Long>(this, sourceModel);
+            } catch (final JETException e) {
+                throw new JETSystemError("ShareValue data model does not have a child named idShareValue. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
         }
+        return this.idShareValueDispatcherModel;
     }
 
     /**
@@ -199,13 +197,7 @@ public class ShareValueItem implements Cloneable, Serializable {
      * @return Long value of Data Model node isShare
      */
     public Long getIsShare() {
-        try {
-            final Model model = ModelHelper.getChildNode(this.dataModel, "isShare");
-            return (Long) model.getNodeValue();
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareValue data model does not have a child named isShare. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
-        }
+        return (Long) get_IsShare_Model().getNodeValue();
     }
     
     /**
@@ -213,26 +205,23 @@ public class ShareValueItem implements Cloneable, Serializable {
      * @param isShare Long value of Data Model node isShare
      */
     public final void setIsShare(Long isShare) {
-        Long tmp = isShare;
-        try {
-            ModelHelper.setChildNodeValue(this.dataModel, "isShare", tmp);
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareValue data model does not have a child named isShare. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
-        }
+        get_IsShare_Model().setNodeValue(isShare);
     }
     
     /**
      * Get Model of Data Model node isShare
      * @return Model of Data Model node isShare
      */
-    public Model get_IsShare_Model() {
-        try {
-            return ModelHelper.getChildNode(this.dataModel, "isShare");
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareValue data model does not have a child named isShare. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
+    public DispatcherModel<ShareValueItem, Long> get_IsShare_Model() {
+        if (this.isShareDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "isShare");
+                this.isShareDispatcherModel = new DispatcherModel<ShareValueItem, Long>(this, sourceModel);
+            } catch (final JETException e) {
+                throw new JETSystemError("ShareValue data model does not have a child named isShare. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
         }
+        return this.isShareDispatcherModel;
     }
 
     /**
@@ -240,13 +229,7 @@ public class ShareValueItem implements Cloneable, Serializable {
      * @return java.util.Date value of Data Model node valueDate
      */
     public java.util.Date getValueDate() {
-        try {
-            final Model model = ModelHelper.getChildNode(this.dataModel, "valueDate");
-            return (java.util.Date) model.getNodeValue();
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareValue data model does not have a child named valueDate. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
-        }
+        return (java.util.Date) get_ValueDate_Model().getNodeValue();
     }
     
     /**
@@ -254,26 +237,23 @@ public class ShareValueItem implements Cloneable, Serializable {
      * @param valueDate java.util.Date value of Data Model node valueDate
      */
     public final void setValueDate(java.util.Date valueDate) {
-        java.util.Date tmp = valueDate;
-        try {
-            ModelHelper.setChildNodeValue(this.dataModel, "valueDate", tmp);
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareValue data model does not have a child named valueDate. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
-        }
+        get_ValueDate_Model().setNodeValue(valueDate);
     }
     
     /**
      * Get Model of Data Model node valueDate
      * @return Model of Data Model node valueDate
      */
-    public Model get_ValueDate_Model() {
-        try {
-            return ModelHelper.getChildNode(this.dataModel, "valueDate");
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareValue data model does not have a child named valueDate. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
+    public DispatcherModel<ShareValueItem, java.util.Date> get_ValueDate_Model() {
+        if (this.valueDateDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "valueDate");
+                this.valueDateDispatcherModel = new DispatcherModel<ShareValueItem, java.util.Date>(this, sourceModel);
+            } catch (final JETException e) {
+                throw new JETSystemError("ShareValue data model does not have a child named valueDate. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
         }
+        return this.valueDateDispatcherModel;
     }
 
     /**
@@ -281,13 +261,7 @@ public class ShareValueItem implements Cloneable, Serializable {
      * @return java.math.BigDecimal value of Data Model node value
      */
     public java.math.BigDecimal getValue() {
-        try {
-            final Model model = ModelHelper.getChildNode(this.dataModel, "value");
-            return (java.math.BigDecimal) model.getNodeValue();
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareValue data model does not have a child named value. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
-        }
+        return (java.math.BigDecimal) get_Value_Model().getNodeValue();
     }
     
     /**
@@ -295,26 +269,23 @@ public class ShareValueItem implements Cloneable, Serializable {
      * @param value java.math.BigDecimal value of Data Model node value
      */
     public final void setValue(java.math.BigDecimal value) {
-        java.math.BigDecimal tmp = value;
-        try {
-            ModelHelper.setChildNodeValue(this.dataModel, "value", tmp);
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareValue data model does not have a child named value. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
-        }
+        get_Value_Model().setNodeValue(value);
     }
     
     /**
      * Get Model of Data Model node value
      * @return Model of Data Model node value
      */
-    public Model get_Value_Model() {
-        try {
-            return ModelHelper.getChildNode(this.dataModel, "value");
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareValue data model does not have a child named value. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
+    public DispatcherModel<ShareValueItem, java.math.BigDecimal> get_Value_Model() {
+        if (this.valueDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "value");
+                this.valueDispatcherModel = new DispatcherModel<ShareValueItem, java.math.BigDecimal>(this, sourceModel);
+            } catch (final JETException e) {
+                throw new JETSystemError("ShareValue data model does not have a child named value. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
         }
+        return this.valueDispatcherModel;
     }
 
     /**

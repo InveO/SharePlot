@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import jet.framework.manager.datamodel.interfaces.DataModelRootNode;
 import jet.framework.util.models.ModelHelper;
+import jet.framework.util.pojo2.DispatcherModel;
+import jet.framework.util.pojo2.interceptor.StringLengthInterceptor;
 import jet.util.logger.JETLevel;
 import jet.util.logger.JETLoggerManager;
 import jet.util.logger.Logger;
@@ -27,6 +29,11 @@ public class ShareQuantityItem implements Cloneable, Serializable {
 
     private Model dataModel;
     private Logger logger;
+
+    private DispatcherModel<ShareQuantityItem, Long> idShareQuantityDispatcherModel;
+    private DispatcherModel<ShareQuantityItem, Long> idShareDispatcherModel;
+    private DispatcherModel<ShareQuantityItem, java.util.Date> valueDateDispatcherModel;
+    private DispatcherModel<ShareQuantityItem, String> changeTypeDispatcherModel;
 
     /**
      * Constructor used to create a new ShareQuantity Data Model
@@ -159,13 +166,7 @@ public class ShareQuantityItem implements Cloneable, Serializable {
      * @return Long value of Data Model node idShareQuantity
      */
     public Long getIdShareQuantity() {
-        try {
-            final Model model = ModelHelper.getChildNode(this.dataModel, "idShareQuantity");
-            return (Long) model.getNodeValue();
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareQuantity data model does not have a child named idShareQuantity. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
-        }
+        return (Long) get_IdShareQuantity_Model().getNodeValue();
     }
     
     /**
@@ -173,26 +174,23 @@ public class ShareQuantityItem implements Cloneable, Serializable {
      * @param idShareQuantity Long value of Data Model node idShareQuantity
      */
     private final void setIdShareQuantity(final Long idShareQuantity) {
-        Long tmp = idShareQuantity;
-        try {
-            ModelHelper.setChildNodeValue(this.dataModel, "idShareQuantity", tmp);
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareQuantity data model does not have a child named idShareQuantity. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
-        }
+        get_IdShareQuantity_Model().setNodeValue(idShareQuantity);
     }
     
     /**
      * Get Model of Data Model node idShareQuantity
      * @return Model of Data Model node idShareQuantity
      */
-    public Model get_IdShareQuantity_Model() {
-        try {
-            return ModelHelper.getChildNode(this.dataModel, "idShareQuantity");
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareQuantity data model does not have a child named idShareQuantity. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
+    public DispatcherModel<ShareQuantityItem, Long> get_IdShareQuantity_Model() {
+        if (this.idShareQuantityDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idShareQuantity");
+                this.idShareQuantityDispatcherModel = new DispatcherModel<ShareQuantityItem, Long>(this, sourceModel);
+            } catch (final JETException e) {
+                throw new JETSystemError("ShareQuantity data model does not have a child named idShareQuantity. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
         }
+        return this.idShareQuantityDispatcherModel;
     }
 
     /**
@@ -200,13 +198,7 @@ public class ShareQuantityItem implements Cloneable, Serializable {
      * @return Long value of Data Model node idShare
      */
     public Long getIdShare() {
-        try {
-            final Model model = ModelHelper.getChildNode(this.dataModel, "idShare");
-            return (Long) model.getNodeValue();
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareQuantity data model does not have a child named idShare. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
-        }
+        return (Long) get_IdShare_Model().getNodeValue();
     }
     
     /**
@@ -214,26 +206,23 @@ public class ShareQuantityItem implements Cloneable, Serializable {
      * @param idShare Long value of Data Model node idShare
      */
     public final void setIdShare(Long idShare) {
-        Long tmp = idShare;
-        try {
-            ModelHelper.setChildNodeValue(this.dataModel, "idShare", tmp);
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareQuantity data model does not have a child named idShare. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
-        }
+        get_IdShare_Model().setNodeValue(idShare);
     }
     
     /**
      * Get Model of Data Model node idShare
      * @return Model of Data Model node idShare
      */
-    public Model get_IdShare_Model() {
-        try {
-            return ModelHelper.getChildNode(this.dataModel, "idShare");
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareQuantity data model does not have a child named idShare. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
+    public DispatcherModel<ShareQuantityItem, Long> get_IdShare_Model() {
+        if (this.idShareDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idShare");
+                this.idShareDispatcherModel = new DispatcherModel<ShareQuantityItem, Long>(this, sourceModel);
+            } catch (final JETException e) {
+                throw new JETSystemError("ShareQuantity data model does not have a child named idShare. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
         }
+        return this.idShareDispatcherModel;
     }
 
     /**
@@ -241,13 +230,7 @@ public class ShareQuantityItem implements Cloneable, Serializable {
      * @return java.util.Date value of Data Model node valueDate
      */
     public java.util.Date getValueDate() {
-        try {
-            final Model model = ModelHelper.getChildNode(this.dataModel, "valueDate");
-            return (java.util.Date) model.getNodeValue();
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareQuantity data model does not have a child named valueDate. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
-        }
+        return (java.util.Date) get_ValueDate_Model().getNodeValue();
     }
     
     /**
@@ -255,26 +238,23 @@ public class ShareQuantityItem implements Cloneable, Serializable {
      * @param valueDate java.util.Date value of Data Model node valueDate
      */
     public final void setValueDate(java.util.Date valueDate) {
-        java.util.Date tmp = valueDate;
-        try {
-            ModelHelper.setChildNodeValue(this.dataModel, "valueDate", tmp);
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareQuantity data model does not have a child named valueDate. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
-        }
+        get_ValueDate_Model().setNodeValue(valueDate);
     }
     
     /**
      * Get Model of Data Model node valueDate
      * @return Model of Data Model node valueDate
      */
-    public Model get_ValueDate_Model() {
-        try {
-            return ModelHelper.getChildNode(this.dataModel, "valueDate");
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareQuantity data model does not have a child named valueDate. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
+    public DispatcherModel<ShareQuantityItem, java.util.Date> get_ValueDate_Model() {
+        if (this.valueDateDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "valueDate");
+                this.valueDateDispatcherModel = new DispatcherModel<ShareQuantityItem, java.util.Date>(this, sourceModel);
+            } catch (final JETException e) {
+                throw new JETSystemError("ShareQuantity data model does not have a child named valueDate. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
         }
+        return this.valueDateDispatcherModel;
     }
 
     /**
@@ -282,13 +262,7 @@ public class ShareQuantityItem implements Cloneable, Serializable {
      * @return String value of Data Model node changeType
      */
     public String getChangeType() {
-        try {
-            final Model model = ModelHelper.getChildNode(this.dataModel, "changeType");
-            return (String) model.getNodeValue();
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareQuantity data model does not have a child named changeType. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
-        }
+        return (String) get_ChangeType_Model().getNodeValue();
     }
     
     /**
@@ -296,31 +270,25 @@ public class ShareQuantityItem implements Cloneable, Serializable {
      * @param changeType String value of Data Model node changeType
      */
     public final void setChangeType(String changeType) {
-        String tmp = changeType;
-        if (tmp != null && tmp.length() > 1) {
-            tmp = tmp.substring(0, 1);
-            this.logger.logp(JETLevel.WARNING, "ShareQuantityItem", "setChangeType", 
-                "Data truncated [" + changeType + "] -> [" + tmp + "]");
-        }
-        try {
-            ModelHelper.setChildNodeValue(this.dataModel, "changeType", tmp);
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareQuantity data model does not have a child named changeType. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
-        }
+        get_ChangeType_Model().setNodeValue(changeType);
     }
     
     /**
      * Get Model of Data Model node changeType
      * @return Model of Data Model node changeType
      */
-    public Model get_ChangeType_Model() {
-        try {
-            return ModelHelper.getChildNode(this.dataModel, "changeType");
-        } catch (final JETException e) {
-            throw new JETSystemError("ShareQuantity data model does not have a child named changeType. Should be impossible, " 
-                    + "if the pojo and datamodel are up to date.", e);
+    public DispatcherModel<ShareQuantityItem, String> get_ChangeType_Model() {
+        if (this.changeTypeDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "changeType");
+                this.changeTypeDispatcherModel = new DispatcherModel<ShareQuantityItem, String>(this, sourceModel);
+
+                this.changeTypeDispatcherModel.addInterceptor(new StringLengthInterceptor<ShareQuantityItem>(1));
+            } catch (final JETException e) {
+                throw new JETSystemError("ShareQuantity data model does not have a child named changeType. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
         }
+        return this.changeTypeDispatcherModel;
     }
 
     /**
