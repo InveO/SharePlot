@@ -129,7 +129,9 @@
         <delete dir="${JetLib}/managers/webservices" />
         <delete dir="${JetLib}/managers/webservicesclient" />
         <delete dir="${JetLib}/managers/git" />
+		<!--
         <delete dir="${JetLib}/managers/tomcat" />
+        -->
         <delete file="${JetLib}/managers/../common/endorsed/webservices-api.jar" />
         <delete file="${JetLib}/managers/../common/endorsed/jsr173_api.jar" />
         <delete file="${JetLib}/managers/../common/ext/webservices-extra.jar" />

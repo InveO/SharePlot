@@ -137,6 +137,7 @@
     	
     	<mkdir dir="conf/JetServlet" />
         <echo message="Updating war file" />
+    	<copy file="${jars_dest}/../JetServlet/jet-servlet.war" tofile="${jars_dest}/../JetServlet/shareplot.war" />
         <war destfile="${jars_dest}/../JetServlet/shareplot.war" update="true" needxmlfile="false"  >
             <fileset dir="conf/JetServlet" includes="**/*" excludes="**/CVS/**" />
         </war>

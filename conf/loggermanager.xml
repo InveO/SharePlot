@@ -10,21 +10,21 @@
                       formatter="TEXT|XML" append="YES|NO" />
         -->
 
-        <CONSOLE_HANDLER name="ConsoleHandler" level="INFO" formatter="TEXT" />
+        <CONSOLE_HANDLER name="ConsoleHandler" level="ALL" formatter="TEXT" />
 
         <DAILY_FILE_HANDLER name="FileHandler1" logPath="./Logs/" level="OFF" formatter="TEXT" append="NO" />
 
     </HANDLERS>
 
     <PROFILES>
-        <PROFILE name="system" level="FINER" >
+        <PROFILE name="system" >
             <!--HANDLER name="ConsoleHandler" /-->
-            <HANDLER name="FileHandler1" />
+<!--             <HANDLER name="FileHandler1" /> -->
         </PROFILE>
 
-        <PROFILE name="default" level="FINER" >
+        <PROFILE name="default" >
             <HANDLER name="ConsoleHandler" />
-            <HANDLER name="FileHandler1" />
+<!--             <HANDLER name="FileHandler1" /> -->
         </PROFILE>
     </PROFILES>
 
