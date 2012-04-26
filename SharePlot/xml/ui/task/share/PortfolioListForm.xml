@@ -1,0 +1,16 @@
+<DOCUMENT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="http://jet.inveo.be/ui/JETComponentExtension.xsd" >
+
+    <GENERIC name="SharePlot/xml/ui/GenericComponent.xml" />
+    
+    <GROUP name="PortfolioListForm" localizedDisplayableText="SharePlot/properties/task/Share/title.PortfolioList" scrollable="false" layoutmanager="gridbaglayout" backgroundColor="panelBackgroundColor" foregroundColor="panelForegroundColor">
+        <GROUP name="topGroup" extends="GenericTitleGroup">
+            <GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="0" />
+            <ATTRIBUTE_PARAM component="titleLabel" name="localizedDisplayableText" value="SharePlot/properties/task/Share/title.PortfolioList" />
+        </GROUP>
+        <DISPLAY2 name="tableList" extends="EmptyTable" >
+            <GRIDBAGCONSTRAINTS gridx="0" gridy="2" gridheight="1" gridwidth="1" weightx="1" weighty="1" insetleft="10" insetright="10" insettop="10" insetbottom="5" anchor="NORTH" fill="BOTH"/>
+        </DISPLAY2>
+		<GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="1" anchor="NORTH" fill="BOTH"/>
+	</GROUP>
+</DOCUMENT>

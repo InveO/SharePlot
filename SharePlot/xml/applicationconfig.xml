@@ -7,21 +7,21 @@
     <CLASSLOADER>
         <CLASSPATH value="SharePlot.jar" />
         <CLASSPATH value="SharePlot-JET.jar" />
-<!--         <CLASSPATH value="SharePlot-ejb-deploy.jar" /> -->
-<!--         <CLASSPATH value="SharePlot-ejb-bean.jar" /> -->
-<!--         <CLASSPATH value="SharePlot-ejb-interface.jar" /> -->
+        <CLASSPATH value="SharePlot-ejb-deploy.jar" />
+        <CLASSPATH value="SharePlot-ejb-bean.jar" />
+        <CLASSPATH value="SharePlot-ejb-interface.jar" />
     </CLASSLOADER>
     
-<!--     <PERSISTENCE> -->
-<!--         <DATABASES> -->
-<!--             <GENERIC_STRUCTURE ref="SharePlot/xml/tables/Tables.xml"/> -->
-<!--             <LOCAL_STRUCTURE ref="SharePlot/xml/databases/DataBase.xml" /> -->
-<!--         </DATABASES> -->
-<!--         <EJBS> -->
-<!--             <EJB_JAR ref="META-INF/ejb-jar.xml"/> -->
-<!--             <FINDERS ref="META-INF/FINDERS.xml"/> -->
-<!--             <EJB_TO_DB_MAP ref="META-INF/EnterpriseServer.xml"/> -->
-<!--         </EJBS> -->
-<!--     </PERSISTENCE> -->
+    <PERSISTENCE>
+        <DATABASES>
+            <GENERIC_STRUCTURE ref="SharePlot/xml/tables/Tables.xml"/>
+            <LOCAL_STRUCTURE ref="SharePlot/xml/databases/DataBase.xml" />
+        </DATABASES>
+        <EJBS>
+            <EJB_JAR ref="META-INF/ejb-jar.xml"/>
+            <FINDERS ref="META-INF/FINDERS.xml"/>
+            <EJB_TO_DB_MAP ref="META-INF/EnterpriseServer.xml"/>
+        </EJBS>
+    </PERSISTENCE>
     
 </APPLICATION>

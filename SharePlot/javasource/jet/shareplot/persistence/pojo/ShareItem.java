@@ -25,12 +25,13 @@ import jet.util.throwable.JETSystemError;
 @SuppressWarnings("PMD.MethodNamingConventions")
 public class ShareItem implements Cloneable, Serializable {
 
-    private static final long serialVersionUID = 1353749886L;
+    private static final long serialVersionUID = 1750601616L;
 
     private Model dataModel;
     private Logger logger;
 
     private DispatcherModel<ShareItem, Long> idShareDispatcherModel;
+    private DispatcherModel<ShareItem, Long> idPortfolioDispatcherModel;
     private DispatcherModel<ShareItem, String> nameDispatcherModel;
     private DispatcherModel<ShareItem, String> descriptionDispatcherModel;
     private DispatcherModel<ShareItem, String> codeDispatcherModel;
@@ -61,6 +62,8 @@ public class ShareItem implements Cloneable, Serializable {
         SimpleEventModelImpl model = null;
         
         model = new SimpleEventModelImpl("idShare");
+        this.dataModel.appendChild(model);
+        model = new SimpleEventModelImpl("idPortfolio");
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("name");
         this.dataModel.appendChild(model);
@@ -114,6 +117,14 @@ public class ShareItem implements Cloneable, Serializable {
             sValue = ModelHelper.getChildNodeValueAsString(untypedModel, "idShare");
             if (sValue != null) {
                 item.setIdShare(Long.valueOf(sValue));
+            }
+        } catch (final JETException e) {
+            item.logger.logp(JETLevel.INFO, "ShareItem", "getFromUntypedModel", e.getMessage(), e);
+        }
+        try {
+            sValue = ModelHelper.getChildNodeValueAsString(untypedModel, "idPortfolio");
+            if (sValue != null) {
+                item.setIdPortfolio(Long.valueOf(sValue));
             }
         } catch (final JETException e) {
             item.logger.logp(JETLevel.INFO, "ShareItem", "getFromUntypedModel", e.getMessage(), e);
@@ -184,6 +195,7 @@ public class ShareItem implements Cloneable, Serializable {
         final ShareItem clonedItem = (ShareItem) super.clone();
         clonedItem.init_DataModel();
         clonedItem.setIdShare(getIdShare());
+        clonedItem.setIdPortfolio(getIdPortfolio());
         clonedItem.setName(getName());
         clonedItem.setDescription(getDescription());
         clonedItem.setCode(getCode());
@@ -223,6 +235,38 @@ public class ShareItem implements Cloneable, Serializable {
             }
         }
         return this.idShareDispatcherModel;
+    }
+
+    /**
+     * Get node value of Data Model node idPortfolio
+     * @return Long value of Data Model node idPortfolio
+     */
+    public Long getIdPortfolio() {
+        return (Long) get_IdPortfolio_Model().getNodeValue();
+    }
+    
+    /**
+     * Set node value of Data Model node idPortfolio
+     * @param idPortfolio Long value of Data Model node idPortfolio
+     */
+    public final void setIdPortfolio(Long idPortfolio) {
+        get_IdPortfolio_Model().setNodeValue(idPortfolio);
+    }
+    
+    /**
+     * Get Model of Data Model node idPortfolio
+     * @return Model of Data Model node idPortfolio
+     */
+    public DispatcherModel<ShareItem, Long> get_IdPortfolio_Model() {
+        if (this.idPortfolioDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idPortfolio");
+                this.idPortfolioDispatcherModel = new DispatcherModel<ShareItem, Long>(this, sourceModel);
+            } catch (final JETException e) {
+                throw new JETSystemError("Share data model does not have a child named idPortfolio. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
+        }
+        return this.idPortfolioDispatcherModel;
     }
 
     /**
@@ -428,6 +472,12 @@ public class ShareItem implements Cloneable, Serializable {
      * @return true if any node not nullable is null
      */
     public boolean isNotNullableNull() {
+        Long idPortfolio = getIdPortfolio();
+        if (idPortfolio == null) {
+            this.logger.logp(JETLevel.WARNING, "ShareItem", "isNotNullableNull", 
+                "idPortfolio is null but is not nullable.");
+            return true;
+        }
         String name = getName();
         if (name == null) {
             this.logger.logp(JETLevel.WARNING, "ShareItem", "isNotNullableNull", 

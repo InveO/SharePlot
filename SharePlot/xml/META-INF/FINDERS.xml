@@ -31,4 +31,14 @@
             <FINDERBODY type="sql" sql_string="where @@@_SQL" buffersize="-1"/>
         </FINDER>
     </BEAN>
+    <BEAN name="Portfolio">
+        <FINDER name="findAll">
+            <FINDERBODY type="sql" sql_string="" buffersize="-1"/>
+        </FINDER>
+        <FINDER name="findByPreparedSQLQuery">
+            <INPUT name="sqlWhereClause" type="String" localizedDisplayableText=""/>
+            <INPUT name="sqlArguments" type="Object[]" localizedDisplayableText=""/>
+            <FINDERBODY type="sql" sql_string="where @@@_SQL" buffersize="-1"/>
+        </FINDER>
+    </BEAN>
 </JET-FINDERS>

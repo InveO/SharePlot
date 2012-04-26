@@ -5,7 +5,7 @@
     -->
 <EJB_FINDERS>
     <!-- EJB : This simply links this to the name of the corresponding EJB -->
-    <EJB name="ShareQuantity"/>
+    <EJB name="Portfolio"/>
     
     <!-- FINDER : This will detail the various finders available in the EJB.
              name : name of the finder in the EJB layer
@@ -23,13 +23,13 @@
         <INPUT dataconverter="" subelement="" source="sqlArguments"/>
     </FINDER>
     <FINDER primarykey="true" name="findByPrimaryKey">
-        <INPUT dataconverter="" subelement="" source="idShareQuantity"/>
+        <INPUT dataconverter="" subelement="" source="idPortfolio"/>
     </FINDER>
     
     <!-- EJB_CONVERSION : Details the mapping between the Bean and the DataModel
             datamodel : name of the associated data model structure
      -->
-    <EJB_CONVERSION datamodel="ShareQuantity">
+    <EJB_CONVERSION datamodel="Portfolio">
         <!-- MAPPING
             writeconverter : data converter to use when writing to the EJB
             readmultikey : not used yet
@@ -42,12 +42,8 @@
             autoincrement : "true" if the field is set as autoincrement in the database, at the moment this is only valid on a PK field (unique)
             primarykey : "true" if the field is part of the primary key (it will not be updateable)
          -->
-        <MAPPING writeconverter="" readmultikey="" defaulttype="INTEGER" target="idShareQuantity" subelement="" default="" readconverter="" name="idShareQuantity" autoincrement="true" primarykey="true" />
-        <MAPPING writeconverter="" readmultikey="" defaulttype="INTEGER" target="idShare" subelement="" default="" readconverter="" name="idShare" autoincrement="false" primarykey="false" />
-        <MAPPING writeconverter="" readmultikey="" defaulttype="DATE" target="valueDate" subelement="" default="" readconverter="" name="valueDate" autoincrement="false" primarykey="false" />
-        <MAPPING writeconverter="" readmultikey="" defaulttype="TEXT" target="changeType" subelement="" default="" readconverter="" name="changeType" autoincrement="false" primarykey="false" />
-        <MAPPING writeconverter="" readmultikey="" defaulttype="DOUBLE" target="shareValue" subelement="" default="" readconverter="" name="shareValue" autoincrement="false" primarykey="false" />
-        <MAPPING writeconverter="" readmultikey="" defaulttype="DOUBLE" target="changeFee" subelement="" default="" readconverter="" name="changeFee" autoincrement="false" primarykey="false" />
-        <MAPPING writeconverter="" readmultikey="" defaulttype="DOUBLE" target="shareQuantity" subelement="" default="" readconverter="" name="shareQuantity" autoincrement="false" primarykey="false" />
+        <MAPPING writeconverter="" readmultikey="" defaulttype="INTEGER" target="idPortfolio" subelement="" default="" readconverter="" name="idPortfolio" autoincrement="true" primarykey="true" />
+        <MAPPING writeconverter="" readmultikey="" defaulttype="TEXT" target="name" subelement="" default="" readconverter="" name="name" autoincrement="false" primarykey="false" />
+        <MAPPING writeconverter="" readmultikey="" defaulttype="TEXT" target="isFake" subelement="" default="" readconverter="" name="isFake" autoincrement="false" primarykey="false" />
     </EJB_CONVERSION>
 </EJB_FINDERS>

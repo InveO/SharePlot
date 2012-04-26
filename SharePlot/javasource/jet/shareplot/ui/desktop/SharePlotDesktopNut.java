@@ -10,6 +10,7 @@ import jet.components.ui.label.common.UILabelComponent;
 import jet.container.managers.session.interfaces.SessionManagerContext;
 import jet.container.managers.ui.interfaces.UIComponentFinder;
 import jet.container.nuts.ui.UIAnchorService;
+import jet.framework.component.SelectStoreProvider;
 import jet.framework.ui.desktop.AbstractDesktopNut;
 import jet.framework.ui.desktop.ApplicationComponentLauncher;
 import jet.framework.ui.desktop.navigation.menu.DesktopMenuPlugin;
@@ -20,6 +21,7 @@ import jet.framework.util.desktop.navigation.menu.ActionModel;
 import jet.framework.util.desktop.navigation.menu.MenuItemModel;
 import jet.lifecycle.annotations.Deinitializer;
 import jet.lifecycle.annotations.Initializer;
+import jet.shareplot.ac.SelectStoreApplicationComponent;
 import jet.util.JetVersion;
 import jet.util.SerializableKey;
 import jet.util.logger.JETLevel;
@@ -60,6 +62,10 @@ public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMe
         smc.setSessionTimeout(getSession(), 12 * 60 * 60 * 1000);
         // refresh session if screen active every 30 minutes
         smc.setRefreshTimer(getSession(), 30 * 60 * 1000);
+
+        // place SelectStoreProvider in session so it can be used from the SimpleApplicationComponent
+        final SelectStoreApplicationComponent selectStoreProvider = SelectStoreApplicationComponent.getInstance(getSession());
+        getSession().setProperty(SelectStoreProvider.SELECT_STORE_SESSION_KEY, selectStoreProvider);
 
         this.desktopMenuPlugin = new DesktopMenuPlugin(getSession(), getUIContext(), getLogger());
 

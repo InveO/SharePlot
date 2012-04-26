@@ -25,6 +25,15 @@ public class SelectStoreApplicationComponent extends SimpleApplicationComponent 
     /**
      * ${value}
      */
+    public final static String PORTFOLIO_SELECT = "PortfolioSelect";
+    /**
+     * ${value}
+     */
+    public final static String PORTFOLIO_STORE = "PortfolioStore";
+	    
+    /**
+     * ${value}
+     */
     public final static String SHARE_SELECT = "ShareSelect";
     /**
      * ${value}

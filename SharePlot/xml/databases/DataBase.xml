@@ -13,6 +13,7 @@
     </TABLE>
     <TABLE name="Share" localname="Share">
         <COLUMN name="idShare" localname="idShare" dbtype="INTEGER"/>
+        <COLUMN name="idPortfolio" localname="idPortfolio" dbtype="INTEGER"/>
         <COLUMN name="name" localname="name" dbtype="VARCHAR"/>
         <COLUMN name="description" localname="description" dbtype="VARCHAR"/>
         <COLUMN name="code" localname="code" dbtype="VARCHAR"/>
@@ -25,6 +26,14 @@
         <COLUMN name="idShare" localname="idShare" dbtype="INTEGER"/>
         <COLUMN name="valueDate" localname="valueDate" dbtype="DATE"/>
         <COLUMN name="changeType" localname="changeType" dbtype="CHAR"/>
+        <COLUMN name="shareValue" localname="shareValue" dbtype="DECIMAL"/>
+        <COLUMN name="changeFee" localname="changeFee" dbtype="DECIMAL"/>
+        <COLUMN name="shareQuantity" localname="shareQuantity" dbtype="DECIMAL"/>
+    </TABLE>
+    <TABLE name="Portfolio" localname="Portfolio">
+        <COLUMN name="idPortfolio" localname="idPortfolio" dbtype="INTEGER"/>
+        <COLUMN name="name" localname="name" dbtype="VARCHAR"/>
+        <COLUMN name="isFake" localname="isFake" dbtype="CHAR"/>
     </TABLE>
     <!--DBTYPES descriptif="">
         <DBTYPE dbtype="VARCHAR" java-type="String"/>

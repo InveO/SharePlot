@@ -5,7 +5,7 @@
         
         <!-- DOMAIN MENU -->
         <action id="Shares.Shares" label="SharePlot/properties/desktop/Menu/item.Shares" type="LaunchAC"  >
-            <parameter name="component" value="ShareList" />
+            <parameter name="component" value="PortfolioList" />
         </action>
         
     </MENUACTIONS>

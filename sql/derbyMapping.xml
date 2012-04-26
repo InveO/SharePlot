@@ -8,6 +8,7 @@
             </TABLE>
             <TABLE name="Share" localname="SHARE" >
                 <COLUMN name="idShare" localname="ID_SHARE" />
+                <COLUMN name="idPortfolio" localname="ID_PORTFOLIO" />
                 <COLUMN name="name" localname="NAME" />
                 <COLUMN name="description" localname="DESCRIPTION" />
                 <COLUMN name="code" localname="CODE" />
@@ -20,6 +21,14 @@
                 <COLUMN name="idShare" localname="ID_SHARE" />
                 <COLUMN name="valueDate" localname="VALUE_DATE" />
                 <COLUMN name="changeType" localname="CHANGE_TYPE" />
+                <COLUMN name="shareValue" localname="SHARE_VALUE" />
+                <COLUMN name="changeFee" localname="CHANGE_FEE" />
+                <COLUMN name="shareQuantity" localname="SHARE_QUANTITY" />
+            </TABLE>
+            <TABLE name="Portfolio" localname="PORTFOLIO" >
+                <COLUMN name="idPortfolio" localname="ID_PORTFOLIO" />
+                <COLUMN name="name" localname="NAME" />
+                <COLUMN name="isFake" localname="IS_FAKE" />
             </TABLE>
         </MAPPING>
     </MAPPING_LIST>

@@ -4,4 +4,5 @@
     <ENTITYNUT ejbName="ShareValue" table="ShareValue" type="readWrite"/>
     <ENTITYNUT ejbName="Share" table="Share" type="readWrite"/>
     <ENTITYNUT ejbName="ShareQuantity" table="ShareQuantity" type="readWrite"/>
+    <ENTITYNUT ejbName="Portfolio" table="Portfolio" type="readWrite"/>
 </ENTERPRISE_SERVER>

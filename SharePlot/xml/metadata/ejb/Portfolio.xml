@@ -7,7 +7,7 @@
     
     projetName : name of the project these descriptors are part of
     name : name of the component, not used for the moment -->
-<COMPONENT projetName="SharePlot" name="Share">
+<COMPONENT projetName="SharePlot" name="Portfolio">
     
     <!-- BEANDEF : define the EJB specific information
         name : Name of the EJB
@@ -19,18 +19,18 @@
         remote : name of the remote interface
         home : name of the home interface
     -->
-    <BEANDEF name="Share" 
+    <BEANDEF name="Portfolio" 
         persistence-type="Container" 
         ejbtype="entity" 
-        package="jet.shareplot.persistence.ejb.share" 
-        ejbclass="ShareBean" 
+        package="jet.shareplot.persistence.ejb.portfolio" 
+        ejbclass="PortfolioBean" 
         primkeyclass="java.lang.Object"
-        remote="ShareRemote" 
-        home="ShareHome"/>
+        remote="PortfolioRemote" 
+        home="PortfolioHome"/>
     
     <!-- TABLE : describes the table this bean corresponds to
         name : name of the table in the database -->
-    <TABLE name="Share" localname="Share">
+    <TABLE name="Portfolio" localname="Portfolio">
         
         <!-- COLUMN : Describes a column in the table
             paramName : name to use for this column in the java classes 
@@ -42,14 +42,9 @@
             nullable : "true" if the column accepts null values
             autoIncrement : "true" if the column is flagged as auto-increment in the DB
             -->
-        <COLUMN paramName="idShare" type="Long" name="idShare" localname="idShare" dbtype="INTEGER" length="10" noOfDecimal="0" nullable="false" autoIncrement="true" />
-        <COLUMN paramName="idPortfolio" type="Long" name="idPortfolio" localname="idPortfolio" dbtype="INTEGER" length="10" noOfDecimal="0" nullable="false" autoIncrement="false" />
-        <COLUMN paramName="name" type="String" name="name" localname="name" dbtype="VARCHAR" length="255" noOfDecimal="0" nullable="false" autoIncrement="false" />
-        <COLUMN paramName="description" type="String" name="description" localname="description" dbtype="VARCHAR" length="4000" noOfDecimal="0" nullable="true" autoIncrement="false" />
-        <COLUMN paramName="code" type="String" name="code" localname="code" dbtype="VARCHAR" length="45" noOfDecimal="0" nullable="true" autoIncrement="false" />
-        <COLUMN paramName="datePurchase" type="java.util.Date" name="datePurchase" localname="datePurchase" dbtype="DATE" length="10" noOfDecimal="0" nullable="false" autoIncrement="false" />
-        <COLUMN paramName="purchasePrice" type="java.math.BigDecimal" name="purchasePrice" localname="purchasePrice" dbtype="DECIMAL" length="12" noOfDecimal="2" nullable="false" autoIncrement="false" />
-        <COLUMN paramName="entryFee" type="java.math.BigDecimal" name="entryFee" localname="entryFee" dbtype="DECIMAL" length="12" noOfDecimal="2" nullable="true" autoIncrement="false" />
+        <COLUMN paramName="idPortfolio" type="Long" name="idPortfolio" localname="idPortfolio" dbtype="INTEGER" length="10" noOfDecimal="0" nullable="false" autoIncrement="true" />
+        <COLUMN paramName="name" type="String" name="name" localname="name" dbtype="VARCHAR" length="45" noOfDecimal="0" nullable="false" autoIncrement="false" />
+        <COLUMN paramName="isFake" type="String" name="isFake" localname="isFake" dbtype="CHAR" length="1" noOfDecimal="0" nullable="false" autoIncrement="false" />
         
         <!-- PRIMARYKEY : identifies the columns to use as primary key -->
         <PRIMARYKEY>
@@ -57,13 +52,10 @@
                 component : name of the corresponding column
                 type : java type to use
                 paramName : name to use in the java classes -->
-            <KEYITEM component="idShare" type="Long" paramName="idShare"/>
+            <KEYITEM component="idPortfolio" type="Long" paramName="idPortfolio"/>
         </PRIMARYKEY>
         
         <!-- FOREIGNKEY : identifies the columns to use as foreign key -->
-        <FOREIGNKEY name="fk_Share_Portfolio" foreigntable="Portfolio" foreigntablelocalname="Portfolio" >
-            <FKITEM column="idPortfolio" foreigncolumn="idPortfolio" foreigncolumnlocalname="idPortfolio" />
-        </FOREIGNKEY>
         
     </TABLE>
 

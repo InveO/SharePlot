@@ -44,6 +44,10 @@
                 <field-name>idShare</field-name>
             </cmp-field>
             <cmp-field>
+                <description> Desc for idPortfolio</description>
+                <field-name>idPortfolio</field-name>
+            </cmp-field>
+            <cmp-field>
                 <description> Desc for name</description>
                 <field-name>name</field-name>
             </cmp-field>
@@ -93,6 +97,40 @@
                 <description> Desc for changeType</description>
                 <field-name>changeType</field-name>
             </cmp-field>
+            <cmp-field>
+                <description> Desc for shareValue</description>
+                <field-name>shareValue</field-name>
+            </cmp-field>
+            <cmp-field>
+                <description> Desc for changeFee</description>
+                <field-name>changeFee</field-name>
+            </cmp-field>
+            <cmp-field>
+                <description> Desc for shareQuantity</description>
+                <field-name>shareQuantity</field-name>
+            </cmp-field>
+        </entity>
+        <entity>
+            <display-name> EJB for Portfolio</display-name>
+            <ejb-name>Portfolio</ejb-name>
+            <home>jet.shareplot.persistence.ejb.portfolio.PortfolioHome</home>
+            <remote>jet.shareplot.persistence.ejb.portfolio.PortfolioRemote</remote>
+            <ejb-class>jet.shareplot.persistence.ejb.portfolio.PortfolioBean</ejb-class>
+            <persistence-type>Container</persistence-type>
+            <prim-key-class>java.lang.Object</prim-key-class>
+            <reentrant>True</reentrant>
+            <cmp-field>
+                <description> Desc for idPortfolio</description>
+                <field-name>idPortfolio</field-name>
+            </cmp-field>
+            <cmp-field>
+                <description> Desc for name</description>
+                <field-name>name</field-name>
+            </cmp-field>
+            <cmp-field>
+                <description> Desc for isFake</description>
+                <field-name>isFake</field-name>
+            </cmp-field>
         </entity>
     </enterprise-beans>
     <assembly-descriptor>
@@ -116,6 +154,14 @@
             <description> Desc for ShareQuantity</description>
             <method>
                 <ejb-name>ShareQuantity</ejb-name>
+                <method-name>*</method-name>
+            </method>
+            <trans-attribute>Required</trans-attribute>
+        </container-transaction>
+        <container-transaction>
+            <description> Desc for Portfolio</description>
+            <method>
+                <ejb-name>Portfolio</ejb-name>
                 <method-name>*</method-name>
             </method>
             <trans-attribute>Required</trans-attribute>

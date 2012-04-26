@@ -19,13 +19,15 @@ ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `SharePlot`.`Share` (
   `idShare` INTEGER(10)  NOT NULL AUTO_INCREMENT ,
+  `idPortfolio` INTEGER(10)  NOT NULL  ,
   `name` VARCHAR(255)  NOT NULL  ,
   `description` VARCHAR(4000) NULL DEFAULT NULL  ,
   `code` VARCHAR(45) NULL DEFAULT NULL  ,
   `datePurchase` DATE  NOT NULL  ,
   `purchasePrice` DECIMAL(12)  NOT NULL  ,
   `entryFee` DECIMAL(12) NULL DEFAULT NULL  ,
-  PRIMARY KEY ( `idShare`))
+  PRIMARY KEY ( `idShare`),
+  INDEX `fk_Share_Portfolio` (`idPortfolio` ASC) )
 ENGINE = InnoDB;
 
 
@@ -38,8 +40,23 @@ CREATE TABLE IF NOT EXISTS `SharePlot`.`ShareQuantity` (
   `idShare` INTEGER(10)  NOT NULL  ,
   `valueDate` DATE  NOT NULL  ,
   `changeType` CHAR(1)  NOT NULL  ,
+  `shareValue` DECIMAL(12)  NOT NULL  ,
+  `changeFee` DECIMAL(12)  NOT NULL  ,
+  `shareQuantity` DECIMAL(12)  NOT NULL  ,
   PRIMARY KEY ( `idShareQuantity`),
   INDEX `fk_ShareQuantity_Share` (`idShare` ASC) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `SharePlot`.`Portfolio`
+-- -----------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `SharePlot`.`Portfolio` (
+  `idPortfolio` INTEGER(10)  NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(45)  NOT NULL  ,
+  `isFake` CHAR(1)  NOT NULL  ,
+  PRIMARY KEY ( `idPortfolio`))
 ENGINE = InnoDB;
 
 
@@ -61,7 +78,11 @@ ALTER TABLE `SharePlot`.`ShareValue`
 -- -----------------------------------------------------
 
 ALTER TABLE `SharePlot`.`Share` 
-;
+  ADD CONSTRAINT `fk_Share_Portfolio`
+    FOREIGN KEY (`idPortfolio` )
+    REFERENCES `SharePlot`.`Portfolio` (`idPortfolio` ) 
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
 
 
 -- -----------------------------------------------------
@@ -74,5 +95,13 @@ ALTER TABLE `SharePlot`.`ShareQuantity`
     REFERENCES `SharePlot`.`Share` (`idShare` ) 
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
+
+
+-- -----------------------------------------------------
+-- Add constraints to table `SharePlot`.`Portfolio`
+-- -----------------------------------------------------
+
+ALTER TABLE `SharePlot`.`Portfolio` 
+;
 
 

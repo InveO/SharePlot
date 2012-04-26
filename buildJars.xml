@@ -39,7 +39,7 @@
 	<!--
     <target name="allJars" depends="jar, jar-ejb, managers, copyGlobalConf"/>
     -->
-    <target name="allJars" depends="jar, copyGlobalConf"/>
+    <target name="allJars" depends="jar, jar-ejb, copyGlobalConf"/>
 
     <target name="jar">
         <echo message="Building : SharePlot" />
@@ -79,7 +79,6 @@
         </jar>
     </target>
     
-	<!--
     <target name="jar-ejb">
         <mkdir dir="${target.applications}/${project}" />
 
@@ -97,7 +96,6 @@
             includes="META-INF/**" 
             excludes="**/*.dtd"/>
     </target>
-    -->
 
     <!--
     <target name="managers" depends="jar-helpfiles" />

@@ -6,17 +6,35 @@ CREATE SCHEMA IF NOT EXISTS `shareplot` DEFAULT CHARACTER SET latin1 COLLATE lat
 USE `shareplot` ;
 
 -- -----------------------------------------------------
+-- Table `shareplot`.`Portfolio`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `shareplot`.`Portfolio` (
+  `idPortfolio` INT NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(45) NOT NULL ,
+  `isFake` CHAR(1) NOT NULL ,
+  PRIMARY KEY (`idPortfolio`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `shareplot`.`Share`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `shareplot`.`Share` (
   `idShare` INT NOT NULL AUTO_INCREMENT ,
+  `idPortfolio` INT NOT NULL ,
   `name` VARCHAR(255) NOT NULL ,
   `description` VARCHAR(4000) NULL ,
   `code` VARCHAR(45) NULL ,
   `datePurchase` DATE NOT NULL ,
   `purchasePrice` DECIMAL(12,2) NOT NULL ,
   `entryFee` DECIMAL(12,2) NULL ,
-  PRIMARY KEY (`idShare`) )
+  PRIMARY KEY (`idShare`) ,
+  INDEX `fk_Share_Portfolio` (`idPortfolio` ASC) ,
+  CONSTRAINT `fk_Share_Portfolio`
+    FOREIGN KEY (`idPortfolio` )
+    REFERENCES `shareplot`.`Portfolio` (`idPortfolio` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -28,12 +46,15 @@ CREATE  TABLE IF NOT EXISTS `shareplot`.`ShareQuantity` (
   `idShare` INT NOT NULL ,
   `valueDate` DATE NOT NULL ,
   `changeType` CHAR(1) NOT NULL ,
+  `shareValue` DECIMAL(12,2) NOT NULL ,
+  `changeFee` DECIMAL(12,2) NOT NULL ,
+  `shareQuantity` DECIMAL(12,2) NOT NULL ,
   PRIMARY KEY (`idShareQuantity`) ,
   INDEX `fk_ShareQuantity_Share` (`idShare` ASC) ,
   CONSTRAINT `fk_ShareQuantity_Share`
     FOREIGN KEY (`idShare` )
     REFERENCES `shareplot`.`Share` (`idShare` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -51,7 +72,7 @@ CREATE  TABLE IF NOT EXISTS `shareplot`.`ShareValue` (
   CONSTRAINT `fk_ShareValue_Share`
     FOREIGN KEY (`isShare` )
     REFERENCES `shareplot`.`Share` (`idShare` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 

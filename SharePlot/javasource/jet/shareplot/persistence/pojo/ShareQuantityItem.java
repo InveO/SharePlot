@@ -25,7 +25,7 @@ import jet.util.throwable.JETSystemError;
 @SuppressWarnings("PMD.MethodNamingConventions")
 public class ShareQuantityItem implements Cloneable, Serializable {
 
-    private static final long serialVersionUID = -1994630651L;
+    private static final long serialVersionUID = 1238925793L;
 
     private Model dataModel;
     private Logger logger;
@@ -34,6 +34,9 @@ public class ShareQuantityItem implements Cloneable, Serializable {
     private DispatcherModel<ShareQuantityItem, Long> idShareDispatcherModel;
     private DispatcherModel<ShareQuantityItem, java.util.Date> valueDateDispatcherModel;
     private DispatcherModel<ShareQuantityItem, String> changeTypeDispatcherModel;
+    private DispatcherModel<ShareQuantityItem, java.math.BigDecimal> shareValueDispatcherModel;
+    private DispatcherModel<ShareQuantityItem, java.math.BigDecimal> changeFeeDispatcherModel;
+    private DispatcherModel<ShareQuantityItem, java.math.BigDecimal> shareQuantityDispatcherModel;
 
     /**
      * Constructor used to create a new ShareQuantity Data Model
@@ -64,6 +67,12 @@ public class ShareQuantityItem implements Cloneable, Serializable {
         model = new SimpleEventModelImpl("valueDate");
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("changeType");
+        this.dataModel.appendChild(model);
+        model = new SimpleEventModelImpl("shareValue");
+        this.dataModel.appendChild(model);
+        model = new SimpleEventModelImpl("changeFee");
+        this.dataModel.appendChild(model);
+        model = new SimpleEventModelImpl("shareQuantity");
         this.dataModel.appendChild(model);
     }
     
@@ -135,6 +144,30 @@ public class ShareQuantityItem implements Cloneable, Serializable {
         } catch (final JETException e) {
             item.logger.logp(JETLevel.INFO, "ShareQuantityItem", "getFromUntypedModel", e.getMessage(), e);
         }
+        try {
+            sValue = ModelHelper.getChildNodeValueAsString(untypedModel, "shareValue");
+            if (sValue != null) {
+                item.setShareValue(new java.math.BigDecimal(sValue));
+            }
+        } catch (final JETException e) {
+            item.logger.logp(JETLevel.INFO, "ShareQuantityItem", "getFromUntypedModel", e.getMessage(), e);
+        }
+        try {
+            sValue = ModelHelper.getChildNodeValueAsString(untypedModel, "changeFee");
+            if (sValue != null) {
+                item.setChangeFee(new java.math.BigDecimal(sValue));
+            }
+        } catch (final JETException e) {
+            item.logger.logp(JETLevel.INFO, "ShareQuantityItem", "getFromUntypedModel", e.getMessage(), e);
+        }
+        try {
+            sValue = ModelHelper.getChildNodeValueAsString(untypedModel, "shareQuantity");
+            if (sValue != null) {
+                item.setShareQuantity(new java.math.BigDecimal(sValue));
+            }
+        } catch (final JETException e) {
+            item.logger.logp(JETLevel.INFO, "ShareQuantityItem", "getFromUntypedModel", e.getMessage(), e);
+        }
         return item;
     }
 
@@ -158,6 +191,9 @@ public class ShareQuantityItem implements Cloneable, Serializable {
         clonedItem.setIdShare(getIdShare());
         clonedItem.setValueDate(getValueDate());
         clonedItem.setChangeType(getChangeType());
+        clonedItem.setShareValue(getShareValue());
+        clonedItem.setChangeFee(getChangeFee());
+        clonedItem.setShareQuantity(getShareQuantity());
         return clonedItem;
     }
 
@@ -292,6 +328,102 @@ public class ShareQuantityItem implements Cloneable, Serializable {
     }
 
     /**
+     * Get node value of Data Model node shareValue
+     * @return java.math.BigDecimal value of Data Model node shareValue
+     */
+    public java.math.BigDecimal getShareValue() {
+        return (java.math.BigDecimal) get_ShareValue_Model().getNodeValue();
+    }
+    
+    /**
+     * Set node value of Data Model node shareValue
+     * @param shareValue java.math.BigDecimal value of Data Model node shareValue
+     */
+    public final void setShareValue(java.math.BigDecimal shareValue) {
+        get_ShareValue_Model().setNodeValue(shareValue);
+    }
+    
+    /**
+     * Get Model of Data Model node shareValue
+     * @return Model of Data Model node shareValue
+     */
+    public DispatcherModel<ShareQuantityItem, java.math.BigDecimal> get_ShareValue_Model() {
+        if (this.shareValueDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "shareValue");
+                this.shareValueDispatcherModel = new DispatcherModel<ShareQuantityItem, java.math.BigDecimal>(this, sourceModel);
+            } catch (final JETException e) {
+                throw new JETSystemError("ShareQuantity data model does not have a child named shareValue. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
+        }
+        return this.shareValueDispatcherModel;
+    }
+
+    /**
+     * Get node value of Data Model node changeFee
+     * @return java.math.BigDecimal value of Data Model node changeFee
+     */
+    public java.math.BigDecimal getChangeFee() {
+        return (java.math.BigDecimal) get_ChangeFee_Model().getNodeValue();
+    }
+    
+    /**
+     * Set node value of Data Model node changeFee
+     * @param changeFee java.math.BigDecimal value of Data Model node changeFee
+     */
+    public final void setChangeFee(java.math.BigDecimal changeFee) {
+        get_ChangeFee_Model().setNodeValue(changeFee);
+    }
+    
+    /**
+     * Get Model of Data Model node changeFee
+     * @return Model of Data Model node changeFee
+     */
+    public DispatcherModel<ShareQuantityItem, java.math.BigDecimal> get_ChangeFee_Model() {
+        if (this.changeFeeDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "changeFee");
+                this.changeFeeDispatcherModel = new DispatcherModel<ShareQuantityItem, java.math.BigDecimal>(this, sourceModel);
+            } catch (final JETException e) {
+                throw new JETSystemError("ShareQuantity data model does not have a child named changeFee. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
+        }
+        return this.changeFeeDispatcherModel;
+    }
+
+    /**
+     * Get node value of Data Model node shareQuantity
+     * @return java.math.BigDecimal value of Data Model node shareQuantity
+     */
+    public java.math.BigDecimal getShareQuantity() {
+        return (java.math.BigDecimal) get_ShareQuantity_Model().getNodeValue();
+    }
+    
+    /**
+     * Set node value of Data Model node shareQuantity
+     * @param shareQuantity java.math.BigDecimal value of Data Model node shareQuantity
+     */
+    public final void setShareQuantity(java.math.BigDecimal shareQuantity) {
+        get_ShareQuantity_Model().setNodeValue(shareQuantity);
+    }
+    
+    /**
+     * Get Model of Data Model node shareQuantity
+     * @return Model of Data Model node shareQuantity
+     */
+    public DispatcherModel<ShareQuantityItem, java.math.BigDecimal> get_ShareQuantity_Model() {
+        if (this.shareQuantityDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "shareQuantity");
+                this.shareQuantityDispatcherModel = new DispatcherModel<ShareQuantityItem, java.math.BigDecimal>(this, sourceModel);
+            } catch (final JETException e) {
+                throw new JETSystemError("ShareQuantity data model does not have a child named shareQuantity. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
+        }
+        return this.shareQuantityDispatcherModel;
+    }
+
+    /**
      * Check if any node not nullable is null
      * @return true if any node not nullable is null
      */
@@ -312,6 +444,24 @@ public class ShareQuantityItem implements Cloneable, Serializable {
         if (changeType == null) {
             this.logger.logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull", 
                 "changeType is null but is not nullable.");
+            return true;
+        }
+        java.math.BigDecimal shareValue = getShareValue();
+        if (shareValue == null) {
+            this.logger.logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull", 
+                "shareValue is null but is not nullable.");
+            return true;
+        }
+        java.math.BigDecimal changeFee = getChangeFee();
+        if (changeFee == null) {
+            this.logger.logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull", 
+                "changeFee is null but is not nullable.");
+            return true;
+        }
+        java.math.BigDecimal shareQuantity = getShareQuantity();
+        if (shareQuantity == null) {
+            this.logger.logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull", 
+                "shareQuantity is null but is not nullable.");
             return true;
         }
         return false;

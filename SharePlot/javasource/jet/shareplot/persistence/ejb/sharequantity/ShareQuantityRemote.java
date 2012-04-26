@@ -70,11 +70,56 @@ public interface ShareQuantityRemote extends EJBObject {
     
 
     /**
-     * @param idShare
-     * @param valueDate
-     * @param changeType
+     * @return java.math.BigDecimal
      * @throws EJBException
      * @throws RemoteException
      */
-    public void update( Long idShare, java.util.Date valueDate, String changeType) throws EJBException, RemoteException;
+    public java.math.BigDecimal getShareValue() throws EJBException, RemoteException;
+    /**
+     * @param shareValue
+     * @throws EJBException
+     * @throws RemoteException
+     */
+    public void setShareValue(java.math.BigDecimal shareValue) throws EJBException, RemoteException;
+    
+
+    /**
+     * @return java.math.BigDecimal
+     * @throws EJBException
+     * @throws RemoteException
+     */
+    public java.math.BigDecimal getChangeFee() throws EJBException, RemoteException;
+    /**
+     * @param changeFee
+     * @throws EJBException
+     * @throws RemoteException
+     */
+    public void setChangeFee(java.math.BigDecimal changeFee) throws EJBException, RemoteException;
+    
+
+    /**
+     * @return java.math.BigDecimal
+     * @throws EJBException
+     * @throws RemoteException
+     */
+    public java.math.BigDecimal getShareQuantity() throws EJBException, RemoteException;
+    /**
+     * @param shareQuantity
+     * @throws EJBException
+     * @throws RemoteException
+     */
+    public void setShareQuantity(java.math.BigDecimal shareQuantity) throws EJBException, RemoteException;
+    
+
+    /**
+     * @param idShare
+     * @param valueDate
+     * @param changeType
+     * @param shareValue
+     * @param changeFee
+     * @param shareQuantity
+     * @throws EJBException
+     * @throws RemoteException
+     */
+    public void update( Long idShare, java.util.Date valueDate, String changeType, java.math.BigDecimal shareValue, java.math.BigDecimal changeFee, java.math.BigDecimal shareQuantity) throws EJBException, RemoteException;
 }
