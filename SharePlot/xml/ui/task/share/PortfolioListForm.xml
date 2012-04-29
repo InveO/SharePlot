@@ -8,6 +8,15 @@
             <GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="0" />
             <ATTRIBUTE_PARAM component="titleLabel" name="localizedDisplayableText" value="SharePlot/properties/task/Share/title.PortfolioList" />
         </GROUP>
+        <GROUP name="toolbarGroup" layoutmanager="gridbaglayout" >
+            <BUTTON name="saveButton" extends="SaveButton" >
+                <GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="0" fill="NONE" insetleft="5" />
+            </BUTTON>
+            <BUTTON name="deleteButton" extends="DeleteButton" >
+                <GRIDBAGCONSTRAINTS gridx="1" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="0" fill="NONE" insetleft="5" />
+            </BUTTON>
+            <GRIDBAGCONSTRAINTS gridx="0" gridy="1" gridwidth="1" gridheight="1" weightx="1" weighty="0" fill="HORIZONTAL" insetleft="5" />
+        </GROUP>
         <DISPLAY2 name="tableList" extends="EmptyTable" >
             <GRIDBAGCONSTRAINTS gridx="0" gridy="2" gridheight="1" gridwidth="1" weightx="1" weighty="1" insetleft="10" insetright="10" insettop="10" insetbottom="5" anchor="NORTH" fill="BOTH"/>
         </DISPLAY2>

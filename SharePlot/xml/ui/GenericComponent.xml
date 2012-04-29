@@ -9,6 +9,11 @@
     
     <DISPLAY2 name="EmptyTable" style="tableStyle" cellSpacing="0" verticalLines="dotted" opaque="false" borderWidth="0" borderColor="tableBorderColor" />
     
+	<BUTTON name="GenericButton" font="editorFont" rolloverBorderColor="buttonsRolloverBorderColor" gradientBackgroundColor="buttonsBackground" foregroundColor="buttonsForeground" disabledBackgroundColor="buttonsDisabledBackground" disabledForegroundColor="buttonsDisabledForeground" paddingTop="3" paddingBottom="3" paddingLeft="6" paddingRight="6" />
+	
+    <BUTTON name="SaveButton" extends="GenericButton" localizedDisplayableText="SharePlot/properties/desktop/Buttons/button.Save" />
+    <BUTTON name="DeleteButton" extends="GenericButton" localizedDisplayableText="SharePlot/properties/desktop/Buttons/button.Delete" />
+    
     <GROUP name="GenericTitleGroup" layoutmanager="gridbaglayout" backgroundColor="editorHeaderBackColor" foregroundColor="editorHeaderForeColor" >
 		<LABEL name="titleLabel" extends="EditorHeaderLabel" >
 			<GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="0" insettop="20" insetleft="10" insetbottom="5" anchor="CENTER" />

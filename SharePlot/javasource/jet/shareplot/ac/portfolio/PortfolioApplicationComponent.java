@@ -16,7 +16,6 @@ import jet.lifecycle.annotations.Deinitializer;
 import jet.lifecycle.interfaces.LifeCycleState;
 import jet.shareplot.ac.SelectStoreApplicationComponent;
 import jet.shareplot.persistence.finder.portfolio.Portfolio_FindAll0;
-import jet.shareplot.persistence.pojo.PortfolioItem;
 import jet.util.SerializableKey;
 import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Model;
@@ -95,8 +94,8 @@ public class PortfolioApplicationComponent extends SimpleApplicationComponent {
         getSession().removeProperty(SESSION_KEY);
     }
 
-    public List<PortfolioItem> getPortfolios() {
-        final List<PortfolioItem> result = new ArrayList<PortfolioItem>();
+    public List<Portfolio> getPortfolios() {
+        final List<Portfolio> result = new ArrayList<Portfolio>();
 
         final Portfolio_FindAll0 finder = new Portfolio_FindAll0();
         final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.PORTFOLIO_SELECT);
@@ -105,7 +104,7 @@ public class PortfolioApplicationComponent extends SimpleApplicationComponent {
             final int size = ma.getSize();
             for (int i = 0; i < size; i++) {
                 final Model model = ma.get(i);
-                final PortfolioItem item = new PortfolioItem(model);
+                final Portfolio item = new Portfolio(model, this);
                 result.add(item);
             }
         }

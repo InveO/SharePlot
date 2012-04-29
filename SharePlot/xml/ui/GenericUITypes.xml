@@ -30,18 +30,20 @@
         <COLOR name="tableSelectionForeColor" red="77" green="77" blue="77" />
         <COLOR name="tableSelCellBorderColor" red="30" green="109" blue="205" />
         <COLOR name="tableButtonForeColor" red="30" green="109" blue="205" />
-<!--         <COLOR name="tableEvenBackColorBlue" red="197" green="235" blue="250" /> -->
-<!--         <COLOR name="tableEvenBackColorOrange" red="250" green="223" blue="98" /> -->
-<!--         <COLOR name="tableEvenBackColorYellow" red="255" green="215" blue="0" /> -->
-<!--         <COLOR name="tableEvenBackColorRed" red="255" green="125" blue="107" /> -->
-<!--         <COLOR name="tableOddBackColorBlue" red="183" green="221" blue="236" /> -->
-<!--         <COLOR name="tableOddBackColorOrange" red="236" green="209" blue="84" /> -->
-<!--         <COLOR name="tableOddBackColorYellow" red="255" green="215" blue="0" /> -->
-<!--         <COLOR name="tableOddBackColorRed" red="255" green="125" blue="107" /> -->
-<!--         <COLOR name="tableHighlightColor" red="131" green="189" blue="212" /> -->
-<!--         <COLOR name="tableFalseCellBackColor" red="255" green="215" blue="0" /> -->
-<!--         <COLOR name="tableCellBackColorYellow" red="255" green="215" blue="0" /> -->
         <!-- END TABLE COLORS -->
+        <!-- BUTTONS COLORS -->
+        <GRADIENTCOLOR name="buttonsBackground" red1="180" green1="180" blue1="180" red2="115" green2="115" blue2="115" orientation="vertical" />
+<!--         <COLOR name="buttonsFlatBackground" red="115" green="115" blue="115" /> -->
+        <COLOR name="buttonsForeground" red="255" green="255" blue="255" />
+        <COLOR name="buttonsDisabledBackground" red="210" green="210" blue="210" />
+        <COLOR name="buttonsDisabledForeground" red="120" green="120" blue="120" />
+<!--         <COLOR name="actionMenuBackground" red="140" green="140" blue="140" /> -->
+<!--         <COLOR name="actionMenuDisabledBackground" red="210" green="210" blue="210" /> -->
+<!--         <COLOR name="actionMenuDisabledForeground" red="120" green="120" blue="120" /> -->
+        <COLOR name="buttonsRolloverBorderColor" red="100" green="100" blue="100" />
+<!--         <COLOR name="buttonsFlatRolloverBorderColor" red="100" green="100" blue="100" /> -->
+        <!-- END BUTTONS COLORS -->
+        
         
         
         
@@ -50,6 +52,8 @@
         <FONT name="editorHeaderFont" font_name="Arial" size="16" style="BOLD" />
         <!-- TABLE FONT -->
         <FONT name="tableFont" font_name="Arial" size="12" style="PLAIN"/>
+        <!-- EDITOR FONTS -->
+        <FONT name="editorFont" font_name="Arial" size="12" style="PLAIN"/>
 
     </UITYPES>
 
