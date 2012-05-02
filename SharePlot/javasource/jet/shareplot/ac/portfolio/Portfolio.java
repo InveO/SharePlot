@@ -54,4 +54,21 @@ public class Portfolio extends PortfolioItem {
         }
     }
 
+    public void delete() throws FormatedJetException {
+        if (getIdPortfolio() != null) {
+            final StoreNut storeNut = this.portfolioAC.getStoreNut(SelectStoreApplicationComponent.PORTFOLIO_STORE);
+            try {
+                storeNut.removeDataModel(get_Model());
+            } catch (final FinderObjectNotFoundException e) {
+                this.portfolioAC.logp(JETLevel.SEVERE, "Portfolio", "delete", e.getMessage(), e);
+                final Object[] args = { getName() };
+                throw new FormatedJetException(null, "SharePlot/properties/task/Share/dialog.CanNotDeletePortfolio", args, e);
+            } catch (final JETException e) {
+                this.portfolioAC.logp(JETLevel.SEVERE, "Portfolio", "delete", e.getMessage(), e);
+                final Object[] args = { getName() };
+                throw new FormatedJetException(null, "SharePlot/properties/task/Share/dialog.CanNotDeletePortfolio", args, e);
+            }
+        }
+    }
+
 }

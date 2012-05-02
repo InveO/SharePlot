@@ -1,13 +1,20 @@
 package jet.shareplot.ui.task.share;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import jet.components.ui.button.common.UIButtonComponent;
 import jet.components.ui.common.common.UIComponent;
 import jet.components.ui.events.KeyEvent;
+import jet.components.ui.events.MouseEvent;
+import jet.components.ui.events.MouseEventType;
+import jet.components.ui.events.UIEvent;
 import jet.components.ui.table.common.UITableComponent2;
 import jet.container.managers.ui.interfaces.UIComponentFinder;
+import jet.framework.ui.desktop.ApplicationComponentLauncher;
+import jet.framework.ui.utils.table.CheckBoxSelectedCellProvider;
 import jet.framework.ui.utils.table.UITableListDisplay3;
 import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.models.EmptyLineListener;
@@ -16,6 +23,7 @@ import jet.lifecycle.annotations.Initializer;
 import jet.shareplot.ac.portfolio.Portfolio;
 import jet.shareplot.ac.portfolio.PortfolioApplicationComponent;
 import jet.shareplot.ui.AbstractSharePlotNut;
+import jet.shareplot.ui.task.TaskNameConstants;
 import jet.shareplot.util.BooleanConstants;
 import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Event;
@@ -32,6 +40,7 @@ public class PortfolioListNut extends AbstractSharePlotNut {
     private EmptyPortfolioListener emptyPortfolioListener;
     private UIButtonComponent saveButton;
     private UIButtonComponent deleteButton;
+    private CheckBoxSelectedCellProvider selectedCellProvider;
 
     @Initializer
     public final void doPortfolioListNutInit() throws JETException {
@@ -72,6 +81,9 @@ public class PortfolioListNut extends AbstractSharePlotNut {
         this.tableList = (UITableComponent2) UIComponentFinder.findComponent("tableList", getMainComponent());
         this.uiTableListDisplay3 = new UITableListDisplay3(this.tableList, getUIContext(), listDisplayModel, getSession(), getLogger());
 
+        this.selectedCellProvider = new CheckBoxSelectedCellProvider("colSelect");
+        this.uiTableListDisplay3.addListTableCellModelProvider(this.selectedCellProvider);
+
         this.emptyPortfolioListener = new EmptyPortfolioListener();
 
     }
@@ -98,7 +110,6 @@ public class PortfolioListNut extends AbstractSharePlotNut {
         } else {
             result = this.emptyPortfolio.isValid();
         }
-        System.err.println("[PortfolioListNut] isEmptyPortfolioValid - " + result);
         return result;
     }
 
@@ -117,7 +128,6 @@ public class PortfolioListNut extends AbstractSharePlotNut {
 
         @Override
         protected <T extends Enum<T>> void handleChangedValue(final Event<T> event) {
-            System.err.println("[PortfolioListNut.EmptyPortfolioListener] handleChangedValue - ");
             addEmptyPortfolio();
         }
     }
@@ -132,8 +142,33 @@ public class PortfolioListNut extends AbstractSharePlotNut {
     }
 
     private void processDelete() {
-        // TODO Auto-generated method stub
+        removeEmptyPortfolio();
 
+        final List<Portfolio> toRemove = new ArrayList<Portfolio>();
+
+        // find portfolios to delete, and delete in DB
+        for (final Portfolio portfolio : this.portfolios) {
+            final Boolean isSelected = this.selectedCellProvider.getSelectedState(portfolio.get_Model());
+            if (isSelected.booleanValue()) {
+                try {
+                    // if is not new delete from db
+                    portfolio.delete();
+
+                    toRemove.add(portfolio);
+                } catch (final FormatedJetException e) {
+                    // TODO display error message
+                    logp(JETLevel.SEVERE, "PortfolioListNut", "processDelete", e.getMessage(), e);
+                }
+            }
+        }
+
+        // remove from display
+        for (final Portfolio portfolio : toRemove) {
+            this.uiTableListDisplay3.removeRow(portfolio.get_Model());
+            this.portfolios.remove(portfolio);
+        }
+
+        addEmptyPortfolio();
     }
 
     private void processSave() {
@@ -149,6 +184,42 @@ public class PortfolioListNut extends AbstractSharePlotNut {
         }
 
         addEmptyPortfolio();
+    }
+
+    @Override
+    public <T extends Enum<T>> void tableCellEvent(final UITableComponent2 table, final int row, final int col, final UIEvent<T> uiEvent) {
+        if (this.tableList == table) {
+            if (uiEvent instanceof MouseEvent) {
+                // if the row is double clicked the current contact must be edited
+                final MouseEvent me = (MouseEvent) uiEvent;
+                if (me.getType() == MouseEventType.LEFT_CLICK) {
+
+                    final String colName = this.uiTableListDisplay3.getColumnName(col);
+
+                    if ("editColumn".equals(colName)) {
+                        final Portfolio portfolio = this.portfolios.get(row);
+                        if (portfolio.getIdPortfolio() != null) {
+                            launchEditPortfolio(portfolio);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void launchEditPortfolio(final Portfolio portfolio) {
+        final ApplicationComponentLauncher acLauncher = (ApplicationComponentLauncher) getSession().getProperty(ApplicationComponentLauncher.SESSION_KEY);
+
+        if (acLauncher != null) {
+            try {
+                final Map<String, Object> initArgs = new HashMap<String, Object>();
+                initArgs.put(ShareUIConstants.ARGUMENT_PORTFOLIO, portfolio);
+
+                acLauncher.launchApplicationComponent(TaskNameConstants.SHARE_LIST, initArgs);
+            } catch (final JETException e) {
+                logp(JETLevel.SEVERE, "PortfolioListNut", "launchEditPortfolio", e.getMessage(), e);
+            }
+        }
     }
 
 }
