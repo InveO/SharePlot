@@ -23,7 +23,7 @@ import jet.util.throwable.JETSystemError;
  * @author JetToolsFramework
  */
 @SuppressWarnings("PMD.MethodNamingConventions")
-public class PortfolioItem implements Cloneable, Serializable {
+public class PortfolioItem implements Serializable {
 
     private static final long serialVersionUID = 993423458L;
 
@@ -86,74 +86,34 @@ public class PortfolioItem implements Cloneable, Serializable {
     }
     
     /**
-     * Get a PortfolioItem initialized from a Model that has the same structure but contains
-     * only String node values. These will be converted to the proper DataModel node value
-     * types.
-     * 
-     * @param untypedModel Model with String node values
-     * @return PortfolioItem
+     * Copy constructor used to clone an existing Portfolio Data Model
+     * @param portfolio PortfolioItem to use to copy in the pojo, can not be null
+     * @throws IllegalArgumentException if portfolio is null
      */
-    public final static PortfolioItem getFromUntypedModel(final Model untypedModel) {
-        final PortfolioItem item = new PortfolioItem();
+    public PortfolioItem(final PortfolioItem portfolio) {
+		this();
+        if (portfolio == null) {
+            throw new IllegalArgumentException("portfolio argument can not be null");
+        }
         
-        String sValue = null;
-        
-        try {
-            sValue = ModelHelper.getChildNodeValueAsString(untypedModel, "idPortfolio");
-            if (sValue != null) {
-                item.setIdPortfolio(Long.valueOf(sValue));
-            }
-        } catch (final JETException e) {
-            item.logger.logp(JETLevel.INFO, "PortfolioItem", "getFromUntypedModel", e.getMessage(), e);
-        }
-        try {
-            sValue = ModelHelper.getChildNodeValueAsString(untypedModel, "name");
-            if (sValue == null) {
-                sValue = " ";
-            }
-            item.setName(sValue);                
-        } catch (final JETException e) {
-            item.logger.logp(JETLevel.INFO, "PortfolioItem", "getFromUntypedModel", e.getMessage(), e);
-        }
-        try {
-            sValue = ModelHelper.getChildNodeValueAsString(untypedModel, "isFake");
-            if (sValue == null) {
-                sValue = " ";
-            }
-            item.setIsFake(sValue);                
-        } catch (final JETException e) {
-            item.logger.logp(JETLevel.INFO, "PortfolioItem", "getFromUntypedModel", e.getMessage(), e);
-        }
-        return item;
+        setIdPortfolio(portfolio.getIdPortfolio());
+        setName(portfolio.getName());
+        setIsFake(portfolio.getIsFake());
     }
-
+    
     /**
      * Get the Portfolio Data Model that is wrapped in this pojo
      * @return Portfolio Data Model
      */
-    public Model get_Model() {
+    public final Model get_Model() {
         return this.dataModel;
     }
     
     /**
-     * Create a clone of the PortfolioItem pojo, the will clone the underlying data model
-     * @return PortfolioItem pojo
-     */
-    @Override
-    public PortfolioItem clone() throws CloneNotSupportedException {
-        final PortfolioItem clonedItem = (PortfolioItem) super.clone();
-        clonedItem.init_DataModel();
-        clonedItem.setIdPortfolio(getIdPortfolio());
-        clonedItem.setName(getName());
-        clonedItem.setIsFake(getIsFake());
-        return clonedItem;
-    }
-
-    /**
      * Get node value of Data Model node idPortfolio
      * @return Long value of Data Model node idPortfolio
      */
-    public Long getIdPortfolio() {
+    public final Long getIdPortfolio() {
         return (Long) get_IdPortfolio_Model().getNodeValue();
     }
     
@@ -169,7 +129,7 @@ public class PortfolioItem implements Cloneable, Serializable {
      * Get Model of Data Model node idPortfolio
      * @return Model of Data Model node idPortfolio
      */
-    public DispatcherModel<PortfolioItem, Long> get_IdPortfolio_Model() {
+    public final DispatcherModel<PortfolioItem, Long> get_IdPortfolio_Model() {
         if (this.idPortfolioDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idPortfolio");
@@ -185,7 +145,7 @@ public class PortfolioItem implements Cloneable, Serializable {
      * Get node value of Data Model node name
      * @return String value of Data Model node name
      */
-    public String getName() {
+    public final String getName() {
         return (String) get_Name_Model().getNodeValue();
     }
     
@@ -201,7 +161,7 @@ public class PortfolioItem implements Cloneable, Serializable {
      * Get Model of Data Model node name
      * @return Model of Data Model node name
      */
-    public DispatcherModel<PortfolioItem, String> get_Name_Model() {
+    public final DispatcherModel<PortfolioItem, String> get_Name_Model() {
         if (this.nameDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "name");
@@ -219,7 +179,7 @@ public class PortfolioItem implements Cloneable, Serializable {
      * Get node value of Data Model node isFake
      * @return String value of Data Model node isFake
      */
-    public String getIsFake() {
+    public final String getIsFake() {
         return (String) get_IsFake_Model().getNodeValue();
     }
     
@@ -235,7 +195,7 @@ public class PortfolioItem implements Cloneable, Serializable {
      * Get Model of Data Model node isFake
      * @return Model of Data Model node isFake
      */
-    public DispatcherModel<PortfolioItem, String> get_IsFake_Model() {
+    public final DispatcherModel<PortfolioItem, String> get_IsFake_Model() {
         if (this.isFakeDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "isFake");
@@ -253,7 +213,7 @@ public class PortfolioItem implements Cloneable, Serializable {
      * Check if any node not nullable is null
      * @return true if any node not nullable is null
      */
-    public boolean isNotNullableNull() {
+    public final boolean isNotNullableNull() {
         String name = getName();
         if (name == null) {
             this.logger.logp(JETLevel.WARNING, "PortfolioItem", "isNotNullableNull", 
@@ -268,6 +228,5 @@ public class PortfolioItem implements Cloneable, Serializable {
         }
         return false;
     }
-    
     
 }

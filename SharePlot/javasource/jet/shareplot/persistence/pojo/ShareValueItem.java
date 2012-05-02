@@ -23,7 +23,7 @@ import jet.util.throwable.JETSystemError;
  * @author JetToolsFramework
  */
 @SuppressWarnings("PMD.MethodNamingConventions")
-public class ShareValueItem implements Cloneable, Serializable {
+public class ShareValueItem implements Serializable {
 
     private static final long serialVersionUID = 1461049825L;
 
@@ -89,82 +89,35 @@ public class ShareValueItem implements Cloneable, Serializable {
     }
     
     /**
-     * Get a ShareValueItem initialized from a Model that has the same structure but contains
-     * only String node values. These will be converted to the proper DataModel node value
-     * types.
-     * 
-     * @param untypedModel Model with String node values
-     * @return ShareValueItem
+     * Copy constructor used to clone an existing ShareValue Data Model
+     * @param shareValue ShareValueItem to use to copy in the pojo, can not be null
+     * @throws IllegalArgumentException if shareValue is null
      */
-    public final static ShareValueItem getFromUntypedModel(final Model untypedModel) {
-        final ShareValueItem item = new ShareValueItem();
+    public ShareValueItem(final ShareValueItem shareValue) {
+		this();
+        if (shareValue == null) {
+            throw new IllegalArgumentException("shareValue argument can not be null");
+        }
         
-        String sValue = null;
-        
-        try {
-            sValue = ModelHelper.getChildNodeValueAsString(untypedModel, "idShareValue");
-            if (sValue != null) {
-                item.setIdShareValue(Long.valueOf(sValue));
-            }
-        } catch (final JETException e) {
-            item.logger.logp(JETLevel.INFO, "ShareValueItem", "getFromUntypedModel", e.getMessage(), e);
-        }
-        try {
-            sValue = ModelHelper.getChildNodeValueAsString(untypedModel, "isShare");
-            if (sValue != null) {
-                item.setIsShare(Long.valueOf(sValue));
-            }
-        } catch (final JETException e) {
-            item.logger.logp(JETLevel.INFO, "ShareValueItem", "getFromUntypedModel", e.getMessage(), e);
-        }
-        try {
-            sValue = ModelHelper.getChildNodeValueAsString(untypedModel, "valueDate");
-            if (sValue != null) {
-                Long timestamp = Long.valueOf(sValue);
-                item.setValueDate(new java.util.Date(timestamp.longValue()));
-            }
-        } catch (final JETException e) {
-            item.logger.logp(JETLevel.INFO, "ShareValueItem", "getFromUntypedModel", e.getMessage(), e);
-        }
-        try {
-            sValue = ModelHelper.getChildNodeValueAsString(untypedModel, "value");
-            if (sValue != null) {
-                item.setValue(new java.math.BigDecimal(sValue));
-            }
-        } catch (final JETException e) {
-            item.logger.logp(JETLevel.INFO, "ShareValueItem", "getFromUntypedModel", e.getMessage(), e);
-        }
-        return item;
+        setIdShareValue(shareValue.getIdShareValue());
+        setIsShare(shareValue.getIsShare());
+        setValueDate(shareValue.getValueDate());
+        setValue(shareValue.getValue());
     }
-
+    
     /**
      * Get the ShareValue Data Model that is wrapped in this pojo
      * @return ShareValue Data Model
      */
-    public Model get_Model() {
+    public final Model get_Model() {
         return this.dataModel;
     }
     
     /**
-     * Create a clone of the ShareValueItem pojo, the will clone the underlying data model
-     * @return ShareValueItem pojo
-     */
-    @Override
-    public ShareValueItem clone() throws CloneNotSupportedException {
-        final ShareValueItem clonedItem = (ShareValueItem) super.clone();
-        clonedItem.init_DataModel();
-        clonedItem.setIdShareValue(getIdShareValue());
-        clonedItem.setIsShare(getIsShare());
-        clonedItem.setValueDate(getValueDate());
-        clonedItem.setValue(getValue());
-        return clonedItem;
-    }
-
-    /**
      * Get node value of Data Model node idShareValue
      * @return Long value of Data Model node idShareValue
      */
-    public Long getIdShareValue() {
+    public final Long getIdShareValue() {
         return (Long) get_IdShareValue_Model().getNodeValue();
     }
     
@@ -180,7 +133,7 @@ public class ShareValueItem implements Cloneable, Serializable {
      * Get Model of Data Model node idShareValue
      * @return Model of Data Model node idShareValue
      */
-    public DispatcherModel<ShareValueItem, Long> get_IdShareValue_Model() {
+    public final DispatcherModel<ShareValueItem, Long> get_IdShareValue_Model() {
         if (this.idShareValueDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idShareValue");
@@ -196,7 +149,7 @@ public class ShareValueItem implements Cloneable, Serializable {
      * Get node value of Data Model node isShare
      * @return Long value of Data Model node isShare
      */
-    public Long getIsShare() {
+    public final Long getIsShare() {
         return (Long) get_IsShare_Model().getNodeValue();
     }
     
@@ -212,7 +165,7 @@ public class ShareValueItem implements Cloneable, Serializable {
      * Get Model of Data Model node isShare
      * @return Model of Data Model node isShare
      */
-    public DispatcherModel<ShareValueItem, Long> get_IsShare_Model() {
+    public final DispatcherModel<ShareValueItem, Long> get_IsShare_Model() {
         if (this.isShareDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "isShare");
@@ -228,7 +181,7 @@ public class ShareValueItem implements Cloneable, Serializable {
      * Get node value of Data Model node valueDate
      * @return java.util.Date value of Data Model node valueDate
      */
-    public java.util.Date getValueDate() {
+    public final java.util.Date getValueDate() {
         return (java.util.Date) get_ValueDate_Model().getNodeValue();
     }
     
@@ -244,7 +197,7 @@ public class ShareValueItem implements Cloneable, Serializable {
      * Get Model of Data Model node valueDate
      * @return Model of Data Model node valueDate
      */
-    public DispatcherModel<ShareValueItem, java.util.Date> get_ValueDate_Model() {
+    public final DispatcherModel<ShareValueItem, java.util.Date> get_ValueDate_Model() {
         if (this.valueDateDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "valueDate");
@@ -260,7 +213,7 @@ public class ShareValueItem implements Cloneable, Serializable {
      * Get node value of Data Model node value
      * @return java.math.BigDecimal value of Data Model node value
      */
-    public java.math.BigDecimal getValue() {
+    public final java.math.BigDecimal getValue() {
         return (java.math.BigDecimal) get_Value_Model().getNodeValue();
     }
     
@@ -276,7 +229,7 @@ public class ShareValueItem implements Cloneable, Serializable {
      * Get Model of Data Model node value
      * @return Model of Data Model node value
      */
-    public DispatcherModel<ShareValueItem, java.math.BigDecimal> get_Value_Model() {
+    public final DispatcherModel<ShareValueItem, java.math.BigDecimal> get_Value_Model() {
         if (this.valueDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "value");
@@ -292,7 +245,7 @@ public class ShareValueItem implements Cloneable, Serializable {
      * Check if any node not nullable is null
      * @return true if any node not nullable is null
      */
-    public boolean isNotNullableNull() {
+    public final boolean isNotNullableNull() {
         Long isShare = getIsShare();
         if (isShare == null) {
             this.logger.logp(JETLevel.WARNING, "ShareValueItem", "isNotNullableNull", 
@@ -313,6 +266,5 @@ public class ShareValueItem implements Cloneable, Serializable {
         }
         return false;
     }
-    
     
 }

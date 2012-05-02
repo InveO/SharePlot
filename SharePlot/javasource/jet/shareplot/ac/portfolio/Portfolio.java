@@ -24,6 +24,11 @@ public class Portfolio extends PortfolioItem {
         this.portfolioAC = portfolioAC;
     }
 
+    public Portfolio(final Portfolio portfolio) {
+        super(portfolio);
+        this.portfolioAC = portfolio.portfolioAC;
+    }
+
     public boolean isValid() {
         System.err.println("[Portfolio] isValid - isNotNullableNull() : " + isNotNullableNull());
         System.err.println("[Portfolio] isValid - TextUtils.isEmpty(getName() : " + TextUtils.isEmpty(getName()));

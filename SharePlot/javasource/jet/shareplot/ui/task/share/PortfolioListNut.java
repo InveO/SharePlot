@@ -213,7 +213,7 @@ public class PortfolioListNut extends AbstractSharePlotNut {
         if (acLauncher != null) {
             try {
                 final Map<String, Object> initArgs = new HashMap<String, Object>();
-                initArgs.put(ShareUIConstants.ARGUMENT_PORTFOLIO, portfolio);
+                initArgs.put(ShareUIConstants.ARGUMENT_PORTFOLIO, new Portfolio(portfolio));
 
                 acLauncher.launchApplicationComponent(TaskNameConstants.SHARE_LIST, initArgs);
             } catch (final JETException e) {
