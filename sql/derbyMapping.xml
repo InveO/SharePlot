@@ -1,34 +1,34 @@
     <MAPPING_LIST>
         <MAPPING database="SharePlot">
-            <TABLE name="ShareValue" localname="SHARE_VALUE" >
-                <COLUMN name="idShareValue" localname="ID_SHARE_VALUE" />
-                <COLUMN name="isShare" localname="IS_SHARE" />
-                <COLUMN name="valueDate" localname="VALUE_DATE" />
-                <COLUMN name="value" localname="VALUE" />
+            <TABLE name="Portfolio" localname="PORTFOLIO" >
+                <COLUMN name="idPortfolio" localname="ID_PORTFOLIO" />
+                <COLUMN name="isFake" localname="IS_FAKE" />
+                <COLUMN name="name" localname="NAME" />
             </TABLE>
             <TABLE name="Share" localname="SHARE" >
                 <COLUMN name="idShare" localname="ID_SHARE" />
-                <COLUMN name="idPortfolio" localname="ID_PORTFOLIO" />
-                <COLUMN name="name" localname="NAME" />
-                <COLUMN name="description" localname="DESCRIPTION" />
                 <COLUMN name="code" localname="CODE" />
                 <COLUMN name="datePurchase" localname="DATE_PURCHASE" />
-                <COLUMN name="purchasePrice" localname="PURCHASE_PRICE" />
+                <COLUMN name="description" localname="DESCRIPTION" />
                 <COLUMN name="entryFee" localname="ENTRY_FEE" />
+                <COLUMN name="idPortfolio" localname="ID_PORTFOLIO" />
+                <COLUMN name="name" localname="NAME" />
+                <COLUMN name="purchasePrice" localname="PURCHASE_PRICE" />
             </TABLE>
             <TABLE name="ShareQuantity" localname="SHARE_QUANTITY" >
                 <COLUMN name="idShareQuantity" localname="ID_SHARE_QUANTITY" />
-                <COLUMN name="idShare" localname="ID_SHARE" />
-                <COLUMN name="valueDate" localname="VALUE_DATE" />
-                <COLUMN name="changeType" localname="CHANGE_TYPE" />
-                <COLUMN name="shareValue" localname="SHARE_VALUE" />
                 <COLUMN name="changeFee" localname="CHANGE_FEE" />
+                <COLUMN name="changeType" localname="CHANGE_TYPE" />
+                <COLUMN name="idShare" localname="ID_SHARE" />
                 <COLUMN name="shareQuantity" localname="SHARE_QUANTITY" />
+                <COLUMN name="shareValue" localname="SHARE_VALUE" />
+                <COLUMN name="valueDate" localname="VALUE_DATE" />
             </TABLE>
-            <TABLE name="Portfolio" localname="PORTFOLIO" >
-                <COLUMN name="idPortfolio" localname="ID_PORTFOLIO" />
-                <COLUMN name="name" localname="NAME" />
-                <COLUMN name="isFake" localname="IS_FAKE" />
+            <TABLE name="ShareValue" localname="SHARE_VALUE" >
+                <COLUMN name="idShareValue" localname="ID_SHARE_VALUE" />
+                <COLUMN name="isShare" localname="IS_SHARE" />
+                <COLUMN name="value" localname="VALUE" />
+                <COLUMN name="valueDate" localname="VALUE_DATE" />
             </TABLE>
         </MAPPING>
     </MAPPING_LIST>

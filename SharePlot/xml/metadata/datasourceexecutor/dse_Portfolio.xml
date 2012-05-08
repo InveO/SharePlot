@@ -43,7 +43,7 @@
             primarykey : "true" if the field is part of the primary key (it will not be updateable)
          -->
         <MAPPING writeconverter="" readmultikey="" defaulttype="INTEGER" target="idPortfolio" subelement="" default="" readconverter="" name="idPortfolio" autoincrement="true" primarykey="true" />
-        <MAPPING writeconverter="" readmultikey="" defaulttype="TEXT" target="name" subelement="" default="" readconverter="" name="name" autoincrement="false" primarykey="false" />
         <MAPPING writeconverter="" readmultikey="" defaulttype="TEXT" target="isFake" subelement="" default="" readconverter="" name="isFake" autoincrement="false" primarykey="false" />
+        <MAPPING writeconverter="" readmultikey="" defaulttype="TEXT" target="name" subelement="" default="" readconverter="" name="name" autoincrement="false" primarykey="false" />
     </EJB_CONVERSION>
 </EJB_FINDERS>

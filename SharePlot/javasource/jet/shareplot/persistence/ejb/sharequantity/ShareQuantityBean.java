@@ -30,14 +30,9 @@ public class ShareQuantityBean implements EntityBean {
     public Long idShareQuantity = null;
 
     /**
-     * <code>idShare</code>
+     * <code>changeFee</code>
      */
-    public Long idShare = null;
-
-    /**
-     * <code>valueDate</code>
-     */
-    public java.util.Date valueDate = null;
+    public java.math.BigDecimal changeFee = null;
 
     /**
      * <code>changeType</code>
@@ -45,19 +40,24 @@ public class ShareQuantityBean implements EntityBean {
     public String changeType = null;
 
     /**
-     * <code>shareValue</code>
+     * <code>idShare</code>
      */
-    public java.math.BigDecimal shareValue = null;
-
-    /**
-     * <code>changeFee</code>
-     */
-    public java.math.BigDecimal changeFee = null;
+    public Long idShare = null;
 
     /**
      * <code>shareQuantity</code>
      */
     public java.math.BigDecimal shareQuantity = null;
+
+    /**
+     * <code>shareValue</code>
+     */
+    public java.math.BigDecimal shareValue = null;
+
+    /**
+     * <code>valueDate</code>
+     */
+    public java.util.Date valueDate = null;
 
 
     /**
@@ -77,6 +77,38 @@ public class ShareQuantityBean implements EntityBean {
     }
 
     /**
+     * @return java.math.BigDecimal
+     * @throws EJBException
+     */
+    public java.math.BigDecimal getChangeFee() throws EJBException {
+        return this.changeFee;
+
+    }
+    /**
+     * @param changeFee
+     * @throws EJBException
+     */
+    public void setChangeFee(java.math.BigDecimal changeFee) throws EJBException {
+        this.changeFee = changeFee;
+    }
+
+    /**
+     * @return String
+     * @throws EJBException
+     */
+    public String getChangeType() throws EJBException {
+        return this.changeType;
+
+    }
+    /**
+     * @param changeType
+     * @throws EJBException
+     */
+    public void setChangeType(String changeType) throws EJBException {
+        this.changeType = changeType;
+    }
+
+    /**
      * @return Long
      * @throws EJBException
      */
@@ -90,6 +122,38 @@ public class ShareQuantityBean implements EntityBean {
      */
     public void setIdShare(Long idShare) throws EJBException {
         this.idShare = idShare;
+    }
+
+    /**
+     * @return java.math.BigDecimal
+     * @throws EJBException
+     */
+    public java.math.BigDecimal getShareQuantity() throws EJBException {
+        return this.shareQuantity;
+
+    }
+    /**
+     * @param shareQuantity
+     * @throws EJBException
+     */
+    public void setShareQuantity(java.math.BigDecimal shareQuantity) throws EJBException {
+        this.shareQuantity = shareQuantity;
+    }
+
+    /**
+     * @return java.math.BigDecimal
+     * @throws EJBException
+     */
+    public java.math.BigDecimal getShareValue() throws EJBException {
+        return this.shareValue;
+
+    }
+    /**
+     * @param shareValue
+     * @throws EJBException
+     */
+    public void setShareValue(java.math.BigDecimal shareValue) throws EJBException {
+        this.shareValue = shareValue;
     }
 
     /**
@@ -116,110 +180,46 @@ public class ShareQuantityBean implements EntityBean {
         }
     }
 
-    /**
-     * @return String
-     * @throws EJBException
-     */
-    public String getChangeType() throws EJBException {
-        return this.changeType;
-
-    }
-    /**
-     * @param changeType
-     * @throws EJBException
-     */
-    public void setChangeType(String changeType) throws EJBException {
-        this.changeType = changeType;
-    }
-
-    /**
-     * @return java.math.BigDecimal
-     * @throws EJBException
-     */
-    public java.math.BigDecimal getShareValue() throws EJBException {
-        return this.shareValue;
-
-    }
-    /**
-     * @param shareValue
-     * @throws EJBException
-     */
-    public void setShareValue(java.math.BigDecimal shareValue) throws EJBException {
-        this.shareValue = shareValue;
-    }
-
-    /**
-     * @return java.math.BigDecimal
-     * @throws EJBException
-     */
-    public java.math.BigDecimal getChangeFee() throws EJBException {
-        return this.changeFee;
-
-    }
-    /**
-     * @param changeFee
-     * @throws EJBException
-     */
-    public void setChangeFee(java.math.BigDecimal changeFee) throws EJBException {
-        this.changeFee = changeFee;
-    }
-
-    /**
-     * @return java.math.BigDecimal
-     * @throws EJBException
-     */
-    public java.math.BigDecimal getShareQuantity() throws EJBException {
-        return this.shareQuantity;
-
-    }
-    /**
-     * @param shareQuantity
-     * @throws EJBException
-     */
-    public void setShareQuantity(java.math.BigDecimal shareQuantity) throws EJBException {
-        this.shareQuantity = shareQuantity;
-    }
-
 
     /**
      * @param idShareQuantity
-     * @param idShare
-     * @param valueDate
-     * @param changeType
-     * @param shareValue
      * @param changeFee
+     * @param changeType
+     * @param idShare
      * @param shareQuantity
+     * @param shareValue
+     * @param valueDate
      * @return java.lang.Object
      * @throws CreateException
      */
     @SuppressWarnings({"hiding"})
-    public java.lang.Object ejbCreate( Long idShareQuantity, Long idShare, java.util.Date valueDate, String changeType, java.math.BigDecimal shareValue, java.math.BigDecimal changeFee, java.math.BigDecimal shareQuantity) throws CreateException {
+    public java.lang.Object ejbCreate( Long idShareQuantity, java.math.BigDecimal changeFee, String changeType, Long idShare, java.math.BigDecimal shareQuantity, java.math.BigDecimal shareValue, java.util.Date valueDate) throws CreateException {
         this.idShareQuantity = idShareQuantity;
+        this.changeFee = changeFee;
+        this.changeType = changeType;
         this.idShare = idShare;
+        this.shareQuantity = shareQuantity;
+        this.shareValue = shareValue;
         if (valueDate == null) {
             this.valueDate = null;
         } else {
             this.valueDate = (java.util.Date) valueDate.clone();
         }
-        this.changeType = changeType;
-        this.shareValue = shareValue;
-        this.changeFee = changeFee;
-        this.shareQuantity = shareQuantity;
         return null;
     }
 
     /**
      * @param idShareQuantity
-     * @param idShare
-     * @param valueDate
-     * @param changeType
-     * @param shareValue
      * @param changeFee
+     * @param changeType
+     * @param idShare
      * @param shareQuantity
+     * @param shareValue
+     * @param valueDate
      * @throws CreateException
      */
     @SuppressWarnings({"hiding"})
-    public void ejbPostCreate( Long idShareQuantity, Long idShare, java.util.Date valueDate, String changeType, java.math.BigDecimal shareValue, java.math.BigDecimal changeFee, java.math.BigDecimal shareQuantity) throws CreateException {
+    public void ejbPostCreate( Long idShareQuantity, java.math.BigDecimal changeFee, String changeType, Long idShare, java.math.BigDecimal shareQuantity, java.math.BigDecimal shareValue, java.util.Date valueDate) throws CreateException {
         assert this.entityContext != null : "this.entityContext can not be null";
         
         jet.container.managers.jdbc.interfaces.AutoGeneratedPrimaryKey _pk = (jet.container.managers.jdbc.interfaces.AutoGeneratedPrimaryKey) this.entityContext.getPrimaryKey();
@@ -241,27 +241,27 @@ public class ShareQuantityBean implements EntityBean {
     }
 
     /**
-     * @param idShare
-     * @param valueDate
-     * @param changeType
-     * @param shareValue
      * @param changeFee
+     * @param changeType
+     * @param idShare
      * @param shareQuantity
+     * @param shareValue
+     * @param valueDate
      * @throws EJBException
      */
     @SuppressWarnings({"hiding"})
-    public void update( Long idShare, java.util.Date valueDate, String changeType, java.math.BigDecimal shareValue, java.math.BigDecimal changeFee, java.math.BigDecimal shareQuantity) throws EJBException {
+    public void update( java.math.BigDecimal changeFee, String changeType, Long idShare, java.math.BigDecimal shareQuantity, java.math.BigDecimal shareValue, java.util.Date valueDate) throws EJBException {
         // in the case of a m-n table this method may be empty, as pk fields can not be updated
+        this.changeFee = changeFee;
+        this.changeType = changeType;
         this.idShare = idShare;
+        this.shareQuantity = shareQuantity;
+        this.shareValue = shareValue;
         if (valueDate == null) {
             this.valueDate = null;
         } else {
             this.valueDate = (java.util.Date) valueDate.clone();
         }
-        this.changeType = changeType;
-        this.shareValue = shareValue;
-        this.changeFee = changeFee;
-        this.shareQuantity = shareQuantity;
     }
 
     /**

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!ELEMENT DATAMODEL (NODE+)>
-<!ATTLIST DATAMODEL 
+<!ATTLIST DATAMODEL
 	name NMTOKEN #REQUIRED
 	serialuid CDATA #REQUIRED
 >
@@ -12,4 +12,5 @@
 	nullable (true | false) #REQUIRED
 	autoincrement (true | false) #REQUIRED
 	length CDATA #REQUIRED
+	pk (true | false) #REQUIRED
 >

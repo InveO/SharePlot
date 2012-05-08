@@ -31,12 +31,12 @@ public class ShareQuantityItem implements Serializable {
     private Logger logger;
 
     private DispatcherModel<ShareQuantityItem, Long> idShareQuantityDispatcherModel;
-    private DispatcherModel<ShareQuantityItem, Long> idShareDispatcherModel;
-    private DispatcherModel<ShareQuantityItem, java.util.Date> valueDateDispatcherModel;
-    private DispatcherModel<ShareQuantityItem, String> changeTypeDispatcherModel;
-    private DispatcherModel<ShareQuantityItem, java.math.BigDecimal> shareValueDispatcherModel;
     private DispatcherModel<ShareQuantityItem, java.math.BigDecimal> changeFeeDispatcherModel;
+    private DispatcherModel<ShareQuantityItem, String> changeTypeDispatcherModel;
+    private DispatcherModel<ShareQuantityItem, Long> idShareDispatcherModel;
     private DispatcherModel<ShareQuantityItem, java.math.BigDecimal> shareQuantityDispatcherModel;
+    private DispatcherModel<ShareQuantityItem, java.math.BigDecimal> shareValueDispatcherModel;
+    private DispatcherModel<ShareQuantityItem, java.util.Date> valueDateDispatcherModel;
 
     /**
      * Constructor used to create a new ShareQuantity Data Model
@@ -62,17 +62,17 @@ public class ShareQuantityItem implements Serializable {
         
         model = new SimpleEventModelImpl("idShareQuantity");
         this.dataModel.appendChild(model);
-        model = new SimpleEventModelImpl("idShare");
-        this.dataModel.appendChild(model);
-        model = new SimpleEventModelImpl("valueDate");
+        model = new SimpleEventModelImpl("changeFee");
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("changeType");
         this.dataModel.appendChild(model);
-        model = new SimpleEventModelImpl("shareValue");
-        this.dataModel.appendChild(model);
-        model = new SimpleEventModelImpl("changeFee");
+        model = new SimpleEventModelImpl("idShare");
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("shareQuantity");
+        this.dataModel.appendChild(model);
+        model = new SimpleEventModelImpl("shareValue");
+        this.dataModel.appendChild(model);
+        model = new SimpleEventModelImpl("valueDate");
         this.dataModel.appendChild(model);
     }
     
@@ -109,12 +109,12 @@ public class ShareQuantityItem implements Serializable {
         }
         
         setIdShareQuantity(shareQuantity.getIdShareQuantity());
-        setIdShare(shareQuantity.getIdShare());
-        setValueDate(shareQuantity.getValueDate());
-        setChangeType(shareQuantity.getChangeType());
-        setShareValue(shareQuantity.getShareValue());
         setChangeFee(shareQuantity.getChangeFee());
+        setChangeType(shareQuantity.getChangeType());
+        setIdShare(shareQuantity.getIdShare());
         setShareQuantity(shareQuantity.getShareQuantity());
+        setShareValue(shareQuantity.getShareValue());
+        setValueDate(shareQuantity.getValueDate());
     }
     
     /**
@@ -158,67 +158,35 @@ public class ShareQuantityItem implements Serializable {
     }
 
     /**
-     * Get node value of Data Model node idShare
-     * @return Long value of Data Model node idShare
+     * Get node value of Data Model node changeFee
+     * @return java.math.BigDecimal value of Data Model node changeFee
      */
-    public final Long getIdShare() {
-        return (Long) get_IdShare_Model().getNodeValue();
+    public final java.math.BigDecimal getChangeFee() {
+        return (java.math.BigDecimal) get_ChangeFee_Model().getNodeValue();
     }
     
     /**
-     * Set node value of Data Model node idShare
-     * @param idShare Long value of Data Model node idShare
+     * Set node value of Data Model node changeFee
+     * @param changeFee java.math.BigDecimal value of Data Model node changeFee
      */
-    public final void setIdShare(Long idShare) {
-        get_IdShare_Model().setNodeValue(idShare);
+    public final void setChangeFee(java.math.BigDecimal changeFee) {
+        get_ChangeFee_Model().setNodeValue(changeFee);
     }
     
     /**
-     * Get Model of Data Model node idShare
-     * @return Model of Data Model node idShare
+     * Get Model of Data Model node changeFee
+     * @return Model of Data Model node changeFee
      */
-    public final DispatcherModel<ShareQuantityItem, Long> get_IdShare_Model() {
-        if (this.idShareDispatcherModel == null) {
+    public final DispatcherModel<ShareQuantityItem, java.math.BigDecimal> get_ChangeFee_Model() {
+        if (this.changeFeeDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idShare");
-                this.idShareDispatcherModel = new DispatcherModel<ShareQuantityItem, Long>(this, sourceModel);
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "changeFee");
+                this.changeFeeDispatcherModel = new DispatcherModel<ShareQuantityItem, java.math.BigDecimal>(this, sourceModel);
             } catch (final JETException e) {
-                throw new JETSystemError("ShareQuantity data model does not have a child named idShare. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+                throw new JETSystemError("ShareQuantity data model does not have a child named changeFee. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
             }
         }
-        return this.idShareDispatcherModel;
-    }
-
-    /**
-     * Get node value of Data Model node valueDate
-     * @return java.util.Date value of Data Model node valueDate
-     */
-    public final java.util.Date getValueDate() {
-        return (java.util.Date) get_ValueDate_Model().getNodeValue();
-    }
-    
-    /**
-     * Set node value of Data Model node valueDate
-     * @param valueDate java.util.Date value of Data Model node valueDate
-     */
-    public final void setValueDate(java.util.Date valueDate) {
-        get_ValueDate_Model().setNodeValue(valueDate);
-    }
-    
-    /**
-     * Get Model of Data Model node valueDate
-     * @return Model of Data Model node valueDate
-     */
-    public final DispatcherModel<ShareQuantityItem, java.util.Date> get_ValueDate_Model() {
-        if (this.valueDateDispatcherModel == null) {
-            try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "valueDate");
-                this.valueDateDispatcherModel = new DispatcherModel<ShareQuantityItem, java.util.Date>(this, sourceModel);
-            } catch (final JETException e) {
-                throw new JETSystemError("ShareQuantity data model does not have a child named valueDate. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
-            }
-        }
-        return this.valueDateDispatcherModel;
+        return this.changeFeeDispatcherModel;
     }
 
     /**
@@ -256,67 +224,35 @@ public class ShareQuantityItem implements Serializable {
     }
 
     /**
-     * Get node value of Data Model node shareValue
-     * @return java.math.BigDecimal value of Data Model node shareValue
+     * Get node value of Data Model node idShare
+     * @return Long value of Data Model node idShare
      */
-    public final java.math.BigDecimal getShareValue() {
-        return (java.math.BigDecimal) get_ShareValue_Model().getNodeValue();
+    public final Long getIdShare() {
+        return (Long) get_IdShare_Model().getNodeValue();
     }
     
     /**
-     * Set node value of Data Model node shareValue
-     * @param shareValue java.math.BigDecimal value of Data Model node shareValue
+     * Set node value of Data Model node idShare
+     * @param idShare Long value of Data Model node idShare
      */
-    public final void setShareValue(java.math.BigDecimal shareValue) {
-        get_ShareValue_Model().setNodeValue(shareValue);
+    public final void setIdShare(Long idShare) {
+        get_IdShare_Model().setNodeValue(idShare);
     }
     
     /**
-     * Get Model of Data Model node shareValue
-     * @return Model of Data Model node shareValue
+     * Get Model of Data Model node idShare
+     * @return Model of Data Model node idShare
      */
-    public final DispatcherModel<ShareQuantityItem, java.math.BigDecimal> get_ShareValue_Model() {
-        if (this.shareValueDispatcherModel == null) {
+    public final DispatcherModel<ShareQuantityItem, Long> get_IdShare_Model() {
+        if (this.idShareDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "shareValue");
-                this.shareValueDispatcherModel = new DispatcherModel<ShareQuantityItem, java.math.BigDecimal>(this, sourceModel);
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idShare");
+                this.idShareDispatcherModel = new DispatcherModel<ShareQuantityItem, Long>(this, sourceModel);
             } catch (final JETException e) {
-                throw new JETSystemError("ShareQuantity data model does not have a child named shareValue. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+                throw new JETSystemError("ShareQuantity data model does not have a child named idShare. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
             }
         }
-        return this.shareValueDispatcherModel;
-    }
-
-    /**
-     * Get node value of Data Model node changeFee
-     * @return java.math.BigDecimal value of Data Model node changeFee
-     */
-    public final java.math.BigDecimal getChangeFee() {
-        return (java.math.BigDecimal) get_ChangeFee_Model().getNodeValue();
-    }
-    
-    /**
-     * Set node value of Data Model node changeFee
-     * @param changeFee java.math.BigDecimal value of Data Model node changeFee
-     */
-    public final void setChangeFee(java.math.BigDecimal changeFee) {
-        get_ChangeFee_Model().setNodeValue(changeFee);
-    }
-    
-    /**
-     * Get Model of Data Model node changeFee
-     * @return Model of Data Model node changeFee
-     */
-    public final DispatcherModel<ShareQuantityItem, java.math.BigDecimal> get_ChangeFee_Model() {
-        if (this.changeFeeDispatcherModel == null) {
-            try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "changeFee");
-                this.changeFeeDispatcherModel = new DispatcherModel<ShareQuantityItem, java.math.BigDecimal>(this, sourceModel);
-            } catch (final JETException e) {
-                throw new JETSystemError("ShareQuantity data model does not have a child named changeFee. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
-            }
-        }
-        return this.changeFeeDispatcherModel;
+        return this.idShareDispatcherModel;
     }
 
     /**
@@ -352,20 +288,78 @@ public class ShareQuantityItem implements Serializable {
     }
 
     /**
+     * Get node value of Data Model node shareValue
+     * @return java.math.BigDecimal value of Data Model node shareValue
+     */
+    public final java.math.BigDecimal getShareValue() {
+        return (java.math.BigDecimal) get_ShareValue_Model().getNodeValue();
+    }
+    
+    /**
+     * Set node value of Data Model node shareValue
+     * @param shareValue java.math.BigDecimal value of Data Model node shareValue
+     */
+    public final void setShareValue(java.math.BigDecimal shareValue) {
+        get_ShareValue_Model().setNodeValue(shareValue);
+    }
+    
+    /**
+     * Get Model of Data Model node shareValue
+     * @return Model of Data Model node shareValue
+     */
+    public final DispatcherModel<ShareQuantityItem, java.math.BigDecimal> get_ShareValue_Model() {
+        if (this.shareValueDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "shareValue");
+                this.shareValueDispatcherModel = new DispatcherModel<ShareQuantityItem, java.math.BigDecimal>(this, sourceModel);
+            } catch (final JETException e) {
+                throw new JETSystemError("ShareQuantity data model does not have a child named shareValue. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
+        }
+        return this.shareValueDispatcherModel;
+    }
+
+    /**
+     * Get node value of Data Model node valueDate
+     * @return java.util.Date value of Data Model node valueDate
+     */
+    public final java.util.Date getValueDate() {
+        return (java.util.Date) get_ValueDate_Model().getNodeValue();
+    }
+    
+    /**
+     * Set node value of Data Model node valueDate
+     * @param valueDate java.util.Date value of Data Model node valueDate
+     */
+    public final void setValueDate(java.util.Date valueDate) {
+        get_ValueDate_Model().setNodeValue(valueDate);
+    }
+    
+    /**
+     * Get Model of Data Model node valueDate
+     * @return Model of Data Model node valueDate
+     */
+    public final DispatcherModel<ShareQuantityItem, java.util.Date> get_ValueDate_Model() {
+        if (this.valueDateDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "valueDate");
+                this.valueDateDispatcherModel = new DispatcherModel<ShareQuantityItem, java.util.Date>(this, sourceModel);
+            } catch (final JETException e) {
+                throw new JETSystemError("ShareQuantity data model does not have a child named valueDate. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
+        }
+        return this.valueDateDispatcherModel;
+    }
+
+    /**
      * Check if any node not nullable is null
      * @return true if any node not nullable is null
      */
     public final boolean isNotNullableNull() {
-        Long idShare = getIdShare();
-        if (idShare == null) {
+        java.math.BigDecimal changeFee = getChangeFee();
+        if (changeFee == null) {
             this.logger.logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull", 
-                "idShare is null but is not nullable.");
-            return true;
-        }
-        java.util.Date valueDate = getValueDate();
-        if (valueDate == null) {
-            this.logger.logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull", 
-                "valueDate is null but is not nullable.");
+                "changeFee is null but is not nullable.");
             return true;
         }
         String changeType = getChangeType();
@@ -374,22 +368,28 @@ public class ShareQuantityItem implements Serializable {
                 "changeType is null but is not nullable.");
             return true;
         }
-        java.math.BigDecimal shareValue = getShareValue();
-        if (shareValue == null) {
+        Long idShare = getIdShare();
+        if (idShare == null) {
             this.logger.logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull", 
-                "shareValue is null but is not nullable.");
-            return true;
-        }
-        java.math.BigDecimal changeFee = getChangeFee();
-        if (changeFee == null) {
-            this.logger.logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull", 
-                "changeFee is null but is not nullable.");
+                "idShare is null but is not nullable.");
             return true;
         }
         java.math.BigDecimal shareQuantity = getShareQuantity();
         if (shareQuantity == null) {
             this.logger.logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull", 
                 "shareQuantity is null but is not nullable.");
+            return true;
+        }
+        java.math.BigDecimal shareValue = getShareValue();
+        if (shareValue == null) {
+            this.logger.logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull", 
+                "shareValue is null but is not nullable.");
+            return true;
+        }
+        java.util.Date valueDate = getValueDate();
+        if (valueDate == null) {
+            this.logger.logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull", 
+                "valueDate is null but is not nullable.");
             return true;
         }
         return false;

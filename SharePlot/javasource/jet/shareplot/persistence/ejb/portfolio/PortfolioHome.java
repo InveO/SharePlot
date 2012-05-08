@@ -23,13 +23,13 @@ public interface PortfolioHome extends EJBHome {
     
     /**
      * @param idPortfolio
-     * @param name
      * @param isFake
+     * @param name
      * @return PortfolioRemote
      * @throws CreateException
      * @throws RemoteException
      */
-    public PortfolioRemote create( @EJBParam(name = "idPortfolio") Long idPortfolio, @EJBParam(name = "name") String name, @EJBParam(name = "isFake") String isFake) throws CreateException, RemoteException;
+    public PortfolioRemote create( @EJBParam(name = "idPortfolio") Long idPortfolio, @EJBParam(name = "isFake") String isFake, @EJBParam(name = "name") String name) throws CreateException, RemoteException;
         
     /**
      * @param pkField

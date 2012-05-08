@@ -31,8 +31,8 @@ public class PortfolioItem implements Serializable {
     private Logger logger;
 
     private DispatcherModel<PortfolioItem, Long> idPortfolioDispatcherModel;
-    private DispatcherModel<PortfolioItem, String> nameDispatcherModel;
     private DispatcherModel<PortfolioItem, String> isFakeDispatcherModel;
+    private DispatcherModel<PortfolioItem, String> nameDispatcherModel;
 
     /**
      * Constructor used to create a new Portfolio Data Model
@@ -58,9 +58,9 @@ public class PortfolioItem implements Serializable {
         
         model = new SimpleEventModelImpl("idPortfolio");
         this.dataModel.appendChild(model);
-        model = new SimpleEventModelImpl("name");
-        this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("isFake");
+        this.dataModel.appendChild(model);
+        model = new SimpleEventModelImpl("name");
         this.dataModel.appendChild(model);
     }
     
@@ -97,8 +97,8 @@ public class PortfolioItem implements Serializable {
         }
         
         setIdPortfolio(portfolio.getIdPortfolio());
-        setName(portfolio.getName());
         setIsFake(portfolio.getIsFake());
+        setName(portfolio.getName());
     }
     
     /**
@@ -142,40 +142,6 @@ public class PortfolioItem implements Serializable {
     }
 
     /**
-     * Get node value of Data Model node name
-     * @return String value of Data Model node name
-     */
-    public final String getName() {
-        return (String) get_Name_Model().getNodeValue();
-    }
-    
-    /**
-     * Set node value of Data Model node name
-     * @param name String value of Data Model node name
-     */
-    public final void setName(String name) {
-        get_Name_Model().setNodeValue(name);
-    }
-    
-    /**
-     * Get Model of Data Model node name
-     * @return Model of Data Model node name
-     */
-    public final DispatcherModel<PortfolioItem, String> get_Name_Model() {
-        if (this.nameDispatcherModel == null) {
-            try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "name");
-                this.nameDispatcherModel = new DispatcherModel<PortfolioItem, String>(this, sourceModel);
-
-                this.nameDispatcherModel.addInterceptor(new StringLengthInterceptor<PortfolioItem>(45));
-            } catch (final JETException e) {
-                throw new JETSystemError("Portfolio data model does not have a child named name. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
-            }
-        }
-        return this.nameDispatcherModel;
-    }
-
-    /**
      * Get node value of Data Model node isFake
      * @return String value of Data Model node isFake
      */
@@ -210,20 +176,54 @@ public class PortfolioItem implements Serializable {
     }
 
     /**
+     * Get node value of Data Model node name
+     * @return String value of Data Model node name
+     */
+    public final String getName() {
+        return (String) get_Name_Model().getNodeValue();
+    }
+    
+    /**
+     * Set node value of Data Model node name
+     * @param name String value of Data Model node name
+     */
+    public final void setName(String name) {
+        get_Name_Model().setNodeValue(name);
+    }
+    
+    /**
+     * Get Model of Data Model node name
+     * @return Model of Data Model node name
+     */
+    public final DispatcherModel<PortfolioItem, String> get_Name_Model() {
+        if (this.nameDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "name");
+                this.nameDispatcherModel = new DispatcherModel<PortfolioItem, String>(this, sourceModel);
+
+                this.nameDispatcherModel.addInterceptor(new StringLengthInterceptor<PortfolioItem>(45));
+            } catch (final JETException e) {
+                throw new JETSystemError("Portfolio data model does not have a child named name. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
+        }
+        return this.nameDispatcherModel;
+    }
+
+    /**
      * Check if any node not nullable is null
      * @return true if any node not nullable is null
      */
     public final boolean isNotNullableNull() {
-        String name = getName();
-        if (name == null) {
-            this.logger.logp(JETLevel.WARNING, "PortfolioItem", "isNotNullableNull", 
-                "name is null but is not nullable.");
-            return true;
-        }
         String isFake = getIsFake();
         if (isFake == null) {
             this.logger.logp(JETLevel.WARNING, "PortfolioItem", "isNotNullableNull", 
                 "isFake is null but is not nullable.");
+            return true;
+        }
+        String name = getName();
+        if (name == null) {
+            this.logger.logp(JETLevel.WARNING, "PortfolioItem", "isNotNullableNull", 
+                "name is null but is not nullable.");
             return true;
         }
         return false;

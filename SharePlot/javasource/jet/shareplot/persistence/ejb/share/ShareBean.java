@@ -30,21 +30,6 @@ public class ShareBean implements EntityBean {
     public Long idShare = null;
 
     /**
-     * <code>idPortfolio</code>
-     */
-    public Long idPortfolio = null;
-
-    /**
-     * <code>name</code>
-     */
-    public String name = null;
-
-    /**
-     * <code>description</code>
-     */
-    public String description = null;
-
-    /**
      * <code>code</code>
      */
     public String code = null;
@@ -55,14 +40,29 @@ public class ShareBean implements EntityBean {
     public java.util.Date datePurchase = null;
 
     /**
-     * <code>purchasePrice</code>
+     * <code>description</code>
      */
-    public java.math.BigDecimal purchasePrice = null;
+    public String description = null;
 
     /**
      * <code>entryFee</code>
      */
     public java.math.BigDecimal entryFee = null;
+
+    /**
+     * <code>idPortfolio</code>
+     */
+    public Long idPortfolio = null;
+
+    /**
+     * <code>name</code>
+     */
+    public String name = null;
+
+    /**
+     * <code>purchasePrice</code>
+     */
+    public java.math.BigDecimal purchasePrice = null;
 
 
     /**
@@ -79,54 +79,6 @@ public class ShareBean implements EntityBean {
      */
     public void setIdShare(Long idShare) throws EJBException {
         this.idShare = idShare;
-    }
-
-    /**
-     * @return Long
-     * @throws EJBException
-     */
-    public Long getIdPortfolio() throws EJBException {
-        return this.idPortfolio;
-
-    }
-    /**
-     * @param idPortfolio
-     * @throws EJBException
-     */
-    public void setIdPortfolio(Long idPortfolio) throws EJBException {
-        this.idPortfolio = idPortfolio;
-    }
-
-    /**
-     * @return String
-     * @throws EJBException
-     */
-    public String getName() throws EJBException {
-        return this.name;
-
-    }
-    /**
-     * @param name
-     * @throws EJBException
-     */
-    public void setName(String name) throws EJBException {
-        this.name = name;
-    }
-
-    /**
-     * @return String
-     * @throws EJBException
-     */
-    public String getDescription() throws EJBException {
-        return this.description;
-
-    }
-    /**
-     * @param description
-     * @throws EJBException
-     */
-    public void setDescription(String description) throws EJBException {
-        this.description = description;
     }
 
     /**
@@ -170,19 +122,19 @@ public class ShareBean implements EntityBean {
     }
 
     /**
-     * @return java.math.BigDecimal
+     * @return String
      * @throws EJBException
      */
-    public java.math.BigDecimal getPurchasePrice() throws EJBException {
-        return this.purchasePrice;
+    public String getDescription() throws EJBException {
+        return this.description;
 
     }
     /**
-     * @param purchasePrice
+     * @param description
      * @throws EJBException
      */
-    public void setPurchasePrice(java.math.BigDecimal purchasePrice) throws EJBException {
-        this.purchasePrice = purchasePrice;
+    public void setDescription(String description) throws EJBException {
+        this.description = description;
     }
 
     /**
@@ -201,49 +153,97 @@ public class ShareBean implements EntityBean {
         this.entryFee = entryFee;
     }
 
+    /**
+     * @return Long
+     * @throws EJBException
+     */
+    public Long getIdPortfolio() throws EJBException {
+        return this.idPortfolio;
+
+    }
+    /**
+     * @param idPortfolio
+     * @throws EJBException
+     */
+    public void setIdPortfolio(Long idPortfolio) throws EJBException {
+        this.idPortfolio = idPortfolio;
+    }
+
+    /**
+     * @return String
+     * @throws EJBException
+     */
+    public String getName() throws EJBException {
+        return this.name;
+
+    }
+    /**
+     * @param name
+     * @throws EJBException
+     */
+    public void setName(String name) throws EJBException {
+        this.name = name;
+    }
+
+    /**
+     * @return java.math.BigDecimal
+     * @throws EJBException
+     */
+    public java.math.BigDecimal getPurchasePrice() throws EJBException {
+        return this.purchasePrice;
+
+    }
+    /**
+     * @param purchasePrice
+     * @throws EJBException
+     */
+    public void setPurchasePrice(java.math.BigDecimal purchasePrice) throws EJBException {
+        this.purchasePrice = purchasePrice;
+    }
+
 
     /**
      * @param idShare
-     * @param idPortfolio
-     * @param name
-     * @param description
      * @param code
      * @param datePurchase
-     * @param purchasePrice
+     * @param description
      * @param entryFee
+     * @param idPortfolio
+     * @param name
+     * @param purchasePrice
      * @return java.lang.Object
      * @throws CreateException
      */
     @SuppressWarnings({"hiding"})
-    public java.lang.Object ejbCreate( Long idShare, Long idPortfolio, String name, String description, String code, java.util.Date datePurchase, java.math.BigDecimal purchasePrice, java.math.BigDecimal entryFee) throws CreateException {
+    public java.lang.Object ejbCreate( Long idShare, String code, java.util.Date datePurchase, String description, java.math.BigDecimal entryFee, Long idPortfolio, String name, java.math.BigDecimal purchasePrice) throws CreateException {
         this.idShare = idShare;
-        this.idPortfolio = idPortfolio;
-        this.name = name;
-        this.description = description;
         this.code = code;
         if (datePurchase == null) {
             this.datePurchase = null;
         } else {
             this.datePurchase = (java.util.Date) datePurchase.clone();
         }
-        this.purchasePrice = purchasePrice;
+        this.description = description;
         this.entryFee = entryFee;
+        this.idPortfolio = idPortfolio;
+        this.name = name;
+        this.purchasePrice = purchasePrice;
         return null;
     }
 
     /**
      * @param idShare
-     * @param idPortfolio
-     * @param name
-     * @param description
      * @param code
      * @param datePurchase
-     * @param purchasePrice
+     * @param description
      * @param entryFee
+     * @param idPortfolio
+     * @param name
+     * @param purchasePrice
      * @throws CreateException
      */
     @SuppressWarnings({"hiding"})
-    public void ejbPostCreate( Long idShare, Long idPortfolio, String name, String description, String code, java.util.Date datePurchase, java.math.BigDecimal purchasePrice, java.math.BigDecimal entryFee) throws CreateException {
+    public void ejbPostCreate( Long idShare, String code, java.util.Date datePurchase, String description, java.math.BigDecimal entryFee, Long idPortfolio, String name, java.math.BigDecimal purchasePrice) throws CreateException {
         assert this.entityContext != null : "this.entityContext can not be null";
         
         jet.container.managers.jdbc.interfaces.AutoGeneratedPrimaryKey _pk = (jet.container.managers.jdbc.interfaces.AutoGeneratedPrimaryKey) this.entityContext.getPrimaryKey();
@@ -265,29 +265,29 @@ public class ShareBean implements EntityBean {
     }
 
     /**
-     * @param idPortfolio
-     * @param name
-     * @param description
      * @param code
      * @param datePurchase
-     * @param purchasePrice
+     * @param description
      * @param entryFee
+     * @param idPortfolio
+     * @param name
+     * @param purchasePrice
      * @throws EJBException
      */
     @SuppressWarnings({"hiding"})
-    public void update( Long idPortfolio, String name, String description, String code, java.util.Date datePurchase, java.math.BigDecimal purchasePrice, java.math.BigDecimal entryFee) throws EJBException {
+    public void update( String code, java.util.Date datePurchase, String description, java.math.BigDecimal entryFee, Long idPortfolio, String name, java.math.BigDecimal purchasePrice) throws EJBException {
         // in the case of a m-n table this method may be empty, as pk fields can not be updated
-        this.idPortfolio = idPortfolio;
-        this.name = name;
-        this.description = description;
         this.code = code;
         if (datePurchase == null) {
             this.datePurchase = null;
         } else {
             this.datePurchase = (java.util.Date) datePurchase.clone();
         }
-        this.purchasePrice = purchasePrice;
+        this.description = description;
         this.entryFee = entryFee;
+        this.idPortfolio = idPortfolio;
+        this.name = name;
+        this.purchasePrice = purchasePrice;
     }
 
     /**

@@ -24,13 +24,13 @@ public interface ShareValueHome extends EJBHome {
     /**
      * @param idShareValue
      * @param isShare
-     * @param valueDate
      * @param value
+     * @param valueDate
      * @return ShareValueRemote
      * @throws CreateException
      * @throws RemoteException
      */
-    public ShareValueRemote create( @EJBParam(name = "idShareValue") Long idShareValue, @EJBParam(name = "isShare") Long isShare, @EJBParam(name = "valueDate") java.util.Date valueDate, @EJBParam(name = "value") java.math.BigDecimal value) throws CreateException, RemoteException;
+    public ShareValueRemote create( @EJBParam(name = "idShareValue") Long idShareValue, @EJBParam(name = "isShare") Long isShare, @EJBParam(name = "value") java.math.BigDecimal value, @EJBParam(name = "valueDate") java.util.Date valueDate) throws CreateException, RemoteException;
         
     /**
      * @param pkField

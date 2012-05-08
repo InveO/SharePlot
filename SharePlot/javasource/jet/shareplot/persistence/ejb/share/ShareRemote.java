@@ -28,48 +28,6 @@ public interface ShareRemote extends EJBObject {
     
 
     /**
-     * @return Long
-     * @throws EJBException
-     * @throws RemoteException
-     */
-    public Long getIdPortfolio() throws EJBException, RemoteException;
-    /**
-     * @param idPortfolio
-     * @throws EJBException
-     * @throws RemoteException
-     */
-    public void setIdPortfolio(Long idPortfolio) throws EJBException, RemoteException;
-    
-
-    /**
-     * @return String
-     * @throws EJBException
-     * @throws RemoteException
-     */
-    public String getName() throws EJBException, RemoteException;
-    /**
-     * @param name
-     * @throws EJBException
-     * @throws RemoteException
-     */
-    public void setName(String name) throws EJBException, RemoteException;
-    
-
-    /**
-     * @return String
-     * @throws EJBException
-     * @throws RemoteException
-     */
-    public String getDescription() throws EJBException, RemoteException;
-    /**
-     * @param description
-     * @throws EJBException
-     * @throws RemoteException
-     */
-    public void setDescription(String description) throws EJBException, RemoteException;
-    
-
-    /**
      * @return String
      * @throws EJBException
      * @throws RemoteException
@@ -98,17 +56,17 @@ public interface ShareRemote extends EJBObject {
     
 
     /**
-     * @return java.math.BigDecimal
+     * @return String
      * @throws EJBException
      * @throws RemoteException
      */
-    public java.math.BigDecimal getPurchasePrice() throws EJBException, RemoteException;
+    public String getDescription() throws EJBException, RemoteException;
     /**
-     * @param purchasePrice
+     * @param description
      * @throws EJBException
      * @throws RemoteException
      */
-    public void setPurchasePrice(java.math.BigDecimal purchasePrice) throws EJBException, RemoteException;
+    public void setDescription(String description) throws EJBException, RemoteException;
     
 
     /**
@@ -126,15 +84,57 @@ public interface ShareRemote extends EJBObject {
     
 
     /**
-     * @param idPortfolio
-     * @param name
-     * @param description
-     * @param code
-     * @param datePurchase
-     * @param purchasePrice
-     * @param entryFee
+     * @return Long
      * @throws EJBException
      * @throws RemoteException
      */
-    public void update( Long idPortfolio, String name, String description, String code, java.util.Date datePurchase, java.math.BigDecimal purchasePrice, java.math.BigDecimal entryFee) throws EJBException, RemoteException;
+    public Long getIdPortfolio() throws EJBException, RemoteException;
+    /**
+     * @param idPortfolio
+     * @throws EJBException
+     * @throws RemoteException
+     */
+    public void setIdPortfolio(Long idPortfolio) throws EJBException, RemoteException;
+    
+
+    /**
+     * @return String
+     * @throws EJBException
+     * @throws RemoteException
+     */
+    public String getName() throws EJBException, RemoteException;
+    /**
+     * @param name
+     * @throws EJBException
+     * @throws RemoteException
+     */
+    public void setName(String name) throws EJBException, RemoteException;
+    
+
+    /**
+     * @return java.math.BigDecimal
+     * @throws EJBException
+     * @throws RemoteException
+     */
+    public java.math.BigDecimal getPurchasePrice() throws EJBException, RemoteException;
+    /**
+     * @param purchasePrice
+     * @throws EJBException
+     * @throws RemoteException
+     */
+    public void setPurchasePrice(java.math.BigDecimal purchasePrice) throws EJBException, RemoteException;
+    
+
+    /**
+     * @param code
+     * @param datePurchase
+     * @param description
+     * @param entryFee
+     * @param idPortfolio
+     * @param name
+     * @param purchasePrice
+     * @throws EJBException
+     * @throws RemoteException
+     */
+    public void update( String code, java.util.Date datePurchase, String description, java.math.BigDecimal entryFee, Long idPortfolio, String name, java.math.BigDecimal purchasePrice) throws EJBException, RemoteException;
 }

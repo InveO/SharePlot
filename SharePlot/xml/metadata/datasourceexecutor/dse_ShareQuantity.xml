@@ -43,11 +43,11 @@
             primarykey : "true" if the field is part of the primary key (it will not be updateable)
          -->
         <MAPPING writeconverter="" readmultikey="" defaulttype="INTEGER" target="idShareQuantity" subelement="" default="" readconverter="" name="idShareQuantity" autoincrement="true" primarykey="true" />
-        <MAPPING writeconverter="" readmultikey="" defaulttype="INTEGER" target="idShare" subelement="" default="" readconverter="" name="idShare" autoincrement="false" primarykey="false" />
-        <MAPPING writeconverter="" readmultikey="" defaulttype="DATE" target="valueDate" subelement="" default="" readconverter="" name="valueDate" autoincrement="false" primarykey="false" />
-        <MAPPING writeconverter="" readmultikey="" defaulttype="TEXT" target="changeType" subelement="" default="" readconverter="" name="changeType" autoincrement="false" primarykey="false" />
-        <MAPPING writeconverter="" readmultikey="" defaulttype="DOUBLE" target="shareValue" subelement="" default="" readconverter="" name="shareValue" autoincrement="false" primarykey="false" />
         <MAPPING writeconverter="" readmultikey="" defaulttype="DOUBLE" target="changeFee" subelement="" default="" readconverter="" name="changeFee" autoincrement="false" primarykey="false" />
+        <MAPPING writeconverter="" readmultikey="" defaulttype="TEXT" target="changeType" subelement="" default="" readconverter="" name="changeType" autoincrement="false" primarykey="false" />
+        <MAPPING writeconverter="" readmultikey="" defaulttype="INTEGER" target="idShare" subelement="" default="" readconverter="" name="idShare" autoincrement="false" primarykey="false" />
         <MAPPING writeconverter="" readmultikey="" defaulttype="DOUBLE" target="shareQuantity" subelement="" default="" readconverter="" name="shareQuantity" autoincrement="false" primarykey="false" />
+        <MAPPING writeconverter="" readmultikey="" defaulttype="DOUBLE" target="shareValue" subelement="" default="" readconverter="" name="shareValue" autoincrement="false" primarykey="false" />
+        <MAPPING writeconverter="" readmultikey="" defaulttype="DATE" target="valueDate" subelement="" default="" readconverter="" name="valueDate" autoincrement="false" primarykey="false" />
     </EJB_CONVERSION>
 </EJB_FINDERS>

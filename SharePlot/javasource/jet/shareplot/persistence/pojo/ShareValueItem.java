@@ -32,8 +32,8 @@ public class ShareValueItem implements Serializable {
 
     private DispatcherModel<ShareValueItem, Long> idShareValueDispatcherModel;
     private DispatcherModel<ShareValueItem, Long> isShareDispatcherModel;
-    private DispatcherModel<ShareValueItem, java.util.Date> valueDateDispatcherModel;
     private DispatcherModel<ShareValueItem, java.math.BigDecimal> valueDispatcherModel;
+    private DispatcherModel<ShareValueItem, java.util.Date> valueDateDispatcherModel;
 
     /**
      * Constructor used to create a new ShareValue Data Model
@@ -61,9 +61,9 @@ public class ShareValueItem implements Serializable {
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("isShare");
         this.dataModel.appendChild(model);
-        model = new SimpleEventModelImpl("valueDate");
-        this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("value");
+        this.dataModel.appendChild(model);
+        model = new SimpleEventModelImpl("valueDate");
         this.dataModel.appendChild(model);
     }
     
@@ -101,8 +101,8 @@ public class ShareValueItem implements Serializable {
         
         setIdShareValue(shareValue.getIdShareValue());
         setIsShare(shareValue.getIsShare());
-        setValueDate(shareValue.getValueDate());
         setValue(shareValue.getValue());
+        setValueDate(shareValue.getValueDate());
     }
     
     /**
@@ -178,38 +178,6 @@ public class ShareValueItem implements Serializable {
     }
 
     /**
-     * Get node value of Data Model node valueDate
-     * @return java.util.Date value of Data Model node valueDate
-     */
-    public final java.util.Date getValueDate() {
-        return (java.util.Date) get_ValueDate_Model().getNodeValue();
-    }
-    
-    /**
-     * Set node value of Data Model node valueDate
-     * @param valueDate java.util.Date value of Data Model node valueDate
-     */
-    public final void setValueDate(java.util.Date valueDate) {
-        get_ValueDate_Model().setNodeValue(valueDate);
-    }
-    
-    /**
-     * Get Model of Data Model node valueDate
-     * @return Model of Data Model node valueDate
-     */
-    public final DispatcherModel<ShareValueItem, java.util.Date> get_ValueDate_Model() {
-        if (this.valueDateDispatcherModel == null) {
-            try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "valueDate");
-                this.valueDateDispatcherModel = new DispatcherModel<ShareValueItem, java.util.Date>(this, sourceModel);
-            } catch (final JETException e) {
-                throw new JETSystemError("ShareValue data model does not have a child named valueDate. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
-            }
-        }
-        return this.valueDateDispatcherModel;
-    }
-
-    /**
      * Get node value of Data Model node value
      * @return java.math.BigDecimal value of Data Model node value
      */
@@ -242,6 +210,38 @@ public class ShareValueItem implements Serializable {
     }
 
     /**
+     * Get node value of Data Model node valueDate
+     * @return java.util.Date value of Data Model node valueDate
+     */
+    public final java.util.Date getValueDate() {
+        return (java.util.Date) get_ValueDate_Model().getNodeValue();
+    }
+    
+    /**
+     * Set node value of Data Model node valueDate
+     * @param valueDate java.util.Date value of Data Model node valueDate
+     */
+    public final void setValueDate(java.util.Date valueDate) {
+        get_ValueDate_Model().setNodeValue(valueDate);
+    }
+    
+    /**
+     * Get Model of Data Model node valueDate
+     * @return Model of Data Model node valueDate
+     */
+    public final DispatcherModel<ShareValueItem, java.util.Date> get_ValueDate_Model() {
+        if (this.valueDateDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "valueDate");
+                this.valueDateDispatcherModel = new DispatcherModel<ShareValueItem, java.util.Date>(this, sourceModel);
+            } catch (final JETException e) {
+                throw new JETSystemError("ShareValue data model does not have a child named valueDate. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
+        }
+        return this.valueDateDispatcherModel;
+    }
+
+    /**
      * Check if any node not nullable is null
      * @return true if any node not nullable is null
      */
@@ -252,16 +252,16 @@ public class ShareValueItem implements Serializable {
                 "isShare is null but is not nullable.");
             return true;
         }
-        java.util.Date valueDate = getValueDate();
-        if (valueDate == null) {
-            this.logger.logp(JETLevel.WARNING, "ShareValueItem", "isNotNullableNull", 
-                "valueDate is null but is not nullable.");
-            return true;
-        }
         java.math.BigDecimal value = getValue();
         if (value == null) {
             this.logger.logp(JETLevel.WARNING, "ShareValueItem", "isNotNullableNull", 
                 "value is null but is not nullable.");
+            return true;
+        }
+        java.util.Date valueDate = getValueDate();
+        if (valueDate == null) {
+            this.logger.logp(JETLevel.WARNING, "ShareValueItem", "isNotNullableNull", 
+                "valueDate is null but is not nullable.");
             return true;
         }
         return false;

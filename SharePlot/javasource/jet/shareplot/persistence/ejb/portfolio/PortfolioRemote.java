@@ -32,20 +32,6 @@ public interface PortfolioRemote extends EJBObject {
      * @throws EJBException
      * @throws RemoteException
      */
-    public String getName() throws EJBException, RemoteException;
-    /**
-     * @param name
-     * @throws EJBException
-     * @throws RemoteException
-     */
-    public void setName(String name) throws EJBException, RemoteException;
-    
-
-    /**
-     * @return String
-     * @throws EJBException
-     * @throws RemoteException
-     */
     public String getIsFake() throws EJBException, RemoteException;
     /**
      * @param isFake
@@ -56,10 +42,24 @@ public interface PortfolioRemote extends EJBObject {
     
 
     /**
-     * @param name
-     * @param isFake
+     * @return String
      * @throws EJBException
      * @throws RemoteException
      */
-    public void update( String name, String isFake) throws EJBException, RemoteException;
+    public String getName() throws EJBException, RemoteException;
+    /**
+     * @param name
+     * @throws EJBException
+     * @throws RemoteException
+     */
+    public void setName(String name) throws EJBException, RemoteException;
+    
+
+    /**
+     * @param isFake
+     * @param name
+     * @throws EJBException
+     * @throws RemoteException
+     */
+    public void update( String isFake, String name) throws EJBException, RemoteException;
 }

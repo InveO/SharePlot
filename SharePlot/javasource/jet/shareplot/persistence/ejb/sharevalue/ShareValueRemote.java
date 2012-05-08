@@ -42,20 +42,6 @@ public interface ShareValueRemote extends EJBObject {
     
 
     /**
-     * @return java.util.Date
-     * @throws EJBException
-     * @throws RemoteException
-     */
-    public java.util.Date getValueDate() throws EJBException, RemoteException;
-    /**
-     * @param valueDate
-     * @throws EJBException
-     * @throws RemoteException
-     */
-    public void setValueDate(java.util.Date valueDate) throws EJBException, RemoteException;
-    
-
-    /**
      * @return java.math.BigDecimal
      * @throws EJBException
      * @throws RemoteException
@@ -70,11 +56,25 @@ public interface ShareValueRemote extends EJBObject {
     
 
     /**
-     * @param isShare
-     * @param valueDate
-     * @param value
+     * @return java.util.Date
      * @throws EJBException
      * @throws RemoteException
      */
-    public void update( Long isShare, java.util.Date valueDate, java.math.BigDecimal value) throws EJBException, RemoteException;
+    public java.util.Date getValueDate() throws EJBException, RemoteException;
+    /**
+     * @param valueDate
+     * @throws EJBException
+     * @throws RemoteException
+     */
+    public void setValueDate(java.util.Date valueDate) throws EJBException, RemoteException;
+    
+
+    /**
+     * @param isShare
+     * @param value
+     * @param valueDate
+     * @throws EJBException
+     * @throws RemoteException
+     */
+    public void update( Long isShare, java.math.BigDecimal value, java.util.Date valueDate) throws EJBException, RemoteException;
 }

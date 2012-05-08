@@ -5,35 +5,35 @@
 
 -->
 <DATABASE name="SharePlot" >
-    <TABLE name="ShareValue" localname="ShareValue">
-        <COLUMN name="idShareValue" localname="idShareValue" dbtype="INTEGER"/>
-        <COLUMN name="isShare" localname="isShare" dbtype="INTEGER"/>
-        <COLUMN name="valueDate" localname="valueDate" dbtype="DATE"/>
-        <COLUMN name="value" localname="value" dbtype="DECIMAL"/>
+    <TABLE name="Portfolio" localname="Portfolio">
+        <COLUMN name="idPortfolio" localname="idPortfolio" dbtype="INTEGER"/>
+        <COLUMN name="isFake" localname="isFake" dbtype="CHAR"/>
+        <COLUMN name="name" localname="name" dbtype="VARCHAR"/>
     </TABLE>
     <TABLE name="Share" localname="Share">
         <COLUMN name="idShare" localname="idShare" dbtype="INTEGER"/>
-        <COLUMN name="idPortfolio" localname="idPortfolio" dbtype="INTEGER"/>
-        <COLUMN name="name" localname="name" dbtype="VARCHAR"/>
-        <COLUMN name="description" localname="description" dbtype="VARCHAR"/>
         <COLUMN name="code" localname="code" dbtype="VARCHAR"/>
         <COLUMN name="datePurchase" localname="datePurchase" dbtype="DATE"/>
-        <COLUMN name="purchasePrice" localname="purchasePrice" dbtype="DECIMAL"/>
+        <COLUMN name="description" localname="description" dbtype="VARCHAR"/>
         <COLUMN name="entryFee" localname="entryFee" dbtype="DECIMAL"/>
+        <COLUMN name="idPortfolio" localname="idPortfolio" dbtype="INTEGER"/>
+        <COLUMN name="name" localname="name" dbtype="VARCHAR"/>
+        <COLUMN name="purchasePrice" localname="purchasePrice" dbtype="DECIMAL"/>
     </TABLE>
     <TABLE name="ShareQuantity" localname="ShareQuantity">
         <COLUMN name="idShareQuantity" localname="idShareQuantity" dbtype="INTEGER"/>
-        <COLUMN name="idShare" localname="idShare" dbtype="INTEGER"/>
-        <COLUMN name="valueDate" localname="valueDate" dbtype="DATE"/>
-        <COLUMN name="changeType" localname="changeType" dbtype="CHAR"/>
-        <COLUMN name="shareValue" localname="shareValue" dbtype="DECIMAL"/>
         <COLUMN name="changeFee" localname="changeFee" dbtype="DECIMAL"/>
+        <COLUMN name="changeType" localname="changeType" dbtype="CHAR"/>
+        <COLUMN name="idShare" localname="idShare" dbtype="INTEGER"/>
         <COLUMN name="shareQuantity" localname="shareQuantity" dbtype="DECIMAL"/>
+        <COLUMN name="shareValue" localname="shareValue" dbtype="DECIMAL"/>
+        <COLUMN name="valueDate" localname="valueDate" dbtype="DATE"/>
     </TABLE>
-    <TABLE name="Portfolio" localname="Portfolio">
-        <COLUMN name="idPortfolio" localname="idPortfolio" dbtype="INTEGER"/>
-        <COLUMN name="name" localname="name" dbtype="VARCHAR"/>
-        <COLUMN name="isFake" localname="isFake" dbtype="CHAR"/>
+    <TABLE name="ShareValue" localname="ShareValue">
+        <COLUMN name="idShareValue" localname="idShareValue" dbtype="INTEGER"/>
+        <COLUMN name="isShare" localname="isShare" dbtype="INTEGER"/>
+        <COLUMN name="value" localname="value" dbtype="DECIMAL"/>
+        <COLUMN name="valueDate" localname="valueDate" dbtype="DATE"/>
     </TABLE>
     <!--DBTYPES descriptif="">
         <DBTYPE dbtype="VARCHAR" java-type="String"/>
