@@ -2,15 +2,15 @@
 
 <!ELEMENT DATAMODEL (NODE+)>
 <!ATTLIST DATAMODEL
-	name NMTOKEN #REQUIRED
-	serialuid CDATA #REQUIRED
+    name NMTOKEN #REQUIRED
+    serialuid CDATA #REQUIRED
 >
 <!ELEMENT NODE EMPTY>
 <!ATTLIST NODE
-	name NMTOKEN #REQUIRED
-	type CDATA #REQUIRED
-	nullable (true | false) #REQUIRED
-	autoincrement (true | false) #REQUIRED
-	length CDATA #REQUIRED
-	pk (true | false) #REQUIRED
+    name NMTOKEN #REQUIRED
+    type CDATA #REQUIRED
+    nullable (true | false) #REQUIRED
+    autoincrement (true | false) #REQUIRED
+    length CDATA #REQUIRED
+    pk (true | false) #REQUIRED
 >

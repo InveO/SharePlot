@@ -1,0 +1,11 @@
+<APPLICATION_COMPONENT class="jet.shareplot.ac.bo.portfolio.PortfolioApplicationComponent" initialNutName="EmptyNut" >
+
+    <APPLICATION_COMPONENT_CONFIG>
+
+    </APPLICATION_COMPONENT_CONFIG>
+
+    <NUTS>
+        <NUT name="EmptyNut" className="jet.framework.nuts.EmptyNut" />
+    </NUTS>
+
+</APPLICATION_COMPONENT>

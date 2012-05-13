@@ -51,7 +51,7 @@ public class ShareItem implements Serializable {
             // probably running in junit, use junitLogger
             this.logger = LoggerJUnit.getInstance();
         }
-		
+        
         init_DataModel();
     }
 
@@ -106,7 +106,7 @@ public class ShareItem implements Serializable {
      * @throws IllegalArgumentException if share is null
      */
     public ShareItem(final ShareItem share) {
-		this();
+        this();
         if (share == null) {
             throw new IllegalArgumentException("share argument can not be null");
         }

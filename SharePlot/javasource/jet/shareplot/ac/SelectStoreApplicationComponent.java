@@ -5,7 +5,7 @@ import java.util.Map;
 
 import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.session.interfaces.Session;
-import jet.framework.component.SimpleApplicationComponent;
+import jet.framework.component.AbstractSelectStoreApplicationComponent;
 import jet.framework.ui.desktop.AbstractDesktopNut;
 import jet.lifecycle.annotations.Deinitializer;
 import jet.util.SerializableKey;
@@ -13,14 +13,14 @@ import jet.util.logger.JETLevel;
 import jet.util.throwable.JETException;
 
 /**
- * Implementation of the SimpleApplicationComponent class
+ * Implementation of the AbstractSelectStoreApplicationComponent class
  * 
  * This is a generated file and should not be modified.
  *
  * @author JetTools
  * 
  */
-public class SelectStoreApplicationComponent extends SimpleApplicationComponent {
+public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicationComponent {
 
     /**
      * ${value}
@@ -30,7 +30,7 @@ public class SelectStoreApplicationComponent extends SimpleApplicationComponent 
      * ${value}
      */
     public final static String PORTFOLIO_STORE = "PortfolioStore";
-	    
+        
     /**
      * ${value}
      */
@@ -39,7 +39,7 @@ public class SelectStoreApplicationComponent extends SimpleApplicationComponent 
      * ${value}
      */
     public final static String SHARE_STORE = "ShareStore";
-	    
+        
     /**
      * ${value}
      */
@@ -48,7 +48,7 @@ public class SelectStoreApplicationComponent extends SimpleApplicationComponent 
      * ${value}
      */
     public final static String SHAREQUANTITY_STORE = "ShareQuantityStore";
-	    
+        
     /**
      * ${value}
      */
@@ -57,10 +57,10 @@ public class SelectStoreApplicationComponent extends SimpleApplicationComponent 
      * ${value}
      */
     public final static String SHAREVALUE_STORE = "ShareValueStore";
-	    
+        
 
     private static final long serialVersionUID = -8890923097443600938L;
-	
+    
     /**
      * <code>INTERNAL_SESSION_KEY</code> session key
      */

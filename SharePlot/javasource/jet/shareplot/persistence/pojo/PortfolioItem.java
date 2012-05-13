@@ -46,7 +46,7 @@ public class PortfolioItem implements Serializable {
             // probably running in junit, use junitLogger
             this.logger = LoggerJUnit.getInstance();
         }
-		
+        
         init_DataModel();
     }
 
@@ -91,7 +91,7 @@ public class PortfolioItem implements Serializable {
      * @throws IllegalArgumentException if portfolio is null
      */
     public PortfolioItem(final PortfolioItem portfolio) {
-		this();
+        this();
         if (portfolio == null) {
             throw new IllegalArgumentException("portfolio argument can not be null");
         }
