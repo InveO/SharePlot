@@ -52,6 +52,14 @@ public interface ShareHome extends EJBHome {
     public Collection<ShareRemote> findAll() throws FinderException, RemoteException;
     
     /**
+     * @param idPortfolio
+     * @return Collection
+     * @throws FinderException
+     * @throws RemoteException
+     */
+    public Collection<ShareRemote> findByPortfolio(Long idPortfolio) throws FinderException, RemoteException;
+    
+    /**
      * @param sqlWhereClause
      * @param sqlArguments
      * @return Collection

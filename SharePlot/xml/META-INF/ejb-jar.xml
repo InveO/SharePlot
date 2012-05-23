@@ -5,25 +5,29 @@
     <display-name>Jet</display-name>
     <enterprise-beans>
         <entity>
-            <display-name> EJB for Portfolio</display-name>
-            <ejb-name>Portfolio</ejb-name>
-            <home>jet.shareplot.persistence.ejb.portfolio.PortfolioHome</home>
-            <remote>jet.shareplot.persistence.ejb.portfolio.PortfolioRemote</remote>
-            <ejb-class>jet.shareplot.persistence.ejb.portfolio.PortfolioBean</ejb-class>
+            <display-name> EJB for ShareValue</display-name>
+            <ejb-name>ShareValue</ejb-name>
+            <home>jet.shareplot.persistence.ejb.sharevalue.ShareValueHome</home>
+            <remote>jet.shareplot.persistence.ejb.sharevalue.ShareValueRemote</remote>
+            <ejb-class>jet.shareplot.persistence.ejb.sharevalue.ShareValueBean</ejb-class>
             <persistence-type>Container</persistence-type>
             <prim-key-class>java.lang.Object</prim-key-class>
             <reentrant>True</reentrant>
             <cmp-field>
-                <description> Desc for idPortfolio</description>
-                <field-name>idPortfolio</field-name>
+                <description> Desc for idShareValue</description>
+                <field-name>idShareValue</field-name>
             </cmp-field>
             <cmp-field>
-                <description> Desc for isFake</description>
-                <field-name>isFake</field-name>
+                <description> Desc for isShare</description>
+                <field-name>isShare</field-name>
             </cmp-field>
             <cmp-field>
-                <description> Desc for name</description>
-                <field-name>name</field-name>
+                <description> Desc for value</description>
+                <field-name>value</field-name>
+            </cmp-field>
+            <cmp-field>
+                <description> Desc for valueDate</description>
+                <field-name>valueDate</field-name>
             </cmp-field>
         </entity>
         <entity>
@@ -107,37 +111,33 @@
             </cmp-field>
         </entity>
         <entity>
-            <display-name> EJB for ShareValue</display-name>
-            <ejb-name>ShareValue</ejb-name>
-            <home>jet.shareplot.persistence.ejb.sharevalue.ShareValueHome</home>
-            <remote>jet.shareplot.persistence.ejb.sharevalue.ShareValueRemote</remote>
-            <ejb-class>jet.shareplot.persistence.ejb.sharevalue.ShareValueBean</ejb-class>
+            <display-name> EJB for Portfolio</display-name>
+            <ejb-name>Portfolio</ejb-name>
+            <home>jet.shareplot.persistence.ejb.portfolio.PortfolioHome</home>
+            <remote>jet.shareplot.persistence.ejb.portfolio.PortfolioRemote</remote>
+            <ejb-class>jet.shareplot.persistence.ejb.portfolio.PortfolioBean</ejb-class>
             <persistence-type>Container</persistence-type>
             <prim-key-class>java.lang.Object</prim-key-class>
             <reentrant>True</reentrant>
             <cmp-field>
-                <description> Desc for idShareValue</description>
-                <field-name>idShareValue</field-name>
+                <description> Desc for idPortfolio</description>
+                <field-name>idPortfolio</field-name>
             </cmp-field>
             <cmp-field>
-                <description> Desc for isShare</description>
-                <field-name>isShare</field-name>
+                <description> Desc for isFake</description>
+                <field-name>isFake</field-name>
             </cmp-field>
             <cmp-field>
-                <description> Desc for value</description>
-                <field-name>value</field-name>
-            </cmp-field>
-            <cmp-field>
-                <description> Desc for valueDate</description>
-                <field-name>valueDate</field-name>
+                <description> Desc for name</description>
+                <field-name>name</field-name>
             </cmp-field>
         </entity>
     </enterprise-beans>
     <assembly-descriptor>
         <container-transaction>
-            <description> Desc for Portfolio</description>
+            <description> Desc for ShareValue</description>
             <method>
-                <ejb-name>Portfolio</ejb-name>
+                <ejb-name>ShareValue</ejb-name>
                 <method-name>*</method-name>
             </method>
             <trans-attribute>Required</trans-attribute>
@@ -159,9 +159,9 @@
             <trans-attribute>Required</trans-attribute>
         </container-transaction>
         <container-transaction>
-            <description> Desc for ShareValue</description>
+            <description> Desc for Portfolio</description>
             <method>
-                <ejb-name>ShareValue</ejb-name>
+                <ejb-name>Portfolio</ejb-name>
                 <method-name>*</method-name>
             </method>
             <trans-attribute>Required</trans-attribute>

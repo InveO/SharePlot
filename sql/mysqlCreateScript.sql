@@ -1,13 +1,15 @@
 
 -- -----------------------------------------------------
--- Table `SharePlot`.`Portfolio`
+-- Table `SharePlot`.`ShareValue`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `SharePlot`.`Portfolio` (
-  `idPortfolio` INTEGER(10)  NOT NULL AUTO_INCREMENT ,
-  `isFake` CHAR(1)  NOT NULL  ,
-  `name` VARCHAR(45)  NOT NULL  ,
-  PRIMARY KEY ( `idPortfolio`))
+CREATE TABLE IF NOT EXISTS `SharePlot`.`ShareValue` (
+  `idShareValue` INTEGER(10)  NOT NULL AUTO_INCREMENT ,
+  `isShare` INTEGER(10)  NOT NULL  ,
+  `value` DECIMAL(10)  NOT NULL  ,
+  `valueDate` DATE  NOT NULL  ,
+  PRIMARY KEY ( `idShareValue`),
+  INDEX `fk_ShareValue_Share` (`isShare` ASC) )
 ENGINE = InnoDB;
 
 
@@ -47,26 +49,28 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `SharePlot`.`ShareValue`
+-- Table `SharePlot`.`Portfolio`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `SharePlot`.`ShareValue` (
-  `idShareValue` INTEGER(10)  NOT NULL AUTO_INCREMENT ,
-  `isShare` INTEGER(10)  NOT NULL  ,
-  `value` DECIMAL(10)  NOT NULL  ,
-  `valueDate` DATE  NOT NULL  ,
-  PRIMARY KEY ( `idShareValue`),
-  INDEX `fk_ShareValue_Share` (`isShare` ASC) )
+CREATE TABLE IF NOT EXISTS `SharePlot`.`Portfolio` (
+  `idPortfolio` INTEGER(10)  NOT NULL AUTO_INCREMENT ,
+  `isFake` CHAR(1)  NOT NULL  ,
+  `name` VARCHAR(45)  NOT NULL  ,
+  PRIMARY KEY ( `idPortfolio`))
 ENGINE = InnoDB;
 
 
 
 -- -----------------------------------------------------
--- Add constraints to table `SharePlot`.`Portfolio`
+-- Add constraints to table `SharePlot`.`ShareValue`
 -- -----------------------------------------------------
 
-ALTER TABLE `SharePlot`.`Portfolio` 
-;
+ALTER TABLE `SharePlot`.`ShareValue` 
+  ADD CONSTRAINT `fk_ShareValue_Share`
+    FOREIGN KEY (`isShare` )
+    REFERENCES `SharePlot`.`Share` (`idShare` ) 
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
 
 
 -- -----------------------------------------------------
@@ -94,14 +98,10 @@ ALTER TABLE `SharePlot`.`ShareQuantity`
 
 
 -- -----------------------------------------------------
--- Add constraints to table `SharePlot`.`ShareValue`
+-- Add constraints to table `SharePlot`.`Portfolio`
 -- -----------------------------------------------------
 
-ALTER TABLE `SharePlot`.`ShareValue` 
-  ADD CONSTRAINT `fk_ShareValue_Share`
-    FOREIGN KEY (`isShare` )
-    REFERENCES `SharePlot`.`Share` (`idShare` ) 
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION;
+ALTER TABLE `SharePlot`.`Portfolio` 
+;
 
 

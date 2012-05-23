@@ -18,6 +18,9 @@
      -->
     <FINDER primarykey="false" name="findAll">
     </FINDER>
+    <FINDER primarykey="false" name="findByPortfolio">
+        <INPUT dataconverter="" subelement="" source="idPortfolio"/>
+    </FINDER>
     <FINDER primarykey="false" name="findByPreparedSQLQuery">
         <INPUT dataconverter="" subelement="" source="sqlWhereClause"/>
         <INPUT dataconverter="" subelement="" source="sqlArguments"/>

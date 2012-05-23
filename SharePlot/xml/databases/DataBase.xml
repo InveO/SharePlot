@@ -5,10 +5,11 @@
 
 -->
 <DATABASE name="SharePlot" >
-    <TABLE name="Portfolio" localname="Portfolio">
-        <COLUMN name="idPortfolio" localname="idPortfolio" dbtype="INTEGER"/>
-        <COLUMN name="isFake" localname="isFake" dbtype="CHAR"/>
-        <COLUMN name="name" localname="name" dbtype="VARCHAR"/>
+    <TABLE name="ShareValue" localname="ShareValue">
+        <COLUMN name="idShareValue" localname="idShareValue" dbtype="INTEGER"/>
+        <COLUMN name="isShare" localname="isShare" dbtype="INTEGER"/>
+        <COLUMN name="value" localname="value" dbtype="DECIMAL"/>
+        <COLUMN name="valueDate" localname="valueDate" dbtype="DATE"/>
     </TABLE>
     <TABLE name="Share" localname="Share">
         <COLUMN name="idShare" localname="idShare" dbtype="INTEGER"/>
@@ -29,11 +30,10 @@
         <COLUMN name="shareValue" localname="shareValue" dbtype="DECIMAL"/>
         <COLUMN name="valueDate" localname="valueDate" dbtype="DATE"/>
     </TABLE>
-    <TABLE name="ShareValue" localname="ShareValue">
-        <COLUMN name="idShareValue" localname="idShareValue" dbtype="INTEGER"/>
-        <COLUMN name="isShare" localname="isShare" dbtype="INTEGER"/>
-        <COLUMN name="value" localname="value" dbtype="DECIMAL"/>
-        <COLUMN name="valueDate" localname="valueDate" dbtype="DATE"/>
+    <TABLE name="Portfolio" localname="Portfolio">
+        <COLUMN name="idPortfolio" localname="idPortfolio" dbtype="INTEGER"/>
+        <COLUMN name="isFake" localname="isFake" dbtype="CHAR"/>
+        <COLUMN name="name" localname="name" dbtype="VARCHAR"/>
     </TABLE>
     <!--DBTYPES descriptif="">
         <DBTYPE dbtype="VARCHAR" java-type="String"/>

@@ -1,80 +1,80 @@
 <!ATTLIST METHOD
-	name CDATA #REQUIRED
+    name CDATA #REQUIRED
 >
 <!ELEMENT METHOD EMPTY>
 <!ATTLIST TRANSACTION
-	type (Required | NotSupported | RequiresNew | Support | Mandatory | Never) "Required"
+    type (Required | NotSupported | RequiresNew | Support | Mandatory | Never) "Required"
 >
 <!ELEMENT TRANSACTION (METHOD*)>
 <!ATTLIST FINDERBODY
-	type (sql | nosql) "nosql"
-	sql_string CDATA ""
-	buffersize CDATA ""
+    type (sql | nosql) "nosql"
+    sql_string CDATA ""
+    buffersize CDATA ""
 >
 <!ELEMENT FINDERBODY EMPTY>
 <!ATTLIST INPUT
-	name CDATA #REQUIRED
-	type CDATA #REQUIRED
-	defaultValue CDATA ""
+    name CDATA #REQUIRED
+    type CDATA #REQUIRED
+    defaultValue CDATA ""
 >
 <!ELEMENT INPUT EMPTY>
 <!ATTLIST FINDER
-	name CDATA #REQUIRED
-	default (true | false) "false"
+    name CDATA #REQUIRED
+    default (true | false) "false"
 >
 <!ELEMENT FINDER (INPUT*, FINDERBODY)>
 <!ATTLIST COLUMN
-	name CDATA #REQUIRED
-	localname CDATA #REQUIRED
-	paramName CDATA #REQUIRED
-	type CDATA #REQUIRED
-	dbtype (VARCHAR | VARCHAR2 | DATE | INTEGER | DOUBLE | CHAR | SMALLINT | TIMESTAMP | TIME | REAL | BIGINT | BIT | OBJECT | DECIMAL | BLOB ) "VARCHAR"
-	length CDATA ""
-	noOfDecimal CDATA ""
-	nullable (true | false) "false"
-	autoIncrement (true | false) "false"
+    name CDATA #REQUIRED
+    localname CDATA #REQUIRED
+    paramName CDATA #REQUIRED
+    type CDATA #REQUIRED
+    dbtype (VARCHAR | VARCHAR2 | DATE | INTEGER | DOUBLE | CHAR | SMALLINT | TIMESTAMP | TIME | REAL | BIGINT | BIT | OBJECT | DECIMAL | BLOB ) "VARCHAR"
+    length CDATA ""
+    noOfDecimal CDATA ""
+    nullable (true | false) "false"
+    autoIncrement (true | false) "false"
 >
 <!ELEMENT COLUMN EMPTY>
 <!ATTLIST FKITEM
-	column CDATA #REQUIRED
-	foreigncolumn CDATA #REQUIRED
-	foreigncolumnlocalname CDATA #REQUIRED
+    column CDATA #REQUIRED
+    foreigncolumn CDATA #REQUIRED
+    foreigncolumnlocalname CDATA #REQUIRED
 >
 <!ELEMENT FKITEM EMPTY>
 <!ATTLIST FOREIGNKEY
-	name CDATA #REQUIRED
-	foreigntable CDATA #REQUIRED
-	foreigntablelocalname CDATA #REQUIRED
+    name CDATA #REQUIRED
+    foreigntable CDATA #REQUIRED
+    foreigntablelocalname CDATA #REQUIRED
 >
 <!ELEMENT FOREIGNKEY (FKITEM+)>
 <!ATTLIST KEYITEM
-	component CDATA #REQUIRED
-	paramName CDATA #REQUIRED
-	type CDATA #REQUIRED
+    component CDATA #REQUIRED
+    paramName CDATA #REQUIRED
+    type CDATA #REQUIRED
 >
 <!ELEMENT KEYITEM EMPTY>
 <!ELEMENT PRIMARYKEY (KEYITEM+)>
 <!ATTLIST TABLE
-	name CDATA #REQUIRED
-	localname CDATA #REQUIRED
-	virtuel (true | false) "false"
+    name CDATA #REQUIRED
+    localname CDATA #REQUIRED
+    virtuel (true | false) "false"
 >
 <!ELEMENT TABLE (COLUMN*, PRIMARYKEY, FOREIGNKEY*)>
 <!ATTLIST BEANDEF
-	name CDATA #REQUIRED
-	ejbtype (entity | session) "entity"
-	package CDATA #REQUIRED
-	home CDATA #REQUIRED
-	remote CDATA #REQUIRED
-	ejbclass CDATA #REQUIRED
-	primkeyclass CDATA ""
-	persistence-type (Container | Bean) "Container"
-	session-type (Stateful | Stateless) "Stateful"
+    name CDATA #REQUIRED
+    ejbtype (entity | session) "entity"
+    package CDATA #REQUIRED
+    home CDATA #REQUIRED
+    remote CDATA #REQUIRED
+    ejbclass CDATA #REQUIRED
+    primkeyclass CDATA ""
+    persistence-type (Container | Bean) "Container"
+    session-type (Stateful | Stateless) "Stateful"
 >
 <!ELEMENT BEANDEF EMPTY>
 <!ATTLIST COMPONENT
-	name CDATA #REQUIRED
-	descriptif CDATA ""
-	projetName CDATA #REQUIRED
+    name CDATA #REQUIRED
+    descriptif CDATA ""
+    projetName CDATA #REQUIRED
 >
 <!ELEMENT COMPONENT (BEANDEF+, TABLE+, FINDER*, TRANSACTION*)>

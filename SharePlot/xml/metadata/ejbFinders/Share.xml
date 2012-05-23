@@ -2,6 +2,10 @@
     <FINDER name="findAll">
         <FINDERBODY type="sql" sql_string="" buffersize="-1"/>
     </FINDER>
+    <FINDER name="findByPortfolio">
+        <INPUT name="idPortfolio" type="Long" />
+        <FINDERBODY type="sql" sql_string="where idPortfolio = ?" buffersize="-1"/>
+    </FINDER>
     <FINDER name="findByDirectSQLQuery">
         <INPUT name="sqlWhereClause" type="String" />
         <FINDERBODY type="sql" sql_string="where $$$_SQL" buffersize="-1"/>

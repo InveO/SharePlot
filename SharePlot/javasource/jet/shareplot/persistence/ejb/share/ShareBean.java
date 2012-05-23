@@ -300,6 +300,16 @@ public class ShareBean implements EntityBean {
     }
     
     /**
+     * @param idPortfolio
+     * @return Collection
+     * @throws FinderException
+     */
+     @SuppressWarnings({"hiding"})
+    public Collection<ShareRemote> ejbFindByPortfolio(Long idPortfolio) throws FinderException {
+        return null;
+    }
+    
+    /**
      * @param sqlWhereClause
      * @param sqlArguments
      * @return Collection

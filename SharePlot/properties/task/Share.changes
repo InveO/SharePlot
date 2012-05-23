@@ -1,6 +1,9 @@
 dialog.CanNotDeletePortfolio=1335815832610
+dialog.CanNotDeleteShare=1337806785338
 dialog.CanNotSavePortfolio=1335732507999
+dialog.CanNotSaveShare=1337806803561
 dialog.PortfolioNotValid=1335732586368
+dialog.ShareNotValid=1337806819317
 list.code=1335210293778
 list.entryFee=1335210356302
 list.purchaseDate=1335210317683

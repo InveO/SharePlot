@@ -5,12 +5,13 @@
 
 -->
 <TABLES>
-    <TABLE name="Portfolio">
-        <COLUMN name="idPortfolio" type="Long" length="10" nullable="false" autoincrement="true" />
-        <COLUMN name="isFake" type="String" length="1" nullable="false" autoincrement="false" />
-        <COLUMN name="name" type="String" length="45" nullable="false" autoincrement="false" />
+    <TABLE name="ShareValue">
+        <COLUMN name="idShareValue" type="Long" length="10" nullable="false" autoincrement="true" />
+        <COLUMN name="isShare" type="Long" length="10" nullable="false" autoincrement="false" />
+        <COLUMN name="value" type="java.math.BigDecimal" length="10" nullable="false" autoincrement="false" />
+        <COLUMN name="valueDate" type="java.util.Date" length="10" nullable="false" autoincrement="false" />
         <PRIMARYKEY>
-            <KEYITEM component="idPortfolio"/>
+            <KEYITEM component="idShareValue"/>
         </PRIMARYKEY>
     </TABLE>
     <TABLE name="Share">
@@ -38,13 +39,12 @@
             <KEYITEM component="idShareQuantity"/>
         </PRIMARYKEY>
     </TABLE>
-    <TABLE name="ShareValue">
-        <COLUMN name="idShareValue" type="Long" length="10" nullable="false" autoincrement="true" />
-        <COLUMN name="isShare" type="Long" length="10" nullable="false" autoincrement="false" />
-        <COLUMN name="value" type="java.math.BigDecimal" length="10" nullable="false" autoincrement="false" />
-        <COLUMN name="valueDate" type="java.util.Date" length="10" nullable="false" autoincrement="false" />
+    <TABLE name="Portfolio">
+        <COLUMN name="idPortfolio" type="Long" length="10" nullable="false" autoincrement="true" />
+        <COLUMN name="isFake" type="String" length="1" nullable="false" autoincrement="false" />
+        <COLUMN name="name" type="String" length="45" nullable="false" autoincrement="false" />
         <PRIMARYKEY>
-            <KEYITEM component="idShareValue"/>
+            <KEYITEM component="idPortfolio"/>
         </PRIMARYKEY>
     </TABLE>
 </TABLES>

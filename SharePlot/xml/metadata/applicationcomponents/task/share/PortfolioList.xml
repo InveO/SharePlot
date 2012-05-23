@@ -4,7 +4,7 @@
 	<APPLICATION_COMPONENT_CONFIG>
 	
 		<PORTFOLIO_LIST>
-<!--         	<COLUMN name="selectColumn" datamodelfield="" type="CHECKBOX" editable="true" width="0" /> -->
+        	<COLUMN name="colSelect" datamodelfield="" type="CHECKBOX" editable="true" width="0" selectall="true" />
      	    <COLUMN name="nameColumn" datamodelfield="name" type="TEXT" editable="true" width="10" localizedlabel="SharePlot/properties/desktop/Global/list.name" />
 			<COLUMN name="editColumn" datamodelfield="" type="BUTTON" editable="true" width="0" style="tableColumnButton" localizedlabel="SharePlot/properties/desktop/Global/list.edit" />
 		</PORTFOLIO_LIST>

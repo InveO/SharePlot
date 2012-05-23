@@ -73,7 +73,6 @@ public class PortfolioListNut extends AbstractSharePlotNut {
         }
         addEmptyPortfolio();
         this.uiTableListDisplay3.attachModel();
-
     }
 
     private void initPortfolioList() throws JETException {
