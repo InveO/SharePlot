@@ -20,12 +20,9 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `SharePlot`.`Share` (
   `idShare` INTEGER(10)  NOT NULL AUTO_INCREMENT ,
   `code` VARCHAR(45) NULL DEFAULT NULL  ,
-  `datePurchase` DATE  NOT NULL  ,
   `description` VARCHAR(4000) NULL DEFAULT NULL  ,
-  `entryFee` DECIMAL(12) NULL DEFAULT NULL  ,
   `idPortfolio` INTEGER(10)  NOT NULL  ,
   `name` VARCHAR(255)  NOT NULL  ,
-  `purchasePrice` DECIMAL(12)  NOT NULL  ,
   PRIMARY KEY ( `idShare`),
   INDEX `fk_Share_Portfolio` (`idPortfolio` ASC) )
 ENGINE = InnoDB;
@@ -38,10 +35,10 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `SharePlot`.`ShareQuantity` (
   `idShareQuantity` INTEGER(10)  NOT NULL AUTO_INCREMENT ,
   `changeFee` DECIMAL(12)  NOT NULL  ,
+  `changeQuantity` DECIMAL(12)  NOT NULL  ,
   `changeType` CHAR(1)  NOT NULL  ,
+  `changeValue` DECIMAL(12)  NOT NULL  ,
   `idShare` INTEGER(10)  NOT NULL  ,
-  `shareQuantity` DECIMAL(12)  NOT NULL  ,
-  `shareValue` DECIMAL(12)  NOT NULL  ,
   `valueDate` DATE  NOT NULL  ,
   PRIMARY KEY ( `idShareQuantity`),
   INDEX `fk_ShareQuantity_Share` (`idShare` ASC) )

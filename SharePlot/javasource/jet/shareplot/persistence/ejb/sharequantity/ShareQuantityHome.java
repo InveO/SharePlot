@@ -24,16 +24,16 @@ public interface ShareQuantityHome extends EJBHome {
     /**
      * @param idShareQuantity
      * @param changeFee
+     * @param changeQuantity
      * @param changeType
+     * @param changeValue
      * @param idShare
-     * @param shareQuantity
-     * @param shareValue
      * @param valueDate
      * @return ShareQuantityRemote
      * @throws CreateException
      * @throws RemoteException
      */
-    public ShareQuantityRemote create( @EJBParam(name = "idShareQuantity") Long idShareQuantity, @EJBParam(name = "changeFee") java.math.BigDecimal changeFee, @EJBParam(name = "changeType") String changeType, @EJBParam(name = "idShare") Long idShare, @EJBParam(name = "shareQuantity") java.math.BigDecimal shareQuantity, @EJBParam(name = "shareValue") java.math.BigDecimal shareValue, @EJBParam(name = "valueDate") java.util.Date valueDate) throws CreateException, RemoteException;
+    public ShareQuantityRemote create( @EJBParam(name = "idShareQuantity") Long idShareQuantity, @EJBParam(name = "changeFee") java.math.BigDecimal changeFee, @EJBParam(name = "changeQuantity") java.math.BigDecimal changeQuantity, @EJBParam(name = "changeType") String changeType, @EJBParam(name = "changeValue") java.math.BigDecimal changeValue, @EJBParam(name = "idShare") Long idShare, @EJBParam(name = "valueDate") java.util.Date valueDate) throws CreateException, RemoteException;
         
     /**
      * @param pkField
@@ -49,6 +49,14 @@ public interface ShareQuantityHome extends EJBHome {
      * @throws RemoteException
      */
     public Collection<ShareQuantityRemote> findAll() throws FinderException, RemoteException;
+    
+    /**
+     * @param idShare
+     * @return Collection
+     * @throws FinderException
+     * @throws RemoteException
+     */
+    public Collection<ShareQuantityRemote> findByShare(Long idShare) throws FinderException, RemoteException;
     
     /**
      * @param sqlWhereClause

@@ -1,0 +1,19 @@
+<DOCUMENT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="http://jet.inveo.be/ui/JETComponentExtension.xsd" >
+
+    <GENERIC name="SharePlot/xml/ui/GenericComponent.xml" />
+    
+    <GROUP name="ShareDetailForm" localizedDisplayableText="SharePlot/properties/task/Share/title.ShareDetail" scrollable="false" layoutmanager="gridbaglayout" backgroundColor="panelBackgroundColor" foregroundColor="panelForegroundColor">
+        <GROUP name="topGroup" extends="GenericTitleGroup">
+            <GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="0" />
+            <ATTRIBUTE_PARAM component="titleLabel" name="localizedDisplayableText" value="SharePlot/properties/task/Share/title.ShareDetail" />
+        </GROUP>
+        <GROUP name="toolbarGroup" layoutmanager="gridbaglayout" >
+            <BUTTON name="addChangeButton" extends="GenericButton" localizedDisplayableText="SharePlot/properties/task/Share/button.AddChange" >
+                <GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="0" fill="NONE" insetleft="5" />
+            </BUTTON>
+            <GRIDBAGCONSTRAINTS gridx="0" gridy="1" gridwidth="1" gridheight="1" weightx="1" weighty="0" fill="HORIZONTAL" insetleft="5" />
+        </GROUP>
+		<GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="1" anchor="NORTH" fill="BOTH"/>
+	</GROUP>
+</DOCUMENT>

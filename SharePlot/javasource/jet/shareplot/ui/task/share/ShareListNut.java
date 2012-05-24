@@ -1,12 +1,21 @@
 package jet.shareplot.ui.task.share;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import jet.components.ui.events.MouseEvent;
+import jet.components.ui.events.MouseEventType;
+import jet.components.ui.events.UIEvent;
+import jet.components.ui.table.common.UITableComponent2;
+import jet.framework.ui.desktop.ApplicationComponentLauncher;
 import jet.framework.util.exception.FormatedJetException;
 import jet.shareplot.ac.bo.portfolio.Portfolio;
 import jet.shareplot.ac.bo.share.Share;
 import jet.shareplot.ac.bo.share.ShareApplicationComponent;
 import jet.shareplot.ui.AbstractSharePlotListNut;
+import jet.shareplot.ui.task.TaskNameConstants;
+import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
@@ -14,6 +23,42 @@ public class ShareListNut extends AbstractSharePlotListNut<Share> {
 
     private ShareApplicationComponent shareAC;
     private Portfolio portfolio;
+
+    @Override
+    public <T extends Enum<T>> void tableCellEvent(final UITableComponent2 table, final int row, final int col, final UIEvent<T> uiEvent) {
+        if (this.tableList == table) {
+            if (uiEvent instanceof MouseEvent) {
+                // if the row is double clicked the current contact must be edited
+                final MouseEvent me = (MouseEvent) uiEvent;
+                if (me.getType() == MouseEventType.LEFT_CLICK) {
+
+                    final String colName = this.uiTableListDisplay3.getColumnName(col);
+
+                    if ("editColumn".equals(colName)) {
+                        final Share share = this.items.get(row);
+                        if (share.getIdShare() != null) {
+                            launchEditShare(share);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void launchEditShare(final Share share) {
+        final ApplicationComponentLauncher acLauncher = (ApplicationComponentLauncher) getSession().getProperty(ApplicationComponentLauncher.SESSION_KEY);
+
+        if (acLauncher != null) {
+            try {
+                final Map<String, Object> initArgs = new HashMap<String, Object>();
+                initArgs.put(ShareUIConstants.ARGUMENT_SHARE, new Share(share));
+
+                acLauncher.launchApplicationComponent(TaskNameConstants.SHARE_DETAIL, initArgs);
+            } catch (final JETException e) {
+                logp(JETLevel.SEVERE, "ShareListNut", "launchEditShare", e.getMessage(), e);
+            }
+        }
+    }
 
     @Override
     protected void preInit() throws JETException {

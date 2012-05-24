@@ -42,20 +42,6 @@ public interface ShareRemote extends EJBObject {
     
 
     /**
-     * @return java.util.Date
-     * @throws EJBException
-     * @throws RemoteException
-     */
-    public java.util.Date getDatePurchase() throws EJBException, RemoteException;
-    /**
-     * @param datePurchase
-     * @throws EJBException
-     * @throws RemoteException
-     */
-    public void setDatePurchase(java.util.Date datePurchase) throws EJBException, RemoteException;
-    
-
-    /**
      * @return String
      * @throws EJBException
      * @throws RemoteException
@@ -67,20 +53,6 @@ public interface ShareRemote extends EJBObject {
      * @throws RemoteException
      */
     public void setDescription(String description) throws EJBException, RemoteException;
-    
-
-    /**
-     * @return java.math.BigDecimal
-     * @throws EJBException
-     * @throws RemoteException
-     */
-    public java.math.BigDecimal getEntryFee() throws EJBException, RemoteException;
-    /**
-     * @param entryFee
-     * @throws EJBException
-     * @throws RemoteException
-     */
-    public void setEntryFee(java.math.BigDecimal entryFee) throws EJBException, RemoteException;
     
 
     /**
@@ -112,29 +84,12 @@ public interface ShareRemote extends EJBObject {
     
 
     /**
-     * @return java.math.BigDecimal
-     * @throws EJBException
-     * @throws RemoteException
-     */
-    public java.math.BigDecimal getPurchasePrice() throws EJBException, RemoteException;
-    /**
-     * @param purchasePrice
-     * @throws EJBException
-     * @throws RemoteException
-     */
-    public void setPurchasePrice(java.math.BigDecimal purchasePrice) throws EJBException, RemoteException;
-    
-
-    /**
      * @param code
-     * @param datePurchase
      * @param description
-     * @param entryFee
      * @param idPortfolio
      * @param name
-     * @param purchasePrice
      * @throws EJBException
      * @throws RemoteException
      */
-    public void update( String code, java.util.Date datePurchase, String description, java.math.BigDecimal entryFee, Long idPortfolio, String name, java.math.BigDecimal purchasePrice) throws EJBException, RemoteException;
+    public void update( String code, String description, Long idPortfolio, String name) throws EJBException, RemoteException;
 }

@@ -20,7 +20,7 @@ public class ShareQuantityBean implements EntityBean {
     /**
      * <code>serialVersionUID</code>
      */
-    private static final long serialVersionUID = 1238925793L;
+    private static final long serialVersionUID = 1294162755L;
 
     transient private EntityContext entityContext = null;
 
@@ -35,24 +35,24 @@ public class ShareQuantityBean implements EntityBean {
     public java.math.BigDecimal changeFee = null;
 
     /**
+     * <code>changeQuantity</code>
+     */
+    public java.math.BigDecimal changeQuantity = null;
+
+    /**
      * <code>changeType</code>
      */
     public String changeType = null;
 
     /**
+     * <code>changeValue</code>
+     */
+    public java.math.BigDecimal changeValue = null;
+
+    /**
      * <code>idShare</code>
      */
     public Long idShare = null;
-
-    /**
-     * <code>shareQuantity</code>
-     */
-    public java.math.BigDecimal shareQuantity = null;
-
-    /**
-     * <code>shareValue</code>
-     */
-    public java.math.BigDecimal shareValue = null;
 
     /**
      * <code>valueDate</code>
@@ -93,6 +93,22 @@ public class ShareQuantityBean implements EntityBean {
     }
 
     /**
+     * @return java.math.BigDecimal
+     * @throws EJBException
+     */
+    public java.math.BigDecimal getChangeQuantity() throws EJBException {
+        return this.changeQuantity;
+
+    }
+    /**
+     * @param changeQuantity
+     * @throws EJBException
+     */
+    public void setChangeQuantity(java.math.BigDecimal changeQuantity) throws EJBException {
+        this.changeQuantity = changeQuantity;
+    }
+
+    /**
      * @return String
      * @throws EJBException
      */
@@ -109,6 +125,22 @@ public class ShareQuantityBean implements EntityBean {
     }
 
     /**
+     * @return java.math.BigDecimal
+     * @throws EJBException
+     */
+    public java.math.BigDecimal getChangeValue() throws EJBException {
+        return this.changeValue;
+
+    }
+    /**
+     * @param changeValue
+     * @throws EJBException
+     */
+    public void setChangeValue(java.math.BigDecimal changeValue) throws EJBException {
+        this.changeValue = changeValue;
+    }
+
+    /**
      * @return Long
      * @throws EJBException
      */
@@ -122,38 +154,6 @@ public class ShareQuantityBean implements EntityBean {
      */
     public void setIdShare(Long idShare) throws EJBException {
         this.idShare = idShare;
-    }
-
-    /**
-     * @return java.math.BigDecimal
-     * @throws EJBException
-     */
-    public java.math.BigDecimal getShareQuantity() throws EJBException {
-        return this.shareQuantity;
-
-    }
-    /**
-     * @param shareQuantity
-     * @throws EJBException
-     */
-    public void setShareQuantity(java.math.BigDecimal shareQuantity) throws EJBException {
-        this.shareQuantity = shareQuantity;
-    }
-
-    /**
-     * @return java.math.BigDecimal
-     * @throws EJBException
-     */
-    public java.math.BigDecimal getShareValue() throws EJBException {
-        return this.shareValue;
-
-    }
-    /**
-     * @param shareValue
-     * @throws EJBException
-     */
-    public void setShareValue(java.math.BigDecimal shareValue) throws EJBException {
-        this.shareValue = shareValue;
     }
 
     /**
@@ -184,22 +184,22 @@ public class ShareQuantityBean implements EntityBean {
     /**
      * @param idShareQuantity
      * @param changeFee
+     * @param changeQuantity
      * @param changeType
+     * @param changeValue
      * @param idShare
-     * @param shareQuantity
-     * @param shareValue
      * @param valueDate
      * @return java.lang.Object
      * @throws CreateException
      */
     @SuppressWarnings({"hiding"})
-    public java.lang.Object ejbCreate( Long idShareQuantity, java.math.BigDecimal changeFee, String changeType, Long idShare, java.math.BigDecimal shareQuantity, java.math.BigDecimal shareValue, java.util.Date valueDate) throws CreateException {
+    public java.lang.Object ejbCreate( Long idShareQuantity, java.math.BigDecimal changeFee, java.math.BigDecimal changeQuantity, String changeType, java.math.BigDecimal changeValue, Long idShare, java.util.Date valueDate) throws CreateException {
         this.idShareQuantity = idShareQuantity;
         this.changeFee = changeFee;
+        this.changeQuantity = changeQuantity;
         this.changeType = changeType;
+        this.changeValue = changeValue;
         this.idShare = idShare;
-        this.shareQuantity = shareQuantity;
-        this.shareValue = shareValue;
         if (valueDate == null) {
             this.valueDate = null;
         } else {
@@ -211,15 +211,15 @@ public class ShareQuantityBean implements EntityBean {
     /**
      * @param idShareQuantity
      * @param changeFee
+     * @param changeQuantity
      * @param changeType
+     * @param changeValue
      * @param idShare
-     * @param shareQuantity
-     * @param shareValue
      * @param valueDate
      * @throws CreateException
      */
     @SuppressWarnings({"hiding"})
-    public void ejbPostCreate( Long idShareQuantity, java.math.BigDecimal changeFee, String changeType, Long idShare, java.math.BigDecimal shareQuantity, java.math.BigDecimal shareValue, java.util.Date valueDate) throws CreateException {
+    public void ejbPostCreate( Long idShareQuantity, java.math.BigDecimal changeFee, java.math.BigDecimal changeQuantity, String changeType, java.math.BigDecimal changeValue, Long idShare, java.util.Date valueDate) throws CreateException {
         assert this.entityContext != null : "this.entityContext can not be null";
         
         jet.container.managers.jdbc.interfaces.AutoGeneratedPrimaryKey _pk = (jet.container.managers.jdbc.interfaces.AutoGeneratedPrimaryKey) this.entityContext.getPrimaryKey();
@@ -242,21 +242,21 @@ public class ShareQuantityBean implements EntityBean {
 
     /**
      * @param changeFee
+     * @param changeQuantity
      * @param changeType
+     * @param changeValue
      * @param idShare
-     * @param shareQuantity
-     * @param shareValue
      * @param valueDate
      * @throws EJBException
      */
     @SuppressWarnings({"hiding"})
-    public void update( java.math.BigDecimal changeFee, String changeType, Long idShare, java.math.BigDecimal shareQuantity, java.math.BigDecimal shareValue, java.util.Date valueDate) throws EJBException {
+    public void update( java.math.BigDecimal changeFee, java.math.BigDecimal changeQuantity, String changeType, java.math.BigDecimal changeValue, Long idShare, java.util.Date valueDate) throws EJBException {
         // in the case of a m-n table this method may be empty, as pk fields can not be updated
         this.changeFee = changeFee;
+        this.changeQuantity = changeQuantity;
         this.changeType = changeType;
+        this.changeValue = changeValue;
         this.idShare = idShare;
-        this.shareQuantity = shareQuantity;
-        this.shareValue = shareValue;
         if (valueDate == null) {
             this.valueDate = null;
         } else {
@@ -270,6 +270,16 @@ public class ShareQuantityBean implements EntityBean {
      */
      @SuppressWarnings({"hiding"})
     public Collection<ShareQuantityRemote> ejbFindAll() throws FinderException {
+        return null;
+    }
+    
+    /**
+     * @param idShare
+     * @return Collection
+     * @throws FinderException
+     */
+     @SuppressWarnings({"hiding"})
+    public Collection<ShareQuantityRemote> ejbFindByShare(Long idShare) throws FinderException {
         return null;
     }
     

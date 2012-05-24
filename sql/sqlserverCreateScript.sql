@@ -35,12 +35,9 @@ GO
 CREATE TABLE [dbo].[Share](
   [idShare] [INTEGER]  NOT NULL IDENTITY(1,1) ,
   [code] [VARCHAR](45) NULL DEFAULT NULL  ,
-  [datePurchase] [datetime]  NOT NULL  ,
   [description] [VARCHAR](4000) NULL DEFAULT NULL  ,
-  [entryFee] [DECIMAL](12) NULL DEFAULT NULL  ,
   [idPortfolio] [INTEGER]  NOT NULL  ,
   [name] [VARCHAR](255)  NOT NULL  ,
-  [purchasePrice] [DECIMAL](12)  NOT NULL  ,
  CONSTRAINT [PK_Share] PRIMARY KEY NONCLUSTERED 
 (
      [idShare] ASC )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY],
@@ -59,10 +56,10 @@ GO
 CREATE TABLE [dbo].[ShareQuantity](
   [idShareQuantity] [INTEGER]  NOT NULL IDENTITY(1,1) ,
   [changeFee] [DECIMAL](12)  NOT NULL  ,
+  [changeQuantity] [DECIMAL](12)  NOT NULL  ,
   [changeType] [CHAR](1)  NOT NULL  ,
+  [changeValue] [DECIMAL](12)  NOT NULL  ,
   [idShare] [INTEGER]  NOT NULL  ,
-  [shareQuantity] [DECIMAL](12)  NOT NULL  ,
-  [shareValue] [DECIMAL](12)  NOT NULL  ,
   [valueDate] [datetime]  NOT NULL  ,
  CONSTRAINT [PK_ShareQuantity] PRIMARY KEY NONCLUSTERED 
 (

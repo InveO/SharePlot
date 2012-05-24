@@ -24,17 +24,14 @@ public interface ShareHome extends EJBHome {
     /**
      * @param idShare
      * @param code
-     * @param datePurchase
      * @param description
-     * @param entryFee
      * @param idPortfolio
      * @param name
-     * @param purchasePrice
      * @return ShareRemote
      * @throws CreateException
      * @throws RemoteException
      */
-    public ShareRemote create( @EJBParam(name = "idShare") Long idShare, @EJBParam(name = "code") String code, @EJBParam(name = "datePurchase") java.util.Date datePurchase, @EJBParam(name = "description") String description, @EJBParam(name = "entryFee") java.math.BigDecimal entryFee, @EJBParam(name = "idPortfolio") Long idPortfolio, @EJBParam(name = "name") String name, @EJBParam(name = "purchasePrice") java.math.BigDecimal purchasePrice) throws CreateException, RemoteException;
+    public ShareRemote create( @EJBParam(name = "idShare") Long idShare, @EJBParam(name = "code") String code, @EJBParam(name = "description") String description, @EJBParam(name = "idPortfolio") Long idPortfolio, @EJBParam(name = "name") String name) throws CreateException, RemoteException;
         
     /**
      * @param pkField

@@ -9,20 +9,17 @@
             <TABLE name="Share" localname="SHARE" >
                 <COLUMN name="idShare" localname="ID_SHARE" />
                 <COLUMN name="code" localname="CODE" />
-                <COLUMN name="datePurchase" localname="DATE_PURCHASE" />
                 <COLUMN name="description" localname="DESCRIPTION" />
-                <COLUMN name="entryFee" localname="ENTRY_FEE" />
                 <COLUMN name="idPortfolio" localname="ID_PORTFOLIO" />
                 <COLUMN name="name" localname="NAME" />
-                <COLUMN name="purchasePrice" localname="PURCHASE_PRICE" />
             </TABLE>
             <TABLE name="ShareQuantity" localname="SHARE_QUANTITY" >
                 <COLUMN name="idShareQuantity" localname="ID_SHARE_QUANTITY" />
                 <COLUMN name="changeFee" localname="CHANGE_FEE" />
+                <COLUMN name="changeQuantity" localname="CHANGE_QUANTITY" />
                 <COLUMN name="changeType" localname="CHANGE_TYPE" />
+                <COLUMN name="changeValue" localname="CHANGE_VALUE" />
                 <COLUMN name="idShare" localname="ID_SHARE" />
-                <COLUMN name="shareQuantity" localname="SHARE_QUANTITY" />
-                <COLUMN name="shareValue" localname="SHARE_VALUE" />
                 <COLUMN name="valueDate" localname="VALUE_DATE" />
             </TABLE>
             <TABLE name="Portfolio" localname="PORTFOLIO" >

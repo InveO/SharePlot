@@ -25,19 +25,16 @@ import jet.util.throwable.JETSystemError;
 @SuppressWarnings("PMD.MethodNamingConventions")
 public class ShareItem implements Serializable {
 
-    private static final long serialVersionUID = 1750601616L;
+    private static final long serialVersionUID = 1355887442L;
 
     private Model dataModel;
     private Logger logger;
 
     private DispatcherModel<ShareItem, Long> idShareDispatcherModel;
     private DispatcherModel<ShareItem, String> codeDispatcherModel;
-    private DispatcherModel<ShareItem, java.util.Date> datePurchaseDispatcherModel;
     private DispatcherModel<ShareItem, String> descriptionDispatcherModel;
-    private DispatcherModel<ShareItem, java.math.BigDecimal> entryFeeDispatcherModel;
     private DispatcherModel<ShareItem, Long> idPortfolioDispatcherModel;
     private DispatcherModel<ShareItem, String> nameDispatcherModel;
-    private DispatcherModel<ShareItem, java.math.BigDecimal> purchasePriceDispatcherModel;
 
     /**
      * Constructor used to create a new Share Data Model
@@ -65,17 +62,11 @@ public class ShareItem implements Serializable {
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("code");
         this.dataModel.appendChild(model);
-        model = new SimpleEventModelImpl("datePurchase");
-        this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("description");
-        this.dataModel.appendChild(model);
-        model = new SimpleEventModelImpl("entryFee");
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("idPortfolio");
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("name");
-        this.dataModel.appendChild(model);
-        model = new SimpleEventModelImpl("purchasePrice");
         this.dataModel.appendChild(model);
     }
     
@@ -113,12 +104,9 @@ public class ShareItem implements Serializable {
         
         setIdShare(share.getIdShare());
         setCode(share.getCode());
-        setDatePurchase(share.getDatePurchase());
         setDescription(share.getDescription());
-        setEntryFee(share.getEntryFee());
         setIdPortfolio(share.getIdPortfolio());
         setName(share.getName());
-        setPurchasePrice(share.getPurchasePrice());
     }
     
     /**
@@ -196,38 +184,6 @@ public class ShareItem implements Serializable {
     }
 
     /**
-     * Get node value of Data Model node datePurchase
-     * @return java.util.Date value of Data Model node datePurchase
-     */
-    public final java.util.Date getDatePurchase() {
-        return (java.util.Date) get_DatePurchase_Model().getNodeValue();
-    }
-    
-    /**
-     * Set node value of Data Model node datePurchase
-     * @param datePurchase java.util.Date value of Data Model node datePurchase
-     */
-    public final void setDatePurchase(java.util.Date datePurchase) {
-        get_DatePurchase_Model().setNodeValue(datePurchase);
-    }
-    
-    /**
-     * Get Model of Data Model node datePurchase
-     * @return Model of Data Model node datePurchase
-     */
-    public final DispatcherModel<ShareItem, java.util.Date> get_DatePurchase_Model() {
-        if (this.datePurchaseDispatcherModel == null) {
-            try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "datePurchase");
-                this.datePurchaseDispatcherModel = new DispatcherModel<ShareItem, java.util.Date>(this, sourceModel);
-            } catch (final JETException e) {
-                throw new JETSystemError("Share data model does not have a child named datePurchase. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
-            }
-        }
-        return this.datePurchaseDispatcherModel;
-    }
-
-    /**
      * Get node value of Data Model node description
      * @return String value of Data Model node description
      */
@@ -259,38 +215,6 @@ public class ShareItem implements Serializable {
             }
         }
         return this.descriptionDispatcherModel;
-    }
-
-    /**
-     * Get node value of Data Model node entryFee
-     * @return java.math.BigDecimal value of Data Model node entryFee
-     */
-    public final java.math.BigDecimal getEntryFee() {
-        return (java.math.BigDecimal) get_EntryFee_Model().getNodeValue();
-    }
-    
-    /**
-     * Set node value of Data Model node entryFee
-     * @param entryFee java.math.BigDecimal value of Data Model node entryFee
-     */
-    public final void setEntryFee(java.math.BigDecimal entryFee) {
-        get_EntryFee_Model().setNodeValue(entryFee);
-    }
-    
-    /**
-     * Get Model of Data Model node entryFee
-     * @return Model of Data Model node entryFee
-     */
-    public final DispatcherModel<ShareItem, java.math.BigDecimal> get_EntryFee_Model() {
-        if (this.entryFeeDispatcherModel == null) {
-            try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "entryFee");
-                this.entryFeeDispatcherModel = new DispatcherModel<ShareItem, java.math.BigDecimal>(this, sourceModel);
-            } catch (final JETException e) {
-                throw new JETSystemError("Share data model does not have a child named entryFee. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
-            }
-        }
-        return this.entryFeeDispatcherModel;
     }
 
     /**
@@ -360,48 +284,10 @@ public class ShareItem implements Serializable {
     }
 
     /**
-     * Get node value of Data Model node purchasePrice
-     * @return java.math.BigDecimal value of Data Model node purchasePrice
-     */
-    public final java.math.BigDecimal getPurchasePrice() {
-        return (java.math.BigDecimal) get_PurchasePrice_Model().getNodeValue();
-    }
-    
-    /**
-     * Set node value of Data Model node purchasePrice
-     * @param purchasePrice java.math.BigDecimal value of Data Model node purchasePrice
-     */
-    public final void setPurchasePrice(java.math.BigDecimal purchasePrice) {
-        get_PurchasePrice_Model().setNodeValue(purchasePrice);
-    }
-    
-    /**
-     * Get Model of Data Model node purchasePrice
-     * @return Model of Data Model node purchasePrice
-     */
-    public final DispatcherModel<ShareItem, java.math.BigDecimal> get_PurchasePrice_Model() {
-        if (this.purchasePriceDispatcherModel == null) {
-            try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "purchasePrice");
-                this.purchasePriceDispatcherModel = new DispatcherModel<ShareItem, java.math.BigDecimal>(this, sourceModel);
-            } catch (final JETException e) {
-                throw new JETSystemError("Share data model does not have a child named purchasePrice. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
-            }
-        }
-        return this.purchasePriceDispatcherModel;
-    }
-
-    /**
      * Check if any node not nullable is null
      * @return true if any node not nullable is null
      */
     public final boolean isNotNullableNull() {
-        java.util.Date datePurchase = getDatePurchase();
-        if (datePurchase == null) {
-            this.logger.logp(JETLevel.WARNING, "ShareItem", "isNotNullableNull", 
-                "datePurchase is null but is not nullable.");
-            return true;
-        }
         Long idPortfolio = getIdPortfolio();
         if (idPortfolio == null) {
             this.logger.logp(JETLevel.WARNING, "ShareItem", "isNotNullableNull", 
@@ -412,12 +298,6 @@ public class ShareItem implements Serializable {
         if (name == null) {
             this.logger.logp(JETLevel.WARNING, "ShareItem", "isNotNullableNull", 
                 "name is null but is not nullable.");
-            return true;
-        }
-        java.math.BigDecimal purchasePrice = getPurchasePrice();
-        if (purchasePrice == null) {
-            this.logger.logp(JETLevel.WARNING, "ShareItem", "isNotNullableNull", 
-                "purchasePrice is null but is not nullable.");
             return true;
         }
         return false;

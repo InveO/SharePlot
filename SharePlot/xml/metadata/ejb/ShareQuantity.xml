@@ -46,9 +46,9 @@
         <COLUMN paramName="idShare" type="Long" name="idShare" localname="idShare" dbtype="INTEGER" length="10" noOfDecimal="0" nullable="false" autoIncrement="false" />
         <COLUMN paramName="valueDate" type="java.util.Date" name="valueDate" localname="valueDate" dbtype="DATE" length="10" noOfDecimal="0" nullable="false" autoIncrement="false" />
         <COLUMN paramName="changeType" type="String" name="changeType" localname="changeType" dbtype="CHAR" length="1" noOfDecimal="0" nullable="false" autoIncrement="false" />
-        <COLUMN paramName="shareValue" type="java.math.BigDecimal" name="shareValue" localname="shareValue" dbtype="DECIMAL" length="12" noOfDecimal="2" nullable="false" autoIncrement="false" />
+        <COLUMN paramName="changeValue" type="java.math.BigDecimal" name="changeValue" localname="changeValue" dbtype="DECIMAL" length="12" noOfDecimal="2" nullable="false" autoIncrement="false" />
         <COLUMN paramName="changeFee" type="java.math.BigDecimal" name="changeFee" localname="changeFee" dbtype="DECIMAL" length="12" noOfDecimal="2" nullable="false" autoIncrement="false" />
-        <COLUMN paramName="shareQuantity" type="java.math.BigDecimal" name="shareQuantity" localname="shareQuantity" dbtype="DECIMAL" length="12" noOfDecimal="2" nullable="false" autoIncrement="false" />
+        <COLUMN paramName="changeQuantity" type="java.math.BigDecimal" name="changeQuantity" localname="changeQuantity" dbtype="DECIMAL" length="12" noOfDecimal="2" nullable="false" autoIncrement="false" />
         
         <!-- PRIMARYKEY : identifies the columns to use as primary key -->
         <PRIMARYKEY>

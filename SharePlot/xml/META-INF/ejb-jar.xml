@@ -48,16 +48,8 @@
                 <field-name>code</field-name>
             </cmp-field>
             <cmp-field>
-                <description> Desc for datePurchase</description>
-                <field-name>datePurchase</field-name>
-            </cmp-field>
-            <cmp-field>
                 <description> Desc for description</description>
                 <field-name>description</field-name>
-            </cmp-field>
-            <cmp-field>
-                <description> Desc for entryFee</description>
-                <field-name>entryFee</field-name>
             </cmp-field>
             <cmp-field>
                 <description> Desc for idPortfolio</description>
@@ -66,10 +58,6 @@
             <cmp-field>
                 <description> Desc for name</description>
                 <field-name>name</field-name>
-            </cmp-field>
-            <cmp-field>
-                <description> Desc for purchasePrice</description>
-                <field-name>purchasePrice</field-name>
             </cmp-field>
         </entity>
         <entity>
@@ -90,20 +78,20 @@
                 <field-name>changeFee</field-name>
             </cmp-field>
             <cmp-field>
+                <description> Desc for changeQuantity</description>
+                <field-name>changeQuantity</field-name>
+            </cmp-field>
+            <cmp-field>
                 <description> Desc for changeType</description>
                 <field-name>changeType</field-name>
             </cmp-field>
             <cmp-field>
+                <description> Desc for changeValue</description>
+                <field-name>changeValue</field-name>
+            </cmp-field>
+            <cmp-field>
                 <description> Desc for idShare</description>
                 <field-name>idShare</field-name>
-            </cmp-field>
-            <cmp-field>
-                <description> Desc for shareQuantity</description>
-                <field-name>shareQuantity</field-name>
-            </cmp-field>
-            <cmp-field>
-                <description> Desc for shareValue</description>
-                <field-name>shareValue</field-name>
             </cmp-field>
             <cmp-field>
                 <description> Desc for valueDate</description>

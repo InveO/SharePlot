@@ -47,9 +47,6 @@
         <COLUMN paramName="name" type="String" name="name" localname="name" dbtype="VARCHAR" length="255" noOfDecimal="0" nullable="false" autoIncrement="false" />
         <COLUMN paramName="description" type="String" name="description" localname="description" dbtype="VARCHAR" length="4000" noOfDecimal="0" nullable="true" autoIncrement="false" />
         <COLUMN paramName="code" type="String" name="code" localname="code" dbtype="VARCHAR" length="45" noOfDecimal="0" nullable="true" autoIncrement="false" />
-        <COLUMN paramName="datePurchase" type="java.util.Date" name="datePurchase" localname="datePurchase" dbtype="DATE" length="10" noOfDecimal="0" nullable="false" autoIncrement="false" />
-        <COLUMN paramName="purchasePrice" type="java.math.BigDecimal" name="purchasePrice" localname="purchasePrice" dbtype="DECIMAL" length="12" noOfDecimal="2" nullable="false" autoIncrement="false" />
-        <COLUMN paramName="entryFee" type="java.math.BigDecimal" name="entryFee" localname="entryFee" dbtype="DECIMAL" length="12" noOfDecimal="2" nullable="true" autoIncrement="false" />
         
         <!-- PRIMARYKEY : identifies the columns to use as primary key -->
         <PRIMARYKEY>
