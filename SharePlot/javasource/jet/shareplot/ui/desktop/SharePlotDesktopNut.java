@@ -5,14 +5,18 @@ import java.util.List;
 import java.util.Map;
 
 import jet.components.interfaces.ApplicationComponent;
+import jet.components.ui.common.common.UIComponent;
 import jet.components.ui.container.common.UIContainerComponent;
 import jet.components.ui.label.common.UILabelComponent;
 import jet.container.managers.session.interfaces.SessionManagerContext;
 import jet.container.managers.ui.interfaces.UIComponentFinder;
+import jet.container.nuts.ui.FrameClosingHandler;
 import jet.container.nuts.ui.UIAnchorService;
+import jet.container.nuts.ui.UINut;
 import jet.framework.component.SelectStoreProvider;
 import jet.framework.ui.desktop.AbstractDesktopNut;
 import jet.framework.ui.desktop.ApplicationComponentLauncher;
+import jet.framework.ui.desktop.DesktopFrameClosingHandler;
 import jet.framework.ui.desktop.navigation.menu.DesktopMenuPlugin;
 import jet.framework.ui.desktop.navigation.menu.DesktopMenuPluginListener;
 import jet.framework.ui.desktop.navigation.menu.LaunchACMenuPlugin;
@@ -31,7 +35,7 @@ import jet.util.throwable.JETException;
  * @author drobinson
  * 
  */
-public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMenuPluginListener, LaunchACMenuPluginListener {
+public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMenuPluginListener, LaunchACMenuPluginListener, FrameClosingHandler {
 
     private static final long serialVersionUID = 4588448882094005306L;
     private static final String EDITOR_GROUP = "bodyGroup";
@@ -76,6 +80,8 @@ public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMe
         this.launchACMenuPlugin.setLaunchACMenuPluginListener(this);
 
         addAnchorToAnchorService(getUIAnchorService(), ANCHOR_EDITOR, EDITOR_GROUP);
+        // Adding the frame closing handler will force the display of the close buttons in the tabs
+        getUIAnchorService().setFrameClosingHandler(new DesktopFrameClosingHandler());
 
         final SharePlotACLauncher shareplotACLauncher = new SharePlotACLauncher(this.launchACMenuPlugin, this.childApplicationComponents, getApplicationComponent());
         getSession().setProperty(ApplicationComponentLauncher.SESSION_KEY, shareplotACLauncher);
@@ -133,6 +139,16 @@ public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMe
         // nothing to do
         initMap.put(UIAnchorService.PARAM_FRAME_HEIGHT, Integer.valueOf(480));
         initMap.put(UIAnchorService.PARAM_FRAME_WIDTH, Integer.valueOf(640));
+    }
+
+    public void addFrame(final UIComponent uiComponent, final UINut requestingNut) {
+        // TODO Auto-generated method stub
+
+    }
+
+    public void removeFrame(final UIComponent uiComponent) {
+        // TODO Auto-generated method stub
+
     }
 
 }

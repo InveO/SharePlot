@@ -44,6 +44,17 @@
 <!--         <COLOR name="buttonsFlatRolloverBorderColor" red="100" green="100" blue="100" /> -->
         <!-- END BUTTONS COLORS -->
         
+        <!--  MAIN TABS COLORS -->
+        <GRADIENTCOLOR name="tabsGradientBG" red1="180" green1="180" blue1="180" red2="115" green2="115" blue2="115" orientation="vertical" />
+        <COLOR name="tabsForeground" red="255" green="255" blue="255" />
+        <GRADIENTCOLOR name="selectedTabGradientBG" red1="114" green1="182" blue1="255" red2="30" green2="109" blue2="205" orientation="vertical" />
+        <COLOR name="selectedTabForeground" red="255" green="255" blue="255" />
+        <COLOR name="tabRolloverForegreound" red="30" green="109" blue="205" />
+        <COLOR name="selectedTabRolloverForegreound" red="30" green="109" blue="205" />
+        <GRADIENTCOLOR name="tabRolloverBackgreound" red1="255" green1="255" blue1="255" red2="240" green2="240" blue2="240" orientation="vertical" />
+        <GRADIENTCOLOR name="selectedTabRolloverBackgreound" red1="255" green1="255" blue1="255" red2="240" green2="240" blue2="240" orientation="vertical" />
+        <!--  END MAIN TABS COLORS -->
+        
         
         
         

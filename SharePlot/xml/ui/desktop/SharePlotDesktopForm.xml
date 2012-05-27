@@ -10,9 +10,12 @@
 			</GROUP>
 			<GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="0" anchor="NORTH" fill="HORIZONTAL" />
 		</GROUP>
-        <GROUP name="bodyGroup" >
+		<TABBEDPANE name="bodyGroup" extends="EmptyOpaqueTabbedpane">
 			<GRIDBAGCONSTRAINTS gridx="0" gridy="1" gridwidth="1" gridheight="1" weightx="1" weighty="1" anchor="NORTH" fill="BOTH" insettop="15" />
-        </GROUP>
+		</TABBEDPANE>
+<!--         <GROUP name="bodyGroup" > -->
+<!-- 			<GRIDBAGCONSTRAINTS gridx="0" gridy="1" gridwidth="1" gridheight="1" weightx="1" weighty="1" anchor="NORTH" fill="BOTH" insettop="15" /> -->
+<!--         </GROUP> -->
 		<GROUP name="statusBarGroup" preferredheight="20" preferredwidth="200" >
 			<LABEL name="labelVersion" alignment="left" localizedDisplayableText="SharePlot/properties/desktop/Global/label.Version" >
 				<GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="1" insetleft="3" anchor="SOUTHWEST" fill="NONE" />
