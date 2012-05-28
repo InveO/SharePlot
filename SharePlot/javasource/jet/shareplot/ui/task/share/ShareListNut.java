@@ -10,12 +10,15 @@ import jet.components.ui.events.UIEvent;
 import jet.components.ui.table.common.UITableComponent2;
 import jet.framework.ui.desktop.ApplicationComponentLauncher;
 import jet.framework.util.exception.FormatedJetException;
+import jet.framework.util.ui.LocalizedMessageFormatDisplayable;
 import jet.shareplot.ac.bo.portfolio.Portfolio;
 import jet.shareplot.ac.bo.share.Share;
 import jet.shareplot.ac.bo.share.ShareApplicationComponent;
 import jet.shareplot.ui.AbstractSharePlotListNut;
+import jet.shareplot.ui.desktop.SharePlotACLauncher;
 import jet.shareplot.ui.task.TaskNameConstants;
 import jet.util.logger.JETLevel;
+import jet.util.models.interfaces.Displayable;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
@@ -52,6 +55,7 @@ public class ShareListNut extends AbstractSharePlotListNut<Share> {
             try {
                 final Map<String, Object> initArgs = new HashMap<String, Object>();
                 initArgs.put(ShareUIConstants.ARGUMENT_SHARE, new Share(share));
+                initArgs.put(SharePlotACLauncher.AC_KEY_PARAMETER, new ShareDetailNutKey(share.getIdShare()));
 
                 acLauncher.launchApplicationComponent(TaskNameConstants.SHARE_DETAIL, initArgs);
             } catch (final JETException e) {
@@ -64,6 +68,10 @@ public class ShareListNut extends AbstractSharePlotListNut<Share> {
     protected void preInit() throws JETException {
         this.portfolio = (Portfolio) getApplicationComponent().getProperty(ShareUIConstants.ARGUMENT_PORTFOLIO);
         this.shareAC = ShareApplicationComponent.getInstance(getSession());
+
+        final Object[] objects = { this.portfolio.getName() };
+        final Displayable displayable = new LocalizedMessageFormatDisplayable("SharePlot/properties/task/Share/title.ShareListName", objects);
+        setHeaderTitle(displayable);
     }
 
     @Override

@@ -11,6 +11,7 @@ import jet.framework.util.ui.LocalizedMessageFormatDisplayable;
 import jet.lifecycle.annotations.Initializer;
 import jet.shareplot.ac.bo.share.Share;
 import jet.shareplot.ui.AbstractSharePlotNut;
+import jet.shareplot.ui.desktop.SharePlotACLauncher;
 import jet.shareplot.ui.task.TaskNameConstants;
 import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Displayable;
@@ -27,7 +28,7 @@ public class ShareDetailNut extends AbstractSharePlotNut {
         this.share = (Share) getApplicationComponent().getProperty(ShareUIConstants.ARGUMENT_SHARE);
 
         final Object[] args = { this.share.getName() };
-        final Displayable titleDisp = new LocalizedMessageFormatDisplayable("SharePlot/properties/task/Share/title.ShareDetail", args);
+        final Displayable titleDisp = new LocalizedMessageFormatDisplayable("SharePlot/properties/task/Share/title.ShareDetailName", args);
         setHeaderTitle(titleDisp);
 
         this.addChangeButton = (UIButtonComponent) UIComponentFinder.findComponent("addChangeButton", getMainComponent());
@@ -47,6 +48,7 @@ public class ShareDetailNut extends AbstractSharePlotNut {
             try {
                 final Map<String, Object> initArgs = new HashMap<String, Object>();
                 initArgs.put(ShareUIConstants.ARGUMENT_SHARE, new Share(share));
+                initArgs.put(SharePlotACLauncher.AC_KEY_PARAMETER, new ShareQuantityListNutKey(share.getIdShare()));
 
                 acLauncher.launchApplicationComponent(TaskNameConstants.SHARE_QUANTITY, initArgs);
             } catch (final JETException e) {

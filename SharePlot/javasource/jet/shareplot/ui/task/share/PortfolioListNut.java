@@ -13,6 +13,7 @@ import jet.framework.util.exception.FormatedJetException;
 import jet.shareplot.ac.bo.portfolio.Portfolio;
 import jet.shareplot.ac.bo.portfolio.PortfolioApplicationComponent;
 import jet.shareplot.ui.AbstractSharePlotListNut;
+import jet.shareplot.ui.desktop.SharePlotACLauncher;
 import jet.shareplot.ui.task.TaskNameConstants;
 import jet.shareplot.util.BooleanConstants;
 import jet.util.logger.JETLevel;
@@ -51,6 +52,7 @@ public class PortfolioListNut extends AbstractSharePlotListNut<Portfolio> {
             try {
                 final Map<String, Object> initArgs = new HashMap<String, Object>();
                 initArgs.put(ShareUIConstants.ARGUMENT_PORTFOLIO, new Portfolio(portfolio));
+                initArgs.put(SharePlotACLauncher.AC_KEY_PARAMETER, new ShareListNutKey(portfolio.getIdPortfolio()));
 
                 acLauncher.launchApplicationComponent(TaskNameConstants.SHARE_LIST, initArgs);
             } catch (final JETException e) {

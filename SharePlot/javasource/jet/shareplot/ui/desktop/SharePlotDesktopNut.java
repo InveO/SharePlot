@@ -5,14 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import jet.components.interfaces.ApplicationComponent;
-import jet.components.ui.common.common.UIComponent;
 import jet.components.ui.container.common.UIContainerComponent;
 import jet.components.ui.label.common.UILabelComponent;
 import jet.container.managers.session.interfaces.SessionManagerContext;
 import jet.container.managers.ui.interfaces.UIComponentFinder;
-import jet.container.nuts.ui.FrameClosingHandler;
 import jet.container.nuts.ui.UIAnchorService;
-import jet.container.nuts.ui.UINut;
 import jet.framework.component.SelectStoreProvider;
 import jet.framework.ui.desktop.AbstractDesktopNut;
 import jet.framework.ui.desktop.ApplicationComponentLauncher;
@@ -21,6 +18,8 @@ import jet.framework.ui.desktop.navigation.menu.DesktopMenuPlugin;
 import jet.framework.ui.desktop.navigation.menu.DesktopMenuPluginListener;
 import jet.framework.ui.desktop.navigation.menu.LaunchACMenuPlugin;
 import jet.framework.ui.desktop.navigation.menu.LaunchACMenuPluginListener;
+import jet.framework.ui.desktop.navigation.menu.SwitchWindowMenuPlugin;
+import jet.framework.ui.desktop.navigation.menu.TaskUnicityPlugin;
 import jet.framework.util.desktop.navigation.menu.ActionModel;
 import jet.framework.util.desktop.navigation.menu.MenuItemModel;
 import jet.lifecycle.annotations.Deinitializer;
@@ -35,7 +34,7 @@ import jet.util.throwable.JETException;
  * @author drobinson
  * 
  */
-public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMenuPluginListener, LaunchACMenuPluginListener, FrameClosingHandler {
+public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMenuPluginListener, LaunchACMenuPluginListener {
 
     private static final long serialVersionUID = 4588448882094005306L;
     private static final String EDITOR_GROUP = "bodyGroup";
@@ -52,6 +51,8 @@ public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMe
     private DesktopMenuPlugin desktopMenuPlugin;
     private final List<ApplicationComponent> childApplicationComponents = new ArrayList<ApplicationComponent>();
     private LaunchACMenuPlugin launchACMenuPlugin;
+    private SwitchWindowMenuPlugin switchWindowPlugin;
+    private TaskUnicityPlugin taskUnicityPlugin;
 
     /**
      * Init, internal use only
@@ -79,11 +80,14 @@ public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMe
         this.launchACMenuPlugin = new LaunchACMenuPlugin(ANCHOR_EDITOR, getLogger());
         this.launchACMenuPlugin.setLaunchACMenuPluginListener(this);
 
+        this.switchWindowPlugin = new SwitchWindowMenuPlugin(this.childApplicationComponents, getUIAnchorService(), ANCHOR_EDITOR);
+        this.taskUnicityPlugin = new TaskUnicityPlugin(this.switchWindowPlugin, getApplicationName(), getLogger());
+
         addAnchorToAnchorService(getUIAnchorService(), ANCHOR_EDITOR, EDITOR_GROUP);
         // Adding the frame closing handler will force the display of the close buttons in the tabs
         getUIAnchorService().setFrameClosingHandler(new DesktopFrameClosingHandler());
 
-        final SharePlotACLauncher shareplotACLauncher = new SharePlotACLauncher(this.launchACMenuPlugin, this.childApplicationComponents, getApplicationComponent());
+        final SharePlotACLauncher shareplotACLauncher = new SharePlotACLauncher(this.launchACMenuPlugin, this.childApplicationComponents, getApplicationComponent(), this.taskUnicityPlugin, this.switchWindowPlugin);
         getSession().setProperty(ApplicationComponentLauncher.SESSION_KEY, shareplotACLauncher);
 
         final UILabelComponent versionLabel = (UILabelComponent) UIComponentFinder.findComponent("labelVersionNumber", getMainComponent());
@@ -121,10 +125,16 @@ public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMe
 
         final String actionType = action.getType();
         if (LaunchACMenuPlugin.ACTION_TYPE.equals(actionType)) {
-            final ApplicationComponent ac = this.launchACMenuPlugin.performACLaunch(action, this);
-            if (ac != null) {
-                this.childApplicationComponents.add(ac);
-                ac.setProperty(PROPERTY_MENU_ITEM, menuItemModel);
+            final TaskUnicityPlugin.UnicityKey unicityKey = this.taskUnicityPlugin.switchToExistingInstance(action);
+
+            if (!unicityKey.hasInstance()) {
+                final ApplicationComponent ac = this.launchACMenuPlugin.performACLaunch(action, this);
+                if (ac != null) {
+                    this.childApplicationComponents.add(ac);
+                    ac.setProperty(PROPERTY_MENU_ITEM, menuItemModel);
+                    this.taskUnicityPlugin.addInstance(unicityKey.getActionKey(), ac);
+                    this.switchWindowPlugin.addSwitchWindowMenuItem(ac);
+                }
             }
         }
     }
@@ -132,6 +142,8 @@ public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMe
     @Override
     public void childACDeinitializeCleanup(final ApplicationComponent ac) {
         this.childApplicationComponents.remove(ac);
+        this.taskUnicityPlugin.removeActionKey(ac);
+        this.switchWindowPlugin.removeSwitchWindowMenuItem(ac);
     }
 
     @Override
@@ -139,16 +151,6 @@ public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMe
         // nothing to do
         initMap.put(UIAnchorService.PARAM_FRAME_HEIGHT, Integer.valueOf(480));
         initMap.put(UIAnchorService.PARAM_FRAME_WIDTH, Integer.valueOf(640));
-    }
-
-    public void addFrame(final UIComponent uiComponent, final UINut requestingNut) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void removeFrame(final UIComponent uiComponent) {
-        // TODO Auto-generated method stub
-
     }
 
 }

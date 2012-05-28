@@ -3,10 +3,12 @@ package jet.shareplot.ui.task.share;
 import java.util.List;
 
 import jet.framework.util.exception.FormatedJetException;
+import jet.framework.util.ui.LocalizedMessageFormatDisplayable;
 import jet.shareplot.ac.bo.share.Share;
 import jet.shareplot.ac.bo.sharequantity.ShareQuantity;
 import jet.shareplot.ac.bo.sharequantity.ShareQuantityApplicationComponent;
 import jet.shareplot.ui.AbstractSharePlotListNut;
+import jet.util.models.interfaces.Displayable;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
@@ -19,6 +21,10 @@ public class ShareQuantityListNut extends AbstractSharePlotListNut<ShareQuantity
     protected void preInit() throws JETException {
         this.share = (Share) getApplicationComponent().getProperty(ShareUIConstants.ARGUMENT_SHARE);
         this.shareQuantityAC = ShareQuantityApplicationComponent.getInstance(getSession());
+
+        final Object[] objects = { this.share.getName() };
+        final Displayable displayable = new LocalizedMessageFormatDisplayable("SharePlot/properties/task/Share/title.ShareQuantityListName", objects);
+        setHeaderTitle(displayable);
     }
 
     @Override

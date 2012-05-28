@@ -6,6 +6,7 @@
         <!-- DOMAIN MENU -->
         <action id="Shares.Shares" label="SharePlot/properties/desktop/Menu/item.Shares" type="LaunchAC"  >
             <parameter name="component" value="PortfolioList" />
+            <parameter name="keyclass" value="jet.shareplot.ui.task.share.PortfolioListNutKey" />
         </action>
         
     </MENUACTIONS>

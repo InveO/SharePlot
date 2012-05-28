@@ -50,7 +50,7 @@ public class ShareQuantity extends ShareQuantityItem {
 
     public void save() throws FormatedJetException {
         if (isValid()) {
-            final StoreNut storeNut = this.shareQuantityAC.getStoreNut(SelectStoreApplicationComponent.PORTFOLIO_STORE);
+            final StoreNut storeNut = this.shareQuantityAC.getStoreNut(SelectStoreApplicationComponent.SHAREQUANTITY_STORE);
             try {
                 if (isNew()) {
                     storeNut.createDataModel(get_Model());
@@ -74,7 +74,7 @@ public class ShareQuantity extends ShareQuantityItem {
 
     public void delete() throws FormatedJetException {
         if (!isNew()) {
-            final StoreNut storeNut = this.shareQuantityAC.getStoreNut(SelectStoreApplicationComponent.PORTFOLIO_STORE);
+            final StoreNut storeNut = this.shareQuantityAC.getStoreNut(SelectStoreApplicationComponent.SHAREQUANTITY_STORE);
             try {
                 storeNut.removeDataModel(get_Model());
             } catch (final FinderObjectNotFoundException e) {
