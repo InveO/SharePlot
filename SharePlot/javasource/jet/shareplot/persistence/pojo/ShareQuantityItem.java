@@ -5,6 +5,8 @@ import java.io.Serializable;
 import jet.framework.manager.datamodel.interfaces.DataModelRootNode;
 import jet.framework.util.models.ModelHelper;
 import jet.framework.util.pojo2.DispatcherModel;
+import jet.framework.util.pojo2.Pojo2ErrorHandler;
+import jet.framework.util.pojo2.Pojo2ErrorHandlerProvider;
 import jet.framework.util.pojo2.interceptor.StringLengthInterceptor;
 import jet.util.logger.JETLevel;
 import jet.util.logger.JETLoggerManager;
@@ -23,7 +25,7 @@ import jet.util.throwable.JETSystemError;
  * @author JetToolsFramework
  */
 @SuppressWarnings("PMD.MethodNamingConventions")
-public class ShareQuantityItem implements Serializable {
+public class ShareQuantityItem implements Serializable, Pojo2ErrorHandlerProvider {
 
     private static final long serialVersionUID = 1294162755L;
 
@@ -37,6 +39,8 @@ public class ShareQuantityItem implements Serializable {
     private DispatcherModel<ShareQuantityItem, java.math.BigDecimal> changeValueDispatcherModel;
     private DispatcherModel<ShareQuantityItem, Long> idShareDispatcherModel;
     private DispatcherModel<ShareQuantityItem, java.util.Date> valueDateDispatcherModel;
+
+    private Pojo2ErrorHandler pojo2ErrorHandler;
 
     /**
      * Constructor used to create a new ShareQuantity Data Model
@@ -116,7 +120,17 @@ public class ShareQuantityItem implements Serializable {
         setIdShare(shareQuantity.getIdShare());
         setValueDate(shareQuantity.getValueDate());
     }
-    
+
+    @Override
+    public void setPojo2ErrorHandler(final Pojo2ErrorHandler pojo2ErrorHandler) {
+        this.pojo2ErrorHandler = pojo2ErrorHandler;
+    }
+
+    @Override
+    public Pojo2ErrorHandler getPojo2ErrorHandler() {
+        return this.pojo2ErrorHandler;
+    }
+
     /**
      * Get the ShareQuantity Data Model that is wrapped in this pojo
      * @return ShareQuantity Data Model

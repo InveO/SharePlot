@@ -10,7 +10,7 @@
 			<COLUMN name="priceColumn" datamodelfield="changeValue" type="NUMBER" class="java.math.BigDecimal" editable="true" width="0" localizedlabel="SharePlot/properties/task/Share/list.changePrice" />
 			<COLUMN name="feeColumn" datamodelfield="changeFee" type="NUMBER" class="java.math.BigDecimal" editable="true" width="0" localizedlabel="SharePlot/properties/task/Share/list.changeFee" />
 			<COLUMN name="quantityColumn" datamodelfield="changeQuantity" type="NUMBER" class="java.math.BigDecimal" editable="true" width="0" localizedlabel="SharePlot/properties/task/Share/list.changeQuantity" />
-			<COLUMN name="editColumn" datamodelfield="" type="BUTTON" editable="true" width="0" style="tableColumnButton" localizedlabel="SharePlot/properties/desktop/Global/list.edit" />
+<!-- 			<COLUMN name="editColumn" datamodelfield="" type="BUTTON" editable="true" width="0" style="tableColumnButton" localizedlabel="SharePlot/properties/desktop/Global/list.edit" /> -->
 		</QUANTITY_LIST>
 
 	</APPLICATION_COMPONENT_CONFIG>

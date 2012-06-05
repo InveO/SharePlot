@@ -5,6 +5,8 @@ import java.io.Serializable;
 import jet.framework.manager.datamodel.interfaces.DataModelRootNode;
 import jet.framework.util.models.ModelHelper;
 import jet.framework.util.pojo2.DispatcherModel;
+import jet.framework.util.pojo2.Pojo2ErrorHandler;
+import jet.framework.util.pojo2.Pojo2ErrorHandlerProvider;
 import jet.framework.util.pojo2.interceptor.StringLengthInterceptor;
 import jet.util.logger.JETLevel;
 import jet.util.logger.JETLoggerManager;
@@ -23,7 +25,7 @@ import jet.util.throwable.JETSystemError;
  * @author JetToolsFramework
  */
 @SuppressWarnings("PMD.MethodNamingConventions")
-public class PortfolioItem implements Serializable {
+public class PortfolioItem implements Serializable, Pojo2ErrorHandlerProvider {
 
     private static final long serialVersionUID = 993423458L;
 
@@ -33,6 +35,8 @@ public class PortfolioItem implements Serializable {
     private DispatcherModel<PortfolioItem, Long> idPortfolioDispatcherModel;
     private DispatcherModel<PortfolioItem, String> isFakeDispatcherModel;
     private DispatcherModel<PortfolioItem, String> nameDispatcherModel;
+
+    private Pojo2ErrorHandler pojo2ErrorHandler;
 
     /**
      * Constructor used to create a new Portfolio Data Model
@@ -100,7 +104,17 @@ public class PortfolioItem implements Serializable {
         setIsFake(portfolio.getIsFake());
         setName(portfolio.getName());
     }
-    
+
+    @Override
+    public void setPojo2ErrorHandler(final Pojo2ErrorHandler pojo2ErrorHandler) {
+        this.pojo2ErrorHandler = pojo2ErrorHandler;
+    }
+
+    @Override
+    public Pojo2ErrorHandler getPojo2ErrorHandler() {
+        return this.pojo2ErrorHandler;
+    }
+
     /**
      * Get the Portfolio Data Model that is wrapped in this pojo
      * @return Portfolio Data Model

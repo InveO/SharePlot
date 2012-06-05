@@ -131,7 +131,6 @@
         <copy todir="${jars_dest}/../configs/shareplot_conf/ocr" >
             <fileset dir="conf/ocr" includes="**/*" />
         </copy>
-    	-->
     	
     	<mkdir dir="conf/JetServlet" />
         <echo message="Updating war file" />
@@ -140,6 +139,7 @@
             <fileset dir="conf/JetServlet" includes="**/*" excludes="**/CVS/**" />
         </war>
     	<delete dir="conf/JetServlet" />
+    	-->
     </target>
 	
     <target name="chkLocalProps">
@@ -171,7 +171,7 @@
             <fileset dir="${local_conf}/wrapper" includes="**/*" excludes="**CVS**" />
         </copy>
 
-        <copy file="${jars_dest}/../JetServlet/jet-servlet.war" tofile="${web_apps_dir}/jet-servlet.war" overwrite="true" />
+        <copy file="${jars_dest}/../JetServlet/jet-servlet.war" tofile="${web_apps_dir}/shareplot.war" overwrite="true" />
         <echo message="Touching files that are to be included in war" />
         <tstamp>
             <format property="touch.time" pattern="MM/dd/yyyy hh:mm aa"/>
@@ -180,7 +180,7 @@
             <fileset dir="${local_conf}/JetServlet" includes="**/*" excludes="**/CVS/**" />
         </touch>
         <echo message="Updating war file" />
-        <war destfile="${web_apps_dir}/jet-servlet.war" update="true"  >
+        <war destfile="${web_apps_dir}/shareplot.war" update="true"  >
             <fileset dir="${local_conf}/JetServlet" includes="**/*" excludes="**/CVS/**" />
         </war>
     </target>

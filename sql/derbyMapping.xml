@@ -1,16 +1,8 @@
     <MAPPING_LIST>
         <MAPPING database="SharePlot">
-            <TABLE name="ShareValue" localname="SHARE_VALUE" >
-                <COLUMN name="idShareValue" localname="ID_SHARE_VALUE" />
-                <COLUMN name="isShare" localname="IS_SHARE" />
-                <COLUMN name="value" localname="VALUE" />
-                <COLUMN name="valueDate" localname="VALUE_DATE" />
-            </TABLE>
-            <TABLE name="Share" localname="SHARE" >
-                <COLUMN name="idShare" localname="ID_SHARE" />
-                <COLUMN name="code" localname="CODE" />
-                <COLUMN name="description" localname="DESCRIPTION" />
+            <TABLE name="Portfolio" localname="PORTFOLIO" >
                 <COLUMN name="idPortfolio" localname="ID_PORTFOLIO" />
+                <COLUMN name="isFake" localname="IS_FAKE" />
                 <COLUMN name="name" localname="NAME" />
             </TABLE>
             <TABLE name="ShareQuantity" localname="SHARE_QUANTITY" >
@@ -22,10 +14,18 @@
                 <COLUMN name="idShare" localname="ID_SHARE" />
                 <COLUMN name="valueDate" localname="VALUE_DATE" />
             </TABLE>
-            <TABLE name="Portfolio" localname="PORTFOLIO" >
+            <TABLE name="Share" localname="SHARE" >
+                <COLUMN name="idShare" localname="ID_SHARE" />
+                <COLUMN name="code" localname="CODE" />
+                <COLUMN name="description" localname="DESCRIPTION" />
                 <COLUMN name="idPortfolio" localname="ID_PORTFOLIO" />
-                <COLUMN name="isFake" localname="IS_FAKE" />
                 <COLUMN name="name" localname="NAME" />
+            </TABLE>
+            <TABLE name="ShareValue" localname="SHARE_VALUE" >
+                <COLUMN name="idShareValue" localname="ID_SHARE_VALUE" />
+                <COLUMN name="isShare" localname="IS_SHARE" />
+                <COLUMN name="value" localname="VALUE" />
+                <COLUMN name="valueDate" localname="VALUE_DATE" />
             </TABLE>
         </MAPPING>
     </MAPPING_LIST>

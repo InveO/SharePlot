@@ -14,53 +14,53 @@ import jet.util.throwable.JETException;
 
 /**
  * Implementation of the AbstractSelectStoreApplicationComponent class
- * 
+ *
  * This is a generated file and should not be modified.
  *
  * @author JetTools
- * 
+ *
  */
 public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicationComponent {
 
     /**
-     * ${value}
+     * {@value}
      */
     public final static String PORTFOLIO_SELECT = "PortfolioSelect";
     /**
-     * ${value}
+     * {@value}
      */
     public final static String PORTFOLIO_STORE = "PortfolioStore";
-        
+
     /**
-     * ${value}
+     * {@value}
      */
     public final static String SHARE_SELECT = "ShareSelect";
     /**
-     * ${value}
+     * {@value}
      */
     public final static String SHARE_STORE = "ShareStore";
-        
+
     /**
-     * ${value}
+     * {@value}
      */
     public final static String SHAREQUANTITY_SELECT = "ShareQuantitySelect";
     /**
-     * ${value}
+     * {@value}
      */
     public final static String SHAREQUANTITY_STORE = "ShareQuantityStore";
-        
+
     /**
-     * ${value}
+     * {@value}
      */
     public final static String SHAREVALUE_SELECT = "ShareValueSelect";
     /**
-     * ${value}
+     * {@value}
      */
     public final static String SHAREVALUE_STORE = "ShareValueStore";
-        
+
 
     private static final long serialVersionUID = -8890923097443600938L;
-    
+
     /**
      * <code>INTERNAL_SESSION_KEY</code> session key
      */
@@ -73,10 +73,10 @@ public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicat
     /**
      * Get an instance of a SelectStoreApplicationComponent. This method will ensure that the same instance is
      * used within the same session.
-     * 
+     *
      * The <code>SelectStoreApplicationComponent</code> should not be deinitialized. This will be done
      * automatically when the session is closed.
-     * 
+     *
      * @param session Session this <code>SelectStoreApplicationComponent</code> is to be linked to
      * @return SelectStoreApplicationComponent Instantiated SelectStoreApplicationComponent
      * @throws JETException
@@ -110,10 +110,10 @@ public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicat
 
         return currentAC;
     }
-    
+
     /**
      * Deinit, internal use only
-     * 
+     *
      * @throws JETException
      */
     @Deinitializer
