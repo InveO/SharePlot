@@ -5,6 +5,7 @@ import jet.framework.nuts.store.StoreNut;
 import jet.framework.util.exception.FormatedJetException;
 import jet.shareplot.ac.SelectStoreApplicationComponent;
 import jet.shareplot.persistence.pojo.PortfolioItem;
+import jet.shareplot.ui.desktop.pojo2.SharePlotErrorHandler;
 import jet.shareplot.util.TextUtils;
 import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Model;
@@ -28,16 +29,19 @@ public class Portfolio extends PortfolioItem {
     public Portfolio(final PortfolioApplicationComponent portfolioAC) {
         super();
         this.portfolioAC = portfolioAC;
+        setPojo2ErrorHandler(new SharePlotErrorHandler(this.portfolioAC.getSession()));
     }
 
     public Portfolio(final Model model, final PortfolioApplicationComponent portfolioAC) {
         super(model);
         this.portfolioAC = portfolioAC;
+        setPojo2ErrorHandler(new SharePlotErrorHandler(this.portfolioAC.getSession()));
     }
 
     public Portfolio(final Portfolio portfolio) {
         super(portfolio);
         this.portfolioAC = portfolio.portfolioAC;
+        setPojo2ErrorHandler(new SharePlotErrorHandler(this.portfolioAC.getSession()));
     }
 
     public boolean isValid() {

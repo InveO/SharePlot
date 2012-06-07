@@ -8,9 +8,10 @@
         <!-- <COLOR name="red" red="255" green="0" blue="0" /> -->
         
         <!-- EDITOR COLORS -->
-        <COLOR name="labelColor" red="77" green="77" blue="77" />
         <COLOR name="editorBackColor" red="250" green="250" blue="250" />
         <COLOR name="editorForeColor" red="77" green="77" blue="77" />
+        <COLOR name="labelColor" red="77" green="77" blue="77" />
+        <COLOR name="labelRedColor" red="255" green="0" blue="0" />
         <!-- PANEL HEADER COLORS -->
         <COLOR name="editorHeaderBackColor" red="255" green="255" blue="255" />   
         <COLOR name="editorHeaderForeColor" red="77" green="77" blue="77" />      
@@ -55,7 +56,16 @@
         <GRADIENTCOLOR name="selectedTabRolloverBackgreound" red1="255" green1="255" blue1="255" red2="240" green2="240" blue2="240" orientation="vertical" />
         <!--  END MAIN TABS COLORS -->
         
+        <!-- STATUS BAR COLORS -->
+        <COLOR name="statusBarFore" red="255" green="255" blue="255" />
+        <COLOR name="statusBarBack" red="77" green="77" blue="77" />
+        <COLOR name="statusBarTestBack" red="255" green="120" blue="120" />
+        <!-- END STATUS BAR COLORS -->
         
+        <!-- DIALOG COLORS -->
+        <COLOR name="dialogTitleBGColor" red="114" green="182" blue="255" />
+        <COLOR name="dialogTitleFGColor" red="77" green="77" blue="77" />
+        <!-- END DIALOG COLORS -->
         
         
         <!-- <FONT name="font" font_name="Arial" size="12" style="PLAIN"  /> -->
@@ -65,6 +75,13 @@
         <FONT name="tableFont" font_name="Arial" size="12" style="PLAIN"/>
         <!-- EDITOR FONTS -->
         <FONT name="editorFont" font_name="Arial" size="12" style="PLAIN"/>
+        <FONT name="labelFont" font_name="Arial" size="12" style="PLAIN"/>
+        <FONT name="labelBoldFont" font_name="Arial" size="12" style="BOLD"/>
+        <!-- STATUS BAR FONT -->
+        <FONT name="statusBarFont" font_name="Arial" size="12" style="PLAIN"  />
+        <FONT name="statusBarBoldFont" font_name="Arial" size="12" style="BOLD"  />
+        <!-- DIALOG FONT -->
+        <FONT name="dialogTitleFont" font_name="Arial" size="12" style="PLAIN"/>
 
     </UITYPES>
 

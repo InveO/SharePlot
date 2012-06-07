@@ -6,17 +6,25 @@ import java.util.Map;
 
 import jet.framework.ui.desktop.AbstractDesktopNut;
 import jet.framework.ui.desktop.DesktopDialogHelper;
+import jet.framework.ui.desktop.info.dialog.ListDialogParameterModel;
+import jet.framework.ui.desktop.info.dialog.ListTableDialogNut;
 import jet.framework.ui.desktop.info.dialog.OKMessageDialogNut;
+import jet.framework.ui.desktop.info.dialog.QuestionDialogNut;
+import jet.framework.ui.desktop.info.dialog.SendEmailDialogNut;
 import jet.framework.ui.desktop.info.dialog.YesNoMessageDialogNut;
 import jet.framework.util.ui.LocalizedDisplayable;
 import jet.java.util.JETLocale;
 import jet.util.JetVersion;
+import jet.util.logger.JETLevel;
 import jet.util.models.SimpleModelImpl;
 import jet.util.models.interfaces.Displayable;
 import jet.util.models.interfaces.Model;
 
 public class SharePlotDialogHelper implements DesktopDialogHelper {
 
+    private static final String TITLE_FG_COLOR = "dialogTitleFGColor";
+    private static final String TITLE_FONT = "dialogTitleFont";
+    private static final String TITLE_BG_COLOR = "dialogTitleBGColor";
     private static final int DEFAULT_DIALOG_WIDTH = 450;
     private static final int DEFAULT_DIALOG_HEIGHT = 250;
 
@@ -44,7 +52,7 @@ public class SharePlotDialogHelper implements DesktopDialogHelper {
         param.setAttribute(YesNoMessageDialogNut.LOCALIZED_NO_LABEL, "SharePlot/properties/desktop/Buttons/button.No");
         param.setAttribute(OKMessageDialogNut.VERSION, getVersionDialogLabel());
 
-        this.abstractDesktopNut.displayDialog(title, DEFAULT_DIALOG_WIDTH, DEFAULT_DIALOG_HEIGHT, "dialogTitleBGColor", "dialogTitleFont", "dialogTitleFGColor", param, "YesNoMessageDialog");
+        this.abstractDesktopNut.displayDialog(title, DEFAULT_DIALOG_WIDTH, DEFAULT_DIALOG_HEIGHT, TITLE_BG_COLOR, TITLE_FONT, TITLE_FG_COLOR, param, "YesNoMessageDialog");
 
         Boolean result = null;
         result = (Boolean) param.getNodeValue();
@@ -53,68 +61,121 @@ public class SharePlotDialogHelper implements DesktopDialogHelper {
 
     @Override
     public void displayMessageDialog(final String title, final String localizedTitle, final String message, final String localizedMessage) {
-        // TODO Auto-generated method stub
+        final Displayable titDisp = new LocalizedDisplayable(title, localizedTitle);
+        final Displayable mesDisp = new LocalizedDisplayable(message, localizedMessage);
 
+        displayMessageDialog(titDisp, mesDisp);
     }
 
     @Override
     public void displayMessageDialog(final Displayable title, final Displayable message) {
-        // TODO Auto-generated method stub
+        final Model param = new SimpleModelImpl();
+        param.setAttribute(OKMessageDialogNut.LOCALIZED_MESSAGE, message);
+        param.setAttribute(OKMessageDialogNut.VERSION, getVersionDialogLabel());
 
+        // bug 5264: log the content of the message dialogs
+        final StringBuilder sb = new StringBuilder();
+        sb.append(title.getDisplayableString(this.locale));
+        sb.append("\n");
+        sb.append(message.getDisplayableString(this.locale));
+        this.abstractDesktopNut.logp(JETLevel.INFO, "SharePlotDialogHelper", "displayMessageDialog", sb.toString());
+
+        this.abstractDesktopNut.displayDialog(title, DEFAULT_DIALOG_WIDTH, DEFAULT_DIALOG_HEIGHT, TITLE_BG_COLOR, TITLE_FONT, TITLE_FG_COLOR, param, "OKMessageDialog");
     }
 
     @Override
     public String displayQuestionDialog(final String title, final String localizedTitle, final String message, final String localizedMessage) {
-        // TODO Auto-generated method stub
-        return null;
+        final Displayable titDisp = new LocalizedDisplayable(title, localizedTitle);
+        final Displayable mesDisp = new LocalizedDisplayable(message, localizedMessage);
+
+        return displayQuestionDialog(titDisp, mesDisp);
     }
 
     @Override
     public String displayQuestionDialog(final Displayable title, final Displayable message) {
-        // TODO Auto-generated method stub
-        return null;
+        final Model param = new SimpleModelImpl();
+        param.setAttribute(QuestionDialogNut.LOCALIZED_MESSAGE, message);
+        param.setAttribute(QuestionDialogNut.LOCALIZED_OK_LABEL, "SharePlot/properties/desktop/Buttons/button.Ok");
+        param.setAttribute(QuestionDialogNut.LOCALIZED_KO_LABEL, "SharePlot/properties/desktop/Buttons/button.Cancel");
+        param.setAttribute(OKMessageDialogNut.VERSION, getVersionDialogLabel());
+
+        this.abstractDesktopNut.displayDialog(title, DEFAULT_DIALOG_WIDTH, DEFAULT_DIALOG_HEIGHT, TITLE_BG_COLOR, TITLE_FONT, TITLE_FG_COLOR, param, "QuestionDialog");
+
+        String result = null;
+        result = (String) param.getNodeValue();
+        return result;
     }
 
     @Override
     public void displayApplicationComponent(final String title, final String localizedTitle, final String acName, final Map<String, Object> initMap) {
-        // TODO Auto-generated method stub
-
+        this.abstractDesktopNut.displayDialogApplicationComponent(acName, this.abstractDesktopNut.getApplicationComponent(), initMap, title, localizedTitle, DEFAULT_DIALOG_WIDTH * 2, DEFAULT_DIALOG_HEIGHT * 2, TITLE_BG_COLOR, TITLE_FONT, TITLE_FG_COLOR);
     }
 
     @Override
     public Model displayListTableDialog(final String title, final String localizedTitle, final List<Model> modelList, final Model listDisplayModel) {
-        // TODO Auto-generated method stub
-        return null;
+        final Displayable titDisp = new LocalizedDisplayable(title, localizedTitle);
+
+        return displayListTableDialog(titDisp, modelList, listDisplayModel);
     }
 
     @Override
     public Model displayListTableDialog(final Displayable title, final List<Model> modelList, final Model listDisplayModel) {
-        // TODO Auto-generated method stub
-        return null;
+        final ListDialogParameterModel listDialogParameterModel = new ListDialogParameterModel(modelList, listDisplayModel, "SharePlot/properties/desktop/Buttons/button.Select", null, "SharePlot/properties/desktop/Buttons/button.Cancel", null);
+
+        final Model param = new SimpleModelImpl();
+        param.setAttribute(ListTableDialogNut.LISTDIALOGPARAMETERMODEL, listDialogParameterModel);
+        param.setAttribute(OKMessageDialogNut.VERSION, getVersionDialogLabel());
+
+        this.abstractDesktopNut.displayDialog(title, DEFAULT_DIALOG_WIDTH, DEFAULT_DIALOG_HEIGHT, TITLE_BG_COLOR, TITLE_FONT, TITLE_FG_COLOR, param, "ListTableDialog");
+
+        Model result = null;
+        result = (Model) param.getNodeValue();
+        return result;
     }
 
     @Override
     public Model displaySendEmailDialogBox(final String title, final String localizedTitle, final String emailTitle, final String emailTo, final String message) {
-        // TODO Auto-generated method stub
-        return null;
+        final Displayable titDisp = new LocalizedDisplayable(title, localizedTitle);
+
+        return displaySendEmailDialogBox(titDisp, emailTitle, emailTo, message);
     }
 
     @Override
     public Model displaySendEmailDialogBox(final Displayable title, final String emailTitle, final String emailTo, final String message) {
-        // TODO Auto-generated method stub
-        return null;
+        final Model param = new SimpleModelImpl();
+        param.setAttribute(SendEmailDialogNut.MESSAGE, message);
+        param.setAttribute(SendEmailDialogNut.TITLE, emailTitle);
+        param.setAttribute(SendEmailDialogNut.EMAILTO, emailTo);
+        param.setAttribute(SendEmailDialogNut.LOCALIZED_SEND_LABEL, "SharePlot/properties/desktop/Buttons/button.Send");
+        param.setAttribute(SendEmailDialogNut.LOCALIZED_CANCEL_LABEL, "SharePlot/properties/desktop/Buttons/button.Cancel");
+        param.setAttribute(SendEmailDialogNut.VERSION, getVersionDialogLabel());
+
+        this.abstractDesktopNut.displayDialog(title, DEFAULT_DIALOG_WIDTH, DEFAULT_DIALOG_HEIGHT, TITLE_BG_COLOR, TITLE_FONT, TITLE_FG_COLOR, param, "SendEmailDialog");
+
+        final Model result = (Model) param.getNodeValue();
+        return result;
     }
 
     @Override
     public String displaySendDialogBox(final String title, final String localizedTitle, final String emailTitle, final String message) {
-        // TODO Auto-generated method stub
-        return null;
+        final Displayable titDisp = new LocalizedDisplayable(title, localizedTitle);
+
+        return displaySendDialogBox(titDisp, emailTitle, message);
     }
 
     @Override
     public String displaySendDialogBox(final Displayable title, final String emailTitle, final String message) {
-        // TODO Auto-generated method stub
-        return null;
+        final Model param = new SimpleModelImpl();
+        param.setAttribute(SendEmailDialogNut.MESSAGE, message);
+        param.setAttribute(SendEmailDialogNut.TITLE, emailTitle);
+        param.setAttribute(SendEmailDialogNut.LOCALIZED_SEND_LABEL, "SharePlot/properties/desktop/Buttons/button.Send");
+        param.setAttribute(SendEmailDialogNut.LOCALIZED_CANCEL_LABEL, "SharePlot/properties/desktop/Buttons/button.Cancel");
+        param.setAttribute(SendEmailDialogNut.VERSION, getVersionDialogLabel());
+
+        this.abstractDesktopNut.displayDialog(title, DEFAULT_DIALOG_WIDTH, DEFAULT_DIALOG_HEIGHT, TITLE_BG_COLOR, TITLE_FONT, TITLE_FG_COLOR, param, "SendDialog");
+
+        final String result = (String) param.getNodeValue();
+        return result;
     }
 
     @Override

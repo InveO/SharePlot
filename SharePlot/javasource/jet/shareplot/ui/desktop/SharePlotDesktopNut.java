@@ -13,6 +13,7 @@ import jet.container.nuts.ui.UIAnchorService;
 import jet.framework.component.SelectStoreProvider;
 import jet.framework.ui.desktop.AbstractDesktopNut;
 import jet.framework.ui.desktop.ApplicationComponentLauncher;
+import jet.framework.ui.desktop.DesktopDialogHelper;
 import jet.framework.ui.desktop.DesktopFrameClosingHandler;
 import jet.framework.ui.desktop.navigation.menu.DesktopMenuPlugin;
 import jet.framework.ui.desktop.navigation.menu.DesktopMenuPluginListener;
@@ -22,9 +23,11 @@ import jet.framework.ui.desktop.navigation.menu.SwitchWindowMenuPlugin;
 import jet.framework.ui.desktop.navigation.menu.TaskUnicityPlugin;
 import jet.framework.util.desktop.navigation.menu.ActionModel;
 import jet.framework.util.desktop.navigation.menu.MenuItemModel;
+import jet.java.util.JETLocale;
 import jet.lifecycle.annotations.Deinitializer;
 import jet.lifecycle.annotations.Initializer;
 import jet.shareplot.ac.SelectStoreApplicationComponent;
+import jet.shareplot.ui.desktop.dialog.SharePlotDialogHelper;
 import jet.util.JetVersion;
 import jet.util.SerializableKey;
 import jet.util.logger.JETLevel;
@@ -53,6 +56,7 @@ public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMe
     private LaunchACMenuPlugin launchACMenuPlugin;
     private SwitchWindowMenuPlugin switchWindowPlugin;
     private TaskUnicityPlugin taskUnicityPlugin;
+    private SharePlotDialogHelper sharePlotDialogHelper;
 
     /**
      * Init, internal use only
@@ -67,6 +71,9 @@ public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMe
         smc.setSessionTimeout(getSession(), 12 * 60 * 60 * 1000);
         // refresh session if screen active every 30 minutes
         smc.setRefreshTimer(getSession(), 30 * 60 * 1000);
+
+        this.sharePlotDialogHelper = new SharePlotDialogHelper(this, new JETLocale("en", "GB"));
+        getSession().setProperty(DesktopDialogHelper.SESSION_KEY, this.sharePlotDialogHelper);
 
         // place SelectStoreProvider in session so it can be used from the SimpleApplicationComponent
         final SelectStoreApplicationComponent selectStoreProvider = SelectStoreApplicationComponent.getInstance(getSession());

@@ -5,6 +5,7 @@ import jet.framework.nuts.store.StoreNut;
 import jet.framework.util.exception.FormatedJetException;
 import jet.shareplot.ac.SelectStoreApplicationComponent;
 import jet.shareplot.persistence.pojo.ShareQuantityItem;
+import jet.shareplot.ui.desktop.pojo2.SharePlotErrorHandler;
 import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
@@ -27,16 +28,19 @@ public class ShareQuantity extends ShareQuantityItem {
     public ShareQuantity(final ShareQuantityApplicationComponent shareQuantityAC) {
         super();
         this.shareQuantityAC = shareQuantityAC;
+        setPojo2ErrorHandler(new SharePlotErrorHandler(this.shareQuantityAC.getSession()));
     }
 
     public ShareQuantity(final Model model, final ShareQuantityApplicationComponent shareQuantityAC) {
         super(model);
         this.shareQuantityAC = shareQuantityAC;
+        setPojo2ErrorHandler(new SharePlotErrorHandler(this.shareQuantityAC.getSession()));
     }
 
     public ShareQuantity(final ShareQuantity shareQuantity) {
         super(shareQuantity);
         this.shareQuantityAC = shareQuantity.shareQuantityAC;
+        setPojo2ErrorHandler(new SharePlotErrorHandler(this.shareQuantityAC.getSession()));
     }
 
     public boolean isValid() {

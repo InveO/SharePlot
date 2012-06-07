@@ -4,6 +4,7 @@ import jet.components.ui.container.common.UIContainerComponent;
 import jet.components.ui.label.common.UILabelComponent;
 import jet.container.managers.ui.interfaces.UIComponentFinder;
 import jet.container.nuts.ui.EventDrivenUINut;
+import jet.framework.ui.desktop.DesktopDialogHelper;
 import jet.framework.util.models.ModelHelper;
 import jet.util.models.interfaces.Displayable;
 import jet.util.models.interfaces.Model;
@@ -13,6 +14,7 @@ public abstract class AbstractSharePlotNut extends EventDrivenUINut {
 
     private Displayable tabTitle;
     private Displayable headerTitle;
+    private DesktopDialogHelper dialogHelper;
 
     /**
      * Get the node at the given path from the ApplicationComponent configuration
@@ -65,6 +67,16 @@ public abstract class AbstractSharePlotNut extends EventDrivenUINut {
                 labelTitle.setDisplayable(displayable);
             }
         }
+    }
+
+    /**
+     * @return DesktopDialogHelper
+     */
+    protected final DesktopDialogHelper getDesktopDialogHelper() {
+        if (this.dialogHelper == null) {
+            this.dialogHelper = (DesktopDialogHelper) getSession().getProperty(DesktopDialogHelper.SESSION_KEY);
+        }
+        return this.dialogHelper;
     }
 
 }

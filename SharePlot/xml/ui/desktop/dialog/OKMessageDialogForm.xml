@@ -1,0 +1,20 @@
+<DOCUMENT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://jet.inveo.be/ui/ http://jet.inveo.be/ui/JETComponentExtension.xsd"
+    xmlns="http://jet.inveo.be/ui/" >
+    
+    <GENERIC name="SharePlot/xml/ui/GenericComponent.xml" />
+    
+	<GROUP name="OKMessageDialogForm" scrollable="false" layoutmanager="gridbaglayout" backgroundColor="panelBackgroundColor" foregroundColor="panelForegroundColor" >
+		<LABEL name="label" extends="DialogLabel" displayableText=" " preferredwidth="300" multiline="true" >
+			<GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="1" fill="BOTH" anchor="CENTER" insetleft="10" insetright="10" />
+		</LABEL>
+		<BUTTON name="okButton" extends="GenericButton" >
+			<GRIDBAGCONSTRAINTS gridx="0" gridy="1" gridwidth="1" gridheight="1" weightx="1" weighty="0" fill="NONE" anchor="CENTER" insetbottom="2" insetleft="2" insetright="2" insettop="2" />
+		</BUTTON>
+        <GROUP name="statusBarGroup" extends="DialogStatusBarGroup" >
+            <GRIDBAGCONSTRAINTS gridx="0" gridy="2" gridwidth="1" gridheight="1" weightx="1" weighty="1" anchor="SOUTHWEST" fill="HORIZONTAL" />
+        </GROUP>
+		<GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="1" anchor="NORTH" fill="BOTH"/>
+	</GROUP>
+    
+</DOCUMENT>

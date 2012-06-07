@@ -5,7 +5,10 @@
     <IMPORT name="SharePlot/xml/ui/GenericStyles.xml" /> 
     <IMPORT name="SharePlot/xml/ui/GenericAlgos.xml" /> 
     
+    <LABEL name="DialogLabel" font="labelFont" foregroundColor="labelColor" /> 
+    <LABEL name="DialogBoldRedLabel" font="labelBoldFont" foregroundColor="labelRedColor" /> 
     <LABEL name="EditorHeaderLabel" font="editorHeaderFont" foregroundColor="labelColor" /> 
+    <LABEL name="StatusBarLabel" font="statusBarFont" foregroundColor="statusBarFore" /> 
     
     <DISPLAY2 name="EmptyTable" style="tableStyle" cellSpacing="0" verticalLines="dotted" opaque="false" borderWidth="0" borderColor="tableBorderColor" />
     
@@ -22,5 +25,17 @@
 		</LABEL>
 	</GROUP>
 	
+    <GROUP name="DialogStatusBarGroup" backgroundColor="statusBarBack" foregroundColor="statusBarFore" preferredheight="20" >
+        <LABEL name="versionLabel" alignment="left" extends="StatusBarLabel">
+            <GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="1" insetleft="3" anchor="SOUTHWEST" fill="NONE" />
+        </LABEL>
+        <LABEL name="buLabel" alignment="center" extends="StatusBarLabel" >
+            <GRIDBAGCONSTRAINTS gridx="1" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="1" insetright="3" anchor="SOUTH" fill="NONE" />
+         </LABEL>
+        <LABEL name="timeStampLabel" alignment="right" extends="StatusBarLabel" >
+            <GRIDBAGCONSTRAINTS gridx="2" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="1" insetright="3" anchor="SOUTHEAST" fill="NONE" />
+         </LABEL>
+        <GRIDBAGCONSTRAINTS gridx="0" gridy="2" gridwidth="2" gridheight="1" weightx="1" weighty="1" anchor="SOUTHWEST" fill="HORIZONTAL" />
+    </GROUP>
     
 </DOCUMENT>

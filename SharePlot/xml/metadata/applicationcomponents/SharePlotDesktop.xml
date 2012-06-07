@@ -12,6 +12,38 @@
             <PARAMETER name="formName" value="SharePlotDesktopForm" />
             <PARAMETER name="formXmlFile" value="SharePlot/xml/ui/desktop/SharePlotDesktopForm.xml" />
         </NUT>
+      
+        <!-- DIALOG NUTS -->  
+        <NUT name="OKMessageDialog" className="jet.framework.ui.desktop.info.dialog.OKMessageDialogNut">
+            <PARAMETER name="formName" value="OKMessageDialogForm" />
+            <PARAMETER name="formXmlFile" value="SharePlot/xml/ui/desktop/dialog/OKMessageDialogForm.xml" />
+        </NUT>
+		
+        <NUT name="YesNoMessageDialog" className="jet.framework.ui.desktop.info.dialog.YesNoMessageDialogNut">
+            <PARAMETER name="formName" value="YesNoMessageDialogForm" />
+            <PARAMETER name="formXmlFile" value="SharePlot/xml/ui/desktop/dialog/YesNoMessageDialogForm.xml" />
+        </NUT>
+
+        <NUT name="QuestionDialog" className="jet.framework.ui.desktop.info.dialog.QuestionDialogNut">
+            <PARAMETER name="formName" value="QuestionDialogForm" />
+            <PARAMETER name="formXmlFile" value="SharePlot/xml/ui/desktop/dialog/QuestionDialogForm.xml" />
+        </NUT>
+        
+        <NUT name="ListTableDialog" className="jet.framework.ui.desktop.info.dialog.ListTableDialogNut">
+            <PARAMETER name="formName" value="ListTableDialogForm" />
+            <PARAMETER name="formXmlFile" value="SharePlot/xml/ui/desktop/dialog/ListTableDialogForm.xml" />
+        </NUT>
+
+        <NUT name="SendEmailDialog" className="jet.framework.ui.desktop.info.dialog.SendEmailDialogNut">
+            <PARAMETER name="formName" value="SendEmailDialogForm" />
+            <PARAMETER name="formXmlFile" value="SharePlot/xml/ui/desktop/dialog/SendEmailDialogForm.xml" />
+        </NUT>
+        
+        <NUT name="SendDialog" className="jet.framework.ui.desktop.info.dialog.SendDialogNut">
+            <PARAMETER name="formName" value="SendDialogForm" />
+            <PARAMETER name="formXmlFile" value="SharePlot/xml/ui/desktop/dialog/SendDialogForm.xml" />
+        </NUT>
+        
         
     </NUTS>
 </APPLICATION_COMPONENT>
