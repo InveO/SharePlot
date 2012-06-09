@@ -1,4 +1,7 @@
 button.AddChange=1337891631571
+changeType.Fee=1339274025907
+changeType.Purchase=1339273997628
+changeType.Sale=1339274013949
 dialog.CanNotDeletePortfolio=1335815832610
 dialog.CanNotDeleteShare=1337806785338
 dialog.CanNotDeleteShareQuantity=1337894608267

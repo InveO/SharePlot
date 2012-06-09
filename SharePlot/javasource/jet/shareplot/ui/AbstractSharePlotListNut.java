@@ -78,8 +78,12 @@ public abstract class AbstractSharePlotListNut<T> extends AbstractSharePlotNut {
         this.selectedCellProvider = new CheckBoxSelectedCellProvider("colSelect");
         this.uiTableListDisplay3.addListTableCellModelProvider(this.selectedCellProvider);
 
+        addListDisplayProviders(this.uiTableListDisplay3);
+
         this.emptyItemListener = new EmptyItemListener();
     }
+
+    protected abstract void addListDisplayProviders(UITableListDisplay3 uiTableListDisplay);
 
     protected abstract String getListDisplayKey();
 

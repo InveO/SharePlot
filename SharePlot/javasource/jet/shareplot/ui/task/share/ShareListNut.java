@@ -9,6 +9,7 @@ import jet.components.ui.events.MouseEventType;
 import jet.components.ui.events.UIEvent;
 import jet.components.ui.table.common.UITableComponent2;
 import jet.framework.ui.desktop.ApplicationComponentLauncher;
+import jet.framework.ui.utils.table.UITableListDisplay3;
 import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.ui.LocalizedMessageFormatDisplayable;
 import jet.shareplot.ac.bo.portfolio.Portfolio;
@@ -120,6 +121,11 @@ public class ShareListNut extends AbstractSharePlotListNut<Share> {
     @Override
     protected void saveItem(final Share item) throws FormatedJetException {
         item.save();
+    }
+
+    @Override
+    protected void addListDisplayProviders(final UITableListDisplay3 uiTableListDisplay) {
+        // nothing to do
     }
 
 }

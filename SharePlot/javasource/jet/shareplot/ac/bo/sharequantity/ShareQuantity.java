@@ -19,6 +19,10 @@ import jet.util.throwable.JETException;
  */
 public class ShareQuantity extends ShareQuantityItem {
 
+    public static final String CHANGE_TYPE_PURCHASE = "P";
+    public static final String CHANGE_TYPE_SALE = "S";
+    public static final String CHANGE_TYPE_FEE = "F";
+
     private static final String CAN_NOT_SAVE_KEY = "SharePlot/properties/task/Share/dialog.CanNotSaveShareQuantity";
     private static final String CAN_NOT_DELETE_KEY = "SharePlot/properties/task/Share/dialog.CanNotDeleteShareQuantity";
     private static final String NOT_VALID_KEY = "SharePlot/properties/task/Share/dialog.ShareQuantityNotValid";
