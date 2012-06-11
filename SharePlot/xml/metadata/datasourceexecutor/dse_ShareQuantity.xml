@@ -50,6 +50,7 @@
         <MAPPING writeconverter="" readmultikey="" defaulttype="DOUBLE" target="changeQuantity" subelement="" default="" readconverter="" name="changeQuantity" autoincrement="false" primarykey="false" />
         <MAPPING writeconverter="" readmultikey="" defaulttype="TEXT" target="changeType" subelement="" default="" readconverter="" name="changeType" autoincrement="false" primarykey="false" />
         <MAPPING writeconverter="" readmultikey="" defaulttype="DOUBLE" target="changeValue" subelement="" default="" readconverter="" name="changeValue" autoincrement="false" primarykey="false" />
+        <MAPPING writeconverter="" readmultikey="" defaulttype="TEXT" target="description" subelement="" default="" readconverter="" name="description" autoincrement="false" primarykey="false" />
         <MAPPING writeconverter="" readmultikey="" defaulttype="INTEGER" target="idShare" subelement="" default="" readconverter="" name="idShare" autoincrement="false" primarykey="false" />
         <MAPPING writeconverter="" readmultikey="" defaulttype="DATE" target="valueDate" subelement="" default="" readconverter="" name="valueDate" autoincrement="false" primarykey="false" />
     </EJB_CONVERSION>

@@ -46,7 +46,8 @@
         <COLUMN paramName="idPortfolio" type="Long" name="idPortfolio" localname="idPortfolio" dbtype="INTEGER" length="10" noOfDecimal="0" nullable="false" autoIncrement="false" />
         <COLUMN paramName="name" type="String" name="name" localname="name" dbtype="VARCHAR" length="255" noOfDecimal="0" nullable="false" autoIncrement="false" />
         <COLUMN paramName="description" type="String" name="description" localname="description" dbtype="VARCHAR" length="4000" noOfDecimal="0" nullable="true" autoIncrement="false" />
-        <COLUMN paramName="code" type="String" name="code" localname="code" dbtype="VARCHAR" length="45" noOfDecimal="0" nullable="true" autoIncrement="false" />
+        <COLUMN paramName="codeISIN" type="String" name="codeISIN" localname="codeISIN" dbtype="VARCHAR" length="45" noOfDecimal="0" nullable="true" autoIncrement="false" />
+        <COLUMN paramName="codeYahoo" type="String" name="codeYahoo" localname="codeYahoo" dbtype="VARCHAR" length="45" noOfDecimal="0" nullable="true" autoIncrement="false" />
         
         <!-- PRIMARYKEY : identifies the columns to use as primary key -->
         <PRIMARYKEY>

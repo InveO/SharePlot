@@ -27,7 +27,7 @@ import jet.util.throwable.JETSystemError;
 @SuppressWarnings("PMD.MethodNamingConventions")
 public class ShareQuantityItem implements Serializable, Pojo2ErrorHandlerProvider {
 
-    private static final long serialVersionUID = 1294162755L;
+    private static final long serialVersionUID = 1077646545L;
 
     private Model dataModel;
     private Logger logger;
@@ -37,6 +37,7 @@ public class ShareQuantityItem implements Serializable, Pojo2ErrorHandlerProvide
     private DispatcherModel<ShareQuantityItem, java.math.BigDecimal> changeQuantityDispatcherModel;
     private DispatcherModel<ShareQuantityItem, String> changeTypeDispatcherModel;
     private DispatcherModel<ShareQuantityItem, java.math.BigDecimal> changeValueDispatcherModel;
+    private DispatcherModel<ShareQuantityItem, String> descriptionDispatcherModel;
     private DispatcherModel<ShareQuantityItem, Long> idShareDispatcherModel;
     private DispatcherModel<ShareQuantityItem, java.util.Date> valueDateDispatcherModel;
 
@@ -73,6 +74,8 @@ public class ShareQuantityItem implements Serializable, Pojo2ErrorHandlerProvide
         model = new SimpleEventModelImpl("changeType");
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("changeValue");
+        this.dataModel.appendChild(model);
+        model = new SimpleEventModelImpl("description");
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("idShare");
         this.dataModel.appendChild(model);
@@ -117,6 +120,7 @@ public class ShareQuantityItem implements Serializable, Pojo2ErrorHandlerProvide
         setChangeQuantity(shareQuantity.getChangeQuantity());
         setChangeType(shareQuantity.getChangeType());
         setChangeValue(shareQuantity.getChangeValue());
+        setDescription(shareQuantity.getDescription());
         setIdShare(shareQuantity.getIdShare());
         setValueDate(shareQuantity.getValueDate());
     }
@@ -299,6 +303,40 @@ public class ShareQuantityItem implements Serializable, Pojo2ErrorHandlerProvide
             }
         }
         return this.changeValueDispatcherModel;
+    }
+
+    /**
+     * Get node value of Data Model node description
+     * @return String value of Data Model node description
+     */
+    public final String getDescription() {
+        return (String) get_Description_Model().getNodeValue();
+    }
+    
+    /**
+     * Set node value of Data Model node description
+     * @param description String value of Data Model node description
+     */
+    public final void setDescription(String description) {
+        get_Description_Model().setNodeValue(description);
+    }
+    
+    /**
+     * Get Model of Data Model node description
+     * @return Model of Data Model node description
+     */
+    public final DispatcherModel<ShareQuantityItem, String> get_Description_Model() {
+        if (this.descriptionDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "description");
+                this.descriptionDispatcherModel = new DispatcherModel<ShareQuantityItem, String>(this, sourceModel);
+
+                this.descriptionDispatcherModel.addInterceptor(new StringLengthInterceptor<ShareQuantityItem>(1000));
+            } catch (final JETException e) {
+                throw new JETSystemError("ShareQuantity data model does not have a child named description. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
+        }
+        return this.descriptionDispatcherModel;
     }
 
     /**

@@ -24,7 +24,8 @@ CREATE  TABLE IF NOT EXISTS `shareplot`.`Share` (
   `idPortfolio` INT NOT NULL ,
   `name` VARCHAR(255) NOT NULL ,
   `description` VARCHAR(4000) NULL ,
-  `code` VARCHAR(45) NULL ,
+  `codeISIN` VARCHAR(45) NULL ,
+  `codeYahoo` VARCHAR(45) NULL ,
   PRIMARY KEY (`idShare`) ,
   INDEX `fk_Share_Portfolio` (`idPortfolio` ASC) ,
   CONSTRAINT `fk_Share_Portfolio`
@@ -42,6 +43,7 @@ CREATE  TABLE IF NOT EXISTS `shareplot`.`ShareQuantity` (
   `idShareQuantity` INT NOT NULL AUTO_INCREMENT ,
   `idShare` INT NOT NULL ,
   `valueDate` DATE NOT NULL ,
+  `description` VARCHAR(1000) NULL ,
   `changeType` CHAR(1) NOT NULL ,
   `changeValue` DECIMAL(12,2) NOT NULL ,
   `changeFee` DECIMAL(12,2) NOT NULL ,

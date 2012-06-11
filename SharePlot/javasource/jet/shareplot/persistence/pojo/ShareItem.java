@@ -27,13 +27,14 @@ import jet.util.throwable.JETSystemError;
 @SuppressWarnings("PMD.MethodNamingConventions")
 public class ShareItem implements Serializable, Pojo2ErrorHandlerProvider {
 
-    private static final long serialVersionUID = 1355887442L;
+    private static final long serialVersionUID = -1265738400L;
 
     private Model dataModel;
     private Logger logger;
 
     private DispatcherModel<ShareItem, Long> idShareDispatcherModel;
-    private DispatcherModel<ShareItem, String> codeDispatcherModel;
+    private DispatcherModel<ShareItem, String> codeISINDispatcherModel;
+    private DispatcherModel<ShareItem, String> codeYahooDispatcherModel;
     private DispatcherModel<ShareItem, String> descriptionDispatcherModel;
     private DispatcherModel<ShareItem, Long> idPortfolioDispatcherModel;
     private DispatcherModel<ShareItem, String> nameDispatcherModel;
@@ -64,7 +65,9 @@ public class ShareItem implements Serializable, Pojo2ErrorHandlerProvider {
         
         model = new SimpleEventModelImpl("idShare");
         this.dataModel.appendChild(model);
-        model = new SimpleEventModelImpl("code");
+        model = new SimpleEventModelImpl("codeISIN");
+        this.dataModel.appendChild(model);
+        model = new SimpleEventModelImpl("codeYahoo");
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("description");
         this.dataModel.appendChild(model);
@@ -107,7 +110,8 @@ public class ShareItem implements Serializable, Pojo2ErrorHandlerProvider {
         }
         
         setIdShare(share.getIdShare());
-        setCode(share.getCode());
+        setCodeISIN(share.getCodeISIN());
+        setCodeYahoo(share.getCodeYahoo());
         setDescription(share.getDescription());
         setIdPortfolio(share.getIdPortfolio());
         setName(share.getName());
@@ -164,37 +168,71 @@ public class ShareItem implements Serializable, Pojo2ErrorHandlerProvider {
     }
 
     /**
-     * Get node value of Data Model node code
-     * @return String value of Data Model node code
+     * Get node value of Data Model node codeISIN
+     * @return String value of Data Model node codeISIN
      */
-    public final String getCode() {
-        return (String) get_Code_Model().getNodeValue();
+    public final String getCodeISIN() {
+        return (String) get_CodeISIN_Model().getNodeValue();
     }
     
     /**
-     * Set node value of Data Model node code
-     * @param code String value of Data Model node code
+     * Set node value of Data Model node codeISIN
+     * @param codeISIN String value of Data Model node codeISIN
      */
-    public final void setCode(String code) {
-        get_Code_Model().setNodeValue(code);
+    public final void setCodeISIN(String codeISIN) {
+        get_CodeISIN_Model().setNodeValue(codeISIN);
     }
     
     /**
-     * Get Model of Data Model node code
-     * @return Model of Data Model node code
+     * Get Model of Data Model node codeISIN
+     * @return Model of Data Model node codeISIN
      */
-    public final DispatcherModel<ShareItem, String> get_Code_Model() {
-        if (this.codeDispatcherModel == null) {
+    public final DispatcherModel<ShareItem, String> get_CodeISIN_Model() {
+        if (this.codeISINDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "code");
-                this.codeDispatcherModel = new DispatcherModel<ShareItem, String>(this, sourceModel);
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "codeISIN");
+                this.codeISINDispatcherModel = new DispatcherModel<ShareItem, String>(this, sourceModel);
 
-                this.codeDispatcherModel.addInterceptor(new StringLengthInterceptor<ShareItem>(45));
+                this.codeISINDispatcherModel.addInterceptor(new StringLengthInterceptor<ShareItem>(45));
             } catch (final JETException e) {
-                throw new JETSystemError("Share data model does not have a child named code. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+                throw new JETSystemError("Share data model does not have a child named codeISIN. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
             }
         }
-        return this.codeDispatcherModel;
+        return this.codeISINDispatcherModel;
+    }
+
+    /**
+     * Get node value of Data Model node codeYahoo
+     * @return String value of Data Model node codeYahoo
+     */
+    public final String getCodeYahoo() {
+        return (String) get_CodeYahoo_Model().getNodeValue();
+    }
+    
+    /**
+     * Set node value of Data Model node codeYahoo
+     * @param codeYahoo String value of Data Model node codeYahoo
+     */
+    public final void setCodeYahoo(String codeYahoo) {
+        get_CodeYahoo_Model().setNodeValue(codeYahoo);
+    }
+    
+    /**
+     * Get Model of Data Model node codeYahoo
+     * @return Model of Data Model node codeYahoo
+     */
+    public final DispatcherModel<ShareItem, String> get_CodeYahoo_Model() {
+        if (this.codeYahooDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "codeYahoo");
+                this.codeYahooDispatcherModel = new DispatcherModel<ShareItem, String>(this, sourceModel);
+
+                this.codeYahooDispatcherModel.addInterceptor(new StringLengthInterceptor<ShareItem>(45));
+            } catch (final JETException e) {
+                throw new JETSystemError("Share data model does not have a child named codeYahoo. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
+        }
+        return this.codeYahooDispatcherModel;
     }
 
     /**

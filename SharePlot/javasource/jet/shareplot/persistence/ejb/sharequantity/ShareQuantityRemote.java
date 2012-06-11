@@ -84,6 +84,20 @@ public interface ShareQuantityRemote extends EJBObject {
     
 
     /**
+     * @return String
+     * @throws EJBException
+     * @throws RemoteException
+     */
+    public String getDescription() throws EJBException, RemoteException;
+    /**
+     * @param description
+     * @throws EJBException
+     * @throws RemoteException
+     */
+    public void setDescription(String description) throws EJBException, RemoteException;
+    
+
+    /**
      * @return Long
      * @throws EJBException
      * @throws RemoteException
@@ -116,10 +130,11 @@ public interface ShareQuantityRemote extends EJBObject {
      * @param changeQuantity
      * @param changeType
      * @param changeValue
+     * @param description
      * @param idShare
      * @param valueDate
      * @throws EJBException
      * @throws RemoteException
      */
-    public void update( java.math.BigDecimal changeFee, java.math.BigDecimal changeQuantity, String changeType, java.math.BigDecimal changeValue, Long idShare, java.util.Date valueDate) throws EJBException, RemoteException;
+    public void update( java.math.BigDecimal changeFee, java.math.BigDecimal changeQuantity, String changeType, java.math.BigDecimal changeValue, String description, Long idShare, java.util.Date valueDate) throws EJBException, RemoteException;
 }

@@ -23,7 +23,8 @@ public interface ShareHome extends EJBHome {
     
     /**
      * @param idShare
-     * @param code
+     * @param codeISIN
+     * @param codeYahoo
      * @param description
      * @param idPortfolio
      * @param name
@@ -31,7 +32,7 @@ public interface ShareHome extends EJBHome {
      * @throws CreateException
      * @throws RemoteException
      */
-    public ShareRemote create( @EJBParam(name = "idShare") Long idShare, @EJBParam(name = "code") String code, @EJBParam(name = "description") String description, @EJBParam(name = "idPortfolio") Long idPortfolio, @EJBParam(name = "name") String name) throws CreateException, RemoteException;
+    public ShareRemote create( @EJBParam(name = "idShare") Long idShare, @EJBParam(name = "codeISIN") String codeISIN, @EJBParam(name = "codeYahoo") String codeYahoo, @EJBParam(name = "description") String description, @EJBParam(name = "idPortfolio") Long idPortfolio, @EJBParam(name = "name") String name) throws CreateException, RemoteException;
         
     /**
      * @param pkField

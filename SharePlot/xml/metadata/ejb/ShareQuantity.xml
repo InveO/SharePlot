@@ -45,6 +45,7 @@
         <COLUMN paramName="idShareQuantity" type="Long" name="idShareQuantity" localname="idShareQuantity" dbtype="INTEGER" length="10" noOfDecimal="0" nullable="false" autoIncrement="true" />
         <COLUMN paramName="idShare" type="Long" name="idShare" localname="idShare" dbtype="INTEGER" length="10" noOfDecimal="0" nullable="false" autoIncrement="false" />
         <COLUMN paramName="valueDate" type="java.util.Date" name="valueDate" localname="valueDate" dbtype="DATE" length="10" noOfDecimal="0" nullable="false" autoIncrement="false" />
+        <COLUMN paramName="description" type="String" name="description" localname="description" dbtype="VARCHAR" length="1000" noOfDecimal="0" nullable="true" autoIncrement="false" />
         <COLUMN paramName="changeType" type="String" name="changeType" localname="changeType" dbtype="CHAR" length="1" noOfDecimal="0" nullable="false" autoIncrement="false" />
         <COLUMN paramName="changeValue" type="java.math.BigDecimal" name="changeValue" localname="changeValue" dbtype="DECIMAL" length="12" noOfDecimal="2" nullable="false" autoIncrement="false" />
         <COLUMN paramName="changeFee" type="java.math.BigDecimal" name="changeFee" localname="changeFee" dbtype="DECIMAL" length="12" noOfDecimal="2" nullable="false" autoIncrement="false" />

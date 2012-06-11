@@ -3,7 +3,7 @@
 
     <GENERIC name="SharePlot/xml/ui/GenericComponent.xml" />
     
-    <GROUP name="ShareQuantityListForm" localizedDisplayableText="SharePlot/properties/task/Share/title.ShareQuantityList" scrollable="false" layoutmanager="gridbaglayout" backgroundColor="panelBackgroundColor" foregroundColor="panelForegroundColor">
+    <GROUP name="ShareQuantityListForm" extends="EmptyGroup" localizedDisplayableText="SharePlot/properties/task/Share/title.ShareQuantityList" scrollable="false" layoutmanager="gridbaglayout" >
         <GROUP name="topGroup" extends="GenericTitleGroup">
             <GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="0" />
             <ATTRIBUTE_PARAM component="titleLabel" name="localizedDisplayableText" value="SharePlot/properties/task/Share/title.ShareQuantityList" />

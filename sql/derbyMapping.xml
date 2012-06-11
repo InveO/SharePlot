@@ -11,12 +11,14 @@
                 <COLUMN name="changeQuantity" localname="CHANGE_QUANTITY" />
                 <COLUMN name="changeType" localname="CHANGE_TYPE" />
                 <COLUMN name="changeValue" localname="CHANGE_VALUE" />
+                <COLUMN name="description" localname="DESCRIPTION" />
                 <COLUMN name="idShare" localname="ID_SHARE" />
                 <COLUMN name="valueDate" localname="VALUE_DATE" />
             </TABLE>
             <TABLE name="Share" localname="SHARE" >
                 <COLUMN name="idShare" localname="ID_SHARE" />
-                <COLUMN name="code" localname="CODE" />
+                <COLUMN name="codeISIN" localname="CODE_I_S_I_N" />
+                <COLUMN name="codeYahoo" localname="CODE_YAHOO" />
                 <COLUMN name="description" localname="DESCRIPTION" />
                 <COLUMN name="idPortfolio" localname="ID_PORTFOLIO" />
                 <COLUMN name="name" localname="NAME" />

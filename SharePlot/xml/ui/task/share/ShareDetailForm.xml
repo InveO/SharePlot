@@ -3,7 +3,7 @@
 
     <GENERIC name="SharePlot/xml/ui/GenericComponent.xml" />
     
-    <GROUP name="ShareDetailForm" localizedDisplayableText="SharePlot/properties/task/Share/title.ShareDetail" scrollable="false" layoutmanager="gridbaglayout" backgroundColor="panelBackgroundColor" foregroundColor="panelForegroundColor">
+    <GROUP name="ShareDetailForm" extends="EmptyGroup" localizedDisplayableText="SharePlot/properties/task/Share/title.ShareDetail" scrollable="false" layoutmanager="gridbaglayout" >
         <GROUP name="topGroup" extends="GenericTitleGroup">
             <GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="0" />
             <ATTRIBUTE_PARAM component="titleLabel" name="localizedDisplayableText" value="SharePlot/properties/task/Share/title.ShareDetail" />
@@ -11,6 +11,9 @@
         <GROUP name="toolbarGroup" layoutmanager="gridbaglayout" >
             <BUTTON name="addChangeButton" extends="GenericButton" localizedDisplayableText="SharePlot/properties/task/Share/button.AddChange" >
                 <GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="0" fill="NONE" insetleft="5" />
+            </BUTTON>
+            <BUTTON name="addValueButton" extends="GenericButton" localizedDisplayableText="SharePlot/properties/task/Share/button.AddValue" >
+                <GRIDBAGCONSTRAINTS gridx="1" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="0" fill="NONE" insetleft="5" />
             </BUTTON>
             <GRIDBAGCONSTRAINTS gridx="0" gridy="1" gridwidth="1" gridheight="1" weightx="1" weighty="0" fill="HORIZONTAL" insetleft="5" />
         </GROUP>

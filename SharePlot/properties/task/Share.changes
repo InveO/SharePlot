@@ -1,4 +1,5 @@
 button.AddChange=1337891631571
+button.AddValue=1339446504005
 changeType.Fee=1339274025907
 changeType.Purchase=1339273997628
 changeType.Sale=1339274013949
@@ -16,6 +17,8 @@ list.changePrice=1337894955141
 list.changeQuantity=1337894988649
 list.changeType=1337894905548
 list.code=1335210293778
+list.codeISIN=1339359240508
+list.codeYahoo=1339359296036
 list.entryFee=1335210356302
 list.purchaseDate=1335210317683
 list.purchasePrice=1335210338714

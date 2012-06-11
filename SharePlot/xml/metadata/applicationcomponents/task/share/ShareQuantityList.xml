@@ -5,7 +5,8 @@
 	
 		<QUANTITY_LIST>
         	<COLUMN name="colSelect" datamodelfield="" type="CHECKBOX" editable="true" width="0" selectall="true" />
-			<COLUMN name="dateColumn" datamodelfield="valueDate" type="DATE" editable="true" width="1" localizedlabel="SharePlot/properties/task/Share/list.purchaseDate" />
+			<COLUMN name="dateColumn" datamodelfield="valueDate" type="DATE" editable="true" width="0" localizedlabel="SharePlot/properties/task/Share/list.purchaseDate" />
+			<COLUMN name="descColumn" datamodelfield="description" type="TEXT" editable="true" width="1" localizedlabel="SharePlot/properties/desktop/Global/list.description" />
      	    <COLUMN name="typeColumn" datamodelfield="changeType" type="TEXT" editable="true" width="0" localizedlabel="SharePlot/properties/task/Share/list.changeType" />
 			<COLUMN name="priceColumn" datamodelfield="changeValue" type="NUMBER" class="java.math.BigDecimal" editable="true" width="0" localizedlabel="SharePlot/properties/task/Share/list.changePrice" />
 			<COLUMN name="feeColumn" datamodelfield="changeFee" type="NUMBER" class="java.math.BigDecimal" editable="true" width="0" localizedlabel="SharePlot/properties/task/Share/list.changeFee" />

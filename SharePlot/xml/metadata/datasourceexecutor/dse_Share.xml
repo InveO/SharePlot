@@ -46,7 +46,8 @@
             primarykey : "true" if the field is part of the primary key (it will not be updateable)
          -->
         <MAPPING writeconverter="" readmultikey="" defaulttype="INTEGER" target="idShare" subelement="" default="" readconverter="" name="idShare" autoincrement="true" primarykey="true" />
-        <MAPPING writeconverter="" readmultikey="" defaulttype="TEXT" target="code" subelement="" default="" readconverter="" name="code" autoincrement="false" primarykey="false" />
+        <MAPPING writeconverter="" readmultikey="" defaulttype="TEXT" target="codeISIN" subelement="" default="" readconverter="" name="codeISIN" autoincrement="false" primarykey="false" />
+        <MAPPING writeconverter="" readmultikey="" defaulttype="TEXT" target="codeYahoo" subelement="" default="" readconverter="" name="codeYahoo" autoincrement="false" primarykey="false" />
         <MAPPING writeconverter="" readmultikey="" defaulttype="TEXT" target="description" subelement="" default="" readconverter="" name="description" autoincrement="false" primarykey="false" />
         <MAPPING writeconverter="" readmultikey="" defaulttype="INTEGER" target="idPortfolio" subelement="" default="" readconverter="" name="idPortfolio" autoincrement="false" primarykey="false" />
         <MAPPING writeconverter="" readmultikey="" defaulttype="TEXT" target="name" subelement="" default="" readconverter="" name="name" autoincrement="false" primarykey="false" />

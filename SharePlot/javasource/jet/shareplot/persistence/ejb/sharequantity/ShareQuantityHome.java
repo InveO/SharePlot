@@ -27,13 +27,14 @@ public interface ShareQuantityHome extends EJBHome {
      * @param changeQuantity
      * @param changeType
      * @param changeValue
+     * @param description
      * @param idShare
      * @param valueDate
      * @return ShareQuantityRemote
      * @throws CreateException
      * @throws RemoteException
      */
-    public ShareQuantityRemote create( @EJBParam(name = "idShareQuantity") Long idShareQuantity, @EJBParam(name = "changeFee") java.math.BigDecimal changeFee, @EJBParam(name = "changeQuantity") java.math.BigDecimal changeQuantity, @EJBParam(name = "changeType") String changeType, @EJBParam(name = "changeValue") java.math.BigDecimal changeValue, @EJBParam(name = "idShare") Long idShare, @EJBParam(name = "valueDate") java.util.Date valueDate) throws CreateException, RemoteException;
+    public ShareQuantityRemote create( @EJBParam(name = "idShareQuantity") Long idShareQuantity, @EJBParam(name = "changeFee") java.math.BigDecimal changeFee, @EJBParam(name = "changeQuantity") java.math.BigDecimal changeQuantity, @EJBParam(name = "changeType") String changeType, @EJBParam(name = "changeValue") java.math.BigDecimal changeValue, @EJBParam(name = "description") String description, @EJBParam(name = "idShare") Long idShare, @EJBParam(name = "valueDate") java.util.Date valueDate) throws CreateException, RemoteException;
         
     /**
      * @param pkField

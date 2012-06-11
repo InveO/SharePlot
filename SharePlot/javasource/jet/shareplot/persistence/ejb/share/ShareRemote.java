@@ -32,13 +32,27 @@ public interface ShareRemote extends EJBObject {
      * @throws EJBException
      * @throws RemoteException
      */
-    public String getCode() throws EJBException, RemoteException;
+    public String getCodeISIN() throws EJBException, RemoteException;
     /**
-     * @param code
+     * @param codeISIN
      * @throws EJBException
      * @throws RemoteException
      */
-    public void setCode(String code) throws EJBException, RemoteException;
+    public void setCodeISIN(String codeISIN) throws EJBException, RemoteException;
+    
+
+    /**
+     * @return String
+     * @throws EJBException
+     * @throws RemoteException
+     */
+    public String getCodeYahoo() throws EJBException, RemoteException;
+    /**
+     * @param codeYahoo
+     * @throws EJBException
+     * @throws RemoteException
+     */
+    public void setCodeYahoo(String codeYahoo) throws EJBException, RemoteException;
     
 
     /**
@@ -84,12 +98,13 @@ public interface ShareRemote extends EJBObject {
     
 
     /**
-     * @param code
+     * @param codeISIN
+     * @param codeYahoo
      * @param description
      * @param idPortfolio
      * @param name
      * @throws EJBException
      * @throws RemoteException
      */
-    public void update( String code, String description, Long idPortfolio, String name) throws EJBException, RemoteException;
+    public void update( String codeISIN, String codeYahoo, String description, Long idPortfolio, String name) throws EJBException, RemoteException;
 }

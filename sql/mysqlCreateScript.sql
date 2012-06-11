@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS `SharePlot`.`ShareQuantity` (
   `changeQuantity` DECIMAL(12)  NOT NULL  ,
   `changeType` CHAR(1)  NOT NULL  ,
   `changeValue` DECIMAL(12)  NOT NULL  ,
+  `description` VARCHAR(1000) NULL DEFAULT NULL  ,
   `idShare` INTEGER(10)  NOT NULL  ,
   `valueDate` DATE  NOT NULL  ,
   PRIMARY KEY ( `idShareQuantity`),
@@ -34,7 +35,8 @@ ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `SharePlot`.`Share` (
   `idShare` INTEGER(10)  NOT NULL AUTO_INCREMENT ,
-  `code` VARCHAR(45) NULL DEFAULT NULL  ,
+  `codeISIN` VARCHAR(45) NULL DEFAULT NULL  ,
+  `codeYahoo` VARCHAR(45) NULL DEFAULT NULL  ,
   `description` VARCHAR(4000) NULL DEFAULT NULL  ,
   `idPortfolio` INTEGER(10)  NOT NULL  ,
   `name` VARCHAR(255)  NOT NULL  ,

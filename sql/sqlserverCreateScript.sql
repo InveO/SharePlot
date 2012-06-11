@@ -37,6 +37,7 @@ CREATE TABLE [dbo].[ShareQuantity](
   [changeQuantity] [DECIMAL](12)  NOT NULL  ,
   [changeType] [CHAR](1)  NOT NULL  ,
   [changeValue] [DECIMAL](12)  NOT NULL  ,
+  [description] [VARCHAR](1000) NULL DEFAULT NULL  ,
   [idShare] [INTEGER]  NOT NULL  ,
   [valueDate] [datetime]  NOT NULL  ,
  CONSTRAINT [PK_ShareQuantity] PRIMARY KEY NONCLUSTERED 
@@ -56,7 +57,8 @@ SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[Share](
   [idShare] [INTEGER]  NOT NULL IDENTITY(1,1) ,
-  [code] [VARCHAR](45) NULL DEFAULT NULL  ,
+  [codeISIN] [VARCHAR](45) NULL DEFAULT NULL  ,
+  [codeYahoo] [VARCHAR](45) NULL DEFAULT NULL  ,
   [description] [VARCHAR](4000) NULL DEFAULT NULL  ,
   [idPortfolio] [INTEGER]  NOT NULL  ,
   [name] [VARCHAR](255)  NOT NULL  ,

@@ -12,12 +12,14 @@
     
     <DISPLAY2 name="EmptyTable" style="tableStyle" cellSpacing="0" verticalLines="dotted" opaque="false" borderWidth="0" borderColor="tableBorderColor" />
     
-    <TABBEDPANE name="EmptyOpaqueTabbedpane" tabsRolloverBackground="tabRolloverBackgreound" selectedTabsRolloverBackground="selectedTabRolloverBackgreound" tabsRolloverForeground="tabRolloverForegreound" selectedTabsRolloverForeground="selectedTabRolloverForegreound" opaque="true" increaseSelectedTabFontSize="false" font="tabbedPaneFont" backgroundColor="desktopBG" foregroundColor="desktopFG" tabsGradientBackground="tabsGradientBG" tabsForeground="tabsForeground" selectedTabsGradientBackground="selectedTabGradientBG" selectedTabsForeground="selectedTabForeground" paddingTop="3" paddingBottom="3" paddingLeft="8" paddingRight="8" />
+    <TABBEDPANE name="EmptyOpaqueTabbedpane" tabsRolloverBackground="tabRolloverBackgreound" selectedTabsRolloverBackground="selectedTabRolloverBackgreound" tabsRolloverForeground="tabRolloverForegreound" selectedTabsRolloverForeground="selectedTabRolloverForegreound" opaque="true" increaseSelectedTabFontSize="false" font="tabbedPaneFont" backgroundColor="tabbedPaneBG" foregroundColor="tabbedPaneFG" tabsGradientBackground="tabsGradientBG" tabsForeground="tabsForeground" selectedTabsGradientBackground="selectedTabGradientBG" selectedTabsForeground="selectedTabForeground" paddingTop="3" paddingBottom="3" paddingLeft="8" paddingRight="8" />
     
 	<BUTTON name="GenericButton" font="editorFont" rolloverBorderColor="buttonsRolloverBorderColor" gradientBackgroundColor="buttonsBackground" foregroundColor="buttonsForeground" disabledBackgroundColor="buttonsDisabledBackground" disabledForegroundColor="buttonsDisabledForeground" paddingTop="3" paddingBottom="3" paddingLeft="6" paddingRight="6" />
 	
     <BUTTON name="SaveButton" extends="GenericButton" localizedDisplayableText="SharePlot/properties/desktop/Buttons/button.Save" />
     <BUTTON name="DeleteButton" extends="GenericButton" localizedDisplayableText="SharePlot/properties/desktop/Buttons/button.Delete" />
+    
+    <GROUP name="EmptyGroup" backgroundColor="panelBackgroundColor" foregroundColor="panelForegroundColor" />
     
     <GROUP name="GenericTitleGroup" layoutmanager="gridbaglayout" backgroundColor="editorHeaderBackColor" foregroundColor="editorHeaderForeColor" >
 		<LABEL name="titleLabel" extends="EditorHeaderLabel" >

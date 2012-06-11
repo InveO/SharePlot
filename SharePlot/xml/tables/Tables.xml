@@ -5,23 +5,12 @@
 
 -->
 <TABLES>
-    <TABLE name="ShareValue">
-        <COLUMN name="idShareValue" type="Long" length="10" nullable="false" autoincrement="true" />
-        <COLUMN name="isShare" type="Long" length="10" nullable="false" autoincrement="false" />
-        <COLUMN name="value" type="java.math.BigDecimal" length="10" nullable="false" autoincrement="false" />
-        <COLUMN name="valueDate" type="java.util.Date" length="10" nullable="false" autoincrement="false" />
+    <TABLE name="Portfolio">
+        <COLUMN name="idPortfolio" type="Long" length="10" nullable="false" autoincrement="true" />
+        <COLUMN name="isFake" type="String" length="1" nullable="false" autoincrement="false" />
+        <COLUMN name="name" type="String" length="45" nullable="false" autoincrement="false" />
         <PRIMARYKEY>
-            <KEYITEM component="idShareValue"/>
-        </PRIMARYKEY>
-    </TABLE>
-    <TABLE name="Share">
-        <COLUMN name="idShare" type="Long" length="10" nullable="false" autoincrement="true" />
-        <COLUMN name="code" type="String" length="45" nullable="true" autoincrement="false" />
-        <COLUMN name="description" type="String" length="4000" nullable="true" autoincrement="false" />
-        <COLUMN name="idPortfolio" type="Long" length="10" nullable="false" autoincrement="false" />
-        <COLUMN name="name" type="String" length="255" nullable="false" autoincrement="false" />
-        <PRIMARYKEY>
-            <KEYITEM component="idShare"/>
+            <KEYITEM component="idPortfolio"/>
         </PRIMARYKEY>
     </TABLE>
     <TABLE name="ShareQuantity">
@@ -30,18 +19,31 @@
         <COLUMN name="changeQuantity" type="java.math.BigDecimal" length="12" nullable="false" autoincrement="false" />
         <COLUMN name="changeType" type="String" length="1" nullable="false" autoincrement="false" />
         <COLUMN name="changeValue" type="java.math.BigDecimal" length="12" nullable="false" autoincrement="false" />
+        <COLUMN name="description" type="String" length="1000" nullable="true" autoincrement="false" />
         <COLUMN name="idShare" type="Long" length="10" nullable="false" autoincrement="false" />
         <COLUMN name="valueDate" type="java.util.Date" length="10" nullable="false" autoincrement="false" />
         <PRIMARYKEY>
             <KEYITEM component="idShareQuantity"/>
         </PRIMARYKEY>
     </TABLE>
-    <TABLE name="Portfolio">
-        <COLUMN name="idPortfolio" type="Long" length="10" nullable="false" autoincrement="true" />
-        <COLUMN name="isFake" type="String" length="1" nullable="false" autoincrement="false" />
-        <COLUMN name="name" type="String" length="45" nullable="false" autoincrement="false" />
+    <TABLE name="Share">
+        <COLUMN name="idShare" type="Long" length="10" nullable="false" autoincrement="true" />
+        <COLUMN name="codeISIN" type="String" length="45" nullable="true" autoincrement="false" />
+        <COLUMN name="codeYahoo" type="String" length="45" nullable="true" autoincrement="false" />
+        <COLUMN name="description" type="String" length="4000" nullable="true" autoincrement="false" />
+        <COLUMN name="idPortfolio" type="Long" length="10" nullable="false" autoincrement="false" />
+        <COLUMN name="name" type="String" length="255" nullable="false" autoincrement="false" />
         <PRIMARYKEY>
-            <KEYITEM component="idPortfolio"/>
+            <KEYITEM component="idShare"/>
+        </PRIMARYKEY>
+    </TABLE>
+    <TABLE name="ShareValue">
+        <COLUMN name="idShareValue" type="Long" length="10" nullable="false" autoincrement="true" />
+        <COLUMN name="isShare" type="Long" length="10" nullable="false" autoincrement="false" />
+        <COLUMN name="value" type="java.math.BigDecimal" length="10" nullable="false" autoincrement="false" />
+        <COLUMN name="valueDate" type="java.util.Date" length="10" nullable="false" autoincrement="false" />
+        <PRIMARYKEY>
+            <KEYITEM component="idShareValue"/>
         </PRIMARYKEY>
     </TABLE>
 </TABLES>
