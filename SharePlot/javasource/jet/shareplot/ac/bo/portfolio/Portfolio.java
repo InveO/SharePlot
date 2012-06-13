@@ -1,8 +1,10 @@
 package jet.shareplot.ac.bo.portfolio;
 
+import jet.framework.component.resource.ResourceNotificationApplicationComponent;
 import jet.framework.manager.datamodel.interfaces.FinderObjectNotFoundException;
 import jet.framework.nuts.store.StoreNut;
 import jet.framework.util.exception.FormatedJetException;
+import jet.framework.util.pojo2.AbstractResourceNotification;
 import jet.shareplot.ac.SelectStoreApplicationComponent;
 import jet.shareplot.persistence.pojo.PortfolioItem;
 import jet.shareplot.ui.desktop.pojo2.SharePlotErrorHandler;
@@ -58,11 +60,16 @@ public class Portfolio extends PortfolioItem {
         if (isValid()) {
             final StoreNut storeNut = this.portfolioAC.getStoreNut(SelectStoreApplicationComponent.PORTFOLIO_STORE);
             try {
+                PortfolioResource resource;
                 if (isNew()) {
                     storeNut.createDataModel(get_Model());
+                    resource = new PortfolioResource(this, AbstractResourceNotification.NOTIFICATION_TYPE.CREATE);
                 } else {
                     storeNut.updateDataModel(get_Model());
+                    resource = new PortfolioResource(this, AbstractResourceNotification.NOTIFICATION_TYPE.UPDATE);
                 }
+                final ResourceNotificationApplicationComponent resourceAC = ResourceNotificationApplicationComponent.getInstance(this.portfolioAC.getSession());
+                resourceAC.notifyListeners(PortfolioResource.RESOURCE_NAME, resource);
             } catch (final FinderObjectNotFoundException e) {
                 this.portfolioAC.logp(JETLevel.SEVERE, "Portfolio", "save", e.getMessage(), e);
                 final Object[] args = { getName() };
@@ -82,7 +89,10 @@ public class Portfolio extends PortfolioItem {
         if (!isNew()) {
             final StoreNut storeNut = this.portfolioAC.getStoreNut(SelectStoreApplicationComponent.PORTFOLIO_STORE);
             try {
+                final PortfolioResource resource = new PortfolioResource(this, AbstractResourceNotification.NOTIFICATION_TYPE.DELETE);
                 storeNut.removeDataModel(get_Model());
+                final ResourceNotificationApplicationComponent resourceAC = ResourceNotificationApplicationComponent.getInstance(this.portfolioAC.getSession());
+                resourceAC.notifyListeners(PortfolioResource.RESOURCE_NAME, resource);
             } catch (final FinderObjectNotFoundException e) {
                 this.portfolioAC.logp(JETLevel.SEVERE, "Portfolio", "delete", e.getMessage(), e);
                 final Object[] args = { getName() };
