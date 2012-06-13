@@ -33,7 +33,7 @@ public class ShareQuantityApplicationComponent extends SimpleApplicationComponen
 
     private static final long serialVersionUID = 1238925793L;
     /**
-     * <code>NAME</code> of this application component, so it can be retreived easily.
+     * <code>NAME</code> of this application component, so it can be retrieved easily.
      */
     private final static String NAME = "ShareQuantityApplicationComponent";
     /**

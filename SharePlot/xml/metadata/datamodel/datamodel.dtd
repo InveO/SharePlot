@@ -4,6 +4,7 @@
 <!ATTLIST DATAMODEL
     name NMTOKEN #REQUIRED
     serialuid CDATA #REQUIRED
+    persist (true | false) "true"
 >
 <!ELEMENT NODE EMPTY>
 <!ATTLIST NODE

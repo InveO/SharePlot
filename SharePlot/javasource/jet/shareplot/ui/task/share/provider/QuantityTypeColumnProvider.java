@@ -2,6 +2,7 @@ package jet.shareplot.ui.task.share.provider;
 
 import jet.framework.ui.utils.table.AbstractComboBoxColumnHeaderProvider;
 import jet.shareplot.ac.bo.sharequantity.ShareQuantity;
+import jet.shareplot.ac.bo.sharequantity.ShareQuantity.ChangeType;
 
 public class QuantityTypeColumnProvider extends AbstractComboBoxColumnHeaderProvider<String> {
 
@@ -13,8 +14,12 @@ public class QuantityTypeColumnProvider extends AbstractComboBoxColumnHeaderProv
 
     @Override
     protected void addItems() {
-        addItem(ShareQuantity.CHANGE_TYPE_PURCHASE, "SharePlot/properties/task/Share/changeType.Purchase");
-        addItem(ShareQuantity.CHANGE_TYPE_SALE, "SharePlot/properties/task/Share/changeType.Sale");
-        addItem(ShareQuantity.CHANGE_TYPE_FEE, "SharePlot/properties/task/Share/changeType.Fee");
+        for (final ShareQuantity.ChangeType changeType : ShareQuantity.ChangeType.values()) {
+            addChangeType(changeType);
+        }
+    }
+
+    private void addChangeType(final ChangeType changeType) {
+        addItem(changeType.getCode(), changeType.getLocalized());
     }
 }

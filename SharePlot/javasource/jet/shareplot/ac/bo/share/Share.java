@@ -1,8 +1,10 @@
 package jet.shareplot.ac.bo.share;
 
+import jet.framework.component.resource.ResourceNotificationApplicationComponent;
 import jet.framework.manager.datamodel.interfaces.FinderObjectNotFoundException;
 import jet.framework.nuts.store.StoreNut;
 import jet.framework.util.exception.FormatedJetException;
+import jet.framework.util.pojo2.AbstractResourceNotification;
 import jet.shareplot.ac.SelectStoreApplicationComponent;
 import jet.shareplot.persistence.pojo.ShareItem;
 import jet.shareplot.ui.desktop.pojo2.SharePlotErrorHandler;
@@ -56,11 +58,16 @@ public class Share extends ShareItem {
         if (isValid()) {
             final StoreNut storeNut = this.shareAC.getStoreNut(SelectStoreApplicationComponent.SHARE_STORE);
             try {
+                ShareResource resource;
                 if (isNew()) {
                     storeNut.createDataModel(get_Model());
+                    resource = new ShareResource(this, AbstractResourceNotification.NOTIFICATION_TYPE.CREATE);
                 } else {
                     storeNut.updateDataModel(get_Model());
+                    resource = new ShareResource(this, AbstractResourceNotification.NOTIFICATION_TYPE.UPDATE);
                 }
+                final ResourceNotificationApplicationComponent resourceAC = ResourceNotificationApplicationComponent.getInstance(this.shareAC.getSession());
+                resourceAC.notifyListeners(ShareResource.RESOURCE_NAME, resource);
             } catch (final FinderObjectNotFoundException e) {
                 this.shareAC.logp(JETLevel.SEVERE, "Share", "save", e.getMessage(), e);
                 final Object[] args = { getName() };
@@ -80,6 +87,10 @@ public class Share extends ShareItem {
         if (!isNew()) {
             final StoreNut storeNut = this.shareAC.getStoreNut(SelectStoreApplicationComponent.SHARE_STORE);
             try {
+                final ShareResource resource = new ShareResource(this, AbstractResourceNotification.NOTIFICATION_TYPE.DELETE);
+                storeNut.removeDataModel(get_Model());
+                final ResourceNotificationApplicationComponent resourceAC = ResourceNotificationApplicationComponent.getInstance(this.shareAC.getSession());
+                resourceAC.notifyListeners(ShareResource.RESOURCE_NAME, resource);
                 storeNut.removeDataModel(get_Model());
             } catch (final FinderObjectNotFoundException e) {
                 this.shareAC.logp(JETLevel.SEVERE, "Share", "delete", e.getMessage(), e);

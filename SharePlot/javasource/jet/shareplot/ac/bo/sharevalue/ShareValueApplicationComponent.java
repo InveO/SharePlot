@@ -32,7 +32,7 @@ public class ShareValueApplicationComponent extends SimpleApplicationComponent {
 
     private static final long serialVersionUID = 1461049825L;
     /**
-     * <code>NAME</code> of this application component, so it can be retreived easily.
+     * <code>NAME</code> of this application component, so it can be retrieved easily.
      */
     private final static String NAME = "ShareValueApplicationComponent";
     /**

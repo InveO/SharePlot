@@ -2,7 +2,14 @@ package jet.shareplot.ac.bo.portfolio;
 
 import jet.framework.util.pojo2.AbstractResourceNotification;
 
+/**
+ * Object used in the Portfolio resource notifications
+ * 
+ * @author JetToolsFramework
+ */
 public class PortfolioResource extends AbstractResourceNotification<Portfolio> {
+
+    private static final long serialVersionUID = -5971798084595088560L;
 
     public final static String RESOURCE_NAME = "jet.shareplot.ac.bo.portfolio.PortfolioResource";
 

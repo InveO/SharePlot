@@ -1,8 +1,10 @@
 package jet.shareplot.ac.bo.sharequantity;
 
+import jet.framework.component.resource.ResourceNotificationApplicationComponent;
 import jet.framework.manager.datamodel.interfaces.FinderObjectNotFoundException;
 import jet.framework.nuts.store.StoreNut;
 import jet.framework.util.exception.FormatedJetException;
+import jet.framework.util.pojo2.AbstractResourceNotification;
 import jet.shareplot.ac.SelectStoreApplicationComponent;
 import jet.shareplot.persistence.pojo.ShareQuantityItem;
 import jet.shareplot.ui.desktop.pojo2.SharePlotErrorHandler;
@@ -19,9 +21,34 @@ import jet.util.throwable.JETException;
  */
 public class ShareQuantity extends ShareQuantityItem {
 
-    public static final String CHANGE_TYPE_PURCHASE = "P";
-    public static final String CHANGE_TYPE_SALE = "S";
-    public static final String CHANGE_TYPE_FEE = "F";
+    public enum ChangeType {
+        PURCHASE("P", "SharePlot/properties/task/Share/changeType.Purchase"), SALE("S", "SharePlot/properties/task/Share/changeType.Sale"), FEE("F", "SharePlot/properties/task/Share/changeType.Fee");
+
+        private final String code;
+        private String localized;
+
+        ChangeType(final String code, final String localized) {
+            this.code = code;
+            this.localized = localized;
+        }
+
+        public String getCode() {
+            return this.code;
+        }
+
+        public String getLocalized() {
+            return this.localized;
+        }
+
+        public void setLocalized(final String localized) {
+            this.localized = localized;
+        }
+
+    }
+
+//    public static final String CHANGE_TYPE_PURCHASE = "P";
+//    public static final String CHANGE_TYPE_SALE = "S";
+//    public static final String CHANGE_TYPE_FEE = "F";
 
     private static final String CAN_NOT_SAVE_KEY = "SharePlot/properties/task/Share/dialog.CanNotSaveShareQuantity";
     private static final String CAN_NOT_DELETE_KEY = "SharePlot/properties/task/Share/dialog.CanNotDeleteShareQuantity";
@@ -60,11 +87,16 @@ public class ShareQuantity extends ShareQuantityItem {
         if (isValid()) {
             final StoreNut storeNut = this.shareQuantityAC.getStoreNut(SelectStoreApplicationComponent.SHAREQUANTITY_STORE);
             try {
+                ShareQuantityResource resource;
                 if (isNew()) {
                     storeNut.createDataModel(get_Model());
+                    resource = new ShareQuantityResource(this, AbstractResourceNotification.NOTIFICATION_TYPE.CREATE);
                 } else {
                     storeNut.updateDataModel(get_Model());
+                    resource = new ShareQuantityResource(this, AbstractResourceNotification.NOTIFICATION_TYPE.UPDATE);
                 }
+                final ResourceNotificationApplicationComponent resourceAC = ResourceNotificationApplicationComponent.getInstance(this.shareQuantityAC.getSession());
+                resourceAC.notifyListeners(ShareQuantityResource.RESOURCE_NAME, resource);
             } catch (final FinderObjectNotFoundException e) {
                 this.shareQuantityAC.logp(JETLevel.SEVERE, "ShareQuantity", "save", e.getMessage(), e);
                 final Object[] args = { getValueDate() };
@@ -84,7 +116,10 @@ public class ShareQuantity extends ShareQuantityItem {
         if (!isNew()) {
             final StoreNut storeNut = this.shareQuantityAC.getStoreNut(SelectStoreApplicationComponent.SHAREQUANTITY_STORE);
             try {
+                final ShareQuantityResource resource = new ShareQuantityResource(this, AbstractResourceNotification.NOTIFICATION_TYPE.DELETE);
                 storeNut.removeDataModel(get_Model());
+                final ResourceNotificationApplicationComponent resourceAC = ResourceNotificationApplicationComponent.getInstance(this.shareQuantityAC.getSession());
+                resourceAC.notifyListeners(ShareQuantityResource.RESOURCE_NAME, resource);
             } catch (final FinderObjectNotFoundException e) {
                 this.shareQuantityAC.logp(JETLevel.SEVERE, "ShareQuantity", "delete", e.getMessage(), e);
                 final Object[] args = { getValueDate() };
