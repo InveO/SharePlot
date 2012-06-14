@@ -9,6 +9,7 @@ import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.session.interfaces.Session;
 import jet.framework.component.SimpleApplicationComponent;
 import jet.framework.manager.datamodel.interfaces.ModelArray;
+import jet.framework.nuts.select.FinderMethod;
 import jet.framework.nuts.select.SelectNut;
 import jet.framework.nuts.select.SelectNutHelper;
 import jet.framework.ui.desktop.AbstractDesktopNut;
@@ -31,7 +32,7 @@ import jet.util.throwable.JETException;
  */
 public class ShareQuantityApplicationComponent extends SimpleApplicationComponent {
 
-    private static final long serialVersionUID = 1238925793L;
+    private static final long serialVersionUID = 1077646545L;
     /**
      * <code>NAME</code> of this application component, so it can be retrieved easily.
      */
@@ -93,11 +94,9 @@ public class ShareQuantityApplicationComponent extends SimpleApplicationComponen
         getSession().removeProperty(SESSION_KEY);
     }
 
-    public List<ShareQuantity> getShareQuantitys(final Share share) {
+    protected List<ShareQuantity> getShareQuantitys(final FinderMethod finder) {
         final List<ShareQuantity> result = new ArrayList<ShareQuantity>();
 
-        final ShareQuantity_FindByShare1 finder = new ShareQuantity_FindByShare1();
-        finder.setIdShare(share.getIdShare());
         final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.SHAREQUANTITY_SELECT);
         final ModelArray ma = SelectNutHelper.getModelArray(selectNut, finder, getLogger());
         if (ma != null) {
@@ -110,6 +109,27 @@ public class ShareQuantityApplicationComponent extends SimpleApplicationComponen
         }
 
         return result;
+    }
+
+    protected ShareQuantity getShareQuantity(final FinderMethod finder) {
+        final ShareQuantity result;
+
+        final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.SHAREQUANTITY_SELECT);
+        final Model model = SelectNutHelper.getModel(selectNut, finder, getLogger());
+        if (model != null) {
+            result = new ShareQuantity(model, this);
+        } else {
+            result = null;
+        }
+
+        return result;
+    }
+
+    public List<ShareQuantity> getShareQuantitys(final Share share) {
+        final ShareQuantity_FindByShare1 finder = new ShareQuantity_FindByShare1();
+        finder.setIdShare(share.getIdShare());
+
+        return getShareQuantitys(finder);
     }
 
 }

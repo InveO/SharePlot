@@ -9,6 +9,7 @@ import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.session.interfaces.Session;
 import jet.framework.component.SimpleApplicationComponent;
 import jet.framework.manager.datamodel.interfaces.ModelArray;
+import jet.framework.nuts.select.FinderMethod;
 import jet.framework.nuts.select.SelectNut;
 import jet.framework.nuts.select.SelectNutHelper;
 import jet.framework.ui.desktop.AbstractDesktopNut;
@@ -92,10 +93,9 @@ public class PortfolioApplicationComponent extends SimpleApplicationComponent {
         getSession().removeProperty(SESSION_KEY);
     }
 
-    public List<Portfolio> getPortfolios() {
+    protected List<Portfolio> getPortfolios(final FinderMethod finder) {
         final List<Portfolio> result = new ArrayList<Portfolio>();
 
-        final Portfolio_FindAll0 finder = new Portfolio_FindAll0();
         final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.PORTFOLIO_SELECT);
         final ModelArray ma = SelectNutHelper.getModelArray(selectNut, finder, getLogger());
         if (ma != null) {
@@ -108,6 +108,26 @@ public class PortfolioApplicationComponent extends SimpleApplicationComponent {
         }
 
         return result;
+    }
+
+    protected Portfolio getPortfolio(final FinderMethod finder) {
+        final Portfolio result;
+
+        final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.PORTFOLIO_SELECT);
+        final Model model = SelectNutHelper.getModel(selectNut, finder, getLogger());
+        if (model != null) {
+            result = new Portfolio(model, this);
+        } else {
+            result = null;
+        }
+
+        return result;
+    }
+
+    public List<Portfolio> getPortfolios() {
+        final Portfolio_FindAll0 finder = new Portfolio_FindAll0();
+
+        return getPortfolios(finder);
     }
 
 }

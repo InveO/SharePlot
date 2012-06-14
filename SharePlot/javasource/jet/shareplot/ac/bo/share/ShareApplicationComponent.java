@@ -9,6 +9,7 @@ import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.session.interfaces.Session;
 import jet.framework.component.SimpleApplicationComponent;
 import jet.framework.manager.datamodel.interfaces.ModelArray;
+import jet.framework.nuts.select.FinderMethod;
 import jet.framework.nuts.select.SelectNut;
 import jet.framework.nuts.select.SelectNutHelper;
 import jet.framework.ui.desktop.AbstractDesktopNut;
@@ -31,7 +32,7 @@ import jet.util.throwable.JETException;
  */
 public class ShareApplicationComponent extends SimpleApplicationComponent {
 
-    private static final long serialVersionUID = 1750601616L;
+    private static final long serialVersionUID = -1265738400L;
     /**
      * <code>NAME</code> of this application component, so it can be retrieved easily.
      */
@@ -93,11 +94,9 @@ public class ShareApplicationComponent extends SimpleApplicationComponent {
         getSession().removeProperty(SESSION_KEY);
     }
 
-    public List<Share> getShares(final Portfolio portfolio) {
+    protected List<Share> getShares(final FinderMethod finder) {
         final List<Share> result = new ArrayList<Share>();
 
-        final Share_FindByPortfolio1 finder = new Share_FindByPortfolio1();
-        finder.setIdPortfolio(portfolio.getIdPortfolio());
         final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.SHARE_SELECT);
         final ModelArray ma = SelectNutHelper.getModelArray(selectNut, finder, getLogger());
         if (ma != null) {
@@ -110,6 +109,27 @@ public class ShareApplicationComponent extends SimpleApplicationComponent {
         }
 
         return result;
+    }
+
+    protected Share getShare(final FinderMethod finder) {
+        final Share result;
+
+        final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.SHARE_SELECT);
+        final Model model = SelectNutHelper.getModel(selectNut, finder, getLogger());
+        if (model != null) {
+            result = new Share(model, this);
+        } else {
+            result = null;
+        }
+
+        return result;
+    }
+
+    public List<Share> getShares(final Portfolio portfolio) {
+        final Share_FindByPortfolio1 finder = new Share_FindByPortfolio1();
+        finder.setIdPortfolio(portfolio.getIdPortfolio());
+
+        return getShares(finder);
     }
 
 }

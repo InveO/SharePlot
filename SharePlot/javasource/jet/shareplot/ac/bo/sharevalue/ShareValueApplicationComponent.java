@@ -9,6 +9,7 @@ import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.session.interfaces.Session;
 import jet.framework.component.SimpleApplicationComponent;
 import jet.framework.manager.datamodel.interfaces.ModelArray;
+import jet.framework.nuts.select.FinderMethod;
 import jet.framework.nuts.select.SelectNut;
 import jet.framework.nuts.select.SelectNutHelper;
 import jet.framework.ui.desktop.AbstractDesktopNut;
@@ -92,10 +93,9 @@ public class ShareValueApplicationComponent extends SimpleApplicationComponent {
         getSession().removeProperty(SESSION_KEY);
     }
 
-    public List<ShareValue> getShareValues() {
+    protected List<ShareValue> getShareValues(final FinderMethod finder) {
         final List<ShareValue> result = new ArrayList<ShareValue>();
 
-        final ShareValue_FindAll0 finder = new ShareValue_FindAll0();
         final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.SHAREVALUE_SELECT);
         final ModelArray ma = SelectNutHelper.getModelArray(selectNut, finder, getLogger());
         if (ma != null) {
@@ -108,6 +108,26 @@ public class ShareValueApplicationComponent extends SimpleApplicationComponent {
         }
 
         return result;
+    }
+
+    protected ShareValue getShareValue(final FinderMethod finder) {
+        final ShareValue result;
+
+        final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.SHAREVALUE_SELECT);
+        final Model model = SelectNutHelper.getModel(selectNut, finder, getLogger());
+        if (model != null) {
+            result = new ShareValue(model, this);
+        } else {
+            result = null;
+        }
+
+        return result;
+    }
+
+    public List<ShareValue> getShareValues() {
+        final ShareValue_FindAll0 finder = new ShareValue_FindAll0();
+
+        return getShareValues(finder);
     }
 
 }
