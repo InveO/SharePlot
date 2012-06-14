@@ -14,6 +14,9 @@ import jet.framework.nuts.select.FinderMethod;
  */
 public class ShareValue_FindAll0 implements FinderMethod {
 
+    private static final long serialVersionUID = 1461049825L;
+
+
     @Override
     public String getFinderName() {
         return "findAll";

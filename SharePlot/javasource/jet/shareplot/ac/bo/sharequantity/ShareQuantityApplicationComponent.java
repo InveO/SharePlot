@@ -43,6 +43,9 @@ public class ShareQuantityApplicationComponent extends SimpleApplicationComponen
     private final static Object SESSION_KEY = new SerializableKey(ShareQuantityApplicationComponent.class, "SESSION_KEY");
 
     /**
+     * Get the instance of the ShareQuantityApplicationComponent linked to the session. If there
+     * is not already one it will be created.
+     * 
      * @param session
      * @return ShareQuantityApplicationComponent
      * @throws JETException
@@ -94,6 +97,14 @@ public class ShareQuantityApplicationComponent extends SimpleApplicationComponen
         getSession().removeProperty(SESSION_KEY);
     }
 
+    /**
+     * Return all shareQuantity matching the FinderMethod.
+     * 
+     * @param finder FinderMethod to use to fetch the ShareQuantitys
+     * @return a list of shareQuantity matching the FinderMethod.
+     * @see List
+     * @see ShareQuantity
+     */
     protected List<ShareQuantity> getShareQuantitys(final FinderMethod finder) {
         final List<ShareQuantity> result = new ArrayList<ShareQuantity>();
 
@@ -111,6 +122,13 @@ public class ShareQuantityApplicationComponent extends SimpleApplicationComponen
         return result;
     }
 
+    /**
+     * Return the first shareQuantity matching the FinderMethod.
+     * 
+     * @param finder FinderMethod to use to fetch the ShareQuantity
+     * @return the shareQuantity matching the FinderMethod.
+     * @see ShareQuantity
+     */
     protected ShareQuantity getShareQuantity(final FinderMethod finder) {
         final ShareQuantity result;
 
@@ -125,6 +143,16 @@ public class ShareQuantityApplicationComponent extends SimpleApplicationComponen
         return result;
     }
 
+    /**
+     * Get all quantities for a given share.
+     * 
+     * @param share Share for which the quantities are desired
+     * @return a list of shareQuantity matching the FinderMethod.
+     * @see List
+     * @see ShareQuantity
+     * @see Share
+     * @see #getShareQuantitys(FinderMethod finder)
+     */
     public List<ShareQuantity> getShareQuantitys(final Share share) {
         final ShareQuantity_FindByShare1 finder = new ShareQuantity_FindByShare1();
         finder.setIdShare(share.getIdShare());

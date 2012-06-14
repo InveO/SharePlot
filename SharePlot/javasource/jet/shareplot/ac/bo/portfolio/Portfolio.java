@@ -22,40 +22,80 @@ import jet.util.throwable.JETException;
  */
 public class Portfolio extends PortfolioItem {
 
+    private static final long serialVersionUID = 1069192587526038403L;
+
     private static final String CAN_NOT_SAVE_KEY = "SharePlot/properties/task/Share/dialog.CanNotSavePortfolio";
     private static final String CAN_NOT_DELETE_KEY = "SharePlot/properties/task/Share/dialog.CanNotDeletePortfolio";
     private static final String NOT_VALID_KEY = "SharePlot/properties/task/Share/dialog.PortfolioNotValid";
 
     private final PortfolioApplicationComponent portfolioAC;
 
+    /**
+     * Constructor, build an empty portfolio
+     * 
+     * @param portfolioAC the portfolio application component
+     * 
+     * @see Model
+     * @see PortfolioApplicationComponent
+     */
     public Portfolio(final PortfolioApplicationComponent portfolioAC) {
         super();
         this.portfolioAC = portfolioAC;
         setPojo2ErrorHandler(new SharePlotErrorHandler(this.portfolioAC.getSession()));
     }
 
+    /**
+     * Constructor, build a portfolio from a Model
+     * 
+     * @param model the model representing a portfolio entry in the table Portfolio
+     * @param portfolioAC the portfolio application component
+     * 
+     * @see Model
+     * @see PortfolioApplicationComponent
+     */
     public Portfolio(final Model model, final PortfolioApplicationComponent portfolioAC) {
         super(model);
         this.portfolioAC = portfolioAC;
         setPojo2ErrorHandler(new SharePlotErrorHandler(this.portfolioAC.getSession()));
     }
 
+    /**
+     * Copy constructor, build a portfolio as a copy of another portfolio
+     * 
+     * @param portfolio the portfolio to copy
+     */
     public Portfolio(final Portfolio portfolio) {
         super(portfolio);
         this.portfolioAC = portfolio.portfolioAC;
         setPojo2ErrorHandler(new SharePlotErrorHandler(this.portfolioAC.getSession()));
     }
 
+    /**
+     * @return <code>true</code> if this portfolio is valid and can be saved.
+     */
     public boolean isValid() {
         System.err.println("[Portfolio] isValid - isNotNullableNull() : " + isNotNullableNull());
         System.err.println("[Portfolio] isValid - TextUtils.isEmpty(getName() : " + TextUtils.isEmpty(getName()));
         return !isNotNullableNull() && !TextUtils.isEmpty(getName());
     }
 
-    private boolean isNew() {
+    /**
+     * @return <code>true</code> if this portfolio is new.
+     */
+    public boolean isNew() {
         return getIdPortfolio() == null;
     }
 
+    /**
+     * Register the object in the database.
+     * The store will only be done if the portfolio is valid.
+     * It will updated if it already exists and create it if not.
+     * 
+     * @throws FormatedJetException
+     * @see FormatedJetException
+     * @see #isNew()
+     * @see #isValid()
+     */
     public void save() throws FormatedJetException {
         if (isValid()) {
             final StoreNut storeNut = this.portfolioAC.getStoreNut(SelectStoreApplicationComponent.PORTFOLIO_STORE);
@@ -85,6 +125,14 @@ public class Portfolio extends PortfolioItem {
         }
     }
 
+    /**
+     * Remove the object from the database.
+     * It will be deleted if it already exists.
+     * 
+     * @throws FormatedJetException
+     * @see FormatedJetException
+     * @see #isNew()
+     */
     public void delete() throws FormatedJetException {
         if (!isNew()) {
             final StoreNut storeNut = this.portfolioAC.getStoreNut(SelectStoreApplicationComponent.PORTFOLIO_STORE);

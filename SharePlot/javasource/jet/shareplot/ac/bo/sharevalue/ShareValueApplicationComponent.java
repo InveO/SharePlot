@@ -42,7 +42,10 @@ public class ShareValueApplicationComponent extends SimpleApplicationComponent {
     private final static Object SESSION_KEY = new SerializableKey(ShareValueApplicationComponent.class, "SESSION_KEY");
 
     /**
-     * @param session
+     * Get the instance of the ShareValueApplicationComponent linked to the session. If there
+     * is not already one it will be created.
+     *
+     * @param session current session
      * @return ShareValueApplicationComponent
      * @throws JETException
      */
@@ -93,6 +96,14 @@ public class ShareValueApplicationComponent extends SimpleApplicationComponent {
         getSession().removeProperty(SESSION_KEY);
     }
 
+    /**
+     * Return all shareValue matching the FinderMethod.
+     *
+     * @param finder FinderMethod to use to fetch the ShareValues
+     * @return a list of shareValue matching the FinderMethod.
+     * @see List
+     * @see ShareValue
+     */
     protected List<ShareValue> getShareValues(final FinderMethod finder) {
         final List<ShareValue> result = new ArrayList<ShareValue>();
 
@@ -110,6 +121,13 @@ public class ShareValueApplicationComponent extends SimpleApplicationComponent {
         return result;
     }
 
+    /**
+     * Return the first shareValue matching the FinderMethod.
+     *
+     * @param finder FinderMethod to use to fetch the ShareValue
+     * @return the shareValue matching the FinderMethod.
+     * @see ShareValue
+     */
     protected ShareValue getShareValue(final FinderMethod finder) {
         final ShareValue result;
 
@@ -124,6 +142,14 @@ public class ShareValueApplicationComponent extends SimpleApplicationComponent {
         return result;
     }
 
+    /**
+     * Sample method making a call to getShareValues(final FinderMethod finder).
+     *
+     * @return a list of shareValue matching the FinderMethod.
+     * @see List
+     * @see ShareValue
+     * @see #getShareValues(FinderMethod finder)
+     */
     public List<ShareValue> getShareValues() {
         final ShareValue_FindAll0 finder = new ShareValue_FindAll0();
 

@@ -21,6 +21,8 @@ import jet.util.throwable.JETException;
  */
 public class ShareQuantity extends ShareQuantityItem {
 
+    private static final long serialVersionUID = -6023493960063592803L;
+
     public enum ChangeType {
         PURCHASE("P", "SharePlot/properties/task/Share/changeType.Purchase"), SALE("S", "SharePlot/properties/task/Share/changeType.Sale"), FEE("F", "SharePlot/properties/task/Share/changeType.Fee");
 
@@ -56,33 +58,71 @@ public class ShareQuantity extends ShareQuantityItem {
 
     private final ShareQuantityApplicationComponent shareQuantityAC;
 
+    /**
+     * Constructor, build an empty shareQuantity
+     * 
+     * @param shareQuantityAC the shareQuantity application component
+     * 
+     * @see Model
+     * @see ShareQuantityApplicationComponent
+     */
     public ShareQuantity(final ShareQuantityApplicationComponent shareQuantityAC) {
         super();
         this.shareQuantityAC = shareQuantityAC;
         setPojo2ErrorHandler(new SharePlotErrorHandler(this.shareQuantityAC.getSession()));
     }
 
+    /**
+     * Constructor, build a shareQuantity from a Model
+     * 
+     * @param model the model representing a shareQuantity entry in the table ShareQuantity
+     * @param shareQuantityAC the shareQuantity application component
+     * 
+     * @see Model
+     * @see ShareQuantityApplicationComponent
+     */
     public ShareQuantity(final Model model, final ShareQuantityApplicationComponent shareQuantityAC) {
         super(model);
         this.shareQuantityAC = shareQuantityAC;
         setPojo2ErrorHandler(new SharePlotErrorHandler(this.shareQuantityAC.getSession()));
     }
 
+    /**
+     * Copy constructor, build a shareQuantity as a copy of another shareQuantity
+     * 
+     * @param shareQuantity the shareQuantity to copy
+     */
     public ShareQuantity(final ShareQuantity shareQuantity) {
         super(shareQuantity);
         this.shareQuantityAC = shareQuantity.shareQuantityAC;
         setPojo2ErrorHandler(new SharePlotErrorHandler(this.shareQuantityAC.getSession()));
     }
 
+    /**
+     * @return <code>true</code> if this shareQuantity is valid and can be saved.
+     */
     public boolean isValid() {
         // TODO add extra validations here
         return !isNotNullableNull();
     }
 
-    private boolean isNew() {
+    /**
+     * @return <code>true</code> if this shareQuantity is new.
+     */
+    public boolean isNew() {
         return getIdShareQuantity() == null;
     }
 
+    /**
+     * Register the object in the database.
+     * The store will only be done if the shareQuantity is valid.
+     * It will updated if it already exists and create it if not.
+     * 
+     * @throws FormatedJetException
+     * @see FormatedJetException
+     * @see #isNew()
+     * @see #isValid()
+     */
     public void save() throws FormatedJetException {
         if (isValid()) {
             final StoreNut storeNut = this.shareQuantityAC.getStoreNut(SelectStoreApplicationComponent.SHAREQUANTITY_STORE);
@@ -112,6 +152,14 @@ public class ShareQuantity extends ShareQuantityItem {
         }
     }
 
+    /**
+     * Remove the object from the database.
+     * It will be deleted if it already exists.
+     * 
+     * @throws FormatedJetException
+     * @see FormatedJetException
+     * @see #isNew()
+     */
     public void delete() throws FormatedJetException {
         if (!isNew()) {
             final StoreNut storeNut = this.shareQuantityAC.getStoreNut(SelectStoreApplicationComponent.SHAREQUANTITY_STORE);

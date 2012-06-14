@@ -42,6 +42,9 @@ public class PortfolioApplicationComponent extends SimpleApplicationComponent {
     private final static Object SESSION_KEY = new SerializableKey(PortfolioApplicationComponent.class, "SESSION_KEY");
 
     /**
+     * Get the instance of the PortfolioApplicationComponent linked to the session. If there
+     * is not already one it will be created.
+     * 
      * @param session
      * @return PortfolioApplicationComponent
      * @throws JETException
@@ -93,6 +96,14 @@ public class PortfolioApplicationComponent extends SimpleApplicationComponent {
         getSession().removeProperty(SESSION_KEY);
     }
 
+    /**
+     * Return all portfolio matching the FinderMethod.
+     * 
+     * @param finder FinderMethod to use to fetch the Portfolios
+     * @return a list of portfolio matching the FinderMethod.
+     * @see List
+     * @see Portfolio
+     */
     protected List<Portfolio> getPortfolios(final FinderMethod finder) {
         final List<Portfolio> result = new ArrayList<Portfolio>();
 
@@ -110,6 +121,13 @@ public class PortfolioApplicationComponent extends SimpleApplicationComponent {
         return result;
     }
 
+    /**
+     * Return the first portfolio matching the FinderMethod.
+     * 
+     * @param finder FinderMethod to use to fetch the Portfolio
+     * @return the portfolio matching the FinderMethod.
+     * @see Portfolio
+     */
     protected Portfolio getPortfolio(final FinderMethod finder) {
         final Portfolio result;
 
@@ -124,6 +142,14 @@ public class PortfolioApplicationComponent extends SimpleApplicationComponent {
         return result;
     }
 
+    /**
+     * Get all Portfolios.
+     * 
+     * @return a list of all Portfolios.
+     * @see List
+     * @see Portfolio
+     * @see #getPortfolios(FinderMethod finder)
+     */
     public List<Portfolio> getPortfolios() {
         final Portfolio_FindAll0 finder = new Portfolio_FindAll0();
 

@@ -43,6 +43,9 @@ public class ShareApplicationComponent extends SimpleApplicationComponent {
     private final static Object SESSION_KEY = new SerializableKey(ShareApplicationComponent.class, "SESSION_KEY");
 
     /**
+     * Get the instance of the ShareApplicationComponent linked to the session. If there
+     * is not already one it will be created.
+     * 
      * @param session
      * @return ShareApplicationComponent
      * @throws JETException
@@ -94,6 +97,14 @@ public class ShareApplicationComponent extends SimpleApplicationComponent {
         getSession().removeProperty(SESSION_KEY);
     }
 
+    /**
+     * Return all share matching the FinderMethod.
+     * 
+     * @param finder FinderMethod to use to fetch the Shares
+     * @return a list of share matching the FinderMethod.
+     * @see List
+     * @see Share
+     */
     protected List<Share> getShares(final FinderMethod finder) {
         final List<Share> result = new ArrayList<Share>();
 
@@ -111,6 +122,13 @@ public class ShareApplicationComponent extends SimpleApplicationComponent {
         return result;
     }
 
+    /**
+     * Return the first share matching the FinderMethod.
+     * 
+     * @param finder FinderMethod to use to fetch the Share
+     * @return the share matching the FinderMethod.
+     * @see Share
+     */
     protected Share getShare(final FinderMethod finder) {
         final Share result;
 
@@ -125,6 +143,16 @@ public class ShareApplicationComponent extends SimpleApplicationComponent {
         return result;
     }
 
+    /**
+     * Get all shares for a given portfolio.
+     * 
+     * @param portfolio Portfolio for which the shares are desired
+     * @return a list of shareQuantity matching the FinderMethod.
+     * @see List
+     * @see Portfolio
+     * @see Share
+     * @see #getShares(FinderMethod finder)
+     */
     public List<Share> getShares(final Portfolio portfolio) {
         final Share_FindByPortfolio1 finder = new Share_FindByPortfolio1();
         finder.setIdPortfolio(portfolio.getIdPortfolio());
