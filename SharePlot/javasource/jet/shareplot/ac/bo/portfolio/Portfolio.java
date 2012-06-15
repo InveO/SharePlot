@@ -5,6 +5,7 @@ import jet.framework.manager.datamodel.interfaces.FinderObjectNotFoundException;
 import jet.framework.nuts.store.StoreNut;
 import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.pojo2.AbstractResourceNotification;
+import jet.framework.util.pojo2.Pojo2Bean;
 import jet.shareplot.ac.SelectStoreApplicationComponent;
 import jet.shareplot.persistence.pojo.PortfolioItem;
 import jet.shareplot.ui.desktop.pojo2.SharePlotErrorHandler;
@@ -20,7 +21,7 @@ import jet.util.throwable.JETException;
  * 
  * @author JetToolsFramework
  */
-public class Portfolio extends PortfolioItem {
+public class Portfolio extends PortfolioItem implements Pojo2Bean {
 
     private static final long serialVersionUID = 1069192587526038403L;
 
@@ -72,7 +73,9 @@ public class Portfolio extends PortfolioItem {
 
     /**
      * @return <code>true</code> if this portfolio is valid and can be saved.
+     * @see Pojo2Bean
      */
+    @Override
     public boolean isValid() {
         System.err.println("[Portfolio] isValid - isNotNullableNull() : " + isNotNullableNull());
         System.err.println("[Portfolio] isValid - TextUtils.isEmpty(getName() : " + TextUtils.isEmpty(getName()));
@@ -81,7 +84,9 @@ public class Portfolio extends PortfolioItem {
 
     /**
      * @return <code>true</code> if this portfolio is new.
+     * @see Pojo2Bean
      */
+    @Override
     public boolean isNew() {
         return getIdPortfolio() == null;
     }
@@ -95,7 +100,9 @@ public class Portfolio extends PortfolioItem {
      * @see FormatedJetException
      * @see #isNew()
      * @see #isValid()
+     * @see Pojo2Bean
      */
+    @Override
     public void save() throws FormatedJetException {
         if (isValid()) {
             final StoreNut storeNut = this.portfolioAC.getStoreNut(SelectStoreApplicationComponent.PORTFOLIO_STORE);
@@ -132,7 +139,9 @@ public class Portfolio extends PortfolioItem {
      * @throws FormatedJetException
      * @see FormatedJetException
      * @see #isNew()
+     * @see Pojo2Bean
      */
+    @Override
     public void delete() throws FormatedJetException {
         if (!isNew()) {
             final StoreNut storeNut = this.portfolioAC.getStoreNut(SelectStoreApplicationComponent.PORTFOLIO_STORE);

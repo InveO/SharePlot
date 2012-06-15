@@ -10,15 +10,14 @@ import jet.components.ui.events.UIEvent;
 import jet.components.ui.table.common.UITableComponent2;
 import jet.framework.ui.desktop.ApplicationComponentLauncher;
 import jet.framework.ui.utils.table.UITableListDisplay3;
-import jet.framework.util.exception.FormatedJetException;
 import jet.shareplot.ac.bo.portfolio.Portfolio;
 import jet.shareplot.ac.bo.portfolio.PortfolioApplicationComponent;
+import jet.shareplot.ac.bo.portfolio.PortfolioResource;
 import jet.shareplot.ui.AbstractSharePlotListNut;
 import jet.shareplot.ui.desktop.SharePlotACLauncher;
 import jet.shareplot.ui.task.TaskNameConstants;
 import jet.shareplot.util.BooleanConstants;
 import jet.util.logger.JETLevel;
-import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
 public class PortfolioListNut extends AbstractSharePlotListNut<Portfolio> {
@@ -83,22 +82,6 @@ public class PortfolioListNut extends AbstractSharePlotListNut<Portfolio> {
     }
 
     @Override
-    protected boolean isItemValid(final Portfolio item) {
-        boolean result;
-        if (item == null) {
-            result = true;
-        } else {
-            result = item.isValid();
-        }
-        return result;
-    }
-
-    @Override
-    protected Model getItemModel(final Portfolio item) {
-        return item.get_Model();
-    }
-
-    @Override
     protected Portfolio createNewItem() {
         final Portfolio portfolio = new Portfolio(this.portfolioAC);
         portfolio.setIsFake(BooleanConstants.NO);
@@ -106,18 +89,18 @@ public class PortfolioListNut extends AbstractSharePlotListNut<Portfolio> {
     }
 
     @Override
-    protected void deleteItem(final Portfolio item) throws FormatedJetException {
-        item.delete();
-    }
-
-    @Override
-    protected void saveItem(final Portfolio item) throws FormatedJetException {
-        item.save();
-    }
-
-    @Override
     protected void addListDisplayProviders(final UITableListDisplay3 uiTableListDisplay) {
         // nothing to do
+    }
+
+    @Override
+    protected String getResourceName() {
+        return PortfolioResource.RESOURCE_NAME;
+    }
+
+    @Override
+    protected Portfolio getItemCopy(final Portfolio item) {
+        return new Portfolio(item);
     }
 
 }

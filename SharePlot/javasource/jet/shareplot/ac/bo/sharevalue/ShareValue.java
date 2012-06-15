@@ -5,6 +5,7 @@ import jet.framework.manager.datamodel.interfaces.FinderObjectNotFoundException;
 import jet.framework.nuts.store.StoreNut;
 import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.pojo2.AbstractResourceNotification;
+import jet.framework.util.pojo2.Pojo2Bean;
 import jet.shareplot.ac.SelectStoreApplicationComponent;
 import jet.shareplot.persistence.pojo.ShareValueItem;
 import jet.util.logger.JETLevel;
@@ -18,7 +19,7 @@ import jet.util.throwable.JETException;
  *
  * @author JetToolsFramework
  */
-public class ShareValue extends ShareValueItem {
+public class ShareValue extends ShareValueItem implements Pojo2Bean {
 
     private static final long serialVersionUID = 1461049825L;
 
@@ -68,7 +69,9 @@ public class ShareValue extends ShareValueItem {
 
     /**
      * @return <code>true</code> if this shareValue is valid and can be saved.
+     * @see Pojo2Bean
      */
+    @Override
     public final boolean isValid() {
         // TODO add extra validations here
         return !isNotNullableNull();
@@ -76,7 +79,9 @@ public class ShareValue extends ShareValueItem {
 
     /**
      * @return <code>true</code> if this shareValue is new.
+     * @see Pojo2Bean
      */
+    @Override
     public final boolean isNew() {
         // TODO implement this method
         return false;
@@ -91,8 +96,10 @@ public class ShareValue extends ShareValueItem {
      * @see FormatedJetException
      * @see #isNew()
      * @see #isValid()
+     * @see Pojo2Bean
      */
-     public final void save() throws FormatedJetException {
+    @Override
+    public final void save() throws FormatedJetException {
         if (isValid()) {
             final StoreNut storeNut = this.shareValueAC.getStoreNut(SelectStoreApplicationComponent.SHAREVALUE_STORE);
             try {
@@ -131,7 +138,9 @@ public class ShareValue extends ShareValueItem {
      * @throws FormatedJetException
      * @see FormatedJetException
      * @see #isNew()
+     * @see Pojo2Bean
      */
+    @Override
     public final void delete() throws FormatedJetException {
         if (!isNew()) {
             final StoreNut storeNut = this.shareValueAC.getStoreNut(SelectStoreApplicationComponent.SHAREVALUE_STORE);

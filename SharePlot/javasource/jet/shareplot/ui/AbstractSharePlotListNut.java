@@ -8,10 +8,15 @@ import jet.components.ui.common.common.UIComponent;
 import jet.components.ui.events.KeyEvent;
 import jet.components.ui.table.common.UITableComponent2;
 import jet.container.managers.ui.interfaces.UIComponentFinder;
+import jet.framework.component.resource.ResourceNotificationApplicationComponent;
+import jet.framework.component.resource.ResourceNotificationListener;
 import jet.framework.ui.utils.table.CheckBoxSelectedCellProvider;
 import jet.framework.ui.utils.table.UITableListDisplay3;
 import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.models.EmptyLineListener;
+import jet.framework.util.pojo2.AbstractResourceNotification;
+import jet.framework.util.pojo2.AbstractResourceNotification.NOTIFICATION_TYPE;
+import jet.framework.util.pojo2.Pojo2Bean;
 import jet.framework.util.ui.UIComponentHelper;
 import jet.lifecycle.annotations.Initializer;
 import jet.util.logger.JETLevel;
@@ -19,7 +24,7 @@ import jet.util.models.interfaces.Event;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
-public abstract class AbstractSharePlotListNut<T> extends AbstractSharePlotNut {
+public abstract class AbstractSharePlotListNut<T extends Pojo2Bean> extends AbstractSharePlotNut implements ResourceNotificationListener {
 
     protected UITableComponent2 tableList;
     protected UITableListDisplay3 uiTableListDisplay3;
@@ -29,6 +34,7 @@ public abstract class AbstractSharePlotListNut<T> extends AbstractSharePlotNut {
     private UIButtonComponent saveButton;
     private UIButtonComponent deleteButton;
     private CheckBoxSelectedCellProvider selectedCellProvider;
+    private ResourceNotificationApplicationComponent resourceAC;
 
     @Initializer
     public final void doAbstractSharePlotListNutInit() throws JETException {
@@ -39,8 +45,13 @@ public abstract class AbstractSharePlotListNut<T> extends AbstractSharePlotNut {
         initItemList();
         displayShareList();
 
+        this.resourceAC = ResourceNotificationApplicationComponent.getInstance(getSession());
+        this.resourceAC.addResourceNotificationListener(getResourceName(), this);
+
         postInit();
     }
+
+    protected abstract String getResourceName();
 
     protected abstract void preInit() throws JETException;
 
@@ -61,7 +72,7 @@ public abstract class AbstractSharePlotListNut<T> extends AbstractSharePlotNut {
         this.uiTableListDisplay3.detachModel();
         final List<T> tmpItems = findItems();
         for (final T item : tmpItems) {
-            this.uiTableListDisplay3.addRow(getItemModel(item));
+            this.uiTableListDisplay3.addRow(item.get_Model());
             this.items.add(item);
         }
         addEmptyItem();
@@ -88,29 +99,27 @@ public abstract class AbstractSharePlotListNut<T> extends AbstractSharePlotNut {
     protected abstract String getListDisplayKey();
 
     protected final void addEmptyItem() {
-        if (isItemValid(this.emptyItem)) {
+        if (this.emptyItem.isValid()) {
             if (this.emptyItem != null) {
-                getItemModel(this.emptyItem).removeEventListener(this.emptyItemListener);
+                this.emptyItem.get_Model().removeEventListener(this.emptyItemListener);
             }
 
             this.emptyItem = createNewItem();
 
-            this.uiTableListDisplay3.addRow(getItemModel(this.emptyItem));
+            this.uiTableListDisplay3.addRow(this.emptyItem.get_Model());
             this.items.add(this.emptyItem);
-            getItemModel(this.emptyItem).addEventListener(this.emptyItemListener);
+            this.emptyItem.get_Model().addEventListener(this.emptyItemListener);
         }
     }
 
-    protected abstract boolean isItemValid(T item);
-
-    protected abstract Model getItemModel(T item);
-
     protected abstract T createNewItem();
+
+    protected abstract T getItemCopy(T item);
 
     private void removeEmptyItem() {
         if (this.emptyItem != null) {
-            getItemModel(this.emptyItem).removeEventListener(this.emptyItemListener);
-            this.uiTableListDisplay3.removeRow(getItemModel(this.emptyItem));
+            this.emptyItem.get_Model().removeEventListener(this.emptyItemListener);
+            this.uiTableListDisplay3.removeRow(this.emptyItem.get_Model());
             this.items.remove(this.emptyItem);
             this.emptyItem = null;
         }
@@ -142,11 +151,11 @@ public abstract class AbstractSharePlotListNut<T> extends AbstractSharePlotNut {
 
         // find shares to delete, and delete in DB
         for (final T item : this.items) {
-            final Boolean isSelected = this.selectedCellProvider.getSelectedState(getItemModel(item));
+            final Boolean isSelected = this.selectedCellProvider.getSelectedState(item.get_Model());
             if (isSelected.booleanValue()) {
                 try {
                     // if is not new delete from db
-                    deleteItem(item);
+                    item.delete();
 
                     toRemove.add(item);
                 } catch (final FormatedJetException e) {
@@ -158,23 +167,19 @@ public abstract class AbstractSharePlotListNut<T> extends AbstractSharePlotNut {
 
         // remove from display
         for (final T item : toRemove) {
-            this.uiTableListDisplay3.removeRow(getItemModel(item));
+            this.uiTableListDisplay3.removeRow(item.get_Model());
             this.items.remove(item);
         }
 
         addEmptyItem();
     }
 
-    protected abstract void deleteItem(T item) throws FormatedJetException;
-
-    protected abstract void saveItem(T item) throws FormatedJetException;
-
     private void processSave() {
         removeEmptyItem();
 
         for (final T item : this.items) {
             try {
-                saveItem(item);
+                item.save();
             } catch (final FormatedJetException e) {
                 // TODO display message for user
                 logp(JETLevel.SEVERE, "AbstractSharePlotListNut", "processSave", e.getMessage(), e);
@@ -184,4 +189,61 @@ public abstract class AbstractSharePlotListNut<T> extends AbstractSharePlotNut {
         addEmptyItem();
     }
 
+    // ResourceNotificationListener
+    @Override
+    public void resourceNotification(final String resourceName, final Model parameter) {
+        if (resourceName.equals(getResourceName())) {
+            if (parameter instanceof AbstractResourceNotification) {
+                @SuppressWarnings("unchecked")
+                final AbstractResourceNotification<T> resNotif = (AbstractResourceNotification<T>) parameter;
+                final T resource = resNotif.getResource();
+
+                final NOTIFICATION_TYPE type = resNotif.getType();
+
+                if (NOTIFICATION_TYPE.CREATE.equals(type)) {
+                    addNewResource(resource, -1);
+                } else if (NOTIFICATION_TYPE.UPDATE.equals(type)) {
+                    final int index = removeResource(resource);
+                    addNewResource(resource, index);
+                } else if (NOTIFICATION_TYPE.DELETE.equals(type)) {
+                    removeResource(resource);
+                }
+
+            }
+        }
+    }
+
+    private int removeResource(final T resource) {
+        int index = -1;
+        // find matching resource in list
+        T itemToDelete = null;
+        for (final T itemInList : this.items) {
+            if (itemInList.isPkEquals(resource)) {
+                itemToDelete = itemInList;
+            }
+        }
+        // remove item from display list and pojo list
+        if (itemToDelete != null) {
+            index = this.uiTableListDisplay3.getIndexOf(itemToDelete.get_Model());
+            this.uiTableListDisplay3.removeRow(itemToDelete.get_Model());
+            this.items.remove(itemToDelete);
+        }
+        return index;
+    }
+
+    private void addNewResource(final T resource, final int index) {
+        // add resource at index in list
+        final T copy = getItemCopy(resource);
+        final Model model = copy.get_Model();
+        if (index < 0) {
+            // if index is < 0 insert at the end of the list, empty line should be
+            // removed so the new line is before the empty line
+            removeEmptyItem();
+            this.uiTableListDisplay3.addRow(model);
+            addEmptyItem();
+        } else {
+            this.uiTableListDisplay3.addRow(index, model);
+        }
+        this.items.add(resource);
+    }
 }

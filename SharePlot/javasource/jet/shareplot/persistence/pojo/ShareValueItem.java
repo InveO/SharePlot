@@ -5,6 +5,7 @@ import java.io.Serializable;
 import jet.framework.manager.datamodel.interfaces.DataModelRootNode;
 import jet.framework.util.models.ModelHelper;
 import jet.framework.util.pojo2.DispatcherModel;
+import jet.framework.util.pojo2.Pojo2;
 import jet.framework.util.pojo2.Pojo2ErrorHandler;
 import jet.framework.util.pojo2.Pojo2ErrorHandlerProvider;
 import jet.framework.util.pojo2.interceptor.StringLengthInterceptor;
@@ -25,7 +26,7 @@ import jet.util.throwable.JETSystemError;
  * @author JetToolsFramework
  */
 @SuppressWarnings("PMD.MethodNamingConventions")
-public class ShareValueItem implements Serializable, Pojo2ErrorHandlerProvider {
+public class ShareValueItem implements Serializable, Pojo2ErrorHandlerProvider, Pojo2 {
 
     private static final long serialVersionUID = 1461049825L;
 
@@ -109,11 +110,17 @@ public class ShareValueItem implements Serializable, Pojo2ErrorHandlerProvider {
         setValueDate(shareValue.getValueDate());
     }
 
+    /* (non-Javadoc)
+     * @see Pojo2ErrorHandlerProvider#setPojo2ErrorHandler(Pojo2ErrorHandler)
+     */
     @Override
     public void setPojo2ErrorHandler(final Pojo2ErrorHandler pojo2ErrorHandler) {
         this.pojo2ErrorHandler = pojo2ErrorHandler;
     }
 
+    /* (non-Javadoc)
+     * @see Pojo2ErrorHandlerProvider#getPojo2ErrorHandler()
+     */
     @Override
     public Pojo2ErrorHandler getPojo2ErrorHandler() {
         return this.pojo2ErrorHandler;
@@ -122,7 +129,9 @@ public class ShareValueItem implements Serializable, Pojo2ErrorHandlerProvider {
     /**
      * Get the ShareValue Data Model that is wrapped in this pojo
      * @return ShareValue Data Model
+     * @see Pojo2
      */
+    @Override
     public final Model get_Model() {
         return this.dataModel;
     }
@@ -258,7 +267,9 @@ public class ShareValueItem implements Serializable, Pojo2ErrorHandlerProvider {
     /**
      * Check if any node not nullable is null
      * @return true if any node not nullable is null
+     * @see Pojo2
      */
+    @Override
     public final boolean isNotNullableNull() {
         Long isShare = getIsShare();
         if (isShare == null) {
@@ -286,13 +297,18 @@ public class ShareValueItem implements Serializable, Pojo2ErrorHandlerProvider {
      *
      * @param other ShareValueItem to compare with
      * @return <code>true</code> if the pk fields from the two objects have the same values
+     * @see Pojo2
      */
-    public final boolean isPkEquals(final ShareValueItem other) {
+    @Override
+    public final boolean isPkEquals(final Pojo2 other) {
         boolean result = false;
 
         if ( getIdShareValue() != null) {
-            if ( getIdShareValue().equals(other.getIdShareValue())) {
-                result = true;
+            if (other instanceof ShareValueItem) {
+                final ShareValueItem otherShareValue = (ShareValueItem) other;
+                if ( getIdShareValue().equals(otherShareValue.getIdShareValue())) {
+                    result = true;
+                }
             }
         }
 

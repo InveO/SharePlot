@@ -5,6 +5,7 @@ import jet.framework.manager.datamodel.interfaces.FinderObjectNotFoundException;
 import jet.framework.nuts.store.StoreNut;
 import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.pojo2.AbstractResourceNotification;
+import jet.framework.util.pojo2.Pojo2Bean;
 import jet.shareplot.ac.SelectStoreApplicationComponent;
 import jet.shareplot.persistence.pojo.ShareItem;
 import jet.shareplot.ui.desktop.pojo2.SharePlotErrorHandler;
@@ -19,7 +20,7 @@ import jet.util.throwable.JETException;
  * 
  * @author JetToolsFramework
  */
-public class Share extends ShareItem {
+public class Share extends ShareItem implements Pojo2Bean {
 
     private static final long serialVersionUID = 2783588090226625437L;
 
@@ -71,7 +72,9 @@ public class Share extends ShareItem {
 
     /**
      * @return <code>true</code> if this share is valid and can be saved.
+     * @see Pojo2Bean
      */
+    @Override
     public boolean isValid() {
         // TODO add extra validations here
         return !isNotNullableNull();
@@ -79,7 +82,9 @@ public class Share extends ShareItem {
 
     /**
      * @return <code>true</code> if this share is new.
+     * @see Pojo2Bean
      */
+    @Override
     public boolean isNew() {
         return getIdShare() == null;
     }
@@ -93,7 +98,9 @@ public class Share extends ShareItem {
      * @see FormatedJetException
      * @see #isNew()
      * @see #isValid()
+     * @see Pojo2Bean
      */
+    @Override
     public void save() throws FormatedJetException {
         if (isValid()) {
             final StoreNut storeNut = this.shareAC.getStoreNut(SelectStoreApplicationComponent.SHARE_STORE);
@@ -130,7 +137,9 @@ public class Share extends ShareItem {
      * @throws FormatedJetException
      * @see FormatedJetException
      * @see #isNew()
+     * @see Pojo2Bean
      */
+    @Override
     public void delete() throws FormatedJetException {
         if (!isNew()) {
             final StoreNut storeNut = this.shareAC.getStoreNut(SelectStoreApplicationComponent.SHARE_STORE);

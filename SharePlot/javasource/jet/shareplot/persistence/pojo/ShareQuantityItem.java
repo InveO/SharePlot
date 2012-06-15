@@ -5,6 +5,7 @@ import java.io.Serializable;
 import jet.framework.manager.datamodel.interfaces.DataModelRootNode;
 import jet.framework.util.models.ModelHelper;
 import jet.framework.util.pojo2.DispatcherModel;
+import jet.framework.util.pojo2.Pojo2;
 import jet.framework.util.pojo2.Pojo2ErrorHandler;
 import jet.framework.util.pojo2.Pojo2ErrorHandlerProvider;
 import jet.framework.util.pojo2.interceptor.StringLengthInterceptor;
@@ -25,7 +26,7 @@ import jet.util.throwable.JETSystemError;
  * @author JetToolsFramework
  */
 @SuppressWarnings("PMD.MethodNamingConventions")
-public class ShareQuantityItem implements Serializable, Pojo2ErrorHandlerProvider {
+public class ShareQuantityItem implements Serializable, Pojo2ErrorHandlerProvider, Pojo2 {
 
     private static final long serialVersionUID = 1077646545L;
 
@@ -125,11 +126,17 @@ public class ShareQuantityItem implements Serializable, Pojo2ErrorHandlerProvide
         setValueDate(shareQuantity.getValueDate());
     }
 
+    /* (non-Javadoc)
+     * @see Pojo2ErrorHandlerProvider#setPojo2ErrorHandler(Pojo2ErrorHandler)
+     */
     @Override
     public void setPojo2ErrorHandler(final Pojo2ErrorHandler pojo2ErrorHandler) {
         this.pojo2ErrorHandler = pojo2ErrorHandler;
     }
 
+    /* (non-Javadoc)
+     * @see Pojo2ErrorHandlerProvider#getPojo2ErrorHandler()
+     */
     @Override
     public Pojo2ErrorHandler getPojo2ErrorHandler() {
         return this.pojo2ErrorHandler;
@@ -138,7 +145,9 @@ public class ShareQuantityItem implements Serializable, Pojo2ErrorHandlerProvide
     /**
      * Get the ShareQuantity Data Model that is wrapped in this pojo
      * @return ShareQuantity Data Model
+     * @see Pojo2
      */
+    @Override
     public final Model get_Model() {
         return this.dataModel;
     }
@@ -406,7 +415,9 @@ public class ShareQuantityItem implements Serializable, Pojo2ErrorHandlerProvide
     /**
      * Check if any node not nullable is null
      * @return true if any node not nullable is null
+     * @see Pojo2
      */
+    @Override
     public final boolean isNotNullableNull() {
         java.math.BigDecimal changeFee = getChangeFee();
         if (changeFee == null) {
@@ -452,13 +463,18 @@ public class ShareQuantityItem implements Serializable, Pojo2ErrorHandlerProvide
      *
      * @param other ShareQuantityItem to compare with
      * @return <code>true</code> if the pk fields from the two objects have the same values
+     * @see Pojo2
      */
-    public final boolean isPkEquals(final ShareQuantityItem other) {
+    @Override
+    public final boolean isPkEquals(final Pojo2 other) {
         boolean result = false;
 
         if ( getIdShareQuantity() != null) {
-            if ( getIdShareQuantity().equals(other.getIdShareQuantity())) {
-                result = true;
+            if (other instanceof ShareQuantityItem) {
+                final ShareQuantityItem otherShareQuantity = (ShareQuantityItem) other;
+                if ( getIdShareQuantity().equals(otherShareQuantity.getIdShareQuantity())) {
+                    result = true;
+                }
             }
         }
 

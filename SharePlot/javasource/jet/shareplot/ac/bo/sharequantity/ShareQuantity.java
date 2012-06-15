@@ -5,6 +5,7 @@ import jet.framework.manager.datamodel.interfaces.FinderObjectNotFoundException;
 import jet.framework.nuts.store.StoreNut;
 import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.pojo2.AbstractResourceNotification;
+import jet.framework.util.pojo2.Pojo2Bean;
 import jet.shareplot.ac.SelectStoreApplicationComponent;
 import jet.shareplot.persistence.pojo.ShareQuantityItem;
 import jet.shareplot.ui.desktop.pojo2.SharePlotErrorHandler;
@@ -19,7 +20,7 @@ import jet.util.throwable.JETException;
  * 
  * @author JetToolsFramework
  */
-public class ShareQuantity extends ShareQuantityItem {
+public class ShareQuantity extends ShareQuantityItem implements Pojo2Bean {
 
     private static final long serialVersionUID = -6023493960063592803L;
 
@@ -100,7 +101,9 @@ public class ShareQuantity extends ShareQuantityItem {
 
     /**
      * @return <code>true</code> if this shareQuantity is valid and can be saved.
+     * @see Pojo2Bean
      */
+    @Override
     public boolean isValid() {
         // TODO add extra validations here
         return !isNotNullableNull();
@@ -108,7 +111,9 @@ public class ShareQuantity extends ShareQuantityItem {
 
     /**
      * @return <code>true</code> if this shareQuantity is new.
+     * @see Pojo2Bean
      */
+    @Override
     public boolean isNew() {
         return getIdShareQuantity() == null;
     }
@@ -122,7 +127,9 @@ public class ShareQuantity extends ShareQuantityItem {
      * @see FormatedJetException
      * @see #isNew()
      * @see #isValid()
+     * @see Pojo2Bean
      */
+    @Override
     public void save() throws FormatedJetException {
         if (isValid()) {
             final StoreNut storeNut = this.shareQuantityAC.getStoreNut(SelectStoreApplicationComponent.SHAREQUANTITY_STORE);
@@ -159,7 +166,9 @@ public class ShareQuantity extends ShareQuantityItem {
      * @throws FormatedJetException
      * @see FormatedJetException
      * @see #isNew()
+     * @see Pojo2Bean
      */
+    @Override
     public void delete() throws FormatedJetException {
         if (!isNew()) {
             final StoreNut storeNut = this.shareQuantityAC.getStoreNut(SelectStoreApplicationComponent.SHAREQUANTITY_STORE);
