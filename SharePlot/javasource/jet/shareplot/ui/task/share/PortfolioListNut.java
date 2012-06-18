@@ -103,4 +103,14 @@ public class PortfolioListNut extends AbstractSharePlotListNut<Portfolio> {
         return new Portfolio(item);
     }
 
+    @Override
+    protected void postSave() {
+        // nothing to do
+    }
+
+    @Override
+    protected void preSave() {
+        // nothing to do
+    }
+
 }

@@ -66,6 +66,26 @@
         
         <!-- END TABLE STYLES -->
 
+        <STYLE type="basic" name="textFieldStyle">
+            <ATTRIBUTE name="BackgroundColor" value="editorBackColor" />
+            <ATTRIBUTE name="ForegroundColor" value="editorForeColor" />
+
+            <ATTRIBUTE name="NonEditableBackgroundColor" value="editorROBackColor" />
+            <ATTRIBUTE name="NonEditableForegroundColor" value="editorROForeColor" />
+            
+            <ATTRIBUTE name="Font" value="editorFont" />
+
+            <ATTRIBUTE name="BorderPainted" value="true" />
+            <ATTRIBUTE name="BorderColor" value="editorBorderColor" />
+            <ATTRIBUTE name="NonEditableBorderColor" value="editorROBorderColor" />
+            
+            <ATTRIBUTE name="SelectionBackground" value="popupSelectionBG" />
+            <ATTRIBUTE name="SelectionForeground" value="popupSelectionFG" />
+            
+            <ATTRIBUTE name="PopupBackground" value="editorBackColor" />
+            <ATTRIBUTE name="PopupForeground" value="editorForeColor" />
+        </STYLE>
+
     </UISTYLES>
 
 </DOCUMENT>

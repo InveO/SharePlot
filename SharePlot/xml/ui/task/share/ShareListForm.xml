@@ -17,8 +17,17 @@
             </BUTTON>
             <GRIDBAGCONSTRAINTS gridx="0" gridy="1" gridwidth="1" gridheight="1" weightx="1" weighty="0" fill="HORIZONTAL" insetleft="5" />
         </GROUP>
+        <GROUP name="detailGroup" extends="EmptyGroup" layoutmanager="gridbaglayout" >
+	        <LABEL name="nameLabel" extends="EditorLabel" localizedDisplayableText="SharePlot/properties/task/Share/label.Name">
+	            <GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="0" insetleft="5" />
+	        </LABEL>
+	        <TEXT name="name" extends="TextFieldEditor" >
+	            <GRIDBAGCONSTRAINTS gridx="1" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="0" insetleft="5" fill="NONE"/>
+	        </TEXT>
+            <GRIDBAGCONSTRAINTS gridx="0" gridy="2" gridheight="1" gridwidth="1" weightx="1" weighty="0" insetleft="10" insetright="10" insettop="10" insetbottom="5" anchor="NORTH" fill="HORIZONTAL"/>
+        </GROUP>
         <DISPLAY2 name="tableList" extends="EmptyTable" >
-            <GRIDBAGCONSTRAINTS gridx="0" gridy="2" gridheight="1" gridwidth="1" weightx="1" weighty="1" insetleft="10" insetright="10" insettop="10" insetbottom="5" anchor="NORTH" fill="BOTH"/>
+            <GRIDBAGCONSTRAINTS gridx="0" gridy="3" gridheight="1" gridwidth="1" weightx="1" weighty="1" insetleft="10" insetright="10" insettop="10" insetbottom="5" anchor="NORTH" fill="BOTH"/>
         </DISPLAY2>
 		<GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="1" anchor="NORTH" fill="BOTH"/>
 	</GROUP>

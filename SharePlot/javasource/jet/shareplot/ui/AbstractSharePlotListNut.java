@@ -177,6 +177,8 @@ public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends
     private void processSave() {
         removeEmptyItem();
 
+        preSave();
+
         for (final T item : this.items) {
             try {
                 item.save();
@@ -186,8 +188,14 @@ public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends
             }
         }
 
+        postSave();
+
         addEmptyItem();
     }
+
+    protected abstract void postSave();
+
+    protected abstract void preSave();
 
     // ResourceNotificationListener
     @Override

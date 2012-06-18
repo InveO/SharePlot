@@ -67,4 +67,15 @@ public class ShareQuantityListNut extends AbstractSharePlotListNut<ShareQuantity
     protected ShareQuantity getItemCopy(final ShareQuantity item) {
         return new ShareQuantity(item);
     }
+
+    @Override
+    protected void postSave() {
+        // nothing to do
+    }
+
+    @Override
+    protected void preSave() {
+        // nothing to do
+    }
+
 }

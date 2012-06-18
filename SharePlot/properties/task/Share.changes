@@ -12,6 +12,7 @@ dialog.CanNotSaveShareQuantity=1337894621467
 dialog.PortfolioNotValid=1335732586368
 dialog.ShareNotValid=1337806819317
 dialog.ShareQuantityNotValid=1337894635771
+label.Name=1340045729603
 list.changeFee=1337894973949
 list.changePrice=1337894955141
 list.changeQuantity=1337894988649

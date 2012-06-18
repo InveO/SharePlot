@@ -10,6 +10,8 @@ import jet.components.ui.events.UIEvent;
 import jet.components.ui.table.common.UITableComponent2;
 import jet.framework.ui.desktop.ApplicationComponentLauncher;
 import jet.framework.ui.utils.table.UITableListDisplay3;
+import jet.framework.util.exception.FormatedJetException;
+import jet.framework.util.models.ModelHelper;
 import jet.framework.util.ui.LocalizedMessageFormatDisplayable;
 import jet.shareplot.ac.bo.portfolio.Portfolio;
 import jet.shareplot.ac.bo.share.Share;
@@ -69,6 +71,10 @@ public class ShareListNut extends AbstractSharePlotListNut<Share> {
         this.portfolio = (Portfolio) getApplicationComponent().getProperty(ShareUIConstants.ARGUMENT_PORTFOLIO);
         this.shareAC = ShareApplicationComponent.getInstance(getSession());
 
+        updateHeaderTitle();
+    }
+
+    private void updateHeaderTitle() {
         final Object[] objects = { this.portfolio.getName() };
         final Displayable displayable = new LocalizedMessageFormatDisplayable("SharePlot/properties/task/Share/title.ShareListName", objects);
         setHeaderTitle(displayable);
@@ -77,6 +83,7 @@ public class ShareListNut extends AbstractSharePlotListNut<Share> {
     @Override
     protected void postInit() throws JETException {
         // nothing to do
+        ModelHelper.setDataModelNodeToField(this.portfolio.get_Name_Model(), "name", true, getMainComponent(), null);
     }
 
     @Override
@@ -109,6 +116,21 @@ public class ShareListNut extends AbstractSharePlotListNut<Share> {
     @Override
     protected Share getItemCopy(final Share item) {
         return new Share(item);
+    }
+
+    @Override
+    protected void postSave() {
+        try {
+            this.portfolio.save();
+        } catch (final FormatedJetException e) {
+            logp(JETLevel.SEVERE, "ShareListNut", "postSave", e.getMessage(), e);
+        }
+        updateHeaderTitle();
+    }
+
+    @Override
+    protected void preSave() {
+        // nothing to do
     }
 
 }

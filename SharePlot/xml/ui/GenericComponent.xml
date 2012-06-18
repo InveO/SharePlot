@@ -8,11 +8,12 @@
     <LABEL name="DialogLabel" font="labelFont" foregroundColor="labelColor" /> 
     <LABEL name="DialogBoldRedLabel" font="labelBoldFont" foregroundColor="labelRedColor" /> 
     <LABEL name="EditorHeaderLabel" font="editorHeaderFont" foregroundColor="labelColor" /> 
+    <LABEL name="EditorLabel" font="labelFont" foregroundColor="labelColor" /> 
     <LABEL name="StatusBarLabel" font="statusBarFont" foregroundColor="statusBarFore" /> 
     
     <DISPLAY2 name="EmptyTable" style="tableStyle" cellSpacing="0" verticalLines="dotted" opaque="false" borderWidth="0" borderColor="tableBorderColor" />
-    
     <TABBEDPANE name="EmptyOpaqueTabbedpane" tabsRolloverBackground="tabRolloverBackgreound" selectedTabsRolloverBackground="selectedTabRolloverBackgreound" tabsRolloverForeground="tabRolloverForegreound" selectedTabsRolloverForeground="selectedTabRolloverForegreound" opaque="true" increaseSelectedTabFontSize="false" font="tabbedPaneFont" backgroundColor="tabbedPaneBG" foregroundColor="tabbedPaneFG" tabsGradientBackground="tabsGradientBG" tabsForeground="tabsForeground" selectedTabsGradientBackground="selectedTabGradientBG" selectedTabsForeground="selectedTabForeground" paddingTop="3" paddingBottom="3" paddingLeft="8" paddingRight="8" />
+    <TEXT name="TextFieldEditor" opaque="true" style="textFieldStyle" /> 
     
 	<BUTTON name="GenericButton" font="editorFont" rolloverBorderColor="buttonsRolloverBorderColor" gradientBackgroundColor="buttonsBackground" foregroundColor="buttonsForeground" disabledBackgroundColor="buttonsDisabledBackground" disabledForegroundColor="buttonsDisabledForeground" paddingTop="3" paddingBottom="3" paddingLeft="6" paddingRight="6" />
 	

@@ -10,8 +10,14 @@
         <!-- EDITOR COLORS -->
         <COLOR name="editorBackColor" red="250" green="250" blue="250" />
         <COLOR name="editorForeColor" red="77" green="77" blue="77" />
+        <COLOR name="editorBorderColor" red="179" green="179" blue="179" />
+        <COLOR name="editorROBackColor" red="255" green="255" blue="255" />
+        <COLOR name="editorROForeColor" red="77" green="77" blue="77" />
+        <COLOR name="editorROBorderColor" red="255" green="255" blue="255" />
         <COLOR name="labelColor" red="77" green="77" blue="77" />
         <COLOR name="labelRedColor" red="255" green="0" blue="0" />
+        <COLOR name="popupSelectionBG" red="114" green="182" blue="255" />
+        <COLOR name="popupSelectionFG" red="77" green="77" blue="77" />
         <!-- PANEL HEADER COLORS -->
         <COLOR name="editorHeaderBackColor" red="255" green="255" blue="255" />   
         <COLOR name="editorHeaderForeColor" red="77" green="77" blue="77" />      
