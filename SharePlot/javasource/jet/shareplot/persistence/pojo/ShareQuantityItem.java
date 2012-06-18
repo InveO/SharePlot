@@ -5,9 +5,9 @@ import java.io.Serializable;
 import jet.framework.manager.datamodel.interfaces.DataModelRootNode;
 import jet.framework.util.models.ModelHelper;
 import jet.framework.util.pojo2.DispatcherModel;
-import jet.framework.util.pojo2.Pojo2;
-import jet.framework.util.pojo2.Pojo2ErrorHandler;
-import jet.framework.util.pojo2.Pojo2ErrorHandlerProvider;
+import jet.framework.util.pojo2.JFDataItem;
+import jet.framework.util.pojo2.JFErrorHandler;
+import jet.framework.util.pojo2.JFErrorHandlerProvider;
 import jet.framework.util.pojo2.interceptor.StringLengthInterceptor;
 import jet.util.logger.JETLevel;
 import jet.util.logger.JETLoggerManager;
@@ -26,7 +26,7 @@ import jet.util.throwable.JETSystemError;
  * @author JetToolsFramework
  */
 @SuppressWarnings("PMD.MethodNamingConventions")
-public class ShareQuantityItem implements Serializable, Pojo2ErrorHandlerProvider, Pojo2 {
+public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, JFDataItem {
 
     private static final long serialVersionUID = 1077646545L;
 
@@ -42,7 +42,7 @@ public class ShareQuantityItem implements Serializable, Pojo2ErrorHandlerProvide
     private DispatcherModel<ShareQuantityItem, Long> idShareDispatcherModel;
     private DispatcherModel<ShareQuantityItem, java.util.Date> valueDateDispatcherModel;
 
-    private Pojo2ErrorHandler pojo2ErrorHandler;
+    private JFErrorHandler jfErrorHandler;
 
     /**
      * Constructor used to create a new ShareQuantity Data Model
@@ -127,25 +127,25 @@ public class ShareQuantityItem implements Serializable, Pojo2ErrorHandlerProvide
     }
 
     /* (non-Javadoc)
-     * @see Pojo2ErrorHandlerProvider#setPojo2ErrorHandler(Pojo2ErrorHandler)
+     * @see JFErrorHandlerProvider#setJFErrorHandler(JFErrorHandler)
      */
     @Override
-    public void setPojo2ErrorHandler(final Pojo2ErrorHandler pojo2ErrorHandler) {
-        this.pojo2ErrorHandler = pojo2ErrorHandler;
+    public void setJFErrorHandler(final JFErrorHandler jfErrorHandler) {
+        this.jfErrorHandler = jfErrorHandler;
     }
 
     /* (non-Javadoc)
-     * @see Pojo2ErrorHandlerProvider#getPojo2ErrorHandler()
+     * @see JFErrorHandlerProvider#getJFErrorHandler()
      */
     @Override
-    public Pojo2ErrorHandler getPojo2ErrorHandler() {
-        return this.pojo2ErrorHandler;
+    public JFErrorHandler getJFErrorHandler() {
+        return this.jfErrorHandler;
     }
 
     /**
      * Get the ShareQuantity Data Model that is wrapped in this pojo
      * @return ShareQuantity Data Model
-     * @see Pojo2
+     * @see JFDataItem
      */
     @Override
     public final Model get_Model() {
@@ -415,7 +415,7 @@ public class ShareQuantityItem implements Serializable, Pojo2ErrorHandlerProvide
     /**
      * Check if any node not nullable is null
      * @return true if any node not nullable is null
-     * @see Pojo2
+     * @see JFDataItem
      */
     @Override
     public final boolean isNotNullableNull() {
@@ -463,10 +463,10 @@ public class ShareQuantityItem implements Serializable, Pojo2ErrorHandlerProvide
      *
      * @param other ShareQuantityItem to compare with
      * @return <code>true</code> if the pk fields from the two objects have the same values
-     * @see Pojo2
+     * @see JFDataItem
      */
     @Override
-    public final boolean isPkEquals(final Pojo2 other) {
+    public final boolean isPkEquals(final JFDataItem other) {
         boolean result = false;
 
         if ( getIdShareQuantity() != null) {

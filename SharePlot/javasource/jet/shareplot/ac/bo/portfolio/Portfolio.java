@@ -5,7 +5,7 @@ import jet.framework.manager.datamodel.interfaces.FinderObjectNotFoundException;
 import jet.framework.nuts.store.StoreNut;
 import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.pojo2.AbstractResourceNotification;
-import jet.framework.util.pojo2.Pojo2Bean;
+import jet.framework.util.pojo2.JFBusinessItem;
 import jet.shareplot.ac.SelectStoreApplicationComponent;
 import jet.shareplot.persistence.pojo.PortfolioItem;
 import jet.shareplot.ui.desktop.pojo2.SharePlotErrorHandler;
@@ -21,7 +21,7 @@ import jet.util.throwable.JETException;
  * 
  * @author JetToolsFramework
  */
-public class Portfolio extends PortfolioItem implements Pojo2Bean {
+public class Portfolio extends PortfolioItem implements JFBusinessItem {
 
     private static final long serialVersionUID = 1069192587526038403L;
 
@@ -42,7 +42,7 @@ public class Portfolio extends PortfolioItem implements Pojo2Bean {
     public Portfolio(final PortfolioApplicationComponent portfolioAC) {
         super();
         this.portfolioAC = portfolioAC;
-        setPojo2ErrorHandler(new SharePlotErrorHandler(this.portfolioAC.getSession()));
+        setJFErrorHandler(new SharePlotErrorHandler(this.portfolioAC.getSession()));
     }
 
     /**
@@ -57,7 +57,7 @@ public class Portfolio extends PortfolioItem implements Pojo2Bean {
     public Portfolio(final Model model, final PortfolioApplicationComponent portfolioAC) {
         super(model);
         this.portfolioAC = portfolioAC;
-        setPojo2ErrorHandler(new SharePlotErrorHandler(this.portfolioAC.getSession()));
+        setJFErrorHandler(new SharePlotErrorHandler(this.portfolioAC.getSession()));
     }
 
     /**
@@ -68,12 +68,12 @@ public class Portfolio extends PortfolioItem implements Pojo2Bean {
     public Portfolio(final Portfolio portfolio) {
         super(portfolio);
         this.portfolioAC = portfolio.portfolioAC;
-        setPojo2ErrorHandler(new SharePlotErrorHandler(this.portfolioAC.getSession()));
+        setJFErrorHandler(new SharePlotErrorHandler(this.portfolioAC.getSession()));
     }
 
     /**
      * @return <code>true</code> if this portfolio is valid and can be saved.
-     * @see Pojo2Bean
+     * @see JFBusinessItem
      */
     @Override
     public boolean isValid() {
@@ -84,7 +84,7 @@ public class Portfolio extends PortfolioItem implements Pojo2Bean {
 
     /**
      * @return <code>true</code> if this portfolio is new.
-     * @see Pojo2Bean
+     * @see JFBusinessItem
      */
     @Override
     public boolean isNew() {
@@ -100,7 +100,7 @@ public class Portfolio extends PortfolioItem implements Pojo2Bean {
      * @see FormatedJetException
      * @see #isNew()
      * @see #isValid()
-     * @see Pojo2Bean
+     * @see JFBusinessItem
      */
     @Override
     public void save() throws FormatedJetException {
@@ -139,7 +139,7 @@ public class Portfolio extends PortfolioItem implements Pojo2Bean {
      * @throws FormatedJetException
      * @see FormatedJetException
      * @see #isNew()
-     * @see Pojo2Bean
+     * @see JFBusinessItem
      */
     @Override
     public void delete() throws FormatedJetException {

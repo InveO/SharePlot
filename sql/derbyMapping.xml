@@ -5,14 +5,6 @@
                 <COLUMN name="isFake" localname="IS_FAKE" />
                 <COLUMN name="name" localname="NAME" />
             </TABLE>
-            <TABLE name="Share" localname="SHARE" >
-                <COLUMN name="idShare" localname="ID_SHARE" />
-                <COLUMN name="codeISIN" localname="CODE_I_S_I_N" />
-                <COLUMN name="codeYahoo" localname="CODE_YAHOO" />
-                <COLUMN name="description" localname="DESCRIPTION" />
-                <COLUMN name="idPortfolio" localname="ID_PORTFOLIO" />
-                <COLUMN name="name" localname="NAME" />
-            </TABLE>
             <TABLE name="ShareQuantity" localname="SHARE_QUANTITY" >
                 <COLUMN name="idShareQuantity" localname="ID_SHARE_QUANTITY" />
                 <COLUMN name="changeFee" localname="CHANGE_FEE" />
@@ -22,6 +14,14 @@
                 <COLUMN name="description" localname="DESCRIPTION" />
                 <COLUMN name="idShare" localname="ID_SHARE" />
                 <COLUMN name="valueDate" localname="VALUE_DATE" />
+            </TABLE>
+            <TABLE name="Share" localname="SHARE" >
+                <COLUMN name="idShare" localname="ID_SHARE" />
+                <COLUMN name="codeISIN" localname="CODE_I_S_I_N" />
+                <COLUMN name="codeYahoo" localname="CODE_YAHOO" />
+                <COLUMN name="description" localname="DESCRIPTION" />
+                <COLUMN name="idPortfolio" localname="ID_PORTFOLIO" />
+                <COLUMN name="name" localname="NAME" />
             </TABLE>
             <TABLE name="ShareValue" localname="SHARE_VALUE" >
                 <COLUMN name="idShareValue" localname="ID_SHARE_VALUE" />

@@ -5,7 +5,7 @@ import jet.framework.manager.datamodel.interfaces.FinderObjectNotFoundException;
 import jet.framework.nuts.store.StoreNut;
 import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.pojo2.AbstractResourceNotification;
-import jet.framework.util.pojo2.Pojo2Bean;
+import jet.framework.util.pojo2.JFBusinessItem;
 import jet.shareplot.ac.SelectStoreApplicationComponent;
 import jet.shareplot.persistence.pojo.ShareValueItem;
 import jet.util.logger.JETLevel;
@@ -19,7 +19,7 @@ import jet.util.throwable.JETException;
  *
  * @author JetToolsFramework
  */
-public class ShareValue extends ShareValueItem implements Pojo2Bean {
+public class ShareValue extends ShareValueItem implements JFBusinessItem {
 
     private static final long serialVersionUID = 1461049825L;
 
@@ -69,7 +69,7 @@ public class ShareValue extends ShareValueItem implements Pojo2Bean {
 
     /**
      * @return <code>true</code> if this shareValue is valid and can be saved.
-     * @see Pojo2Bean
+     * @see JFBusinessItem
      */
     @Override
     public final boolean isValid() {
@@ -79,7 +79,7 @@ public class ShareValue extends ShareValueItem implements Pojo2Bean {
 
     /**
      * @return <code>true</code> if this shareValue is new.
-     * @see Pojo2Bean
+     * @see JFBusinessItem
      */
     @Override
     public final boolean isNew() {
@@ -96,7 +96,7 @@ public class ShareValue extends ShareValueItem implements Pojo2Bean {
      * @see FormatedJetException
      * @see #isNew()
      * @see #isValid()
-     * @see Pojo2Bean
+     * @see JFBusinessItem
      */
     @Override
     public final void save() throws FormatedJetException {
@@ -138,7 +138,7 @@ public class ShareValue extends ShareValueItem implements Pojo2Bean {
      * @throws FormatedJetException
      * @see FormatedJetException
      * @see #isNew()
-     * @see Pojo2Bean
+     * @see JFBusinessItem
      */
     @Override
     public final void delete() throws FormatedJetException {

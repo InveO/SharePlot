@@ -16,7 +16,7 @@ import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.models.EmptyLineListener;
 import jet.framework.util.pojo2.AbstractResourceNotification;
 import jet.framework.util.pojo2.AbstractResourceNotification.NOTIFICATION_TYPE;
-import jet.framework.util.pojo2.Pojo2Bean;
+import jet.framework.util.pojo2.JFBusinessItem;
 import jet.framework.util.ui.UIComponentHelper;
 import jet.lifecycle.annotations.Initializer;
 import jet.util.logger.JETLevel;
@@ -24,7 +24,7 @@ import jet.util.models.interfaces.Event;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
-public abstract class AbstractSharePlotListNut<T extends Pojo2Bean> extends AbstractSharePlotNut implements ResourceNotificationListener {
+public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends AbstractSharePlotNut implements ResourceNotificationListener {
 
     protected UITableComponent2 tableList;
     protected UITableListDisplay3 uiTableListDisplay3;
@@ -99,7 +99,7 @@ public abstract class AbstractSharePlotListNut<T extends Pojo2Bean> extends Abst
     protected abstract String getListDisplayKey();
 
     protected final void addEmptyItem() {
-        if (this.emptyItem.isValid()) {
+        if (this.emptyItem == null || this.emptyItem.isValid()) {
             if (this.emptyItem != null) {
                 this.emptyItem.get_Model().removeEventListener(this.emptyItemListener);
             }

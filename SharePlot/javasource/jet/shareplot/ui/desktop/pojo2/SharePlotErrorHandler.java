@@ -4,10 +4,10 @@ import jet.container.managers.session.interfaces.Session;
 import jet.framework.ui.desktop.DesktopDialogHelper;
 import jet.framework.util.pojo2.InterceptorContext;
 import jet.framework.util.pojo2.InterceptorValidationException;
-import jet.framework.util.pojo2.Pojo2ErrorHandler;
+import jet.framework.util.pojo2.JFErrorHandler;
 import jet.shareplot.ui.desktop.dialog.DialogConstants;
 
-public class SharePlotErrorHandler implements Pojo2ErrorHandler {
+public class SharePlotErrorHandler implements JFErrorHandler {
 
     private final DesktopDialogHelper dialogHelper;
 

@@ -5,7 +5,7 @@ import jet.framework.manager.datamodel.interfaces.FinderObjectNotFoundException;
 import jet.framework.nuts.store.StoreNut;
 import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.pojo2.AbstractResourceNotification;
-import jet.framework.util.pojo2.Pojo2Bean;
+import jet.framework.util.pojo2.JFBusinessItem;
 import jet.shareplot.ac.SelectStoreApplicationComponent;
 import jet.shareplot.persistence.pojo.ShareQuantityItem;
 import jet.shareplot.ui.desktop.pojo2.SharePlotErrorHandler;
@@ -20,7 +20,7 @@ import jet.util.throwable.JETException;
  * 
  * @author JetToolsFramework
  */
-public class ShareQuantity extends ShareQuantityItem implements Pojo2Bean {
+public class ShareQuantity extends ShareQuantityItem implements JFBusinessItem {
 
     private static final long serialVersionUID = -6023493960063592803L;
 
@@ -70,7 +70,7 @@ public class ShareQuantity extends ShareQuantityItem implements Pojo2Bean {
     public ShareQuantity(final ShareQuantityApplicationComponent shareQuantityAC) {
         super();
         this.shareQuantityAC = shareQuantityAC;
-        setPojo2ErrorHandler(new SharePlotErrorHandler(this.shareQuantityAC.getSession()));
+        setJFErrorHandler(new SharePlotErrorHandler(this.shareQuantityAC.getSession()));
     }
 
     /**
@@ -85,7 +85,7 @@ public class ShareQuantity extends ShareQuantityItem implements Pojo2Bean {
     public ShareQuantity(final Model model, final ShareQuantityApplicationComponent shareQuantityAC) {
         super(model);
         this.shareQuantityAC = shareQuantityAC;
-        setPojo2ErrorHandler(new SharePlotErrorHandler(this.shareQuantityAC.getSession()));
+        setJFErrorHandler(new SharePlotErrorHandler(this.shareQuantityAC.getSession()));
     }
 
     /**
@@ -96,12 +96,12 @@ public class ShareQuantity extends ShareQuantityItem implements Pojo2Bean {
     public ShareQuantity(final ShareQuantity shareQuantity) {
         super(shareQuantity);
         this.shareQuantityAC = shareQuantity.shareQuantityAC;
-        setPojo2ErrorHandler(new SharePlotErrorHandler(this.shareQuantityAC.getSession()));
+        setJFErrorHandler(new SharePlotErrorHandler(this.shareQuantityAC.getSession()));
     }
 
     /**
      * @return <code>true</code> if this shareQuantity is valid and can be saved.
-     * @see Pojo2Bean
+     * @see JFBusinessItem
      */
     @Override
     public boolean isValid() {
@@ -111,7 +111,7 @@ public class ShareQuantity extends ShareQuantityItem implements Pojo2Bean {
 
     /**
      * @return <code>true</code> if this shareQuantity is new.
-     * @see Pojo2Bean
+     * @see JFBusinessItem
      */
     @Override
     public boolean isNew() {
@@ -127,7 +127,7 @@ public class ShareQuantity extends ShareQuantityItem implements Pojo2Bean {
      * @see FormatedJetException
      * @see #isNew()
      * @see #isValid()
-     * @see Pojo2Bean
+     * @see JFBusinessItem
      */
     @Override
     public void save() throws FormatedJetException {
@@ -166,7 +166,7 @@ public class ShareQuantity extends ShareQuantityItem implements Pojo2Bean {
      * @throws FormatedJetException
      * @see FormatedJetException
      * @see #isNew()
-     * @see Pojo2Bean
+     * @see JFBusinessItem
      */
     @Override
     public void delete() throws FormatedJetException {

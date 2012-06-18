@@ -5,7 +5,7 @@ import jet.framework.manager.datamodel.interfaces.FinderObjectNotFoundException;
 import jet.framework.nuts.store.StoreNut;
 import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.pojo2.AbstractResourceNotification;
-import jet.framework.util.pojo2.Pojo2Bean;
+import jet.framework.util.pojo2.JFBusinessItem;
 import jet.shareplot.ac.SelectStoreApplicationComponent;
 import jet.shareplot.persistence.pojo.ShareItem;
 import jet.shareplot.ui.desktop.pojo2.SharePlotErrorHandler;
@@ -20,7 +20,7 @@ import jet.util.throwable.JETException;
  * 
  * @author JetToolsFramework
  */
-public class Share extends ShareItem implements Pojo2Bean {
+public class Share extends ShareItem implements JFBusinessItem {
 
     private static final long serialVersionUID = 2783588090226625437L;
 
@@ -41,7 +41,7 @@ public class Share extends ShareItem implements Pojo2Bean {
     public Share(final ShareApplicationComponent shareAC) {
         super();
         this.shareAC = shareAC;
-        setPojo2ErrorHandler(new SharePlotErrorHandler(this.shareAC.getSession()));
+        setJFErrorHandler(new SharePlotErrorHandler(this.shareAC.getSession()));
     }
 
     /**
@@ -56,7 +56,7 @@ public class Share extends ShareItem implements Pojo2Bean {
     public Share(final Model model, final ShareApplicationComponent shareAC) {
         super(model);
         this.shareAC = shareAC;
-        setPojo2ErrorHandler(new SharePlotErrorHandler(this.shareAC.getSession()));
+        setJFErrorHandler(new SharePlotErrorHandler(this.shareAC.getSession()));
     }
 
     /**
@@ -67,12 +67,12 @@ public class Share extends ShareItem implements Pojo2Bean {
     public Share(final Share share) {
         super(share);
         this.shareAC = share.shareAC;
-        setPojo2ErrorHandler(new SharePlotErrorHandler(this.shareAC.getSession()));
+        setJFErrorHandler(new SharePlotErrorHandler(this.shareAC.getSession()));
     }
 
     /**
      * @return <code>true</code> if this share is valid and can be saved.
-     * @see Pojo2Bean
+     * @see JFBusinessItem
      */
     @Override
     public boolean isValid() {
@@ -82,7 +82,7 @@ public class Share extends ShareItem implements Pojo2Bean {
 
     /**
      * @return <code>true</code> if this share is new.
-     * @see Pojo2Bean
+     * @see JFBusinessItem
      */
     @Override
     public boolean isNew() {
@@ -98,7 +98,7 @@ public class Share extends ShareItem implements Pojo2Bean {
      * @see FormatedJetException
      * @see #isNew()
      * @see #isValid()
-     * @see Pojo2Bean
+     * @see JFBusinessItem
      */
     @Override
     public void save() throws FormatedJetException {
@@ -137,7 +137,7 @@ public class Share extends ShareItem implements Pojo2Bean {
      * @throws FormatedJetException
      * @see FormatedJetException
      * @see #isNew()
-     * @see Pojo2Bean
+     * @see JFBusinessItem
      */
     @Override
     public void delete() throws FormatedJetException {
