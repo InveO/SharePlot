@@ -1,0 +1,21 @@
+<JDBCMANAGER>
+
+    <COMMON>
+        <EXT_CLASSPATH value="file:///D:/Jet/JetLib6.0.0/configs/shareplot_conf/ext/mysql-connector-java-5.1.19-bin.jar">
+            <PERMISSION class="java.net.SocketPermission" name="*" params="connect,accept,resolve,listen"/>
+        </EXT_CLASSPATH>
+    </COMMON>
+
+    <DATABASES>
+        <DATABASE databasename="jdbc:mysql://localhost:3306/shareplot" user="shareplot" password="shareplot" name="SharePlot" type="MYSQL" driverJar="" driver="com.mysql.jdbc.Driver" jndidatasource="SharePlotDatasource" />
+    </DATABASES>
+
+    <CACHE_LIST default="true" >
+        <CACHE database="SharePlot" default="true" >
+            <!--
+            <TABLE name="Domain" cache="true" />
+                -->
+        </CACHE>
+    </CACHE_LIST>
+
+</JDBCMANAGER>

@@ -3,7 +3,7 @@
         <FINDERBODY type="sql" sql_string="" buffersize="-1"/>
     </FINDER>
     <FINDER name="findByPortfolio">
-        <INPUT name="idPortfolio" type="Long" />
+        <INPUT name="idPortfolio" type="Long" db_field="idPortfolio" />
         <FINDERBODY type="sql" sql_string="where idPortfolio = ?" buffersize="-1"/>
     </FINDER>
     <FINDER name="findByDirectSQLQuery">

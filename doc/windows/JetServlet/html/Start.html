@@ -1,0 +1,134 @@
+<html>
+    <head>
+        <title>
+            JET Start Page DEV
+        </title>
+
+        <script language="javascript">
+            function genURL() {
+                var a = document.getElementById("url");
+
+                var rendering = document.getElementById("rendering").value;
+
+                var isObfuscated = document.getElementById("obfuscated").checked;
+                var obfuscated = "0";
+                if (isObfuscated == true) {
+                    obfuscated = "1"
+                }
+                
+                var isAppletsAllowed = document.getElementById("appletsAllowed").checked;
+                var appletsAllowed = "0";
+                if (isAppletsAllowed == true) {
+                    appletsAllowed = "1"
+                }
+
+                var endSessionRedirectURL = "";
+                if (document.getElementById("endSessionRedirectURL").value != "") {
+                	endSessionRedirectURL = "&endSessionRedirectURL=" + document.getElementById("endSessionRedirectURL").value;
+                }
+
+                var authenticationParam = "";
+                var authentication = document.getElementById("authentication").value;
+                if (authentication != "NONE") {
+                	authenticationParam = "&authentication=" + authentication;
+                }
+
+                var loginDomain = "";
+                if (document.getElementById("login.domain").value != "") {
+                    loginDomain = "&login.domain=" + document.getElementById("login.domain").value;
+                }
+                var loginUnit = "";
+                if (document.getElementById("login.unit").value != "") {
+                	loginUnit = "&login.unit=" + document.getElementById("login.unit").value;
+                }
+                var loginLogin = "";
+                if (document.getElementById("login.login").value != "") {
+                	loginLogin = "&login.login=" + document.getElementById("login.login").value;
+                }
+                var loginPassword = "";
+                if (document.getElementById("login.password").value != "") {
+                	loginPassword = "&login.password=" + document.getElementById("login.password").value;
+                }
+                
+                var url = "../servlet/jetStart?rendering=" + rendering + "&obfuscated=" + obfuscated + 
+                                                                         "&appletsAllowed=" + appletsAllowed +
+                                                                         "&startApplication=" + document.getElementById("startApplication").value +
+
+                                                                         endSessionRedirectURL +
+                                                                         
+                                                                         loginDomain +
+                                                                         loginUnit +
+                                                                         loginLogin +
+                                                                         loginPassword +
+
+                                                                         authenticationParam;
+                a.href = url;
+                a.removeChild(a.firstChild);
+                a.appendChild(document.createTextNode(url));
+            }
+        </script>
+    </head>
+    
+    <body onload="javascript:genURL();">
+    
+    <h1>DEV DEV DEV DEV DEV DEV</h1>
+    
+        <br />
+        
+        <a id="url" href="">blank</a>
+
+        <br />
+        <br />
+
+        <select id="rendering" onchange="javascript:genURL();">
+            <option value="0" selected="selected">Javascript</option>
+            <option value="1">Full Applet</option>
+            <option value="2">DOM Applet</option>
+            <option value="3">ERROR</option>
+            <option value="4">Applet - AJAX</option>
+            <option value="5">DOM Applet - AJAX</option>
+        </select>
+
+        <br />
+        <br />
+
+        <input type="checkbox" id="obfuscated" onclick="javascript:genURL();" checked="checked" />Obfuscated<br />
+
+        <br />
+
+        <input type="checkbox" id="appletsAllowed" onclick="javascript:genURL();" checked="checked" />Applets allowed<br />
+
+        <br />
+        <br />
+
+        Authentication : <select id="authentication" onchange="javascript:genURL();">
+            <option value ="NONE" selected="selected">NONE</option>
+            <option value ="GoogleId">GoogleId</option>
+            <option value ="SwissId">SwissId SwissSign</option>
+            <option value ="SwissId2">SwissId QuoVadis</option>
+            <option value ="SwissIdSwissSignTEST">SwissId SwissSign TEST</option>
+        </select>
+
+        <br />
+        <br />
+
+        <!--input type="radio" name="continueSession" value="0" checked="checked" />New session<br />
+        <input type="radio" name="continueSession" value="1" />Continue session<br />
+
+        <br />
+        <br /-->
+
+        Application : <select id="startApplication" onchange="javascript:genURL();">
+            <option value ="SharePlot" selected="selected">Amanda</option>
+        </select>
+
+        <br />            
+        endSessionRedirectURL : <input type="text" id="endSessionRedirectURL" value="http://www.lesoir.be" onchange="javascript:genURL();" /><br />
+
+        <br />
+        login.login : <input type="text" id="login.login" value="" onchange="javascript:genURL();" /><br />
+        login.password : <input type="text" id="login.password" value="" onchange="javascript:genURL();" /><br />
+        <br />
+        <br />
+    </body>
+</html>
