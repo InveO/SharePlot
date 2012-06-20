@@ -12,6 +12,8 @@
 <!-- 			<COLUMN name="dateColumn" datamodelfield="datePurchase" type="DATE" editable="true" width="0" localizedlabel="SharePlot/properties/task/Share/list.purchaseDate" /> -->
 <!-- 			<COLUMN name="priceColumn" datamodelfield="purchasePrice" type="NUMBER" class="java.math.BigDecimal" editable="true" width="0" localizedlabel="SharePlot/properties/task/Share/list.purchasePrice" /> -->
 <!-- 			<COLUMN name="feeColumn" datamodelfield="entryFee" type="NUMBER" class="java.math.BigDecimal" editable="true" width="0" localizedlabel="SharePlot/properties/task/Share/list.entryFee" /> -->
+            <COLUMN name="editQuantityColumn" datamodelfield="" type="BUTTON" editable="true" width="0" style="tableColumnButton" localizedlabel="SharePlot/properties/task/Share/list.editQuantity" />
+            <COLUMN name="editValueColumn" datamodelfield="" type="BUTTON" editable="true" width="0" style="tableColumnButton" localizedlabel="SharePlot/properties/task/Share/list.editValue" />
 			<COLUMN name="editColumn" datamodelfield="" type="BUTTON" editable="true" width="0" style="tableColumnButton" localizedlabel="SharePlot/properties/desktop/Global/list.edit" />
 		</SHARE_LIST>
 

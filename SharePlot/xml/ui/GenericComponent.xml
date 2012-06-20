@@ -17,8 +17,9 @@
     
 	<BUTTON name="GenericButton" font="editorFont" rolloverBorderColor="buttonsRolloverBorderColor" gradientBackgroundColor="buttonsBackground" foregroundColor="buttonsForeground" disabledBackgroundColor="buttonsDisabledBackground" disabledForegroundColor="buttonsDisabledForeground" paddingTop="3" paddingBottom="3" paddingLeft="6" paddingRight="6" />
 	
-    <BUTTON name="SaveButton" extends="GenericButton" localizedDisplayableText="SharePlot/properties/desktop/Buttons/button.Save" />
     <BUTTON name="DeleteButton" extends="GenericButton" localizedDisplayableText="SharePlot/properties/desktop/Buttons/button.Delete" />
+    <BUTTON name="ImportButton" extends="GenericButton" localizedDisplayableText="SharePlot/properties/desktop/Buttons/button.Import" />
+    <BUTTON name="SaveButton" extends="GenericButton" localizedDisplayableText="SharePlot/properties/desktop/Buttons/button.Save" />
     
     <GROUP name="EmptyGroup" backgroundColor="panelBackgroundColor" foregroundColor="panelForegroundColor" />
     

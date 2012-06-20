@@ -9,5 +9,6 @@ public final class TaskNameConstants {
     public static final String SHARE_LIST = "ShareList";
     public static final String SHARE_DETAIL = "ShareDetail";
     public static final String SHARE_QUANTITY = "ShareQuantityList";
+    public static final String SHARE_VALUE = "ShareValueList";
 
 }

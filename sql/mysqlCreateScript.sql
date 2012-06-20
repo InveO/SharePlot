@@ -51,11 +51,11 @@ ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `SharePlot`.`ShareValue` (
   `idShareValue` INTEGER(10)  NOT NULL AUTO_INCREMENT ,
-  `isShare` INTEGER(10)  NOT NULL  ,
+  `idShare` INTEGER(10)  NOT NULL  ,
   `value` DECIMAL(10)  NOT NULL  ,
   `valueDate` DATE  NOT NULL  ,
   PRIMARY KEY ( `idShareValue`),
-  INDEX `fk_ShareValue_Share` (`isShare` ASC) )
+  INDEX `fk_ShareValue_Share` (`idShare` ASC) )
 ENGINE = InnoDB;
 
 
@@ -98,7 +98,7 @@ ALTER TABLE `SharePlot`.`Share`
 
 ALTER TABLE `SharePlot`.`ShareValue` 
   ADD CONSTRAINT `fk_ShareValue_Share`
-    FOREIGN KEY (`isShare` )
+    FOREIGN KEY (`idShare` )
     REFERENCES `SharePlot`.`Share` (`idShare` ) 
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;

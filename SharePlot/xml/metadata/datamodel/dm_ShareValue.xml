@@ -8,13 +8,13 @@
 
     The name of the DataModel will be used to register the definition in a global
     registry.  -->
-<DATAMODEL name="ShareValue" serialuid="1461049825L" >
+<DATAMODEL name="ShareValue" serialuid="1303211696L" >
     <!-- NODE
         type : Java type for the node value
         name : Name the node is to be given
      -->
     <NODE type="Long" name="idShareValue" nullable="false" autoincrement="true" length="10" pk="true" />
-    <NODE type="Long" name="isShare" nullable="false" autoincrement="false" length="10" pk="false" />
+    <NODE type="Long" name="idShare" nullable="false" autoincrement="false" length="10" pk="false" />
     <NODE type="java.math.BigDecimal" name="value" nullable="false" autoincrement="false" length="10" pk="false" />
     <NODE type="java.util.Date" name="valueDate" nullable="false" autoincrement="false" length="10" pk="false" />
 </DATAMODEL>

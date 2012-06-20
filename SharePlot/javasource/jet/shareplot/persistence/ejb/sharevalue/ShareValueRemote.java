@@ -32,13 +32,13 @@ public interface ShareValueRemote extends EJBObject {
      * @throws EJBException
      * @throws RemoteException
      */
-    public Long getIsShare() throws EJBException, RemoteException;
+    public Long getIdShare() throws EJBException, RemoteException;
     /**
-     * @param isShare
+     * @param idShare
      * @throws EJBException
      * @throws RemoteException
      */
-    public void setIsShare(Long isShare) throws EJBException, RemoteException;
+    public void setIdShare(Long idShare) throws EJBException, RemoteException;
     
 
     /**
@@ -70,11 +70,11 @@ public interface ShareValueRemote extends EJBObject {
     
 
     /**
-     * @param isShare
+     * @param idShare
      * @param value
      * @param valueDate
      * @throws EJBException
      * @throws RemoteException
      */
-    public void update( Long isShare, java.math.BigDecimal value, java.util.Date valueDate) throws EJBException, RemoteException;
+    public void update( Long idShare, java.math.BigDecimal value, java.util.Date valueDate) throws EJBException, RemoteException;
 }

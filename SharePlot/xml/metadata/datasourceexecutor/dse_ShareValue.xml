@@ -18,6 +18,9 @@
      -->
     <FINDER primarykey="false" name="findAll">
     </FINDER>
+    <FINDER primarykey="false" name="findByShare">
+        <INPUT dataconverter="" subelement="" source="idShare"/>
+    </FINDER>
     <FINDER primarykey="false" name="findByPreparedSQLQuery">
         <INPUT dataconverter="" subelement="" source="sqlWhereClause"/>
         <INPUT dataconverter="" subelement="" source="sqlArguments"/>
@@ -43,7 +46,7 @@
             primarykey : "true" if the field is part of the primary key (it will not be updateable)
          -->
         <MAPPING writeconverter="" readmultikey="" defaulttype="INTEGER" target="idShareValue" subelement="" default="" readconverter="" name="idShareValue" autoincrement="true" primarykey="true" />
-        <MAPPING writeconverter="" readmultikey="" defaulttype="INTEGER" target="isShare" subelement="" default="" readconverter="" name="isShare" autoincrement="false" primarykey="false" />
+        <MAPPING writeconverter="" readmultikey="" defaulttype="INTEGER" target="idShare" subelement="" default="" readconverter="" name="idShare" autoincrement="false" primarykey="false" />
         <MAPPING writeconverter="" readmultikey="" defaulttype="DOUBLE" target="value" subelement="" default="" readconverter="" name="value" autoincrement="false" primarykey="false" />
         <MAPPING writeconverter="" readmultikey="" defaulttype="DATE" target="valueDate" subelement="" default="" readconverter="" name="valueDate" autoincrement="false" primarykey="false" />
     </EJB_CONVERSION>

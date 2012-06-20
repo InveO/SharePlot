@@ -40,17 +40,25 @@ public class ShareListNut extends AbstractSharePlotListNut<Share> {
                     final String colName = this.uiTableListDisplay3.getColumnName(col);
 
                     if ("editColumn".equals(colName)) {
-                        final Share share = this.items.get(row);
-                        if (share.getIdShare() != null) {
-                            launchEditShare(share);
-                        }
+                        launchEditor(TaskNameConstants.SHARE_DETAIL, row);
+                    } else if ("editValueColumn".equals(colName)) {
+                        launchEditor(TaskNameConstants.SHARE_VALUE, row);
+                    } else if ("editQuantityColumn".equals(colName)) {
+                        launchEditor(TaskNameConstants.SHARE_QUANTITY, row);
                     }
                 }
             }
         }
     }
 
-    private void launchEditShare(final Share share) {
+    private void launchEditor(final String editorName, final int row) {
+        final Share share = this.items.get(row);
+        if (share.getIdShare() != null) {
+            launchEditor(editorName, share);
+        }
+    }
+
+    private void launchEditor(final String editorName, final Share share) {
         final ApplicationComponentLauncher acLauncher = (ApplicationComponentLauncher) getSession().getProperty(ApplicationComponentLauncher.SESSION_KEY);
 
         if (acLauncher != null) {
@@ -59,9 +67,9 @@ public class ShareListNut extends AbstractSharePlotListNut<Share> {
                 initArgs.put(ShareUIConstants.ARGUMENT_SHARE, new Share(share));
                 initArgs.put(SharePlotACLauncher.AC_KEY_PARAMETER, new ShareDetailNutKey(share.getIdShare()));
 
-                acLauncher.launchApplicationComponent(TaskNameConstants.SHARE_DETAIL, initArgs);
+                acLauncher.launchApplicationComponent(editorName, initArgs);
             } catch (final JETException e) {
-                logp(JETLevel.SEVERE, "ShareListNut", "launchEditShare", e.getMessage(), e);
+                logp(JETLevel.SEVERE, "ShareListNut", "launchEditor", e.getMessage(), e);
             }
         }
     }

@@ -28,13 +28,13 @@ import jet.util.throwable.JETSystemError;
 @SuppressWarnings("PMD.MethodNamingConventions")
 public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFDataItem {
 
-    private static final long serialVersionUID = 1461049825L;
+    private static final long serialVersionUID = 1303211696L;
 
     private Model dataModel;
     private Logger logger;
 
     private DispatcherModel<ShareValueItem, Long> idShareValueDispatcherModel;
-    private DispatcherModel<ShareValueItem, Long> isShareDispatcherModel;
+    private DispatcherModel<ShareValueItem, Long> idShareDispatcherModel;
     private DispatcherModel<ShareValueItem, java.math.BigDecimal> valueDispatcherModel;
     private DispatcherModel<ShareValueItem, java.util.Date> valueDateDispatcherModel;
 
@@ -64,7 +64,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
 
         model = new SimpleEventModelImpl("idShareValue");
         this.dataModel.appendChild(model);
-        model = new SimpleEventModelImpl("isShare");
+        model = new SimpleEventModelImpl("idShare");
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("value");
         this.dataModel.appendChild(model);
@@ -105,7 +105,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
         }
 
         setIdShareValue(shareValue.getIdShareValue());
-        setIsShare(shareValue.getIsShare());
+        setIdShare(shareValue.getIdShare());
         setValue(shareValue.getValue());
         setValueDate(shareValue.getValueDate());
     }
@@ -169,35 +169,35 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
     }
 
     /**
-     * Get node value of Data Model node isShare
-     * @return Long value of Data Model node isShare
+     * Get node value of Data Model node idShare
+     * @return Long value of Data Model node idShare
      */
-    public final Long getIsShare() {
-        return (Long) get_IsShare_Model().getNodeValue();
+    public final Long getIdShare() {
+        return (Long) get_IdShare_Model().getNodeValue();
     }
 
     /**
-     * Set node value of Data Model node isShare
-     * @param isShare Long value of Data Model node isShare
+     * Set node value of Data Model node idShare
+     * @param idShare Long value of Data Model node idShare
      */
-    public final void setIsShare(Long isShare) {
-        get_IsShare_Model().setNodeValue(isShare);
+    public final void setIdShare(Long idShare) {
+        get_IdShare_Model().setNodeValue(idShare);
     }
 
     /**
-     * Get Model of Data Model node isShare
-     * @return Model of Data Model node isShare
+     * Get Model of Data Model node idShare
+     * @return Model of Data Model node idShare
      */
-    public final DispatcherModel<ShareValueItem, Long> get_IsShare_Model() {
-        if (this.isShareDispatcherModel == null) {
+    public final DispatcherModel<ShareValueItem, Long> get_IdShare_Model() {
+        if (this.idShareDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "isShare");
-                this.isShareDispatcherModel = new DispatcherModel<ShareValueItem, Long>(this, sourceModel);
+                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idShare");
+                this.idShareDispatcherModel = new DispatcherModel<ShareValueItem, Long>(this, sourceModel);
             } catch (final JETException e) {
-                throw new JETSystemError("ShareValue data model does not have a child named isShare. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+                throw new JETSystemError("ShareValue data model does not have a child named idShare. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
             }
         }
-        return this.isShareDispatcherModel;
+        return this.idShareDispatcherModel;
     }
 
     /**
@@ -271,10 +271,10 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
      */
     @Override
     public final boolean isNotNullableNull() {
-        Long isShare = getIsShare();
-        if (isShare == null) {
+        Long idShare = getIdShare();
+        if (idShare == null) {
             this.logger.logp(JETLevel.WARNING, "ShareValueItem", "isNotNullableNull",
-                "isShare is null but is not nullable.");
+                "idShare is null but is not nullable.");
             return true;
         }
         java.math.BigDecimal value = getValue();

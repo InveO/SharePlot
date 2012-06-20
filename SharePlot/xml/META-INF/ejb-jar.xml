@@ -116,8 +116,8 @@
                 <field-name>idShareValue</field-name>
             </cmp-field>
             <cmp-field>
-                <description> Desc for isShare</description>
-                <field-name>isShare</field-name>
+                <description> Desc for idShare</description>
+                <field-name>idShare</field-name>
             </cmp-field>
             <cmp-field>
                 <description> Desc for value</description>

@@ -14,7 +14,7 @@ import jet.framework.nuts.select.FinderMethod;
  */
 public class ShareValue_FindByPreparedSQLQuery2 implements FinderMethod {
 
-    private static final long serialVersionUID = 1461049825L;
+    private static final long serialVersionUID = 1303211696L;
 
     String sqlWhereClause = null;
     Object[] sqlArguments = null;

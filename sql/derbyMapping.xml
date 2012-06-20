@@ -25,7 +25,7 @@
             </TABLE>
             <TABLE name="ShareValue" localname="SHARE_VALUE" >
                 <COLUMN name="idShareValue" localname="ID_SHARE_VALUE" />
-                <COLUMN name="isShare" localname="IS_SHARE" />
+                <COLUMN name="idShare" localname="ID_SHARE" />
                 <COLUMN name="value" localname="VALUE" />
                 <COLUMN name="valueDate" localname="VALUE_DATE" />
             </TABLE>

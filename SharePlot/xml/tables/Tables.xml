@@ -39,7 +39,7 @@
     </TABLE>
     <TABLE name="ShareValue">
         <COLUMN name="idShareValue" type="Long" length="10" nullable="false" autoincrement="true" />
-        <COLUMN name="isShare" type="Long" length="10" nullable="false" autoincrement="false" />
+        <COLUMN name="idShare" type="Long" length="10" nullable="false" autoincrement="false" />
         <COLUMN name="value" type="java.math.BigDecimal" length="10" nullable="false" autoincrement="false" />
         <COLUMN name="valueDate" type="java.util.Date" length="10" nullable="false" autoincrement="false" />
         <PRIMARYKEY>

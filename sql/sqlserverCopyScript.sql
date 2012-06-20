@@ -33,7 +33,7 @@ SELECT
 DELETE FROM [ShareValue]
 
 INSERT INTO [ShareValue] (
- [idShareValue] , [isShare] , [value] , [valueDate] )
+ [idShareValue] , [idShare] , [value] , [valueDate] )
 SELECT
- [idShareValue] , [isShare] , [value] , [valueDate] FROM BSJA_03..[ShareValue]
+ [idShareValue] , [idShare] , [value] , [valueDate] FROM BSJA_03..[ShareValue]
 

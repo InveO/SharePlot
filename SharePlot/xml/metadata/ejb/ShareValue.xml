@@ -43,7 +43,7 @@
             autoIncrement : "true" if the column is flagged as auto-increment in the DB
             -->
         <COLUMN paramName="idShareValue" type="Long" name="idShareValue" localname="idShareValue" dbtype="INTEGER" length="10" noOfDecimal="0" nullable="false" autoIncrement="true" />
-        <COLUMN paramName="isShare" type="Long" name="isShare" localname="isShare" dbtype="INTEGER" length="10" noOfDecimal="0" nullable="false" autoIncrement="false" />
+        <COLUMN paramName="idShare" type="Long" name="idShare" localname="idShare" dbtype="INTEGER" length="10" noOfDecimal="0" nullable="false" autoIncrement="false" />
         <COLUMN paramName="valueDate" type="java.util.Date" name="valueDate" localname="valueDate" dbtype="DATE" length="10" noOfDecimal="0" nullable="false" autoIncrement="false" />
         <COLUMN paramName="value" type="java.math.BigDecimal" name="value" localname="value" dbtype="DECIMAL" length="10" noOfDecimal="2" nullable="false" autoIncrement="false" />
         
@@ -58,7 +58,7 @@
         
         <!-- FOREIGNKEY : identifies the columns to use as foreign key -->
         <FOREIGNKEY name="fk_ShareValue_Share" foreigntable="Share" foreigntablelocalname="Share" >
-            <FKITEM column="isShare" foreigncolumn="idShare" foreigncolumnlocalname="idShare" />
+            <FKITEM column="idShare" foreigncolumn="idShare" foreigncolumnlocalname="idShare" />
         </FOREIGNKEY>
         
     </TABLE>

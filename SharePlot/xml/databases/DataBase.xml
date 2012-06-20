@@ -30,7 +30,7 @@
     </TABLE>
     <TABLE name="ShareValue" localname="ShareValue">
         <COLUMN name="idShareValue" localname="idShareValue" dbtype="INTEGER"/>
-        <COLUMN name="isShare" localname="isShare" dbtype="INTEGER"/>
+        <COLUMN name="idShare" localname="idShare" dbtype="INTEGER"/>
         <COLUMN name="value" localname="value" dbtype="DECIMAL"/>
         <COLUMN name="valueDate" localname="valueDate" dbtype="DATE"/>
     </TABLE>

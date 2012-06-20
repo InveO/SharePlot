@@ -23,14 +23,14 @@ public interface ShareValueHome extends EJBHome {
     
     /**
      * @param idShareValue
-     * @param isShare
+     * @param idShare
      * @param value
      * @param valueDate
      * @return ShareValueRemote
      * @throws CreateException
      * @throws RemoteException
      */
-    public ShareValueRemote create( @EJBParam(name = "idShareValue") Long idShareValue, @EJBParam(name = "isShare") Long isShare, @EJBParam(name = "value") java.math.BigDecimal value, @EJBParam(name = "valueDate") java.util.Date valueDate) throws CreateException, RemoteException;
+    public ShareValueRemote create( @EJBParam(name = "idShareValue") Long idShareValue, @EJBParam(name = "idShare") Long idShare, @EJBParam(name = "value") java.math.BigDecimal value, @EJBParam(name = "valueDate") java.util.Date valueDate) throws CreateException, RemoteException;
         
     /**
      * @param pkField
@@ -46,6 +46,14 @@ public interface ShareValueHome extends EJBHome {
      * @throws RemoteException
      */
     public Collection<ShareValueRemote> findAll() throws FinderException, RemoteException;
+    
+    /**
+     * @param idShare
+     * @return Collection
+     * @throws FinderException
+     * @throws RemoteException
+     */
+    public Collection<ShareValueRemote> findByShare(Long idShare) throws FinderException, RemoteException;
     
     /**
      * @param sqlWhereClause

@@ -1,0 +1,21 @@
+<APPLICATION_COMPONENT class="jet.framework.component.SimpleApplicationComponent" initialNutName="ShareValueListNut">
+
+	<!-- SimpleApplicationComponent specific declarations -->
+	<APPLICATION_COMPONENT_CONFIG>
+	
+		<VALUE_LIST>
+        	<COLUMN name="colSelect" datamodelfield="" type="CHECKBOX" editable="true" width="0" selectall="true" />
+			<COLUMN name="dateColumn" datamodelfield="valueDate" type="DATE" editable="true" width="5" localizedlabel="SharePlot/properties/task/Share/list.valueDate" />
+			<COLUMN name="priceColumn" datamodelfield="value" type="NUMBER" class="java.math.BigDecimal" editable="true" width="5" localizedlabel="SharePlot/properties/task/Share/list.value" />
+		</VALUE_LIST>
+
+	</APPLICATION_COMPONENT_CONFIG>
+
+	<NUTS>
+		<NUT name="ShareValueListNut" className="jet.shareplot.ui.task.share.ShareValueListNut">
+			<PARAMETER name="formName" value="ShareValueListForm" />
+			<PARAMETER name="formXmlFile" value="SharePlot/xml/ui/task/share/ShareValueListForm.xml" />
+		</NUT>
+	</NUTS>
+
+</APPLICATION_COMPONENT>

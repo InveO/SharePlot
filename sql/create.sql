@@ -11,7 +11,7 @@ USE `shareplot` ;
 CREATE  TABLE IF NOT EXISTS `shareplot`.`Portfolio` (
   `idPortfolio` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
-  `isFake` CHAR(1) NOT NULL ,
+  `isFake` CHAR(1) NOT NULL DEFAULT 'N' ,
   PRIMARY KEY (`idPortfolio`) )
 ENGINE = InnoDB;
 
@@ -63,13 +63,13 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `shareplot`.`ShareValue` (
   `idShareValue` INT NOT NULL AUTO_INCREMENT ,
-  `isShare` INT NOT NULL ,
+  `idShare` INT NOT NULL ,
   `valueDate` DATE NOT NULL ,
   `value` DECIMAL(10,2) NOT NULL ,
   PRIMARY KEY (`idShareValue`) ,
-  INDEX `fk_ShareValue_Share` (`isShare` ASC) ,
+  INDEX `fk_ShareValue_Share` (`idShare` ASC) ,
   CONSTRAINT `fk_ShareValue_Share`
-    FOREIGN KEY (`isShare` )
+    FOREIGN KEY (`idShare` )
     REFERENCES `shareplot`.`Share` (`idShare` )
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
