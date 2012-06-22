@@ -10,6 +10,14 @@
         <COLUMN name="isFake" localname="isFake" dbtype="CHAR"/>
         <COLUMN name="name" localname="name" dbtype="VARCHAR"/>
     </TABLE>
+    <TABLE name="Share" localname="Share">
+        <COLUMN name="idShare" localname="idShare" dbtype="INTEGER"/>
+        <COLUMN name="codeISIN" localname="codeISIN" dbtype="VARCHAR"/>
+        <COLUMN name="codeYahoo" localname="codeYahoo" dbtype="VARCHAR"/>
+        <COLUMN name="description" localname="description" dbtype="VARCHAR"/>
+        <COLUMN name="idPortfolio" localname="idPortfolio" dbtype="INTEGER"/>
+        <COLUMN name="name" localname="name" dbtype="VARCHAR"/>
+    </TABLE>
     <TABLE name="ShareQuantity" localname="ShareQuantity">
         <COLUMN name="idShareQuantity" localname="idShareQuantity" dbtype="INTEGER"/>
         <COLUMN name="changeFee" localname="changeFee" dbtype="DECIMAL"/>
@@ -19,14 +27,6 @@
         <COLUMN name="description" localname="description" dbtype="VARCHAR"/>
         <COLUMN name="idShare" localname="idShare" dbtype="INTEGER"/>
         <COLUMN name="valueDate" localname="valueDate" dbtype="DATE"/>
-    </TABLE>
-    <TABLE name="Share" localname="Share">
-        <COLUMN name="idShare" localname="idShare" dbtype="INTEGER"/>
-        <COLUMN name="codeISIN" localname="codeISIN" dbtype="VARCHAR"/>
-        <COLUMN name="codeYahoo" localname="codeYahoo" dbtype="VARCHAR"/>
-        <COLUMN name="description" localname="description" dbtype="VARCHAR"/>
-        <COLUMN name="idPortfolio" localname="idPortfolio" dbtype="INTEGER"/>
-        <COLUMN name="name" localname="name" dbtype="VARCHAR"/>
     </TABLE>
     <TABLE name="ShareValue" localname="ShareValue">
         <COLUMN name="idShareValue" localname="idShareValue" dbtype="INTEGER"/>

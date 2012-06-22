@@ -2,11 +2,6 @@
     <FINDER name="findAll">
         <FINDERBODY type="sql" sql_string="" buffersize="-1"/>
     </FINDER>
-    <FINDER name="findByShare">
-        <INPUT name="idShare" type="Long" db_field="idShare" />
-        <USEDFIELD name="valueDate" />
-        <FINDERBODY type="sql" sql_string="where idPortfolio = ? order by valueDate asc" buffersize="-1"/>
-    </FINDER>
     <FINDER name="findByDirectSQLQuery">
         <INPUT name="sqlWhereClause" type="String" />
         <FINDERBODY type="sql" sql_string="where $$$_SQL" buffersize="-1"/>

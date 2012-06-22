@@ -11,20 +11,6 @@
             <FINDERBODY type="sql" sql_string="where @@@_SQL" buffersize="-1"/>
         </FINDER>
     </BEAN>
-    <BEAN name="ShareQuantity">
-        <FINDER name="findAll">
-            <FINDERBODY type="sql" sql_string="" buffersize="-1"/>
-        </FINDER>
-        <FINDER name="findByShare">
-            <INPUT name="idShare" type="Long" localizedDisplayableText=""/>
-            <FINDERBODY type="sql" sql_string="where idShare = ? order by valueDate asc" buffersize="-1"/>
-        </FINDER>
-        <FINDER name="findByPreparedSQLQuery">
-            <INPUT name="sqlWhereClause" type="String" localizedDisplayableText=""/>
-            <INPUT name="sqlArguments" type="Object[]" localizedDisplayableText=""/>
-            <FINDERBODY type="sql" sql_string="where @@@_SQL" buffersize="-1"/>
-        </FINDER>
-    </BEAN>
     <BEAN name="Share">
         <FINDER name="findAll">
             <FINDERBODY type="sql" sql_string="" buffersize="-1"/>
@@ -32,6 +18,20 @@
         <FINDER name="findByPortfolio">
             <INPUT name="idPortfolio" type="Long" localizedDisplayableText=""/>
             <FINDERBODY type="sql" sql_string="where idPortfolio = ?" buffersize="-1"/>
+        </FINDER>
+        <FINDER name="findByPreparedSQLQuery">
+            <INPUT name="sqlWhereClause" type="String" localizedDisplayableText=""/>
+            <INPUT name="sqlArguments" type="Object[]" localizedDisplayableText=""/>
+            <FINDERBODY type="sql" sql_string="where @@@_SQL" buffersize="-1"/>
+        </FINDER>
+    </BEAN>
+    <BEAN name="ShareQuantity">
+        <FINDER name="findAll">
+            <FINDERBODY type="sql" sql_string="" buffersize="-1"/>
+        </FINDER>
+        <FINDER name="findByShare">
+            <INPUT name="idShare" type="Long" localizedDisplayableText=""/>
+            <FINDERBODY type="sql" sql_string="where idShare = ? order by valueDate asc" buffersize="-1"/>
         </FINDER>
         <FINDER name="findByPreparedSQLQuery">
             <INPUT name="sqlWhereClause" type="String" localizedDisplayableText=""/>

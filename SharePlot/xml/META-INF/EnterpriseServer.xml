@@ -2,7 +2,7 @@
 <!DOCTYPE ENTERPRISE_SERVER SYSTEM "enterpriseServer2.dtd">
 <ENTERPRISE_SERVER name="SharePlot" ipAddress="" jndi_initialfactory="" jndi_urlprovider="" dbName="SharePlot">
     <ENTITYNUT ejbName="Portfolio" table="Portfolio" type="readWrite"/>
-    <ENTITYNUT ejbName="ShareQuantity" table="ShareQuantity" type="readWrite"/>
     <ENTITYNUT ejbName="Share" table="Share" type="readWrite"/>
+    <ENTITYNUT ejbName="ShareQuantity" table="ShareQuantity" type="readWrite"/>
     <ENTITYNUT ejbName="ShareValue" table="ShareValue" type="readWrite"/>
 </ENTERPRISE_SERVER>
