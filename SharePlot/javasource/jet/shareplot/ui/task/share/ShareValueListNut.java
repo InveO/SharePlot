@@ -3,6 +3,9 @@ package jet.shareplot.ui.task.share;
 import java.io.ByteArrayInputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 import jet.components.ui.button.common.UIButtonComponent;
@@ -13,9 +16,12 @@ import jet.container.managers.ui.interfaces.UIComponentFinder;
 import jet.framework.manager.csv.interfaces.CSVLineProcessor;
 import jet.framework.manager.csv.interfaces.CSVManagerContext;
 import jet.framework.manager.csv.interfaces.CSVParameters;
+import jet.framework.manager.csv.interfaces.DateParser;
+import jet.framework.manager.csv.interfaces.DoubleParser;
 import jet.framework.ui.utils.table.UITableListDisplay3;
 import jet.framework.util.download.ByteArrayMultiFileReceiver;
 import jet.framework.util.download.ByteArrayMultiFileReceiverListener;
+import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.ui.LocalizedMessageFormatDisplayable;
 import jet.framework.util.ui.UIComponentHelper;
 import jet.shareplot.ac.bo.share.Share;
@@ -148,7 +154,26 @@ public class ShareValueListNut extends AbstractSharePlotListNut<ShareValue> impl
 
     @Override
     public void processCSVLine(final String[] csvLine) {
-        // TODO Auto-generated method stub
+
+        final String dateString = csvLine[0];
+        final String valueString = csvLine[1];
+
+        try {
+            final Date date = DateParser.parse(DateParser.Format.ENGLISH, dateString);
+            final BigDecimal value = DoubleParser.parseBigDecimal(DoubleParser.Format.COMMA, valueString);
+
+            final ShareValue shareValue = new ShareValue(this.shareValueAC);
+            shareValue.setIdShare(this.share.getIdShare());
+            shareValue.setValue(value);
+            shareValue.setValueDate(date);
+
+            shareValue.save();
+
+        } catch (final ParseException e) {
+            logp(JETLevel.SEVERE, "ShareValueListNut", "processCSVLine", e.getMessage(), e);
+        } catch (final FormatedJetException e) {
+            logp(JETLevel.SEVERE, "ShareValueListNut", "processCSVLine", e.getMessage(), e);
+        }
 
     }
 
