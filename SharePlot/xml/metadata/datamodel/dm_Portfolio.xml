@@ -13,7 +13,7 @@
         type : Java type for the node value
         name : Name the node is to be given
      -->
-    <NODE type="Long" name="idPortfolio" nullable="false" autoincrement="true" length="10" pk="true" />
-    <NODE type="String" name="isFake" nullable="false" autoincrement="false" length="1" pk="false" />
-    <NODE type="String" name="name" nullable="false" autoincrement="false" length="45" pk="false" />
+    <NODE type="Long" name="idPortfolio" nullable="false" autoincrement="true" length="10" pk="true" default="" />
+    <NODE type="String" name="isFake" nullable="false" autoincrement="false" length="1" pk="false" default="N" />
+    <NODE type="String" name="name" nullable="false" autoincrement="false" length="45" pk="false" default="" />
 </DATAMODEL>

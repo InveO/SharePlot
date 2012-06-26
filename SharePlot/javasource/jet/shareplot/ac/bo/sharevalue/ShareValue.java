@@ -1,16 +1,15 @@
 package jet.shareplot.ac.bo.sharevalue;
 
-import jet.framework.component.resource.ResourceNotificationApplicationComponent;
-import jet.framework.manager.datamodel.interfaces.FinderObjectNotFoundException;
-import jet.framework.nuts.store.StoreNut;
 import jet.framework.util.exception.FormatedJetException;
-import jet.framework.util.pojo2.AbstractResourceNotification;
+import jet.framework.util.pojo2.AbstractResourceNotification.NOTIFICATION_TYPE;
+import jet.framework.util.pojo2.JFBusinessCallableHelper;
+import jet.framework.util.pojo2.JFBusinessDeleteCallable;
+import jet.framework.util.pojo2.JFBusinessErrorHelper;
 import jet.framework.util.pojo2.JFBusinessItem;
+import jet.framework.util.pojo2.JFBusinessSaveCallable;
 import jet.shareplot.ac.SelectStoreApplicationComponent;
 import jet.shareplot.persistence.pojo.ShareValueItem;
-import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Model;
-import jet.util.throwable.JETException;
 
 /**
  * Sample bo class, extending the pojo ShareValueItem.
@@ -19,9 +18,9 @@ import jet.util.throwable.JETException;
  * 
  * @author JetToolsFramework
  */
-public class ShareValue extends ShareValueItem implements JFBusinessItem {
+public class ShareValue extends ShareValueItem implements JFBusinessItem, JFBusinessErrorHelper {
 
-    private static final long serialVersionUID = 1461049825L;
+    private static final long serialVersionUID = 1303211696L;
 
     private static final String CAN_NOT_SAVE_KEY = "SharePlot/properties/task/Share/dialog.CanNotSaveShareValue";
     private static final String CAN_NOT_DELETE_KEY = "SharePlot/properties/task/Share/dialog.CanNotDeleteShareValue";
@@ -98,30 +97,19 @@ public class ShareValue extends ShareValueItem implements JFBusinessItem {
     @Override
     public final void save() throws FormatedJetException {
         if (isValid()) {
-            final StoreNut storeNut = this.shareValueAC.getStoreNut(SelectStoreApplicationComponent.SHAREVALUE_STORE);
-            try {
-                ShareValueResource resource;
-                if (isNew()) {
-                    storeNut.createDataModel(get_Model());
-                    resource = new ShareValueResource(this, AbstractResourceNotification.NOTIFICATION_TYPE.CREATE);
-                } else {
-                    storeNut.updateDataModel(get_Model());
-                    resource = new ShareValueResource(this, AbstractResourceNotification.NOTIFICATION_TYPE.UPDATE);
-                }
-                final ResourceNotificationApplicationComponent resourceAC = ResourceNotificationApplicationComponent.getInstance(this.shareValueAC.getSession());
-                resourceAC.notifyListeners(ShareValueResource.RESOURCE_NAME, resource);
-            } catch (final FinderObjectNotFoundException e) {
-                this.shareValueAC.logp(JETLevel.SEVERE, "ShareValue", "save", e.getMessage(), e);
-                final Object[] args = { getValueDate() };
-                throw new FormatedJetException(null, CAN_NOT_SAVE_KEY, args, e);
-            } catch (final JETException e) {
-                this.shareValueAC.logp(JETLevel.SEVERE, "ShareValue", "save", e.getMessage(), e);
-                final Object[] args = { getValueDate() };
-                throw new FormatedJetException(null, CAN_NOT_SAVE_KEY, args, e);
+            final ShareValueResource resource;
+            if (isNew()) {
+                resource = new ShareValueResource(this.shareValueAC, this, NOTIFICATION_TYPE.CREATE);
+            } else {
+                resource = new ShareValueResource(this.shareValueAC, this, NOTIFICATION_TYPE.UPDATE);
             }
+
+            final JFBusinessSaveCallable callable = new JFBusinessSaveCallable(this.shareValueAC, SelectStoreApplicationComponent.SHAREVALUE_STORE, this);
+            JFBusinessCallableHelper.storeChange(this.shareValueAC, callable, CAN_NOT_SAVE_KEY, this);
+
+            resource.notifyResource();
         } else {
-            final Object[] args = { getValueDate() };
-            throw new FormatedJetException(null, NOT_VALID_KEY, args, null);
+            throw getFormatedJetException(NOT_VALID_KEY, null);
         }
     }
 
@@ -137,22 +125,27 @@ public class ShareValue extends ShareValueItem implements JFBusinessItem {
     @Override
     public final void delete() throws FormatedJetException {
         if (!isNew()) {
-            final StoreNut storeNut = this.shareValueAC.getStoreNut(SelectStoreApplicationComponent.SHAREVALUE_STORE);
-            try {
-                final ShareValueResource resource = new ShareValueResource(this, AbstractResourceNotification.NOTIFICATION_TYPE.DELETE);
-                storeNut.removeDataModel(get_Model());
-                final ResourceNotificationApplicationComponent resourceAC = ResourceNotificationApplicationComponent.getInstance(this.shareValueAC.getSession());
-                resourceAC.notifyListeners(ShareValueResource.RESOURCE_NAME, resource);
-            } catch (final FinderObjectNotFoundException e) {
-                this.shareValueAC.logp(JETLevel.SEVERE, "ShareValue", "delete", e.getMessage(), e);
-                final Object[] args = { getValueDate() };
-                throw new FormatedJetException(null, CAN_NOT_DELETE_KEY, args, e);
-            } catch (final JETException e) {
-                this.shareValueAC.logp(JETLevel.SEVERE, "ShareValue", "delete", e.getMessage(), e);
-                final Object[] args = { getValueDate() };
-                throw new FormatedJetException(null, CAN_NOT_DELETE_KEY, args, e);
-            }
+            final JFBusinessDeleteCallable callable = new JFBusinessDeleteCallable(this.shareValueAC, SelectStoreApplicationComponent.SHAREVALUE_STORE, this);
+            JFBusinessCallableHelper.storeChange(this.shareValueAC, callable, CAN_NOT_DELETE_KEY, this);
+
+            final ShareValueResource resource = new ShareValueResource(this.shareValueAC, this, NOTIFICATION_TYPE.DELETE);
+            resource.notifyResource();
         }
+    }
+
+    /**
+     * Produce error for save / delete
+     * 
+     * @return FormatedJetException
+     * @see FormatedJetException
+     * @see JFBusinessErrorHelper
+     * @see #save()
+     * @see #delete()
+     */
+    @Override
+    public FormatedJetException getFormatedJetException(final String key, final Exception e) {
+        final Object[] args = { getValueDate() };
+        return new FormatedJetException(null, key, args, e);
     }
 
 }

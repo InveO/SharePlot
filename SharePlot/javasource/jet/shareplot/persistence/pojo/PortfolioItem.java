@@ -64,6 +64,8 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
         model = new SimpleEventModelImpl("idPortfolio");
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("isFake");
+        String sValueIsFake = "N";
+        model.setNodeValue(sValueIsFake);
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("name");
         this.dataModel.appendChild(model);
@@ -264,7 +266,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     @Override
     public final boolean isPkEquals(final JFDataItem other) {
         boolean result = false;
-
+        
         if ( getIdPortfolio() != null) {
             if (other instanceof PortfolioItem) {
                 final PortfolioItem otherPortfolio = (PortfolioItem) other;
@@ -273,7 +275,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
                 }
             }
         }
-
+        
         return result;
     }
 

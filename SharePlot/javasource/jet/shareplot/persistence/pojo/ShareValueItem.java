@@ -302,7 +302,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
     @Override
     public final boolean isPkEquals(final JFDataItem other) {
         boolean result = false;
-
+        
         if ( getIdShareValue() != null) {
             if (other instanceof ShareValueItem) {
                 final ShareValueItem otherShareValue = (ShareValueItem) other;
@@ -311,7 +311,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
                 }
             }
         }
-
+        
         return result;
     }
 

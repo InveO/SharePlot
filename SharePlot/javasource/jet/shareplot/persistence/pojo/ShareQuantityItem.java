@@ -468,7 +468,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     @Override
     public final boolean isPkEquals(final JFDataItem other) {
         boolean result = false;
-
+        
         if ( getIdShareQuantity() != null) {
             if (other instanceof ShareQuantityItem) {
                 final ShareQuantityItem otherShareQuantity = (ShareQuantityItem) other;
@@ -477,7 +477,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
                 }
             }
         }
-
+        
         return result;
     }
 

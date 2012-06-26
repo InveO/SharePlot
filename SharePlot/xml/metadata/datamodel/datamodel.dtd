@@ -14,4 +14,5 @@
     autoincrement (true | false) #REQUIRED
     length CDATA #REQUIRED
     pk (true | false) #REQUIRED
+    default CDATA ""
 >

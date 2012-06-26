@@ -15,7 +15,6 @@
 <!ATTLIST INPUT
     name CDATA #REQUIRED
     type CDATA #REQUIRED
-    defaultValue CDATA ""
 >
 <!ELEMENT INPUT EMPTY>
 <!ATTLIST FINDER
@@ -33,6 +32,7 @@
     noOfDecimal CDATA ""
     nullable (true | false) "false"
     autoIncrement (true | false) "false"
+    default CDATA ""
 >
 <!ELEMENT COLUMN EMPTY>
 <!ATTLIST FKITEM
