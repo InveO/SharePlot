@@ -1,0 +1,36 @@
+<DOCUMENT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="http://jet.inveo.be/ui/JETComponentExtension.xsd" >
+
+    <GENERIC name="SharePlot/xml/ui/GenericComponent.xml" />
+
+    <LABEL name="inputLabel" extends="EditorLabel" >
+        <GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="0" insetleft="15" insettop="5" />
+    </LABEL>
+    <NUMBER name="inputNumber" extends="NumberFieldEditor" >
+        <GRIDBAGCONSTRAINTS gridx="1" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="0" insetleft="5" insettop="5" fill="NONE"/>
+    </NUMBER>
+    
+    <GROUP name="PortfolioValuesForm" extends="EmptyGroup" localizedDisplayableText="SharePlot/properties/task/Share/title.PortfolioValues" scrollable="false" layoutmanager="gridbaglayout" >
+        <GROUP name="topGroup" extends="GenericTitleGroup">
+            <GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="0" />
+            <ATTRIBUTE_PARAM component="titleLabel" name="localizedDisplayableText" value="SharePlot/properties/task/Share/title.PortfolioValues" />
+        </GROUP>
+        <GROUP name="toolbarGroup" layoutmanager="gridbaglayout" >
+            <BUTTON name="saveButton" extends="SaveButton" >
+                <GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="0" fill="NONE" insetleft="5" />
+            </BUTTON>
+            <GRIDBAGCONSTRAINTS gridx="0" gridy="1" gridwidth="1" gridheight="1" weightx="1" weighty="0" fill="HORIZONTAL" insetleft="5" />
+        </GROUP>
+        <GROUP name="inputGroup" layoutmanager="gridbaglayout" >
+            <LABEL name="dateLabel" extends="EditorLabel" localizedDisplayableText="SharePlot/properties/task/Share/label.Date">
+                <GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="0" insetleft="15" insettop="10" insetbottom="10" />
+            </LABEL>
+            <DATE name="date" extends="DateFieldEditor" >
+                <GRIDBAGCONSTRAINTS gridx="1" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="0" insetleft="5" insettop="10" insetbottom="10" fill="NONE"/>
+            </DATE>
+            <GRIDBAGCONSTRAINTS gridx="0" gridy="2" gridwidth="1" gridheight="1" weightx="1" weighty="0" fill="HORIZONTAL" insetleft="5" />
+        </GROUP>
+        
+		<GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="1" anchor="NORTH" fill="BOTH"/>
+	</GROUP>
+</DOCUMENT>

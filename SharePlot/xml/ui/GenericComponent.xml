@@ -5,22 +5,28 @@
     <IMPORT name="SharePlot/xml/ui/GenericStyles.xml" /> 
     <IMPORT name="SharePlot/xml/ui/GenericAlgos.xml" /> 
     
+    <!-- Labels -->
     <LABEL name="DialogLabel" font="labelFont" foregroundColor="labelColor" /> 
     <LABEL name="DialogBoldRedLabel" font="labelBoldFont" foregroundColor="labelRedColor" /> 
     <LABEL name="EditorHeaderLabel" font="editorHeaderFont" foregroundColor="labelColor" /> 
     <LABEL name="EditorLabel" font="labelFont" foregroundColor="labelColor" /> 
     <LABEL name="StatusBarLabel" font="statusBarFont" foregroundColor="statusBarFore" /> 
     
+    <!-- Input fields -->
+    <DATE name="DateFieldEditor" opaque="true" style="textFieldStyle" />
     <DISPLAY2 name="EmptyTable" style="tableStyle" cellSpacing="0" verticalLines="dotted" opaque="false" borderWidth="0" borderColor="tableBorderColor" />
     <TABBEDPANE name="EmptyOpaqueTabbedpane" tabsRolloverBackground="tabRolloverBackgreound" selectedTabsRolloverBackground="selectedTabRolloverBackgreound" tabsRolloverForeground="tabRolloverForegreound" selectedTabsRolloverForeground="selectedTabRolloverForegreound" opaque="true" increaseSelectedTabFontSize="false" font="tabbedPaneFont" backgroundColor="tabbedPaneBG" foregroundColor="tabbedPaneFG" tabsGradientBackground="tabsGradientBG" tabsForeground="tabsForeground" selectedTabsGradientBackground="selectedTabGradientBG" selectedTabsForeground="selectedTabForeground" paddingTop="3" paddingBottom="3" paddingLeft="8" paddingRight="8" />
-    <TEXT name="TextFieldEditor" opaque="true" style="textFieldStyle" /> 
+    <TEXT name="TextFieldEditor" opaque="true" style="textFieldStyle" />
+    <NUMBER name="NumberFieldEditor" opaque="true" style="textFieldStyle" />
     
+    <!-- Buttons -->
 	<BUTTON name="GenericButton" font="editorFont" rolloverBorderColor="buttonsRolloverBorderColor" gradientBackgroundColor="buttonsBackground" foregroundColor="buttonsForeground" disabledBackgroundColor="buttonsDisabledBackground" disabledForegroundColor="buttonsDisabledForeground" paddingTop="3" paddingBottom="3" paddingLeft="6" paddingRight="6" />
 	
     <BUTTON name="DeleteButton" extends="GenericButton" localizedDisplayableText="SharePlot/properties/desktop/Buttons/button.Delete" />
     <BUTTON name="ImportButton" extends="GenericButton" localizedDisplayableText="SharePlot/properties/desktop/Buttons/button.Import" />
     <BUTTON name="SaveButton" extends="GenericButton" localizedDisplayableText="SharePlot/properties/desktop/Buttons/button.Save" />
     
+    <!-- Groups -->
     <GROUP name="EmptyGroup" backgroundColor="panelBackgroundColor" foregroundColor="panelForegroundColor" />
     
     <GROUP name="GenericTitleGroup" layoutmanager="gridbaglayout" backgroundColor="editorHeaderBackColor" foregroundColor="editorHeaderForeColor" >

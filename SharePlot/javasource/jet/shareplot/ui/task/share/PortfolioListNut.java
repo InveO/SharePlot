@@ -39,6 +39,11 @@ public class PortfolioListNut extends AbstractSharePlotListNut<Portfolio> {
                         if (portfolio.getIdPortfolio() != null) {
                             launchEditPortfolio(portfolio);
                         }
+                    } else if ("valueColumn".equals(colName)) {
+                        final Portfolio portfolio = this.items.get(row);
+                        if (portfolio.getIdPortfolio() != null) {
+                            launchValuesPortfolio(portfolio);
+                        }
                     }
                 }
             }
@@ -46,17 +51,29 @@ public class PortfolioListNut extends AbstractSharePlotListNut<Portfolio> {
     }
 
     private void launchEditPortfolio(final Portfolio portfolio) {
+        final Map<String, Object> initArgs = new HashMap<String, Object>();
+        initArgs.put(SharePlotACLauncher.AC_KEY_PARAMETER, new ShareListNutKey(portfolio.getIdPortfolio()));
+
+        launchPortfolioEditor(TaskNameConstants.SHARE_LIST, portfolio, initArgs);
+    }
+
+    private void launchValuesPortfolio(final Portfolio portfolio) {
+        final Map<String, Object> initArgs = new HashMap<String, Object>();
+        initArgs.put(SharePlotACLauncher.AC_KEY_PARAMETER, new PortfolioValuesNutKey(portfolio.getIdPortfolio()));
+
+        launchPortfolioEditor(TaskNameConstants.PORTFOLIO_VALUES, portfolio, initArgs);
+    }
+
+    private void launchPortfolioEditor(final String editorName, final Portfolio portfolio, final Map<String, Object> initArgs) {
         final ApplicationComponentLauncher acLauncher = (ApplicationComponentLauncher) getSession().getProperty(ApplicationComponentLauncher.SESSION_KEY);
 
         if (acLauncher != null) {
             try {
-                final Map<String, Object> initArgs = new HashMap<String, Object>();
                 initArgs.put(ShareUIConstants.ARGUMENT_PORTFOLIO, new Portfolio(portfolio));
-                initArgs.put(SharePlotACLauncher.AC_KEY_PARAMETER, new ShareListNutKey(portfolio.getIdPortfolio()));
 
-                acLauncher.launchApplicationComponent(TaskNameConstants.SHARE_LIST, initArgs);
+                acLauncher.launchApplicationComponent(editorName, initArgs);
             } catch (final JETException e) {
-                logp(JETLevel.SEVERE, "PortfolioListNut", "launchEditPortfolio", e.getMessage(), e);
+                logp(JETLevel.SEVERE, "PortfolioListNut", "launchPortfolioEditor", e.getMessage(), e);
             }
         }
     }

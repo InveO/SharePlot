@@ -1,0 +1,16 @@
+<APPLICATION_COMPONENT class="jet.framework.component.SimpleApplicationComponent" initialNutName="PortfolioValuesNut">
+
+	<!-- SimpleApplicationComponent specific declarations -->
+	<APPLICATION_COMPONENT_CONFIG>
+	
+
+	</APPLICATION_COMPONENT_CONFIG>
+
+	<NUTS>
+		<NUT name="PortfolioValuesNut" className="jet.shareplot.ui.task.share.PortfolioValuesNut">
+			<PARAMETER name="formName" value="PortfolioValuesForm" />
+			<PARAMETER name="formXmlFile" value="SharePlot/xml/ui/task/share/PortfolioValuesForm.xml" />
+		</NUT>
+	</NUTS>
+
+</APPLICATION_COMPONENT>
