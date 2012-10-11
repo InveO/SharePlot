@@ -40,7 +40,7 @@ public class Portfolio_JUnitTest {
         final Portfolio portfolio = new Portfolio(portfolioAC);
 
         // assert : verify that the test run correctly
-        // object should be instanciated
+        // object should be instantiated
         assertNotNull(portfolio);
 
         // values should be null
@@ -75,7 +75,7 @@ public class Portfolio_JUnitTest {
         final Portfolio portfolio = new Portfolio(item.get_Model(), portfolioAC);
 
         // assert : verify that the test run correctly
-        // object should be instanciated
+        // object should be instantiated
         assertNotNull(portfolio);
     }
 
@@ -93,7 +93,7 @@ public class Portfolio_JUnitTest {
         final Portfolio portfolio = new Portfolio(item.get_Model(), portfolioAC);
 
         // assert : verify that the test run correctly
-        // object should be instanciated
+        // object should be instantiated
         assertNotNull(portfolio);
         // TODO check that data is in the portfolio
     }
@@ -127,7 +127,7 @@ public class Portfolio_JUnitTest {
         final Portfolio portfolio = new Portfolio(item);
 
         // assert : verify that the test run correctly
-        // object should be instanciated
+        // object should be instantiated
         assertNotNull(portfolio);
     }
 
@@ -145,7 +145,7 @@ public class Portfolio_JUnitTest {
         final Portfolio portfolio = new Portfolio(item);
 
         // assert : verify that the test run correctly
-        // object should be instanciated
+        // object should be instantiated
         assertNotNull(portfolio);
         // TODO check that data is in the portfolio
     }
@@ -417,14 +417,18 @@ public class Portfolio_JUnitTest {
 
     /**
      * Save, creation
+     *
+     * @throws Exception
      */
     @org.junit.Test
-    public void testSaveCreateValid() {
+    public void testSaveCreateValid() throws Exception {
         // arrange : set up the test
         final PortfolioApplicationComponent portfolioAC = mock(PortfolioApplicationComponent.class);
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);
+
+        setupTransaction();
 
         when(portfolioAC.getSession()).thenReturn(session);
         when(session.getProperty(any())).thenReturn(resourceAC);
@@ -453,14 +457,18 @@ public class Portfolio_JUnitTest {
 
     /**
      * Save, update
+     *
+     * @throws Exception
      */
     @org.junit.Test
-    public void testSaveUpdate() {
+    public void testSaveUpdate() throws Exception {
         // arrange : set up the test
         final PortfolioApplicationComponent portfolioAC = mock(PortfolioApplicationComponent.class);
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);
+
+        setupTransaction();
 
         when(portfolioAC.getSession()).thenReturn(session);
         when(session.getProperty(any())).thenReturn(resourceAC);
@@ -526,14 +534,18 @@ public class Portfolio_JUnitTest {
 
     /**
      * Delete old record
+     *
+     * @throws Exception
      */
     @org.junit.Test
-    public void testDeleteOld() {
+    public void testDeleteOld() throws Exception {
         // arrange : set up the test
         final PortfolioApplicationComponent portfolioAC = mock(PortfolioApplicationComponent.class);
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);
+
+        setupTransaction();
 
         when(portfolioAC.getSession()).thenReturn(session);
         when(session.getProperty(any())).thenReturn(resourceAC);
@@ -561,4 +573,14 @@ public class Portfolio_JUnitTest {
         verify(resourceAC).notifyListeners(eq(PortfolioResource.RESOURCE_NAME), any(PortfolioResource.class));
     }
 
+    private void setupTransaction() throws Exception {
+        final javax.naming.Context context = jet.framework.util.junit.InitialContext2_JUnitTest.initInitialContext();
+        final jet.container.managers.jta.interfaces.JTAManagerContext jtaContext = mock(jet.container.managers.jta.interfaces.JTAManagerContext.class);
+        final javax.transaction.TransactionManager transactionManager = mock(javax.transaction.TransactionManager.class);
+        when(context.lookup(jet.framework.util.JetConstants.MANAGERS_CONTEXT + jet.container.managers.jta.interfaces.JTAManagerContext.NAME)).thenReturn(jtaContext);
+        when(jtaContext.getTransactionManager()).thenReturn(transactionManager);
+        when(transactionManager.getStatus()).thenReturn(javax.transaction.Status.STATUS_NO_TRANSACTION);
+        transactionManager.begin();
+        transactionManager.commit();
+    }
 }

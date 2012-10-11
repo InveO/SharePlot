@@ -13,10 +13,6 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.only;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
-import java.math.BigDecimal;
-import java.util.Date;
-
 import jet.container.managers.session.interfaces.Session;
 import jet.framework.component.resource.ResourceNotificationApplicationComponent;
 import jet.framework.nuts.store.StoreNut;
@@ -27,7 +23,7 @@ import jet.util.throwable.JETException;
 
 /**
  * JUnit skeleton for the ShareValue object
- * 
+ *
  * @author JetToolsFramework
  */
 public class ShareValue_JUnitTest {
@@ -44,7 +40,7 @@ public class ShareValue_JUnitTest {
         final ShareValue shareValue = new ShareValue(shareValueAC);
 
         // assert : verify that the test run correctly
-        // object should be instanciated
+        // object should be instantiated
         assertNotNull(shareValue);
 
         // values should be null
@@ -81,7 +77,7 @@ public class ShareValue_JUnitTest {
         final ShareValue shareValue = new ShareValue(item.get_Model(), shareValueAC);
 
         // assert : verify that the test run correctly
-        // object should be instanciated
+        // object should be instantiated
         assertNotNull(shareValue);
     }
 
@@ -99,7 +95,7 @@ public class ShareValue_JUnitTest {
         final ShareValue shareValue = new ShareValue(item.get_Model(), shareValueAC);
 
         // assert : verify that the test run correctly
-        // object should be instanciated
+        // object should be instantiated
         assertNotNull(shareValue);
         // TODO check that data is in the shareValue
     }
@@ -133,7 +129,7 @@ public class ShareValue_JUnitTest {
         final ShareValue shareValue = new ShareValue(item);
 
         // assert : verify that the test run correctly
-        // object should be instanciated
+        // object should be instantiated
         assertNotNull(shareValue);
     }
 
@@ -151,7 +147,7 @@ public class ShareValue_JUnitTest {
         final ShareValue shareValue = new ShareValue(item);
 
         // assert : verify that the test run correctly
-        // object should be instanciated
+        // object should be instantiated
         assertNotNull(shareValue);
         // TODO check that data is in the shareValue
     }
@@ -197,8 +193,8 @@ public class ShareValue_JUnitTest {
         final ShareValueApplicationComponent shareValueAC = mock(ShareValueApplicationComponent.class);
         final ShareValue shareValue = new ShareValue(shareValueAC);
         shareValue.setIdShare(Long.valueOf(1));
-        shareValue.setValue(BigDecimal.valueOf(1));
-        shareValue.setValueDate(new Date());
+        shareValue.setValue(java.math.BigDecimal.valueOf(1));
+        shareValue.setValueDate(new java.util.Date());
 
         // act : run the test
         final boolean result = shareValue.isNotNullableNull();
@@ -397,7 +393,7 @@ public class ShareValue_JUnitTest {
 
     /**
      * Save, creation
-     * 
+     *
      * @throws FormatedJetException should be thrown as saving invalid shareValue
      */
     @org.junit.Test(expected = FormatedJetException.class)
@@ -424,14 +420,18 @@ public class ShareValue_JUnitTest {
 
     /**
      * Save, creation
+     *
+     * @throws Exception
      */
     @org.junit.Test
-    public void testSaveCreateValid() {
+    public void testSaveCreateValid() throws Exception {
         // arrange : set up the test
         final ShareValueApplicationComponent shareValueAC = mock(ShareValueApplicationComponent.class);
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);
+
+        setupTransaction();
 
         when(shareValueAC.getSession()).thenReturn(session);
         when(session.getProperty(any())).thenReturn(resourceAC);
@@ -460,14 +460,18 @@ public class ShareValue_JUnitTest {
 
     /**
      * Save, update
+     *
+     * @throws Exception
      */
     @org.junit.Test
-    public void testSaveUpdate() {
+    public void testSaveUpdate() throws Exception {
         // arrange : set up the test
         final ShareValueApplicationComponent shareValueAC = mock(ShareValueApplicationComponent.class);
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);
+
+        setupTransaction();
 
         when(shareValueAC.getSession()).thenReturn(session);
         when(session.getProperty(any())).thenReturn(resourceAC);
@@ -533,14 +537,18 @@ public class ShareValue_JUnitTest {
 
     /**
      * Delete old record
+     *
+     * @throws Exception
      */
     @org.junit.Test
-    public void testDeleteOld() {
+    public void testDeleteOld() throws Exception {
         // arrange : set up the test
         final ShareValueApplicationComponent shareValueAC = mock(ShareValueApplicationComponent.class);
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);
+
+        setupTransaction();
 
         when(shareValueAC.getSession()).thenReturn(session);
         when(session.getProperty(any())).thenReturn(resourceAC);
@@ -568,4 +576,14 @@ public class ShareValue_JUnitTest {
         verify(resourceAC).notifyListeners(eq(ShareValueResource.RESOURCE_NAME), any(ShareValueResource.class));
     }
 
+    private void setupTransaction() throws Exception {
+        final javax.naming.Context context = jet.framework.util.junit.InitialContext2_JUnitTest.initInitialContext();
+        final jet.container.managers.jta.interfaces.JTAManagerContext jtaContext = mock(jet.container.managers.jta.interfaces.JTAManagerContext.class);
+        final javax.transaction.TransactionManager transactionManager = mock(javax.transaction.TransactionManager.class);
+        when(context.lookup(jet.framework.util.JetConstants.MANAGERS_CONTEXT + jet.container.managers.jta.interfaces.JTAManagerContext.NAME)).thenReturn(jtaContext);
+        when(jtaContext.getTransactionManager()).thenReturn(transactionManager);
+        when(transactionManager.getStatus()).thenReturn(javax.transaction.Status.STATUS_NO_TRANSACTION);
+        transactionManager.begin();
+        transactionManager.commit();
+    }
 }

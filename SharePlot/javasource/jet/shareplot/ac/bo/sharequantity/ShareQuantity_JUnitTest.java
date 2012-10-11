@@ -13,10 +13,6 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.only;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
-import java.math.BigDecimal;
-import java.util.Date;
-
 import jet.container.managers.session.interfaces.Session;
 import jet.framework.component.resource.ResourceNotificationApplicationComponent;
 import jet.framework.nuts.store.StoreNut;
@@ -27,7 +23,7 @@ import jet.util.throwable.JETException;
 
 /**
  * JUnit skeleton for the ShareQuantity object
- * 
+ *
  * @author JetToolsFramework
  */
 public class ShareQuantity_JUnitTest {
@@ -44,7 +40,7 @@ public class ShareQuantity_JUnitTest {
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
 
         // assert : verify that the test run correctly
-        // object should be instanciated
+        // object should be instantiated
         assertNotNull(shareQuantity);
 
         // values should be null
@@ -89,7 +85,7 @@ public class ShareQuantity_JUnitTest {
         final ShareQuantity shareQuantity = new ShareQuantity(item.get_Model(), shareQuantityAC);
 
         // assert : verify that the test run correctly
-        // object should be instanciated
+        // object should be instantiated
         assertNotNull(shareQuantity);
     }
 
@@ -107,7 +103,7 @@ public class ShareQuantity_JUnitTest {
         final ShareQuantity shareQuantity = new ShareQuantity(item.get_Model(), shareQuantityAC);
 
         // assert : verify that the test run correctly
-        // object should be instanciated
+        // object should be instantiated
         assertNotNull(shareQuantity);
         // TODO check that data is in the shareQuantity
     }
@@ -141,7 +137,7 @@ public class ShareQuantity_JUnitTest {
         final ShareQuantity shareQuantity = new ShareQuantity(item);
 
         // assert : verify that the test run correctly
-        // object should be instanciated
+        // object should be instantiated
         assertNotNull(shareQuantity);
     }
 
@@ -159,7 +155,7 @@ public class ShareQuantity_JUnitTest {
         final ShareQuantity shareQuantity = new ShareQuantity(item);
 
         // assert : verify that the test run correctly
-        // object should be instanciated
+        // object should be instantiated
         assertNotNull(shareQuantity);
         // TODO check that data is in the shareQuantity
     }
@@ -204,12 +200,12 @@ public class ShareQuantity_JUnitTest {
         // arrange : set up the test
         final ShareQuantityApplicationComponent shareQuantityAC = mock(ShareQuantityApplicationComponent.class);
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
-        shareQuantity.setChangeFee(BigDecimal.valueOf(1));
-        shareQuantity.setChangeQuantity(BigDecimal.valueOf(1));
+        shareQuantity.setChangeFee(java.math.BigDecimal.valueOf(1));
+        shareQuantity.setChangeQuantity(java.math.BigDecimal.valueOf(1));
         shareQuantity.setChangeType("");
-        shareQuantity.setChangeValue(BigDecimal.valueOf(1));
+        shareQuantity.setChangeValue(java.math.BigDecimal.valueOf(1));
         shareQuantity.setIdShare(Long.valueOf(1));
-        shareQuantity.setValueDate(new Date());
+        shareQuantity.setValueDate(new java.util.Date());
 
         // act : run the test
         final boolean result = shareQuantity.isNotNullableNull();
@@ -408,7 +404,7 @@ public class ShareQuantity_JUnitTest {
 
     /**
      * Save, creation
-     * 
+     *
      * @throws FormatedJetException should be thrown as saving invalid shareQuantity
      */
     @org.junit.Test(expected = FormatedJetException.class)
@@ -435,14 +431,18 @@ public class ShareQuantity_JUnitTest {
 
     /**
      * Save, creation
+     *
+     * @throws Exception
      */
     @org.junit.Test
-    public void testSaveCreateValid() {
+    public void testSaveCreateValid() throws Exception {
         // arrange : set up the test
         final ShareQuantityApplicationComponent shareQuantityAC = mock(ShareQuantityApplicationComponent.class);
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);
+
+        setupTransaction();
 
         when(shareQuantityAC.getSession()).thenReturn(session);
         when(session.getProperty(any())).thenReturn(resourceAC);
@@ -471,14 +471,18 @@ public class ShareQuantity_JUnitTest {
 
     /**
      * Save, update
+     *
+     * @throws Exception
      */
     @org.junit.Test
-    public void testSaveUpdate() {
+    public void testSaveUpdate() throws Exception {
         // arrange : set up the test
         final ShareQuantityApplicationComponent shareQuantityAC = mock(ShareQuantityApplicationComponent.class);
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);
+
+        setupTransaction();
 
         when(shareQuantityAC.getSession()).thenReturn(session);
         when(session.getProperty(any())).thenReturn(resourceAC);
@@ -544,14 +548,18 @@ public class ShareQuantity_JUnitTest {
 
     /**
      * Delete old record
+     *
+     * @throws Exception
      */
     @org.junit.Test
-    public void testDeleteOld() {
+    public void testDeleteOld() throws Exception {
         // arrange : set up the test
         final ShareQuantityApplicationComponent shareQuantityAC = mock(ShareQuantityApplicationComponent.class);
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);
+
+        setupTransaction();
 
         when(shareQuantityAC.getSession()).thenReturn(session);
         when(session.getProperty(any())).thenReturn(resourceAC);
@@ -579,4 +587,14 @@ public class ShareQuantity_JUnitTest {
         verify(resourceAC).notifyListeners(eq(ShareQuantityResource.RESOURCE_NAME), any(ShareQuantityResource.class));
     }
 
+    private void setupTransaction() throws Exception {
+        final javax.naming.Context context = jet.framework.util.junit.InitialContext2_JUnitTest.initInitialContext();
+        final jet.container.managers.jta.interfaces.JTAManagerContext jtaContext = mock(jet.container.managers.jta.interfaces.JTAManagerContext.class);
+        final javax.transaction.TransactionManager transactionManager = mock(javax.transaction.TransactionManager.class);
+        when(context.lookup(jet.framework.util.JetConstants.MANAGERS_CONTEXT + jet.container.managers.jta.interfaces.JTAManagerContext.NAME)).thenReturn(jtaContext);
+        when(jtaContext.getTransactionManager()).thenReturn(transactionManager);
+        when(transactionManager.getStatus()).thenReturn(javax.transaction.Status.STATUS_NO_TRANSACTION);
+        transactionManager.begin();
+        transactionManager.commit();
+    }
 }

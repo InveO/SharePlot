@@ -23,7 +23,7 @@ import jet.util.throwable.JETException;
 
 /**
  * JUnit skeleton for the Share object
- * 
+ *
  * @author JetToolsFramework
  */
 public class Share_JUnitTest {
@@ -40,7 +40,7 @@ public class Share_JUnitTest {
         final Share share = new Share(shareAC);
 
         // assert : verify that the test run correctly
-        // object should be instanciated
+        // object should be instantiated
         assertNotNull(share);
 
         // values should be null
@@ -81,7 +81,7 @@ public class Share_JUnitTest {
         final Share share = new Share(item.get_Model(), shareAC);
 
         // assert : verify that the test run correctly
-        // object should be instanciated
+        // object should be instantiated
         assertNotNull(share);
     }
 
@@ -99,7 +99,7 @@ public class Share_JUnitTest {
         final Share share = new Share(item.get_Model(), shareAC);
 
         // assert : verify that the test run correctly
-        // object should be instanciated
+        // object should be instantiated
         assertNotNull(share);
         // TODO check that data is in the share
     }
@@ -133,7 +133,7 @@ public class Share_JUnitTest {
         final Share share = new Share(item);
 
         // assert : verify that the test run correctly
-        // object should be instanciated
+        // object should be instantiated
         assertNotNull(share);
     }
 
@@ -151,7 +151,7 @@ public class Share_JUnitTest {
         final Share share = new Share(item);
 
         // assert : verify that the test run correctly
-        // object should be instanciated
+        // object should be instantiated
         assertNotNull(share);
         // TODO check that data is in the share
     }
@@ -396,7 +396,7 @@ public class Share_JUnitTest {
 
     /**
      * Save, creation
-     * 
+     *
      * @throws FormatedJetException should be thrown as saving invalid share
      */
     @org.junit.Test(expected = FormatedJetException.class)
@@ -423,14 +423,18 @@ public class Share_JUnitTest {
 
     /**
      * Save, creation
+     *
+     * @throws Exception
      */
     @org.junit.Test
-    public void testSaveCreateValid() {
+    public void testSaveCreateValid() throws Exception {
         // arrange : set up the test
         final ShareApplicationComponent shareAC = mock(ShareApplicationComponent.class);
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);
+
+        setupTransaction();
 
         when(shareAC.getSession()).thenReturn(session);
         when(session.getProperty(any())).thenReturn(resourceAC);
@@ -459,14 +463,18 @@ public class Share_JUnitTest {
 
     /**
      * Save, update
+     *
+     * @throws Exception
      */
     @org.junit.Test
-    public void testSaveUpdate() {
+    public void testSaveUpdate() throws Exception {
         // arrange : set up the test
         final ShareApplicationComponent shareAC = mock(ShareApplicationComponent.class);
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);
+
+        setupTransaction();
 
         when(shareAC.getSession()).thenReturn(session);
         when(session.getProperty(any())).thenReturn(resourceAC);
@@ -532,14 +540,18 @@ public class Share_JUnitTest {
 
     /**
      * Delete old record
+     *
+     * @throws Exception
      */
     @org.junit.Test
-    public void testDeleteOld() {
+    public void testDeleteOld() throws Exception {
         // arrange : set up the test
         final ShareApplicationComponent shareAC = mock(ShareApplicationComponent.class);
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);
+
+        setupTransaction();
 
         when(shareAC.getSession()).thenReturn(session);
         when(session.getProperty(any())).thenReturn(resourceAC);
@@ -567,4 +579,14 @@ public class Share_JUnitTest {
         verify(resourceAC).notifyListeners(eq(ShareResource.RESOURCE_NAME), any(ShareResource.class));
     }
 
+    private void setupTransaction() throws Exception {
+        final javax.naming.Context context = jet.framework.util.junit.InitialContext2_JUnitTest.initInitialContext();
+        final jet.container.managers.jta.interfaces.JTAManagerContext jtaContext = mock(jet.container.managers.jta.interfaces.JTAManagerContext.class);
+        final javax.transaction.TransactionManager transactionManager = mock(javax.transaction.TransactionManager.class);
+        when(context.lookup(jet.framework.util.JetConstants.MANAGERS_CONTEXT + jet.container.managers.jta.interfaces.JTAManagerContext.NAME)).thenReturn(jtaContext);
+        when(jtaContext.getTransactionManager()).thenReturn(transactionManager);
+        when(transactionManager.getStatus()).thenReturn(javax.transaction.Status.STATUS_NO_TRANSACTION);
+        transactionManager.begin();
+        transactionManager.commit();
+    }
 }
