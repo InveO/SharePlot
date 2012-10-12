@@ -21,11 +21,18 @@ import jet.framework.util.pojo2.JFErrorHandler;
 import jet.shareplot.persistence.pojo.ShareQuantityItem;
 import jet.util.throwable.JETException;
 
+import org.junit.runner.RunWith;
+
+import com.objectpartners.buesing.premock.PreMock;
+import com.objectpartners.buesing.premock.PreMockJUnit4ClassRunner;
+
 /**
  * JUnit skeleton for the ShareQuantity object
  *
  * @author JetToolsFramework
  */
+@PreMock({ ShareQuantity.class, ShareQuantityItem.class })
+@RunWith(PreMockJUnit4ClassRunner.class)
 public class ShareQuantity_JUnitTest {
 
     /**
