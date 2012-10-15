@@ -28,7 +28,7 @@ import com.objectpartners.buesing.premock.PreMockJUnit4ClassRunner;
 
 /**
  * JUnit skeleton for the ShareValue object
- *
+ * 
  * @author JetToolsFramework
  */
 @PreMock({ ShareValue.class, ShareValueItem.class })
@@ -220,10 +220,12 @@ public class ShareValue_JUnitTest {
         final ShareValue otherShareValue = mock(ShareValue.class);
         // TODO init mock pk
         // eg : when(otherShareValue.getIdShareValue()).thenReturn(Long.valueOf(1));
+        when(otherShareValue.getIdShareValue()).thenReturn(Long.valueOf(1));
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
         // TODO init shareValue pk
         // eg : shareValue.get_IdShareValue_Model().setNodeValue(Long.valueOf(1));
+        shareValue.get_IdShareValue_Model().setNodeValue(Long.valueOf(1));
 
         // act : run the test
         final boolean result = shareValue.isPkEquals(otherShareValue);
@@ -400,7 +402,7 @@ public class ShareValue_JUnitTest {
 
     /**
      * Save, creation
-     *
+     * 
      * @throws FormatedJetException should be thrown as saving invalid shareValue
      */
     @org.junit.Test(expected = FormatedJetException.class)
@@ -427,7 +429,7 @@ public class ShareValue_JUnitTest {
 
     /**
      * Save, creation
-     *
+     * 
      * @throws Exception
      */
     @org.junit.Test
@@ -467,7 +469,7 @@ public class ShareValue_JUnitTest {
 
     /**
      * Save, update
-     *
+     * 
      * @throws Exception
      */
     @org.junit.Test
@@ -544,7 +546,7 @@ public class ShareValue_JUnitTest {
 
     /**
      * Delete old record
-     *
+     * 
      * @throws Exception
      */
     @org.junit.Test

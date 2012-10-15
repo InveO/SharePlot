@@ -28,7 +28,7 @@ import com.objectpartners.buesing.premock.PreMockJUnit4ClassRunner;
 
 /**
  * JUnit skeleton for the ShareQuantity object
- *
+ * 
  * @author JetToolsFramework
  */
 @PreMock({ ShareQuantity.class, ShareQuantityItem.class })
@@ -411,7 +411,7 @@ public class ShareQuantity_JUnitTest {
 
     /**
      * Save, creation
-     *
+     * 
      * @throws FormatedJetException should be thrown as saving invalid shareQuantity
      */
     @org.junit.Test(expected = FormatedJetException.class)
@@ -438,7 +438,7 @@ public class ShareQuantity_JUnitTest {
 
     /**
      * Save, creation
-     *
+     * 
      * @throws Exception
      */
     @org.junit.Test
@@ -478,7 +478,7 @@ public class ShareQuantity_JUnitTest {
 
     /**
      * Save, update
-     *
+     * 
      * @throws Exception
      */
     @org.junit.Test
@@ -555,7 +555,7 @@ public class ShareQuantity_JUnitTest {
 
     /**
      * Delete old record
-     *
+     * 
      * @throws Exception
      */
     @org.junit.Test

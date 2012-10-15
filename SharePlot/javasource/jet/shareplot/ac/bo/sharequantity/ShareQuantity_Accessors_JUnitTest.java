@@ -3,13 +3,21 @@ package jet.shareplot.ac.bo.sharequantity;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.mock;
+import jet.shareplot.persistence.pojo.ShareQuantityItem;
+
+import org.junit.runner.RunWith;
+
+import com.objectpartners.buesing.premock.PreMock;
+import com.objectpartners.buesing.premock.PreMockJUnit4ClassRunner;
 
 /**
  * JUnit tests for the ShareQuantity accessor methods, this is where the ShareQuantity business
  * code will be tested.
- *
+ * 
  * @author JetToolsFramework
  */
+@PreMock({ ShareQuantity.class, ShareQuantityItem.class })
+@RunWith(PreMockJUnit4ClassRunner.class)
 public class ShareQuantity_Accessors_JUnitTest {
 
     /**
@@ -28,7 +36,6 @@ public class ShareQuantity_Accessors_JUnitTest {
         // assert : verify that the test run correctly
         assertNull(result);
     }
-
 
     /**
      * getChangeFee with an new shareQuantity

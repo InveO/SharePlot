@@ -28,7 +28,7 @@ import com.objectpartners.buesing.premock.PreMockJUnit4ClassRunner;
 
 /**
  * JUnit skeleton for the Portfolio object
- *
+ * 
  * @author JetToolsFramework
  */
 @PreMock({ Portfolio.class, PortfolioItem.class })
@@ -53,7 +53,7 @@ public class Portfolio_JUnitTest {
         // values should be null
         // TODO adapt these conditions, default values may be set, making them not null
         assertNull(portfolio.getIdPortfolio());
-        assertNull(portfolio.getIsFake());
+        assertNotNull(portfolio.getIsFake());
         assertNull(portfolio.getName());
 
         assertTrue(portfolio.isNotNullableNull());
@@ -217,10 +217,12 @@ public class Portfolio_JUnitTest {
         final Portfolio otherPortfolio = mock(Portfolio.class);
         // TODO init mock pk
         // eg : when(otherPortfolio.getIdPortfolio()).thenReturn(Long.valueOf(1));
+        when(otherPortfolio.getIdPortfolio()).thenReturn(Long.valueOf(1));
 
         final Portfolio portfolio = new Portfolio(portfolioAC);
         // TODO init portfolio pk
         // eg : portfolio.get_IdPortfolio_Model().setNodeValue(Long.valueOf(1));
+        portfolio.get_IdPortfolio_Model().setNodeValue(Long.valueOf(1));
 
         // act : run the test
         final boolean result = portfolio.isPkEquals(otherPortfolio);
@@ -397,7 +399,7 @@ public class Portfolio_JUnitTest {
 
     /**
      * Save, creation
-     *
+     * 
      * @throws FormatedJetException should be thrown as saving invalid portfolio
      */
     @org.junit.Test(expected = FormatedJetException.class)
@@ -424,7 +426,7 @@ public class Portfolio_JUnitTest {
 
     /**
      * Save, creation
-     *
+     * 
      * @throws Exception
      */
     @org.junit.Test
@@ -464,7 +466,7 @@ public class Portfolio_JUnitTest {
 
     /**
      * Save, update
-     *
+     * 
      * @throws Exception
      */
     @org.junit.Test
@@ -541,7 +543,7 @@ public class Portfolio_JUnitTest {
 
     /**
      * Delete old record
-     *
+     * 
      * @throws Exception
      */
     @org.junit.Test
