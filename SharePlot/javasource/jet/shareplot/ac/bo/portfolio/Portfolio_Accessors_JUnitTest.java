@@ -1,14 +1,10 @@
 package jet.shareplot.ac.bo.portfolio;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.mock;
-import jet.shareplot.persistence.pojo.PortfolioItem;
-
-import org.junit.runner.RunWith;
-
-import com.objectpartners.buesing.premock.PreMock;
-import com.objectpartners.buesing.premock.PreMockJUnit4ClassRunner;
+import jet.shareplot.util.BooleanConstants;
 
 /**
  * JUnit tests for the Portfolio accessor methods, this is where the Portfolio business
@@ -16,8 +12,6 @@ import com.objectpartners.buesing.premock.PreMockJUnit4ClassRunner;
  * 
  * @author JetToolsFramework
  */
-@PreMock({ Portfolio.class, PortfolioItem.class })
-@RunWith(PreMockJUnit4ClassRunner.class)
 public class Portfolio_Accessors_JUnitTest {
 
     /**
@@ -51,7 +45,8 @@ public class Portfolio_Accessors_JUnitTest {
         final String result = portfolio.getIsFake();
 
         // assert : verify that the test run correctly
-        assertNull(result);
+        assertNotNull(result);
+        assertEquals(BooleanConstants.NO, result);
     }
 
     /**

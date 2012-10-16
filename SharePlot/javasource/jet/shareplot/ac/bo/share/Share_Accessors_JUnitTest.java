@@ -3,21 +3,13 @@ package jet.shareplot.ac.bo.share;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.mock;
-import jet.shareplot.persistence.pojo.ShareItem;
-
-import org.junit.runner.RunWith;
-
-import com.objectpartners.buesing.premock.PreMock;
-import com.objectpartners.buesing.premock.PreMockJUnit4ClassRunner;
 
 /**
  * JUnit tests for the Share accessor methods, this is where the Share business
  * code will be tested.
- * 
+ *
  * @author JetToolsFramework
  */
-@PreMock({ Share.class, ShareItem.class })
-@RunWith(PreMockJUnit4ClassRunner.class)
 public class Share_Accessors_JUnitTest {
 
     /**
@@ -36,6 +28,7 @@ public class Share_Accessors_JUnitTest {
         // assert : verify that the test run correctly
         assertNull(result);
     }
+
 
     /**
      * getCodeISIN with an new share
