@@ -2,13 +2,16 @@
 <project name="JET Framework Classpath">
 
     <import file="${JetFrameworkBase}/jarPath.xml" />
-    
+
     <path id="SharePlot.classpath">
         <path refid="JetFramework.jarsPath"/>
-    	
+
 		<fileset dir="lib/easymock">
 			<include name="*.jar" />
 		</fileset>
+        <fileset dir="lib/mockito">
+            <include name="*.jar" />
+        </fileset>
     </path>
 
 </project>

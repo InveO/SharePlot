@@ -1,12 +1,14 @@
 package jet.shareplot.persistence.dse;
 
+import java.rmi.RemoteException;
 import java.util.List;
 
-import javax.ejb.EJBObject;
+import javax.ejb.FinderException;
 import javax.ejb.ObjectNotFoundException;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import jet.framework.manager.datamodel.interfaces.DataModelConverter;
 import jet.framework.manager.datamodel.interfaces.DataModelManagerContext;
 import jet.framework.manager.datamodel.interfaces.DataSourceExecutor2;
 import jet.framework.manager.datamodel.interfaces.FinderObjectNotFoundException;
@@ -16,13 +18,16 @@ import jet.framework.nuts.select.FinderMethod;
 import jet.framework.util.JetConstants;
 import jet.framework.util.ejb.EJBModelList;
 import jet.framework.util.jta.JETDuplicateKeyException;
+import jet.shareplot.persistence.dmc.PortfolioDMC;
 import jet.shareplot.persistence.ejb.portfolio.PortfolioHome;
+import jet.shareplot.persistence.ejb.portfolio.PortfolioRemote;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
-public class PortfolioDSE implements DataSourceExecutor2<EJBObject> {
+public class PortfolioDSE implements DataSourceExecutor2<PortfolioHome, PortfolioRemote> {
 
     private PortfolioHome ejbHome;
+    private DataModelConverter<PortfolioRemote> dataModelConverter;
 
     @Override
     public void setFindersModel(final Model findersModel) {
@@ -43,16 +48,19 @@ public class PortfolioDSE implements DataSourceExecutor2<EJBObject> {
     }
 
     @Override
-    public ModelArray executeFinder(final FinderMethod finderMethod) throws JETException, FinderObjectNotFoundException {
-
-        if (finderMethod instanceof FinderCaller) {
-            final FinderCaller finderCaller = (FinderCaller) finderMethod;
-            final List<EJBObject> list = finderCaller.callFinder(getEJBHome());
-            return new EJBModelList(list, this.dataModelConverter);
+    public ModelArray executeFinder(final FinderMethod finderMethod, final FinderCaller<PortfolioHome, PortfolioRemote> finderCaller) throws JETException, FinderObjectNotFoundException {
+        List<PortfolioRemote> list;
+        try {
+            list = finderCaller.callFinder(getEJBHome());
+        } catch (final RemoteException e) {
+            throw new JETException("RemoteException when executing finder [" + finderMethod.getFinderName() + "] on Portfolio.", e);
+        } catch (final ObjectNotFoundException e) {
+            throw new FinderObjectNotFoundException(e.getMessage(), e);
+        } catch (final FinderException e) {
+            throw new JETException("FinderException when executing finder [" + finderMethod.getFinderName() + "] on Portfolio.", e);
         }
-
-        // TODO Auto-generated method stub
-        return null;
+//        return new EJBModelList((List<EJBObject>) list, (DataModelConverter<EJBObject>) getDataModelConverter());
+        return new EJBModelList(list, getDataModelConverter());
     }
 
     @Override
@@ -97,6 +105,13 @@ public class PortfolioDSE implements DataSourceExecutor2<EJBObject> {
             }
         }
         return this.ejbHome;
+    }
+
+    private DataModelConverter<PortfolioRemote> getDataModelConverter() {
+        if (this.dataModelConverter == null) {
+            this.dataModelConverter = new PortfolioDMC();
+        }
+        return this.dataModelConverter;
     }
 
 }

@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.ejb.EJBObject;
 import javax.ejb.FinderException;
 
 import jet.framework.manager.datamodel.interfaces.DataSourceExecutor2;
@@ -25,7 +24,7 @@ import jet.shareplot.persistence.ejb.portfolio.PortfolioRemote;
 public class Portfolio_FindAll0 implements FinderMethod, FinderCaller<PortfolioHome, PortfolioRemote> {
 
     private static final long serialVersionUID = 993423458L;
-    DataSourceExecutor2<EJBObject> dse;
+    DataSourceExecutor2<PortfolioHome, PortfolioRemote> dse;
 
     @Override
     public String getFinderName() {
@@ -43,7 +42,7 @@ public class Portfolio_FindAll0 implements FinderMethod, FinderCaller<PortfolioH
     }
 
     @Override
-    public DataSourceExecutor2<EJBObject> getDataSourceExecutor2() {
+    public DataSourceExecutor2<PortfolioHome, PortfolioRemote> getDataSourceExecutor2() {
         if (this.dse == null) {
             this.dse = new PortfolioDSE();
         }
