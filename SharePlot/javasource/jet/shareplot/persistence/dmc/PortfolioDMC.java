@@ -4,30 +4,20 @@ import java.rmi.RemoteException;
 
 import javax.ejb.EJBException;
 
-import jet.framework.manager.datamodel.interfaces.DataModelConverter;
-import jet.framework.manager.datamodel.interfaces.DataModelManagerContext;
+import jet.framework.manager.datamodel.interfaces.DataModelConverter2;
 import jet.shareplot.persistence.ejb.portfolio.PortfolioRemote;
 import jet.shareplot.persistence.pojo.PortfolioItem;
-import jet.util.logger.Logger;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
-public class PortfolioDMC implements DataModelConverter<PortfolioRemote> {
+/**
+ * Portfolio DataModelConverter2
+ * 
+ * @author daniel
+ */
+public class PortfolioDMC implements DataModelConverter2<PortfolioRemote> {
 
-    @Override
-    public void setDatasourceConversionModel(final Model datasourceConversionModel) {
-        throw new UnsupportedOperationException("Not implemented in this case.");
-    }
-
-    @Override
-    public void setLogger(final Logger logger) {
-        throw new UnsupportedOperationException("Not implemented in this case.");
-    }
-
-    @Override
-    public void setDataModelManagerContext(final DataModelManagerContext dataModelManagerContext) {
-        throw new UnsupportedOperationException("Not implemented in this case.");
-    }
+    private static final long serialVersionUID = 6864149855566865978L;
 
     @Override
     public Model readDataModelFromObject(final PortfolioRemote dataObject) throws JETException {
@@ -57,11 +47,6 @@ public class PortfolioDMC implements DataModelConverter<PortfolioRemote> {
         } catch (final RemoteException e) {
             throw new JETException("RemoteException while writing to PortfolioRemote.", e);
         }
-    }
-
-    @Override
-    public void setName(final String name) {
-        throw new UnsupportedOperationException("Not implemented in this case.");
     }
 
 }
