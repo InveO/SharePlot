@@ -1,36 +1,35 @@
 <APPLICATION_COMPONENT class="jet.shareplot.ac.SelectStoreApplicationComponent" initialNutName="EmptyNut" >
-    
+
     <APPLICATION_COMPONENT_CONFIG>
-    
+
         <DATA_SOURCE_EXECUTOR name="Portfolio_DataSourceExecutor" type="EJBDataSourceExecutor" configfile="SharePlot/xml/metadata/datasourceexecutor/dse_Portfolio.xml" application="SharePlot">
             <DATA_MODEL_CONVERTER type="EJBDataModelConverter"/>
         </DATA_SOURCE_EXECUTOR>
-        <SELECT_NUT name="PortfolioSelect" datasourceexecutor="Portfolio_DataSourceExecutor" />
-        <STORE_NUT name="PortfolioStore" datasourceexecutor="Portfolio_DataSourceExecutor" />    
-        
+        <SELECT_NUT name="PortfolioSelect" datasourceexecutor="Portfolio_DataSourceExecutor" datasourceexecutor2="jet.shareplot.persistence.dse.PortfolioDSE" />
+        <STORE_NUT name="PortfolioStore" datasourceexecutor="Portfolio_DataSourceExecutor" datasourceexecutor2="jet.shareplot.persistence.dse.PortfolioDSE" />
+
         <DATA_SOURCE_EXECUTOR name="Share_DataSourceExecutor" type="EJBDataSourceExecutor" configfile="SharePlot/xml/metadata/datasourceexecutor/dse_Share.xml" application="SharePlot">
             <DATA_MODEL_CONVERTER type="EJBDataModelConverter"/>
         </DATA_SOURCE_EXECUTOR>
-        <SELECT_NUT name="ShareSelect" datasourceexecutor="Share_DataSourceExecutor" />
-        <STORE_NUT name="ShareStore" datasourceexecutor="Share_DataSourceExecutor" />    
-        
+        <SELECT_NUT name="ShareSelect" datasourceexecutor="Share_DataSourceExecutor" datasourceexecutor2="jet.shareplot.persistence.dse.ShareDSE" />
+        <STORE_NUT name="ShareStore" datasourceexecutor="Share_DataSourceExecutor" datasourceexecutor2="jet.shareplot.persistence.dse.ShareDSE" />
+
         <DATA_SOURCE_EXECUTOR name="ShareQuantity_DataSourceExecutor" type="EJBDataSourceExecutor" configfile="SharePlot/xml/metadata/datasourceexecutor/dse_ShareQuantity.xml" application="SharePlot">
             <DATA_MODEL_CONVERTER type="EJBDataModelConverter"/>
         </DATA_SOURCE_EXECUTOR>
-        <SELECT_NUT name="ShareQuantitySelect" datasourceexecutor="ShareQuantity_DataSourceExecutor" />
-        <STORE_NUT name="ShareQuantityStore" datasourceexecutor="ShareQuantity_DataSourceExecutor" />    
-        
+        <SELECT_NUT name="ShareQuantitySelect" datasourceexecutor="ShareQuantity_DataSourceExecutor" datasourceexecutor2="jet.shareplot.persistence.dse.ShareQuantityDSE" />
+        <STORE_NUT name="ShareQuantityStore" datasourceexecutor="ShareQuantity_DataSourceExecutor" datasourceexecutor2="jet.shareplot.persistence.dse.ShareQuantityDSE" />
+
         <DATA_SOURCE_EXECUTOR name="ShareValue_DataSourceExecutor" type="EJBDataSourceExecutor" configfile="SharePlot/xml/metadata/datasourceexecutor/dse_ShareValue.xml" application="SharePlot">
             <DATA_MODEL_CONVERTER type="EJBDataModelConverter"/>
         </DATA_SOURCE_EXECUTOR>
-        <SELECT_NUT name="ShareValueSelect" datasourceexecutor="ShareValue_DataSourceExecutor" />
-        <STORE_NUT name="ShareValueStore" datasourceexecutor="ShareValue_DataSourceExecutor" />    
-        
+        <SELECT_NUT name="ShareValueSelect" datasourceexecutor="ShareValue_DataSourceExecutor" datasourceexecutor2="jet.shareplot.persistence.dse.ShareValueDSE" />
+        <STORE_NUT name="ShareValueStore" datasourceexecutor="ShareValue_DataSourceExecutor" datasourceexecutor2="jet.shareplot.persistence.dse.ShareValueDSE" />
+
     </APPLICATION_COMPONENT_CONFIG>
-        
+
     <NUTS>
         <NUT name="EmptyNut" className="jet.framework.nuts.EmptyNut" />
     </NUTS>
-            
+
 </APPLICATION_COMPONENT>
-        
