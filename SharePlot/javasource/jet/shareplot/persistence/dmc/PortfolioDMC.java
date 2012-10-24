@@ -20,32 +20,34 @@ public class PortfolioDMC implements DataModelConverter2<PortfolioRemote> {
     private static final long serialVersionUID = 993423458L;
 
     @Override
-    public Model readDataModelFromObject(final PortfolioRemote dataObject) throws JETException {
-        final PortfolioItem item = new PortfolioItem();
+    public Model readDataModelFromObject(final PortfolioRemote portfolioRemote) throws JETException {
+        final PortfolioItem portfolioItem = new PortfolioItem();
 
         try {
-            item.get_IdPortfolio_Model().setNodeValue(dataObject.getIdPortfolio());
-            item.get_IsFake_Model().setNodeValue(dataObject.getIsFake());
-            item.get_Name_Model().setNodeValue(dataObject.getName());
+            portfolioItem.get_IdPortfolio_Model().setNodeValue(portfolioRemote.getIdPortfolio());
+            portfolioItem.get_IsFake_Model().setNodeValue(portfolioRemote.getIsFake());
+            portfolioItem.get_Name_Model().setNodeValue(portfolioRemote.getName());
         } catch (final EJBException e) {
             throw new JETException("EJBException while reading from PortfolioRemote.", e);
         } catch (final RemoteException e) {
             throw new JETException("RemoteException while reading from PortfolioRemote.", e);
         }
 
-        return item.get_Model();
+        return portfolioItem.get_Model();
     }
 
     @Override
-    public void writeDataModelToObject(final Model dataModel, final PortfolioRemote dataObject) throws JETException {
-        final PortfolioItem item = new PortfolioItem(dataModel);
+    public void writeDataModelToObject(final Model dataModel, final PortfolioRemote portfolioRemote) throws JETException {
+        final PortfolioItem portfolioItem = new PortfolioItem(dataModel);
 
         try {
             // do not update pk fields
-            // note: all item set pk methods are note public, so use the setNodeValue method on model
-            item.get_IdPortfolio_Model().setNodeValue(item.getIdPortfolio());
+            portfolioRemote.setIsFake(portfolioItem.getIsFake());
+            portfolioRemote.setName(portfolioItem.getName());
         } catch (final EJBException e) {
             throw new JETException("EJBException while writing to PortfolioRemote.", e);
+        } catch (final RemoteException e) {
+            throw new JETException("RemoteException while writing to PortfolioRemote.", e);
         }
     }
 

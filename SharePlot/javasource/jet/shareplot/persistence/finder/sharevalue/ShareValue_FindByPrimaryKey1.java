@@ -33,12 +33,12 @@ public class ShareValue_FindByPrimaryKey1 implements FinderCaller {
 
     /**
      * Set idShareValue argument value
+     *
      * @param idShareValue argument value
      */
     public void setIdShareValue(final Long idShareValue) {
         this.idShareValue = idShareValue;
     }
-
 
     @Override
     public String getFinderName() {
@@ -51,15 +51,16 @@ public class ShareValue_FindByPrimaryKey1 implements FinderCaller {
         args.put("idShareValue", this.idShareValue);
         return args;
     }
-    
-     @Override
+
+    @SuppressWarnings("unchecked")
+    @Override
     public ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
 
         List<ShareValueRemote> list;
         DataModelConverter2<ShareValueRemote> dmc;
         try {
             final ShareValueHome sharevalue = getDataSourceExecutor2().getEJBHome();
-            list = (List<ShareValueRemote>) sharevalue.findByPrimaryKey();
+            list = (List<ShareValueRemote>) sharevalue.findByPrimaryKey(this.idShareValue);
 
             dmc = getDataSourceExecutor2().getDataModelConverter();
         } catch (final RemoteException e) {

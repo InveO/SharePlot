@@ -20,33 +20,36 @@ public class ShareValueDMC implements DataModelConverter2<ShareValueRemote> {
     private static final long serialVersionUID = 1303211696L;
 
     @Override
-    public Model readDataModelFromObject(final ShareValueRemote dataObject) throws JETException {
-        final ShareValueItem item = new ShareValueItem();
+    public Model readDataModelFromObject(final ShareValueRemote shareValueRemote) throws JETException {
+        final ShareValueItem shareValueItem = new ShareValueItem();
 
         try {
-            item.get_IdShareValue_Model().setNodeValue(dataObject.getIdShareValue());
-            item.get_IdShare_Model().setNodeValue(dataObject.getIdShare());
-            item.get_Value_Model().setNodeValue(dataObject.getValue());
-            item.get_ValueDate_Model().setNodeValue(dataObject.getValueDate());
+            shareValueItem.get_IdShareValue_Model().setNodeValue(shareValueRemote.getIdShareValue());
+            shareValueItem.get_IdShare_Model().setNodeValue(shareValueRemote.getIdShare());
+            shareValueItem.get_Value_Model().setNodeValue(shareValueRemote.getValue());
+            shareValueItem.get_ValueDate_Model().setNodeValue(shareValueRemote.getValueDate());
         } catch (final EJBException e) {
             throw new JETException("EJBException while reading from ShareValueRemote.", e);
         } catch (final RemoteException e) {
             throw new JETException("RemoteException while reading from ShareValueRemote.", e);
         }
 
-        return item.get_Model();
+        return shareValueItem.get_Model();
     }
 
     @Override
-    public void writeDataModelToObject(final Model dataModel, final ShareValueRemote dataObject) throws JETException {
-        final ShareValueItem item = new ShareValueItem(dataModel);
+    public void writeDataModelToObject(final Model dataModel, final ShareValueRemote shareValueRemote) throws JETException {
+        final ShareValueItem shareValueItem = new ShareValueItem(dataModel);
 
         try {
             // do not update pk fields
-            // note: all item set pk methods are note public, so use the setNodeValue method on model
-            item.get_IdShareValue_Model().setNodeValue(item.getIdShareValue());
+            shareValueRemote.setIdShare(shareValueItem.getIdShare());
+            shareValueRemote.setValue(shareValueItem.getValue());
+            shareValueRemote.setValueDate(shareValueItem.getValueDate());
         } catch (final EJBException e) {
             throw new JETException("EJBException while writing to ShareValueRemote.", e);
+        } catch (final RemoteException e) {
+            throw new JETException("RemoteException while writing to ShareValueRemote.", e);
         }
     }
 

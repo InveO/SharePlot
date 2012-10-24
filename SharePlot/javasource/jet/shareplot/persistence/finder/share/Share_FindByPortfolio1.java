@@ -32,14 +32,15 @@ public class Share_FindByPortfolio1 implements FinderCaller {
     DataSourceExecutor2<ShareHome, ShareRemote> dse;
 
     Long idPortfolio = null;
-
     /**
      * Set idPortfolio argument value
+     *
      * @param idPortfolio argument value
      */
     public void setIdPortfolio(final Long idPortfolio) {
         this.idPortfolio = idPortfolio;
     }
+
 
     @Override
     public String getFinderName() {
@@ -52,7 +53,7 @@ public class Share_FindByPortfolio1 implements FinderCaller {
         args.put("idPortfolio", this.idPortfolio);
         return args;
     }
-    
+
     @Override
     public ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
 
@@ -60,7 +61,7 @@ public class Share_FindByPortfolio1 implements FinderCaller {
         DataModelConverter2<ShareRemote> dmc;
         try {
             final ShareHome share = getDataSourceExecutor2().getEJBHome();
-            list = (List<ShareRemote>) share.findByPortfolio( this.idPortfolio);
+            list = (List<ShareRemote>) share.findByPortfolio(this.idPortfolio);
 
             dmc = getDataSourceExecutor2().getDataModelConverter();
         } catch (final RemoteException e) {
@@ -80,5 +81,5 @@ public class Share_FindByPortfolio1 implements FinderCaller {
         }
         return this.dse;
     }
-    
+
 }

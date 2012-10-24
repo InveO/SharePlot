@@ -33,9 +33,9 @@ public class Portfolio_FindByPreparedSQLQuery2 implements FinderCaller {
 
     String sqlWhereClause = null;
     Object[] sqlArguments = null;
-
     /**
      * Set sqlWhereClause argument value
+     *
      * @param sqlWhereClause argument value
      */
     public void setSqlWhereClause(final String sqlWhereClause) {
@@ -44,12 +44,14 @@ public class Portfolio_FindByPreparedSQLQuery2 implements FinderCaller {
 
     /**
      * Set sqlArguments argument value
+     *
      * @param sqlArguments argument value
      */
     public void setSqlArguments(final Object[] sqlArguments) {
         this.sqlArguments = new Object[sqlArguments.length];
         System.arraycopy(sqlArguments, 0, this.sqlArguments, 0, sqlArguments.length);
     }
+
 
     @Override
     public String getFinderName() {
@@ -63,7 +65,7 @@ public class Portfolio_FindByPreparedSQLQuery2 implements FinderCaller {
         args.put("sqlArguments", this.sqlArguments);
         return args;
     }
-    
+
     @Override
     public ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
 
@@ -71,7 +73,7 @@ public class Portfolio_FindByPreparedSQLQuery2 implements FinderCaller {
         DataModelConverter2<PortfolioRemote> dmc;
         try {
             final PortfolioHome portfolio = getDataSourceExecutor2().getEJBHome();
-            list = (List<PortfolioRemote>) portfolio.findByPreparedSQLQuery( this.sqlWhereClause, this.sqlArguments);
+            list = (List<PortfolioRemote>) portfolio.findByPreparedSQLQuery(this.sqlWhereClause, this.sqlArguments);
 
             dmc = getDataSourceExecutor2().getDataModelConverter();
         } catch (final RemoteException e) {
@@ -91,5 +93,5 @@ public class Portfolio_FindByPreparedSQLQuery2 implements FinderCaller {
         }
         return this.dse;
     }
-    
+
 }

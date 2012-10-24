@@ -41,7 +41,7 @@ public class Share_FindAll0 implements FinderCaller {
     public Map<String, Object> getArguments() {
         return new HashMap<String, Object>();
     }
-    
+
     @Override
     public ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
 
@@ -69,5 +69,5 @@ public class Share_FindAll0 implements FinderCaller {
         }
         return this.dse;
     }
-    
+
 }

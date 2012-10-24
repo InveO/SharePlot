@@ -3,7 +3,6 @@ package jet.shareplot.persistence.dse;
 import java.rmi.RemoteException;
 import java.util.concurrent.Callable;
 
-import javax.ejb.EJBObject;
 import javax.ejb.FinderException;
 import javax.ejb.ObjectNotFoundException;
 import javax.naming.InitialContext;
@@ -16,7 +15,6 @@ import jet.framework.util.jta.JETDuplicateKeyException;
 import jet.shareplot.persistence.dmc.PortfolioDMC;
 import jet.shareplot.persistence.ejb.portfolio.PortfolioHome;
 import jet.shareplot.persistence.ejb.portfolio.PortfolioRemote;
-import jet.shareplot.persistence.ejb.portfolio.PortfolioPK;
 import jet.shareplot.persistence.pojo.PortfolioItem;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
@@ -51,13 +49,14 @@ public class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHome, Por
         final Callable<Object> callable = new Callable<Object>() {
             @Override
             public Object call() throws Exception {
-                final PortfolioItem item = new PortfolioItem(dataModel);
+                final PortfolioItem portfolioItem = new PortfolioItem(dataModel);
 
-                final PortfolioHome home = getEJBHome();
-                final PortfolioRemote remote = home.create( item.getIdPortfolio(), item.getIsFake(), item.getName());
+                final PortfolioHome portfolioHome = getEJBHome();
+                final PortfolioRemote portfolioRemote = portfolioHome.create(portfolioItem.getIdPortfolio(), portfolioItem.getIsFake(), portfolioItem.getName());
 
                 // has autoincrement PK, must update
-                item.get_IdPortfolio_Model().setNodeValue(remote.getIdPortfolio());
+                portfolioItem.get_IdPortfolio_Model().setNodeValue(portfolioRemote.getIdPortfolio());
+
                 return null;
             }
         };
@@ -70,8 +69,8 @@ public class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHome, Por
         final Callable<Object> callable = new Callable<Object>() {
             @Override
             public Object call() throws Exception {
-                final EJBObject ejbObject = getObjectFromStore(dataModel);
-                ejbObject.remove();
+                final PortfolioRemote portfolioRemote = getObjectFromStore(dataModel);
+                portfolioRemote.remove();
                 return null;
             }
         };
@@ -79,8 +78,8 @@ public class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHome, Por
         callUpdateTransaction(callable);
 
         // if has autoincrement PK, must reset pk to null
-        final PortfolioItem item = new PortfolioItem(dataModel);
-        item.get_IdPortfolio_Model().setNodeValue(null);
+        final PortfolioItem portfolioItem = new PortfolioItem(dataModel);
+        portfolioItem.get_IdPortfolio_Model().setNodeValue(null);
     }
 
     @Override
@@ -103,6 +102,7 @@ public class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHome, Por
         if (this.dataModelConverter == null) {
             this.dataModelConverter = new PortfolioDMC();
         }
+
         return this.dataModelConverter;
     }
 
@@ -113,21 +113,20 @@ public class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHome, Por
      * This should be used with care as this may entail Transaction problems, depending on the underlying persistance layer.
      * </p>
      *
-     * @param dataModel Model identifying the object to retreive
-     * @return E Persistant object corresponding to the Model
-     * @throws JETException Thrown if there was an error whilst retreiving the object
+     * @param dataModel Model identifying the object to retrieve
+     * @return E Persistent object corresponding to the Model
+     * @throws JETException Thrown if there was an error whilst retrieving the object
      * @throws ObjectNotFoundException Thrown if there is no corresponding object
      */
     private PortfolioRemote getObjectFromStore(final Model dataModel) throws JETException, ObjectNotFoundException {
         assert dataModel != null : "Can not delete null model";
 
-        final PortfolioItem item = new PortfolioItem(dataModel);
-        final PortfolioHome home = getEJBHome();
+        final PortfolioItem portfolioItem = new PortfolioItem(dataModel);
+        final PortfolioHome portfolioHome = getEJBHome();
 
-        PortfolioRemote remote;
+        PortfolioRemote portfolioRemote;
         try {
-            final PortfolioPK primaryKey = new PortfolioPK( item.getIdPortfolio(), item.getIsFake(), item.getName());
-            remote = home.findByPrimaryKey(primaryKey);
+            portfolioRemote = portfolioHome.findByPrimaryKey(portfolioItem.getIdPortfolio());
         } catch (final RemoteException e) {
             throw new JETException(e.getMessage(), e);
         } catch (final ObjectNotFoundException e) {
@@ -135,6 +134,7 @@ public class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHome, Por
         } catch (final FinderException e) {
             throw new JETException(e.getMessage(), e);
         }
-        return remote;
+
+        return portfolioRemote;
     }
 }

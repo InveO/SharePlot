@@ -33,12 +33,12 @@ public class Portfolio_FindByPrimaryKey1 implements FinderCaller {
 
     /**
      * Set idPortfolio argument value
+     *
      * @param idPortfolio argument value
      */
     public void setIdPortfolio(final Long idPortfolio) {
         this.idPortfolio = idPortfolio;
     }
-
 
     @Override
     public String getFinderName() {
@@ -51,15 +51,16 @@ public class Portfolio_FindByPrimaryKey1 implements FinderCaller {
         args.put("idPortfolio", this.idPortfolio);
         return args;
     }
-    
-     @Override
+
+    @SuppressWarnings("unchecked")
+    @Override
     public ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
 
         List<PortfolioRemote> list;
         DataModelConverter2<PortfolioRemote> dmc;
         try {
             final PortfolioHome portfolio = getDataSourceExecutor2().getEJBHome();
-            list = (List<PortfolioRemote>) portfolio.findByPrimaryKey();
+            list = (List<PortfolioRemote>) portfolio.findByPrimaryKey(this.idPortfolio);
 
             dmc = getDataSourceExecutor2().getDataModelConverter();
         } catch (final RemoteException e) {

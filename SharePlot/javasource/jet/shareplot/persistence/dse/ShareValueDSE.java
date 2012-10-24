@@ -3,7 +3,6 @@ package jet.shareplot.persistence.dse;
 import java.rmi.RemoteException;
 import java.util.concurrent.Callable;
 
-import javax.ejb.EJBObject;
 import javax.ejb.FinderException;
 import javax.ejb.ObjectNotFoundException;
 import javax.naming.InitialContext;
@@ -16,7 +15,6 @@ import jet.framework.util.jta.JETDuplicateKeyException;
 import jet.shareplot.persistence.dmc.ShareValueDMC;
 import jet.shareplot.persistence.ejb.sharevalue.ShareValueHome;
 import jet.shareplot.persistence.ejb.sharevalue.ShareValueRemote;
-import jet.shareplot.persistence.ejb.sharevalue.ShareValuePK;
 import jet.shareplot.persistence.pojo.ShareValueItem;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
@@ -51,13 +49,14 @@ public class ShareValueDSE extends AbstractDataSourceExecutor2<ShareValueHome, S
         final Callable<Object> callable = new Callable<Object>() {
             @Override
             public Object call() throws Exception {
-                final ShareValueItem item = new ShareValueItem(dataModel);
+                final ShareValueItem shareValueItem = new ShareValueItem(dataModel);
 
-                final ShareValueHome home = getEJBHome();
-                final ShareValueRemote remote = home.create( item.getIdShareValue(), item.getIdShare(), item.getValue(), item.getValueDate());
+                final ShareValueHome shareValueHome = getEJBHome();
+                final ShareValueRemote shareValueRemote = shareValueHome.create(shareValueItem.getIdShareValue(), shareValueItem.getIdShare(), shareValueItem.getValue(), shareValueItem.getValueDate());
 
                 // has autoincrement PK, must update
-                item.get_IdShareValue_Model().setNodeValue(remote.getIdShareValue());
+                shareValueItem.get_IdShareValue_Model().setNodeValue(shareValueRemote.getIdShareValue());
+
                 return null;
             }
         };
@@ -70,8 +69,8 @@ public class ShareValueDSE extends AbstractDataSourceExecutor2<ShareValueHome, S
         final Callable<Object> callable = new Callable<Object>() {
             @Override
             public Object call() throws Exception {
-                final EJBObject ejbObject = getObjectFromStore(dataModel);
-                ejbObject.remove();
+                final ShareValueRemote shareValueRemote = getObjectFromStore(dataModel);
+                shareValueRemote.remove();
                 return null;
             }
         };
@@ -79,8 +78,8 @@ public class ShareValueDSE extends AbstractDataSourceExecutor2<ShareValueHome, S
         callUpdateTransaction(callable);
 
         // if has autoincrement PK, must reset pk to null
-        final ShareValueItem item = new ShareValueItem(dataModel);
-        item.get_IdShareValue_Model().setNodeValue(null);
+        final ShareValueItem shareValueItem = new ShareValueItem(dataModel);
+        shareValueItem.get_IdShareValue_Model().setNodeValue(null);
     }
 
     @Override
@@ -103,6 +102,7 @@ public class ShareValueDSE extends AbstractDataSourceExecutor2<ShareValueHome, S
         if (this.dataModelConverter == null) {
             this.dataModelConverter = new ShareValueDMC();
         }
+
         return this.dataModelConverter;
     }
 
@@ -113,21 +113,20 @@ public class ShareValueDSE extends AbstractDataSourceExecutor2<ShareValueHome, S
      * This should be used with care as this may entail Transaction problems, depending on the underlying persistance layer.
      * </p>
      *
-     * @param dataModel Model identifying the object to retreive
-     * @return E Persistant object corresponding to the Model
-     * @throws JETException Thrown if there was an error whilst retreiving the object
+     * @param dataModel Model identifying the object to retrieve
+     * @return E Persistent object corresponding to the Model
+     * @throws JETException Thrown if there was an error whilst retrieving the object
      * @throws ObjectNotFoundException Thrown if there is no corresponding object
      */
     private ShareValueRemote getObjectFromStore(final Model dataModel) throws JETException, ObjectNotFoundException {
         assert dataModel != null : "Can not delete null model";
 
-        final ShareValueItem item = new ShareValueItem(dataModel);
-        final ShareValueHome home = getEJBHome();
+        final ShareValueItem shareValueItem = new ShareValueItem(dataModel);
+        final ShareValueHome shareValueHome = getEJBHome();
 
-        ShareValueRemote remote;
+        ShareValueRemote shareValueRemote;
         try {
-            final ShareValuePK primaryKey = new ShareValuePK( item.getIdShareValue(), item.getIdShare(), item.getValue(), item.getValueDate());
-            remote = home.findByPrimaryKey(primaryKey);
+            shareValueRemote = shareValueHome.findByPrimaryKey(shareValueItem.getIdShareValue());
         } catch (final RemoteException e) {
             throw new JETException(e.getMessage(), e);
         } catch (final ObjectNotFoundException e) {
@@ -135,6 +134,7 @@ public class ShareValueDSE extends AbstractDataSourceExecutor2<ShareValueHome, S
         } catch (final FinderException e) {
             throw new JETException(e.getMessage(), e);
         }
-        return remote;
+
+        return shareValueRemote;
     }
 }

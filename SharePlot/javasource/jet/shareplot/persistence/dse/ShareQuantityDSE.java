@@ -3,7 +3,6 @@ package jet.shareplot.persistence.dse;
 import java.rmi.RemoteException;
 import java.util.concurrent.Callable;
 
-import javax.ejb.EJBObject;
 import javax.ejb.FinderException;
 import javax.ejb.ObjectNotFoundException;
 import javax.naming.InitialContext;
@@ -16,7 +15,6 @@ import jet.framework.util.jta.JETDuplicateKeyException;
 import jet.shareplot.persistence.dmc.ShareQuantityDMC;
 import jet.shareplot.persistence.ejb.sharequantity.ShareQuantityHome;
 import jet.shareplot.persistence.ejb.sharequantity.ShareQuantityRemote;
-import jet.shareplot.persistence.ejb.sharequantity.ShareQuantityPK;
 import jet.shareplot.persistence.pojo.ShareQuantityItem;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
@@ -51,13 +49,14 @@ public class ShareQuantityDSE extends AbstractDataSourceExecutor2<ShareQuantityH
         final Callable<Object> callable = new Callable<Object>() {
             @Override
             public Object call() throws Exception {
-                final ShareQuantityItem item = new ShareQuantityItem(dataModel);
+                final ShareQuantityItem shareQuantityItem = new ShareQuantityItem(dataModel);
 
-                final ShareQuantityHome home = getEJBHome();
-                final ShareQuantityRemote remote = home.create( item.getIdShareQuantity(), item.getChangeFee(), item.getChangeQuantity(), item.getChangeType(), item.getChangeValue(), item.getDescription(), item.getIdShare(), item.getValueDate());
+                final ShareQuantityHome shareQuantityHome = getEJBHome();
+                final ShareQuantityRemote shareQuantityRemote = shareQuantityHome.create(shareQuantityItem.getIdShareQuantity(), shareQuantityItem.getChangeFee(), shareQuantityItem.getChangeQuantity(), shareQuantityItem.getChangeType(), shareQuantityItem.getChangeValue(), shareQuantityItem.getDescription(), shareQuantityItem.getIdShare(), shareQuantityItem.getValueDate());
 
                 // has autoincrement PK, must update
-                item.get_IdShareQuantity_Model().setNodeValue(remote.getIdShareQuantity());
+                shareQuantityItem.get_IdShareQuantity_Model().setNodeValue(shareQuantityRemote.getIdShareQuantity());
+
                 return null;
             }
         };
@@ -70,8 +69,8 @@ public class ShareQuantityDSE extends AbstractDataSourceExecutor2<ShareQuantityH
         final Callable<Object> callable = new Callable<Object>() {
             @Override
             public Object call() throws Exception {
-                final EJBObject ejbObject = getObjectFromStore(dataModel);
-                ejbObject.remove();
+                final ShareQuantityRemote shareQuantityRemote = getObjectFromStore(dataModel);
+                shareQuantityRemote.remove();
                 return null;
             }
         };
@@ -79,8 +78,8 @@ public class ShareQuantityDSE extends AbstractDataSourceExecutor2<ShareQuantityH
         callUpdateTransaction(callable);
 
         // if has autoincrement PK, must reset pk to null
-        final ShareQuantityItem item = new ShareQuantityItem(dataModel);
-        item.get_IdShareQuantity_Model().setNodeValue(null);
+        final ShareQuantityItem shareQuantityItem = new ShareQuantityItem(dataModel);
+        shareQuantityItem.get_IdShareQuantity_Model().setNodeValue(null);
     }
 
     @Override
@@ -103,6 +102,7 @@ public class ShareQuantityDSE extends AbstractDataSourceExecutor2<ShareQuantityH
         if (this.dataModelConverter == null) {
             this.dataModelConverter = new ShareQuantityDMC();
         }
+
         return this.dataModelConverter;
     }
 
@@ -113,21 +113,20 @@ public class ShareQuantityDSE extends AbstractDataSourceExecutor2<ShareQuantityH
      * This should be used with care as this may entail Transaction problems, depending on the underlying persistance layer.
      * </p>
      *
-     * @param dataModel Model identifying the object to retreive
-     * @return E Persistant object corresponding to the Model
-     * @throws JETException Thrown if there was an error whilst retreiving the object
+     * @param dataModel Model identifying the object to retrieve
+     * @return E Persistent object corresponding to the Model
+     * @throws JETException Thrown if there was an error whilst retrieving the object
      * @throws ObjectNotFoundException Thrown if there is no corresponding object
      */
     private ShareQuantityRemote getObjectFromStore(final Model dataModel) throws JETException, ObjectNotFoundException {
         assert dataModel != null : "Can not delete null model";
 
-        final ShareQuantityItem item = new ShareQuantityItem(dataModel);
-        final ShareQuantityHome home = getEJBHome();
+        final ShareQuantityItem shareQuantityItem = new ShareQuantityItem(dataModel);
+        final ShareQuantityHome shareQuantityHome = getEJBHome();
 
-        ShareQuantityRemote remote;
+        ShareQuantityRemote shareQuantityRemote;
         try {
-            final ShareQuantityPK primaryKey = new ShareQuantityPK( item.getIdShareQuantity(), item.getChangeFee(), item.getChangeQuantity(), item.getChangeType(), item.getChangeValue(), item.getDescription(), item.getIdShare(), item.getValueDate());
-            remote = home.findByPrimaryKey(primaryKey);
+            shareQuantityRemote = shareQuantityHome.findByPrimaryKey(shareQuantityItem.getIdShareQuantity());
         } catch (final RemoteException e) {
             throw new JETException(e.getMessage(), e);
         } catch (final ObjectNotFoundException e) {
@@ -135,6 +134,7 @@ public class ShareQuantityDSE extends AbstractDataSourceExecutor2<ShareQuantityH
         } catch (final FinderException e) {
             throw new JETException(e.getMessage(), e);
         }
-        return remote;
+
+        return shareQuantityRemote;
     }
 }

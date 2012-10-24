@@ -20,35 +20,40 @@ public class ShareDMC implements DataModelConverter2<ShareRemote> {
     private static final long serialVersionUID = -1265738400L;
 
     @Override
-    public Model readDataModelFromObject(final ShareRemote dataObject) throws JETException {
-        final ShareItem item = new ShareItem();
+    public Model readDataModelFromObject(final ShareRemote shareRemote) throws JETException {
+        final ShareItem shareItem = new ShareItem();
 
         try {
-            item.get_IdShare_Model().setNodeValue(dataObject.getIdShare());
-            item.get_CodeISIN_Model().setNodeValue(dataObject.getCodeISIN());
-            item.get_CodeYahoo_Model().setNodeValue(dataObject.getCodeYahoo());
-            item.get_Description_Model().setNodeValue(dataObject.getDescription());
-            item.get_IdPortfolio_Model().setNodeValue(dataObject.getIdPortfolio());
-            item.get_Name_Model().setNodeValue(dataObject.getName());
+            shareItem.get_IdShare_Model().setNodeValue(shareRemote.getIdShare());
+            shareItem.get_CodeISIN_Model().setNodeValue(shareRemote.getCodeISIN());
+            shareItem.get_CodeYahoo_Model().setNodeValue(shareRemote.getCodeYahoo());
+            shareItem.get_Description_Model().setNodeValue(shareRemote.getDescription());
+            shareItem.get_IdPortfolio_Model().setNodeValue(shareRemote.getIdPortfolio());
+            shareItem.get_Name_Model().setNodeValue(shareRemote.getName());
         } catch (final EJBException e) {
             throw new JETException("EJBException while reading from ShareRemote.", e);
         } catch (final RemoteException e) {
             throw new JETException("RemoteException while reading from ShareRemote.", e);
         }
 
-        return item.get_Model();
+        return shareItem.get_Model();
     }
 
     @Override
-    public void writeDataModelToObject(final Model dataModel, final ShareRemote dataObject) throws JETException {
-        final ShareItem item = new ShareItem(dataModel);
+    public void writeDataModelToObject(final Model dataModel, final ShareRemote shareRemote) throws JETException {
+        final ShareItem shareItem = new ShareItem(dataModel);
 
         try {
             // do not update pk fields
-            // note: all item set pk methods are note public, so use the setNodeValue method on model
-            item.get_IdShare_Model().setNodeValue(item.getIdShare());
+            shareRemote.setCodeISIN(shareItem.getCodeISIN());
+            shareRemote.setCodeYahoo(shareItem.getCodeYahoo());
+            shareRemote.setDescription(shareItem.getDescription());
+            shareRemote.setIdPortfolio(shareItem.getIdPortfolio());
+            shareRemote.setName(shareItem.getName());
         } catch (final EJBException e) {
             throw new JETException("EJBException while writing to ShareRemote.", e);
+        } catch (final RemoteException e) {
+            throw new JETException("RemoteException while writing to ShareRemote.", e);
         }
     }
 

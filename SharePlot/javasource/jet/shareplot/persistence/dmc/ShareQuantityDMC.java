@@ -20,37 +20,44 @@ public class ShareQuantityDMC implements DataModelConverter2<ShareQuantityRemote
     private static final long serialVersionUID = 1077646545L;
 
     @Override
-    public Model readDataModelFromObject(final ShareQuantityRemote dataObject) throws JETException {
-        final ShareQuantityItem item = new ShareQuantityItem();
+    public Model readDataModelFromObject(final ShareQuantityRemote shareQuantityRemote) throws JETException {
+        final ShareQuantityItem shareQuantityItem = new ShareQuantityItem();
 
         try {
-            item.get_IdShareQuantity_Model().setNodeValue(dataObject.getIdShareQuantity());
-            item.get_ChangeFee_Model().setNodeValue(dataObject.getChangeFee());
-            item.get_ChangeQuantity_Model().setNodeValue(dataObject.getChangeQuantity());
-            item.get_ChangeType_Model().setNodeValue(dataObject.getChangeType());
-            item.get_ChangeValue_Model().setNodeValue(dataObject.getChangeValue());
-            item.get_Description_Model().setNodeValue(dataObject.getDescription());
-            item.get_IdShare_Model().setNodeValue(dataObject.getIdShare());
-            item.get_ValueDate_Model().setNodeValue(dataObject.getValueDate());
+            shareQuantityItem.get_IdShareQuantity_Model().setNodeValue(shareQuantityRemote.getIdShareQuantity());
+            shareQuantityItem.get_ChangeFee_Model().setNodeValue(shareQuantityRemote.getChangeFee());
+            shareQuantityItem.get_ChangeQuantity_Model().setNodeValue(shareQuantityRemote.getChangeQuantity());
+            shareQuantityItem.get_ChangeType_Model().setNodeValue(shareQuantityRemote.getChangeType());
+            shareQuantityItem.get_ChangeValue_Model().setNodeValue(shareQuantityRemote.getChangeValue());
+            shareQuantityItem.get_Description_Model().setNodeValue(shareQuantityRemote.getDescription());
+            shareQuantityItem.get_IdShare_Model().setNodeValue(shareQuantityRemote.getIdShare());
+            shareQuantityItem.get_ValueDate_Model().setNodeValue(shareQuantityRemote.getValueDate());
         } catch (final EJBException e) {
             throw new JETException("EJBException while reading from ShareQuantityRemote.", e);
         } catch (final RemoteException e) {
             throw new JETException("RemoteException while reading from ShareQuantityRemote.", e);
         }
 
-        return item.get_Model();
+        return shareQuantityItem.get_Model();
     }
 
     @Override
-    public void writeDataModelToObject(final Model dataModel, final ShareQuantityRemote dataObject) throws JETException {
-        final ShareQuantityItem item = new ShareQuantityItem(dataModel);
+    public void writeDataModelToObject(final Model dataModel, final ShareQuantityRemote shareQuantityRemote) throws JETException {
+        final ShareQuantityItem shareQuantityItem = new ShareQuantityItem(dataModel);
 
         try {
             // do not update pk fields
-            // note: all item set pk methods are note public, so use the setNodeValue method on model
-            item.get_IdShareQuantity_Model().setNodeValue(item.getIdShareQuantity());
+            shareQuantityRemote.setChangeFee(shareQuantityItem.getChangeFee());
+            shareQuantityRemote.setChangeQuantity(shareQuantityItem.getChangeQuantity());
+            shareQuantityRemote.setChangeType(shareQuantityItem.getChangeType());
+            shareQuantityRemote.setChangeValue(shareQuantityItem.getChangeValue());
+            shareQuantityRemote.setDescription(shareQuantityItem.getDescription());
+            shareQuantityRemote.setIdShare(shareQuantityItem.getIdShare());
+            shareQuantityRemote.setValueDate(shareQuantityItem.getValueDate());
         } catch (final EJBException e) {
             throw new JETException("EJBException while writing to ShareQuantityRemote.", e);
+        } catch (final RemoteException e) {
+            throw new JETException("RemoteException while writing to ShareQuantityRemote.", e);
         }
     }
 
