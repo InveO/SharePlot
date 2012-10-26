@@ -28,7 +28,7 @@ public class ShareValueResource extends AbstractResourceNotification<ShareValue>
      * @param shareValue
      * @param type
      */
-    public ShareValueResource(final ShareValueApplicationComponent shareValueAC, final ShareValue shareValue, final NOTIFICATION_TYPE type) {
+    public ShareValueResource(final AbstractShareValueApplicationComponent shareValueAC, final ShareValue shareValue, final NOTIFICATION_TYPE type) {
         super("ShareValue", shareValue, type);
 
         try {

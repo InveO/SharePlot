@@ -18,20 +18,20 @@ import jet.util.throwable.JETException;
 /**
  * JUnit tests for the ShareValue accessor methods, this is where the ShareValue business
  * code will be tested.
- * 
+ *
  * @author JetToolsFramework
  */
 public class ShareValue_Persist_JUnitTest {
 
     /**
      * Save, creation
-     * 
+     *
      * @throws FormatedJetException should be thrown as saving invalid shareValue
      */
     @org.junit.Test(expected = FormatedJetException.class)
     public void testSaveCreateInvalid() throws FormatedJetException {
         // arrange : set up the test
-        final ShareValueApplicationComponent shareValueAC = mock(ShareValueApplicationComponent.class);
+        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);
@@ -52,13 +52,13 @@ public class ShareValue_Persist_JUnitTest {
 
     /**
      * Save, creation
-     * 
+     *
      * @throws Exception
      */
     @org.junit.Test
     public void testSaveCreateValid() throws Exception {
         // arrange : set up the test
-        final ShareValueApplicationComponent shareValueAC = mock(ShareValueApplicationComponent.class);
+        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);
@@ -92,13 +92,13 @@ public class ShareValue_Persist_JUnitTest {
 
     /**
      * Save, update
-     * 
+     *
      * @throws Exception
      */
     @org.junit.Test
     public void testSaveUpdate() throws Exception {
         // arrange : set up the test
-        final ShareValueApplicationComponent shareValueAC = mock(ShareValueApplicationComponent.class);
+        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);
@@ -138,7 +138,7 @@ public class ShareValue_Persist_JUnitTest {
     @org.junit.Test
     public void testDeleteNew() {
         // arrange : set up the test
-        final ShareValueApplicationComponent shareValueAC = mock(ShareValueApplicationComponent.class);
+        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);
@@ -169,13 +169,13 @@ public class ShareValue_Persist_JUnitTest {
 
     /**
      * Delete old record
-     * 
+     *
      * @throws Exception
      */
     @org.junit.Test
     public void testDeleteOld() throws Exception {
         // arrange : set up the test
-        final ShareValueApplicationComponent shareValueAC = mock(ShareValueApplicationComponent.class);
+        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);

@@ -18,7 +18,7 @@ public class ShareValue_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetIdShareValue() {
         // arrange : set up the test
-        final ShareValueApplicationComponent shareValueAC = mock(ShareValueApplicationComponent.class);
+        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
 
@@ -36,7 +36,7 @@ public class ShareValue_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetIdShare() {
         // arrange : set up the test
-        final ShareValueApplicationComponent shareValueAC = mock(ShareValueApplicationComponent.class);
+        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
 
@@ -53,7 +53,7 @@ public class ShareValue_Accessors_JUnitTest {
     @org.junit.Test
     public void testSetIdShare() {
         // arrange : set up the test
-        final ShareValueApplicationComponent shareValueAC = mock(ShareValueApplicationComponent.class);
+        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
 
@@ -74,7 +74,7 @@ public class ShareValue_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetValue() {
         // arrange : set up the test
-        final ShareValueApplicationComponent shareValueAC = mock(ShareValueApplicationComponent.class);
+        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
 
@@ -91,7 +91,7 @@ public class ShareValue_Accessors_JUnitTest {
     @org.junit.Test
     public void testSetValue() {
         // arrange : set up the test
-        final ShareValueApplicationComponent shareValueAC = mock(ShareValueApplicationComponent.class);
+        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
 
@@ -112,7 +112,7 @@ public class ShareValue_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetValueDate() {
         // arrange : set up the test
-        final ShareValueApplicationComponent shareValueAC = mock(ShareValueApplicationComponent.class);
+        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
 
@@ -129,7 +129,7 @@ public class ShareValue_Accessors_JUnitTest {
     @org.junit.Test
     public void testSetValueDate() {
         // arrange : set up the test
-        final ShareValueApplicationComponent shareValueAC = mock(ShareValueApplicationComponent.class);
+        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
 

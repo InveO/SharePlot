@@ -18,7 +18,7 @@ public class Share_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetIdShare() {
         // arrange : set up the test
-        final ShareApplicationComponent shareAC = mock(ShareApplicationComponent.class);
+        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
 
         final Share share = new Share(shareAC);
 
@@ -36,7 +36,7 @@ public class Share_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetCodeISIN() {
         // arrange : set up the test
-        final ShareApplicationComponent shareAC = mock(ShareApplicationComponent.class);
+        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
 
         final Share share = new Share(shareAC);
 
@@ -53,7 +53,7 @@ public class Share_Accessors_JUnitTest {
     @org.junit.Test
     public void testSetCodeISIN() {
         // arrange : set up the test
-        final ShareApplicationComponent shareAC = mock(ShareApplicationComponent.class);
+        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
 
         final Share share = new Share(shareAC);
 
@@ -74,7 +74,7 @@ public class Share_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetCodeYahoo() {
         // arrange : set up the test
-        final ShareApplicationComponent shareAC = mock(ShareApplicationComponent.class);
+        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
 
         final Share share = new Share(shareAC);
 
@@ -91,7 +91,7 @@ public class Share_Accessors_JUnitTest {
     @org.junit.Test
     public void testSetCodeYahoo() {
         // arrange : set up the test
-        final ShareApplicationComponent shareAC = mock(ShareApplicationComponent.class);
+        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
 
         final Share share = new Share(shareAC);
 
@@ -112,7 +112,7 @@ public class Share_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetDescription() {
         // arrange : set up the test
-        final ShareApplicationComponent shareAC = mock(ShareApplicationComponent.class);
+        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
 
         final Share share = new Share(shareAC);
 
@@ -129,7 +129,7 @@ public class Share_Accessors_JUnitTest {
     @org.junit.Test
     public void testSetDescription() {
         // arrange : set up the test
-        final ShareApplicationComponent shareAC = mock(ShareApplicationComponent.class);
+        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
 
         final Share share = new Share(shareAC);
 
@@ -150,7 +150,7 @@ public class Share_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetIdPortfolio() {
         // arrange : set up the test
-        final ShareApplicationComponent shareAC = mock(ShareApplicationComponent.class);
+        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
 
         final Share share = new Share(shareAC);
 
@@ -167,7 +167,7 @@ public class Share_Accessors_JUnitTest {
     @org.junit.Test
     public void testSetIdPortfolio() {
         // arrange : set up the test
-        final ShareApplicationComponent shareAC = mock(ShareApplicationComponent.class);
+        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
 
         final Share share = new Share(shareAC);
 
@@ -188,7 +188,7 @@ public class Share_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetName() {
         // arrange : set up the test
-        final ShareApplicationComponent shareAC = mock(ShareApplicationComponent.class);
+        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
 
         final Share share = new Share(shareAC);
 
@@ -205,7 +205,7 @@ public class Share_Accessors_JUnitTest {
     @org.junit.Test
     public void testSetName() {
         // arrange : set up the test
-        final ShareApplicationComponent shareAC = mock(ShareApplicationComponent.class);
+        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
 
         final Share share = new Share(shareAC);
 

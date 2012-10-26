@@ -111,7 +111,7 @@ public class FullShareValueDMC implements DataModelConverter2<ShareValueRemote> 
 
         ShareRemote remote;
         try {
-            remote = home.findByPrimaryKey(item.getIdShareValue());
+            remote = home.findByPrimaryKey(item.getIdShare());
         } catch (final RemoteException e) {
             throw new JETException(e.getMessage(), e);
         } catch (final ObjectNotFoundException e) {
