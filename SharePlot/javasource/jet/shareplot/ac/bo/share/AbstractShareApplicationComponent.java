@@ -1,9 +1,7 @@
 package jet.shareplot.ac.bo.share;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.Callable;
 
 import javax.ejb.ObjectNotFoundException;
@@ -12,22 +10,16 @@ import javax.naming.NamingException;
 import javax.transaction.RollbackException;
 import javax.transaction.TransactionManager;
 
-import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.jta.interfaces.JTAManagerContext;
-import jet.container.managers.session.interfaces.Session;
 import jet.framework.component.SimpleApplicationComponent;
 import jet.framework.manager.datamodel.interfaces.ModelArray;
 import jet.framework.nuts.select.FinderMethod;
 import jet.framework.nuts.select.SelectNut;
 import jet.framework.nuts.select.SelectNutHelper;
-import jet.framework.ui.desktop.AbstractDesktopNut;
 import jet.framework.util.JetConstants;
 import jet.framework.util.jta.TransactionHelper;
-import jet.lifecycle.annotations.Deinitializer;
-import jet.lifecycle.interfaces.LifeCycleState;
 import jet.shareplot.ac.SelectStoreApplicationComponent;
 import jet.shareplot.persistence.finder.share.Share_FindAll0;
-import jet.util.SerializableKey;
 import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;

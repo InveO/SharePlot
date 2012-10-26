@@ -22,10 +22,9 @@ public class Share extends ShareItem implements JFBusinessItem, JFBusinessErrorH
 
     private static final long serialVersionUID = -1265738400L;
 
-    // TODO set localized keys for error dialogs
-    private static final String CAN_NOT_SAVE_KEY = "";
-    private static final String CAN_NOT_DELETE_KEY = "";
-    private static final String NOT_VALID_KEY = "";
+    private static final String CAN_NOT_SAVE_KEY = "SharePlot/properties/task/Share/dialog.CanNotSaveShare";
+    private static final String CAN_NOT_DELETE_KEY = "SharePlot/properties/task/Share/dialog.CanNotDeleteShare";
+    private static final String NOT_VALID_KEY = "SharePlot/properties/task/Share/dialog.ShareNotValid";
 
     private final AbstractShareApplicationComponent shareAC;
 
@@ -82,8 +81,7 @@ public class Share extends ShareItem implements JFBusinessItem, JFBusinessErrorH
      */
     @Override
     public final boolean isNew() {
-        // TODO implement this method
-        return false;
+        return getIdShare() == null;
     }
 
     /**
@@ -147,7 +145,7 @@ public class Share extends ShareItem implements JFBusinessItem, JFBusinessErrorH
      */
     @Override
     public FormatedJetException getFormatedJetException(final String key, final Exception e) {
-        final Object[] args = {};
+        final Object[] args = { getName() };
         return new FormatedJetException(null, key, args, e);
     }
 
