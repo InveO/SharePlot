@@ -6,7 +6,7 @@ import jet.framework.ui.utils.table.UITableListDisplay3;
 import jet.framework.util.ui.LocalizedMessageFormatDisplayable;
 import jet.shareplot.ac.bo.share.Share;
 import jet.shareplot.ac.bo.sharequantity.ShareQuantity;
-import jet.shareplot.ac.bo.sharequantity.ShareQuantityApplicationComponent;
+import jet.shareplot.ac.bo.sharequantity.ShareQuantityBOApplicationComponent;
 import jet.shareplot.ac.bo.sharequantity.ShareQuantityResource;
 import jet.shareplot.ui.AbstractSharePlotListNut;
 import jet.shareplot.ui.task.share.provider.QuantityTypeCellProvider;
@@ -16,13 +16,13 @@ import jet.util.throwable.JETException;
 
 public class ShareQuantityListNut extends AbstractSharePlotListNut<ShareQuantity> {
 
-    private ShareQuantityApplicationComponent shareQuantityAC;
+    private ShareQuantityBOApplicationComponent shareQuantityAC;
     private Share share;
 
     @Override
     protected void preInit() throws JETException {
         this.share = (Share) getApplicationComponent().getProperty(ShareUIConstants.ARGUMENT_SHARE);
-        this.shareQuantityAC = ShareQuantityApplicationComponent.getInstance(getSession());
+        this.shareQuantityAC = ShareQuantityBOApplicationComponent.getInstance(getSession());
 
         final Object[] objects = { this.share.getName() };
         final Displayable displayable = new LocalizedMessageFormatDisplayable("SharePlot/properties/task/Share/title.ShareQuantityListName", objects);

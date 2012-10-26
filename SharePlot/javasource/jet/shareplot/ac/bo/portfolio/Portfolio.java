@@ -27,7 +27,7 @@ public class Portfolio extends PortfolioItem implements JFBusinessItem, JFBusine
     private static final String CAN_NOT_DELETE_KEY = "SharePlot/properties/task/Share/dialog.CanNotDeletePortfolio";
     private static final String NOT_VALID_KEY = "SharePlot/properties/task/Share/dialog.PortfolioNotValid";
 
-    private final AbstractPortfolioApplicationComponent portfolioAC;
+    private final AbstractPortfolioBOApplicationComponent portfolioAC;
 
     /**
      * Constructor, build an empty portfolio
@@ -35,9 +35,9 @@ public class Portfolio extends PortfolioItem implements JFBusinessItem, JFBusine
      * @param portfolioAC the portfolio application component
      * 
      * @see Model
-     * @see PortfolioApplicationComponent
+     * @see PortfolioBOApplicationComponent
      */
-    public Portfolio(final AbstractPortfolioApplicationComponent portfolioAC) {
+    public Portfolio(final AbstractPortfolioBOApplicationComponent portfolioAC) {
         super();
         this.portfolioAC = portfolioAC;
     }
@@ -49,9 +49,9 @@ public class Portfolio extends PortfolioItem implements JFBusinessItem, JFBusine
      * @param portfolioAC the portfolio application component
      * 
      * @see Model
-     * @see PortfolioApplicationComponent
+     * @see PortfolioBOApplicationComponent
      */
-    public Portfolio(final Model model, final AbstractPortfolioApplicationComponent portfolioAC) {
+    public Portfolio(final Model model, final AbstractPortfolioBOApplicationComponent portfolioAC) {
         super(model);
         this.portfolioAC = portfolioAC;
     }

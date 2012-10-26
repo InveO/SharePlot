@@ -1,4 +1,4 @@
-<APPLICATION_COMPONENT class="jet.shareplot.ac.bo.portfolio.PortfolioApplicationComponent" initialNutName="EmptyNut" >
+<APPLICATION_COMPONENT class="jet.shareplot.ac.bo.sharequantity.ShareQuantityBOApplicationComponent" initialNutName="EmptyNut" >
 
     <APPLICATION_COMPONENT_CONFIG>
 

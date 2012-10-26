@@ -28,7 +28,7 @@ public class PortfolioResource extends AbstractResourceNotification<Portfolio> {
      * @param portfolio
      * @param type
      */
-    public PortfolioResource(final AbstractPortfolioApplicationComponent portfolioAC, final Portfolio portfolio, final NOTIFICATION_TYPE type) {
+    public PortfolioResource(final AbstractPortfolioBOApplicationComponent portfolioAC, final Portfolio portfolio, final NOTIFICATION_TYPE type) {
         super("Portfolio", portfolio, type);
 
         try {

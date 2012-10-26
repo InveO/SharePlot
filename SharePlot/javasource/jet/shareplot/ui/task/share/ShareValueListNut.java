@@ -26,7 +26,7 @@ import jet.framework.util.ui.LocalizedMessageFormatDisplayable;
 import jet.framework.util.ui.UIComponentHelper;
 import jet.shareplot.ac.bo.share.Share;
 import jet.shareplot.ac.bo.sharevalue.ShareValue;
-import jet.shareplot.ac.bo.sharevalue.ShareValueApplicationComponent;
+import jet.shareplot.ac.bo.sharevalue.ShareValueBOApplicationComponent;
 import jet.shareplot.ac.bo.sharevalue.ShareValueResource;
 import jet.shareplot.ui.AbstractSharePlotListNut;
 import jet.util.logger.JETLevel;
@@ -35,7 +35,7 @@ import jet.util.throwable.JETException;
 
 public class ShareValueListNut extends AbstractSharePlotListNut<ShareValue> implements ByteArrayMultiFileReceiverListener, CSVLineProcessor {
 
-    private ShareValueApplicationComponent shareValueAC;
+    private ShareValueBOApplicationComponent shareValueAC;
     private Share share;
     private UIButtonComponent importButton;
     private ByteArrayMultiFileReceiver byteArrayMultiFileReceiver;
@@ -43,7 +43,7 @@ public class ShareValueListNut extends AbstractSharePlotListNut<ShareValue> impl
     @Override
     protected void preInit() throws JETException {
         this.share = (Share) getApplicationComponent().getProperty(ShareUIConstants.ARGUMENT_SHARE);
-        this.shareValueAC = ShareValueApplicationComponent.getInstance(getSession());
+        this.shareValueAC = ShareValueBOApplicationComponent.getInstance(getSession());
 
         final Object[] objects = { this.share.getName() };
         final Displayable displayable = new LocalizedMessageFormatDisplayable("SharePlot/properties/task/Share/title.ShareValueListName", objects);

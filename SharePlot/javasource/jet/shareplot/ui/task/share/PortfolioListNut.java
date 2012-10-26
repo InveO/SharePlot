@@ -11,7 +11,7 @@ import jet.components.ui.table.common.UITableComponent2;
 import jet.framework.ui.desktop.ApplicationComponentLauncher;
 import jet.framework.ui.utils.table.UITableListDisplay3;
 import jet.shareplot.ac.bo.portfolio.Portfolio;
-import jet.shareplot.ac.bo.portfolio.PortfolioApplicationComponent;
+import jet.shareplot.ac.bo.portfolio.PortfolioBOApplicationComponent;
 import jet.shareplot.ac.bo.portfolio.PortfolioResource;
 import jet.shareplot.ui.AbstractSharePlotListNut;
 import jet.shareplot.ui.desktop.SharePlotACLauncher;
@@ -22,7 +22,7 @@ import jet.util.throwable.JETException;
 
 public class PortfolioListNut extends AbstractSharePlotListNut<Portfolio> {
 
-    private PortfolioApplicationComponent portfolioAC;
+    private PortfolioBOApplicationComponent portfolioAC;
 
     @Override
     public <T extends Enum<T>> void tableCellEvent(final UITableComponent2 table, final int row, final int col, final UIEvent<T> uiEvent) {
@@ -80,7 +80,7 @@ public class PortfolioListNut extends AbstractSharePlotListNut<Portfolio> {
 
     @Override
     protected void preInit() throws JETException {
-        this.portfolioAC = PortfolioApplicationComponent.getInstance(getSession());
+        this.portfolioAC = PortfolioBOApplicationComponent.getInstance(getSession());
     }
 
     @Override

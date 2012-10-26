@@ -15,7 +15,7 @@ import jet.framework.util.models.ModelHelper;
 import jet.framework.util.ui.LocalizedMessageFormatDisplayable;
 import jet.shareplot.ac.bo.portfolio.Portfolio;
 import jet.shareplot.ac.bo.share.Share;
-import jet.shareplot.ac.bo.share.ShareApplicationComponent;
+import jet.shareplot.ac.bo.share.ShareBOApplicationComponent;
 import jet.shareplot.ac.bo.share.ShareResource;
 import jet.shareplot.ui.AbstractSharePlotListNut;
 import jet.shareplot.ui.desktop.SharePlotACLauncher;
@@ -26,7 +26,7 @@ import jet.util.throwable.JETException;
 
 public class ShareListNut extends AbstractSharePlotListNut<Share> {
 
-    private ShareApplicationComponent shareAC;
+    private ShareBOApplicationComponent shareAC;
     private Portfolio portfolio;
 
     @Override
@@ -77,7 +77,7 @@ public class ShareListNut extends AbstractSharePlotListNut<Share> {
     @Override
     protected void preInit() throws JETException {
         this.portfolio = (Portfolio) getApplicationComponent().getProperty(ShareUIConstants.ARGUMENT_PORTFOLIO);
-        this.shareAC = ShareApplicationComponent.getInstance(getSession());
+        this.shareAC = ShareBOApplicationComponent.getInstance(getSession());
 
         updateHeaderTitle();
     }

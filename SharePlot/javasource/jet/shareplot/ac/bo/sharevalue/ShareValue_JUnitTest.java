@@ -29,7 +29,7 @@ public class ShareValue_JUnitTest {
     @org.junit.Test
     public void testShareValue() {
         // arrange : set up the test
-        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
 
         // act : run the test
         final ShareValue shareValue = new ShareValue(shareValueAC);
@@ -65,7 +65,7 @@ public class ShareValue_JUnitTest {
     @org.junit.Test
     public void testShareValueModel() {
         // arrange : set up the test
-        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
         final ShareValueItem item = new ShareValueItem();
 
         // act : run the test
@@ -82,7 +82,7 @@ public class ShareValue_JUnitTest {
     @org.junit.Test
     public void testShareValueModelData() {
         // arrange : set up the test
-        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
         final ShareValueItem item = new ShareValueItem();
         // TODO insert data in ShareValueItem
 
@@ -101,7 +101,7 @@ public class ShareValue_JUnitTest {
     @org.junit.Test(expected = IllegalArgumentException.class)
     public void testShareValueModelNull() {
         // arrange : set up the test
-        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
 
         // act : run the test
         new ShareValue(null, shareValueAC);
@@ -117,7 +117,7 @@ public class ShareValue_JUnitTest {
     @org.junit.Test
     public void testShareValueShareValue() {
         // arrange : set up the test
-        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
         final ShareValue item = new ShareValue(shareValueAC);
 
         // act : run the test
@@ -134,7 +134,7 @@ public class ShareValue_JUnitTest {
     @org.junit.Test
     public void testShareValueShareValueData() {
         // arrange : set up the test
-        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
         final ShareValue item = new ShareValue(shareValueAC);
         // TODO insert data in ShareValue
 
@@ -169,7 +169,7 @@ public class ShareValue_JUnitTest {
     @org.junit.Test
     public void testIsNotNullableNullTrue() {
         // arrange : set up the test
-        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
         final ShareValue shareValue = new ShareValue(shareValueAC);
 
         // act : run the test
@@ -185,7 +185,7 @@ public class ShareValue_JUnitTest {
     @org.junit.Test
     public void testIsNotNullableNullFalse() {
         // arrange : set up the test
-        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
         final ShareValue shareValue = new ShareValue(shareValueAC);
         shareValue.setIdShare(Long.valueOf(1));
         shareValue.setValue(java.math.BigDecimal.valueOf(1));
@@ -204,7 +204,7 @@ public class ShareValue_JUnitTest {
     @org.junit.Test
     public void testIsPkEqualsTrue() {
         // arrange : set up the test
-        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
         final ShareValue otherShareValue = mock(ShareValue.class);
         // TODO init mock pk
         // eg : when(otherShareValue.getIdShareValue()).thenReturn(Long.valueOf(1));
@@ -226,7 +226,7 @@ public class ShareValue_JUnitTest {
     @org.junit.Test
     public void testIsPkEqualsFalse() {
         // arrange : set up the test
-        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
         final ShareValue otherShareValue = mock(ShareValue.class);
         // TODO init mock pk
         // eg : when(otherShareValue.getIdShareValue()).thenReturn(Long.valueOf(1));
@@ -248,7 +248,7 @@ public class ShareValue_JUnitTest {
     @org.junit.Test
     public void testIsPkEqualsNullFalse() {
         // arrange : set up the test
-        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
         final ShareValue otherShareValue = mock(ShareValue.class);
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
@@ -266,7 +266,7 @@ public class ShareValue_JUnitTest {
     @org.junit.Test
     public void testIsPkEqualsFalseNull() {
         // arrange : set up the test
-        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
         // TODO init shareValue pk
@@ -285,7 +285,7 @@ public class ShareValue_JUnitTest {
     @org.junit.Test
     public void testGetJFErrorHandler() {
         // arrange : set up the test
-        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
 
@@ -302,7 +302,7 @@ public class ShareValue_JUnitTest {
     @org.junit.Test
     public void testSetJFErrorHandler() {
         // arrange : set up the test
-        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
         final JFErrorHandler errorHandler = mock(JFErrorHandler.class);
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
@@ -321,7 +321,7 @@ public class ShareValue_JUnitTest {
     @org.junit.Test
     public void testIsValidTrue() {
         // arrange : set up the test
-        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
         // TODO set up valid shareValue
@@ -339,7 +339,7 @@ public class ShareValue_JUnitTest {
     @org.junit.Test
     public void testIsValidFalse() {
         // arrange : set up the test
-        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
         // TODO set up NON valid shareValue
@@ -357,7 +357,7 @@ public class ShareValue_JUnitTest {
     @org.junit.Test
     public void testIsNewTrue() {
         // arrange : set up the test
-        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
 
@@ -374,7 +374,7 @@ public class ShareValue_JUnitTest {
     @org.junit.Test
     public void testIsNewFalse() {
         // arrange : set up the test
-        final AbstractShareValueApplicationComponent shareValueAC = mock(AbstractShareValueApplicationComponent.class);
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
         // TODO set up NON new shareValue

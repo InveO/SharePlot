@@ -29,7 +29,7 @@ public class Share_JUnitTest {
     @org.junit.Test
     public void testShare() {
         // arrange : set up the test
-        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
+        final AbstractShareBOApplicationComponent shareAC = mock(AbstractShareBOApplicationComponent.class);
 
         // act : run the test
         final Share share = new Share(shareAC);
@@ -69,7 +69,7 @@ public class Share_JUnitTest {
     @org.junit.Test
     public void testShareModel() {
         // arrange : set up the test
-        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
+        final AbstractShareBOApplicationComponent shareAC = mock(AbstractShareBOApplicationComponent.class);
         final ShareItem item = new ShareItem();
 
         // act : run the test
@@ -86,7 +86,7 @@ public class Share_JUnitTest {
     @org.junit.Test
     public void testShareModelData() {
         // arrange : set up the test
-        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
+        final AbstractShareBOApplicationComponent shareAC = mock(AbstractShareBOApplicationComponent.class);
         final ShareItem item = new ShareItem();
         // TODO insert data in ShareItem
 
@@ -105,7 +105,7 @@ public class Share_JUnitTest {
     @org.junit.Test(expected = IllegalArgumentException.class)
     public void testShareModelNull() {
         // arrange : set up the test
-        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
+        final AbstractShareBOApplicationComponent shareAC = mock(AbstractShareBOApplicationComponent.class);
 
         // act : run the test
         new Share(null, shareAC);
@@ -121,7 +121,7 @@ public class Share_JUnitTest {
     @org.junit.Test
     public void testShareShare() {
         // arrange : set up the test
-        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
+        final AbstractShareBOApplicationComponent shareAC = mock(AbstractShareBOApplicationComponent.class);
         final Share item = new Share(shareAC);
 
         // act : run the test
@@ -138,7 +138,7 @@ public class Share_JUnitTest {
     @org.junit.Test
     public void testShareShareData() {
         // arrange : set up the test
-        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
+        final AbstractShareBOApplicationComponent shareAC = mock(AbstractShareBOApplicationComponent.class);
         final Share item = new Share(shareAC);
         // TODO insert data in Share
 
@@ -173,7 +173,7 @@ public class Share_JUnitTest {
     @org.junit.Test
     public void testIsNotNullableNullTrue() {
         // arrange : set up the test
-        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
+        final AbstractShareBOApplicationComponent shareAC = mock(AbstractShareBOApplicationComponent.class);
         final Share share = new Share(shareAC);
 
         // act : run the test
@@ -189,7 +189,7 @@ public class Share_JUnitTest {
     @org.junit.Test
     public void testIsNotNullableNullFalse() {
         // arrange : set up the test
-        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
+        final AbstractShareBOApplicationComponent shareAC = mock(AbstractShareBOApplicationComponent.class);
         final Share share = new Share(shareAC);
         share.setIdPortfolio(Long.valueOf(1));
         share.setName("");
@@ -207,7 +207,7 @@ public class Share_JUnitTest {
     @org.junit.Test
     public void testIsPkEqualsTrue() {
         // arrange : set up the test
-        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
+        final AbstractShareBOApplicationComponent shareAC = mock(AbstractShareBOApplicationComponent.class);
         final Share otherShare = mock(Share.class);
         // TODO init mock pk
         // eg : when(otherShare.getIdShare()).thenReturn(Long.valueOf(1));
@@ -229,7 +229,7 @@ public class Share_JUnitTest {
     @org.junit.Test
     public void testIsPkEqualsFalse() {
         // arrange : set up the test
-        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
+        final AbstractShareBOApplicationComponent shareAC = mock(AbstractShareBOApplicationComponent.class);
         final Share otherShare = mock(Share.class);
         // TODO init mock pk
         // eg : when(otherShare.getIdShare()).thenReturn(Long.valueOf(1));
@@ -251,7 +251,7 @@ public class Share_JUnitTest {
     @org.junit.Test
     public void testIsPkEqualsNullFalse() {
         // arrange : set up the test
-        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
+        final AbstractShareBOApplicationComponent shareAC = mock(AbstractShareBOApplicationComponent.class);
         final Share otherShare = mock(Share.class);
 
         final Share share = new Share(shareAC);
@@ -269,7 +269,7 @@ public class Share_JUnitTest {
     @org.junit.Test
     public void testIsPkEqualsFalseNull() {
         // arrange : set up the test
-        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
+        final AbstractShareBOApplicationComponent shareAC = mock(AbstractShareBOApplicationComponent.class);
 
         final Share share = new Share(shareAC);
         // TODO init share pk
@@ -288,7 +288,7 @@ public class Share_JUnitTest {
     @org.junit.Test
     public void testGetJFErrorHandler() {
         // arrange : set up the test
-        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
+        final AbstractShareBOApplicationComponent shareAC = mock(AbstractShareBOApplicationComponent.class);
 
         final Share share = new Share(shareAC);
 
@@ -305,7 +305,7 @@ public class Share_JUnitTest {
     @org.junit.Test
     public void testSetJFErrorHandler() {
         // arrange : set up the test
-        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
+        final AbstractShareBOApplicationComponent shareAC = mock(AbstractShareBOApplicationComponent.class);
         final JFErrorHandler errorHandler = mock(JFErrorHandler.class);
 
         final Share share = new Share(shareAC);
@@ -324,7 +324,7 @@ public class Share_JUnitTest {
     @org.junit.Test
     public void testIsValidTrue() {
         // arrange : set up the test
-        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
+        final AbstractShareBOApplicationComponent shareAC = mock(AbstractShareBOApplicationComponent.class);
 
         final Share share = new Share(shareAC);
         // TODO set up valid share
@@ -342,7 +342,7 @@ public class Share_JUnitTest {
     @org.junit.Test
     public void testIsValidFalse() {
         // arrange : set up the test
-        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
+        final AbstractShareBOApplicationComponent shareAC = mock(AbstractShareBOApplicationComponent.class);
 
         final Share share = new Share(shareAC);
         // TODO set up NON valid share
@@ -360,7 +360,7 @@ public class Share_JUnitTest {
     @org.junit.Test
     public void testIsNewTrue() {
         // arrange : set up the test
-        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
+        final AbstractShareBOApplicationComponent shareAC = mock(AbstractShareBOApplicationComponent.class);
 
         final Share share = new Share(shareAC);
 
@@ -377,7 +377,7 @@ public class Share_JUnitTest {
     @org.junit.Test
     public void testIsNewFalse() {
         // arrange : set up the test
-        final AbstractShareApplicationComponent shareAC = mock(AbstractShareApplicationComponent.class);
+        final AbstractShareBOApplicationComponent shareAC = mock(AbstractShareBOApplicationComponent.class);
 
         final Share share = new Share(shareAC);
         // TODO set up NON new share

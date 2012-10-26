@@ -28,7 +28,7 @@ public class ShareQuantityResource extends AbstractResourceNotification<ShareQua
      * @param shareQuantity
      * @param type
      */
-    public ShareQuantityResource(final AbstractShareQuantityApplicationComponent shareQuantityAC, final ShareQuantity shareQuantity, final NOTIFICATION_TYPE type) {
+    public ShareQuantityResource(final AbstractShareQuantityBOApplicationComponent shareQuantityAC, final ShareQuantity shareQuantity, final NOTIFICATION_TYPE type) {
         super("ShareQuantity", shareQuantity, type);
 
         try {

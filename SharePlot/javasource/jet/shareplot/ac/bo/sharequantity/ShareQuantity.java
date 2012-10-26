@@ -51,7 +51,7 @@ public class ShareQuantity extends ShareQuantityItem implements JFBusinessItem, 
     private static final String CAN_NOT_DELETE_KEY = "SharePlot/properties/task/Share/dialog.CanNotDeleteShareQuantity";
     private static final String NOT_VALID_KEY = "SharePlot/properties/task/Share/dialog.ShareQuantityNotValid";
 
-    private final AbstractShareQuantityApplicationComponent shareQuantityAC;
+    private final AbstractShareQuantityBOApplicationComponent shareQuantityAC;
 
     /**
      * Constructor, build an empty shareQuantity
@@ -59,9 +59,9 @@ public class ShareQuantity extends ShareQuantityItem implements JFBusinessItem, 
      * @param shareQuantityAC the shareQuantity application component
      * 
      * @see Model
-     * @see ShareQuantityApplicationComponent
+     * @see ShareQuantityBOApplicationComponent
      */
-    public ShareQuantity(final AbstractShareQuantityApplicationComponent shareQuantityAC) {
+    public ShareQuantity(final AbstractShareQuantityBOApplicationComponent shareQuantityAC) {
         super();
         this.shareQuantityAC = shareQuantityAC;
     }
@@ -73,9 +73,9 @@ public class ShareQuantity extends ShareQuantityItem implements JFBusinessItem, 
      * @param shareQuantityAC the shareQuantity application component
      * 
      * @see Model
-     * @see ShareQuantityApplicationComponent
+     * @see ShareQuantityBOApplicationComponent
      */
-    public ShareQuantity(final Model model, final AbstractShareQuantityApplicationComponent shareQuantityAC) {
+    public ShareQuantity(final Model model, final AbstractShareQuantityBOApplicationComponent shareQuantityAC) {
         super(model);
         this.shareQuantityAC = shareQuantityAC;
     }

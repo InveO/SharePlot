@@ -26,7 +26,7 @@ public class ShareValue extends ShareValueItem implements JFBusinessItem, JFBusi
     private static final String CAN_NOT_DELETE_KEY = "SharePlot/properties/task/Share/dialog.CanNotDeleteShareValue";
     private static final String NOT_VALID_KEY = "SharePlot/properties/task/Share/dialog.ShareValueNotValid";
 
-    private final AbstractShareValueApplicationComponent shareValueAC;
+    private final AbstractShareValueBOApplicationComponent shareValueAC;
 
     /**
      * Constructor, build an empty shareValue
@@ -34,9 +34,9 @@ public class ShareValue extends ShareValueItem implements JFBusinessItem, JFBusi
      * @param shareValueAC the shareValue application component
      * 
      * @see Model
-     * @see ShareValueApplicationComponent
+     * @see ShareValueBOApplicationComponent
      */
-    public ShareValue(final AbstractShareValueApplicationComponent shareValueAC) {
+    public ShareValue(final AbstractShareValueBOApplicationComponent shareValueAC) {
         super();
         this.shareValueAC = shareValueAC;
     }
@@ -48,9 +48,9 @@ public class ShareValue extends ShareValueItem implements JFBusinessItem, JFBusi
      * @param shareValueAC the shareValue application component
      * 
      * @see Model
-     * @see ShareValueApplicationComponent
+     * @see ShareValueBOApplicationComponent
      */
-    public ShareValue(final Model model, final AbstractShareValueApplicationComponent shareValueAC) {
+    public ShareValue(final Model model, final AbstractShareValueBOApplicationComponent shareValueAC) {
         super(model);
         this.shareValueAC = shareValueAC;
     }

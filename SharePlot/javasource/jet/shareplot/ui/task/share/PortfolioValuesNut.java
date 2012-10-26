@@ -12,7 +12,7 @@ import jet.lifecycle.annotations.Deinitializer;
 import jet.lifecycle.annotations.Initializer;
 import jet.shareplot.ac.bo.portfolio.Portfolio;
 import jet.shareplot.ac.bo.share.Share;
-import jet.shareplot.ac.bo.share.ShareApplicationComponent;
+import jet.shareplot.ac.bo.share.ShareBOApplicationComponent;
 import jet.shareplot.ui.AbstractSharePlotNut;
 import jet.util.throwable.JETException;
 
@@ -21,7 +21,7 @@ public class PortfolioValuesNut extends AbstractSharePlotNut {
     private UIButtonComponent saveButton;
     private UIDateComponent dateField;
     private Portfolio portfolio;
-    private ShareApplicationComponent shareAC;
+    private ShareBOApplicationComponent shareAC;
 
     @Initializer
     public final void doPortfolioValuesNutInit() throws JETException {
@@ -34,7 +34,7 @@ public class PortfolioValuesNut extends AbstractSharePlotNut {
 
         // get share list
         this.portfolio = (Portfolio) getApplicationComponent().getProperty(ShareUIConstants.ARGUMENT_PORTFOLIO);
-        this.shareAC = ShareApplicationComponent.getInstance(getSession());
+        this.shareAC = ShareBOApplicationComponent.getInstance(getSession());
         final List<Share> shares = this.shareAC.getShares(this.portfolio);
 
         // create share value input fields with label
