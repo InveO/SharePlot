@@ -19,30 +19,38 @@
 
         <delete dir="SharePlot/classes2" />
     </target>
-    
+
     <target name="all" depends="compile,jars,findbugs,pmd,junit,ncss,macker" />
-    
+
     <target name="compile" depends="init">
         <echo message="Compile SharePlot" />
 
         <property name="classes" value="SharePlot/classes2" />
-        
+
         <ant antfile="buildCompile.xml" />
     </target>
-    
-    <target name="jars" depends="init">
+
+    <target name="jars" depends="init, jarsBatch">
         <echo message="Build SharePlot Jars" />
 
         <property name="classes" value="SharePlot/classes" />
-        
+
         <ant antfile="buildJars.xml" />
+    </target>
+
+    <target name="jarsBatch" depends="init">
+        <echo message="Build SharePlot Jars" />
+
+        <property name="classesBatch" value="SharePlotBatch/classes" />
+
+        <ant antfile="buildJarsBatch.xml" />
     </target>
 
     <target name="localConf" depends="init">
         <echo message="Fetch SharePlot local config" />
 
         <property name="classes" value="SharePlot/classes" />
-        
+
         <ant antfile="buildJars.xml" target="copyLocalConf" />
     </target>
 
@@ -50,7 +58,7 @@
         <echo message="Running FindBugs on SharePlot" />
 
         <property name="classes" value="SharePlot/classes" />
-        
+
         <ant antfile="buildFindBugs.xml" />
     </target>
 
@@ -58,40 +66,40 @@
         <echo message="Running PMD on SharePlot" />
 
         <property name="classes" value="SharePlot/classes" />
-        
+
         <ant antfile="buildPMD.xml" />
     </target>
-	
+
     <target name="ncss" depends="init">
         <echo message="Running NCSS on SharePlot" />
 
         <property name="classes" value="SharePlot/classes" />
-        
+
         <ant antfile="buildNCSS.xml" />
     </target>
-	
+
     <target name="macker" depends="init">
         <echo message="Running Macker on SharePlot" />
 
         <property name="classes" value="SharePlot/classes" />
-        
+
         <ant antfile="buildMacker.xml" />
     </target>
-	
+
     <target name="junit" depends="init">
         <echo message="Running JUnit on SharePlot" />
 
         <property name="classes" value="SharePlot/classes" />
-        
+
         <ant antfile="buildJunit.xml" />
     </target>
-	
+
     <target name="javadoc" depends="init">
         <echo message="Running Javadoc on SharePlot" />
 
         <ant antfile="buildJavadoc.xml" />
     </target>
-    
+
     <target name="jetframeworkClean" depends="init">
         <echo message="Building : Clean JetFramework" />
 		<ant inheritall="false" dir="../JetFramework" target="clean"/>
@@ -115,11 +123,11 @@
             </or>
         </condition>
     </target>
-    
+
     <target name="failClean" if="missingPropClean">
         <fail message="missing property(ies) : JetFrameworkLib, JetLib"/>
     </target>
-	
+
 	<target name="cleanupJetManagers" depends="init, chkPropsClean, failClean" unless="missingPropClean">
         <echo message="Removing unused managers..."/>
         <delete dir="${JetFrameworkLib}/managers/itextxy" />

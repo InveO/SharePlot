@@ -1,0 +1,8 @@
+<APPLICATION name="SharePlotBatch" depends="SharePlot" initialApplicationComponentName="SharePlotBatchAC" >
+
+    <CLASSLOADER>
+        <CLASSPATH value="SharePlotBatch.jar" />
+        <CLASSPATH value="SharePlotBatch-JET.jar" />
+    </CLASSLOADER>
+
+</APPLICATION>

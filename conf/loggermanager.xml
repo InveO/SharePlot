@@ -10,7 +10,7 @@
                       formatter="TEXT|XML" append="YES|NO" />
         -->
 
-        <CONSOLE_HANDLER name="ConsoleHandler" level="ALL" formatter="TEXT" />
+        <CONSOLE_HANDLER name="ConsoleHandler" level="FINE" formatter="TEXT" />
 
         <DAILY_FILE_HANDLER name="FileHandler1" logPath="./Logs/" level="OFF" formatter="TEXT" append="NO" />
 

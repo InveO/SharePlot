@@ -11,6 +11,7 @@ import jet.container.managers.session.interfaces.SessionManagerContext;
 import jet.container.managers.ui.interfaces.UIComponentFinder;
 import jet.container.nuts.ui.UIAnchorService;
 import jet.framework.component.SelectStoreProvider;
+import jet.framework.manager.batchsession.interfaces.BatchSessionManagerContext;
 import jet.framework.ui.desktop.AbstractDesktopNut;
 import jet.framework.ui.desktop.ApplicationComponentLauncher;
 import jet.framework.ui.desktop.DesktopDialogHelper;
@@ -100,6 +101,13 @@ public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMe
         final UILabelComponent versionLabel = (UILabelComponent) UIComponentFinder.findComponent("labelVersionNumber", getMainComponent());
         final JetVersion ver = getApplicationProxy().getApplicationVersion();
         versionLabel.setText(ver.getVersion() + "  " + ver.getTime());
+
+        try {
+            final BatchSessionManagerContext batchSessionCtxt = (BatchSessionManagerContext) getManagerContext(BatchSessionManagerContext.NAME);
+            batchSessionCtxt.createBatchSession("SharePlotBatch");
+        } catch (final JETException e) {
+            logp(JETLevel.SEVERE, "SharePlotDesktopNut", "doSharePlotDesktopNutInit", e.getMessage(), e);
+        }
 
     }
 

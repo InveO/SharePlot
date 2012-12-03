@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<project name="SharePlotBatch Jars" default="runBuildJars" basedir=".">
+
+    <target name="runBuildJars" depends="chkProps, fail" unless="missingProp">
+        <echo message="Build jars..."/>
+        <antcall target="allJars" />
+    </target>
+
+    <target name="chkProps">
+        <property name="chk0" value="$${classesBatch}"/>
+        <property name="chk1" value="$${jars_dest}"/>
+        <condition property="missingProp">
+            <or>
+                <equals arg1="${chk0}" arg2="${classesBatch}"/>
+                <equals arg1="" arg2="${classesBatch}"/>
+                <equals arg1="${chk1}" arg2="${jars_dest}"/>
+                <equals arg1="" arg2="${jars_dest}"/>
+            </or>
+        </condition>
+    </target>
+
+    <target name="fail" if="missingProp">
+        <fail message="missing property(ies) : classesBatch, jars_dest"/>
+    </target>
+
+	<property name="project" value="SharePlotBatch"/>
+	<property name="pkg_base" value="jet"/>
+
+    <property name="xml" value="${project}/xml"/>
+    <property name="configs" value="${project}/configs"/>
+
+    <property name="target.managers" value="${jars_dest}/managers"/>
+    <property name="target.applications" value="${jars_dest}/applications"/>
+
+    <target name="clean">
+        <delete dir="${jars_dest}" />
+    </target>
+
+    <target name="allJars" depends="jar"/>
+
+    <target name="jar">
+        <echo message="Building : SharePlotBatch" />
+
+        <tstamp>
+            <format property="TODAY_UK" pattern="yyyy-MM-dd HH:mm" locale="en,UK"/>
+        </tstamp>
+
+        <mkdir dir="${target.applications}/${project}" />
+
+        <jar jarfile="${target.applications}/${project}/${project}.jar" basedir="${classesBatch}"
+             includes="${pkg_base}/**"
+            excludes="${pkg_base}/shareplotbatch/managers/**,
+                    ${pkg_base}/**/*Bean.*,
+                    ${pkg_base}/**/*Home.*,
+                    ${pkg_base}/**/*Remote.*,
+                    ${pkg_base}/**/*PK.*,
+            		${pkg_base}/**/*_JUnitTest.*"/>
+
+        <jar jarfile="${target.applications}/${project}/${project}-JET.jar">
+            <fileset dir="."
+                     includes="${project}/icons/**,
+                               ${project}/xml/**,
+                               ${project}/resource/**,
+                               ${project}/vtl/**,
+                               ${project}/properties/**"
+                     excludes="${project}/xml/META-INF/**,
+                               ${project}/xml/applicationconfig.xml"
+            />
+            <fileset dir="${project}/xml"
+                     includes="applicationconfig.xml"
+            />
+            <manifest>
+                <attribute name="version" value="${version}" />
+                <attribute name="time" value="${TODAY_UK}" />
+            </manifest>
+        </jar>
+    </target>
+
+</project>
