@@ -1,4 +1,4 @@
-<APPLICATION_COMPONENT class="jet.components.ApplicationComponentImpl" depends="SharePlotDesktop" initialNutName="SharePlotBatchNut" >
+<APPLICATION_COMPONENT class="jet.components.ApplicationComponentImpl" depends="JetFrameworkAC" initialNutName="SharePlotBatchNut" >
     <NUTS>
 
         <NUT name="SharePlotBatchNut" className="jet.shareplotbatch.SharePlotBatchNut">

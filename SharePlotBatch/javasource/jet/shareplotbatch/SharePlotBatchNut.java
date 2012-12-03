@@ -2,14 +2,14 @@ package jet.shareplotbatch;
 
 import java.util.List;
 
-import jet.container.nuts.Nut;
+import jet.framework.nuts.desktop.AbstractBatchDesktopNut;
 import jet.lifecycle.annotations.Initializer;
 import jet.shareplot.ac.bo.portfolio.Portfolio;
 import jet.shareplot.ac.bo.portfolio.PortfolioBOApplicationComponent;
 import jet.util.logger.JETLevel;
 import jet.util.throwable.JETException;
 
-public class SharePlotBatchNut extends Nut {
+public class SharePlotBatchNut extends AbstractBatchDesktopNut {
 
     @Initializer
     public final void doSharePlotBatchNutInit() {
