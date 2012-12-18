@@ -7,6 +7,7 @@ import java.util.Map;
 import jet.components.interfaces.ApplicationComponent;
 import jet.components.ui.container.common.UIContainerComponent;
 import jet.components.ui.label.common.UILabelComponent;
+import jet.container.managers.session.interfaces.Session;
 import jet.container.managers.session.interfaces.SessionManagerContext;
 import jet.container.managers.ui.interfaces.UIComponentFinder;
 import jet.container.nuts.ui.UIAnchorService;
@@ -32,6 +33,7 @@ import jet.shareplot.ui.desktop.dialog.SharePlotDialogHelper;
 import jet.util.JetVersion;
 import jet.util.SerializableKey;
 import jet.util.logger.JETLevel;
+import jet.util.models.SimpleEventModelImpl;
 import jet.util.throwable.JETException;
 
 /**
@@ -104,7 +106,11 @@ public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMe
 
         try {
             final BatchSessionManagerContext batchSessionCtxt = (BatchSessionManagerContext) getManagerContext(BatchSessionManagerContext.NAME);
-            batchSessionCtxt.createBatchSession("SharePlotBatch");
+            final Session session = batchSessionCtxt.createBatchSession("SharePlotBatch");
+
+            batchSessionCtxt.updateBatchSession(session, new SimpleEventModelImpl());
+
+            batchSessionCtxt.killBatchSession(session);
         } catch (final JETException e) {
             logp(JETLevel.SEVERE, "SharePlotDesktopNut", "doSharePlotDesktopNutInit", e.getMessage(), e);
         }
