@@ -31,7 +31,7 @@ public class FullShareValue_FindByShare1 implements FinderMethod {
     private static final long serialVersionUID = 1;
     DataSourceExecutor2<ShareValueHome, ShareValueRemote> dse;
 
-    Long idShare = null;
+    Long idShare;
     /**
      * Set idShare argument value
      *

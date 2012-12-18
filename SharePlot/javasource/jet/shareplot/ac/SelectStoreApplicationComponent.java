@@ -6,7 +6,7 @@ import java.util.Map;
 import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.session.interfaces.Session;
 import jet.framework.component.AbstractSelectStoreApplicationComponent;
-import jet.framework.ui.desktop.AbstractDesktopNut;
+import jet.framework.nuts.desktop.JetDesktop;
 import jet.lifecycle.annotations.Deinitializer;
 import jet.util.SerializableKey;
 import jet.util.logger.JETLevel;
@@ -14,11 +14,11 @@ import jet.util.throwable.JETException;
 
 /**
  * Implementation of the AbstractSelectStoreApplicationComponent class
- *
+ * 
  * This is a generated file and should not be modified.
- *
+ * 
  * @author JetTools
- *
+ * 
  */
 public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicationComponent {
 
@@ -58,7 +58,6 @@ public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicat
      */
     public final static String SHAREVALUE_STORE = "ShareValueStore";
 
-
     private static final long serialVersionUID = -8890923097443600938L;
 
     /**
@@ -73,10 +72,10 @@ public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicat
     /**
      * Get an instance of a SelectStoreApplicationComponent. This method will ensure that the same instance is
      * used within the same session.
-     *
+     * 
      * The <code>SelectStoreApplicationComponent</code> should not be deinitialized. This will be done
      * automatically when the session is closed.
-     *
+     * 
      * @param session Session this <code>SelectStoreApplicationComponent</code> is to be linked to
      * @return SelectStoreApplicationComponent Instantiated SelectStoreApplicationComponent
      * @throws JETException
@@ -86,9 +85,9 @@ public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicat
         SelectStoreApplicationComponent currentAC = (SelectStoreApplicationComponent) session.getProperty(INTERNAL_SESSION_KEY);
 
         if (currentAC == null) {
-            final AbstractDesktopNut desktopNut = (AbstractDesktopNut) session.getProperty(AbstractDesktopNut.SESSION_KEY_DESKTOP);
+            final JetDesktop desktopNut = (JetDesktop) session.getProperty(JetDesktop.SESSION_KEY_DESKTOP);
             if (desktopNut == null) {
-                throw new JETException("Can only be used with an AbstractDesktopNut for the desktop.");
+                throw new JETException("Can only be used with an JetDesktop for the desktop.");
             }
 
             final ApplicationProxy appProxy = desktopNut.getApplicationProxy();
@@ -113,7 +112,7 @@ public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicat
 
     /**
      * Deinit, internal use only
-     *
+     * 
      * @throws JETException
      */
     @Deinitializer

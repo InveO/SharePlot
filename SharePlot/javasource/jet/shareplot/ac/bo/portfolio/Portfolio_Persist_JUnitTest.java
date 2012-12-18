@@ -1,5 +1,7 @@
 package jet.shareplot.ac.bo.portfolio;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
@@ -88,6 +90,7 @@ public class Portfolio_Persist_JUnitTest {
             fail("Unexpected exception");
         }
         verify(resourceAC).notifyListeners(eq(PortfolioResource.RESOURCE_NAME), any(PortfolioResource.class));
+        assertFalse(portfolio.isNew());
     }
 
     /**
@@ -110,9 +113,8 @@ public class Portfolio_Persist_JUnitTest {
         when(portfolioAC.getStoreNut(anyString())).thenReturn(storeNut);
 
         final Portfolio portfolio = new Portfolio(portfolioAC);
+        portfolio.get_IdPortfolio_Model().setNodeValue(Long.valueOf(1));
         // TODO set up valid portfolio
-        // TODO init portfolio pk
-        // eg : portfolio.get_IdPortfolio_Model().setNodeValue(Long.valueOf(1));
 
         // act : run the test
         try {
@@ -130,6 +132,7 @@ public class Portfolio_Persist_JUnitTest {
             fail("Unexpected exception");
         }
         verify(resourceAC).notifyListeners(eq(PortfolioResource.RESOURCE_NAME), any(PortfolioResource.class));
+        assertFalse(portfolio.isNew());
     }
 
     /**
@@ -165,6 +168,7 @@ public class Portfolio_Persist_JUnitTest {
             fail("Unexpected exception");
         }
         verify(resourceAC, never()).notifyListeners(eq(PortfolioResource.RESOURCE_NAME), any(PortfolioResource.class));
+        assertTrue(portfolio.isNew());
     }
 
     /**
@@ -187,8 +191,7 @@ public class Portfolio_Persist_JUnitTest {
         when(portfolioAC.getStoreNut(anyString())).thenReturn(storeNut);
 
         final Portfolio portfolio = new Portfolio(portfolioAC);
-        // TODO init portfolio pk
-        // eg : portfolio.get_IdPortfolio_Model().setNodeValue(Long.valueOf(1));
+        portfolio.get_IdPortfolio_Model().setNodeValue(Long.valueOf(1));
 
         // act : run the test
         try {
@@ -206,6 +209,7 @@ public class Portfolio_Persist_JUnitTest {
             fail("Unexpected exception");
         }
         verify(resourceAC).notifyListeners(eq(PortfolioResource.RESOURCE_NAME), any(PortfolioResource.class));
+        assertTrue(portfolio.isNew());
     }
 
     @SuppressWarnings("boxing")

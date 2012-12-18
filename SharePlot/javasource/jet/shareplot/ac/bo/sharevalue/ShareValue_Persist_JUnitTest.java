@@ -1,5 +1,7 @@
 package jet.shareplot.ac.bo.sharevalue;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
@@ -88,6 +90,7 @@ public class ShareValue_Persist_JUnitTest {
             fail("Unexpected exception");
         }
         verify(resourceAC).notifyListeners(eq(ShareValueResource.RESOURCE_NAME), any(ShareValueResource.class));
+        assertFalse(shareValue.isNew());
     }
 
     /**
@@ -110,9 +113,8 @@ public class ShareValue_Persist_JUnitTest {
         when(shareValueAC.getStoreNut(anyString())).thenReturn(storeNut);
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
+        shareValue.get_IdShareValue_Model().setNodeValue(Long.valueOf(1));
         // TODO set up valid shareValue
-        // TODO init shareValue pk
-        // eg : shareValue.get_IdShareValue_Model().setNodeValue(Long.valueOf(1));
 
         // act : run the test
         try {
@@ -130,6 +132,7 @@ public class ShareValue_Persist_JUnitTest {
             fail("Unexpected exception");
         }
         verify(resourceAC).notifyListeners(eq(ShareValueResource.RESOURCE_NAME), any(ShareValueResource.class));
+        assertFalse(shareValue.isNew());
     }
 
     /**
@@ -165,6 +168,7 @@ public class ShareValue_Persist_JUnitTest {
             fail("Unexpected exception");
         }
         verify(resourceAC, never()).notifyListeners(eq(ShareValueResource.RESOURCE_NAME), any(ShareValueResource.class));
+        assertTrue(shareValue.isNew());
     }
 
     /**
@@ -187,8 +191,7 @@ public class ShareValue_Persist_JUnitTest {
         when(shareValueAC.getStoreNut(anyString())).thenReturn(storeNut);
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
-        // TODO init shareValue pk
-        // eg : shareValue.get_IdShareValue_Model().setNodeValue(Long.valueOf(1));
+        shareValue.get_IdShareValue_Model().setNodeValue(Long.valueOf(1));
 
         // act : run the test
         try {
@@ -206,6 +209,7 @@ public class ShareValue_Persist_JUnitTest {
             fail("Unexpected exception");
         }
         verify(resourceAC).notifyListeners(eq(ShareValueResource.RESOURCE_NAME), any(ShareValueResource.class));
+        assertTrue(shareValue.isNew());
     }
 
     @SuppressWarnings("boxing")

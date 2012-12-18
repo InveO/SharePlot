@@ -78,15 +78,6 @@ public class Portfolio extends PortfolioItem implements JFBusinessItem, JFBusine
     }
 
     /**
-     * @return <code>true</code> if this portfolio is new.
-     * @see JFBusinessItem
-     */
-    @Override
-    public final boolean isNew() {
-        return getIdPortfolio() == null;
-    }
-
-    /**
      * Register the object in the database.
      * The store will only be done if the portfolio is valid.
      * It will updated if it already exists and create it if not.

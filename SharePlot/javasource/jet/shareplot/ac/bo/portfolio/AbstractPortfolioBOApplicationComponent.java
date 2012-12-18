@@ -101,10 +101,10 @@ abstract class AbstractPortfolioBOApplicationComponent extends SimpleApplication
 
         final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.PORTFOLIO_SELECT);
         final Model model = SelectNutHelper.getModel(selectNut, finder, getLogger());
-        if (model != null) {
-            result = new Portfolio(model, this);
-        } else {
+        if (model == null) {
             result = null;
+        } else {
+            result = new Portfolio(model, this);
         }
 
         return result;

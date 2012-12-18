@@ -76,15 +76,6 @@ public class ShareValue extends ShareValueItem implements JFBusinessItem, JFBusi
     }
 
     /**
-     * @return <code>true</code> if this shareValue is new.
-     * @see JFBusinessItem
-     */
-    @Override
-    public final boolean isNew() {
-        return getIdShareValue() == null;
-    }
-
-    /**
      * Register the object in the database.
      * The store will only be done if the shareValue is valid.
      * It will updated if it already exists and create it if not.

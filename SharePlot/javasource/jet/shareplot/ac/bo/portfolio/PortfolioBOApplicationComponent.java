@@ -53,7 +53,7 @@ public class PortfolioBOApplicationComponent extends AbstractPortfolioBOApplicat
         if (portfolioAC == null) {
             final JetDesktop desktopNut = (JetDesktop) session.getProperty(JetDesktop.SESSION_KEY_DESKTOP);
             if (desktopNut == null) {
-                throw new JETException("Can only be used with an AbstractDesktopNut for the desktop.");
+                throw new JETException("Can only be used with an JetDesktop for the desktop.");
             }
 
             final ApplicationProxy appProxy = desktopNut.getApplicationProxy();

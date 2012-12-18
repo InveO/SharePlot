@@ -2,22 +2,13 @@ package jet.shareplot.persistence.factory;
 
 import java.io.Serializable;
 
-import jet.framework.manager.datamodel.interfaces.DataModelRootNode;
 import jet.framework.util.models.ModelHelper;
-import jet.framework.util.pojo2.DispatcherModel;
-import jet.framework.util.pojo2.JFDataItem;
-import jet.framework.util.pojo2.JFErrorHandler;
-import jet.framework.util.pojo2.JFErrorHandlerProvider;
-import jet.framework.util.pojo2.interceptor.StringLengthInterceptor;
 import jet.shareplot.persistence.pojo.ShareQuantityItem;
 import jet.util.logger.JETLevel;
 import jet.util.logger.JETLoggerManager;
 import jet.util.logger.Logger;
-import jet.util.logger.LoggerJUnit;
-import jet.util.models.SimpleEventModelImpl;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
-import jet.util.throwable.JETSystemError;
 
 /**
  * Simple pojo factory for the ShareQuantity Data Model.
@@ -27,10 +18,14 @@ import jet.util.throwable.JETSystemError;
  * @author JetToolsFramework
  */
 @SuppressWarnings("PMD.MethodNamingConventions")
-public class ShareQuantityFactory implements Serializable {
+public final class ShareQuantityFactory implements Serializable {
 
     private static final long serialVersionUID = 1077646545L;
     private static Logger LOGGER;
+
+    private ShareQuantityFactory() {
+        // Singleton, add a private constructor to prevent instantiation
+    }
 
     /**
      * Get a ShareQuantityItem initialized from a Model that has the same structure but contains
@@ -40,7 +35,7 @@ public class ShareQuantityFactory implements Serializable {
      * @param untypedModel Model with String node values
      * @return ShareQuantityItem
      */
-    public final static ShareQuantityItem getFromUntypedModel(final Model untypedModel) {
+    public static ShareQuantityItem getFromUntypedModel(final Model untypedModel) {
         final ShareQuantityItem item = new ShareQuantityItem();
 
         String sValue = null;

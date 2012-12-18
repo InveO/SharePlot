@@ -27,7 +27,7 @@ import jet.util.throwable.JETException;
 public class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHome, PortfolioRemote> {
 
     private static final long serialVersionUID = 993423458L;
-    private PortfolioHome ejbHome;
+    private transient PortfolioHome ejbHome;
     private DataModelConverter2<PortfolioRemote> dataModelConverter;
 
     @Override

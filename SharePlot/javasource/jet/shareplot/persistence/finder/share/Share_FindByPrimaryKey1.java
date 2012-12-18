@@ -28,7 +28,7 @@ public class Share_FindByPrimaryKey1 implements FinderMethod {
     private static final long serialVersionUID = -1265738400L;
     DataSourceExecutor2<ShareHome, ShareRemote> dse;
 
-    Long idShare = null;
+    Long idShare;
 
     /**
      * Set idShare argument value

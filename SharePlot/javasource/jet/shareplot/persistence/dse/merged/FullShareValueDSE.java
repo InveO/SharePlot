@@ -29,8 +29,8 @@ import jet.util.throwable.JETException;
 public class FullShareValueDSE extends AbstractDataSourceExecutor2<ShareValueHome, ShareValueRemote> {
 
     private static final long serialVersionUID = 1303211696L;
-    private ShareValueHome ejbHome;
-    private ShareHome secondaryEJBHome;
+    private transient ShareValueHome ejbHome;
+    private transient ShareHome secondaryEJBHome;
     private DataModelConverter2<ShareValueRemote> dataModelConverter;
 
     @Override

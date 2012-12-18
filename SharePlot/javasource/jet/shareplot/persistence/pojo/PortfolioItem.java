@@ -30,6 +30,8 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
 
     private static final long serialVersionUID = 993423458L;
 
+    private static final String ATTRIBUTE_DISPATCHER_MODEL = "jet.shareplot.persistence.pojo.ATTRIBUTE_DISPATCHER_MODEL";
+
     private Model dataModel;
     private Logger logger;
 
@@ -73,8 +75,8 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
 
     /**
      * Constructor used to edit an existing Portfolio Data Model
-     * @param model Model to use to wrap in the pojo, can not be null
-     * @throws IllegalArgumentException if model is null
+     * @param model Model to use to wrap in the pojo, can not be <code>null</code>
+     * @throws IllegalArgumentException if model is <code>null</code>
      */
     public PortfolioItem(final Model model) {
         if (model == null) {
@@ -94,8 +96,8 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
 
     /**
      * Copy constructor used to clone an existing Portfolio Data Model
-     * @param portfolio PortfolioItem to use to copy in the pojo, can not be null
-     * @throws IllegalArgumentException if portfolio is null
+     * @param portfolio PortfolioItem to use to copy in the pojo, can not be <code>null</code>
+     * @throws IllegalArgumentException if portfolio is <code>null</code>
      */
     public PortfolioItem(final PortfolioItem portfolio) {
         this();
@@ -106,6 +108,15 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
         setIdPortfolio(portfolio.getIdPortfolio());
         setIsFake(portfolio.getIsFake());
         setName(portfolio.getName());
+    }
+
+    /**
+     * @return <code>true</code> if this portfolio is new.
+     * @see JFDataItem
+     */
+    @Override
+    public final boolean isNew() {
+        return getIdPortfolio() == null;
     }
 
     /* (non-Javadoc)
@@ -136,6 +147,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
 
     /**
      * Get node value of Data Model node idPortfolio
+     * This field should not be <code>null</code> in the database.
      * @return Long value of Data Model node idPortfolio
      */
     public final Long getIdPortfolio() {
@@ -144,6 +156,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
 
     /**
      * Set node value of Data Model node idPortfolio
+     * This field should not be <code>null</code> in the database.
      * @param idPortfolio Long value of Data Model node idPortfolio
      */
     private final void setIdPortfolio(final Long idPortfolio) {
@@ -154,11 +167,16 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      * Get Model of Data Model node idPortfolio
      * @return Model of Data Model node idPortfolio
      */
+    @SuppressWarnings("unchecked")
     public final DispatcherModel<PortfolioItem, Long> get_IdPortfolio_Model() {
         if (this.idPortfolioDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idPortfolio");
-                this.idPortfolioDispatcherModel = new DispatcherModel<PortfolioItem, Long>(this, sourceModel);
+                this.idPortfolioDispatcherModel = (DispatcherModel<PortfolioItem, Long>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.idPortfolioDispatcherModel == null) {
+                    this.idPortfolioDispatcherModel = new DispatcherModel<PortfolioItem, Long>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.idPortfolioDispatcherModel);
+                }
             } catch (final JETException e) {
                 throw new JETSystemError("Portfolio data model does not have a child named idPortfolio. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
             }
@@ -168,6 +186,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
 
     /**
      * Get node value of Data Model node isFake
+     * This field should not be <code>null</code> in the database.
      * @return String value of Data Model node isFake
      */
     public final String getIsFake() {
@@ -176,6 +195,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
 
     /**
      * Set node value of Data Model node isFake
+     * This field should not be <code>null</code> in the database.
      * @param isFake String value of Data Model node isFake
      */
     public final void setIsFake(String isFake) {
@@ -186,11 +206,16 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      * Get Model of Data Model node isFake
      * @return Model of Data Model node isFake
      */
+    @SuppressWarnings("unchecked")
     public final DispatcherModel<PortfolioItem, String> get_IsFake_Model() {
         if (this.isFakeDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "isFake");
-                this.isFakeDispatcherModel = new DispatcherModel<PortfolioItem, String>(this, sourceModel);
+                this.isFakeDispatcherModel = (DispatcherModel<PortfolioItem, String>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.isFakeDispatcherModel == null) {
+                    this.isFakeDispatcherModel = new DispatcherModel<PortfolioItem, String>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.isFakeDispatcherModel);
+                }
 
                 this.isFakeDispatcherModel.addInterceptor(new StringLengthInterceptor<PortfolioItem>(1));
             } catch (final JETException e) {
@@ -202,6 +227,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
 
     /**
      * Get node value of Data Model node name
+     * This field should not be <code>null</code> in the database.
      * @return String value of Data Model node name
      */
     public final String getName() {
@@ -210,6 +236,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
 
     /**
      * Set node value of Data Model node name
+     * This field should not be <code>null</code> in the database.
      * @param name String value of Data Model node name
      */
     public final void setName(String name) {
@@ -220,11 +247,16 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      * Get Model of Data Model node name
      * @return Model of Data Model node name
      */
+    @SuppressWarnings("unchecked")
     public final DispatcherModel<PortfolioItem, String> get_Name_Model() {
         if (this.nameDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "name");
-                this.nameDispatcherModel = new DispatcherModel<PortfolioItem, String>(this, sourceModel);
+                this.nameDispatcherModel = (DispatcherModel<PortfolioItem, String>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.nameDispatcherModel == null) {
+                    this.nameDispatcherModel = new DispatcherModel<PortfolioItem, String>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.nameDispatcherModel);
+                }
 
                 this.nameDispatcherModel.addInterceptor(new StringLengthInterceptor<PortfolioItem>(45));
             } catch (final JETException e) {
@@ -235,8 +267,13 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     }
 
     /**
-     * Check if any node not nullable is null
-     * @return true if any node not nullable is null
+     * Check if any node not nullable is <code>null</code>
+     * <ul>
+     * <li><b>isFake</b> can not be <code>null</code> in the database.</li>
+     * <li><b>name</b> can not be <code>null</code> in the database.</li>
+     * </ul>
+     *
+     * @return <code>true</code> if any node not nullable is <code>null</code>
      * @see JFDataItem
      */
     @Override

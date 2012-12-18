@@ -28,7 +28,7 @@ public class Portfolio_FindByPrimaryKey1 implements FinderMethod {
     private static final long serialVersionUID = 993423458L;
     DataSourceExecutor2<PortfolioHome, PortfolioRemote> dse;
 
-    Long idPortfolio = null;
+    Long idPortfolio;
 
     /**
      * Set idPortfolio argument value

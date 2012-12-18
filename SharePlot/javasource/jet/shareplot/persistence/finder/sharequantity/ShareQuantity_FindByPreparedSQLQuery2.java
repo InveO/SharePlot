@@ -31,8 +31,8 @@ public class ShareQuantity_FindByPreparedSQLQuery2 implements FinderMethod {
     private static final long serialVersionUID = 1077646545L;
     DataSourceExecutor2<ShareQuantityHome, ShareQuantityRemote> dse;
 
-    String sqlWhereClause = null;
-    Object[] sqlArguments = null;
+    String sqlWhereClause;
+    Object[] sqlArguments;
     /**
      * Set sqlWhereClause argument value
      *

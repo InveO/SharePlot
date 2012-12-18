@@ -2,22 +2,13 @@ package jet.shareplot.persistence.factory.merged;
 
 import java.io.Serializable;
 
-import jet.framework.manager.datamodel.interfaces.DataModelRootNode;
 import jet.framework.util.models.ModelHelper;
-import jet.framework.util.pojo2.DispatcherModel;
-import jet.framework.util.pojo2.JFDataItem;
-import jet.framework.util.pojo2.JFErrorHandler;
-import jet.framework.util.pojo2.JFErrorHandlerProvider;
-import jet.framework.util.pojo2.interceptor.StringLengthInterceptor;
 import jet.shareplot.persistence.pojo.merged.FullShareValueItem;
 import jet.util.logger.JETLevel;
 import jet.util.logger.JETLoggerManager;
 import jet.util.logger.Logger;
-import jet.util.logger.LoggerJUnit;
-import jet.util.models.SimpleEventModelImpl;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
-import jet.util.throwable.JETSystemError;
 
 /**
  * Simple pojo factory for the FullShareValue Data Model.
@@ -27,10 +18,14 @@ import jet.util.throwable.JETSystemError;
  * @author JetToolsFramework
  */
 @SuppressWarnings("PMD.MethodNamingConventions")
-public class FullShareValueFactory implements Serializable {
+public final class FullShareValueFactory implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private static Logger LOGGER;
+
+    private FullShareValueFactory() {
+        // Singleton, add a private constructor to prevent instantiation
+    }
 
     /**
      * Get a FullShareValueItem initialized from a Model that has the same structure but contains
@@ -40,7 +35,7 @@ public class FullShareValueFactory implements Serializable {
      * @param untypedModel Model with String node values
      * @return FullShareValueItem
      */
-    public final static FullShareValueItem getFromUntypedModel(final Model untypedModel) {
+    public static FullShareValueItem getFromUntypedModel(final Model untypedModel) {
         final FullShareValueItem item = new FullShareValueItem();
 
         String sValue = null;

@@ -101,15 +101,6 @@ public class ShareQuantity extends ShareQuantityItem implements JFBusinessItem, 
     }
 
     /**
-     * @return <code>true</code> if this shareQuantity is new.
-     * @see JFBusinessItem
-     */
-    @Override
-    public final boolean isNew() {
-        return getIdShareQuantity() == null;
-    }
-
-    /**
      * Register the object in the database.
      * The store will only be done if the shareQuantity is valid.
      * It will updated if it already exists and create it if not.

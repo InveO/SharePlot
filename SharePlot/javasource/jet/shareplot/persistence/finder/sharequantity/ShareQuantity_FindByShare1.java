@@ -31,7 +31,7 @@ public class ShareQuantity_FindByShare1 implements FinderMethod {
     private static final long serialVersionUID = 1077646545L;
     DataSourceExecutor2<ShareQuantityHome, ShareQuantityRemote> dse;
 
-    Long idShare = null;
+    Long idShare;
     /**
      * Set idShare argument value
      *

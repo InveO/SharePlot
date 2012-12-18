@@ -31,7 +31,7 @@ public class Share_FindByPortfolio1 implements FinderMethod {
     private static final long serialVersionUID = -1265738400L;
     DataSourceExecutor2<ShareHome, ShareRemote> dse;
 
-    Long idPortfolio = null;
+    Long idPortfolio;
     /**
      * Set idPortfolio argument value
      *

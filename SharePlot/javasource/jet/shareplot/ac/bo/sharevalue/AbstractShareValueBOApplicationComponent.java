@@ -101,10 +101,10 @@ abstract class AbstractShareValueBOApplicationComponent extends SimpleApplicatio
 
         final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.SHAREVALUE_SELECT);
         final Model model = SelectNutHelper.getModel(selectNut, finder, getLogger());
-        if (model != null) {
-            result = new ShareValue(model, this);
-        } else {
+        if (model == null) {
             result = null;
+        } else {
+            result = new ShareValue(model, this);
         }
 
         return result;

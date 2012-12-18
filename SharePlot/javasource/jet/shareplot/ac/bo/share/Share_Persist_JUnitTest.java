@@ -1,5 +1,7 @@
 package jet.shareplot.ac.bo.share;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
@@ -88,6 +90,7 @@ public class Share_Persist_JUnitTest {
             fail("Unexpected exception");
         }
         verify(resourceAC).notifyListeners(eq(ShareResource.RESOURCE_NAME), any(ShareResource.class));
+        assertFalse(share.isNew());
     }
 
     /**
@@ -110,9 +113,8 @@ public class Share_Persist_JUnitTest {
         when(shareAC.getStoreNut(anyString())).thenReturn(storeNut);
 
         final Share share = new Share(shareAC);
+        share.get_IdShare_Model().setNodeValue(Long.valueOf(1));
         // TODO set up valid share
-        // TODO init share pk
-        // eg : share.get_IdShare_Model().setNodeValue(Long.valueOf(1));
 
         // act : run the test
         try {
@@ -130,6 +132,7 @@ public class Share_Persist_JUnitTest {
             fail("Unexpected exception");
         }
         verify(resourceAC).notifyListeners(eq(ShareResource.RESOURCE_NAME), any(ShareResource.class));
+        assertFalse(share.isNew());
     }
 
     /**
@@ -165,6 +168,7 @@ public class Share_Persist_JUnitTest {
             fail("Unexpected exception");
         }
         verify(resourceAC, never()).notifyListeners(eq(ShareResource.RESOURCE_NAME), any(ShareResource.class));
+        assertTrue(share.isNew());
     }
 
     /**
@@ -187,8 +191,7 @@ public class Share_Persist_JUnitTest {
         when(shareAC.getStoreNut(anyString())).thenReturn(storeNut);
 
         final Share share = new Share(shareAC);
-        // TODO init share pk
-        // eg : share.get_IdShare_Model().setNodeValue(Long.valueOf(1));
+        share.get_IdShare_Model().setNodeValue(Long.valueOf(1));
 
         // act : run the test
         try {
@@ -206,6 +209,7 @@ public class Share_Persist_JUnitTest {
             fail("Unexpected exception");
         }
         verify(resourceAC).notifyListeners(eq(ShareResource.RESOURCE_NAME), any(ShareResource.class));
+        assertTrue(share.isNew());
     }
 
     @SuppressWarnings("boxing")

@@ -76,15 +76,6 @@ public class Share extends ShareItem implements JFBusinessItem, JFBusinessErrorH
     }
 
     /**
-     * @return <code>true</code> if this share is new.
-     * @see JFBusinessItem
-     */
-    @Override
-    public final boolean isNew() {
-        return getIdShare() == null;
-    }
-
-    /**
      * Register the object in the database.
      * The store will only be done if the share is valid.
      * It will updated if it already exists and create it if not.

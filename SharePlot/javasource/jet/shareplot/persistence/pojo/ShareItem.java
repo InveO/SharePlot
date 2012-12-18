@@ -30,6 +30,8 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     private static final long serialVersionUID = -1265738400L;
 
+    private static final String ATTRIBUTE_DISPATCHER_MODEL = "jet.shareplot.persistence.pojo.ATTRIBUTE_DISPATCHER_MODEL";
+
     private Model dataModel;
     private Logger logger;
 
@@ -80,8 +82,8 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Constructor used to edit an existing Share Data Model
-     * @param model Model to use to wrap in the pojo, can not be null
-     * @throws IllegalArgumentException if model is null
+     * @param model Model to use to wrap in the pojo, can not be <code>null</code>
+     * @throws IllegalArgumentException if model is <code>null</code>
      */
     public ShareItem(final Model model) {
         if (model == null) {
@@ -101,8 +103,8 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Copy constructor used to clone an existing Share Data Model
-     * @param share ShareItem to use to copy in the pojo, can not be null
-     * @throws IllegalArgumentException if share is null
+     * @param share ShareItem to use to copy in the pojo, can not be <code>null</code>
+     * @throws IllegalArgumentException if share is <code>null</code>
      */
     public ShareItem(final ShareItem share) {
         this();
@@ -116,6 +118,15 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
         setDescription(share.getDescription());
         setIdPortfolio(share.getIdPortfolio());
         setName(share.getName());
+    }
+
+    /**
+     * @return <code>true</code> if this share is new.
+     * @see JFDataItem
+     */
+    @Override
+    public final boolean isNew() {
+        return getIdShare() == null;
     }
 
     /* (non-Javadoc)
@@ -146,6 +157,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Get node value of Data Model node idShare
+     * This field should not be <code>null</code> in the database.
      * @return Long value of Data Model node idShare
      */
     public final Long getIdShare() {
@@ -154,6 +166,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Set node value of Data Model node idShare
+     * This field should not be <code>null</code> in the database.
      * @param idShare Long value of Data Model node idShare
      */
     private final void setIdShare(final Long idShare) {
@@ -164,11 +177,16 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * Get Model of Data Model node idShare
      * @return Model of Data Model node idShare
      */
+    @SuppressWarnings("unchecked")
     public final DispatcherModel<ShareItem, Long> get_IdShare_Model() {
         if (this.idShareDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idShare");
-                this.idShareDispatcherModel = new DispatcherModel<ShareItem, Long>(this, sourceModel);
+                this.idShareDispatcherModel = (DispatcherModel<ShareItem, Long>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.idShareDispatcherModel == null) {
+                    this.idShareDispatcherModel = new DispatcherModel<ShareItem, Long>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.idShareDispatcherModel);
+                }
             } catch (final JETException e) {
                 throw new JETSystemError("Share data model does not have a child named idShare. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
             }
@@ -196,11 +214,16 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * Get Model of Data Model node codeISIN
      * @return Model of Data Model node codeISIN
      */
+    @SuppressWarnings("unchecked")
     public final DispatcherModel<ShareItem, String> get_CodeISIN_Model() {
         if (this.codeISINDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "codeISIN");
-                this.codeISINDispatcherModel = new DispatcherModel<ShareItem, String>(this, sourceModel);
+                this.codeISINDispatcherModel = (DispatcherModel<ShareItem, String>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.codeISINDispatcherModel == null) {
+                    this.codeISINDispatcherModel = new DispatcherModel<ShareItem, String>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.codeISINDispatcherModel);
+                }
 
                 this.codeISINDispatcherModel.addInterceptor(new StringLengthInterceptor<ShareItem>(45));
             } catch (final JETException e) {
@@ -230,11 +253,16 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * Get Model of Data Model node codeYahoo
      * @return Model of Data Model node codeYahoo
      */
+    @SuppressWarnings("unchecked")
     public final DispatcherModel<ShareItem, String> get_CodeYahoo_Model() {
         if (this.codeYahooDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "codeYahoo");
-                this.codeYahooDispatcherModel = new DispatcherModel<ShareItem, String>(this, sourceModel);
+                this.codeYahooDispatcherModel = (DispatcherModel<ShareItem, String>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.codeYahooDispatcherModel == null) {
+                    this.codeYahooDispatcherModel = new DispatcherModel<ShareItem, String>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.codeYahooDispatcherModel);
+                }
 
                 this.codeYahooDispatcherModel.addInterceptor(new StringLengthInterceptor<ShareItem>(45));
             } catch (final JETException e) {
@@ -264,11 +292,16 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * Get Model of Data Model node description
      * @return Model of Data Model node description
      */
+    @SuppressWarnings("unchecked")
     public final DispatcherModel<ShareItem, String> get_Description_Model() {
         if (this.descriptionDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "description");
-                this.descriptionDispatcherModel = new DispatcherModel<ShareItem, String>(this, sourceModel);
+                this.descriptionDispatcherModel = (DispatcherModel<ShareItem, String>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.descriptionDispatcherModel == null) {
+                    this.descriptionDispatcherModel = new DispatcherModel<ShareItem, String>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.descriptionDispatcherModel);
+                }
 
                 this.descriptionDispatcherModel.addInterceptor(new StringLengthInterceptor<ShareItem>(4000));
             } catch (final JETException e) {
@@ -280,6 +313,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Get node value of Data Model node idPortfolio
+     * This field should not be <code>null</code> in the database.
      * @return Long value of Data Model node idPortfolio
      */
     public final Long getIdPortfolio() {
@@ -288,6 +322,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Set node value of Data Model node idPortfolio
+     * This field should not be <code>null</code> in the database.
      * @param idPortfolio Long value of Data Model node idPortfolio
      */
     public final void setIdPortfolio(Long idPortfolio) {
@@ -298,11 +333,16 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * Get Model of Data Model node idPortfolio
      * @return Model of Data Model node idPortfolio
      */
+    @SuppressWarnings("unchecked")
     public final DispatcherModel<ShareItem, Long> get_IdPortfolio_Model() {
         if (this.idPortfolioDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idPortfolio");
-                this.idPortfolioDispatcherModel = new DispatcherModel<ShareItem, Long>(this, sourceModel);
+                this.idPortfolioDispatcherModel = (DispatcherModel<ShareItem, Long>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.idPortfolioDispatcherModel == null) {
+                    this.idPortfolioDispatcherModel = new DispatcherModel<ShareItem, Long>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.idPortfolioDispatcherModel);
+                }
             } catch (final JETException e) {
                 throw new JETSystemError("Share data model does not have a child named idPortfolio. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
             }
@@ -312,6 +352,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Get node value of Data Model node name
+     * This field should not be <code>null</code> in the database.
      * @return String value of Data Model node name
      */
     public final String getName() {
@@ -320,6 +361,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Set node value of Data Model node name
+     * This field should not be <code>null</code> in the database.
      * @param name String value of Data Model node name
      */
     public final void setName(String name) {
@@ -330,11 +372,16 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * Get Model of Data Model node name
      * @return Model of Data Model node name
      */
+    @SuppressWarnings("unchecked")
     public final DispatcherModel<ShareItem, String> get_Name_Model() {
         if (this.nameDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "name");
-                this.nameDispatcherModel = new DispatcherModel<ShareItem, String>(this, sourceModel);
+                this.nameDispatcherModel = (DispatcherModel<ShareItem, String>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.nameDispatcherModel == null) {
+                    this.nameDispatcherModel = new DispatcherModel<ShareItem, String>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.nameDispatcherModel);
+                }
 
                 this.nameDispatcherModel.addInterceptor(new StringLengthInterceptor<ShareItem>(255));
             } catch (final JETException e) {
@@ -345,8 +392,13 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
     }
 
     /**
-     * Check if any node not nullable is null
-     * @return true if any node not nullable is null
+     * Check if any node not nullable is <code>null</code>
+     * <ul>
+     * <li><b>idPortfolio</b> can not be <code>null</code> in the database.</li>
+     * <li><b>name</b> can not be <code>null</code> in the database.</li>
+     * </ul>
+     *
+     * @return <code>true</code> if any node not nullable is <code>null</code>
      * @see JFDataItem
      */
     @Override

@@ -1,5 +1,7 @@
 package jet.shareplot.ac.bo.sharequantity;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
@@ -88,6 +90,7 @@ public class ShareQuantity_Persist_JUnitTest {
             fail("Unexpected exception");
         }
         verify(resourceAC).notifyListeners(eq(ShareQuantityResource.RESOURCE_NAME), any(ShareQuantityResource.class));
+        assertFalse(shareQuantity.isNew());
     }
 
     /**
@@ -110,9 +113,8 @@ public class ShareQuantity_Persist_JUnitTest {
         when(shareQuantityAC.getStoreNut(anyString())).thenReturn(storeNut);
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
+        shareQuantity.get_IdShareQuantity_Model().setNodeValue(Long.valueOf(1));
         // TODO set up valid shareQuantity
-        // TODO init shareQuantity pk
-        // eg : shareQuantity.get_IdShareQuantity_Model().setNodeValue(Long.valueOf(1));
 
         // act : run the test
         try {
@@ -130,6 +132,7 @@ public class ShareQuantity_Persist_JUnitTest {
             fail("Unexpected exception");
         }
         verify(resourceAC).notifyListeners(eq(ShareQuantityResource.RESOURCE_NAME), any(ShareQuantityResource.class));
+        assertFalse(shareQuantity.isNew());
     }
 
     /**
@@ -165,6 +168,7 @@ public class ShareQuantity_Persist_JUnitTest {
             fail("Unexpected exception");
         }
         verify(resourceAC, never()).notifyListeners(eq(ShareQuantityResource.RESOURCE_NAME), any(ShareQuantityResource.class));
+        assertTrue(shareQuantity.isNew());
     }
 
     /**
@@ -187,8 +191,7 @@ public class ShareQuantity_Persist_JUnitTest {
         when(shareQuantityAC.getStoreNut(anyString())).thenReturn(storeNut);
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
-        // TODO init shareQuantity pk
-        // eg : shareQuantity.get_IdShareQuantity_Model().setNodeValue(Long.valueOf(1));
+        shareQuantity.get_IdShareQuantity_Model().setNodeValue(Long.valueOf(1));
 
         // act : run the test
         try {
@@ -206,6 +209,7 @@ public class ShareQuantity_Persist_JUnitTest {
             fail("Unexpected exception");
         }
         verify(resourceAC).notifyListeners(eq(ShareQuantityResource.RESOURCE_NAME), any(ShareQuantityResource.class));
+        assertTrue(shareQuantity.isNew());
     }
 
     @SuppressWarnings("boxing")

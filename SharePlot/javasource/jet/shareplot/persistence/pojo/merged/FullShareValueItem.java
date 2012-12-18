@@ -30,6 +30,8 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
 
     private static final long serialVersionUID = 1L;
 
+    private static final String ATTRIBUTE_DISPATCHER_MODEL = "jet.shareplot.persistence.pojo.merged.ATTRIBUTE_DISPATCHER_MODEL";
+
     private Model dataModel;
     private Logger logger;
 
@@ -89,8 +91,8 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Constructor used to edit an existing FullShareValue Data Model
-     * @param model Model to use to wrap in the pojo, can not be null
-     * @throws IllegalArgumentException if model is null
+     * @param model Model to use to wrap in the pojo, can not be <code>null</code>
+     * @throws IllegalArgumentException if model is <code>null</code>
      */
     public FullShareValueItem(final Model model) {
         if (model == null) {
@@ -110,8 +112,8 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Copy constructor used to clone an existing FullShareValue Data Model
-     * @param fullShareValue FullShareValueItem to use to copy in the pojo, can not be null
-     * @throws IllegalArgumentException if fullShareValue is null
+     * @param fullShareValue FullShareValueItem to use to copy in the pojo, can not be <code>null</code>
+     * @throws IllegalArgumentException if fullShareValue is <code>null</code>
      */
     public FullShareValueItem(final FullShareValueItem fullShareValue) {
         this();
@@ -128,6 +130,15 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
         setName(fullShareValue.getName());
         setValue(fullShareValue.getValue());
         setValueDate(fullShareValue.getValueDate());
+    }
+
+    /**
+     * @return <code>true</code> if this fullShareValue is new.
+     * @see JFDataItem
+     */
+    @Override
+    public final boolean isNew() {
+        return getIdShareValue() == null;
     }
 
     /* (non-Javadoc)
@@ -158,6 +169,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Get node value of Data Model node idShareValue
+     * This field should not be <code>null</code> in the database.
      * @return Long value of Data Model node idShareValue
      */
     public final Long getIdShareValue() {
@@ -166,6 +178,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Set node value of Data Model node idShareValue
+     * This field should not be <code>null</code> in the database.
      * @param idShareValue Long value of Data Model node idShareValue
      */
     private final void setIdShareValue(final Long idShareValue) {
@@ -176,11 +189,16 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
      * Get Model of Data Model node idShareValue
      * @return Model of Data Model node idShareValue
      */
+    @SuppressWarnings("unchecked")
     public final DispatcherModel<FullShareValueItem, Long> get_IdShareValue_Model() {
         if (this.idShareValueDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idShareValue");
-                this.idShareValueDispatcherModel = new DispatcherModel<FullShareValueItem, Long>(this, sourceModel);
+                this.idShareValueDispatcherModel = (DispatcherModel<FullShareValueItem, Long>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.idShareValueDispatcherModel == null) {
+                    this.idShareValueDispatcherModel = new DispatcherModel<FullShareValueItem, Long>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.idShareValueDispatcherModel);
+                }
             } catch (final JETException e) {
                 throw new JETSystemError("FullShareValue data model does not have a child named idShareValue. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
             }
@@ -208,11 +226,16 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
      * Get Model of Data Model node codeISIN
      * @return Model of Data Model node codeISIN
      */
+    @SuppressWarnings("unchecked")
     public final DispatcherModel<FullShareValueItem, String> get_CodeISIN_Model() {
         if (this.codeISINDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "codeISIN");
-                this.codeISINDispatcherModel = new DispatcherModel<FullShareValueItem, String>(this, sourceModel);
+                this.codeISINDispatcherModel = (DispatcherModel<FullShareValueItem, String>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.codeISINDispatcherModel == null) {
+                    this.codeISINDispatcherModel = new DispatcherModel<FullShareValueItem, String>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.codeISINDispatcherModel);
+                }
 
                 this.codeISINDispatcherModel.addInterceptor(new StringLengthInterceptor<FullShareValueItem>(45));
             } catch (final JETException e) {
@@ -242,11 +265,16 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
      * Get Model of Data Model node codeYahoo
      * @return Model of Data Model node codeYahoo
      */
+    @SuppressWarnings("unchecked")
     public final DispatcherModel<FullShareValueItem, String> get_CodeYahoo_Model() {
         if (this.codeYahooDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "codeYahoo");
-                this.codeYahooDispatcherModel = new DispatcherModel<FullShareValueItem, String>(this, sourceModel);
+                this.codeYahooDispatcherModel = (DispatcherModel<FullShareValueItem, String>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.codeYahooDispatcherModel == null) {
+                    this.codeYahooDispatcherModel = new DispatcherModel<FullShareValueItem, String>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.codeYahooDispatcherModel);
+                }
 
                 this.codeYahooDispatcherModel.addInterceptor(new StringLengthInterceptor<FullShareValueItem>(45));
             } catch (final JETException e) {
@@ -276,11 +304,16 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
      * Get Model of Data Model node description
      * @return Model of Data Model node description
      */
+    @SuppressWarnings("unchecked")
     public final DispatcherModel<FullShareValueItem, String> get_Description_Model() {
         if (this.descriptionDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "description");
-                this.descriptionDispatcherModel = new DispatcherModel<FullShareValueItem, String>(this, sourceModel);
+                this.descriptionDispatcherModel = (DispatcherModel<FullShareValueItem, String>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.descriptionDispatcherModel == null) {
+                    this.descriptionDispatcherModel = new DispatcherModel<FullShareValueItem, String>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.descriptionDispatcherModel);
+                }
 
                 this.descriptionDispatcherModel.addInterceptor(new StringLengthInterceptor<FullShareValueItem>(4000));
             } catch (final JETException e) {
@@ -292,6 +325,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Get node value of Data Model node idPortfolio
+     * This field should not be <code>null</code> in the database.
      * @return Long value of Data Model node idPortfolio
      */
     public final Long getIdPortfolio() {
@@ -300,6 +334,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Set node value of Data Model node idPortfolio
+     * This field should not be <code>null</code> in the database.
      * @param idPortfolio Long value of Data Model node idPortfolio
      */
     public final void setIdPortfolio(Long idPortfolio) {
@@ -310,11 +345,16 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
      * Get Model of Data Model node idPortfolio
      * @return Model of Data Model node idPortfolio
      */
+    @SuppressWarnings("unchecked")
     public final DispatcherModel<FullShareValueItem, Long> get_IdPortfolio_Model() {
         if (this.idPortfolioDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idPortfolio");
-                this.idPortfolioDispatcherModel = new DispatcherModel<FullShareValueItem, Long>(this, sourceModel);
+                this.idPortfolioDispatcherModel = (DispatcherModel<FullShareValueItem, Long>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.idPortfolioDispatcherModel == null) {
+                    this.idPortfolioDispatcherModel = new DispatcherModel<FullShareValueItem, Long>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.idPortfolioDispatcherModel);
+                }
             } catch (final JETException e) {
                 throw new JETSystemError("FullShareValue data model does not have a child named idPortfolio. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
             }
@@ -324,6 +364,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Get node value of Data Model node idShare
+     * This field should not be <code>null</code> in the database.
      * @return Long value of Data Model node idShare
      */
     public final Long getIdShare() {
@@ -332,6 +373,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Set node value of Data Model node idShare
+     * This field should not be <code>null</code> in the database.
      * @param idShare Long value of Data Model node idShare
      */
     public final void setIdShare(Long idShare) {
@@ -342,11 +384,16 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
      * Get Model of Data Model node idShare
      * @return Model of Data Model node idShare
      */
+    @SuppressWarnings("unchecked")
     public final DispatcherModel<FullShareValueItem, Long> get_IdShare_Model() {
         if (this.idShareDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idShare");
-                this.idShareDispatcherModel = new DispatcherModel<FullShareValueItem, Long>(this, sourceModel);
+                this.idShareDispatcherModel = (DispatcherModel<FullShareValueItem, Long>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.idShareDispatcherModel == null) {
+                    this.idShareDispatcherModel = new DispatcherModel<FullShareValueItem, Long>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.idShareDispatcherModel);
+                }
             } catch (final JETException e) {
                 throw new JETSystemError("FullShareValue data model does not have a child named idShare. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
             }
@@ -356,6 +403,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Get node value of Data Model node name
+     * This field should not be <code>null</code> in the database.
      * @return String value of Data Model node name
      */
     public final String getName() {
@@ -364,6 +412,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Set node value of Data Model node name
+     * This field should not be <code>null</code> in the database.
      * @param name String value of Data Model node name
      */
     public final void setName(String name) {
@@ -374,11 +423,16 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
      * Get Model of Data Model node name
      * @return Model of Data Model node name
      */
+    @SuppressWarnings("unchecked")
     public final DispatcherModel<FullShareValueItem, String> get_Name_Model() {
         if (this.nameDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "name");
-                this.nameDispatcherModel = new DispatcherModel<FullShareValueItem, String>(this, sourceModel);
+                this.nameDispatcherModel = (DispatcherModel<FullShareValueItem, String>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.nameDispatcherModel == null) {
+                    this.nameDispatcherModel = new DispatcherModel<FullShareValueItem, String>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.nameDispatcherModel);
+                }
 
                 this.nameDispatcherModel.addInterceptor(new StringLengthInterceptor<FullShareValueItem>(255));
             } catch (final JETException e) {
@@ -390,6 +444,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Get node value of Data Model node value
+     * This field should not be <code>null</code> in the database.
      * @return java.math.BigDecimal value of Data Model node value
      */
     public final java.math.BigDecimal getValue() {
@@ -398,6 +453,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Set node value of Data Model node value
+     * This field should not be <code>null</code> in the database.
      * @param value java.math.BigDecimal value of Data Model node value
      */
     public final void setValue(java.math.BigDecimal value) {
@@ -408,11 +464,16 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
      * Get Model of Data Model node value
      * @return Model of Data Model node value
      */
+    @SuppressWarnings("unchecked")
     public final DispatcherModel<FullShareValueItem, java.math.BigDecimal> get_Value_Model() {
         if (this.valueDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "value");
-                this.valueDispatcherModel = new DispatcherModel<FullShareValueItem, java.math.BigDecimal>(this, sourceModel);
+                this.valueDispatcherModel = (DispatcherModel<FullShareValueItem, java.math.BigDecimal>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.valueDispatcherModel == null) {
+                    this.valueDispatcherModel = new DispatcherModel<FullShareValueItem, java.math.BigDecimal>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.valueDispatcherModel);
+                }
             } catch (final JETException e) {
                 throw new JETSystemError("FullShareValue data model does not have a child named value. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
             }
@@ -422,6 +483,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Get node value of Data Model node valueDate
+     * This field should not be <code>null</code> in the database.
      * @return java.util.Date value of Data Model node valueDate
      */
     public final java.util.Date getValueDate() {
@@ -430,6 +492,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Set node value of Data Model node valueDate
+     * This field should not be <code>null</code> in the database.
      * @param valueDate java.util.Date value of Data Model node valueDate
      */
     public final void setValueDate(java.util.Date valueDate) {
@@ -440,11 +503,16 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
      * Get Model of Data Model node valueDate
      * @return Model of Data Model node valueDate
      */
+    @SuppressWarnings("unchecked")
     public final DispatcherModel<FullShareValueItem, java.util.Date> get_ValueDate_Model() {
         if (this.valueDateDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "valueDate");
-                this.valueDateDispatcherModel = new DispatcherModel<FullShareValueItem, java.util.Date>(this, sourceModel);
+                this.valueDateDispatcherModel = (DispatcherModel<FullShareValueItem, java.util.Date>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.valueDateDispatcherModel == null) {
+                    this.valueDateDispatcherModel = new DispatcherModel<FullShareValueItem, java.util.Date>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.valueDateDispatcherModel);
+                }
             } catch (final JETException e) {
                 throw new JETSystemError("FullShareValue data model does not have a child named valueDate. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
             }
@@ -453,8 +521,16 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Check if any node not nullable is null
-     * @return true if any node not nullable is null
+     * Check if any node not nullable is <code>null</code>
+     * <ul>
+     * <li><b>idPortfolio</b> can not be <code>null</code> in the database.</li>
+     * <li><b>idShare</b> can not be <code>null</code> in the database.</li>
+     * <li><b>name</b> can not be <code>null</code> in the database.</li>
+     * <li><b>value</b> can not be <code>null</code> in the database.</li>
+     * <li><b>valueDate</b> can not be <code>null</code> in the database.</li>
+     * </ul>
+     *
+     * @return <code>true</code> if any node not nullable is <code>null</code>
      * @see JFDataItem
      */
     @Override

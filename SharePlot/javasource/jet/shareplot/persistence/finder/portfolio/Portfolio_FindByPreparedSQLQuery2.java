@@ -31,8 +31,8 @@ public class Portfolio_FindByPreparedSQLQuery2 implements FinderMethod {
     private static final long serialVersionUID = 993423458L;
     DataSourceExecutor2<PortfolioHome, PortfolioRemote> dse;
 
-    String sqlWhereClause = null;
-    Object[] sqlArguments = null;
+    String sqlWhereClause;
+    Object[] sqlArguments;
     /**
      * Set sqlWhereClause argument value
      *
