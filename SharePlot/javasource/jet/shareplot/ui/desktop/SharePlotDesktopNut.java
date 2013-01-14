@@ -7,7 +7,7 @@ import java.util.Map;
 import jet.components.interfaces.ApplicationComponent;
 import jet.components.ui.container.common.UIContainerComponent;
 import jet.components.ui.label.common.UILabelComponent;
-import jet.container.managers.session.interfaces.Session;
+import jet.container.managers.session.interfaces.GlobalSession;
 import jet.container.managers.session.interfaces.SessionManagerContext;
 import jet.container.managers.ui.interfaces.UIComponentFinder;
 import jet.container.nuts.ui.UIAnchorService;
@@ -106,7 +106,7 @@ public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMe
 
         try {
             final BatchSessionManagerContext batchSessionCtxt = (BatchSessionManagerContext) getManagerContext(BatchSessionManagerContext.NAME);
-            final Session session = batchSessionCtxt.createBatchSession("SharePlotBatch");
+            final GlobalSession session = batchSessionCtxt.createBatchSession("SharePlotBatch");
 
             batchSessionCtxt.updateBatchSession(session, new SimpleEventModelImpl());
 
