@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Nonnull;
 import javax.ejb.FinderException;
 import javax.ejb.ObjectNotFoundException;
 
@@ -43,11 +44,13 @@ public class ShareValue_FindByShare1 implements FinderMethod {
 
 
     @Override
+    @Nonnull
     public String getFinderName() {
         return "findByShare";
     }
 
     @Override
+    @Nonnull
     public Map<String, Object> getArguments() {
         final Map<String, Object> args = new HashMap<String, Object>();
         args.put("idShare", this.idShare);
@@ -55,6 +58,7 @@ public class ShareValue_FindByShare1 implements FinderMethod {
     }
 
     @Override
+    @Nonnull
     public ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
 
         List<ShareValueRemote> list;

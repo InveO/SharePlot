@@ -2,6 +2,8 @@ package jet.shareplot.persistence.pojo;
 
 import java.io.Serializable;
 
+import javax.annotation.Nonnull;
+
 import jet.framework.manager.datamodel.interfaces.DataModelRootNode;
 import jet.framework.util.models.ModelHelper;
 import jet.framework.util.pojo2.DispatcherModel;
@@ -32,34 +34,25 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
 
     private static final String ATTRIBUTE_DISPATCHER_MODEL = "jet.shareplot.persistence.pojo.ATTRIBUTE_DISPATCHER_MODEL";
 
-    private Model dataModel;
-    private Logger logger;
+    private final Model dataModel;
+    private transient Logger logger;
 
-    private DispatcherModel<ShareValueItem, Long> idShareValueDispatcherModel;
-    private DispatcherModel<ShareValueItem, Long> idShareDispatcherModel;
-    private DispatcherModel<ShareValueItem, java.math.BigDecimal> valueDispatcherModel;
-    private DispatcherModel<ShareValueItem, java.util.Date> valueDateDispatcherModel;
+    private transient DispatcherModel<ShareValueItem> idShareValueDispatcherModel;
+    private transient DispatcherModel<ShareValueItem> idShareDispatcherModel;
+    private transient DispatcherModel<ShareValueItem> valueDispatcherModel;
+    private transient DispatcherModel<ShareValueItem> valueDateDispatcherModel;
 
-    private JFErrorHandler jfErrorHandler;
+    private transient JFErrorHandler jfErrorHandler;
 
     /**
      * Constructor used to create a new ShareValue Data Model
      */
     public ShareValueItem() {
-        // initialise the logger
-        try {
-            final JETLoggerManager loggerManager = JETLoggerManager.getJETLoggerManager();
-            this.logger = loggerManager.getLogger("jet.shareplot.persistence.pojo");
-        } catch (final JETSystemError e) {
-            // probably running in junit, use junitLogger
-            this.logger = LoggerJUnit.getInstance();
-        }
-
+        this.dataModel = new DataModelRootNode();
         init_DataModel();
     }
 
     private void init_DataModel() {
-        this.dataModel = new DataModelRootNode();
         this.dataModel.setTagName("ShareValue");
 
         SimpleEventModelImpl model = null;
@@ -83,15 +76,6 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
         if (model == null) {
             throw new IllegalArgumentException("model argument can not be null");
         }
-        // initialise the logger
-        try {
-            final JETLoggerManager loggerManager = JETLoggerManager.getJETLoggerManager();
-            this.logger = loggerManager.getLogger("jet.shareplot.persistence.pojo");
-        } catch (final JETSystemError e) {
-            // probably running in junit, use junitLogger
-            this.logger = LoggerJUnit.getInstance();
-        }
-
         this.dataModel = model;
     }
 
@@ -110,6 +94,20 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
         setIdShare(shareValue.getIdShare());
         setValue(shareValue.getValue());
         setValueDate(shareValue.getValueDate());
+    }
+
+    private Logger getLogger() {
+        if (this.logger == null) {
+            // initialise the logger
+            try {
+                final JETLoggerManager loggerManager = JETLoggerManager.getJETLoggerManager();
+                this.logger = loggerManager.getLogger("jet.shareplot.persistence.pojo");
+            } catch (final JETSystemError e) {
+                // probably running in junit, use junitLogger
+                this.logger = LoggerJUnit.getInstance();
+            }
+        }
+        return this.logger;
     }
 
     /**
@@ -143,8 +141,11 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
      * @see JFDataItem
      */
     @Override
+    @Nonnull
     public final Model get_Model() {
-        return this.dataModel;
+        Model model = this.dataModel;
+        assert model != null;
+        return model;
     }
 
     /**
@@ -170,20 +171,23 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
      * @return Model of Data Model node idShareValue
      */
     @SuppressWarnings("unchecked")
-    public final DispatcherModel<ShareValueItem, Long> get_IdShareValue_Model() {
+    @Nonnull
+    public final DispatcherModel<ShareValueItem> get_IdShareValue_Model() {
         if (this.idShareValueDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idShareValue");
-                this.idShareValueDispatcherModel = (DispatcherModel<ShareValueItem, Long>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                this.idShareValueDispatcherModel = (DispatcherModel<ShareValueItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.idShareValueDispatcherModel == null) {
-                    this.idShareValueDispatcherModel = new DispatcherModel<ShareValueItem, Long>(this, sourceModel);
+                    this.idShareValueDispatcherModel = new DispatcherModel<ShareValueItem>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.idShareValueDispatcherModel);
                 }
             } catch (final JETException e) {
                 throw new JETSystemError("ShareValue data model does not have a child named idShareValue. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
             }
         }
-        return this.idShareValueDispatcherModel;
+        final DispatcherModel<ShareValueItem> dm = this.idShareValueDispatcherModel;
+        assert dm != null;
+        return dm;
     }
 
     /**
@@ -209,20 +213,23 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
      * @return Model of Data Model node idShare
      */
     @SuppressWarnings("unchecked")
-    public final DispatcherModel<ShareValueItem, Long> get_IdShare_Model() {
+    @Nonnull
+    public final DispatcherModel<ShareValueItem> get_IdShare_Model() {
         if (this.idShareDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idShare");
-                this.idShareDispatcherModel = (DispatcherModel<ShareValueItem, Long>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                this.idShareDispatcherModel = (DispatcherModel<ShareValueItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.idShareDispatcherModel == null) {
-                    this.idShareDispatcherModel = new DispatcherModel<ShareValueItem, Long>(this, sourceModel);
+                    this.idShareDispatcherModel = new DispatcherModel<ShareValueItem>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.idShareDispatcherModel);
                 }
             } catch (final JETException e) {
                 throw new JETSystemError("ShareValue data model does not have a child named idShare. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
             }
         }
-        return this.idShareDispatcherModel;
+        final DispatcherModel<ShareValueItem> dm = this.idShareDispatcherModel;
+        assert dm != null;
+        return dm;
     }
 
     /**
@@ -248,20 +255,23 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
      * @return Model of Data Model node value
      */
     @SuppressWarnings("unchecked")
-    public final DispatcherModel<ShareValueItem, java.math.BigDecimal> get_Value_Model() {
+    @Nonnull
+    public final DispatcherModel<ShareValueItem> get_Value_Model() {
         if (this.valueDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "value");
-                this.valueDispatcherModel = (DispatcherModel<ShareValueItem, java.math.BigDecimal>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                this.valueDispatcherModel = (DispatcherModel<ShareValueItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.valueDispatcherModel == null) {
-                    this.valueDispatcherModel = new DispatcherModel<ShareValueItem, java.math.BigDecimal>(this, sourceModel);
+                    this.valueDispatcherModel = new DispatcherModel<ShareValueItem>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.valueDispatcherModel);
                 }
             } catch (final JETException e) {
                 throw new JETSystemError("ShareValue data model does not have a child named value. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
             }
         }
-        return this.valueDispatcherModel;
+        final DispatcherModel<ShareValueItem> dm = this.valueDispatcherModel;
+        assert dm != null;
+        return dm;
     }
 
     /**
@@ -287,20 +297,23 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
      * @return Model of Data Model node valueDate
      */
     @SuppressWarnings("unchecked")
-    public final DispatcherModel<ShareValueItem, java.util.Date> get_ValueDate_Model() {
+    @Nonnull
+    public final DispatcherModel<ShareValueItem> get_ValueDate_Model() {
         if (this.valueDateDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "valueDate");
-                this.valueDateDispatcherModel = (DispatcherModel<ShareValueItem, java.util.Date>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                this.valueDateDispatcherModel = (DispatcherModel<ShareValueItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.valueDateDispatcherModel == null) {
-                    this.valueDateDispatcherModel = new DispatcherModel<ShareValueItem, java.util.Date>(this, sourceModel);
+                    this.valueDateDispatcherModel = new DispatcherModel<ShareValueItem>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.valueDateDispatcherModel);
                 }
             } catch (final JETException e) {
                 throw new JETSystemError("ShareValue data model does not have a child named valueDate. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
             }
         }
-        return this.valueDateDispatcherModel;
+        final DispatcherModel<ShareValueItem> dm = this.valueDateDispatcherModel;
+        assert dm != null;
+        return dm;
     }
 
     /**
@@ -318,19 +331,19 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
     public final boolean isNotNullableNull() {
         Long idShare = getIdShare();
         if (idShare == null) {
-            this.logger.logp(JETLevel.WARNING, "ShareValueItem", "isNotNullableNull",
+            getLogger().logp(JETLevel.WARNING, "ShareValueItem", "isNotNullableNull",
                 "idShare is null but is not nullable.");
             return true;
         }
         java.math.BigDecimal value = getValue();
         if (value == null) {
-            this.logger.logp(JETLevel.WARNING, "ShareValueItem", "isNotNullableNull",
+            getLogger().logp(JETLevel.WARNING, "ShareValueItem", "isNotNullableNull",
                 "value is null but is not nullable.");
             return true;
         }
         java.util.Date valueDate = getValueDate();
         if (valueDate == null) {
-            this.logger.logp(JETLevel.WARNING, "ShareValueItem", "isNotNullableNull",
+            getLogger().logp(JETLevel.WARNING, "ShareValueItem", "isNotNullableNull",
                 "valueDate is null but is not nullable.");
             return true;
         }

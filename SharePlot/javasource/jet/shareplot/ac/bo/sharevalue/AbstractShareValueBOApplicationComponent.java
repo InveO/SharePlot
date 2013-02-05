@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.ejb.ObjectNotFoundException;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -45,7 +47,8 @@ abstract class AbstractShareValueBOApplicationComponent extends SimpleApplicatio
      * @see List
      * @see ShareValue
      */
-    protected List<ShareValue> getShareValues(final FinderMethod finder) {
+    @Nonnull
+    protected List<ShareValue> getShareValues(final @Nonnull FinderMethod finder) {
         final List<ShareValue> result = new ArrayList<ShareValue>();
         final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.SHAREVALUE_SELECT);
         final AbstractShareValueBOApplicationComponent shareValueAC = this;
@@ -96,7 +99,8 @@ abstract class AbstractShareValueBOApplicationComponent extends SimpleApplicatio
      * @return the shareValue matching the FinderMethod.
      * @see ShareValue
      */
-    protected ShareValue getShareValue(final FinderMethod finder) {
+    @Nullable
+    protected ShareValue getShareValue(final @Nonnull FinderMethod finder) {
         final ShareValue result;
 
         final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.SHAREVALUE_SELECT);
@@ -118,6 +122,7 @@ abstract class AbstractShareValueBOApplicationComponent extends SimpleApplicatio
      * @see ShareValue
      * @see #getShareValues(FinderMethod finder)
      */
+    @Nonnull
     public List<ShareValue> getShareValues() {
         final ShareValue_FindAll0 finder = new ShareValue_FindAll0();
 

@@ -15,6 +15,7 @@ import jet.framework.manager.csv.interfaces.CSVLineProcessor;
 import jet.framework.manager.csv.interfaces.CSVManagerContext;
 import jet.framework.manager.csv.interfaces.CSVParameters;
 import jet.framework.ui.desktop.ApplicationComponentLauncher;
+import jet.framework.ui.desktop.navigation.menu.CleanCloseException;
 import jet.framework.util.ui.LocalizedMessageFormatDisplayable;
 import jet.lifecycle.annotations.Initializer;
 import jet.shareplot.ac.bo.share.Share;
@@ -87,6 +88,8 @@ public class ShareDetailNut extends AbstractSharePlotNut implements CSVLineProce
                 acLauncher.launchApplicationComponent(TaskNameConstants.SHARE_QUANTITY, initArgs);
             } catch (final JETException e) {
                 logp(JETLevel.SEVERE, "ShareDetailNut", "launchQuantityList", e.getMessage(), e);
+            } catch (final CleanCloseException e) {
+                logp(JETLevel.INFO, "PortfolioListNut", "launchPortfolioEditor", e.getMessage());
             }
         }
     }

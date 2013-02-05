@@ -2,7 +2,11 @@ package jet.shareplotbatch;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import jet.framework.component.SelectStoreProvider;
+import jet.framework.manager.batchsession.common.BatchSessionManagerRequest;
+import jet.framework.manager.batchsession.common.BatchSessionManagerResponse;
 import jet.framework.manager.batchsession.interfaces.BatchSessionListener;
 import jet.framework.nuts.desktop.AbstractBatchDesktopNut;
 import jet.lifecycle.annotations.Initializer;
@@ -10,7 +14,6 @@ import jet.shareplot.ac.SelectStoreApplicationComponent;
 import jet.shareplot.ac.bo.portfolio.Portfolio;
 import jet.shareplot.ac.bo.portfolio.PortfolioBOApplicationComponent;
 import jet.util.logger.JETLevel;
-import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
 public class SharePlotBatchNut extends AbstractBatchDesktopNut implements BatchSessionListener {
@@ -39,8 +42,12 @@ public class SharePlotBatchNut extends AbstractBatchDesktopNut implements BatchS
     }
 
     @Override
-    public void processSessionUpdate(final Model argument) {
-        logp(JETLevel.SEVERE, "SharePlotBatchNut", "processSessionUpdate", "Argument :: " + argument);
+    @Nonnull
+    public BatchSessionManagerResponse processSessionUpdate(final @Nonnull BatchSessionManagerRequest req) throws JETException {
+        logp(JETLevel.INFO, "SharePlotBatchNut", "processSessionUpdate", "Argument :: " + req.getRequestStamp());
+
+        final BatchSessionManagerResponse response = new BatchSessionManagerResponse();
+        return response;
     }
 
 }

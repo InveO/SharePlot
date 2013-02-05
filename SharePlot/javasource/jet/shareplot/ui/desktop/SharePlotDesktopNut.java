@@ -7,11 +7,14 @@ import java.util.Map;
 import jet.components.interfaces.ApplicationComponent;
 import jet.components.ui.container.common.UIContainerComponent;
 import jet.components.ui.label.common.UILabelComponent;
+import jet.container.managers.session.common.SessionNotFoundException;
 import jet.container.managers.session.interfaces.GlobalSession;
 import jet.container.managers.session.interfaces.SessionManagerContext;
 import jet.container.managers.ui.interfaces.UIComponentFinder;
 import jet.container.nuts.ui.UIAnchorService;
 import jet.framework.component.SelectStoreProvider;
+import jet.framework.manager.batchsession.common.BatchSessionManagerLoginResponse;
+import jet.framework.manager.batchsession.common.BatchSessionManagerRequest;
 import jet.framework.manager.batchsession.interfaces.BatchSessionManagerContext;
 import jet.framework.ui.desktop.AbstractDesktopNut;
 import jet.framework.ui.desktop.ApplicationComponentLauncher;
@@ -33,7 +36,6 @@ import jet.shareplot.ui.desktop.dialog.SharePlotDialogHelper;
 import jet.util.JetVersion;
 import jet.util.SerializableKey;
 import jet.util.logger.JETLevel;
-import jet.util.models.SimpleEventModelImpl;
 import jet.util.throwable.JETException;
 
 /**
@@ -104,14 +106,25 @@ public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMe
         final JetVersion ver = getApplicationProxy().getApplicationVersion();
         versionLabel.setText(ver.getVersion() + "  " + ver.getTime());
 
+        System.err.println("[SharePlotDesktopNut] doSharePlotDesktopNutInit - STARTING BATCH SESSION");
         try {
             final BatchSessionManagerContext batchSessionCtxt = (BatchSessionManagerContext) getManagerContext(BatchSessionManagerContext.NAME);
-            final GlobalSession session = batchSessionCtxt.createBatchSession("SharePlotBatch");
+            final BatchSessionManagerLoginResponse loginResponse = batchSessionCtxt.createBatchSession("SharePlotBatch", null);
 
-            batchSessionCtxt.updateBatchSession(session, new SimpleEventModelImpl());
+            final GlobalSession session = loginResponse.getGlobalSession();
+            final String sessionId = session.getGlobalId();
+            assert sessionId != null;
 
-            batchSessionCtxt.killBatchSession(session);
+            final String requestStamp = loginResponse.getNextRequestStamp();
+
+            final BatchSessionManagerRequest request = new BatchSessionManagerRequest(requestStamp);
+
+            batchSessionCtxt.updateBatchSession(sessionId, request);
+
+            batchSessionCtxt.killBatchSession(sessionId);
         } catch (final JETException e) {
+            logp(JETLevel.SEVERE, "SharePlotDesktopNut", "doSharePlotDesktopNutInit", e.getMessage(), e);
+        } catch (final SessionNotFoundException e) {
             logp(JETLevel.SEVERE, "SharePlotDesktopNut", "doSharePlotDesktopNutInit", e.getMessage(), e);
         }
 

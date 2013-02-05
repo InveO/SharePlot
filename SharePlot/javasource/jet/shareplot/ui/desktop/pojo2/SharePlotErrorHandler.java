@@ -16,7 +16,7 @@ public class SharePlotErrorHandler implements JFErrorHandler {
     }
 
     @Override
-    public void displayError(final InterceptorValidationException e, final InterceptorContext<?, ?> interceptorContext) {
+    public void displayError(final InterceptorValidationException e, final InterceptorContext interceptorContext) {
         this.dialogHelper.displayMessageDialog(null, DialogConstants.TITLE_INFO, e.getMessage(), e.getLocalizedMessage());
     }
 }

@@ -14,11 +14,11 @@ import jet.util.throwable.JETException;
 
 /**
  * Implementation of the AbstractSelectStoreApplicationComponent class
- * 
+ *
  * This is a generated file and should not be modified.
- * 
+ *
  * @author JetTools
- * 
+ *
  */
 public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicationComponent {
 
@@ -72,10 +72,10 @@ public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicat
     /**
      * Get an instance of a SelectStoreApplicationComponent. This method will ensure that the same instance is
      * used within the same session.
-     * 
+     *
      * The <code>SelectStoreApplicationComponent</code> should not be deinitialized. This will be done
      * automatically when the session is closed.
-     * 
+     *
      * @param session Session this <code>SelectStoreApplicationComponent</code> is to be linked to
      * @return SelectStoreApplicationComponent Instantiated SelectStoreApplicationComponent
      * @throws JETException
@@ -112,7 +112,7 @@ public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicat
 
     /**
      * Deinit, internal use only
-     * 
+     *
      * @throws JETException
      */
     @Deinitializer

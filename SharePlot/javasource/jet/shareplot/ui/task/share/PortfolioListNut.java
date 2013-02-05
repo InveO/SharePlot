@@ -9,6 +9,7 @@ import jet.components.ui.events.MouseEventType;
 import jet.components.ui.events.UIEvent;
 import jet.components.ui.table.common.UITableComponent2;
 import jet.framework.ui.desktop.ApplicationComponentLauncher;
+import jet.framework.ui.desktop.navigation.menu.CleanCloseException;
 import jet.framework.ui.utils.table.UITableListDisplay3;
 import jet.shareplot.ac.bo.portfolio.Portfolio;
 import jet.shareplot.ac.bo.portfolio.PortfolioBOApplicationComponent;
@@ -74,6 +75,8 @@ public class PortfolioListNut extends AbstractSharePlotListNut<Portfolio> {
                 acLauncher.launchApplicationComponent(editorName, initArgs);
             } catch (final JETException e) {
                 logp(JETLevel.SEVERE, "PortfolioListNut", "launchPortfolioEditor", e.getMessage(), e);
+            } catch (final CleanCloseException e) {
+                logp(JETLevel.INFO, "PortfolioListNut", "launchPortfolioEditor", e.getMessage());
             }
         }
     }

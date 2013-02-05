@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Nonnull;
 import javax.ejb.FinderException;
 import javax.ejb.ObjectNotFoundException;
 
@@ -33,16 +34,19 @@ public class Portfolio_FindAll0 implements FinderMethod {
 
 
     @Override
+    @Nonnull
     public String getFinderName() {
         return "findAll";
     }
 
     @Override
+    @Nonnull
     public Map<String, Object> getArguments() {
         return new HashMap<String, Object>();
     }
 
     @Override
+    @Nonnull
     public ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
 
         List<PortfolioRemote> list;

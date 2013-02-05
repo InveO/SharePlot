@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.ejb.ObjectNotFoundException;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -45,7 +47,8 @@ abstract class AbstractPortfolioBOApplicationComponent extends SimpleApplication
      * @see List
      * @see Portfolio
      */
-    protected List<Portfolio> getPortfolios(final FinderMethod finder) {
+    @Nonnull
+    protected List<Portfolio> getPortfolios(final @Nonnull FinderMethod finder) {
         final List<Portfolio> result = new ArrayList<Portfolio>();
         final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.PORTFOLIO_SELECT);
         final AbstractPortfolioBOApplicationComponent portfolioAC = this;
@@ -96,7 +99,8 @@ abstract class AbstractPortfolioBOApplicationComponent extends SimpleApplication
      * @return the portfolio matching the FinderMethod.
      * @see Portfolio
      */
-    protected Portfolio getPortfolio(final FinderMethod finder) {
+    @Nullable
+    protected Portfolio getPortfolio(final @Nonnull FinderMethod finder) {
         final Portfolio result;
 
         final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.PORTFOLIO_SELECT);
@@ -118,6 +122,7 @@ abstract class AbstractPortfolioBOApplicationComponent extends SimpleApplication
      * @see Portfolio
      * @see #getPortfolios(FinderMethod finder)
      */
+    @Nonnull
     public List<Portfolio> getPortfolios() {
         final Portfolio_FindAll0 finder = new Portfolio_FindAll0();
 

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Nonnull;
 import javax.ejb.FinderException;
 import javax.ejb.ObjectNotFoundException;
 
@@ -54,11 +55,13 @@ public class FullShareValue_FindByPreparedSQLQuery2 implements FinderMethod {
 
 
     @Override
+    @Nonnull
     public String getFinderName() {
         return "findByPreparedSQLQuery";
     }
 
     @Override
+    @Nonnull
     public Map<String, Object> getArguments() {
         final Map<String, Object> args = new HashMap<String, Object>();
         args.put("sqlWhereClause", this.sqlWhereClause);
@@ -67,6 +70,7 @@ public class FullShareValue_FindByPreparedSQLQuery2 implements FinderMethod {
     }
 
     @Override
+    @Nonnull
     public ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
 
         List<ShareValueRemote> list;

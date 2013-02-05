@@ -2,6 +2,8 @@ package jet.shareplot.persistence.pojo;
 
 import java.io.Serializable;
 
+import javax.annotation.Nonnull;
+
 import jet.framework.manager.datamodel.interfaces.DataModelRootNode;
 import jet.framework.util.models.ModelHelper;
 import jet.framework.util.pojo2.DispatcherModel;
@@ -32,33 +34,24 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
 
     private static final String ATTRIBUTE_DISPATCHER_MODEL = "jet.shareplot.persistence.pojo.ATTRIBUTE_DISPATCHER_MODEL";
 
-    private Model dataModel;
-    private Logger logger;
+    private final Model dataModel;
+    private transient Logger logger;
 
-    private DispatcherModel<PortfolioItem, Long> idPortfolioDispatcherModel;
-    private DispatcherModel<PortfolioItem, String> isFakeDispatcherModel;
-    private DispatcherModel<PortfolioItem, String> nameDispatcherModel;
+    private transient DispatcherModel<PortfolioItem> idPortfolioDispatcherModel;
+    private transient DispatcherModel<PortfolioItem> isFakeDispatcherModel;
+    private transient DispatcherModel<PortfolioItem> nameDispatcherModel;
 
-    private JFErrorHandler jfErrorHandler;
+    private transient JFErrorHandler jfErrorHandler;
 
     /**
      * Constructor used to create a new Portfolio Data Model
      */
     public PortfolioItem() {
-        // initialise the logger
-        try {
-            final JETLoggerManager loggerManager = JETLoggerManager.getJETLoggerManager();
-            this.logger = loggerManager.getLogger("jet.shareplot.persistence.pojo");
-        } catch (final JETSystemError e) {
-            // probably running in junit, use junitLogger
-            this.logger = LoggerJUnit.getInstance();
-        }
-
+        this.dataModel = new DataModelRootNode();
         init_DataModel();
     }
 
     private void init_DataModel() {
-        this.dataModel = new DataModelRootNode();
         this.dataModel.setTagName("Portfolio");
 
         SimpleEventModelImpl model = null;
@@ -82,15 +75,6 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
         if (model == null) {
             throw new IllegalArgumentException("model argument can not be null");
         }
-        // initialise the logger
-        try {
-            final JETLoggerManager loggerManager = JETLoggerManager.getJETLoggerManager();
-            this.logger = loggerManager.getLogger("jet.shareplot.persistence.pojo");
-        } catch (final JETSystemError e) {
-            // probably running in junit, use junitLogger
-            this.logger = LoggerJUnit.getInstance();
-        }
-
         this.dataModel = model;
     }
 
@@ -108,6 +92,20 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
         setIdPortfolio(portfolio.getIdPortfolio());
         setIsFake(portfolio.getIsFake());
         setName(portfolio.getName());
+    }
+
+    private Logger getLogger() {
+        if (this.logger == null) {
+            // initialise the logger
+            try {
+                final JETLoggerManager loggerManager = JETLoggerManager.getJETLoggerManager();
+                this.logger = loggerManager.getLogger("jet.shareplot.persistence.pojo");
+            } catch (final JETSystemError e) {
+                // probably running in junit, use junitLogger
+                this.logger = LoggerJUnit.getInstance();
+            }
+        }
+        return this.logger;
     }
 
     /**
@@ -141,8 +139,11 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      * @see JFDataItem
      */
     @Override
+    @Nonnull
     public final Model get_Model() {
-        return this.dataModel;
+        Model model = this.dataModel;
+        assert model != null;
+        return model;
     }
 
     /**
@@ -168,20 +169,23 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      * @return Model of Data Model node idPortfolio
      */
     @SuppressWarnings("unchecked")
-    public final DispatcherModel<PortfolioItem, Long> get_IdPortfolio_Model() {
+    @Nonnull
+    public final DispatcherModel<PortfolioItem> get_IdPortfolio_Model() {
         if (this.idPortfolioDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idPortfolio");
-                this.idPortfolioDispatcherModel = (DispatcherModel<PortfolioItem, Long>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                this.idPortfolioDispatcherModel = (DispatcherModel<PortfolioItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.idPortfolioDispatcherModel == null) {
-                    this.idPortfolioDispatcherModel = new DispatcherModel<PortfolioItem, Long>(this, sourceModel);
+                    this.idPortfolioDispatcherModel = new DispatcherModel<PortfolioItem>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.idPortfolioDispatcherModel);
                 }
             } catch (final JETException e) {
                 throw new JETSystemError("Portfolio data model does not have a child named idPortfolio. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
             }
         }
-        return this.idPortfolioDispatcherModel;
+        final DispatcherModel<PortfolioItem> dm = this.idPortfolioDispatcherModel;
+        assert dm != null;
+        return dm;
     }
 
     /**
@@ -207,22 +211,25 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      * @return Model of Data Model node isFake
      */
     @SuppressWarnings("unchecked")
-    public final DispatcherModel<PortfolioItem, String> get_IsFake_Model() {
+    @Nonnull
+    public final DispatcherModel<PortfolioItem> get_IsFake_Model() {
         if (this.isFakeDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "isFake");
-                this.isFakeDispatcherModel = (DispatcherModel<PortfolioItem, String>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                this.isFakeDispatcherModel = (DispatcherModel<PortfolioItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.isFakeDispatcherModel == null) {
-                    this.isFakeDispatcherModel = new DispatcherModel<PortfolioItem, String>(this, sourceModel);
+                    this.isFakeDispatcherModel = new DispatcherModel<PortfolioItem>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.isFakeDispatcherModel);
                 }
 
-                this.isFakeDispatcherModel.addInterceptor(new StringLengthInterceptor<PortfolioItem>(1));
+                this.isFakeDispatcherModel.addInterceptor(StringLengthInterceptor.getStringLengthInterceptor(1));
             } catch (final JETException e) {
                 throw new JETSystemError("Portfolio data model does not have a child named isFake. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
             }
         }
-        return this.isFakeDispatcherModel;
+        final DispatcherModel<PortfolioItem> dm = this.isFakeDispatcherModel;
+        assert dm != null;
+        return dm;
     }
 
     /**
@@ -248,22 +255,25 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      * @return Model of Data Model node name
      */
     @SuppressWarnings("unchecked")
-    public final DispatcherModel<PortfolioItem, String> get_Name_Model() {
+    @Nonnull
+    public final DispatcherModel<PortfolioItem> get_Name_Model() {
         if (this.nameDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "name");
-                this.nameDispatcherModel = (DispatcherModel<PortfolioItem, String>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                this.nameDispatcherModel = (DispatcherModel<PortfolioItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.nameDispatcherModel == null) {
-                    this.nameDispatcherModel = new DispatcherModel<PortfolioItem, String>(this, sourceModel);
+                    this.nameDispatcherModel = new DispatcherModel<PortfolioItem>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.nameDispatcherModel);
                 }
 
-                this.nameDispatcherModel.addInterceptor(new StringLengthInterceptor<PortfolioItem>(45));
+                this.nameDispatcherModel.addInterceptor(StringLengthInterceptor.getStringLengthInterceptor(45));
             } catch (final JETException e) {
                 throw new JETSystemError("Portfolio data model does not have a child named name. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
             }
         }
-        return this.nameDispatcherModel;
+        final DispatcherModel<PortfolioItem> dm = this.nameDispatcherModel;
+        assert dm != null;
+        return dm;
     }
 
     /**
@@ -280,13 +290,13 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     public final boolean isNotNullableNull() {
         String isFake = getIsFake();
         if (isFake == null) {
-            this.logger.logp(JETLevel.WARNING, "PortfolioItem", "isNotNullableNull",
+            getLogger().logp(JETLevel.WARNING, "PortfolioItem", "isNotNullableNull",
                 "isFake is null but is not nullable.");
             return true;
         }
         String name = getName();
         if (name == null) {
-            this.logger.logp(JETLevel.WARNING, "PortfolioItem", "isNotNullableNull",
+            getLogger().logp(JETLevel.WARNING, "PortfolioItem", "isNotNullableNull",
                 "name is null but is not nullable.");
             return true;
         }

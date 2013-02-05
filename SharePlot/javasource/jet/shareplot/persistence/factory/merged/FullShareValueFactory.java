@@ -21,7 +21,7 @@ import jet.util.throwable.JETException;
 public final class FullShareValueFactory implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static Logger LOGGER;
+    private static volatile Logger LOGGER;
 
     private FullShareValueFactory() {
         // Singleton, add a private constructor to prevent instantiation
@@ -111,11 +111,21 @@ public final class FullShareValueFactory implements Serializable {
         return item;
     }
 
+    /**
+     * @return Logger
+     * @see "http://en.wikipedia.org/wiki/Double-checked_locking#Usage_in_Java"
+     */
     private static Logger getLogger() {
-        if (LOGGER == null) {
-            LOGGER = JETLoggerManager.getJETLoggerManager().getLogger("jet.shareplot.persistence.factory.merged");
+        Logger result = LOGGER;
+        if (result == null) {
+            synchronized(FullShareValueFactory.class) {
+                result = LOGGER;
+                if (result == null) {
+                    LOGGER = result = JETLoggerManager.getJETLoggerManager().getLogger("jet.shareplot.persistence.factory.merged");
+                }
+            }
         }
-        return LOGGER;
+        return result;
     }
 
 }

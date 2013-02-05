@@ -9,9 +9,10 @@ import jet.components.ui.events.MouseEventType;
 import jet.components.ui.events.UIEvent;
 import jet.components.ui.table.common.UITableComponent2;
 import jet.framework.ui.desktop.ApplicationComponentLauncher;
+import jet.framework.ui.desktop.navigation.menu.CleanCloseException;
 import jet.framework.ui.utils.table.UITableListDisplay3;
 import jet.framework.util.exception.FormatedJetException;
-import jet.framework.util.models.ModelHelper;
+import jet.framework.util.models.UIModelHelper;
 import jet.framework.util.ui.LocalizedMessageFormatDisplayable;
 import jet.shareplot.ac.bo.portfolio.Portfolio;
 import jet.shareplot.ac.bo.share.Share;
@@ -70,6 +71,8 @@ public class ShareListNut extends AbstractSharePlotListNut<Share> {
                 acLauncher.launchApplicationComponent(editorName, initArgs);
             } catch (final JETException e) {
                 logp(JETLevel.SEVERE, "ShareListNut", "launchEditor", e.getMessage(), e);
+            } catch (final CleanCloseException e) {
+                logp(JETLevel.INFO, "PortfolioListNut", "launchPortfolioEditor", e.getMessage());
             }
         }
     }
@@ -91,7 +94,7 @@ public class ShareListNut extends AbstractSharePlotListNut<Share> {
     @Override
     protected void postInit() throws JETException {
         // nothing to do
-        ModelHelper.setDataModelNodeToField(this.portfolio.get_Name_Model(), "name", true, getMainComponent(), null);
+        UIModelHelper.setDataModelNodeToField(this.portfolio.get_Name_Model(), "name", true, getMainComponent(), null);
     }
 
     @Override

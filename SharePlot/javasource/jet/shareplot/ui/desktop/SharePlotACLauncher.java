@@ -7,6 +7,7 @@ import java.util.Map;
 
 import jet.components.interfaces.ApplicationComponent;
 import jet.framework.ui.desktop.ApplicationComponentLauncher;
+import jet.framework.ui.desktop.navigation.menu.CleanCloseException;
 import jet.framework.ui.desktop.navigation.menu.LaunchACMenuPlugin;
 import jet.framework.ui.desktop.navigation.menu.SwitchWindowMenuPlugin;
 import jet.framework.ui.desktop.navigation.menu.TaskUnicityPlugin;
@@ -38,7 +39,7 @@ public class SharePlotACLauncher implements ApplicationComponentLauncher, Serial
     }
 
     @Override
-    public ApplicationComponent launchApplicationComponent(final String acName, final Map<String, Object> initMap) throws JETException {
+    public ApplicationComponent launchApplicationComponent(final String acName, final Map<String, Object> initMap) throws JETException, CleanCloseException {
         Map<String, Object> initMap2 = initMap;
         if (initMap2 == null) {
             initMap2 = new HashMap<String, Object>();
