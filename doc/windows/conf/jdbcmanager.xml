@@ -1,7 +1,7 @@
 <JDBCMANAGER>
 
     <COMMON>
-        <EXT_CLASSPATH value="file:///D:/Jet/JetLib6.0.0/configs/shareplot_conf/ext/mysql-connector-java-5.1.22-bin.jar">
+        <EXT_CLASSPATH value="file:///D:/Jet/JetLib/configs/shareplot_conf/ext/mysql-connector-java-5.1.22-bin.jar">
             <PERMISSION class="java.net.SocketPermission" name="*" params="connect,accept,resolve,listen"/>
             <PERMISSION class="java.util.PropertyPermission" name="file.encoding" params="read"/>
         </EXT_CLASSPATH>
@@ -9,7 +9,7 @@
 
     <DATABASES>
 <!--         <DATABASE databasename="jdbc:mysql://localhost:3306/shareplot" user="shareplot" password="shareplot" name="SharePlot" type="MYSQL" driverJar="" driver="com.mysql.jdbc.Driver" jndidatasource="SharePlotDatasource" /> -->
-        <DATABASE databasename="jdbc:mysql://192.168.56.105:3306/shareplot" user="shareplot" password="shareplot" name="SharePlot" type="MYSQL" driverJar="" driver="com.mysql.jdbc.Driver" jndidatasource="SharePlotDatasource" />
+        <DATABASE databasename="jdbc:mysql://192.168.1.100:3306/shareplot" user="root" password="root" name="SharePlot" type="MYSQL" driverJar="" driver="com.mysql.jdbc.Driver" jndidatasource="SharePlotDatasource" />
     </DATABASES>
 
     <CACHE_LIST default="true" >

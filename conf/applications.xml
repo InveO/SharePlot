@@ -1,10 +1,10 @@
 <APPLICATIONS>
 
-    <APPLICATION location="JetFramework6.0.0" />
+    <APPLICATION location="JetFramework" />
 
     <APPLICATION location="SharePlot" />
 
-    <APPLICATION location="JetLogin5.0.0" />
+    <APPLICATION location="JetLogin" />
 
 <!--     <APPLICATION_CONFIG name="SharePlot" > -->
 <!--         <LOGIN_CONFIGURATION classname="jet.amanda.security.AmandaApplicationSecurity"> -->

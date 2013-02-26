@@ -63,17 +63,17 @@
         <copy todir="${deploy_dir}/configs/shareplot_conf/ext" >
             <fileset dir="conf/ext" includes="**/*.jar,**/*.zip" />
         </copy>
-		<mkdir dir="${deploy_dir}/JetFramework6.0.0" />
-		<copy todir="${deploy_dir}/JetFramework6.0.0" >
-			<fileset dir="${jars_dest}/../JetFramework6.0.0" includes="**/*" />
+		<mkdir dir="${deploy_dir}/JetFramework" />
+		<copy todir="${deploy_dir}/JetFramework" >
+			<fileset dir="${jars_dest}/../JetFramework" includes="**/*" />
 		</copy>
 		<mkdir dir="${deploy_dir}/JetLib" />
 		<copy todir="${deploy_dir}/JetLib" >
 			<fileset dir="${jars_dest}/../JetLib" includes="**/*" />
 		</copy>
-		<mkdir dir="${deploy_dir}/JetLogin5.0.0" />
-		<copy todir="${deploy_dir}/JetLogin5.0.0" >
-			<fileset dir="${jars_dest}/../JetLogin5.0.0" includes="**/*" />
+		<mkdir dir="${deploy_dir}/JetLogin" />
+		<copy todir="${deploy_dir}/JetLogin" >
+			<fileset dir="${jars_dest}/../JetLogin" includes="**/*" />
 		</copy>
 		<mkdir dir="${deploy_dir}/JetServlet" />
 		<copy file="${jars_dest}/../JetServlet/jet-servlet.war" todir="${deploy_dir}/JetServlet" />
@@ -113,17 +113,17 @@
 		<property name="copy_dir" value="${jet_lib_shareplot}"/>
 		<echo message="Copy to dir : ${copy_dir}" />
 		<mkdir dir="${copy_dir}" />
-		<mkdir dir="${copy_dir}/JetFramework6.0.0" />
-		<copy todir="${copy_dir}/JetFramework6.0.0" >
-			<fileset dir="${source_dir}/JetFramework6.0.0" includes="**/*" />
+		<mkdir dir="${copy_dir}/JetFramework" />
+		<copy todir="${copy_dir}/JetFramework" >
+			<fileset dir="${source_dir}/JetFramework" includes="**/*" />
 		</copy>
 		<mkdir dir="${copy_dir}/JetLib" />
 		<copy todir="${copy_dir}/JetLib" >
 			<fileset dir="${source_dir}/JetLib" includes="**/*" />
 		</copy>
-		<mkdir dir="${copy_dir}/JetLogin5.0.0" />
-		<copy todir="${copy_dir}/JetLogin5.0.0" >
-			<fileset dir="${source_dir}/JetLogin5.0.0" includes="**/*" />
+		<mkdir dir="${copy_dir}/JetLogin" />
+		<copy todir="${copy_dir}/JetLogin" >
+			<fileset dir="${source_dir}/JetLogin" includes="**/*" />
 		</copy>
 		<mkdir dir="${copy_dir}/JetServlet" />
 		<copy todir="${copy_dir}/JetServlet" >

@@ -40,7 +40,7 @@ JetBase =
 
 # Defines where the JET FRAMEWORK binaries are to be found
 # Only required for cleanup, compile, javadoc, FindBugs and JUnit via Ant
-# JetFrameworkLib = d:/Jet/JetLib/JetFramework6.0.0
+# JetFrameworkLib = d:/Jet/JetLib/JetFramework
 JetFrameworkLib = 
 
 # Defines where the JET FRAMEWORK sources are located
