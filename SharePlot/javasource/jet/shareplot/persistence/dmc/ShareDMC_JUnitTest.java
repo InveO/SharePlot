@@ -32,6 +32,7 @@ public class ShareDMC_JUnitTest {
 
         // assert : verify that the test run correctly
         assertFalse(shareItem.isNew());
+        assertFalse(shareItem.isDirty());
 
         // test that all data read from remote
         verify(shareRemote, times(1)).getIdShare();

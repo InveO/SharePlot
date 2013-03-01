@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import javax.ejb.EJBException;
 
 import jet.framework.manager.datamodel.interfaces.DataModelConverter2;
+import jet.framework.manager.datamodel.interfaces.DataModelRootNode;
 import jet.shareplot.persistence.ejb.sharevalue.ShareValueRemote;
 import jet.shareplot.persistence.pojo.ShareValueItem;
 import jet.util.models.interfaces.Model;
@@ -32,6 +33,12 @@ public class ShareValueDMC implements DataModelConverter2<ShareValueRemote> {
             throw new JETException("EJBException while reading from ShareValueRemote.", e);
         } catch (final RemoteException e) {
             throw new JETException("RemoteException while reading from ShareValueRemote.", e);
+        }
+
+        // reset the dirty flag, record has just been read from db, can not be dirty
+        if (shareValueItem.get_Model() instanceof DataModelRootNode) {
+            final DataModelRootNode dmrn = (DataModelRootNode) shareValueItem.get_Model();
+            dmrn.resetDirtyFlag();
         }
 
         return shareValueItem.get_Model();

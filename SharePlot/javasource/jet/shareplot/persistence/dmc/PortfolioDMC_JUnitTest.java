@@ -32,6 +32,7 @@ public class PortfolioDMC_JUnitTest {
 
         // assert : verify that the test run correctly
         assertFalse(portfolioItem.isNew());
+        assertFalse(portfolioItem.isDirty());
 
         // test that all data read from remote
         verify(portfolioRemote, times(1)).getIdPortfolio();

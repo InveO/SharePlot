@@ -32,6 +32,7 @@ public class ShareValueDMC_JUnitTest {
 
         // assert : verify that the test run correctly
         assertFalse(shareValueItem.isNew());
+        assertFalse(shareValueItem.isDirty());
 
         // test that all data read from remote
         verify(shareValueRemote, times(1)).getIdShareValue();

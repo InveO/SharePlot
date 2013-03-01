@@ -10,6 +10,7 @@ import javax.naming.NamingException;
 
 import jet.framework.manager.datamodel.interfaces.AbstractDataSourceExecutor2;
 import jet.framework.manager.datamodel.interfaces.DataModelConverter2;
+import jet.framework.manager.datamodel.interfaces.DataModelRootNode;
 import jet.framework.util.JetConstants;
 import jet.framework.util.jta.JETDuplicateKeyException;
 import jet.shareplot.persistence.dmc.ShareQuantityDMC;
@@ -42,6 +43,12 @@ public class ShareQuantityDSE extends AbstractDataSourceExecutor2<ShareQuantityH
         };
 
         callUpdateTransaction(callable);
+
+        // reset the dirty flag, record has just been written to the db, can not be dirty
+        if (dataModel instanceof DataModelRootNode) {
+            final DataModelRootNode dmrn = (DataModelRootNode) dataModel;
+            dmrn.resetDirtyFlag();
+        }
     }
 
     @Override
@@ -62,6 +69,12 @@ public class ShareQuantityDSE extends AbstractDataSourceExecutor2<ShareQuantityH
         };
 
         callCreateTransaction(callable);
+
+        // reset the dirty flag, record has just been written to the db, can not be dirty
+        if (dataModel instanceof DataModelRootNode) {
+            final DataModelRootNode dmrn = (DataModelRootNode) dataModel;
+            dmrn.resetDirtyFlag();
+        }
     }
 
     @Override
@@ -76,6 +89,12 @@ public class ShareQuantityDSE extends AbstractDataSourceExecutor2<ShareQuantityH
         };
 
         callUpdateTransaction(callable);
+
+        // set the dirty flag, record has just been deleted from the db, can only be dirty
+        if (dataModel instanceof DataModelRootNode) {
+            final DataModelRootNode dmrn = (DataModelRootNode) dataModel;
+            dmrn.setDirtyFlag();
+        }
 
         // if has autoincrement PK, must reset pk to null
         final ShareQuantityItem shareQuantityItem = new ShareQuantityItem(dataModel);

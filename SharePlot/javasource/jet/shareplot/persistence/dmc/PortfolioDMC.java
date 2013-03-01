@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import javax.ejb.EJBException;
 
 import jet.framework.manager.datamodel.interfaces.DataModelConverter2;
+import jet.framework.manager.datamodel.interfaces.DataModelRootNode;
 import jet.shareplot.persistence.ejb.portfolio.PortfolioRemote;
 import jet.shareplot.persistence.pojo.PortfolioItem;
 import jet.util.models.interfaces.Model;
@@ -31,6 +32,12 @@ public class PortfolioDMC implements DataModelConverter2<PortfolioRemote> {
             throw new JETException("EJBException while reading from PortfolioRemote.", e);
         } catch (final RemoteException e) {
             throw new JETException("RemoteException while reading from PortfolioRemote.", e);
+        }
+
+        // reset the dirty flag, record has just been read from db, can not be dirty
+        if (portfolioItem.get_Model() instanceof DataModelRootNode) {
+            final DataModelRootNode dmrn = (DataModelRootNode) portfolioItem.get_Model();
+            dmrn.resetDirtyFlag();
         }
 
         return portfolioItem.get_Model();
