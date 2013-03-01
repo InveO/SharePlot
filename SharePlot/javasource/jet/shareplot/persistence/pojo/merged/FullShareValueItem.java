@@ -130,6 +130,16 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
         return this.logger;
     }
 
+    @Override
+    public boolean isDirty() {
+        if (get_Model() instanceof DataModelRootNode) {
+            final DataModelRootNode dmrn = (DataModelRootNode) get_Model();
+            return dmrn.isDirty();
+        }
+        this.logger.logp(JETLevel.INFO, "FullShareValueItem", "isDirty", "Model is not a DataModelRootNode can not define if it is dirty.");
+        return false;
+    }
+
     /**
      * @return <code>true</code> if this fullShareValue is new.
      * @see JFDataItem
@@ -195,7 +205,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     public final DispatcherModel<FullShareValueItem> get_IdShareValue_Model() {
         if (this.idShareValueDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idShareValue");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idShareValue");
                 this.idShareValueDispatcherModel = (DispatcherModel<FullShareValueItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.idShareValueDispatcherModel == null) {
                     this.idShareValueDispatcherModel = new DispatcherModel<FullShareValueItem>(this, sourceModel);
@@ -222,7 +232,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
      * Set node value of Data Model node codeISIN
      * @param codeISIN String value of Data Model node codeISIN
      */
-    public final void setCodeISIN(String codeISIN) {
+    public final void setCodeISIN(final String codeISIN) {
         get_CodeISIN_Model().setNodeValue(codeISIN);
     }
 
@@ -235,7 +245,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     public final DispatcherModel<FullShareValueItem> get_CodeISIN_Model() {
         if (this.codeISINDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "codeISIN");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "codeISIN");
                 this.codeISINDispatcherModel = (DispatcherModel<FullShareValueItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.codeISINDispatcherModel == null) {
                     this.codeISINDispatcherModel = new DispatcherModel<FullShareValueItem>(this, sourceModel);
@@ -264,7 +274,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
      * Set node value of Data Model node codeYahoo
      * @param codeYahoo String value of Data Model node codeYahoo
      */
-    public final void setCodeYahoo(String codeYahoo) {
+    public final void setCodeYahoo(final String codeYahoo) {
         get_CodeYahoo_Model().setNodeValue(codeYahoo);
     }
 
@@ -277,7 +287,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     public final DispatcherModel<FullShareValueItem> get_CodeYahoo_Model() {
         if (this.codeYahooDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "codeYahoo");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "codeYahoo");
                 this.codeYahooDispatcherModel = (DispatcherModel<FullShareValueItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.codeYahooDispatcherModel == null) {
                     this.codeYahooDispatcherModel = new DispatcherModel<FullShareValueItem>(this, sourceModel);
@@ -306,7 +316,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
      * Set node value of Data Model node description
      * @param description String value of Data Model node description
      */
-    public final void setDescription(String description) {
+    public final void setDescription(final String description) {
         get_Description_Model().setNodeValue(description);
     }
 
@@ -319,7 +329,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     public final DispatcherModel<FullShareValueItem> get_Description_Model() {
         if (this.descriptionDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "description");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "description");
                 this.descriptionDispatcherModel = (DispatcherModel<FullShareValueItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.descriptionDispatcherModel == null) {
                     this.descriptionDispatcherModel = new DispatcherModel<FullShareValueItem>(this, sourceModel);
@@ -350,7 +360,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
      * This field should not be <code>null</code> in the database.
      * @param idPortfolio Long value of Data Model node idPortfolio
      */
-    public final void setIdPortfolio(Long idPortfolio) {
+    public final void setIdPortfolio(final Long idPortfolio) {
         get_IdPortfolio_Model().setNodeValue(idPortfolio);
     }
 
@@ -363,7 +373,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     public final DispatcherModel<FullShareValueItem> get_IdPortfolio_Model() {
         if (this.idPortfolioDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idPortfolio");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idPortfolio");
                 this.idPortfolioDispatcherModel = (DispatcherModel<FullShareValueItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.idPortfolioDispatcherModel == null) {
                     this.idPortfolioDispatcherModel = new DispatcherModel<FullShareValueItem>(this, sourceModel);
@@ -392,7 +402,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
      * This field should not be <code>null</code> in the database.
      * @param idShare Long value of Data Model node idShare
      */
-    public final void setIdShare(Long idShare) {
+    public final void setIdShare(final Long idShare) {
         get_IdShare_Model().setNodeValue(idShare);
     }
 
@@ -405,7 +415,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     public final DispatcherModel<FullShareValueItem> get_IdShare_Model() {
         if (this.idShareDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idShare");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idShare");
                 this.idShareDispatcherModel = (DispatcherModel<FullShareValueItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.idShareDispatcherModel == null) {
                     this.idShareDispatcherModel = new DispatcherModel<FullShareValueItem>(this, sourceModel);
@@ -434,7 +444,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
      * This field should not be <code>null</code> in the database.
      * @param name String value of Data Model node name
      */
-    public final void setName(String name) {
+    public final void setName(final String name) {
         get_Name_Model().setNodeValue(name);
     }
 
@@ -447,7 +457,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     public final DispatcherModel<FullShareValueItem> get_Name_Model() {
         if (this.nameDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "name");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "name");
                 this.nameDispatcherModel = (DispatcherModel<FullShareValueItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.nameDispatcherModel == null) {
                     this.nameDispatcherModel = new DispatcherModel<FullShareValueItem>(this, sourceModel);
@@ -478,7 +488,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
      * This field should not be <code>null</code> in the database.
      * @param value java.math.BigDecimal value of Data Model node value
      */
-    public final void setValue(java.math.BigDecimal value) {
+    public final void setValue(final java.math.BigDecimal value) {
         get_Value_Model().setNodeValue(value);
     }
 
@@ -491,7 +501,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     public final DispatcherModel<FullShareValueItem> get_Value_Model() {
         if (this.valueDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "value");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "value");
                 this.valueDispatcherModel = (DispatcherModel<FullShareValueItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.valueDispatcherModel == null) {
                     this.valueDispatcherModel = new DispatcherModel<FullShareValueItem>(this, sourceModel);
@@ -520,7 +530,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
      * This field should not be <code>null</code> in the database.
      * @param valueDate java.util.Date value of Data Model node valueDate
      */
-    public final void setValueDate(java.util.Date valueDate) {
+    public final void setValueDate(final java.util.Date valueDate) {
         get_ValueDate_Model().setNodeValue(valueDate);
     }
 
@@ -533,7 +543,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     public final DispatcherModel<FullShareValueItem> get_ValueDate_Model() {
         if (this.valueDateDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "valueDate");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "valueDate");
                 this.valueDateDispatcherModel = (DispatcherModel<FullShareValueItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.valueDateDispatcherModel == null) {
                     this.valueDateDispatcherModel = new DispatcherModel<FullShareValueItem>(this, sourceModel);
@@ -563,31 +573,31 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
      */
     @Override
     public final boolean isNotNullableNull() {
-        Long idPortfolio = getIdPortfolio();
+        final Long idPortfolio = getIdPortfolio();
         if (idPortfolio == null) {
             getLogger().logp(JETLevel.WARNING, "FullShareValueItem", "isNotNullableNull",
                 "idPortfolio is null but is not nullable.");
             return true;
         }
-        Long idShare = getIdShare();
+        final Long idShare = getIdShare();
         if (idShare == null) {
             getLogger().logp(JETLevel.WARNING, "FullShareValueItem", "isNotNullableNull",
                 "idShare is null but is not nullable.");
             return true;
         }
-        String name = getName();
+        final String name = getName();
         if (name == null) {
             getLogger().logp(JETLevel.WARNING, "FullShareValueItem", "isNotNullableNull",
                 "name is null but is not nullable.");
             return true;
         }
-        java.math.BigDecimal value = getValue();
+        final java.math.BigDecimal value = getValue();
         if (value == null) {
             getLogger().logp(JETLevel.WARNING, "FullShareValueItem", "isNotNullableNull",
                 "value is null but is not nullable.");
             return true;
         }
-        java.util.Date valueDate = getValueDate();
+        final java.util.Date valueDate = getValueDate();
         if (valueDate == null) {
             getLogger().logp(JETLevel.WARNING, "FullShareValueItem", "isNotNullableNull",
                 "valueDate is null but is not nullable.");

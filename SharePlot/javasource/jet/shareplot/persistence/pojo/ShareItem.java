@@ -118,6 +118,16 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
         return this.logger;
     }
 
+    @Override
+    public boolean isDirty() {
+        if (get_Model() instanceof DataModelRootNode) {
+            final DataModelRootNode dmrn = (DataModelRootNode) get_Model();
+            return dmrn.isDirty();
+        }
+        this.logger.logp(JETLevel.INFO, "ShareItem", "isDirty", "Model is not a DataModelRootNode can not define if it is dirty.");
+        return false;
+    }
+
     /**
      * @return <code>true</code> if this share is new.
      * @see JFDataItem
@@ -183,7 +193,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
     public final DispatcherModel<ShareItem> get_IdShare_Model() {
         if (this.idShareDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idShare");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idShare");
                 this.idShareDispatcherModel = (DispatcherModel<ShareItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.idShareDispatcherModel == null) {
                     this.idShareDispatcherModel = new DispatcherModel<ShareItem>(this, sourceModel);
@@ -210,7 +220,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * Set node value of Data Model node codeISIN
      * @param codeISIN String value of Data Model node codeISIN
      */
-    public final void setCodeISIN(String codeISIN) {
+    public final void setCodeISIN(final String codeISIN) {
         get_CodeISIN_Model().setNodeValue(codeISIN);
     }
 
@@ -223,7 +233,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
     public final DispatcherModel<ShareItem> get_CodeISIN_Model() {
         if (this.codeISINDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "codeISIN");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "codeISIN");
                 this.codeISINDispatcherModel = (DispatcherModel<ShareItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.codeISINDispatcherModel == null) {
                     this.codeISINDispatcherModel = new DispatcherModel<ShareItem>(this, sourceModel);
@@ -252,7 +262,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * Set node value of Data Model node codeYahoo
      * @param codeYahoo String value of Data Model node codeYahoo
      */
-    public final void setCodeYahoo(String codeYahoo) {
+    public final void setCodeYahoo(final String codeYahoo) {
         get_CodeYahoo_Model().setNodeValue(codeYahoo);
     }
 
@@ -265,7 +275,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
     public final DispatcherModel<ShareItem> get_CodeYahoo_Model() {
         if (this.codeYahooDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "codeYahoo");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "codeYahoo");
                 this.codeYahooDispatcherModel = (DispatcherModel<ShareItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.codeYahooDispatcherModel == null) {
                     this.codeYahooDispatcherModel = new DispatcherModel<ShareItem>(this, sourceModel);
@@ -294,7 +304,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * Set node value of Data Model node description
      * @param description String value of Data Model node description
      */
-    public final void setDescription(String description) {
+    public final void setDescription(final String description) {
         get_Description_Model().setNodeValue(description);
     }
 
@@ -307,7 +317,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
     public final DispatcherModel<ShareItem> get_Description_Model() {
         if (this.descriptionDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "description");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "description");
                 this.descriptionDispatcherModel = (DispatcherModel<ShareItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.descriptionDispatcherModel == null) {
                     this.descriptionDispatcherModel = new DispatcherModel<ShareItem>(this, sourceModel);
@@ -338,7 +348,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * This field should not be <code>null</code> in the database.
      * @param idPortfolio Long value of Data Model node idPortfolio
      */
-    public final void setIdPortfolio(Long idPortfolio) {
+    public final void setIdPortfolio(final Long idPortfolio) {
         get_IdPortfolio_Model().setNodeValue(idPortfolio);
     }
 
@@ -351,7 +361,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
     public final DispatcherModel<ShareItem> get_IdPortfolio_Model() {
         if (this.idPortfolioDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idPortfolio");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idPortfolio");
                 this.idPortfolioDispatcherModel = (DispatcherModel<ShareItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.idPortfolioDispatcherModel == null) {
                     this.idPortfolioDispatcherModel = new DispatcherModel<ShareItem>(this, sourceModel);
@@ -380,7 +390,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * This field should not be <code>null</code> in the database.
      * @param name String value of Data Model node name
      */
-    public final void setName(String name) {
+    public final void setName(final String name) {
         get_Name_Model().setNodeValue(name);
     }
 
@@ -393,7 +403,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
     public final DispatcherModel<ShareItem> get_Name_Model() {
         if (this.nameDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "name");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "name");
                 this.nameDispatcherModel = (DispatcherModel<ShareItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.nameDispatcherModel == null) {
                     this.nameDispatcherModel = new DispatcherModel<ShareItem>(this, sourceModel);
@@ -422,13 +432,13 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      */
     @Override
     public final boolean isNotNullableNull() {
-        Long idPortfolio = getIdPortfolio();
+        final Long idPortfolio = getIdPortfolio();
         if (idPortfolio == null) {
             getLogger().logp(JETLevel.WARNING, "ShareItem", "isNotNullableNull",
                 "idPortfolio is null but is not nullable.");
             return true;
         }
-        String name = getName();
+        final String name = getName();
         if (name == null) {
             getLogger().logp(JETLevel.WARNING, "ShareItem", "isNotNullableNull",
                 "name is null but is not nullable.");

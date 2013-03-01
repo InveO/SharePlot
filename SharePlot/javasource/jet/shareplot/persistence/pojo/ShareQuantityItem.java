@@ -126,6 +126,16 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
         return this.logger;
     }
 
+    @Override
+    public boolean isDirty() {
+        if (get_Model() instanceof DataModelRootNode) {
+            final DataModelRootNode dmrn = (DataModelRootNode) get_Model();
+            return dmrn.isDirty();
+        }
+        this.logger.logp(JETLevel.INFO, "ShareQuantityItem", "isDirty", "Model is not a DataModelRootNode can not define if it is dirty.");
+        return false;
+    }
+
     /**
      * @return <code>true</code> if this shareQuantity is new.
      * @see JFDataItem
@@ -191,7 +201,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     public final DispatcherModel<ShareQuantityItem> get_IdShareQuantity_Model() {
         if (this.idShareQuantityDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idShareQuantity");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idShareQuantity");
                 this.idShareQuantityDispatcherModel = (DispatcherModel<ShareQuantityItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.idShareQuantityDispatcherModel == null) {
                     this.idShareQuantityDispatcherModel = new DispatcherModel<ShareQuantityItem>(this, sourceModel);
@@ -220,7 +230,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * This field should not be <code>null</code> in the database.
      * @param changeFee java.math.BigDecimal value of Data Model node changeFee
      */
-    public final void setChangeFee(java.math.BigDecimal changeFee) {
+    public final void setChangeFee(final java.math.BigDecimal changeFee) {
         get_ChangeFee_Model().setNodeValue(changeFee);
     }
 
@@ -233,7 +243,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     public final DispatcherModel<ShareQuantityItem> get_ChangeFee_Model() {
         if (this.changeFeeDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "changeFee");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "changeFee");
                 this.changeFeeDispatcherModel = (DispatcherModel<ShareQuantityItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.changeFeeDispatcherModel == null) {
                     this.changeFeeDispatcherModel = new DispatcherModel<ShareQuantityItem>(this, sourceModel);
@@ -262,7 +272,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * This field should not be <code>null</code> in the database.
      * @param changeQuantity java.math.BigDecimal value of Data Model node changeQuantity
      */
-    public final void setChangeQuantity(java.math.BigDecimal changeQuantity) {
+    public final void setChangeQuantity(final java.math.BigDecimal changeQuantity) {
         get_ChangeQuantity_Model().setNodeValue(changeQuantity);
     }
 
@@ -275,7 +285,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     public final DispatcherModel<ShareQuantityItem> get_ChangeQuantity_Model() {
         if (this.changeQuantityDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "changeQuantity");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "changeQuantity");
                 this.changeQuantityDispatcherModel = (DispatcherModel<ShareQuantityItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.changeQuantityDispatcherModel == null) {
                     this.changeQuantityDispatcherModel = new DispatcherModel<ShareQuantityItem>(this, sourceModel);
@@ -304,7 +314,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * This field should not be <code>null</code> in the database.
      * @param changeType String value of Data Model node changeType
      */
-    public final void setChangeType(String changeType) {
+    public final void setChangeType(final String changeType) {
         get_ChangeType_Model().setNodeValue(changeType);
     }
 
@@ -317,7 +327,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     public final DispatcherModel<ShareQuantityItem> get_ChangeType_Model() {
         if (this.changeTypeDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "changeType");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "changeType");
                 this.changeTypeDispatcherModel = (DispatcherModel<ShareQuantityItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.changeTypeDispatcherModel == null) {
                     this.changeTypeDispatcherModel = new DispatcherModel<ShareQuantityItem>(this, sourceModel);
@@ -348,7 +358,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * This field should not be <code>null</code> in the database.
      * @param changeValue java.math.BigDecimal value of Data Model node changeValue
      */
-    public final void setChangeValue(java.math.BigDecimal changeValue) {
+    public final void setChangeValue(final java.math.BigDecimal changeValue) {
         get_ChangeValue_Model().setNodeValue(changeValue);
     }
 
@@ -361,7 +371,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     public final DispatcherModel<ShareQuantityItem> get_ChangeValue_Model() {
         if (this.changeValueDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "changeValue");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "changeValue");
                 this.changeValueDispatcherModel = (DispatcherModel<ShareQuantityItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.changeValueDispatcherModel == null) {
                     this.changeValueDispatcherModel = new DispatcherModel<ShareQuantityItem>(this, sourceModel);
@@ -388,7 +398,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * Set node value of Data Model node description
      * @param description String value of Data Model node description
      */
-    public final void setDescription(String description) {
+    public final void setDescription(final String description) {
         get_Description_Model().setNodeValue(description);
     }
 
@@ -401,7 +411,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     public final DispatcherModel<ShareQuantityItem> get_Description_Model() {
         if (this.descriptionDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "description");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "description");
                 this.descriptionDispatcherModel = (DispatcherModel<ShareQuantityItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.descriptionDispatcherModel == null) {
                     this.descriptionDispatcherModel = new DispatcherModel<ShareQuantityItem>(this, sourceModel);
@@ -432,7 +442,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * This field should not be <code>null</code> in the database.
      * @param idShare Long value of Data Model node idShare
      */
-    public final void setIdShare(Long idShare) {
+    public final void setIdShare(final Long idShare) {
         get_IdShare_Model().setNodeValue(idShare);
     }
 
@@ -445,7 +455,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     public final DispatcherModel<ShareQuantityItem> get_IdShare_Model() {
         if (this.idShareDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idShare");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idShare");
                 this.idShareDispatcherModel = (DispatcherModel<ShareQuantityItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.idShareDispatcherModel == null) {
                     this.idShareDispatcherModel = new DispatcherModel<ShareQuantityItem>(this, sourceModel);
@@ -474,7 +484,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * This field should not be <code>null</code> in the database.
      * @param valueDate java.util.Date value of Data Model node valueDate
      */
-    public final void setValueDate(java.util.Date valueDate) {
+    public final void setValueDate(final java.util.Date valueDate) {
         get_ValueDate_Model().setNodeValue(valueDate);
     }
 
@@ -487,7 +497,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     public final DispatcherModel<ShareQuantityItem> get_ValueDate_Model() {
         if (this.valueDateDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "valueDate");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "valueDate");
                 this.valueDateDispatcherModel = (DispatcherModel<ShareQuantityItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.valueDateDispatcherModel == null) {
                     this.valueDateDispatcherModel = new DispatcherModel<ShareQuantityItem>(this, sourceModel);
@@ -518,37 +528,37 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      */
     @Override
     public final boolean isNotNullableNull() {
-        java.math.BigDecimal changeFee = getChangeFee();
+        final java.math.BigDecimal changeFee = getChangeFee();
         if (changeFee == null) {
             getLogger().logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull",
                 "changeFee is null but is not nullable.");
             return true;
         }
-        java.math.BigDecimal changeQuantity = getChangeQuantity();
+        final java.math.BigDecimal changeQuantity = getChangeQuantity();
         if (changeQuantity == null) {
             getLogger().logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull",
                 "changeQuantity is null but is not nullable.");
             return true;
         }
-        String changeType = getChangeType();
+        final String changeType = getChangeType();
         if (changeType == null) {
             getLogger().logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull",
                 "changeType is null but is not nullable.");
             return true;
         }
-        java.math.BigDecimal changeValue = getChangeValue();
+        final java.math.BigDecimal changeValue = getChangeValue();
         if (changeValue == null) {
             getLogger().logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull",
                 "changeValue is null but is not nullable.");
             return true;
         }
-        Long idShare = getIdShare();
+        final Long idShare = getIdShare();
         if (idShare == null) {
             getLogger().logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull",
                 "idShare is null but is not nullable.");
             return true;
         }
-        java.util.Date valueDate = getValueDate();
+        final java.util.Date valueDate = getValueDate();
         if (valueDate == null) {
             getLogger().logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull",
                 "valueDate is null but is not nullable.");

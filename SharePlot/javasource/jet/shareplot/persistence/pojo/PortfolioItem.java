@@ -108,6 +108,16 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
         return this.logger;
     }
 
+    @Override
+    public boolean isDirty() {
+        if (get_Model() instanceof DataModelRootNode) {
+            final DataModelRootNode dmrn = (DataModelRootNode) get_Model();
+            return dmrn.isDirty();
+        }
+        this.logger.logp(JETLevel.INFO, "PortfolioItem", "isDirty", "Model is not a DataModelRootNode can not define if it is dirty.");
+        return false;
+    }
+
     /**
      * @return <code>true</code> if this portfolio is new.
      * @see JFDataItem
@@ -173,7 +183,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     public final DispatcherModel<PortfolioItem> get_IdPortfolio_Model() {
         if (this.idPortfolioDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "idPortfolio");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idPortfolio");
                 this.idPortfolioDispatcherModel = (DispatcherModel<PortfolioItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.idPortfolioDispatcherModel == null) {
                     this.idPortfolioDispatcherModel = new DispatcherModel<PortfolioItem>(this, sourceModel);
@@ -202,7 +212,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      * This field should not be <code>null</code> in the database.
      * @param isFake String value of Data Model node isFake
      */
-    public final void setIsFake(String isFake) {
+    public final void setIsFake(final String isFake) {
         get_IsFake_Model().setNodeValue(isFake);
     }
 
@@ -215,7 +225,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     public final DispatcherModel<PortfolioItem> get_IsFake_Model() {
         if (this.isFakeDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "isFake");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "isFake");
                 this.isFakeDispatcherModel = (DispatcherModel<PortfolioItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.isFakeDispatcherModel == null) {
                     this.isFakeDispatcherModel = new DispatcherModel<PortfolioItem>(this, sourceModel);
@@ -246,7 +256,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      * This field should not be <code>null</code> in the database.
      * @param name String value of Data Model node name
      */
-    public final void setName(String name) {
+    public final void setName(final String name) {
         get_Name_Model().setNodeValue(name);
     }
 
@@ -259,7 +269,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     public final DispatcherModel<PortfolioItem> get_Name_Model() {
         if (this.nameDispatcherModel == null) {
             try {
-                final Model sourceModel = ModelHelper.getChildNode(this.dataModel, "name");
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "name");
                 this.nameDispatcherModel = (DispatcherModel<PortfolioItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.nameDispatcherModel == null) {
                     this.nameDispatcherModel = new DispatcherModel<PortfolioItem>(this, sourceModel);
@@ -288,13 +298,13 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      */
     @Override
     public final boolean isNotNullableNull() {
-        String isFake = getIsFake();
+        final String isFake = getIsFake();
         if (isFake == null) {
             getLogger().logp(JETLevel.WARNING, "PortfolioItem", "isNotNullableNull",
                 "isFake is null but is not nullable.");
             return true;
         }
-        String name = getName();
+        final String name = getName();
         if (name == null) {
             getLogger().logp(JETLevel.WARNING, "PortfolioItem", "isNotNullableNull",
                 "name is null but is not nullable.");
