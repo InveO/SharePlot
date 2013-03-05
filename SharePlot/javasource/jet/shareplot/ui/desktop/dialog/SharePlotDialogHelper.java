@@ -200,4 +200,16 @@ public class SharePlotDialogHelper implements DesktopDialogHelper {
         return ver.getVersion();
     }
 
+    @Override
+    public String displayQuestionDialog(final String title, final String localizedTitle, final String message, final String localizedMessage, final String defaultValue) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public String displayQuestionDialog(final Displayable title, final Displayable message, final String defaultValue) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }
