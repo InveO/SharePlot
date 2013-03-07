@@ -1,7 +1,6 @@
 package jet.shareplot.ui.desktop.dialog;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import jet.framework.ui.desktop.AbstractDesktopNut;
@@ -178,11 +177,6 @@ public class SharePlotDialogHelper implements DesktopDialogHelper {
 
         final String result = (String) param.getNodeValue();
         return result;
-    }
-
-    @Override
-    public Locale getDialogLocale() {
-        return this.locale.getLocale();
     }
 
     private String getVersionDialogLabel() {
