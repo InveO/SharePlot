@@ -26,17 +26,17 @@
             </or>
         </condition>
     </target>
-    
+
     <target name="fail" if="missingProp">
         <fail message="missing property(ies) : classes, JetBase, JetLib, JetFrameworkBase, JetFrameworkLib"/>
     </target>
-	
+
     <property name="debuglevel" value="source,lines,vars"/>
-    <property name="target" value="1.6"/>
-    <property name="source" value="1.6"/>
+    <property name="target" value="1.7"/>
+    <property name="source" value="1.7"/>
 
     <import file="classpath.xml" />
-    
+
     <target name="compile">
 		<echo>
 			********************************************************
