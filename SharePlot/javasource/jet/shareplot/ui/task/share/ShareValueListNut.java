@@ -1,8 +1,6 @@
 package jet.shareplot.ui.task.share;
 
 import java.io.ByteArrayInputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.Date;
@@ -139,14 +137,13 @@ public class ShareValueListNut extends AbstractSharePlotListNut<ShareValue> impl
             // get file content
             final byte[] file = this.byteArrayMultiFileReceiver.getByteArray(i);
             final ByteArrayInputStream is = new ByteArrayInputStream(file);
-            final Reader reader = new InputStreamReader(is);
 
             // configure parameters
             final CSVParameters csvParameters = new CSVParameters();
             csvParameters.setLine(1);
             csvParameters.setSeparator(';');
 
-            csvCtxt.readCSVFile(reader, this, csvParameters);
+            csvCtxt.readCSVFile(is, this, csvParameters);
         } catch (final JETException e) {
             logp(JETLevel.SEVERE, "ShareValueListNut", "importFile", e.getMessage(), e);
         }

@@ -2,8 +2,6 @@ package jet.shareplot.ui.task.share;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -61,14 +59,13 @@ public class ShareDetailNut extends AbstractSharePlotNut implements CSVLineProce
             // get file content
             final FileManagerContext fileCtxt = (FileManagerContext) getManagerContext(FileManagerContext.NAME);
             final InputStream is = fileCtxt.getInputStream("/home/daniel/Downloads/easysys-export2.csv");
-            final Reader reader = new InputStreamReader(is);
 
             // configure parameters
             final CSVParameters csvParameters = new CSVParameters();
             csvParameters.setLine(1);
             csvParameters.setSeparator(';');
 
-            csvCtxt.readCSVFile(reader, this, csvParameters);
+            csvCtxt.readCSVFile(is, this, csvParameters);
         } catch (final FileNotFoundException e) {
             logp(JETLevel.SEVERE, "ShareDetailNut", "launchValueList", e.getMessage(), e);
         } catch (final JETException e) {
