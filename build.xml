@@ -94,6 +94,21 @@
         <ant antfile="buildJunit.xml" />
     </target>
 
+    <target name="moveJunit" >
+        <echo message="Moving JUnit test classes" />
+
+        <move todir="Test/javasource" >
+            <fileset dir="SharePlot/javasource">
+                <include name="**/*_JUnitTest.java"/>
+            </fileset>
+        </move>
+        <move todir="Test/javasource">
+            <fileset dir="SharePlotBatch/javasource">
+                <include name="**/*_JUnitTest.java"/>
+            </fileset>
+        </move>
+    </target>
+
     <target name="javadoc" depends="init">
         <echo message="Running Javadoc on SharePlot" />
 
