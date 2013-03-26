@@ -20,7 +20,7 @@
         <delete dir="SharePlot/classes2" />
     </target>
 
-    <target name="all" depends="compile,jars,findbugs,pmd,junit,ncss,macker" />
+    <target name="all" depends="compile,jars,findbugs,pmd,junit" />
 
     <target name="compile" depends="init">
         <echo message="Compile SharePlot" />
@@ -68,22 +68,6 @@
         <property name="classes" value="SharePlot/classes" />
 
         <ant antfile="buildPMD.xml" />
-    </target>
-
-    <target name="ncss" depends="init">
-        <echo message="Running NCSS on SharePlot" />
-
-        <property name="classes" value="SharePlot/classes" />
-
-        <ant antfile="buildNCSS.xml" />
-    </target>
-
-    <target name="macker" depends="init">
-        <echo message="Running Macker on SharePlot" />
-
-        <property name="classes" value="SharePlot/classes" />
-
-        <ant antfile="buildMacker.xml" />
     </target>
 
     <target name="junit" depends="init">

@@ -2,68 +2,58 @@
 # FindBugs installation path
 # Only required if running FindBugs via Ant
 # findbugs.home = d:/java/findbugs-1.3.9/
-findbugs.home = 
+findbugs.home =
 
 # PMD installation path
 # Only required if running PMD via Ant
 # pmd.home = d:/java/pmd-4.2.5/
-pmd.home = 
-
-# JavaNCSS installation path
-# Only required if running JavaNCSS via Ant
-# ncss.home = d:/java/javancss/
-ncss.home = 
-
-# Macker installation path
-# Only required if running Macker via Ant
-# macker.home = d:/java/macker-0.4.2/
-macker.home = 
+pmd.home =
 
 # Defines where the jars are to be built
 # jars_dest = d:/Jet/JetLib/SharePlot
-jars_dest = 
+jars_dest =
 
 # Defines where the javadoc is to be built
 # Only required if building Javadoc via Ant
 # javadoc_dest = d:/Jet/api/SharePlot/
-javadoc_dest = 
+javadoc_dest =
 
 # Defines where the JET binaries are to be found
 # Only required for cleanup, compile, javadoc, FindBugs and JUnit via Ant
 # JetLib = d:/Jet/JetLib/JetLib
-JetLib = 
+JetLib =
 
 # Defines where the JET sources are located
 # Only required for compile, javadoc, FindBugs and JUnit via Ant
 # JetBase = d:/Jet/Jet
-JetBase = 
+JetBase =
 
 # Defines where the JET FRAMEWORK binaries are to be found
 # Only required for cleanup, compile, javadoc, FindBugs and JUnit via Ant
 # JetFrameworkLib = d:/Jet/JetLib/JetFramework
-JetFrameworkLib = 
+JetFrameworkLib =
 
 # Defines where the JET FRAMEWORK sources are located
 # Only required for compile, javadoc, FindBugs and JUnit via Ant
 # JetFrameworkBase = d:/Jet/JetFramework
-JetFrameworkBase = 
+JetFrameworkBase =
 
 # Defines the path from where to fetch the local config files
 # Only required for jars via Ant
 # local_conf = D:/Jet/JetAppConfs/DanielSharePlot
-local_conf = 
+local_conf =
 
 # Defines the path for the build version repository
 # Only required for deployVersion via Ant
 # jet_app_builds = D:/Jet/JetAppBuilds/
-jet_app_builds = 
+jet_app_builds =
 
 # Defines the path for the servlet war to be deployed
 # Only required for jars via Ant
 # web_apps_dir = d:/java/apache-tomcat-6.0.29/webapps
-web_apps_dir = 
+web_apps_dir =
 
 # Defines the path for the lib repository
 # Only required for deployCopy via Ant
 # jet_app_builds = D:/Jet/JetLibSharePlot/
-jet_lib_shareplot = 
+jet_lib_shareplot =
