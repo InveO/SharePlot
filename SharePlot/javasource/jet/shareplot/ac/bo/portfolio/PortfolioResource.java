@@ -7,7 +7,7 @@ import jet.util.throwable.JETException;
 
 /**
  * Object used in the Portfolio resource notifications
- *
+ * 
  * @author JetToolsFramework
  */
 public class PortfolioResource extends AbstractResourceNotification<Portfolio> {
@@ -23,7 +23,7 @@ public class PortfolioResource extends AbstractResourceNotification<Portfolio> {
 
     /**
      * Constructor
-     *
+     * 
      * @param portfolioAC
      * @param portfolio
      * @param type

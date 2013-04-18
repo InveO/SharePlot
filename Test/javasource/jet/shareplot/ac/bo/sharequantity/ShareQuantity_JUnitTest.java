@@ -5,11 +5,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
 import jet.framework.util.pojo2.JFErrorHandler;
 import jet.shareplot.persistence.pojo.ShareQuantityItem;
-import jet.util.models.interfaces.Model;
 
 import org.junit.runner.RunWith;
 
@@ -18,7 +16,7 @@ import com.objectpartners.buesing.premock.PreMockJUnit4ClassRunner;
 
 /**
  * JUnit skeleton for the ShareQuantity object
- *
+ * 
  * @author JetToolsFramework
  */
 @PreMock({ ShareQuantity.class, ShareQuantityItem.class })
@@ -32,6 +30,7 @@ public class ShareQuantity_JUnitTest {
     public void testShareQuantity() {
         // arrange : set up the test
         final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
+        assert shareQuantityAC != null;
 
         // act : run the test
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
@@ -76,6 +75,7 @@ public class ShareQuantity_JUnitTest {
     public void testShareQuantityModel() {
         // arrange : set up the test
         final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
+        assert shareQuantityAC != null;
         final ShareQuantityItem item = new ShareQuantityItem();
 
         // act : run the test
@@ -93,6 +93,7 @@ public class ShareQuantity_JUnitTest {
     public void testShareQuantityModelData() {
         // arrange : set up the test
         final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
+        assert shareQuantityAC != null;
         final ShareQuantityItem item = new ShareQuantityItem();
         // TODO insert data in ShareQuantityItem
         item.setChangeFee(java.math.BigDecimal.valueOf(1));
@@ -120,28 +121,13 @@ public class ShareQuantity_JUnitTest {
     }
 
     /**
-     * Test model based constructor
-     */
-    @org.junit.Test(expected = IllegalArgumentException.class)
-    public void testShareQuantityModelNull() {
-        // arrange : set up the test
-        final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
-
-        // act : run the test
-        new ShareQuantity(null, shareQuantityAC);
-
-        // assert : verify that the test run correctly
-        // should have thrown an exception
-        fail("Expected exception was not thrown.");
-    }
-
-    /**
      * Test copy constructor
      */
     @org.junit.Test
     public void testShareQuantityShareQuantity() {
         // arrange : set up the test
         final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
+        assert shareQuantityAC != null;
         final ShareQuantity item = new ShareQuantity(shareQuantityAC);
 
         // act : run the test
@@ -159,6 +145,7 @@ public class ShareQuantity_JUnitTest {
     public void testShareQuantityShareQuantityData() {
         // arrange : set up the test
         final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
+        assert shareQuantityAC != null;
         final ShareQuantity item = new ShareQuantity(shareQuantityAC);
         // TODO insert data in ShareQuantity
         item.setChangeFee(java.math.BigDecimal.valueOf(1));
@@ -186,28 +173,13 @@ public class ShareQuantity_JUnitTest {
     }
 
     /**
-     * Test copy constructor
-     */
-    @org.junit.Test(expected = IllegalArgumentException.class)
-    public void testShareQuantityShareQuantityNull() {
-        // arrange : set up the test
-        final ShareQuantity item = null;
-
-        // act : run the test
-        new ShareQuantity(item);
-
-        // assert : verify that the test run correctly
-        // should have thrown an exception
-        fail("Expected exception was not thrown.");
-    }
-
-    /**
      * isNotNullableNull
      */
     @org.junit.Test
     public void testIsNotNullableNullTrue() {
         // arrange : set up the test
         final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
+        assert shareQuantityAC != null;
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
 
         // act : run the test
@@ -224,6 +196,7 @@ public class ShareQuantity_JUnitTest {
     public void testIsNotNullableNullFalse() {
         // arrange : set up the test
         final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
+        assert shareQuantityAC != null;
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
         shareQuantity.setChangeFee(java.math.BigDecimal.valueOf(1));
         shareQuantity.setChangeQuantity(java.math.BigDecimal.valueOf(1));
@@ -246,6 +219,7 @@ public class ShareQuantity_JUnitTest {
     public void testIsPkEqualsTrue() {
         // arrange : set up the test
         final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
+        assert shareQuantityAC != null;
         final ShareQuantity otherShareQuantity = mock(ShareQuantity.class);
         // TODO init mock pk
         // eg : when(otherShareQuantity.getIdShareQuantity()).thenReturn(Long.valueOf(1));
@@ -268,6 +242,7 @@ public class ShareQuantity_JUnitTest {
     public void testIsPkEqualsFalse() {
         // arrange : set up the test
         final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
+        assert shareQuantityAC != null;
         final ShareQuantity otherShareQuantity = mock(ShareQuantity.class);
         // TODO init mock pk
         // eg : when(otherShareQuantity.getIdShareQuantity()).thenReturn(Long.valueOf(1));
@@ -290,6 +265,7 @@ public class ShareQuantity_JUnitTest {
     public void testIsPkEqualsNullFalse() {
         // arrange : set up the test
         final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
+        assert shareQuantityAC != null;
         final ShareQuantity otherShareQuantity = mock(ShareQuantity.class);
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
@@ -308,6 +284,7 @@ public class ShareQuantity_JUnitTest {
     public void testIsPkEqualsFalseNull() {
         // arrange : set up the test
         final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
+        assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
         // TODO init shareQuantity pk
@@ -327,6 +304,7 @@ public class ShareQuantity_JUnitTest {
     public void testGetJFErrorHandler() {
         // arrange : set up the test
         final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
+        assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
 
@@ -344,6 +322,7 @@ public class ShareQuantity_JUnitTest {
     public void testSetJFErrorHandler() {
         // arrange : set up the test
         final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
+        assert shareQuantityAC != null;
         final JFErrorHandler errorHandler = mock(JFErrorHandler.class);
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
@@ -363,6 +342,7 @@ public class ShareQuantity_JUnitTest {
     public void testIsValidTrue() {
         // arrange : set up the test
         final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
+        assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
         // TODO set up valid shareQuantity
@@ -381,6 +361,7 @@ public class ShareQuantity_JUnitTest {
     public void testIsValidFalse() {
         // arrange : set up the test
         final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
+        assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
         // TODO set up NON valid shareQuantity
@@ -399,6 +380,7 @@ public class ShareQuantity_JUnitTest {
     public void testIsNewTrue() {
         // arrange : set up the test
         final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
+        assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
 
@@ -416,6 +398,7 @@ public class ShareQuantity_JUnitTest {
     public void testIsNewFalse() {
         // arrange : set up the test
         final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
+        assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
         shareQuantity.get_IdShareQuantity_Model().setNodeValue(Long.valueOf(1));

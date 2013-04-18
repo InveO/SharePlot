@@ -23,45 +23,45 @@ import jet.util.throwable.JETException;
 public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicationComponent {
 
     /**
-     * {@value}
+     * {@value}.
      */
     public final static String PORTFOLIO_SELECT = "PortfolioSelect";
     /**
-     * {@value}
+     * {@value}.
      */
     public final static String PORTFOLIO_STORE = "PortfolioStore";
 
     /**
-     * {@value}
+     * {@value}.
      */
     public final static String SHARE_SELECT = "ShareSelect";
     /**
-     * {@value}
+     * {@value}.
      */
     public final static String SHARE_STORE = "ShareStore";
 
     /**
-     * {@value}
+     * {@value}.
      */
     public final static String SHAREQUANTITY_SELECT = "ShareQuantitySelect";
     /**
-     * {@value}
+     * {@value}.
      */
     public final static String SHAREQUANTITY_STORE = "ShareQuantityStore";
 
     /**
-     * {@value}
+     * {@value}.
      */
     public final static String SHAREVALUE_SELECT = "ShareValueSelect";
     /**
-     * {@value}
+     * {@value}.
      */
     public final static String SHAREVALUE_STORE = "ShareValueStore";
 
     private static final long serialVersionUID = -8890923097443600938L;
 
     /**
-     * <code>INTERNAL_SESSION_KEY</code> session key
+     * <code>INTERNAL_SESSION_KEY</code> session key.
      */
     private final static Object INTERNAL_SESSION_KEY = new SerializableKey(SelectStoreApplicationComponent.class, "INTERNAL_SESSION_KEY");
     /**
@@ -111,12 +111,10 @@ public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicat
     }
 
     /**
-     * Deinit, internal use only
-     *
-     * @throws JETException
+     * Deinit, internal use only.
      */
     @Deinitializer
-    public final void doSelectStoreNutACDeinit() throws JETException {
+    public final void doSelectStoreNutACDeinit() {
         getSession().removeProperty(INTERNAL_SESSION_KEY);
     }
 

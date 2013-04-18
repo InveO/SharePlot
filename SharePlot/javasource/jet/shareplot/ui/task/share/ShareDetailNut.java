@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Nonnull;
+
 import jet.components.ui.button.common.UIButtonComponent;
 import jet.components.ui.common.common.UIComponent;
 import jet.container.managers.file.interfaces.FileManagerContext;
@@ -20,6 +22,7 @@ import jet.shareplot.ac.bo.share.Share;
 import jet.shareplot.ui.AbstractSharePlotNut;
 import jet.shareplot.ui.desktop.SharePlotACLauncher;
 import jet.shareplot.ui.task.TaskNameConstants;
+import jet.util.annotations.AnnotationsHelper;
 import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Displayable;
 import jet.util.throwable.JETException;
@@ -46,7 +49,7 @@ public class ShareDetailNut extends AbstractSharePlotNut implements CSVLineProce
     @Override
     public void componentClicked(final UIComponent component) {
         if (this.addChangeButton == component) {
-            launchQuantityList(this.share);
+            launchQuantityList(AnnotationsHelper.assertNonNull(this.share));
         } else if (this.addValueButton == component) {
             launchValueList(this.share);
         }
@@ -73,7 +76,7 @@ public class ShareDetailNut extends AbstractSharePlotNut implements CSVLineProce
         }
     }
 
-    private void launchQuantityList(final Share share) {
+    private void launchQuantityList(@Nonnull final Share share) {
         final ApplicationComponentLauncher acLauncher = (ApplicationComponentLauncher) getSession().getProperty(ApplicationComponentLauncher.SESSION_KEY);
 
         if (acLauncher != null) {

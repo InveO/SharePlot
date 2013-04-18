@@ -61,6 +61,7 @@ abstract class AbstractPortfolioBOApplicationComponent extends SimpleApplication
                     final int size = ma.getSize();
                     for (int i = 0; i < size; i++) {
                         final Model model = ma.get(i);
+                        assert model != null;
                         final Portfolio portfolio = new Portfolio(model, portfolioAC);
                         result.add(portfolio);
                     }

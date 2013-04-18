@@ -3,6 +3,8 @@ package jet.shareplot.ui;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import jet.components.ui.button.common.UIButtonComponent;
 import jet.components.ui.common.common.UIComponent;
 import jet.components.ui.events.KeyEvent;
@@ -114,7 +116,7 @@ public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends
 
     protected abstract T createNewItem();
 
-    protected abstract T getItemCopy(T item);
+    protected abstract T getItemCopy(@Nonnull T item);
 
     private void removeEmptyItem() {
         if (this.emptyItem != null) {
@@ -206,17 +208,18 @@ public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends
                 final AbstractResourceNotification<T> resNotif = (AbstractResourceNotification<T>) parameter;
                 final T resource = resNotif.getResource();
 
-                final NOTIFICATION_TYPE type = resNotif.getType();
+                if (resource != null) {
+                    final NOTIFICATION_TYPE type = resNotif.getType();
 
-                if (NOTIFICATION_TYPE.CREATE.equals(type)) {
-                    addNewResource(resource, -1);
-                } else if (NOTIFICATION_TYPE.UPDATE.equals(type)) {
-                    final int index = removeResource(resource);
-                    addNewResource(resource, index);
-                } else if (NOTIFICATION_TYPE.DELETE.equals(type)) {
-                    removeResource(resource);
+                    if (NOTIFICATION_TYPE.CREATE.equals(type)) {
+                        addNewResource(resource, -1);
+                    } else if (NOTIFICATION_TYPE.UPDATE.equals(type)) {
+                        final int index = removeResource(resource);
+                        addNewResource(resource, index);
+                    } else if (NOTIFICATION_TYPE.DELETE.equals(type)) {
+                        removeResource(resource);
+                    }
                 }
-
             }
         }
     }
@@ -239,7 +242,7 @@ public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends
         return index;
     }
 
-    private void addNewResource(final T resource, final int index) {
+    private void addNewResource(@Nonnull final T resource, final int index) {
         // add resource at index in list
         final T copy = getItemCopy(resource);
         final Model model = copy.get_Model();

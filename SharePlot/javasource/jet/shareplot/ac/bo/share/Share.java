@@ -1,5 +1,7 @@
 package jet.shareplot.ac.bo.share;
 
+import javax.annotation.Nonnull;
+
 import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.pojo2.AbstractResourceNotification.NOTIFICATION_TYPE;
 import jet.framework.util.pojo2.JFBusinessCallableHelper;
@@ -36,7 +38,7 @@ public class Share extends ShareItem implements JFBusinessItem, JFBusinessErrorH
      * @see Model
      * @see ShareBOApplicationComponent
      */
-    public Share(final AbstractShareBOApplicationComponent shareAC) {
+    public Share(@Nonnull final AbstractShareBOApplicationComponent shareAC) {
         super();
         this.shareAC = shareAC;
     }
@@ -50,7 +52,7 @@ public class Share extends ShareItem implements JFBusinessItem, JFBusinessErrorH
      * @see Model
      * @see ShareBOApplicationComponent
      */
-    public Share(final Model model, final AbstractShareBOApplicationComponent shareAC) {
+    public Share(@Nonnull final Model model, @Nonnull final AbstractShareBOApplicationComponent shareAC) {
         super(model);
         this.shareAC = shareAC;
     }
@@ -60,7 +62,7 @@ public class Share extends ShareItem implements JFBusinessItem, JFBusinessErrorH
      * 
      * @param share the share to copy
      */
-    public Share(final Share share) {
+    public Share(@Nonnull final Share share) {
         super(share);
         this.shareAC = share.shareAC;
     }

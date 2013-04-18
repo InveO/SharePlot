@@ -61,6 +61,7 @@ abstract class AbstractShareBOApplicationComponent extends SimpleApplicationComp
                     final int size = ma.getSize();
                     for (int i = 0; i < size; i++) {
                         final Model model = ma.get(i);
+                        assert model != null;
                         final Share share = new Share(model, shareAC);
                         result.add(share);
                     }

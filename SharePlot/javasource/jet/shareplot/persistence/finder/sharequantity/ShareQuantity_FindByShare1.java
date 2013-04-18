@@ -33,8 +33,9 @@ public class ShareQuantity_FindByShare1 implements FinderMethod {
     DataSourceExecutor2<ShareQuantityHome, ShareQuantityRemote> dse;
 
     Long idShare;
+
     /**
-     * Set idShare argument value
+     * Set idShare argument value.
      *
      * @param idShare argument value
      */

@@ -6,6 +6,8 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import jet.components.ui.button.common.UIButtonComponent;
 import jet.components.ui.common.common.UIComponent;
 import jet.components.ui.events.KeyEvent;
@@ -27,6 +29,7 @@ import jet.shareplot.ac.bo.sharevalue.ShareValue;
 import jet.shareplot.ac.bo.sharevalue.ShareValueBOApplicationComponent;
 import jet.shareplot.ac.bo.sharevalue.ShareValueResource;
 import jet.shareplot.ui.AbstractSharePlotListNut;
+import jet.util.annotations.AnnotationsHelper;
 import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Displayable;
 import jet.util.throwable.JETException;
@@ -66,7 +69,7 @@ public class ShareValueListNut extends AbstractSharePlotListNut<ShareValue> impl
 
     @Override
     protected ShareValue createNewItem() {
-        final ShareValue quantity = new ShareValue(this.shareValueAC);
+        final ShareValue quantity = new ShareValue(getShareValueAC());
         quantity.setIdShare(this.share.getIdShare());
         return quantity;
     }
@@ -82,7 +85,7 @@ public class ShareValueListNut extends AbstractSharePlotListNut<ShareValue> impl
     }
 
     @Override
-    protected ShareValue getItemCopy(final ShareValue item) {
+    protected ShareValue getItemCopy(@Nonnull final ShareValue item) {
         return new ShareValue(item);
     }
 
@@ -159,7 +162,7 @@ public class ShareValueListNut extends AbstractSharePlotListNut<ShareValue> impl
             final Date date = DateParser.parse(DateParser.Format.ENGLISH, dateString);
             final BigDecimal value = DoubleParser.parseBigDecimal(DoubleParser.Format.COMMA, valueString);
 
-            final ShareValue shareValue = new ShareValue(this.shareValueAC);
+            final ShareValue shareValue = new ShareValue(getShareValueAC());
             shareValue.setIdShare(this.share.getIdShare());
             shareValue.setValue(value);
             shareValue.setValueDate(date);
@@ -172,6 +175,11 @@ public class ShareValueListNut extends AbstractSharePlotListNut<ShareValue> impl
             logp(JETLevel.SEVERE, "ShareValueListNut", "processCSVLine", e.getMessage(), e);
         }
 
+    }
+
+    @Nonnull
+    private ShareValueBOApplicationComponent getShareValueAC() {
+        return AnnotationsHelper.assertNonNull(this.shareValueAC);
     }
 
 }

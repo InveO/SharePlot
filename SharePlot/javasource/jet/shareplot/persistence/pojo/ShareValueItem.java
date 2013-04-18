@@ -45,7 +45,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
     private transient JFErrorHandler jfErrorHandler;
 
     /**
-     * Constructor used to create a new ShareValue Data Model
+     * Constructor used to create a new ShareValue Data Model.
      */
     public ShareValueItem() {
         this.dataModel = new DataModelRootNode();
@@ -68,27 +68,19 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
     }
 
     /**
-     * Constructor used to edit an existing ShareValue Data Model
+     * Constructor used to edit an existing ShareValue Data Model.
      * @param model Model to use to wrap in the pojo, can not be <code>null</code>
-     * @throws IllegalArgumentException if model is <code>null</code>
      */
-    public ShareValueItem(final Model model) {
-        if (model == null) {
-            throw new IllegalArgumentException("model argument can not be null");
-        }
+    public ShareValueItem(@Nonnull final Model model) {
         this.dataModel = model;
     }
 
     /**
-     * Copy constructor used to clone an existing ShareValue Data Model
+     * Copy constructor used to clone an existing ShareValue Data Model.
      * @param shareValue ShareValueItem to use to copy in the pojo, can not be <code>null</code>
-     * @throws IllegalArgumentException if shareValue is <code>null</code>
      */
-    public ShareValueItem(final ShareValueItem shareValue) {
+    public ShareValueItem(@Nonnull final ShareValueItem shareValue) {
         this();
-        if (shareValue == null) {
-            throw new IllegalArgumentException("shareValue argument can not be null");
-        }
 
         setIdShareValue(shareValue.getIdShareValue());
         setIdShare(shareValue.getIdShare());
@@ -116,7 +108,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
             final DataModelRootNode dmrn = (DataModelRootNode) get_Model();
             return dmrn.isDirty();
         }
-        this.logger.logp(JETLevel.INFO, "ShareValueItem", "isDirty", "Model is not a DataModelRootNode can not define if it is dirty.");
+        getLogger().logp(JETLevel.INFO, "ShareValueItem", "isDirty", "Model is not a DataModelRootNode can not define if it is dirty.");
         return false;
     }
 
@@ -146,7 +138,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
     }
 
     /**
-     * Get the ShareValue Data Model that is wrapped in this pojo
+     * Get the ShareValue Data Model that is wrapped in this pojo.
      * @return ShareValue Data Model
      * @see JFDataItem
      */
@@ -159,7 +151,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
     }
 
     /**
-     * Get node value of Data Model node idShareValue
+     * Get node value of Data Model node idShareValue.
      * This field should not be <code>null</code> in the database.
      * @return Long value of Data Model node idShareValue
      */
@@ -168,7 +160,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
     }
 
     /**
-     * Set node value of Data Model node idShareValue
+     * Set node value of Data Model node idShareValue.
      * This field should not be <code>null</code> in the database.
      * @param idShareValue Long value of Data Model node idShareValue
      */
@@ -177,7 +169,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
     }
 
     /**
-     * Get Model of Data Model node idShareValue
+     * Get Model of Data Model node idShareValue.
      * @return Model of Data Model node idShareValue
      */
     @SuppressWarnings("unchecked")
@@ -201,7 +193,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
     }
 
     /**
-     * Get node value of Data Model node idShare
+     * Get node value of Data Model node idShare.
      * This field should not be <code>null</code> in the database.
      * @return Long value of Data Model node idShare
      */
@@ -210,7 +202,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
     }
 
     /**
-     * Set node value of Data Model node idShare
+     * Set node value of Data Model node idShare.
      * This field should not be <code>null</code> in the database.
      * @param idShare Long value of Data Model node idShare
      */
@@ -219,7 +211,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
     }
 
     /**
-     * Get Model of Data Model node idShare
+     * Get Model of Data Model node idShare.
      * @return Model of Data Model node idShare
      */
     @SuppressWarnings("unchecked")
@@ -243,7 +235,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
     }
 
     /**
-     * Get node value of Data Model node value
+     * Get node value of Data Model node value.
      * This field should not be <code>null</code> in the database.
      * @return java.math.BigDecimal value of Data Model node value
      */
@@ -252,7 +244,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
     }
 
     /**
-     * Set node value of Data Model node value
+     * Set node value of Data Model node value.
      * This field should not be <code>null</code> in the database.
      * @param value java.math.BigDecimal value of Data Model node value
      */
@@ -261,7 +253,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
     }
 
     /**
-     * Get Model of Data Model node value
+     * Get Model of Data Model node value.
      * @return Model of Data Model node value
      */
     @SuppressWarnings("unchecked")
@@ -285,7 +277,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
     }
 
     /**
-     * Get node value of Data Model node valueDate
+     * Get node value of Data Model node valueDate.
      * This field should not be <code>null</code> in the database.
      * @return java.util.Date value of Data Model node valueDate
      */
@@ -294,7 +286,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
     }
 
     /**
-     * Set node value of Data Model node valueDate
+     * Set node value of Data Model node valueDate.
      * This field should not be <code>null</code> in the database.
      * @param valueDate java.util.Date value of Data Model node valueDate
      */
@@ -303,7 +295,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
     }
 
     /**
-     * Get Model of Data Model node valueDate
+     * Get Model of Data Model node valueDate.
      * @return Model of Data Model node valueDate
      */
     @SuppressWarnings("unchecked")
@@ -327,7 +319,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
     }
 
     /**
-     * Check if any node not nullable is <code>null</code>
+     * Check if any node not nullable is <code>null</code>.
      * <ul>
      * <li><b>idShare</b> can not be <code>null</code> in the database.</li>
      * <li><b>value</b> can not be <code>null</code> in the database.</li>
@@ -361,7 +353,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
     }
 
     /**
-     * Check if this PK is the same as the PK from another ShareValueItem
+     * Check if this PK is the same as the PK from another ShareValueItem.
      *
      * @param other ShareValueItem to compare with
      * @return <code>true</code> if the pk fields from the two objects have the same values

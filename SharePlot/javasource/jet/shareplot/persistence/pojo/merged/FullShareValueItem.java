@@ -50,7 +50,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     private transient JFErrorHandler jfErrorHandler;
 
     /**
-     * Constructor used to create a new FullShareValue Data Model
+     * Constructor used to create a new FullShareValue Data Model.
      */
     public FullShareValueItem() {
         this.dataModel = new DataModelRootNode();
@@ -83,27 +83,19 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Constructor used to edit an existing FullShareValue Data Model
+     * Constructor used to edit an existing FullShareValue Data Model.
      * @param model Model to use to wrap in the pojo, can not be <code>null</code>
-     * @throws IllegalArgumentException if model is <code>null</code>
      */
-    public FullShareValueItem(final Model model) {
-        if (model == null) {
-            throw new IllegalArgumentException("model argument can not be null");
-        }
+    public FullShareValueItem(@Nonnull final Model model) {
         this.dataModel = model;
     }
 
     /**
-     * Copy constructor used to clone an existing FullShareValue Data Model
+     * Copy constructor used to clone an existing FullShareValue Data Model.
      * @param fullShareValue FullShareValueItem to use to copy in the pojo, can not be <code>null</code>
-     * @throws IllegalArgumentException if fullShareValue is <code>null</code>
      */
-    public FullShareValueItem(final FullShareValueItem fullShareValue) {
+    public FullShareValueItem(@Nonnull final FullShareValueItem fullShareValue) {
         this();
-        if (fullShareValue == null) {
-            throw new IllegalArgumentException("fullShareValue argument can not be null");
-        }
 
         setIdShareValue(fullShareValue.getIdShareValue());
         setCodeISIN(fullShareValue.getCodeISIN());
@@ -136,7 +128,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
             final DataModelRootNode dmrn = (DataModelRootNode) get_Model();
             return dmrn.isDirty();
         }
-        this.logger.logp(JETLevel.INFO, "FullShareValueItem", "isDirty", "Model is not a DataModelRootNode can not define if it is dirty.");
+        getLogger().logp(JETLevel.INFO, "FullShareValueItem", "isDirty", "Model is not a DataModelRootNode can not define if it is dirty.");
         return false;
     }
 
@@ -166,7 +158,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Get the FullShareValue Data Model that is wrapped in this pojo
+     * Get the FullShareValue Data Model that is wrapped in this pojo.
      * @return FullShareValue Data Model
      * @see JFDataItem
      */
@@ -179,7 +171,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Get node value of Data Model node idShareValue
+     * Get node value of Data Model node idShareValue.
      * This field should not be <code>null</code> in the database.
      * @return Long value of Data Model node idShareValue
      */
@@ -188,7 +180,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Set node value of Data Model node idShareValue
+     * Set node value of Data Model node idShareValue.
      * This field should not be <code>null</code> in the database.
      * @param idShareValue Long value of Data Model node idShareValue
      */
@@ -197,7 +189,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Get Model of Data Model node idShareValue
+     * Get Model of Data Model node idShareValue.
      * @return Model of Data Model node idShareValue
      */
     @SuppressWarnings("unchecked")
@@ -221,7 +213,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Get node value of Data Model node codeISIN
+     * Get node value of Data Model node codeISIN.
      * @return String value of Data Model node codeISIN
      */
     public final String getCodeISIN() {
@@ -229,7 +221,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Set node value of Data Model node codeISIN
+     * Set node value of Data Model node codeISIN.
      * @param codeISIN String value of Data Model node codeISIN
      */
     public final void setCodeISIN(final String codeISIN) {
@@ -237,7 +229,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Get Model of Data Model node codeISIN
+     * Get Model of Data Model node codeISIN.
      * @return Model of Data Model node codeISIN
      */
     @SuppressWarnings("unchecked")
@@ -263,7 +255,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Get node value of Data Model node codeYahoo
+     * Get node value of Data Model node codeYahoo.
      * @return String value of Data Model node codeYahoo
      */
     public final String getCodeYahoo() {
@@ -271,7 +263,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Set node value of Data Model node codeYahoo
+     * Set node value of Data Model node codeYahoo.
      * @param codeYahoo String value of Data Model node codeYahoo
      */
     public final void setCodeYahoo(final String codeYahoo) {
@@ -279,7 +271,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Get Model of Data Model node codeYahoo
+     * Get Model of Data Model node codeYahoo.
      * @return Model of Data Model node codeYahoo
      */
     @SuppressWarnings("unchecked")
@@ -305,7 +297,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Get node value of Data Model node description
+     * Get node value of Data Model node description.
      * @return String value of Data Model node description
      */
     public final String getDescription() {
@@ -313,7 +305,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Set node value of Data Model node description
+     * Set node value of Data Model node description.
      * @param description String value of Data Model node description
      */
     public final void setDescription(final String description) {
@@ -321,7 +313,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Get Model of Data Model node description
+     * Get Model of Data Model node description.
      * @return Model of Data Model node description
      */
     @SuppressWarnings("unchecked")
@@ -347,7 +339,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Get node value of Data Model node idPortfolio
+     * Get node value of Data Model node idPortfolio.
      * This field should not be <code>null</code> in the database.
      * @return Long value of Data Model node idPortfolio
      */
@@ -356,7 +348,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Set node value of Data Model node idPortfolio
+     * Set node value of Data Model node idPortfolio.
      * This field should not be <code>null</code> in the database.
      * @param idPortfolio Long value of Data Model node idPortfolio
      */
@@ -365,7 +357,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Get Model of Data Model node idPortfolio
+     * Get Model of Data Model node idPortfolio.
      * @return Model of Data Model node idPortfolio
      */
     @SuppressWarnings("unchecked")
@@ -389,7 +381,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Get node value of Data Model node idShare
+     * Get node value of Data Model node idShare.
      * This field should not be <code>null</code> in the database.
      * @return Long value of Data Model node idShare
      */
@@ -398,7 +390,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Set node value of Data Model node idShare
+     * Set node value of Data Model node idShare.
      * This field should not be <code>null</code> in the database.
      * @param idShare Long value of Data Model node idShare
      */
@@ -407,7 +399,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Get Model of Data Model node idShare
+     * Get Model of Data Model node idShare.
      * @return Model of Data Model node idShare
      */
     @SuppressWarnings("unchecked")
@@ -431,7 +423,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Get node value of Data Model node name
+     * Get node value of Data Model node name.
      * This field should not be <code>null</code> in the database.
      * @return String value of Data Model node name
      */
@@ -440,7 +432,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Set node value of Data Model node name
+     * Set node value of Data Model node name.
      * This field should not be <code>null</code> in the database.
      * @param name String value of Data Model node name
      */
@@ -449,7 +441,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Get Model of Data Model node name
+     * Get Model of Data Model node name.
      * @return Model of Data Model node name
      */
     @SuppressWarnings("unchecked")
@@ -475,7 +467,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Get node value of Data Model node value
+     * Get node value of Data Model node value.
      * This field should not be <code>null</code> in the database.
      * @return java.math.BigDecimal value of Data Model node value
      */
@@ -484,7 +476,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Set node value of Data Model node value
+     * Set node value of Data Model node value.
      * This field should not be <code>null</code> in the database.
      * @param value java.math.BigDecimal value of Data Model node value
      */
@@ -493,7 +485,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Get Model of Data Model node value
+     * Get Model of Data Model node value.
      * @return Model of Data Model node value
      */
     @SuppressWarnings("unchecked")
@@ -517,7 +509,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Get node value of Data Model node valueDate
+     * Get node value of Data Model node valueDate.
      * This field should not be <code>null</code> in the database.
      * @return java.util.Date value of Data Model node valueDate
      */
@@ -526,7 +518,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Set node value of Data Model node valueDate
+     * Set node value of Data Model node valueDate.
      * This field should not be <code>null</code> in the database.
      * @param valueDate java.util.Date value of Data Model node valueDate
      */
@@ -535,7 +527,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Get Model of Data Model node valueDate
+     * Get Model of Data Model node valueDate.
      * @return Model of Data Model node valueDate
      */
     @SuppressWarnings("unchecked")
@@ -559,7 +551,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Check if any node not nullable is <code>null</code>
+     * Check if any node not nullable is <code>null</code>.
      * <ul>
      * <li><b>idPortfolio</b> can not be <code>null</code> in the database.</li>
      * <li><b>idShare</b> can not be <code>null</code> in the database.</li>
@@ -607,7 +599,7 @@ public class FullShareValueItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
-     * Check if this PK is the same as the PK from another FullShareValueItem
+     * Check if this PK is the same as the PK from another FullShareValueItem.
      *
      * @param other FullShareValueItem to compare with
      * @return <code>true</code> if the pk fields from the two objects have the same values

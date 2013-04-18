@@ -34,8 +34,9 @@ public class Share_FindByPreparedSQLQuery2 implements FinderMethod {
 
     String sqlWhereClause;
     Object[] sqlArguments;
+
     /**
-     * Set sqlWhereClause argument value
+     * Set sqlWhereClause argument value.
      *
      * @param sqlWhereClause argument value
      */
@@ -44,7 +45,7 @@ public class Share_FindByPreparedSQLQuery2 implements FinderMethod {
     }
 
     /**
-     * Set sqlArguments argument value
+     * Set sqlArguments argument value.
      *
      * @param sqlArguments argument value
      */

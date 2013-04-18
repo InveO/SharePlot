@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Nonnull;
+
 import jet.components.ui.events.MouseEvent;
 import jet.components.ui.events.MouseEventType;
 import jet.components.ui.events.UIEvent;
@@ -18,6 +20,7 @@ import jet.shareplot.ui.AbstractSharePlotListNut;
 import jet.shareplot.ui.desktop.SharePlotACLauncher;
 import jet.shareplot.ui.task.TaskNameConstants;
 import jet.shareplot.util.BooleanConstants;
+import jet.util.annotations.AnnotationsHelper;
 import jet.util.logger.JETLevel;
 import jet.util.throwable.JETException;
 
@@ -65,7 +68,7 @@ public class PortfolioListNut extends AbstractSharePlotListNut<Portfolio> {
         launchPortfolioEditor(TaskNameConstants.PORTFOLIO_VALUES, portfolio, initArgs);
     }
 
-    private void launchPortfolioEditor(final String editorName, final Portfolio portfolio, final Map<String, Object> initArgs) {
+    private void launchPortfolioEditor(final String editorName, @Nonnull final Portfolio portfolio, final Map<String, Object> initArgs) {
         final ApplicationComponentLauncher acLauncher = (ApplicationComponentLauncher) getSession().getProperty(ApplicationComponentLauncher.SESSION_KEY);
 
         if (acLauncher != null) {
@@ -103,7 +106,8 @@ public class PortfolioListNut extends AbstractSharePlotListNut<Portfolio> {
 
     @Override
     protected Portfolio createNewItem() {
-        final Portfolio portfolio = new Portfolio(this.portfolioAC);
+        PortfolioBOApplicationComponent assertNonNull = AnnotationsHelper.assertNonNull(this.portfolioAC);
+        final Portfolio portfolio = new Portfolio(assertNonNull);
         portfolio.setIsFake(BooleanConstants.NO);
         return portfolio;
     }
@@ -119,7 +123,7 @@ public class PortfolioListNut extends AbstractSharePlotListNut<Portfolio> {
     }
 
     @Override
-    protected Portfolio getItemCopy(final Portfolio item) {
+    protected Portfolio getItemCopy(@Nonnull final Portfolio item) {
         return new Portfolio(item);
     }
 

@@ -1,5 +1,7 @@
 package jet.shareplot.ac.bo.sharequantity;
 
+import javax.annotation.Nonnull;
+
 import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.pojo2.AbstractResourceNotification.NOTIFICATION_TYPE;
 import jet.framework.util.pojo2.JFBusinessCallableHelper;
@@ -61,7 +63,7 @@ public class ShareQuantity extends ShareQuantityItem implements JFBusinessItem, 
      * @see Model
      * @see ShareQuantityBOApplicationComponent
      */
-    public ShareQuantity(final AbstractShareQuantityBOApplicationComponent shareQuantityAC) {
+    public ShareQuantity(@Nonnull final AbstractShareQuantityBOApplicationComponent shareQuantityAC) {
         super();
         this.shareQuantityAC = shareQuantityAC;
     }
@@ -75,7 +77,7 @@ public class ShareQuantity extends ShareQuantityItem implements JFBusinessItem, 
      * @see Model
      * @see ShareQuantityBOApplicationComponent
      */
-    public ShareQuantity(final Model model, final AbstractShareQuantityBOApplicationComponent shareQuantityAC) {
+    public ShareQuantity(@Nonnull final Model model, @Nonnull final AbstractShareQuantityBOApplicationComponent shareQuantityAC) {
         super(model);
         this.shareQuantityAC = shareQuantityAC;
     }
@@ -85,7 +87,7 @@ public class ShareQuantity extends ShareQuantityItem implements JFBusinessItem, 
      * 
      * @param shareQuantity the shareQuantity to copy
      */
-    public ShareQuantity(final ShareQuantity shareQuantity) {
+    public ShareQuantity(@Nonnull final ShareQuantity shareQuantity) {
         super(shareQuantity);
         this.shareQuantityAC = shareQuantity.shareQuantityAC;
     }

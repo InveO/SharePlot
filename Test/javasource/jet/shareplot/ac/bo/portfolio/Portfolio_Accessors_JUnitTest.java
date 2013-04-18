@@ -18,7 +18,7 @@ public class Portfolio_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetIdPortfolio() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);        assert portfolioAC != null;
 
         final Portfolio portfolio = new Portfolio(portfolioAC);
 
@@ -36,7 +36,7 @@ public class Portfolio_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetIsFake() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);        assert portfolioAC != null;
 
         final Portfolio portfolio = new Portfolio(portfolioAC);
 
@@ -53,7 +53,7 @@ public class Portfolio_Accessors_JUnitTest {
     @org.junit.Test
     public void testSetIsFake() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);        assert portfolioAC != null;
 
         final Portfolio portfolio = new Portfolio(portfolioAC);
 
@@ -74,7 +74,7 @@ public class Portfolio_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetName() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);        assert portfolioAC != null;
 
         final Portfolio portfolio = new Portfolio(portfolioAC);
 
@@ -91,7 +91,7 @@ public class Portfolio_Accessors_JUnitTest {
     @org.junit.Test
     public void testSetName() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);        assert portfolioAC != null;
 
         final Portfolio portfolio = new Portfolio(portfolioAC);
 

@@ -2,6 +2,8 @@ package jet.shareplot.ui.task.share;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import jet.framework.ui.utils.table.UITableListDisplay3;
 import jet.framework.util.ui.LocalizedMessageFormatDisplayable;
 import jet.shareplot.ac.bo.share.Share;
@@ -11,6 +13,7 @@ import jet.shareplot.ac.bo.sharequantity.ShareQuantityResource;
 import jet.shareplot.ui.AbstractSharePlotListNut;
 import jet.shareplot.ui.task.share.provider.QuantityTypeCellProvider;
 import jet.shareplot.ui.task.share.provider.QuantityTypeColumnProvider;
+import jet.util.annotations.AnnotationsHelper;
 import jet.util.models.interfaces.Displayable;
 import jet.util.throwable.JETException;
 
@@ -46,7 +49,8 @@ public class ShareQuantityListNut extends AbstractSharePlotListNut<ShareQuantity
 
     @Override
     protected ShareQuantity createNewItem() {
-        final ShareQuantity quantity = new ShareQuantity(this.shareQuantityAC);
+        final ShareQuantityBOApplicationComponent assertNonNull = AnnotationsHelper.assertNonNull(this.shareQuantityAC);
+        final ShareQuantity quantity = new ShareQuantity(assertNonNull);
         quantity.setIdShare(this.share.getIdShare());
         return quantity;
     }
@@ -64,7 +68,7 @@ public class ShareQuantityListNut extends AbstractSharePlotListNut<ShareQuantity
     }
 
     @Override
-    protected ShareQuantity getItemCopy(final ShareQuantity item) {
+    protected ShareQuantity getItemCopy(@Nonnull final ShareQuantity item) {
         return new ShareQuantity(item);
     }
 

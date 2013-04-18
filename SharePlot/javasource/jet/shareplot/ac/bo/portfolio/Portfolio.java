@@ -1,5 +1,7 @@
 package jet.shareplot.ac.bo.portfolio;
 
+import javax.annotation.Nonnull;
+
 import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.pojo2.AbstractResourceNotification.NOTIFICATION_TYPE;
 import jet.framework.util.pojo2.JFBusinessCallableHelper;
@@ -37,7 +39,7 @@ public class Portfolio extends PortfolioItem implements JFBusinessItem, JFBusine
      * @see Model
      * @see PortfolioBOApplicationComponent
      */
-    public Portfolio(final AbstractPortfolioBOApplicationComponent portfolioAC) {
+    public Portfolio(@Nonnull final AbstractPortfolioBOApplicationComponent portfolioAC) {
         super();
         this.portfolioAC = portfolioAC;
     }
@@ -51,7 +53,7 @@ public class Portfolio extends PortfolioItem implements JFBusinessItem, JFBusine
      * @see Model
      * @see PortfolioBOApplicationComponent
      */
-    public Portfolio(final Model model, final AbstractPortfolioBOApplicationComponent portfolioAC) {
+    public Portfolio(@Nonnull final Model model, @Nonnull final AbstractPortfolioBOApplicationComponent portfolioAC) {
         super(model);
         this.portfolioAC = portfolioAC;
     }
@@ -61,7 +63,7 @@ public class Portfolio extends PortfolioItem implements JFBusinessItem, JFBusine
      * 
      * @param portfolio the portfolio to copy
      */
-    public Portfolio(final Portfolio portfolio) {
+    public Portfolio(@Nonnull final Portfolio portfolio) {
         super(portfolio);
         this.portfolioAC = portfolio.portfolioAC;
     }

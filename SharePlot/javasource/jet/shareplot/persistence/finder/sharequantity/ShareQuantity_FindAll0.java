@@ -33,6 +33,7 @@ public class ShareQuantity_FindAll0 implements FinderMethod {
     DataSourceExecutor2<ShareQuantityHome, ShareQuantityRemote> dse;
 
 
+
     @Override
     @Nonnull
     public String getFinderName() {

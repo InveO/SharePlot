@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Nonnull;
+
 import jet.components.ui.events.MouseEvent;
 import jet.components.ui.events.MouseEventType;
 import jet.components.ui.events.UIEvent;
@@ -21,6 +23,7 @@ import jet.shareplot.ac.bo.share.ShareResource;
 import jet.shareplot.ui.AbstractSharePlotListNut;
 import jet.shareplot.ui.desktop.SharePlotACLauncher;
 import jet.shareplot.ui.task.TaskNameConstants;
+import jet.util.annotations.AnnotationsHelper;
 import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Displayable;
 import jet.util.throwable.JETException;
@@ -59,7 +62,7 @@ public class ShareListNut extends AbstractSharePlotListNut<Share> {
         }
     }
 
-    private void launchEditor(final String editorName, final Share share) {
+    private void launchEditor(final String editorName, @Nonnull final Share share) {
         final ApplicationComponentLauncher acLauncher = (ApplicationComponentLauncher) getSession().getProperty(ApplicationComponentLauncher.SESSION_KEY);
 
         if (acLauncher != null) {
@@ -109,7 +112,8 @@ public class ShareListNut extends AbstractSharePlotListNut<Share> {
 
     @Override
     protected Share createNewItem() {
-        final Share share = new Share(this.shareAC);
+        final ShareBOApplicationComponent assertNonNull = AnnotationsHelper.assertNonNull(this.shareAC);
+        final Share share = new Share(assertNonNull);
         share.setIdPortfolio(this.portfolio.getIdPortfolio());
         return share;
     }
@@ -125,7 +129,7 @@ public class ShareListNut extends AbstractSharePlotListNut<Share> {
     }
 
     @Override
-    protected Share getItemCopy(final Share item) {
+    protected Share getItemCopy(@Nonnull final Share item) {
         return new Share(item);
     }
 

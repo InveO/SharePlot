@@ -44,7 +44,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     private transient JFErrorHandler jfErrorHandler;
 
     /**
-     * Constructor used to create a new Portfolio Data Model
+     * Constructor used to create a new Portfolio Data Model.
      */
     public PortfolioItem() {
         this.dataModel = new DataModelRootNode();
@@ -67,27 +67,19 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     }
 
     /**
-     * Constructor used to edit an existing Portfolio Data Model
+     * Constructor used to edit an existing Portfolio Data Model.
      * @param model Model to use to wrap in the pojo, can not be <code>null</code>
-     * @throws IllegalArgumentException if model is <code>null</code>
      */
-    public PortfolioItem(final Model model) {
-        if (model == null) {
-            throw new IllegalArgumentException("model argument can not be null");
-        }
+    public PortfolioItem(@Nonnull final Model model) {
         this.dataModel = model;
     }
 
     /**
-     * Copy constructor used to clone an existing Portfolio Data Model
+     * Copy constructor used to clone an existing Portfolio Data Model.
      * @param portfolio PortfolioItem to use to copy in the pojo, can not be <code>null</code>
-     * @throws IllegalArgumentException if portfolio is <code>null</code>
      */
-    public PortfolioItem(final PortfolioItem portfolio) {
+    public PortfolioItem(@Nonnull final PortfolioItem portfolio) {
         this();
-        if (portfolio == null) {
-            throw new IllegalArgumentException("portfolio argument can not be null");
-        }
 
         setIdPortfolio(portfolio.getIdPortfolio());
         setIsFake(portfolio.getIsFake());
@@ -114,7 +106,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
             final DataModelRootNode dmrn = (DataModelRootNode) get_Model();
             return dmrn.isDirty();
         }
-        this.logger.logp(JETLevel.INFO, "PortfolioItem", "isDirty", "Model is not a DataModelRootNode can not define if it is dirty.");
+        getLogger().logp(JETLevel.INFO, "PortfolioItem", "isDirty", "Model is not a DataModelRootNode can not define if it is dirty.");
         return false;
     }
 
@@ -144,7 +136,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     }
 
     /**
-     * Get the Portfolio Data Model that is wrapped in this pojo
+     * Get the Portfolio Data Model that is wrapped in this pojo.
      * @return Portfolio Data Model
      * @see JFDataItem
      */
@@ -157,7 +149,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     }
 
     /**
-     * Get node value of Data Model node idPortfolio
+     * Get node value of Data Model node idPortfolio.
      * This field should not be <code>null</code> in the database.
      * @return Long value of Data Model node idPortfolio
      */
@@ -166,7 +158,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     }
 
     /**
-     * Set node value of Data Model node idPortfolio
+     * Set node value of Data Model node idPortfolio.
      * This field should not be <code>null</code> in the database.
      * @param idPortfolio Long value of Data Model node idPortfolio
      */
@@ -175,7 +167,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     }
 
     /**
-     * Get Model of Data Model node idPortfolio
+     * Get Model of Data Model node idPortfolio.
      * @return Model of Data Model node idPortfolio
      */
     @SuppressWarnings("unchecked")
@@ -199,7 +191,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     }
 
     /**
-     * Get node value of Data Model node isFake
+     * Get node value of Data Model node isFake.
      * This field should not be <code>null</code> in the database.
      * @return String value of Data Model node isFake
      */
@@ -208,7 +200,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     }
 
     /**
-     * Set node value of Data Model node isFake
+     * Set node value of Data Model node isFake.
      * This field should not be <code>null</code> in the database.
      * @param isFake String value of Data Model node isFake
      */
@@ -217,7 +209,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     }
 
     /**
-     * Get Model of Data Model node isFake
+     * Get Model of Data Model node isFake.
      * @return Model of Data Model node isFake
      */
     @SuppressWarnings("unchecked")
@@ -243,7 +235,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     }
 
     /**
-     * Get node value of Data Model node name
+     * Get node value of Data Model node name.
      * This field should not be <code>null</code> in the database.
      * @return String value of Data Model node name
      */
@@ -252,7 +244,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     }
 
     /**
-     * Set node value of Data Model node name
+     * Set node value of Data Model node name.
      * This field should not be <code>null</code> in the database.
      * @param name String value of Data Model node name
      */
@@ -261,7 +253,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     }
 
     /**
-     * Get Model of Data Model node name
+     * Get Model of Data Model node name.
      * @return Model of Data Model node name
      */
     @SuppressWarnings("unchecked")
@@ -287,7 +279,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     }
 
     /**
-     * Check if any node not nullable is <code>null</code>
+     * Check if any node not nullable is <code>null</code>.
      * <ul>
      * <li><b>isFake</b> can not be <code>null</code> in the database.</li>
      * <li><b>name</b> can not be <code>null</code> in the database.</li>
@@ -314,7 +306,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     }
 
     /**
-     * Check if this PK is the same as the PK from another PortfolioItem
+     * Check if this PK is the same as the PK from another PortfolioItem.
      *
      * @param other PortfolioItem to compare with
      * @return <code>true</code> if the pk fields from the two objects have the same values

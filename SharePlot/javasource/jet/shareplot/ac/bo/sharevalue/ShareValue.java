@@ -1,5 +1,7 @@
 package jet.shareplot.ac.bo.sharevalue;
 
+import javax.annotation.Nonnull;
+
 import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.pojo2.AbstractResourceNotification.NOTIFICATION_TYPE;
 import jet.framework.util.pojo2.JFBusinessCallableHelper;
@@ -36,7 +38,7 @@ public class ShareValue extends ShareValueItem implements JFBusinessItem, JFBusi
      * @see Model
      * @see ShareValueBOApplicationComponent
      */
-    public ShareValue(final AbstractShareValueBOApplicationComponent shareValueAC) {
+    public ShareValue(@Nonnull final AbstractShareValueBOApplicationComponent shareValueAC) {
         super();
         this.shareValueAC = shareValueAC;
     }
@@ -50,7 +52,7 @@ public class ShareValue extends ShareValueItem implements JFBusinessItem, JFBusi
      * @see Model
      * @see ShareValueBOApplicationComponent
      */
-    public ShareValue(final Model model, final AbstractShareValueBOApplicationComponent shareValueAC) {
+    public ShareValue(@Nonnull final Model model, @Nonnull final AbstractShareValueBOApplicationComponent shareValueAC) {
         super(model);
         this.shareValueAC = shareValueAC;
     }
@@ -60,7 +62,7 @@ public class ShareValue extends ShareValueItem implements JFBusinessItem, JFBusi
      * 
      * @param shareValue the shareValue to copy
      */
-    public ShareValue(final ShareValue shareValue) {
+    public ShareValue(@Nonnull final ShareValue shareValue) {
         super(shareValue);
         this.shareValueAC = shareValue.shareValueAC;
     }

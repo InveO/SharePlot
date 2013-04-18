@@ -33,6 +33,7 @@ public class Portfolio_FindAll0 implements FinderMethod {
     DataSourceExecutor2<PortfolioHome, PortfolioRemote> dse;
 
 
+
     @Override
     @Nonnull
     public String getFinderName() {

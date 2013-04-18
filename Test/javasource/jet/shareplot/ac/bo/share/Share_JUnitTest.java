@@ -5,11 +5,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
 import jet.framework.util.pojo2.JFErrorHandler;
 import jet.shareplot.persistence.pojo.ShareItem;
-import jet.util.models.interfaces.Model;
 
 import org.junit.runner.RunWith;
 
@@ -18,7 +16,7 @@ import com.objectpartners.buesing.premock.PreMockJUnit4ClassRunner;
 
 /**
  * JUnit skeleton for the Share object
- *
+ * 
  * @author JetToolsFramework
  */
 @PreMock({ Share.class, ShareItem.class })
@@ -32,6 +30,7 @@ public class Share_JUnitTest {
     public void testShare() {
         // arrange : set up the test
         final ShareBOApplicationComponent shareAC = mock(ShareBOApplicationComponent.class);
+        assert shareAC != null;
 
         // act : run the test
         final Share share = new Share(shareAC);
@@ -72,6 +71,7 @@ public class Share_JUnitTest {
     public void testShareModel() {
         // arrange : set up the test
         final ShareBOApplicationComponent shareAC = mock(ShareBOApplicationComponent.class);
+        assert shareAC != null;
         final ShareItem item = new ShareItem();
 
         // act : run the test
@@ -89,6 +89,7 @@ public class Share_JUnitTest {
     public void testShareModelData() {
         // arrange : set up the test
         final ShareBOApplicationComponent shareAC = mock(ShareBOApplicationComponent.class);
+        assert shareAC != null;
         final ShareItem item = new ShareItem();
         // TODO insert data in ShareItem
         item.setCodeISIN("");
@@ -112,28 +113,13 @@ public class Share_JUnitTest {
     }
 
     /**
-     * Test model based constructor
-     */
-    @org.junit.Test(expected = IllegalArgumentException.class)
-    public void testShareModelNull() {
-        // arrange : set up the test
-        final ShareBOApplicationComponent shareAC = mock(ShareBOApplicationComponent.class);
-
-        // act : run the test
-        new Share(null, shareAC);
-
-        // assert : verify that the test run correctly
-        // should have thrown an exception
-        fail("Expected exception was not thrown.");
-    }
-
-    /**
      * Test copy constructor
      */
     @org.junit.Test
     public void testShareShare() {
         // arrange : set up the test
         final ShareBOApplicationComponent shareAC = mock(ShareBOApplicationComponent.class);
+        assert shareAC != null;
         final Share item = new Share(shareAC);
 
         // act : run the test
@@ -151,6 +137,7 @@ public class Share_JUnitTest {
     public void testShareShareData() {
         // arrange : set up the test
         final ShareBOApplicationComponent shareAC = mock(ShareBOApplicationComponent.class);
+        assert shareAC != null;
         final Share item = new Share(shareAC);
         // TODO insert data in Share
         item.setCodeISIN("");
@@ -174,28 +161,13 @@ public class Share_JUnitTest {
     }
 
     /**
-     * Test copy constructor
-     */
-    @org.junit.Test(expected = IllegalArgumentException.class)
-    public void testShareShareNull() {
-        // arrange : set up the test
-        final Share item = null;
-
-        // act : run the test
-        new Share(item);
-
-        // assert : verify that the test run correctly
-        // should have thrown an exception
-        fail("Expected exception was not thrown.");
-    }
-
-    /**
      * isNotNullableNull
      */
     @org.junit.Test
     public void testIsNotNullableNullTrue() {
         // arrange : set up the test
         final ShareBOApplicationComponent shareAC = mock(ShareBOApplicationComponent.class);
+        assert shareAC != null;
         final Share share = new Share(shareAC);
 
         // act : run the test
@@ -212,6 +184,7 @@ public class Share_JUnitTest {
     public void testIsNotNullableNullFalse() {
         // arrange : set up the test
         final ShareBOApplicationComponent shareAC = mock(ShareBOApplicationComponent.class);
+        assert shareAC != null;
         final Share share = new Share(shareAC);
         share.setIdPortfolio(Long.valueOf(1));
         share.setName("");
@@ -230,6 +203,7 @@ public class Share_JUnitTest {
     public void testIsPkEqualsTrue() {
         // arrange : set up the test
         final ShareBOApplicationComponent shareAC = mock(ShareBOApplicationComponent.class);
+        assert shareAC != null;
         final Share otherShare = mock(Share.class);
         // TODO init mock pk
         // eg : when(otherShare.getIdShare()).thenReturn(Long.valueOf(1));
@@ -252,6 +226,7 @@ public class Share_JUnitTest {
     public void testIsPkEqualsFalse() {
         // arrange : set up the test
         final ShareBOApplicationComponent shareAC = mock(ShareBOApplicationComponent.class);
+        assert shareAC != null;
         final Share otherShare = mock(Share.class);
         // TODO init mock pk
         // eg : when(otherShare.getIdShare()).thenReturn(Long.valueOf(1));
@@ -274,6 +249,7 @@ public class Share_JUnitTest {
     public void testIsPkEqualsNullFalse() {
         // arrange : set up the test
         final ShareBOApplicationComponent shareAC = mock(ShareBOApplicationComponent.class);
+        assert shareAC != null;
         final Share otherShare = mock(Share.class);
 
         final Share share = new Share(shareAC);
@@ -292,6 +268,7 @@ public class Share_JUnitTest {
     public void testIsPkEqualsFalseNull() {
         // arrange : set up the test
         final ShareBOApplicationComponent shareAC = mock(ShareBOApplicationComponent.class);
+        assert shareAC != null;
 
         final Share share = new Share(shareAC);
         // TODO init share pk
@@ -311,6 +288,7 @@ public class Share_JUnitTest {
     public void testGetJFErrorHandler() {
         // arrange : set up the test
         final ShareBOApplicationComponent shareAC = mock(ShareBOApplicationComponent.class);
+        assert shareAC != null;
 
         final Share share = new Share(shareAC);
 
@@ -328,6 +306,7 @@ public class Share_JUnitTest {
     public void testSetJFErrorHandler() {
         // arrange : set up the test
         final ShareBOApplicationComponent shareAC = mock(ShareBOApplicationComponent.class);
+        assert shareAC != null;
         final JFErrorHandler errorHandler = mock(JFErrorHandler.class);
 
         final Share share = new Share(shareAC);
@@ -347,6 +326,7 @@ public class Share_JUnitTest {
     public void testIsValidTrue() {
         // arrange : set up the test
         final ShareBOApplicationComponent shareAC = mock(ShareBOApplicationComponent.class);
+        assert shareAC != null;
 
         final Share share = new Share(shareAC);
         // TODO set up valid share
@@ -365,6 +345,7 @@ public class Share_JUnitTest {
     public void testIsValidFalse() {
         // arrange : set up the test
         final ShareBOApplicationComponent shareAC = mock(ShareBOApplicationComponent.class);
+        assert shareAC != null;
 
         final Share share = new Share(shareAC);
         // TODO set up NON valid share
@@ -383,6 +364,7 @@ public class Share_JUnitTest {
     public void testIsNewTrue() {
         // arrange : set up the test
         final ShareBOApplicationComponent shareAC = mock(ShareBOApplicationComponent.class);
+        assert shareAC != null;
 
         final Share share = new Share(shareAC);
 
@@ -400,6 +382,7 @@ public class Share_JUnitTest {
     public void testIsNewFalse() {
         // arrange : set up the test
         final ShareBOApplicationComponent shareAC = mock(ShareBOApplicationComponent.class);
+        assert shareAC != null;
 
         final Share share = new Share(shareAC);
         share.get_IdShare_Model().setNodeValue(Long.valueOf(1));

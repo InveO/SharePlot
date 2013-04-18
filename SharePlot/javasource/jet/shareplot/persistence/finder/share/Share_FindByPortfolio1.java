@@ -33,8 +33,9 @@ public class Share_FindByPortfolio1 implements FinderMethod {
     DataSourceExecutor2<ShareHome, ShareRemote> dse;
 
     Long idPortfolio;
+
     /**
-     * Set idPortfolio argument value
+     * Set idPortfolio argument value.
      *
      * @param idPortfolio argument value
      */

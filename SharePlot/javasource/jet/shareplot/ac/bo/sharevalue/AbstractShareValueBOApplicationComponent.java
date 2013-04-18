@@ -61,6 +61,7 @@ abstract class AbstractShareValueBOApplicationComponent extends SimpleApplicatio
                     final int size = ma.getSize();
                     for (int i = 0; i < size; i++) {
                         final Model model = ma.get(i);
+                        assert model != null;
                         final ShareValue shareValue = new ShareValue(model, shareValueAC);
                         result.add(shareValue);
                     }
