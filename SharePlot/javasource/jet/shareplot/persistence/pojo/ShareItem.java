@@ -30,7 +30,7 @@ import jet.util.throwable.JETSystemError;
 @SuppressWarnings("PMD.MethodNamingConventions")
 public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataItem {
 
-    private static final long serialVersionUID = -1265738400L;
+    private static final long serialVersionUID = -1939421298L;
 
     private static final String ATTRIBUTE_DISPATCHER_MODEL = "jet.shareplot.persistence.pojo.ATTRIBUTE_DISPATCHER_MODEL";
 
@@ -41,7 +41,6 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
     private transient DispatcherModel<ShareItem> codeISINDispatcherModel;
     private transient DispatcherModel<ShareItem> codeYahooDispatcherModel;
     private transient DispatcherModel<ShareItem> descriptionDispatcherModel;
-    private transient DispatcherModel<ShareItem> idPortfolioDispatcherModel;
     private transient DispatcherModel<ShareItem> nameDispatcherModel;
 
     private transient JFErrorHandler jfErrorHandler;
@@ -66,8 +65,6 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
         model = new SimpleEventModelImpl("codeYahoo");
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("description");
-        this.dataModel.appendChild(model);
-        model = new SimpleEventModelImpl("idPortfolio");
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("name");
         this.dataModel.appendChild(model);
@@ -94,7 +91,6 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
         setCodeISIN(share.getCodeISIN());
         setCodeYahoo(share.getCodeYahoo());
         setDescription(share.getDescription());
-        setIdPortfolio(share.getIdPortfolio());
         setName(share.getName());
     }
 
@@ -344,51 +340,6 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
     }
 
     /**
-     * Get node value of Data Model node idPortfolio.
-     * This field should not be <code>null</code> in the database.
-     * 
-     * @return Long value of Data Model node idPortfolio
-     */
-    public final Long getIdPortfolio() {
-        return (Long) get_IdPortfolio_Model().getNodeValue();
-    }
-
-    /**
-     * Set node value of Data Model node idPortfolio.
-     * This field should not be <code>null</code> in the database.
-     * 
-     * @param idPortfolio Long value of Data Model node idPortfolio
-     */
-    public final void setIdPortfolio(final Long idPortfolio) {
-        get_IdPortfolio_Model().setNodeValue(idPortfolio);
-    }
-
-    /**
-     * Get Model of Data Model node idPortfolio.
-     * 
-     * @return Model of Data Model node idPortfolio
-     */
-    @SuppressWarnings("unchecked")
-    @Nonnull
-    public final DispatcherModel<ShareItem> get_IdPortfolio_Model() {
-        if (this.idPortfolioDispatcherModel == null) {
-            try {
-                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idPortfolio");
-                this.idPortfolioDispatcherModel = (DispatcherModel<ShareItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
-                if (this.idPortfolioDispatcherModel == null) {
-                    this.idPortfolioDispatcherModel = new DispatcherModel<ShareItem>(this, sourceModel);
-                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.idPortfolioDispatcherModel);
-                }
-            } catch (final JETException e) {
-                throw new JETSystemError("Share data model does not have a child named idPortfolio. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
-            }
-        }
-        final DispatcherModel<ShareItem> dm = this.idPortfolioDispatcherModel;
-        assert dm != null;
-        return dm;
-    }
-
-    /**
      * Get node value of Data Model node name.
      * This field should not be <code>null</code> in the database.
      * 
@@ -438,7 +389,6 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
     /**
      * Check if any node not nullable is <code>null</code>.
      * <ul>
-     * <li><b>idPortfolio</b> can not be <code>null</code> in the database.</li>
      * <li><b>name</b> can not be <code>null</code> in the database.</li>
      * </ul>
      *
@@ -447,12 +397,6 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      */
     @Override
     public final boolean isNotNullableNull() {
-        final Long idPortfolio = getIdPortfolio();
-        if (idPortfolio == null) {
-            getLogger().logp(JETLevel.WARNING, "ShareItem", "isNotNullableNull",
-                "idPortfolio is null but is not nullable.");
-            return true;
-        }
         final String name = getName();
         if (name == null) {
             getLogger().logp(JETLevel.WARNING, "ShareItem", "isNotNullableNull",

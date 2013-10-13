@@ -40,7 +40,6 @@ public class ShareDMC_JUnitTest {
         verify(shareRemote, times(1)).getCodeISIN();
         verify(shareRemote, times(1)).getCodeYahoo();
         verify(shareRemote, times(1)).getDescription();
-        verify(shareRemote, times(1)).getIdPortfolio();
         verify(shareRemote, times(1)).getName();
     }
 
@@ -60,7 +59,6 @@ public class ShareDMC_JUnitTest {
         verify(shareRemote, times(1)).setCodeISIN(any(String.class));
         verify(shareRemote, times(1)).setCodeYahoo(any(String.class));
         verify(shareRemote, times(1)).setDescription(any(String.class));
-        verify(shareRemote, times(1)).setIdPortfolio(any(Long.class));
         verify(shareRemote, times(1)).setName(any(String.class));
     }
 }

@@ -15,7 +15,6 @@
         <COLUMN name="codeISIN" localname="codeISIN" dbtype="VARCHAR"/>
         <COLUMN name="codeYahoo" localname="codeYahoo" dbtype="VARCHAR"/>
         <COLUMN name="description" localname="description" dbtype="VARCHAR"/>
-        <COLUMN name="idPortfolio" localname="idPortfolio" dbtype="INTEGER"/>
         <COLUMN name="name" localname="name" dbtype="VARCHAR"/>
     </TABLE>
     <TABLE name="ShareQuantity" localname="ShareQuantity">
@@ -25,6 +24,7 @@
         <COLUMN name="changeType" localname="changeType" dbtype="CHAR"/>
         <COLUMN name="changeValue" localname="changeValue" dbtype="DECIMAL"/>
         <COLUMN name="description" localname="description" dbtype="VARCHAR"/>
+        <COLUMN name="idPortfolio" localname="idPortfolio" dbtype="INTEGER"/>
         <COLUMN name="idShare" localname="idShare" dbtype="INTEGER"/>
         <COLUMN name="valueDate" localname="valueDate" dbtype="DATE"/>
     </TABLE>

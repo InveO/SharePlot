@@ -27,7 +27,7 @@ import jet.util.throwable.JETException;
  */
 public final class Share_FindByPrimaryKey1 implements FinderMethod {
 
-    private static final long serialVersionUID = -1265738400L;
+    private static final long serialVersionUID = -1939421298L;
     private DataSourceExecutor2<ShareHome, ShareRemote> dse;
     private Long idShare;
 

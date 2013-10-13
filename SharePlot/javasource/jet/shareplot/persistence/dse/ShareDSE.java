@@ -28,7 +28,7 @@ import jet.util.throwable.JETException;
  */
 public final class ShareDSE extends AbstractDataSourceExecutor2<ShareHome, ShareRemote> {
 
-    private static final long serialVersionUID = -1265738400L;
+    private static final long serialVersionUID = -1939421298L;
     private transient ShareHome ejbHome;
     private transient DataModelConverter2<ShareRemote> dataModelConverter;
 
@@ -60,7 +60,7 @@ public final class ShareDSE extends AbstractDataSourceExecutor2<ShareHome, Share
                 final ShareItem shareItem = new ShareItem(dataModel);
 
                 final ShareHome shareHome = getEJBHome();
-                final ShareRemote shareRemote = shareHome.create(shareItem.getIdShare(), shareItem.getCodeISIN(), shareItem.getCodeYahoo(), shareItem.getDescription(), shareItem.getIdPortfolio(), shareItem.getName());
+                final ShareRemote shareRemote = shareHome.create(shareItem.getIdShare(), shareItem.getCodeISIN(), shareItem.getCodeYahoo(), shareItem.getDescription(), shareItem.getName());
 
                 // has autoincrement PK, must update
                 shareItem.get_IdShare_Model().setNodeValue(shareRemote.getIdShare());

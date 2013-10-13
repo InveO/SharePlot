@@ -135,6 +135,26 @@ public interface ShareQuantityRemote extends EJBObject {
 
 
     /**
+     * Get the value for the field idPortfolio.
+     *
+     * @return Long value for the field idPortfolio
+     * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
+     * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
+     */
+    @Nullable
+    Long getIdPortfolio() throws EJBException, RemoteException;
+    
+    /**
+     * Set the value for the field idPortfolio.
+     *
+     * @param idPortfolio value for the field idPortfolio
+     * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
+     * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
+     */
+    void setIdPortfolio(@Nullable final Long idPortfolio) throws EJBException, RemoteException;
+
+
+    /**
      * Get the value for the field idShare.
      *
      * @return Long value for the field idShare
@@ -182,10 +202,11 @@ public interface ShareQuantityRemote extends EJBObject {
      * @param changeType value for the field changeType
      * @param changeValue value for the field changeValue
      * @param description value for the field description
+     * @param idPortfolio value for the field idPortfolio
      * @param idShare value for the field idShare
      * @param valueDate value for the field valueDate
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void update(@Nullable final java.math.BigDecimal changeFee ,@Nullable final java.math.BigDecimal changeQuantity ,@Nullable final String changeType ,@Nullable final java.math.BigDecimal changeValue ,@Nullable final String description ,@Nullable final Long idShare ,@Nullable final java.util.Date valueDate) throws EJBException, RemoteException;
+    void update(@Nullable final java.math.BigDecimal changeFee ,@Nullable final java.math.BigDecimal changeQuantity ,@Nullable final String changeType ,@Nullable final java.math.BigDecimal changeValue ,@Nullable final String description ,@Nullable final Long idPortfolio ,@Nullable final Long idShare ,@Nullable final java.util.Date valueDate) throws EJBException, RemoteException;
 }

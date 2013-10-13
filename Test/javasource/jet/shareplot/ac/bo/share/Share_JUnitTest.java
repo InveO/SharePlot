@@ -47,7 +47,6 @@ public class Share_JUnitTest {
         assertNull(share.getCodeISIN());
         assertNull(share.getCodeYahoo());
         assertNull(share.getDescription());
-        assertNull(share.getIdPortfolio());
         assertNull(share.getName());
 
         assertTrue(share.isNotNullableNull());
@@ -60,7 +59,6 @@ public class Share_JUnitTest {
         assertNotNull(share.get_CodeISIN_Model());
         assertNotNull(share.get_CodeYahoo_Model());
         assertNotNull(share.get_Description_Model());
-        assertNotNull(share.get_IdPortfolio_Model());
         assertNotNull(share.get_Name_Model());
 
         assertNotNull(share.get_Model());
@@ -97,7 +95,6 @@ public class Share_JUnitTest {
         item.setCodeISIN("codeISIN");
         item.setCodeYahoo("codeYahoo");
         item.setDescription("description");
-        item.setIdPortfolio(Long.valueOf(1));
         item.setName("name");
 
         // act : run the test
@@ -110,7 +107,6 @@ public class Share_JUnitTest {
         assertEquals(share.getCodeISIN(), "codeISIN");
         assertEquals(share.getCodeYahoo(), "codeYahoo");
         assertEquals(share.getDescription(), "description");
-        assertEquals(share.getIdPortfolio(), Long.valueOf(1));
         assertEquals(share.getName(), "name");
     }
 
@@ -145,7 +141,6 @@ public class Share_JUnitTest {
         item.setCodeISIN("codeISIN");
         item.setCodeYahoo("codeYahoo");
         item.setDescription("description");
-        item.setIdPortfolio(Long.valueOf(1));
         item.setName("name");
 
         // act : run the test
@@ -158,7 +153,6 @@ public class Share_JUnitTest {
         assertEquals(share.getCodeISIN(), "codeISIN");
         assertEquals(share.getCodeYahoo(), "codeYahoo");
         assertEquals(share.getDescription(), "description");
-        assertEquals(share.getIdPortfolio(), Long.valueOf(1));
         assertEquals(share.getName(), "name");
     }
 
@@ -188,7 +182,6 @@ public class Share_JUnitTest {
         final ShareBOApplicationComponent shareAC = mock(ShareBOApplicationComponent.class);
         assert shareAC != null;
         final Share share = new Share(shareAC);
-        share.setIdPortfolio(Long.valueOf(1));
         share.setName("name");
 
         // act : run the test

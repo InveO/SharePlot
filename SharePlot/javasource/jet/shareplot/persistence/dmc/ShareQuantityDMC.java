@@ -19,7 +19,7 @@ import jet.util.throwable.JETException;
  */
 public final class ShareQuantityDMC implements DataModelConverter2<ShareQuantityRemote> {
 
-    private static final long serialVersionUID = 1077646545L;
+    private static final long serialVersionUID = 2027097663L;
 
     /**
      * Default constructor.
@@ -41,6 +41,7 @@ public final class ShareQuantityDMC implements DataModelConverter2<ShareQuantity
             shareQuantityItem.get_ChangeType_Model().setNodeValue(shareQuantityRemote.getChangeType());
             shareQuantityItem.get_ChangeValue_Model().setNodeValue(shareQuantityRemote.getChangeValue());
             shareQuantityItem.get_Description_Model().setNodeValue(shareQuantityRemote.getDescription());
+            shareQuantityItem.get_IdPortfolio_Model().setNodeValue(shareQuantityRemote.getIdPortfolio());
             shareQuantityItem.get_IdShare_Model().setNodeValue(shareQuantityRemote.getIdShare());
             shareQuantityItem.get_ValueDate_Model().setNodeValue(shareQuantityRemote.getValueDate());
         } catch (final EJBException e) {
@@ -69,6 +70,7 @@ public final class ShareQuantityDMC implements DataModelConverter2<ShareQuantity
             shareQuantityRemote.setChangeType(shareQuantityItem.getChangeType());
             shareQuantityRemote.setChangeValue(shareQuantityItem.getChangeValue());
             shareQuantityRemote.setDescription(shareQuantityItem.getDescription());
+            shareQuantityRemote.setIdPortfolio(shareQuantityItem.getIdPortfolio());
             shareQuantityRemote.setIdShare(shareQuantityItem.getIdShare());
             shareQuantityRemote.setValueDate(shareQuantityItem.getValueDate());
         } catch (final EJBException e) {

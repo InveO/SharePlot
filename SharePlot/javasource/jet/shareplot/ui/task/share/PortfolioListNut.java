@@ -54,9 +54,8 @@ public class PortfolioListNut extends AbstractSharePlotListNut<Portfolio> {
         }
     }
 
-    private void launchEditPortfolio(final Portfolio portfolio) {
+    private void launchEditPortfolio(@Nonnull final Portfolio portfolio) {
         final Map<String, Object> initArgs = new HashMap<String, Object>();
-        initArgs.put(SharePlotACLauncher.AC_KEY_PARAMETER, new ShareListNutKey(portfolio.getIdPortfolio()));
 
         launchPortfolioEditor(TaskNameConstants.SHARE_LIST, portfolio, initArgs);
     }
@@ -106,7 +105,7 @@ public class PortfolioListNut extends AbstractSharePlotListNut<Portfolio> {
 
     @Override
     protected Portfolio createNewItem() {
-        PortfolioBOApplicationComponent assertNonNull = AnnotationsHelper.assertNonNull(this.portfolioAC);
+        final PortfolioBOApplicationComponent assertNonNull = AnnotationsHelper.assertNonNull(this.portfolioAC);
         final Portfolio portfolio = new Portfolio(assertNonNull);
         portfolio.setIsFake(BooleanConstants.NO);
         return portfolio;

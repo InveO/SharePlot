@@ -52,10 +52,6 @@
                 <field-name>description</field-name>
             </cmp-field>
             <cmp-field>
-                <description> Desc for idPortfolio</description>
-                <field-name>idPortfolio</field-name>
-            </cmp-field>
-            <cmp-field>
                 <description> Desc for name</description>
                 <field-name>name</field-name>
             </cmp-field>
@@ -92,6 +88,10 @@
             <cmp-field>
                 <description> Desc for description</description>
                 <field-name>description</field-name>
+            </cmp-field>
+            <cmp-field>
+                <description> Desc for idPortfolio</description>
+                <field-name>idPortfolio</field-name>
             </cmp-field>
             <cmp-field>
                 <description> Desc for idShare</description>

@@ -37,6 +37,7 @@ public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends
     private UIButtonComponent deleteButton;
     private CheckBoxSelectedCellProvider selectedCellProvider;
     private ResourceNotificationApplicationComponent resourceAC;
+    private boolean processNotifications = true;
 
     @Initializer
     public final void doAbstractSharePlotListNutInit() throws JETException {
@@ -181,6 +182,7 @@ public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends
 
         preSave();
 
+        this.processNotifications = false;
         for (final T item : this.items) {
             try {
                 item.save();
@@ -189,6 +191,7 @@ public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends
                 logp(JETLevel.SEVERE, "AbstractSharePlotListNut", "processSave", e.getMessage(), e);
             }
         }
+        this.processNotifications = true;
 
         postSave();
 
@@ -202,7 +205,7 @@ public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends
     // ResourceNotificationListener
     @Override
     public void resourceNotification(final String resourceName, final Model parameter) {
-        if (resourceName.equals(getResourceName())) {
+        if (this.processNotifications && resourceName.equals(getResourceName())) {
             if (parameter instanceof AbstractResourceNotification) {
                 @SuppressWarnings("unchecked")
                 final AbstractResourceNotification<T> resNotif = (AbstractResourceNotification<T>) parameter;

@@ -95,26 +95,6 @@ public interface ShareRemote extends EJBObject {
 
 
     /**
-     * Get the value for the field idPortfolio.
-     *
-     * @return Long value for the field idPortfolio
-     * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
-     * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
-     */
-    @Nullable
-    Long getIdPortfolio() throws EJBException, RemoteException;
-    
-    /**
-     * Set the value for the field idPortfolio.
-     *
-     * @param idPortfolio value for the field idPortfolio
-     * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
-     * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
-     */
-    void setIdPortfolio(@Nullable final Long idPortfolio) throws EJBException, RemoteException;
-
-
-    /**
      * Get the value for the field name.
      *
      * @return String value for the field name
@@ -140,10 +120,9 @@ public interface ShareRemote extends EJBObject {
      * @param codeISIN value for the field codeISIN
      * @param codeYahoo value for the field codeYahoo
      * @param description value for the field description
-     * @param idPortfolio value for the field idPortfolio
      * @param name value for the field name
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void update(@Nullable final String codeISIN ,@Nullable final String codeYahoo ,@Nullable final String description ,@Nullable final Long idPortfolio ,@Nullable final String name) throws EJBException, RemoteException;
+    void update(@Nullable final String codeISIN ,@Nullable final String codeYahoo ,@Nullable final String description ,@Nullable final String name) throws EJBException, RemoteException;
 }

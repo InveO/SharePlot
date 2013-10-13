@@ -49,6 +49,7 @@ public class ShareQuantity_JUnitTest {
         assertNull(shareQuantity.getChangeType());
         assertNull(shareQuantity.getChangeValue());
         assertNull(shareQuantity.getDescription());
+        assertNull(shareQuantity.getIdPortfolio());
         assertNull(shareQuantity.getIdShare());
         assertNull(shareQuantity.getValueDate());
 
@@ -64,6 +65,7 @@ public class ShareQuantity_JUnitTest {
         assertNotNull(shareQuantity.get_ChangeType_Model());
         assertNotNull(shareQuantity.get_ChangeValue_Model());
         assertNotNull(shareQuantity.get_Description_Model());
+        assertNotNull(shareQuantity.get_IdPortfolio_Model());
         assertNotNull(shareQuantity.get_IdShare_Model());
         assertNotNull(shareQuantity.get_ValueDate_Model());
 
@@ -103,6 +105,7 @@ public class ShareQuantity_JUnitTest {
         item.setChangeType("changeType");
         item.setChangeValue(java.math.BigDecimal.valueOf(1));
         item.setDescription("description");
+        item.setIdPortfolio(Long.valueOf(1));
         item.setIdShare(Long.valueOf(1));
         item.setValueDate(new java.util.Date());
 
@@ -118,6 +121,7 @@ public class ShareQuantity_JUnitTest {
         assertEquals(shareQuantity.getChangeType(), "changeType");
         assertEquals(shareQuantity.getChangeValue(), java.math.BigDecimal.valueOf(1));
         assertEquals(shareQuantity.getDescription(), "description");
+        assertEquals(shareQuantity.getIdPortfolio(), Long.valueOf(1));
         assertEquals(shareQuantity.getIdShare(), Long.valueOf(1));
         assertNotNull(shareQuantity.getValueDate());
     }
@@ -155,6 +159,7 @@ public class ShareQuantity_JUnitTest {
         item.setChangeType("changeType");
         item.setChangeValue(java.math.BigDecimal.valueOf(1));
         item.setDescription("description");
+        item.setIdPortfolio(Long.valueOf(1));
         item.setIdShare(Long.valueOf(1));
         item.setValueDate(new java.util.Date());
 
@@ -170,6 +175,7 @@ public class ShareQuantity_JUnitTest {
         assertEquals(shareQuantity.getChangeType(), "changeType");
         assertEquals(shareQuantity.getChangeValue(), java.math.BigDecimal.valueOf(1));
         assertEquals(shareQuantity.getDescription(), "description");
+        assertEquals(shareQuantity.getIdPortfolio(), Long.valueOf(1));
         assertEquals(shareQuantity.getIdShare(), Long.valueOf(1));
         assertNotNull(shareQuantity.getValueDate());
     }
@@ -204,6 +210,7 @@ public class ShareQuantity_JUnitTest {
         shareQuantity.setChangeQuantity(java.math.BigDecimal.valueOf(1));
         shareQuantity.setChangeType("changeType");
         shareQuantity.setChangeValue(java.math.BigDecimal.valueOf(1));
+        shareQuantity.setIdPortfolio(Long.valueOf(1));
         shareQuantity.setIdShare(Long.valueOf(1));
         shareQuantity.setValueDate(new java.util.Date());
 

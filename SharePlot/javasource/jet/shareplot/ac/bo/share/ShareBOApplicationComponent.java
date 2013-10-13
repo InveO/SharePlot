@@ -1,7 +1,6 @@
 package jet.shareplot.ac.bo.share;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Nonnull;
@@ -9,11 +8,8 @@ import javax.annotation.Nonnull;
 import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.session.interfaces.Session;
 import jet.framework.nuts.desktop.JetDesktop;
-import jet.framework.nuts.select.FinderMethod;
 import jet.lifecycle.annotations.Deinitializer;
 import jet.lifecycle.interfaces.LifeCycleState;
-import jet.shareplot.ac.bo.portfolio.Portfolio;
-import jet.shareplot.persistence.finder.share.Share_FindByPortfolio1;
 import jet.util.SerializableKey;
 import jet.util.logger.JETLevel;
 import jet.util.throwable.JETException;
@@ -96,23 +92,6 @@ public class ShareBOApplicationComponent extends AbstractShareBOApplicationCompo
     @Deinitializer
     public final void doAccountACDeinit() throws JETException {
         getSession().removeProperty(SESSION_KEY);
-    }
-
-    /**
-     * Get all shares for a given portfolio.
-     * 
-     * @param portfolio Portfolio for which the shares are desired
-     * @return a list of shareQuantity matching the FinderMethod.
-     * @see List
-     * @see Portfolio
-     * @see Share
-     * @see #getShares(FinderMethod finder)
-     */
-    public List<Share> getShares(final Portfolio portfolio) {
-        final Share_FindByPortfolio1 finder = new Share_FindByPortfolio1();
-        finder.setIdPortfolio(portfolio.getIdPortfolio());
-
-        return getShares(finder);
     }
 
 }

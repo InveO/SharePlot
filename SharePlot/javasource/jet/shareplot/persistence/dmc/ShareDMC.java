@@ -19,7 +19,7 @@ import jet.util.throwable.JETException;
  */
 public final class ShareDMC implements DataModelConverter2<ShareRemote> {
 
-    private static final long serialVersionUID = -1265738400L;
+    private static final long serialVersionUID = -1939421298L;
 
     /**
      * Default constructor.
@@ -39,7 +39,6 @@ public final class ShareDMC implements DataModelConverter2<ShareRemote> {
             shareItem.get_CodeISIN_Model().setNodeValue(shareRemote.getCodeISIN());
             shareItem.get_CodeYahoo_Model().setNodeValue(shareRemote.getCodeYahoo());
             shareItem.get_Description_Model().setNodeValue(shareRemote.getDescription());
-            shareItem.get_IdPortfolio_Model().setNodeValue(shareRemote.getIdPortfolio());
             shareItem.get_Name_Model().setNodeValue(shareRemote.getName());
         } catch (final EJBException e) {
             throw new JETException("EJBException while reading from ShareRemote.", e);
@@ -65,7 +64,6 @@ public final class ShareDMC implements DataModelConverter2<ShareRemote> {
             shareRemote.setCodeISIN(shareItem.getCodeISIN());
             shareRemote.setCodeYahoo(shareItem.getCodeYahoo());
             shareRemote.setDescription(shareItem.getDescription());
-            shareRemote.setIdPortfolio(shareItem.getIdPortfolio());
             shareRemote.setName(shareItem.getName());
         } catch (final EJBException e) {
             throw new JETException("EJBException while writing to ShareRemote.", e);

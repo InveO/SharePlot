@@ -18,7 +18,6 @@
         <COLUMN name="codeISIN" type="String" length="45" nullable="true" autoincrement="false" />
         <COLUMN name="codeYahoo" type="String" length="45" nullable="true" autoincrement="false" />
         <COLUMN name="description" type="String" length="4000" nullable="true" autoincrement="false" />
-        <COLUMN name="idPortfolio" type="Long" length="10" nullable="false" autoincrement="false" />
         <COLUMN name="name" type="String" length="255" nullable="false" autoincrement="false" />
         <PRIMARYKEY>
             <KEYITEM component="idShare"/>
@@ -31,6 +30,7 @@
         <COLUMN name="changeType" type="String" length="1" nullable="false" autoincrement="false" />
         <COLUMN name="changeValue" type="java.math.BigDecimal" length="12" nullable="false" autoincrement="false" />
         <COLUMN name="description" type="String" length="1000" nullable="true" autoincrement="false" />
+        <COLUMN name="idPortfolio" type="Long" length="10" nullable="false" autoincrement="false" />
         <COLUMN name="idShare" type="Long" length="10" nullable="false" autoincrement="false" />
         <COLUMN name="valueDate" type="java.util.Date" length="10" nullable="false" autoincrement="false" />
         <PRIMARYKEY>

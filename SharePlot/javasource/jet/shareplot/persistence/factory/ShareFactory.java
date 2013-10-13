@@ -23,7 +23,7 @@ import jet.util.throwable.JETException;
 @SuppressWarnings("PMD.MethodNamingConventions")
 public final class ShareFactory implements Serializable {
 
-    private static final long serialVersionUID = -1265738400L;
+    private static final long serialVersionUID = -1939421298L;
     private static volatile Logger logger;
 
     private ShareFactory() {
@@ -67,14 +67,6 @@ public final class ShareFactory implements Serializable {
         try {
             sValue = ModelHelper.getChildNodeValueAsString(untypedModel, "description");
             item.setDescription(sValue);
-        } catch (final JETException e) {
-            getLogger().logp(JETLevel.INFO, "ShareItem", "getFromUntypedModel", e.getMessage(), e);
-        }
-        try {
-            sValue = ModelHelper.getChildNodeValueAsString(untypedModel, "idPortfolio");
-            if (sValue != null) {
-                item.setIdPortfolio(Long.valueOf(sValue));
-            }
         } catch (final JETException e) {
             getLogger().logp(JETLevel.INFO, "ShareItem", "getFromUntypedModel", e.getMessage(), e);
         }

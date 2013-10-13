@@ -20,10 +20,8 @@ CREATE TABLE IF NOT EXISTS `SharePlot`.`Share` (
   `codeISIN` VARCHAR(45) NULL DEFAULT NULL  ,
   `codeYahoo` VARCHAR(45) NULL DEFAULT NULL  ,
   `description` VARCHAR(4000) NULL DEFAULT NULL  ,
-  `idPortfolio` INTEGER(10)  NOT NULL  ,
   `name` VARCHAR(255)  NOT NULL  ,
-  PRIMARY KEY ( `idShare`),
-  INDEX `fk_Share_Portfolio` (`idPortfolio` ASC) )
+  PRIMARY KEY ( `idShare`))
 ENGINE = InnoDB;
 
 
@@ -38,9 +36,11 @@ CREATE TABLE IF NOT EXISTS `SharePlot`.`ShareQuantity` (
   `changeType` CHAR(1)  NOT NULL  ,
   `changeValue` DECIMAL(12)  NOT NULL  ,
   `description` VARCHAR(1000) NULL DEFAULT NULL  ,
+  `idPortfolio` INTEGER(10)  NOT NULL  ,
   `idShare` INTEGER(10)  NOT NULL  ,
   `valueDate` DATE  NOT NULL  ,
   PRIMARY KEY ( `idShareQuantity`),
+  INDEX `fk_ShareQuantity_Portfolio` (`idPortfolio` ASC) ,
   INDEX `fk_ShareQuantity_Share` (`idShare` ASC) )
 ENGINE = InnoDB;
 
@@ -73,11 +73,7 @@ ALTER TABLE `SharePlot`.`Portfolio`
 -- -----------------------------------------------------
 
 ALTER TABLE `SharePlot`.`Share` 
-  ADD CONSTRAINT `fk_Share_Portfolio`
-    FOREIGN KEY (`idPortfolio` )
-    REFERENCES `SharePlot`.`Portfolio` (`idPortfolio` ) 
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION;
+;
 
 
 -- -----------------------------------------------------
@@ -85,6 +81,11 @@ ALTER TABLE `SharePlot`.`Share`
 -- -----------------------------------------------------
 
 ALTER TABLE `SharePlot`.`ShareQuantity` 
+  ADD CONSTRAINT `fk_ShareQuantity_Portfolio`
+    FOREIGN KEY (`idPortfolio` )
+    REFERENCES `SharePlot`.`Portfolio` (`idPortfolio` ) 
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_ShareQuantity_Share`
     FOREIGN KEY (`idShare` )
     REFERENCES `SharePlot`.`Share` (`idShare` ) 

@@ -1,24 +1,29 @@
 <!-- Menu configuration file.  -->
 <MENUDESCRIPTOR>
-	
+
     <MENUACTIONS>
-        
-        <!-- DOMAIN MENU -->
-        <action id="Shares.Shares" label="SharePlot/properties/desktop/Menu/item.Shares" type="LaunchAC"  >
+
+        <!-- SHARES MENU -->
+        <action id="Shares.Portfolios" label="SharePlot/properties/desktop/Menu/item.Portfolios" type="LaunchAC"  >
             <parameter name="component" value="PortfolioList" />
             <parameter name="keyclass" value="jet.shareplot.ui.task.share.PortfolioListNutKey" />
         </action>
-        
+        <action id="Shares.Shares" label="SharePlot/properties/desktop/Menu/item.Shares" type="LaunchAC"  >
+            <parameter name="component" value="ShareList" />
+            <parameter name="keyclass" value="jet.shareplot.ui.task.share.ShareListNutKey" />
+        </action>
+
     </MENUACTIONS>
-	
-	<!-- The Menu system is the root element for all the menu bars -->
-	<MENUROOT name="SharePlotMenuSystem" >
-		<!-- a menu bar is a list of menus -->
-		<menubar id="SharePlotMainMenuBar" separator="true" >
-			<!-- a menu may contain other menus as well as menu items -->
+
+  <!-- The Menu system is the root element for all the menu bars -->
+  <MENUROOT name="SharePlotMenuSystem" >
+    <!-- a menu bar is a list of menus -->
+    <menubar id="SharePlotMainMenuBar" separator="true" >
+      <!-- a menu may contain other menus as well as menu items -->
             <menu id="Shares" label="SharePlot/properties/desktop/Menu/menu.Shares">
+                <item id="Shares_Portfolios" action-ref="Shares.Portfolios" />
                 <item id="Shares_Shares" action-ref="Shares.Shares" />
             </menu>
-		</menubar>
-	</MENUROOT>
+    </menubar>
+  </MENUROOT>
 </MENUDESCRIPTOR>

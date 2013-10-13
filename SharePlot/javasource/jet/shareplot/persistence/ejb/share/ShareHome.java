@@ -29,14 +29,13 @@ public interface ShareHome extends EJBHome {
      * @param codeISIN value for the field codeISIN
      * @param codeYahoo value for the field codeYahoo
      * @param description value for the field description
-     * @param idPortfolio value for the field idPortfolio
      * @param name value for the field name
      * @return ShareRemote EJBObject implementation for the bean
      * @throws CreateException Thrown by the method to indicate a failure during the creation.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
     @Nonnull
-    ShareRemote create(@EJBParam(name = "idShare") Long idShare, @EJBParam(name = "codeISIN") String codeISIN, @EJBParam(name = "codeYahoo") String codeYahoo, @EJBParam(name = "description") String description, @EJBParam(name = "idPortfolio") Long idPortfolio, @EJBParam(name = "name") String name) throws CreateException, RemoteException;
+    ShareRemote create(@EJBParam(name = "idShare") Long idShare, @EJBParam(name = "codeISIN") String codeISIN, @EJBParam(name = "codeYahoo") String codeYahoo, @EJBParam(name = "description") String description, @EJBParam(name = "name") String name) throws CreateException, RemoteException;
 
     /**
      * Find a record by its primary key.
@@ -56,16 +55,6 @@ public interface ShareHome extends EJBHome {
      */
     @Nonnull
     Collection<ShareRemote> findAll() throws FinderException, RemoteException;
-
-    /**
-     * Find a collections of records.
-     * @param idPortfolio value for the argument idPortfolio
-     * @return Collection of EJBObject implementations for the bean
-     * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
-     * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
-     */
-    @Nonnull
-    Collection<ShareRemote> findByPortfolio(@Nullable final Long idPortfolio) throws FinderException, RemoteException;
 
     /**
      * Find a collections of records.

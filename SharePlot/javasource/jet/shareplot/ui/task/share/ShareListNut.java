@@ -13,10 +13,6 @@ import jet.components.ui.table.common.UITableComponent2;
 import jet.framework.ui.desktop.ApplicationComponentLauncher;
 import jet.framework.ui.desktop.navigation.menu.CleanCloseException;
 import jet.framework.ui.utils.table.UITableListDisplay3;
-import jet.framework.util.exception.FormatedJetException;
-import jet.framework.util.models.UIModelHelper;
-import jet.framework.util.ui.LocalizedMessageFormatDisplayable;
-import jet.shareplot.ac.bo.portfolio.Portfolio;
 import jet.shareplot.ac.bo.share.Share;
 import jet.shareplot.ac.bo.share.ShareBOApplicationComponent;
 import jet.shareplot.ac.bo.share.ShareResource;
@@ -25,13 +21,11 @@ import jet.shareplot.ui.desktop.SharePlotACLauncher;
 import jet.shareplot.ui.task.TaskNameConstants;
 import jet.util.annotations.AnnotationsHelper;
 import jet.util.logger.JETLevel;
-import jet.util.models.interfaces.Displayable;
 import jet.util.throwable.JETException;
 
 public class ShareListNut extends AbstractSharePlotListNut<Share> {
 
     private ShareBOApplicationComponent shareAC;
-    private Portfolio portfolio;
 
     @Override
     public <T extends Enum<T>> void tableCellEvent(final UITableComponent2 table, final int row, final int col, final UIEvent<T> uiEvent) {
@@ -82,27 +76,17 @@ public class ShareListNut extends AbstractSharePlotListNut<Share> {
 
     @Override
     protected void preInit() throws JETException {
-        this.portfolio = (Portfolio) getApplicationComponent().getProperty(ShareUIConstants.ARGUMENT_PORTFOLIO);
         this.shareAC = ShareBOApplicationComponent.getInstance(getSession());
-
-        updateHeaderTitle();
-    }
-
-    private void updateHeaderTitle() {
-        final Object[] objects = { this.portfolio.getName() };
-        final Displayable displayable = new LocalizedMessageFormatDisplayable("SharePlot/properties/task/Share/title.ShareListName", objects);
-        setHeaderTitle(displayable);
     }
 
     @Override
     protected void postInit() throws JETException {
         // nothing to do
-        UIModelHelper.setDataModelNodeToField(this.portfolio.get_Name_Model(), "name", true, getMainComponent(), null);
     }
 
     @Override
     protected List<Share> findItems() {
-        return this.shareAC.getShares(this.portfolio);
+        return this.shareAC.getShares();
     }
 
     @Override
@@ -114,7 +98,6 @@ public class ShareListNut extends AbstractSharePlotListNut<Share> {
     protected Share createNewItem() {
         final ShareBOApplicationComponent assertNonNull = AnnotationsHelper.assertNonNull(this.shareAC);
         final Share share = new Share(assertNonNull);
-        share.setIdPortfolio(this.portfolio.getIdPortfolio());
         return share;
     }
 
@@ -135,12 +118,7 @@ public class ShareListNut extends AbstractSharePlotListNut<Share> {
 
     @Override
     protected void postSave() {
-        try {
-            this.portfolio.save();
-        } catch (final FormatedJetException e) {
-            logp(JETLevel.SEVERE, "ShareListNut", "postSave", e.getMessage(), e);
-        }
-        updateHeaderTitle();
+        // nothing to do
     }
 
     @Override

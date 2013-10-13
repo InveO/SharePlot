@@ -44,6 +44,7 @@
             -->
         <COLUMN paramName="idShareQuantity" type="Long" name="idShareQuantity" localname="idShareQuantity" dbtype="INTEGER" length="10" noOfDecimal="0" nullable="false" autoIncrement="true" default="" />
         <COLUMN paramName="idShare" type="Long" name="idShare" localname="idShare" dbtype="INTEGER" length="10" noOfDecimal="0" nullable="false" autoIncrement="false" default="" />
+        <COLUMN paramName="idPortfolio" type="Long" name="idPortfolio" localname="idPortfolio" dbtype="INTEGER" length="10" noOfDecimal="0" nullable="false" autoIncrement="false" default="" />
         <COLUMN paramName="valueDate" type="java.util.Date" name="valueDate" localname="valueDate" dbtype="DATE" length="10" noOfDecimal="0" nullable="false" autoIncrement="false" default="" />
         <COLUMN paramName="description" type="String" name="description" localname="description" dbtype="VARCHAR" length="1000" noOfDecimal="0" nullable="true" autoIncrement="false" default="" />
         <COLUMN paramName="changeType" type="String" name="changeType" localname="changeType" dbtype="CHAR" length="1" noOfDecimal="0" nullable="false" autoIncrement="false" default="" />
@@ -61,6 +62,9 @@
         </PRIMARYKEY>
 
         <!-- FOREIGNKEY : identifies the columns to use as foreign key -->
+        <FOREIGNKEY name="fk_ShareQuantity_Portfolio" foreigntable="Portfolio" foreigntablelocalname="Portfolio" >
+            <FKITEM column="idPortfolio" foreigncolumn="idPortfolio" foreigncolumnlocalname="idPortfolio" />
+        </FOREIGNKEY>
         <FOREIGNKEY name="fk_ShareQuantity_Share" foreigntable="Share" foreigntablelocalname="Share" >
             <FKITEM column="idShare" foreigncolumn="idShare" foreigncolumnlocalname="idShare" />
         </FOREIGNKEY>

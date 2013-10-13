@@ -30,7 +30,7 @@ import jet.util.throwable.JETSystemError;
 @SuppressWarnings("PMD.MethodNamingConventions")
 public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, JFDataItem {
 
-    private static final long serialVersionUID = 1077646545L;
+    private static final long serialVersionUID = 2027097663L;
 
     private static final String ATTRIBUTE_DISPATCHER_MODEL = "jet.shareplot.persistence.pojo.ATTRIBUTE_DISPATCHER_MODEL";
 
@@ -43,6 +43,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     private transient DispatcherModel<ShareQuantityItem> changeTypeDispatcherModel;
     private transient DispatcherModel<ShareQuantityItem> changeValueDispatcherModel;
     private transient DispatcherModel<ShareQuantityItem> descriptionDispatcherModel;
+    private transient DispatcherModel<ShareQuantityItem> idPortfolioDispatcherModel;
     private transient DispatcherModel<ShareQuantityItem> idShareDispatcherModel;
     private transient DispatcherModel<ShareQuantityItem> valueDateDispatcherModel;
 
@@ -73,6 +74,8 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("description");
         this.dataModel.appendChild(model);
+        model = new SimpleEventModelImpl("idPortfolio");
+        this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("idShare");
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("valueDate");
@@ -102,6 +105,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
         setChangeType(shareQuantity.getChangeType());
         setChangeValue(shareQuantity.getChangeValue());
         setDescription(shareQuantity.getDescription());
+        setIdPortfolio(shareQuantity.getIdPortfolio());
         setIdShare(shareQuantity.getIdShare());
         setValueDate(shareQuantity.getValueDate());
     }
@@ -444,6 +448,51 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     }
 
     /**
+     * Get node value of Data Model node idPortfolio.
+     * This field should not be <code>null</code> in the database.
+     * 
+     * @return Long value of Data Model node idPortfolio
+     */
+    public final Long getIdPortfolio() {
+        return (Long) get_IdPortfolio_Model().getNodeValue();
+    }
+
+    /**
+     * Set node value of Data Model node idPortfolio.
+     * This field should not be <code>null</code> in the database.
+     * 
+     * @param idPortfolio Long value of Data Model node idPortfolio
+     */
+    public final void setIdPortfolio(final Long idPortfolio) {
+        get_IdPortfolio_Model().setNodeValue(idPortfolio);
+    }
+
+    /**
+     * Get Model of Data Model node idPortfolio.
+     * 
+     * @return Model of Data Model node idPortfolio
+     */
+    @SuppressWarnings("unchecked")
+    @Nonnull
+    public final DispatcherModel<ShareQuantityItem> get_IdPortfolio_Model() {
+        if (this.idPortfolioDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idPortfolio");
+                this.idPortfolioDispatcherModel = (DispatcherModel<ShareQuantityItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.idPortfolioDispatcherModel == null) {
+                    this.idPortfolioDispatcherModel = new DispatcherModel<ShareQuantityItem>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.idPortfolioDispatcherModel);
+                }
+            } catch (final JETException e) {
+                throw new JETSystemError("ShareQuantity data model does not have a child named idPortfolio. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
+        }
+        final DispatcherModel<ShareQuantityItem> dm = this.idPortfolioDispatcherModel;
+        assert dm != null;
+        return dm;
+    }
+
+    /**
      * Get node value of Data Model node idShare.
      * This field should not be <code>null</code> in the database.
      * 
@@ -540,6 +589,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * <li><b>changeQuantity</b> can not be <code>null</code> in the database.</li>
      * <li><b>changeType</b> can not be <code>null</code> in the database.</li>
      * <li><b>changeValue</b> can not be <code>null</code> in the database.</li>
+     * <li><b>idPortfolio</b> can not be <code>null</code> in the database.</li>
      * <li><b>idShare</b> can not be <code>null</code> in the database.</li>
      * <li><b>valueDate</b> can not be <code>null</code> in the database.</li>
      * </ul>
@@ -571,6 +621,12 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
         if (changeValue == null) {
             getLogger().logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull",
                 "changeValue is null but is not nullable.");
+            return true;
+        }
+        final Long idPortfolio = getIdPortfolio();
+        if (idPortfolio == null) {
+            getLogger().logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull",
+                "idPortfolio is null but is not nullable.");
             return true;
         }
         final Long idShare = getIdShare();

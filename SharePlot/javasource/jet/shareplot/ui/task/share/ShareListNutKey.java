@@ -10,16 +10,6 @@ public class ShareListNutKey implements Serializable {
 
     private static final long serialVersionUID = -5870011731143456024L;
 
-    private final Long idPortfolio;
-
-    /**
-     * @param idPortfolio
-     */
-    public ShareListNutKey(final Long idPortfolio) {
-        assert idPortfolio != null;
-        this.idPortfolio = idPortfolio;
-    }
-
     @Override
     public boolean equals(final Object obj) {
         boolean result = false;
@@ -27,8 +17,10 @@ public class ShareListNutKey implements Serializable {
             result = true;
         } else {
             if (obj instanceof ShareListNutKey) {
-                final ShareListNutKey other = (ShareListNutKey) obj;
-                result = this.idPortfolio.equals(other.idPortfolio);
+                final ShareListNutKey key = (ShareListNutKey) obj;
+                if (key.hashCode() == hashCode()) {
+                    result = true;
+                }
             }
         }
         return result;
@@ -36,7 +28,7 @@ public class ShareListNutKey implements Serializable {
 
     @Override
     public int hashCode() {
-        return this.idPortfolio.hashCode();
+        return "jet.shareplot.ui.task.share.ShareListNutKey".hashCode();
     }
 
 }

@@ -43,7 +43,6 @@
             autoIncrement : "true" if the column is flagged as auto-increment in the DB
             -->
         <COLUMN paramName="idShare" type="Long" name="idShare" localname="idShare" dbtype="INTEGER" length="10" noOfDecimal="0" nullable="false" autoIncrement="true" default="" />
-        <COLUMN paramName="idPortfolio" type="Long" name="idPortfolio" localname="idPortfolio" dbtype="INTEGER" length="10" noOfDecimal="0" nullable="false" autoIncrement="false" default="" />
         <COLUMN paramName="name" type="String" name="name" localname="name" dbtype="VARCHAR" length="255" noOfDecimal="0" nullable="false" autoIncrement="false" default="" />
         <COLUMN paramName="description" type="String" name="description" localname="description" dbtype="VARCHAR" length="4000" noOfDecimal="0" nullable="true" autoIncrement="false" default="" />
         <COLUMN paramName="codeISIN" type="String" name="codeISIN" localname="codeISIN" dbtype="VARCHAR" length="45" noOfDecimal="0" nullable="true" autoIncrement="false" default="" />
@@ -59,9 +58,6 @@
         </PRIMARYKEY>
 
         <!-- FOREIGNKEY : identifies the columns to use as foreign key -->
-        <FOREIGNKEY name="fk_Share_Portfolio" foreigntable="Portfolio" foreigntablelocalname="Portfolio" >
-            <FKITEM column="idPortfolio" foreigncolumn="idPortfolio" foreigncolumnlocalname="idPortfolio" />
-        </FOREIGNKEY>
 
     </TABLE>
 

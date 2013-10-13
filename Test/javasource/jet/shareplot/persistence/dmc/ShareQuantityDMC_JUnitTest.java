@@ -42,6 +42,7 @@ public class ShareQuantityDMC_JUnitTest {
         verify(shareQuantityRemote, times(1)).getChangeType();
         verify(shareQuantityRemote, times(1)).getChangeValue();
         verify(shareQuantityRemote, times(1)).getDescription();
+        verify(shareQuantityRemote, times(1)).getIdPortfolio();
         verify(shareQuantityRemote, times(1)).getIdShare();
         verify(shareQuantityRemote, times(1)).getValueDate();
     }
@@ -64,6 +65,7 @@ public class ShareQuantityDMC_JUnitTest {
         verify(shareQuantityRemote, times(1)).setChangeType(any(String.class));
         verify(shareQuantityRemote, times(1)).setChangeValue(any(java.math.BigDecimal.class));
         verify(shareQuantityRemote, times(1)).setDescription(any(String.class));
+        verify(shareQuantityRemote, times(1)).setIdPortfolio(any(Long.class));
         verify(shareQuantityRemote, times(1)).setIdShare(any(Long.class));
         verify(shareQuantityRemote, times(1)).setValueDate(any(java.util.Date.class));
     }

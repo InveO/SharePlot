@@ -31,6 +31,7 @@ public interface ShareQuantityHome extends EJBHome {
      * @param changeType value for the field changeType
      * @param changeValue value for the field changeValue
      * @param description value for the field description
+     * @param idPortfolio value for the field idPortfolio
      * @param idShare value for the field idShare
      * @param valueDate value for the field valueDate
      * @return ShareQuantityRemote EJBObject implementation for the bean
@@ -38,7 +39,7 @@ public interface ShareQuantityHome extends EJBHome {
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
     @Nonnull
-    ShareQuantityRemote create(@EJBParam(name = "idShareQuantity") Long idShareQuantity, @EJBParam(name = "changeFee") java.math.BigDecimal changeFee, @EJBParam(name = "changeQuantity") java.math.BigDecimal changeQuantity, @EJBParam(name = "changeType") String changeType, @EJBParam(name = "changeValue") java.math.BigDecimal changeValue, @EJBParam(name = "description") String description, @EJBParam(name = "idShare") Long idShare, @EJBParam(name = "valueDate") java.util.Date valueDate) throws CreateException, RemoteException;
+    ShareQuantityRemote create(@EJBParam(name = "idShareQuantity") Long idShareQuantity, @EJBParam(name = "changeFee") java.math.BigDecimal changeFee, @EJBParam(name = "changeQuantity") java.math.BigDecimal changeQuantity, @EJBParam(name = "changeType") String changeType, @EJBParam(name = "changeValue") java.math.BigDecimal changeValue, @EJBParam(name = "description") String description, @EJBParam(name = "idPortfolio") Long idPortfolio, @EJBParam(name = "idShare") Long idShare, @EJBParam(name = "valueDate") java.util.Date valueDate) throws CreateException, RemoteException;
 
     /**
      * Find a record by its primary key.
