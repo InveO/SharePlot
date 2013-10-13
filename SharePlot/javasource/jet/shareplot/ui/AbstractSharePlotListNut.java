@@ -85,8 +85,8 @@ public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends
 
     private void initItemList() throws JETException {
         final Model listDisplayModel = getConfigurationNode(getListDisplayKey());
-        this.tableList = (UITableComponent2) UIComponentFinder.findComponent("tableList", getMainComponent());
-        this.uiTableListDisplay3 = new UITableListDisplay3(this.tableList, getUIContext(), listDisplayModel, getSession(), getLogger());
+        final UITableComponent2 table = this.tableList = (UITableComponent2) UIComponentFinder.findComponent("tableList", getMainComponent());
+        this.uiTableListDisplay3 = new UITableListDisplay3(table, getUIContext(), listDisplayModel, getSession(), getLogger());
 
         this.selectedCellProvider = new CheckBoxSelectedCellProvider("colSelect");
         this.uiTableListDisplay3.addListTableCellModelProvider(this.selectedCellProvider);
