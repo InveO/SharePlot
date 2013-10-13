@@ -59,5 +59,4 @@ public class ShareValueDMC_JUnitTest {
         verify(shareValueRemote, times(1)).setValue(any(java.math.BigDecimal.class));
         verify(shareValueRemote, times(1)).setValueDate(any(java.util.Date.class));
     }
-
 }

@@ -5,9 +5,11 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
 import jet.framework.util.pojo2.JFErrorHandler;
 import jet.shareplot.persistence.pojo.ShareQuantityItem;
+import jet.util.models.interfaces.Model;
 
 import org.junit.runner.RunWith;
 
@@ -16,7 +18,7 @@ import com.objectpartners.buesing.premock.PreMockJUnit4ClassRunner;
 
 /**
  * JUnit skeleton for the ShareQuantity object
- * 
+ *
  * @author JetToolsFramework
  */
 @PreMock({ ShareQuantity.class, ShareQuantityItem.class })
@@ -98,9 +100,9 @@ public class ShareQuantity_JUnitTest {
         // TODO insert data in ShareQuantityItem
         item.setChangeFee(java.math.BigDecimal.valueOf(1));
         item.setChangeQuantity(java.math.BigDecimal.valueOf(1));
-        item.setChangeType("");
+        item.setChangeType("changeType");
         item.setChangeValue(java.math.BigDecimal.valueOf(1));
-        item.setDescription("");
+        item.setDescription("description");
         item.setIdShare(Long.valueOf(1));
         item.setValueDate(new java.util.Date());
 
@@ -113,9 +115,9 @@ public class ShareQuantity_JUnitTest {
         // TODO check that data is in the shareQuantity
         assertEquals(shareQuantity.getChangeFee(), java.math.BigDecimal.valueOf(1));
         assertEquals(shareQuantity.getChangeQuantity(), java.math.BigDecimal.valueOf(1));
-        assertEquals(shareQuantity.getChangeType(), "");
+        assertEquals(shareQuantity.getChangeType(), "changeType");
         assertEquals(shareQuantity.getChangeValue(), java.math.BigDecimal.valueOf(1));
-        assertEquals(shareQuantity.getDescription(), "");
+        assertEquals(shareQuantity.getDescription(), "description");
         assertEquals(shareQuantity.getIdShare(), Long.valueOf(1));
         assertNotNull(shareQuantity.getValueDate());
     }
@@ -150,9 +152,9 @@ public class ShareQuantity_JUnitTest {
         // TODO insert data in ShareQuantity
         item.setChangeFee(java.math.BigDecimal.valueOf(1));
         item.setChangeQuantity(java.math.BigDecimal.valueOf(1));
-        item.setChangeType("");
+        item.setChangeType("changeType");
         item.setChangeValue(java.math.BigDecimal.valueOf(1));
-        item.setDescription("");
+        item.setDescription("description");
         item.setIdShare(Long.valueOf(1));
         item.setValueDate(new java.util.Date());
 
@@ -165,9 +167,9 @@ public class ShareQuantity_JUnitTest {
         // TODO check that data is in the shareQuantity
         assertEquals(shareQuantity.getChangeFee(), java.math.BigDecimal.valueOf(1));
         assertEquals(shareQuantity.getChangeQuantity(), java.math.BigDecimal.valueOf(1));
-        assertEquals(shareQuantity.getChangeType(), "");
+        assertEquals(shareQuantity.getChangeType(), "changeType");
         assertEquals(shareQuantity.getChangeValue(), java.math.BigDecimal.valueOf(1));
-        assertEquals(shareQuantity.getDescription(), "");
+        assertEquals(shareQuantity.getDescription(), "description");
         assertEquals(shareQuantity.getIdShare(), Long.valueOf(1));
         assertNotNull(shareQuantity.getValueDate());
     }
@@ -200,7 +202,7 @@ public class ShareQuantity_JUnitTest {
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
         shareQuantity.setChangeFee(java.math.BigDecimal.valueOf(1));
         shareQuantity.setChangeQuantity(java.math.BigDecimal.valueOf(1));
-        shareQuantity.setChangeType("");
+        shareQuantity.setChangeType("changeType");
         shareQuantity.setChangeValue(java.math.BigDecimal.valueOf(1));
         shareQuantity.setIdShare(Long.valueOf(1));
         shareQuantity.setValueDate(new java.util.Date());

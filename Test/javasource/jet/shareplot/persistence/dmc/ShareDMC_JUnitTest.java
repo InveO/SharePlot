@@ -63,5 +63,4 @@ public class ShareDMC_JUnitTest {
         verify(shareRemote, times(1)).setIdPortfolio(any(Long.class));
         verify(shareRemote, times(1)).setName(any(String.class));
     }
-
 }

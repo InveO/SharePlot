@@ -2,8 +2,11 @@ package jet.shareplot.persistence.factory;
 
 import java.io.Serializable;
 
+import javax.annotation.Nonnull;
+
 import jet.framework.util.models.ModelHelper;
 import jet.shareplot.persistence.pojo.PortfolioItem;
+import jet.util.annotations.AnnotationsHelper;
 import jet.util.logger.JETLevel;
 import jet.util.logger.JETLoggerManager;
 import jet.util.logger.Logger;
@@ -21,7 +24,7 @@ import jet.util.throwable.JETException;
 public final class PortfolioFactory implements Serializable {
 
     private static final long serialVersionUID = 993423458L;
-    private static volatile Logger LOGGER;
+    private static volatile Logger logger;
 
     private PortfolioFactory() {
         // Singleton, add a private constructor to prevent instantiation
@@ -35,6 +38,7 @@ public final class PortfolioFactory implements Serializable {
      * @param untypedModel Model with String node values
      * @return PortfolioItem
      */
+    @Nonnull
     public static PortfolioItem getFromUntypedModel(final Model untypedModel) {
         final PortfolioItem item = new PortfolioItem();
 
@@ -70,20 +74,22 @@ public final class PortfolioFactory implements Serializable {
     }
 
     /**
+     * Get logger.
+     * 
      * @return Logger
      * @see "http://en.wikipedia.org/wiki/Double-checked_locking#Usage_in_Java"
      */
+    @Nonnull
     private static Logger getLogger() {
-        Logger result = LOGGER;
+        Logger result = logger;
         if (result == null) {
-            synchronized(PortfolioFactory.class) {
-                result = LOGGER;
+            synchronized (PortfolioFactory.class) {
+                result = logger;
                 if (result == null) {
-                    LOGGER = result = JETLoggerManager.getJETLoggerManager().getLogger("jet.shareplot.persistence.factory");
+                    result = logger = JETLoggerManager.getJETLoggerManager().getLogger("jet.shareplot.persistence.factory");
                 }
             }
         }
-        return result;
+        return AnnotationsHelper.assertNonNull(result);
     }
-
 }

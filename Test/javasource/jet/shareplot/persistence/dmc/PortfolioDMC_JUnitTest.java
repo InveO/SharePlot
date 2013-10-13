@@ -57,5 +57,4 @@ public class PortfolioDMC_JUnitTest {
         verify(portfolioRemote, times(1)).setIsFake(any(String.class));
         verify(portfolioRemote, times(1)).setName(any(String.class));
     }
-
 }

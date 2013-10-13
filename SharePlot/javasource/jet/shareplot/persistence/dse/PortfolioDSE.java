@@ -18,7 +18,6 @@ import jet.shareplot.persistence.dmc.PortfolioDMC;
 import jet.shareplot.persistence.ejb.portfolio.PortfolioHome;
 import jet.shareplot.persistence.ejb.portfolio.PortfolioRemote;
 import jet.shareplot.persistence.pojo.PortfolioItem;
-import jet.util.annotations.AnnotationsHelper;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
@@ -34,7 +33,7 @@ public final class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHom
     private transient DataModelConverter2<PortfolioRemote> dataModelConverter;
 
     @Override
-    public final void updateFromDataModel(@Nonnull final Model dataModel) throws JETException, ObjectNotFoundException {
+    public void updateFromDataModel(@Nonnull final Model dataModel) throws JETException, ObjectNotFoundException {
         final Callable<Object> callable = new Callable<Object>() {
             @Override
             public Object call() throws Exception {
@@ -54,7 +53,7 @@ public final class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHom
     }
 
     @Override
-    public final void createFromDataModel(@Nonnull final Model dataModel) throws JETException, JETDuplicateKeyException {
+    public void createFromDataModel(@Nonnull final Model dataModel) throws JETException, JETDuplicateKeyException {
         final Callable<Object> callable = new Callable<Object>() {
             @Override
             public Object call() throws Exception {
@@ -80,7 +79,7 @@ public final class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHom
     }
 
     @Override
-    public final void removeFromDataModel(@Nonnull final Model dataModel) throws JETException, ObjectNotFoundException {
+    public void removeFromDataModel(@Nonnull final Model dataModel) throws JETException, ObjectNotFoundException {
         final Callable<Object> callable = new Callable<Object>() {
             @Override
             public Object call() throws Exception {
@@ -105,32 +104,34 @@ public final class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHom
 
     @Override
     @Nonnull
-    public final PortfolioHome getEJBHome() {
-        if (this.ejbHome == null) {
+    public PortfolioHome getEJBHome() {
+        PortfolioHome result = this.ejbHome;
+        if (result == null) {
             try {
-                this.ejbHome = (PortfolioHome) new InitialContext().lookup(JetConstants.EJB_CONTEXT + PortfolioHome.BEAN_NAME);
+                result = this.ejbHome = (PortfolioHome) new InitialContext().lookup(JetConstants.EJB_CONTEXT + PortfolioHome.BEAN_NAME);
             } catch (final NamingException e) {
                 throw new IllegalArgumentException("Unable to locate EJB Home : " + PortfolioHome.BEAN_NAME, e);
             }
-            if (this.ejbHome == null) {
+            if (result == null) {
                 throw new IllegalArgumentException("Unknown EJB : " + PortfolioHome.BEAN_NAME);
             }
         }
-        return AnnotationsHelper.assertNonNull(this.ejbHome);
+        return result;
     }
 
     @Override
     @Nonnull
-    public final DataModelConverter2<PortfolioRemote> getDataModelConverter() {
-        if (this.dataModelConverter == null) {
-            this.dataModelConverter = new PortfolioDMC();
+    public DataModelConverter2<PortfolioRemote> getDataModelConverter() {
+        DataModelConverter2<PortfolioRemote> result = this.dataModelConverter;
+        if (result == null) {
+            result = this.dataModelConverter = new PortfolioDMC();
         }
 
-        return AnnotationsHelper.assertNonNull(this.dataModelConverter);
+        return result;
     }
 
     /**
-     * Get object from the persistant store corresponding to the data Model. Depending on the implementation
+     * Get object from the persistent store corresponding to the data Model. Depending on the implementation
      * it may not be necessary to provide a full data Model.
      * <p>
      * This should be used with care as this may entail Transaction problems, depending on the underlying persistance layer.
@@ -150,6 +151,7 @@ public final class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHom
 
         PortfolioRemote portfolioRemote;
         try {
+            // As it come from the database, it should not be possible that field(s) in the PK are null.
             portfolioRemote = portfolioHome.findByPrimaryKey(portfolioItem.getIdPortfolio());
             assert portfolioRemote != null;
         } catch (final RemoteException e) {

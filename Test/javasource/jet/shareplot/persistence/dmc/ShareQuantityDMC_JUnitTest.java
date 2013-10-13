@@ -67,5 +67,4 @@ public class ShareQuantityDMC_JUnitTest {
         verify(shareQuantityRemote, times(1)).setIdShare(any(Long.class));
         verify(shareQuantityRemote, times(1)).setValueDate(any(java.util.Date.class));
     }
-
 }

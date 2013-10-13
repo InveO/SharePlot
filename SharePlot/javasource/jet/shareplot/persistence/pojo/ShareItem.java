@@ -75,6 +75,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Constructor used to edit an existing Share Data Model.
+     * 
      * @param model Model to use to wrap in the pojo, can not be <code>null</code>
      */
     public ShareItem(@Nonnull final Model model) {
@@ -83,6 +84,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Copy constructor used to clone an existing Share Data Model.
+     * 
      * @param share ShareItem to use to copy in the pojo, can not be <code>null</code>
      */
     public ShareItem(@Nonnull final ShareItem share) {
@@ -111,7 +113,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
     }
 
     @Override
-    public boolean isDirty() {
+    public final boolean isDirty() {
         if (get_Model() instanceof DataModelRootNode) {
             final DataModelRootNode dmrn = (DataModelRootNode) get_Model();
             return dmrn.isDirty();
@@ -121,6 +123,8 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
     }
 
     /**
+     * Check if this share is new.
+     * 
      * @return <code>true</code> if this share is new.
      * @see JFDataItem
      */
@@ -133,7 +137,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * @see JFErrorHandlerProvider#setJFErrorHandler(JFErrorHandler)
      */
     @Override
-    public void setJFErrorHandler(final JFErrorHandler jfErrorHandler) {
+    public final void setJFErrorHandler(final JFErrorHandler jfErrorHandler) {
         this.jfErrorHandler = jfErrorHandler;
     }
 
@@ -141,12 +145,13 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * @see JFErrorHandlerProvider#getJFErrorHandler()
      */
     @Override
-    public JFErrorHandler getJFErrorHandler() {
+    public final JFErrorHandler getJFErrorHandler() {
         return this.jfErrorHandler;
     }
 
     /**
      * Get the Share Data Model that is wrapped in this pojo.
+     * 
      * @return Share Data Model
      * @see JFDataItem
      */
@@ -161,6 +166,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
     /**
      * Get node value of Data Model node idShare.
      * This field should not be <code>null</code> in the database.
+     * 
      * @return Long value of Data Model node idShare
      */
     public final Long getIdShare() {
@@ -170,6 +176,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
     /**
      * Set node value of Data Model node idShare.
      * This field should not be <code>null</code> in the database.
+     * 
      * @param idShare Long value of Data Model node idShare
      */
     private final void setIdShare(final Long idShare) {
@@ -178,6 +185,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Get Model of Data Model node idShare.
+     * 
      * @return Model of Data Model node idShare
      */
     @SuppressWarnings("unchecked")
@@ -202,6 +210,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Get node value of Data Model node codeISIN.
+     * 
      * @return String value of Data Model node codeISIN
      */
     public final String getCodeISIN() {
@@ -210,6 +219,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Set node value of Data Model node codeISIN.
+     * 
      * @param codeISIN String value of Data Model node codeISIN
      */
     public final void setCodeISIN(final String codeISIN) {
@@ -218,6 +228,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Get Model of Data Model node codeISIN.
+     * 
      * @return Model of Data Model node codeISIN
      */
     @SuppressWarnings("unchecked")
@@ -244,6 +255,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Get node value of Data Model node codeYahoo.
+     * 
      * @return String value of Data Model node codeYahoo
      */
     public final String getCodeYahoo() {
@@ -252,6 +264,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Set node value of Data Model node codeYahoo.
+     * 
      * @param codeYahoo String value of Data Model node codeYahoo
      */
     public final void setCodeYahoo(final String codeYahoo) {
@@ -260,6 +273,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Get Model of Data Model node codeYahoo.
+     * 
      * @return Model of Data Model node codeYahoo
      */
     @SuppressWarnings("unchecked")
@@ -286,6 +300,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Get node value of Data Model node description.
+     * 
      * @return String value of Data Model node description
      */
     public final String getDescription() {
@@ -294,6 +309,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Set node value of Data Model node description.
+     * 
      * @param description String value of Data Model node description
      */
     public final void setDescription(final String description) {
@@ -302,6 +318,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Get Model of Data Model node description.
+     * 
      * @return Model of Data Model node description
      */
     @SuppressWarnings("unchecked")
@@ -329,6 +346,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
     /**
      * Get node value of Data Model node idPortfolio.
      * This field should not be <code>null</code> in the database.
+     * 
      * @return Long value of Data Model node idPortfolio
      */
     public final Long getIdPortfolio() {
@@ -338,6 +356,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
     /**
      * Set node value of Data Model node idPortfolio.
      * This field should not be <code>null</code> in the database.
+     * 
      * @param idPortfolio Long value of Data Model node idPortfolio
      */
     public final void setIdPortfolio(final Long idPortfolio) {
@@ -346,6 +365,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Get Model of Data Model node idPortfolio.
+     * 
      * @return Model of Data Model node idPortfolio
      */
     @SuppressWarnings("unchecked")
@@ -371,6 +391,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
     /**
      * Get node value of Data Model node name.
      * This field should not be <code>null</code> in the database.
+     * 
      * @return String value of Data Model node name
      */
     public final String getName() {
@@ -380,6 +401,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
     /**
      * Set node value of Data Model node name.
      * This field should not be <code>null</code> in the database.
+     * 
      * @param name String value of Data Model node name
      */
     public final void setName(final String name) {
@@ -388,6 +410,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
 
     /**
      * Get Model of Data Model node name.
+     * 
      * @return Model of Data Model node name
      */
     @SuppressWarnings("unchecked")
@@ -461,5 +484,4 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
         
         return result;
     }
-
 }

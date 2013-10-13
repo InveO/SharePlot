@@ -5,9 +5,11 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
 import jet.framework.util.pojo2.JFErrorHandler;
 import jet.shareplot.persistence.pojo.ShareValueItem;
+import jet.util.models.interfaces.Model;
 
 import org.junit.runner.RunWith;
 
@@ -16,7 +18,7 @@ import com.objectpartners.buesing.premock.PreMockJUnit4ClassRunner;
 
 /**
  * JUnit skeleton for the ShareValue object
- * 
+ *
  * @author JetToolsFramework
  */
 @PreMock({ ShareValue.class, ShareValueItem.class })

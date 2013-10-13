@@ -18,7 +18,6 @@ import jet.shareplot.persistence.dmc.ShareDMC;
 import jet.shareplot.persistence.ejb.share.ShareHome;
 import jet.shareplot.persistence.ejb.share.ShareRemote;
 import jet.shareplot.persistence.pojo.ShareItem;
-import jet.util.annotations.AnnotationsHelper;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
@@ -34,7 +33,7 @@ public final class ShareDSE extends AbstractDataSourceExecutor2<ShareHome, Share
     private transient DataModelConverter2<ShareRemote> dataModelConverter;
 
     @Override
-    public final void updateFromDataModel(@Nonnull final Model dataModel) throws JETException, ObjectNotFoundException {
+    public void updateFromDataModel(@Nonnull final Model dataModel) throws JETException, ObjectNotFoundException {
         final Callable<Object> callable = new Callable<Object>() {
             @Override
             public Object call() throws Exception {
@@ -54,7 +53,7 @@ public final class ShareDSE extends AbstractDataSourceExecutor2<ShareHome, Share
     }
 
     @Override
-    public final void createFromDataModel(@Nonnull final Model dataModel) throws JETException, JETDuplicateKeyException {
+    public void createFromDataModel(@Nonnull final Model dataModel) throws JETException, JETDuplicateKeyException {
         final Callable<Object> callable = new Callable<Object>() {
             @Override
             public Object call() throws Exception {
@@ -80,7 +79,7 @@ public final class ShareDSE extends AbstractDataSourceExecutor2<ShareHome, Share
     }
 
     @Override
-    public final void removeFromDataModel(@Nonnull final Model dataModel) throws JETException, ObjectNotFoundException {
+    public void removeFromDataModel(@Nonnull final Model dataModel) throws JETException, ObjectNotFoundException {
         final Callable<Object> callable = new Callable<Object>() {
             @Override
             public Object call() throws Exception {
@@ -105,32 +104,34 @@ public final class ShareDSE extends AbstractDataSourceExecutor2<ShareHome, Share
 
     @Override
     @Nonnull
-    public final ShareHome getEJBHome() {
-        if (this.ejbHome == null) {
+    public ShareHome getEJBHome() {
+        ShareHome result = this.ejbHome;
+        if (result == null) {
             try {
-                this.ejbHome = (ShareHome) new InitialContext().lookup(JetConstants.EJB_CONTEXT + ShareHome.BEAN_NAME);
+                result = this.ejbHome = (ShareHome) new InitialContext().lookup(JetConstants.EJB_CONTEXT + ShareHome.BEAN_NAME);
             } catch (final NamingException e) {
                 throw new IllegalArgumentException("Unable to locate EJB Home : " + ShareHome.BEAN_NAME, e);
             }
-            if (this.ejbHome == null) {
+            if (result == null) {
                 throw new IllegalArgumentException("Unknown EJB : " + ShareHome.BEAN_NAME);
             }
         }
-        return AnnotationsHelper.assertNonNull(this.ejbHome);
+        return result;
     }
 
     @Override
     @Nonnull
-    public final DataModelConverter2<ShareRemote> getDataModelConverter() {
-        if (this.dataModelConverter == null) {
-            this.dataModelConverter = new ShareDMC();
+    public DataModelConverter2<ShareRemote> getDataModelConverter() {
+        DataModelConverter2<ShareRemote> result = this.dataModelConverter;
+        if (result == null) {
+            result = this.dataModelConverter = new ShareDMC();
         }
 
-        return AnnotationsHelper.assertNonNull(this.dataModelConverter);
+        return result;
     }
 
     /**
-     * Get object from the persistant store corresponding to the data Model. Depending on the implementation
+     * Get object from the persistent store corresponding to the data Model. Depending on the implementation
      * it may not be necessary to provide a full data Model.
      * <p>
      * This should be used with care as this may entail Transaction problems, depending on the underlying persistance layer.
@@ -150,6 +151,7 @@ public final class ShareDSE extends AbstractDataSourceExecutor2<ShareHome, Share
 
         ShareRemote shareRemote;
         try {
+            // As it come from the database, it should not be possible that field(s) in the PK are null.
             shareRemote = shareHome.findByPrimaryKey(shareItem.getIdShare());
             assert shareRemote != null;
         } catch (final RemoteException e) {

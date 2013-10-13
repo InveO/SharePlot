@@ -6,6 +6,7 @@ import static org.junit.Assert.fail;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.only;
@@ -15,7 +16,12 @@ import jet.container.managers.session.interfaces.Session;
 import jet.framework.component.resource.ResourceNotificationApplicationComponent;
 import jet.framework.nuts.store.StoreNut;
 import jet.framework.util.exception.FormatedJetException;
+import jet.framework.util.JUnitAsserter;
+import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
+
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
 /**
  * JUnit tests for the ShareValue accessor methods, this is where the ShareValue business
@@ -33,7 +39,8 @@ public class ShareValue_Persist_JUnitTest {
     @org.junit.Test(expected = FormatedJetException.class)
     public void testSaveCreateInvalid() throws FormatedJetException {
         // arrange : set up the test
-        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);        assert shareValueAC != null;
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
+        assert shareValueAC != null;
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);
@@ -60,7 +67,8 @@ public class ShareValue_Persist_JUnitTest {
     @org.junit.Test
     public void testSaveCreateValid() throws Exception {
         // arrange : set up the test
-        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);        assert shareValueAC != null;
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
+        assert shareValueAC != null;
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);
@@ -73,6 +81,15 @@ public class ShareValue_Persist_JUnitTest {
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
         // TODO set up valid shareValue
+
+        // simulate the AI PK generation
+        doAnswer(new Answer<Object>() {
+            @Override
+            public Object answer(final InvocationOnMock invocation) {
+                shareValue.get_IdShareValue_Model().setNodeValue(Long.valueOf(1));
+                return null;
+            }
+        }).when(storeNut).createDataModel(JUnitAsserter.nonNull(any(Model.class)));
 
         // act : run the test
         try {
@@ -101,7 +118,8 @@ public class ShareValue_Persist_JUnitTest {
     @org.junit.Test
     public void testSaveUpdate() throws Exception {
         // arrange : set up the test
-        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);        assert shareValueAC != null;
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
+        assert shareValueAC != null;
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);
@@ -141,7 +159,8 @@ public class ShareValue_Persist_JUnitTest {
     @org.junit.Test
     public void testDeleteNew() {
         // arrange : set up the test
-        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);        assert shareValueAC != null;
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
+        assert shareValueAC != null;
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);
@@ -179,7 +198,8 @@ public class ShareValue_Persist_JUnitTest {
     @org.junit.Test
     public void testDeleteOld() throws Exception {
         // arrange : set up the test
-        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);        assert shareValueAC != null;
+        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
+        assert shareValueAC != null;
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
         final StoreNut storeNut = mock(StoreNut.class);
@@ -192,6 +212,15 @@ public class ShareValue_Persist_JUnitTest {
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
         shareValue.get_IdShareValue_Model().setNodeValue(Long.valueOf(1));
+
+        // simulate the AI PK clear
+        doAnswer(new Answer<Object>() {
+            @Override
+            public Object answer(final InvocationOnMock invocation) {
+                shareValue.get_IdShareValue_Model().setNodeValue(null);
+                return null;
+            }
+        }).when(storeNut).removeDataModel(JUnitAsserter.nonNull(any(Model.class)));
 
         // act : run the test
         try {

@@ -6,7 +6,7 @@ import jet.util.logger.JETLevel;
 import jet.util.throwable.JETException;
 
 /**
- * Object used in the ShareQuantity resource notifications
+ * Object used in the ShareQuantity resource notifications.
  *
  * @author JetToolsFramework
  */
@@ -15,18 +15,18 @@ public class ShareQuantityResource extends AbstractResourceNotification<ShareQua
     private static final long serialVersionUID = -5971798084595088560L;
 
     /**
-     * Resource name : {@value}
+     * Resource name : {@value}.
      */
-    public final static String RESOURCE_NAME = "jet.shareplot.ac.bo.sharequantity.ShareQuantityResource";
+    public static final String RESOURCE_NAME = "jet.shareplot.ac.bo.sharequantity.ShareQuantityResource";
 
     private ResourceNotificationApplicationComponent resourceAC;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param shareQuantityAC
-     * @param shareQuantity
-     * @param type
+     * @param shareQuantityAC ApplicationComponent
+     * @param shareQuantity business object
+     * @param type Notification type
      */
     public ShareQuantityResource(final AbstractShareQuantityBOApplicationComponent shareQuantityAC, final ShareQuantity shareQuantity, final NOTIFICATION_TYPE type) {
         super("ShareQuantity", shareQuantity, type);
@@ -40,6 +40,8 @@ public class ShareQuantityResource extends AbstractResourceNotification<ShareQua
     }
 
     /**
+     * Send notification to resource listeners.
+     *
      * @see jet.framework.util.pojo2.AbstractResourceNotification#notifyResource()
      */
     @Override
@@ -48,5 +50,4 @@ public class ShareQuantityResource extends AbstractResourceNotification<ShareQua
             this.resourceAC.notifyListeners(RESOURCE_NAME, this);
         }
     }
-
 }

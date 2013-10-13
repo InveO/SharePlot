@@ -5,9 +5,11 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
 import jet.framework.util.pojo2.JFErrorHandler;
 import jet.shareplot.persistence.pojo.ShareItem;
+import jet.util.models.interfaces.Model;
 
 import org.junit.runner.RunWith;
 
@@ -16,7 +18,7 @@ import com.objectpartners.buesing.premock.PreMockJUnit4ClassRunner;
 
 /**
  * JUnit skeleton for the Share object
- * 
+ *
  * @author JetToolsFramework
  */
 @PreMock({ Share.class, ShareItem.class })
@@ -92,11 +94,11 @@ public class Share_JUnitTest {
         assert shareAC != null;
         final ShareItem item = new ShareItem();
         // TODO insert data in ShareItem
-        item.setCodeISIN("");
-        item.setCodeYahoo("");
-        item.setDescription("");
+        item.setCodeISIN("codeISIN");
+        item.setCodeYahoo("codeYahoo");
+        item.setDescription("description");
         item.setIdPortfolio(Long.valueOf(1));
-        item.setName("");
+        item.setName("name");
 
         // act : run the test
         final Share share = new Share(item.get_Model(), shareAC);
@@ -105,11 +107,11 @@ public class Share_JUnitTest {
         // object should be instantiated
         assertNotNull(share);
         // TODO check that data is in the share
-        assertEquals(share.getCodeISIN(), "");
-        assertEquals(share.getCodeYahoo(), "");
-        assertEquals(share.getDescription(), "");
+        assertEquals(share.getCodeISIN(), "codeISIN");
+        assertEquals(share.getCodeYahoo(), "codeYahoo");
+        assertEquals(share.getDescription(), "description");
         assertEquals(share.getIdPortfolio(), Long.valueOf(1));
-        assertEquals(share.getName(), "");
+        assertEquals(share.getName(), "name");
     }
 
     /**
@@ -140,11 +142,11 @@ public class Share_JUnitTest {
         assert shareAC != null;
         final Share item = new Share(shareAC);
         // TODO insert data in Share
-        item.setCodeISIN("");
-        item.setCodeYahoo("");
-        item.setDescription("");
+        item.setCodeISIN("codeISIN");
+        item.setCodeYahoo("codeYahoo");
+        item.setDescription("description");
         item.setIdPortfolio(Long.valueOf(1));
-        item.setName("");
+        item.setName("name");
 
         // act : run the test
         final Share share = new Share(item);
@@ -153,11 +155,11 @@ public class Share_JUnitTest {
         // object should be instantiated
         assertNotNull(share);
         // TODO check that data is in the share
-        assertEquals(share.getCodeISIN(), "");
-        assertEquals(share.getCodeYahoo(), "");
-        assertEquals(share.getDescription(), "");
+        assertEquals(share.getCodeISIN(), "codeISIN");
+        assertEquals(share.getCodeYahoo(), "codeYahoo");
+        assertEquals(share.getDescription(), "description");
         assertEquals(share.getIdPortfolio(), Long.valueOf(1));
-        assertEquals(share.getName(), "");
+        assertEquals(share.getName(), "name");
     }
 
     /**
@@ -187,7 +189,7 @@ public class Share_JUnitTest {
         assert shareAC != null;
         final Share share = new Share(shareAC);
         share.setIdPortfolio(Long.valueOf(1));
-        share.setName("");
+        share.setName("name");
 
         // act : run the test
         final boolean result = share.isNotNullableNull();

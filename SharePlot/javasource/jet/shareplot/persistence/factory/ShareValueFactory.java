@@ -2,8 +2,11 @@ package jet.shareplot.persistence.factory;
 
 import java.io.Serializable;
 
+import javax.annotation.Nonnull;
+
 import jet.framework.util.models.ModelHelper;
 import jet.shareplot.persistence.pojo.ShareValueItem;
+import jet.util.annotations.AnnotationsHelper;
 import jet.util.logger.JETLevel;
 import jet.util.logger.JETLoggerManager;
 import jet.util.logger.Logger;
@@ -21,7 +24,7 @@ import jet.util.throwable.JETException;
 public final class ShareValueFactory implements Serializable {
 
     private static final long serialVersionUID = 1303211696L;
-    private static volatile Logger LOGGER;
+    private static volatile Logger logger;
 
     private ShareValueFactory() {
         // Singleton, add a private constructor to prevent instantiation
@@ -35,6 +38,7 @@ public final class ShareValueFactory implements Serializable {
      * @param untypedModel Model with String node values
      * @return ShareValueItem
      */
+    @Nonnull
     public static ShareValueItem getFromUntypedModel(final Model untypedModel) {
         final ShareValueItem item = new ShareValueItem();
 
@@ -77,20 +81,22 @@ public final class ShareValueFactory implements Serializable {
     }
 
     /**
+     * Get logger.
+     * 
      * @return Logger
      * @see "http://en.wikipedia.org/wiki/Double-checked_locking#Usage_in_Java"
      */
+    @Nonnull
     private static Logger getLogger() {
-        Logger result = LOGGER;
+        Logger result = logger;
         if (result == null) {
-            synchronized(ShareValueFactory.class) {
-                result = LOGGER;
+            synchronized (ShareValueFactory.class) {
+                result = logger;
                 if (result == null) {
-                    LOGGER = result = JETLoggerManager.getJETLoggerManager().getLogger("jet.shareplot.persistence.factory");
+                    result = logger = JETLoggerManager.getJETLoggerManager().getLogger("jet.shareplot.persistence.factory");
                 }
             }
         }
-        return result;
+        return AnnotationsHelper.assertNonNull(result);
     }
-
 }

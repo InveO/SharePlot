@@ -31,7 +31,7 @@ public class ShareValue extends ShareValueItem implements JFBusinessItem, JFBusi
     private final AbstractShareValueBOApplicationComponent shareValueAC;
 
     /**
-     * Constructor, build an empty shareValue
+     * Constructor, build an empty shareValue.
      * 
      * @param shareValueAC the shareValue application component
      * 
@@ -44,7 +44,7 @@ public class ShareValue extends ShareValueItem implements JFBusinessItem, JFBusi
     }
 
     /**
-     * Constructor, build a shareValue from a Model
+     * Constructor, build a shareValue from a Model.
      * 
      * @param model the model representing a shareValue entry in the table ShareValue
      * @param shareValueAC the shareValue application component
@@ -58,7 +58,7 @@ public class ShareValue extends ShareValueItem implements JFBusinessItem, JFBusi
     }
 
     /**
-     * Copy constructor, build a shareValue as a copy of another shareValue
+     * Copy constructor, build a shareValue as a copy of another shareValue.
      * 
      * @param shareValue the shareValue to copy
      */
@@ -68,6 +68,8 @@ public class ShareValue extends ShareValueItem implements JFBusinessItem, JFBusi
     }
 
     /**
+     * Check if this shareValue is valid and can be saved.
+     * 
      * @return <code>true</code> if this shareValue is valid and can be saved.
      * @see JFBusinessItem
      */
@@ -128,7 +130,7 @@ public class ShareValue extends ShareValueItem implements JFBusinessItem, JFBusi
     }
 
     /**
-     * Produce error for save / delete
+     * Produce error for save / delete.
      * 
      * @return FormatedJetException
      * @see FormatedJetException
@@ -137,9 +139,8 @@ public class ShareValue extends ShareValueItem implements JFBusinessItem, JFBusi
      * @see #delete()
      */
     @Override
-    public FormatedJetException getFormatedJetException(final String key, final Exception e) {
+    public final FormatedJetException getFormatedJetException(final String key, final Exception e) {
         final Object[] args = { getValueDate() };
         return new FormatedJetException(null, key, args, e);
     }
-
 }

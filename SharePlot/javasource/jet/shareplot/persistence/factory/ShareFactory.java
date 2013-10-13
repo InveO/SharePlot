@@ -2,8 +2,11 @@ package jet.shareplot.persistence.factory;
 
 import java.io.Serializable;
 
+import javax.annotation.Nonnull;
+
 import jet.framework.util.models.ModelHelper;
 import jet.shareplot.persistence.pojo.ShareItem;
+import jet.util.annotations.AnnotationsHelper;
 import jet.util.logger.JETLevel;
 import jet.util.logger.JETLoggerManager;
 import jet.util.logger.Logger;
@@ -21,7 +24,7 @@ import jet.util.throwable.JETException;
 public final class ShareFactory implements Serializable {
 
     private static final long serialVersionUID = -1265738400L;
-    private static volatile Logger LOGGER;
+    private static volatile Logger logger;
 
     private ShareFactory() {
         // Singleton, add a private constructor to prevent instantiation
@@ -35,6 +38,7 @@ public final class ShareFactory implements Serializable {
      * @param untypedModel Model with String node values
      * @return ShareItem
      */
+    @Nonnull
     public static ShareItem getFromUntypedModel(final Model untypedModel) {
         final ShareItem item = new ShareItem();
 
@@ -87,20 +91,22 @@ public final class ShareFactory implements Serializable {
     }
 
     /**
+     * Get logger.
+     * 
      * @return Logger
      * @see "http://en.wikipedia.org/wiki/Double-checked_locking#Usage_in_Java"
      */
+    @Nonnull
     private static Logger getLogger() {
-        Logger result = LOGGER;
+        Logger result = logger;
         if (result == null) {
-            synchronized(ShareFactory.class) {
-                result = LOGGER;
+            synchronized (ShareFactory.class) {
+                result = logger;
                 if (result == null) {
-                    LOGGER = result = JETLoggerManager.getJETLoggerManager().getLogger("jet.shareplot.persistence.factory");
+                    result = logger = JETLoggerManager.getJETLoggerManager().getLogger("jet.shareplot.persistence.factory");
                 }
             }
         }
-        return result;
+        return AnnotationsHelper.assertNonNull(result);
     }
-
 }

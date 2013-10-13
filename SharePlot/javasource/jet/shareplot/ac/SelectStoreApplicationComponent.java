@@ -3,71 +3,77 @@ package jet.shareplot.ac;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Nonnull;
+
 import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.session.interfaces.Session;
 import jet.framework.component.AbstractSelectStoreApplicationComponent;
 import jet.framework.nuts.desktop.JetDesktop;
 import jet.lifecycle.annotations.Deinitializer;
 import jet.util.SerializableKey;
+import jet.util.annotations.AnnotationsHelper;
 import jet.util.logger.JETLevel;
 import jet.util.throwable.JETException;
 
 /**
- * Implementation of the AbstractSelectStoreApplicationComponent class
+ * Implementation of the AbstractSelectStoreApplicationComponent class.
  *
  * This is a generated file and should not be modified.
  *
  * @author JetTools
- *
  */
 public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicationComponent {
 
     /**
      * {@value}.
      */
-    public final static String PORTFOLIO_SELECT = "PortfolioSelect";
+    public static final String PORTFOLIO_SELECT = "PortfolioSelect";
+    
     /**
      * {@value}.
      */
-    public final static String PORTFOLIO_STORE = "PortfolioStore";
+    public static final String PORTFOLIO_STORE = "PortfolioStore";
 
     /**
      * {@value}.
      */
-    public final static String SHARE_SELECT = "ShareSelect";
+    public static final String SHARE_SELECT = "ShareSelect";
+    
     /**
      * {@value}.
      */
-    public final static String SHARE_STORE = "ShareStore";
+    public static final String SHARE_STORE = "ShareStore";
 
     /**
      * {@value}.
      */
-    public final static String SHAREQUANTITY_SELECT = "ShareQuantitySelect";
+    public static final String SHAREQUANTITY_SELECT = "ShareQuantitySelect";
+    
     /**
      * {@value}.
      */
-    public final static String SHAREQUANTITY_STORE = "ShareQuantityStore";
+    public static final String SHAREQUANTITY_STORE = "ShareQuantityStore";
 
     /**
      * {@value}.
      */
-    public final static String SHAREVALUE_SELECT = "ShareValueSelect";
+    public static final String SHAREVALUE_SELECT = "ShareValueSelect";
+    
     /**
      * {@value}.
      */
-    public final static String SHAREVALUE_STORE = "ShareValueStore";
+    public static final String SHAREVALUE_STORE = "ShareValueStore";
 
     private static final long serialVersionUID = -8890923097443600938L;
 
     /**
      * <code>INTERNAL_SESSION_KEY</code> session key.
      */
-    private final static Object INTERNAL_SESSION_KEY = new SerializableKey(SelectStoreApplicationComponent.class, "INTERNAL_SESSION_KEY");
+    private static final Object INTERNAL_SESSION_KEY = new SerializableKey(SelectStoreApplicationComponent.class, "INTERNAL_SESSION_KEY");
     /**
      * <code>NAME</code> of this application component, so it can be retreived easily.
      */
-    private final static String NAME = "SelectStoreApplicationComponent";
+    private static final String NAME = "SelectStoreApplicationComponent";
 
     /**
      * Get an instance of a SelectStoreApplicationComponent. This method will ensure that the same instance is
@@ -80,8 +86,8 @@ public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicat
      * @return SelectStoreApplicationComponent Instantiated SelectStoreApplicationComponent
      * @throws JETException
      */
+    @Nonnull
     public static final SelectStoreApplicationComponent getInstance(final Session session) throws JETException {
-
         SelectStoreApplicationComponent currentAC = (SelectStoreApplicationComponent) session.getProperty(INTERNAL_SESSION_KEY);
 
         if (currentAC == null) {
@@ -117,5 +123,4 @@ public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicat
     public final void doSelectStoreNutACDeinit() {
         getSession().removeProperty(INTERNAL_SESSION_KEY);
     }
-
 }

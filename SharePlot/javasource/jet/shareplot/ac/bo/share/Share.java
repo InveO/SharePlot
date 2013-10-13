@@ -31,7 +31,7 @@ public class Share extends ShareItem implements JFBusinessItem, JFBusinessErrorH
     private final AbstractShareBOApplicationComponent shareAC;
 
     /**
-     * Constructor, build an empty share
+     * Constructor, build an empty share.
      * 
      * @param shareAC the share application component
      * 
@@ -44,7 +44,7 @@ public class Share extends ShareItem implements JFBusinessItem, JFBusinessErrorH
     }
 
     /**
-     * Constructor, build a share from a Model
+     * Constructor, build a share from a Model.
      * 
      * @param model the model representing a share entry in the table Share
      * @param shareAC the share application component
@@ -58,7 +58,7 @@ public class Share extends ShareItem implements JFBusinessItem, JFBusinessErrorH
     }
 
     /**
-     * Copy constructor, build a share as a copy of another share
+     * Copy constructor, build a share as a copy of another share.
      * 
      * @param share the share to copy
      */
@@ -68,6 +68,8 @@ public class Share extends ShareItem implements JFBusinessItem, JFBusinessErrorH
     }
 
     /**
+     * Check if this share is valid and can be saved.
+     * 
      * @return <code>true</code> if this share is valid and can be saved.
      * @see JFBusinessItem
      */
@@ -128,7 +130,7 @@ public class Share extends ShareItem implements JFBusinessItem, JFBusinessErrorH
     }
 
     /**
-     * Produce error for save / delete
+     * Produce error for save / delete.
      * 
      * @return FormatedJetException
      * @see FormatedJetException
@@ -137,9 +139,8 @@ public class Share extends ShareItem implements JFBusinessItem, JFBusinessErrorH
      * @see #delete()
      */
     @Override
-    public FormatedJetException getFormatedJetException(final String key, final Exception e) {
+    public final FormatedJetException getFormatedJetException(final String key, final Exception e) {
         final Object[] args = { getName() };
         return new FormatedJetException(null, key, args, e);
     }
-
 }

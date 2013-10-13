@@ -81,6 +81,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
 
     /**
      * Constructor used to edit an existing ShareQuantity Data Model.
+     * 
      * @param model Model to use to wrap in the pojo, can not be <code>null</code>
      */
     public ShareQuantityItem(@Nonnull final Model model) {
@@ -89,6 +90,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
 
     /**
      * Copy constructor used to clone an existing ShareQuantity Data Model.
+     * 
      * @param shareQuantity ShareQuantityItem to use to copy in the pojo, can not be <code>null</code>
      */
     public ShareQuantityItem(@Nonnull final ShareQuantityItem shareQuantity) {
@@ -119,7 +121,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     }
 
     @Override
-    public boolean isDirty() {
+    public final boolean isDirty() {
         if (get_Model() instanceof DataModelRootNode) {
             final DataModelRootNode dmrn = (DataModelRootNode) get_Model();
             return dmrn.isDirty();
@@ -129,6 +131,8 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     }
 
     /**
+     * Check if this shareQuantity is new.
+     * 
      * @return <code>true</code> if this shareQuantity is new.
      * @see JFDataItem
      */
@@ -141,7 +145,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @see JFErrorHandlerProvider#setJFErrorHandler(JFErrorHandler)
      */
     @Override
-    public void setJFErrorHandler(final JFErrorHandler jfErrorHandler) {
+    public final void setJFErrorHandler(final JFErrorHandler jfErrorHandler) {
         this.jfErrorHandler = jfErrorHandler;
     }
 
@@ -149,12 +153,13 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @see JFErrorHandlerProvider#getJFErrorHandler()
      */
     @Override
-    public JFErrorHandler getJFErrorHandler() {
+    public final JFErrorHandler getJFErrorHandler() {
         return this.jfErrorHandler;
     }
 
     /**
      * Get the ShareQuantity Data Model that is wrapped in this pojo.
+     * 
      * @return ShareQuantity Data Model
      * @see JFDataItem
      */
@@ -169,6 +174,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     /**
      * Get node value of Data Model node idShareQuantity.
      * This field should not be <code>null</code> in the database.
+     * 
      * @return Long value of Data Model node idShareQuantity
      */
     public final Long getIdShareQuantity() {
@@ -178,6 +184,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     /**
      * Set node value of Data Model node idShareQuantity.
      * This field should not be <code>null</code> in the database.
+     * 
      * @param idShareQuantity Long value of Data Model node idShareQuantity
      */
     private final void setIdShareQuantity(final Long idShareQuantity) {
@@ -186,6 +193,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
 
     /**
      * Get Model of Data Model node idShareQuantity.
+     * 
      * @return Model of Data Model node idShareQuantity
      */
     @SuppressWarnings("unchecked")
@@ -211,6 +219,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     /**
      * Get node value of Data Model node changeFee.
      * This field should not be <code>null</code> in the database.
+     * 
      * @return java.math.BigDecimal value of Data Model node changeFee
      */
     public final java.math.BigDecimal getChangeFee() {
@@ -220,6 +229,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     /**
      * Set node value of Data Model node changeFee.
      * This field should not be <code>null</code> in the database.
+     * 
      * @param changeFee java.math.BigDecimal value of Data Model node changeFee
      */
     public final void setChangeFee(final java.math.BigDecimal changeFee) {
@@ -228,6 +238,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
 
     /**
      * Get Model of Data Model node changeFee.
+     * 
      * @return Model of Data Model node changeFee
      */
     @SuppressWarnings("unchecked")
@@ -253,6 +264,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     /**
      * Get node value of Data Model node changeQuantity.
      * This field should not be <code>null</code> in the database.
+     * 
      * @return java.math.BigDecimal value of Data Model node changeQuantity
      */
     public final java.math.BigDecimal getChangeQuantity() {
@@ -262,6 +274,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     /**
      * Set node value of Data Model node changeQuantity.
      * This field should not be <code>null</code> in the database.
+     * 
      * @param changeQuantity java.math.BigDecimal value of Data Model node changeQuantity
      */
     public final void setChangeQuantity(final java.math.BigDecimal changeQuantity) {
@@ -270,6 +283,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
 
     /**
      * Get Model of Data Model node changeQuantity.
+     * 
      * @return Model of Data Model node changeQuantity
      */
     @SuppressWarnings("unchecked")
@@ -295,6 +309,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     /**
      * Get node value of Data Model node changeType.
      * This field should not be <code>null</code> in the database.
+     * 
      * @return String value of Data Model node changeType
      */
     public final String getChangeType() {
@@ -304,6 +319,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     /**
      * Set node value of Data Model node changeType.
      * This field should not be <code>null</code> in the database.
+     * 
      * @param changeType String value of Data Model node changeType
      */
     public final void setChangeType(final String changeType) {
@@ -312,6 +328,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
 
     /**
      * Get Model of Data Model node changeType.
+     * 
      * @return Model of Data Model node changeType
      */
     @SuppressWarnings("unchecked")
@@ -339,6 +356,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     /**
      * Get node value of Data Model node changeValue.
      * This field should not be <code>null</code> in the database.
+     * 
      * @return java.math.BigDecimal value of Data Model node changeValue
      */
     public final java.math.BigDecimal getChangeValue() {
@@ -348,6 +366,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     /**
      * Set node value of Data Model node changeValue.
      * This field should not be <code>null</code> in the database.
+     * 
      * @param changeValue java.math.BigDecimal value of Data Model node changeValue
      */
     public final void setChangeValue(final java.math.BigDecimal changeValue) {
@@ -356,6 +375,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
 
     /**
      * Get Model of Data Model node changeValue.
+     * 
      * @return Model of Data Model node changeValue
      */
     @SuppressWarnings("unchecked")
@@ -380,6 +400,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
 
     /**
      * Get node value of Data Model node description.
+     * 
      * @return String value of Data Model node description
      */
     public final String getDescription() {
@@ -388,6 +409,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
 
     /**
      * Set node value of Data Model node description.
+     * 
      * @param description String value of Data Model node description
      */
     public final void setDescription(final String description) {
@@ -396,6 +418,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
 
     /**
      * Get Model of Data Model node description.
+     * 
      * @return Model of Data Model node description
      */
     @SuppressWarnings("unchecked")
@@ -423,6 +446,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     /**
      * Get node value of Data Model node idShare.
      * This field should not be <code>null</code> in the database.
+     * 
      * @return Long value of Data Model node idShare
      */
     public final Long getIdShare() {
@@ -432,6 +456,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     /**
      * Set node value of Data Model node idShare.
      * This field should not be <code>null</code> in the database.
+     * 
      * @param idShare Long value of Data Model node idShare
      */
     public final void setIdShare(final Long idShare) {
@@ -440,6 +465,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
 
     /**
      * Get Model of Data Model node idShare.
+     * 
      * @return Model of Data Model node idShare
      */
     @SuppressWarnings("unchecked")
@@ -465,6 +491,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     /**
      * Get node value of Data Model node valueDate.
      * This field should not be <code>null</code> in the database.
+     * 
      * @return java.util.Date value of Data Model node valueDate
      */
     public final java.util.Date getValueDate() {
@@ -474,6 +501,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     /**
      * Set node value of Data Model node valueDate.
      * This field should not be <code>null</code> in the database.
+     * 
      * @param valueDate java.util.Date value of Data Model node valueDate
      */
     public final void setValueDate(final java.util.Date valueDate) {
@@ -482,6 +510,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
 
     /**
      * Get Model of Data Model node valueDate.
+     * 
      * @return Model of Data Model node valueDate
      */
     @SuppressWarnings("unchecked")
@@ -581,5 +610,4 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
         
         return result;
     }
-
 }

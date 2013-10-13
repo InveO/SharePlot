@@ -68,6 +68,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
 
     /**
      * Constructor used to edit an existing Portfolio Data Model.
+     * 
      * @param model Model to use to wrap in the pojo, can not be <code>null</code>
      */
     public PortfolioItem(@Nonnull final Model model) {
@@ -76,6 +77,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
 
     /**
      * Copy constructor used to clone an existing Portfolio Data Model.
+     * 
      * @param portfolio PortfolioItem to use to copy in the pojo, can not be <code>null</code>
      */
     public PortfolioItem(@Nonnull final PortfolioItem portfolio) {
@@ -101,7 +103,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     }
 
     @Override
-    public boolean isDirty() {
+    public final boolean isDirty() {
         if (get_Model() instanceof DataModelRootNode) {
             final DataModelRootNode dmrn = (DataModelRootNode) get_Model();
             return dmrn.isDirty();
@@ -111,6 +113,8 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     }
 
     /**
+     * Check if this portfolio is new.
+     * 
      * @return <code>true</code> if this portfolio is new.
      * @see JFDataItem
      */
@@ -123,7 +127,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      * @see JFErrorHandlerProvider#setJFErrorHandler(JFErrorHandler)
      */
     @Override
-    public void setJFErrorHandler(final JFErrorHandler jfErrorHandler) {
+    public final void setJFErrorHandler(final JFErrorHandler jfErrorHandler) {
         this.jfErrorHandler = jfErrorHandler;
     }
 
@@ -131,12 +135,13 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      * @see JFErrorHandlerProvider#getJFErrorHandler()
      */
     @Override
-    public JFErrorHandler getJFErrorHandler() {
+    public final JFErrorHandler getJFErrorHandler() {
         return this.jfErrorHandler;
     }
 
     /**
      * Get the Portfolio Data Model that is wrapped in this pojo.
+     * 
      * @return Portfolio Data Model
      * @see JFDataItem
      */
@@ -151,6 +156,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     /**
      * Get node value of Data Model node idPortfolio.
      * This field should not be <code>null</code> in the database.
+     * 
      * @return Long value of Data Model node idPortfolio
      */
     public final Long getIdPortfolio() {
@@ -160,6 +166,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     /**
      * Set node value of Data Model node idPortfolio.
      * This field should not be <code>null</code> in the database.
+     * 
      * @param idPortfolio Long value of Data Model node idPortfolio
      */
     private final void setIdPortfolio(final Long idPortfolio) {
@@ -168,6 +175,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
 
     /**
      * Get Model of Data Model node idPortfolio.
+     * 
      * @return Model of Data Model node idPortfolio
      */
     @SuppressWarnings("unchecked")
@@ -193,6 +201,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     /**
      * Get node value of Data Model node isFake.
      * This field should not be <code>null</code> in the database.
+     * 
      * @return String value of Data Model node isFake
      */
     public final String getIsFake() {
@@ -202,6 +211,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     /**
      * Set node value of Data Model node isFake.
      * This field should not be <code>null</code> in the database.
+     * 
      * @param isFake String value of Data Model node isFake
      */
     public final void setIsFake(final String isFake) {
@@ -210,6 +220,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
 
     /**
      * Get Model of Data Model node isFake.
+     * 
      * @return Model of Data Model node isFake
      */
     @SuppressWarnings("unchecked")
@@ -237,6 +248,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     /**
      * Get node value of Data Model node name.
      * This field should not be <code>null</code> in the database.
+     * 
      * @return String value of Data Model node name
      */
     public final String getName() {
@@ -246,6 +258,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
     /**
      * Set node value of Data Model node name.
      * This field should not be <code>null</code> in the database.
+     * 
      * @param name String value of Data Model node name
      */
     public final void setName(final String name) {
@@ -254,6 +267,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
 
     /**
      * Get Model of Data Model node name.
+     * 
      * @return Model of Data Model node name
      */
     @SuppressWarnings("unchecked")
@@ -327,5 +341,4 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
         
         return result;
     }
-
 }

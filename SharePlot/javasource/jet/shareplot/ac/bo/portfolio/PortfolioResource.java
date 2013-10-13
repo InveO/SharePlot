@@ -6,8 +6,8 @@ import jet.util.logger.JETLevel;
 import jet.util.throwable.JETException;
 
 /**
- * Object used in the Portfolio resource notifications
- * 
+ * Object used in the Portfolio resource notifications.
+ *
  * @author JetToolsFramework
  */
 public class PortfolioResource extends AbstractResourceNotification<Portfolio> {
@@ -15,18 +15,18 @@ public class PortfolioResource extends AbstractResourceNotification<Portfolio> {
     private static final long serialVersionUID = -5971798084595088560L;
 
     /**
-     * Resource name : {@value}
+     * Resource name : {@value}.
      */
-    public final static String RESOURCE_NAME = "jet.shareplot.ac.bo.portfolio.PortfolioResource";
+    public static final String RESOURCE_NAME = "jet.shareplot.ac.bo.portfolio.PortfolioResource";
 
     private ResourceNotificationApplicationComponent resourceAC;
 
     /**
-     * Constructor
-     * 
-     * @param portfolioAC
-     * @param portfolio
-     * @param type
+     * Constructor.
+     *
+     * @param portfolioAC ApplicationComponent
+     * @param portfolio business object
+     * @param type Notification type
      */
     public PortfolioResource(final AbstractPortfolioBOApplicationComponent portfolioAC, final Portfolio portfolio, final NOTIFICATION_TYPE type) {
         super("Portfolio", portfolio, type);
@@ -40,6 +40,8 @@ public class PortfolioResource extends AbstractResourceNotification<Portfolio> {
     }
 
     /**
+     * Send notification to resource listeners.
+     *
      * @see jet.framework.util.pojo2.AbstractResourceNotification#notifyResource()
      */
     @Override
@@ -48,5 +50,4 @@ public class PortfolioResource extends AbstractResourceNotification<Portfolio> {
             this.resourceAC.notifyListeners(RESOURCE_NAME, this);
         }
     }
-
 }

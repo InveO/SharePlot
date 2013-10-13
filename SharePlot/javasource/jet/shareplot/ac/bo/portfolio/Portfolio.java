@@ -32,7 +32,7 @@ public class Portfolio extends PortfolioItem implements JFBusinessItem, JFBusine
     private final AbstractPortfolioBOApplicationComponent portfolioAC;
 
     /**
-     * Constructor, build an empty portfolio
+     * Constructor, build an empty portfolio.
      * 
      * @param portfolioAC the portfolio application component
      * 
@@ -45,7 +45,7 @@ public class Portfolio extends PortfolioItem implements JFBusinessItem, JFBusine
     }
 
     /**
-     * Constructor, build a portfolio from a Model
+     * Constructor, build a portfolio from a Model.
      * 
      * @param model the model representing a portfolio entry in the table Portfolio
      * @param portfolioAC the portfolio application component
@@ -59,7 +59,7 @@ public class Portfolio extends PortfolioItem implements JFBusinessItem, JFBusine
     }
 
     /**
-     * Copy constructor, build a portfolio as a copy of another portfolio
+     * Copy constructor, build a portfolio as a copy of another portfolio.
      * 
      * @param portfolio the portfolio to copy
      */
@@ -69,6 +69,8 @@ public class Portfolio extends PortfolioItem implements JFBusinessItem, JFBusine
     }
 
     /**
+     * Check if this portfolio is valid and can be saved.
+     * 
      * @return <code>true</code> if this portfolio is valid and can be saved.
      * @see JFBusinessItem
      */
@@ -139,7 +141,7 @@ public class Portfolio extends PortfolioItem implements JFBusinessItem, JFBusine
      * @see #delete()
      */
     @Override
-    public FormatedJetException getFormatedJetException(final String key, final Exception e) {
+    public final FormatedJetException getFormatedJetException(final String key, final Exception e) {
         final Object[] args = { getName() };
         return new FormatedJetException(null, key, args, e);
     }

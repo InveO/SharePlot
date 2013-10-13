@@ -31,7 +31,7 @@ public final class ShareQuantityDMC implements DataModelConverter2<ShareQuantity
 
     @Override
     @Nonnull
-    public final Model readDataModelFromObject(@Nonnull final ShareQuantityRemote shareQuantityRemote) throws JETException {
+    public Model readDataModelFromObject(@Nonnull final ShareQuantityRemote shareQuantityRemote) throws JETException {
         final ShareQuantityItem shareQuantityItem = new ShareQuantityItem();
 
         try {
@@ -59,7 +59,7 @@ public final class ShareQuantityDMC implements DataModelConverter2<ShareQuantity
     }
 
     @Override
-    public final void writeDataModelToObject(@Nonnull final Model dataModel, @Nonnull final ShareQuantityRemote shareQuantityRemote) throws JETException {
+    public void writeDataModelToObject(@Nonnull final Model dataModel, @Nonnull final ShareQuantityRemote shareQuantityRemote) throws JETException {
         final ShareQuantityItem shareQuantityItem = new ShareQuantityItem(dataModel);
 
         try {
@@ -77,5 +77,4 @@ public final class ShareQuantityDMC implements DataModelConverter2<ShareQuantity
             throw new JETException("RemoteException while writing to ShareQuantityRemote.", e);
         }
     }
-
 }

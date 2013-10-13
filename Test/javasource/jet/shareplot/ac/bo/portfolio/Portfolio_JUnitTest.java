@@ -1,12 +1,15 @@
 package jet.shareplot.ac.bo.portfolio;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
 import jet.framework.util.pojo2.JFErrorHandler;
 import jet.shareplot.persistence.pojo.PortfolioItem;
+import jet.util.models.interfaces.Model;
 
 import org.junit.runner.RunWith;
 
@@ -28,7 +31,7 @@ public class Portfolio_JUnitTest {
     @org.junit.Test
     public void testPortfolio() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final PortfolioBOApplicationComponent portfolioAC = mock(PortfolioBOApplicationComponent.class);
         assert portfolioAC != null;
 
         // act : run the test
@@ -41,7 +44,7 @@ public class Portfolio_JUnitTest {
         // values should be null
         // TODO adapt these conditions, default values may be set, making them not null
         assertNull(portfolio.getIdPortfolio());
-        assertNull(portfolio.getIsFake());
+        assertNotNull(portfolio.getIsFake());
         assertNull(portfolio.getName());
 
         assertTrue(portfolio.isNotNullableNull());
@@ -63,7 +66,7 @@ public class Portfolio_JUnitTest {
     @org.junit.Test
     public void testPortfolioModel() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final PortfolioBOApplicationComponent portfolioAC = mock(PortfolioBOApplicationComponent.class);
         assert portfolioAC != null;
         final PortfolioItem item = new PortfolioItem();
 
@@ -81,10 +84,12 @@ public class Portfolio_JUnitTest {
     @org.junit.Test
     public void testPortfolioModelData() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final PortfolioBOApplicationComponent portfolioAC = mock(PortfolioBOApplicationComponent.class);
         assert portfolioAC != null;
         final PortfolioItem item = new PortfolioItem();
         // TODO insert data in PortfolioItem
+        item.setIsFake("isFake");
+        item.setName("name");
 
         // act : run the test
         final Portfolio portfolio = new Portfolio(item.get_Model(), portfolioAC);
@@ -93,6 +98,8 @@ public class Portfolio_JUnitTest {
         // object should be instantiated
         assertNotNull(portfolio);
         // TODO check that data is in the portfolio
+        assertEquals(portfolio.getIsFake(), "isFake");
+        assertEquals(portfolio.getName(), "name");
     }
 
     /**
@@ -101,7 +108,7 @@ public class Portfolio_JUnitTest {
     @org.junit.Test
     public void testPortfolioPortfolio() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final PortfolioBOApplicationComponent portfolioAC = mock(PortfolioBOApplicationComponent.class);
         assert portfolioAC != null;
         final Portfolio item = new Portfolio(portfolioAC);
 
@@ -119,10 +126,12 @@ public class Portfolio_JUnitTest {
     @org.junit.Test
     public void testPortfolioPortfolioData() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final PortfolioBOApplicationComponent portfolioAC = mock(PortfolioBOApplicationComponent.class);
         assert portfolioAC != null;
         final Portfolio item = new Portfolio(portfolioAC);
         // TODO insert data in Portfolio
+        item.setIsFake("isFake");
+        item.setName("name");
 
         // act : run the test
         final Portfolio portfolio = new Portfolio(item);
@@ -131,6 +140,8 @@ public class Portfolio_JUnitTest {
         // object should be instantiated
         assertNotNull(portfolio);
         // TODO check that data is in the portfolio
+        assertEquals(portfolio.getIsFake(), "isFake");
+        assertEquals(portfolio.getName(), "name");
     }
 
     /**
@@ -139,7 +150,7 @@ public class Portfolio_JUnitTest {
     @org.junit.Test
     public void testIsNotNullableNullTrue() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final PortfolioBOApplicationComponent portfolioAC = mock(PortfolioBOApplicationComponent.class);
         assert portfolioAC != null;
         final Portfolio portfolio = new Portfolio(portfolioAC);
 
@@ -156,11 +167,11 @@ public class Portfolio_JUnitTest {
     @org.junit.Test
     public void testIsNotNullableNullFalse() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final PortfolioBOApplicationComponent portfolioAC = mock(PortfolioBOApplicationComponent.class);
         assert portfolioAC != null;
         final Portfolio portfolio = new Portfolio(portfolioAC);
-        portfolio.setIsFake("");
-        portfolio.setName("");
+        portfolio.setIsFake("isFake");
+        portfolio.setName("name");
 
         // act : run the test
         final boolean result = portfolio.isNotNullableNull();
@@ -175,7 +186,7 @@ public class Portfolio_JUnitTest {
     @org.junit.Test
     public void testIsPkEqualsTrue() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final PortfolioBOApplicationComponent portfolioAC = mock(PortfolioBOApplicationComponent.class);
         assert portfolioAC != null;
         final Portfolio otherPortfolio = mock(Portfolio.class);
         // TODO init mock pk
@@ -198,7 +209,7 @@ public class Portfolio_JUnitTest {
     @org.junit.Test
     public void testIsPkEqualsFalse() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final PortfolioBOApplicationComponent portfolioAC = mock(PortfolioBOApplicationComponent.class);
         assert portfolioAC != null;
         final Portfolio otherPortfolio = mock(Portfolio.class);
         // TODO init mock pk
@@ -221,7 +232,7 @@ public class Portfolio_JUnitTest {
     @org.junit.Test
     public void testIsPkEqualsNullFalse() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final PortfolioBOApplicationComponent portfolioAC = mock(PortfolioBOApplicationComponent.class);
         assert portfolioAC != null;
         final Portfolio otherPortfolio = mock(Portfolio.class);
 
@@ -240,7 +251,7 @@ public class Portfolio_JUnitTest {
     @org.junit.Test
     public void testIsPkEqualsFalseNull() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final PortfolioBOApplicationComponent portfolioAC = mock(PortfolioBOApplicationComponent.class);
         assert portfolioAC != null;
 
         final Portfolio portfolio = new Portfolio(portfolioAC);
@@ -260,7 +271,7 @@ public class Portfolio_JUnitTest {
     @org.junit.Test
     public void testGetJFErrorHandler() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final PortfolioBOApplicationComponent portfolioAC = mock(PortfolioBOApplicationComponent.class);
         assert portfolioAC != null;
 
         final Portfolio portfolio = new Portfolio(portfolioAC);
@@ -278,7 +289,7 @@ public class Portfolio_JUnitTest {
     @org.junit.Test
     public void testSetJFErrorHandler() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final PortfolioBOApplicationComponent portfolioAC = mock(PortfolioBOApplicationComponent.class);
         assert portfolioAC != null;
         final JFErrorHandler errorHandler = mock(JFErrorHandler.class);
 
@@ -298,7 +309,7 @@ public class Portfolio_JUnitTest {
     @org.junit.Test
     public void testIsValidTrue() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final PortfolioBOApplicationComponent portfolioAC = mock(PortfolioBOApplicationComponent.class);
         assert portfolioAC != null;
 
         final Portfolio portfolio = new Portfolio(portfolioAC);
@@ -317,7 +328,7 @@ public class Portfolio_JUnitTest {
     @org.junit.Test
     public void testIsValidFalse() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final PortfolioBOApplicationComponent portfolioAC = mock(PortfolioBOApplicationComponent.class);
         assert portfolioAC != null;
 
         final Portfolio portfolio = new Portfolio(portfolioAC);
@@ -336,7 +347,7 @@ public class Portfolio_JUnitTest {
     @org.junit.Test
     public void testIsNewTrue() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final PortfolioBOApplicationComponent portfolioAC = mock(PortfolioBOApplicationComponent.class);
         assert portfolioAC != null;
 
         final Portfolio portfolio = new Portfolio(portfolioAC);
@@ -354,11 +365,11 @@ public class Portfolio_JUnitTest {
     @org.junit.Test
     public void testIsNewFalse() {
         // arrange : set up the test
-        final AbstractPortfolioBOApplicationComponent portfolioAC = mock(AbstractPortfolioBOApplicationComponent.class);
+        final PortfolioBOApplicationComponent portfolioAC = mock(PortfolioBOApplicationComponent.class);
         assert portfolioAC != null;
 
         final Portfolio portfolio = new Portfolio(portfolioAC);
-        // TODO set up NON new portfolio
+        portfolio.get_IdPortfolio_Model().setNodeValue(Long.valueOf(1));
 
         // act : run the test
         final boolean result = portfolio.isNew();
