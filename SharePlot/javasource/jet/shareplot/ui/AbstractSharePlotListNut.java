@@ -59,7 +59,7 @@ public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends
     /**
      * Initializer, for internal use only.
      * 
-     * @throws JETException
+     * @throws JETException if failed to initialize
      */
     @Initializer
     public final void doAbstractSharePlotListNutInit() throws JETException {
@@ -195,16 +195,6 @@ public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends
         }
     }
 
-    private class EmptyItemListener extends EmptyLineListener {
-
-        private static final long serialVersionUID = -1009201544110187098L;
-
-        @Override
-        protected <X extends Enum<X>> void handleChangedValue(final Event<X> event) {
-            addEmptyItem();
-        }
-    }
-
     @Override
     public void componentClicked(final UIComponent component) {
         if (component == this.saveButton) {
@@ -333,4 +323,21 @@ public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends
         }
         this.items.add(resource);
     }
+
+    /**
+     * EmptyLineListener implementation.
+     * 
+     * @author daniel
+     * 
+     */
+    private class EmptyItemListener extends EmptyLineListener {
+
+        private static final long serialVersionUID = -1009201544110187098L;
+
+        @Override
+        protected <X extends Enum<X>> void handleChangedValue(final Event<X> event) {
+            addEmptyItem();
+        }
+    }
+
 }

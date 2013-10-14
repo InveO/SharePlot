@@ -10,18 +10,24 @@ import jet.util.models.interfaces.Displayable;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
+/**
+ * Abstract SharePlot nut. This will provide some base functionality.
+ * 
+ * @author daniel
+ * 
+ */
 public abstract class AbstractSharePlotNut extends EventDrivenUINut {
 
-    private Displayable tabTitle;
-    private Displayable headerTitle;
+    private static final long serialVersionUID = -7803626806863548106L;
+
     private DesktopDialogHelper dialogHelper;
 
     /**
-     * Get the node at the given path from the ApplicationComponent configuration
+     * Get the node at the given path from the ApplicationComponent configuration.
      * 
      * @param path XML node path
      * @return Node at the given path
-     * @throws JETException
+     * @throws JETException If configuration path does not exist.
      */
     protected final Model getConfigurationNode(final String path) throws JETException {
         final Model acConfig = getApplicationComponent().getConfiguration();
@@ -33,7 +39,7 @@ public abstract class AbstractSharePlotNut extends EventDrivenUINut {
     }
 
     /**
-     * Set the header group title and the tab title
+     * Set the header group title and the tab title.
      * 
      * @param displayable Displayable title
      */
@@ -43,25 +49,23 @@ public abstract class AbstractSharePlotNut extends EventDrivenUINut {
     }
 
     /**
-     * Set the tab title
+     * Set the tab title.
      * 
-     * @param displayable
+     * @param displayable Title to display in the tab
      */
     protected void setTabTitle(final Displayable displayable) {
         if (displayable != null) {
-            this.tabTitle = displayable;
             ((UIContainerComponent) getMainComponent()).setDisplayable(displayable);
         }
     }
 
     /**
-     * Set the header group title
+     * Set the header group title.
      * 
-     * @param displayable
+     * @param displayable Title to display in the header
      */
     protected void setHeaderTitle(final Displayable displayable) {
         if (displayable != null) {
-            this.headerTitle = displayable;
             final UILabelComponent labelTitle = (UILabelComponent) UIComponentFinder.findOptionalComponent("titleLabel", getMainComponent());
             if (labelTitle != null) {
                 labelTitle.setDisplayable(displayable);
@@ -70,6 +74,8 @@ public abstract class AbstractSharePlotNut extends EventDrivenUINut {
     }
 
     /**
+     * Get the DesktopDialogHelper. This should eb registered in the session by the Deksktop.
+     * 
      * @return DesktopDialogHelper
      */
     protected final DesktopDialogHelper getDesktopDialogHelper() {

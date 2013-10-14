@@ -39,22 +39,25 @@ import jet.util.logger.JETLevel;
 import jet.util.throwable.JETException;
 
 /**
+ * Desktop Nut.
+ * 
  * @author drobinson
  * 
  */
 public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMenuPluginListener, LaunchACMenuPluginListener {
 
-    private static final long serialVersionUID = 4588448882094005306L;
-    private static final String EDITOR_GROUP = "bodyGroup";
     /**
-     * <code>ANCHOR_EDITOR</code>
+     * <code>ANCHOR_EDITOR</code>.
      */
     public static final String ANCHOR_EDITOR = "ANCHOR_EDITOR";
 
     /**
-     * <code>PROPERTY_MENU_ITEM</code>
+     * <code>PROPERTY_MENU_ITEM</code>.
      */
     public static final Object PROPERTY_MENU_ITEM = new SerializableKey(SharePlotDesktopNut.class, "PROPERTY_MENU_ITEM");
+
+    private static final long serialVersionUID = 4588448882094005306L;
+    private static final String EDITOR_GROUP = "bodyGroup";
 
     private DesktopMenuPlugin desktopMenuPlugin;
     private final List<ApplicationComponent> childApplicationComponents = new ArrayList<ApplicationComponent>();
@@ -64,9 +67,9 @@ public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMe
     private SharePlotDialogHelper sharePlotDialogHelper;
 
     /**
-     * Init, internal use only
+     * Init, internal use only.
      * 
-     * @throws JETException
+     * @throws JETException if initialisation failed
      */
     @Initializer
     public final void doSharePlotDesktopNutInit() throws JETException {
@@ -131,9 +134,9 @@ public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMe
     }
 
     /**
-     * De init, internal use only
+     * De init, internal use only.
      * 
-     * @throws JETException
+     * @throws JETException if deinitialization failed
      */
     @Deinitializer
     public final void doSharePlotDesktopNutDeinitialization() throws JETException {

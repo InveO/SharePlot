@@ -19,17 +19,27 @@ import jet.util.throwable.JETException;
  */
 public class SharePlotACLauncher implements ApplicationComponentLauncher, Serializable {
 
+    /**
+     * <code>AC_KEY_PARAMETER</code> ${value}.
+     */
+    public static final String AC_KEY_PARAMETER = "jet.shareplot.ui.desktop.SharePlotACLauncher.AC_KEY_PARAMETER";
+
     private static final long serialVersionUID = 4274429305824460930L;
     private final LaunchACMenuPlugin launchACMenuPlugin;
     private final ApplicationComponent applicationComponent;
     private final List<ApplicationComponent> childApplicationComponents;
     private final TaskUnicityPlugin taskUnicityPlugin;
     private final SwitchWindowMenuPlugin switchWindowPlugin;
-    /**
-     * <code>AC_KEY_PARAMETER</code> ${value}
-     */
-    public final static String AC_KEY_PARAMETER = "jet.shareplot.ui.desktop.SharePlotACLauncher.AC_KEY_PARAMETER";
 
+    /**
+     * Constructor.
+     * 
+     * @param launchACMenuPlugin LaunchACMenuPlugin
+     * @param childApplicationComponents List<ApplicationComponent>
+     * @param applicationComponent ApplicationComponent
+     * @param taskUnicityPlugin TaskUnicityPlugin
+     * @param switchWindowPlugin SwitchWindowMenuPlugin
+     */
     SharePlotACLauncher(final LaunchACMenuPlugin launchACMenuPlugin, final List<ApplicationComponent> childApplicationComponents, final ApplicationComponent applicationComponent, final TaskUnicityPlugin taskUnicityPlugin, final SwitchWindowMenuPlugin switchWindowPlugin) {
         this.launchACMenuPlugin = launchACMenuPlugin;
         this.applicationComponent = applicationComponent;
