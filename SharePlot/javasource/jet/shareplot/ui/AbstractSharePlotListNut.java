@@ -26,10 +26,27 @@ import jet.util.models.interfaces.Event;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
+/**
+ * Abstract Nut for handling lists.
+ * 
+ * @author daniel
+ * 
+ * @param <T>
+ */
 public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends AbstractSharePlotNut implements ResourceNotificationListener {
 
+    private static final long serialVersionUID = 1890708957130287350L;
+    /**
+     * UITableComponent2 that will display the list.
+     */
     protected UITableComponent2 tableList;
+    /**
+     * UITableListDisplay3 that will handle the list.
+     */
     protected UITableListDisplay3 uiTableListDisplay3;
+    /**
+     * List of items to display in the list.
+     */
     protected final List<T> items = new ArrayList<T>();
     private T emptyItem;
     private EmptyItemListener emptyItemListener;
@@ -39,6 +56,11 @@ public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends
     private ResourceNotificationApplicationComponent resourceAC;
     private boolean processNotifications = true;
 
+    /**
+     * Initializer, for internal use only.
+     * 
+     * @throws JETException
+     */
     @Initializer
     public final void doAbstractSharePlotListNutInit() throws JETException {
         preInit();
@@ -46,7 +68,7 @@ public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends
         getUIComponents();
 
         initItemList();
-        displayShareList();
+        displayItemList();
 
         this.resourceAC = ResourceNotificationApplicationComponent.getInstance(getSession());
         this.resourceAC.addResourceNotificationListener(getResourceName(), this);
@@ -54,10 +76,26 @@ public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends
         postInit();
     }
 
+    /**
+     * Resource that needs to be listened to.
+     * 
+     * @return Resource name
+     */
+    @Nonnull
     protected abstract String getResourceName();
 
+    /**
+     * Method called at the start of the Initializer.
+     * 
+     * @throws JETException if there is an error, this will interrupt the initialization.
+     */
     protected abstract void preInit() throws JETException;
 
+    /**
+     * Method called at the end of the Initializer.
+     * 
+     * @throws JETException if there is an error, this will interrupt the initialization.
+     */
     protected abstract void postInit() throws JETException;
 
     private void getUIComponents() throws JETException {
@@ -67,7 +105,7 @@ public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends
         UIComponentHelper.setTriggerComponentClickedOn(this.deleteButton, new KeyEvent(KeyEvent.CTRL_MASK, KeyEvent.Key.D));
     }
 
-    private void displayShareList() {
+    private void displayItemList() {
         removeEmptyItem();
         this.uiTableListDisplay3.removeAll();
         this.items.clear();
@@ -82,6 +120,11 @@ public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends
         this.uiTableListDisplay3.attachModel();
     }
 
+    /**
+     * Get the list of items to display.
+     * 
+     * @return list of items to display
+     */
     protected abstract List<T> findItems();
 
     private void initItemList() throws JETException {
@@ -97,10 +140,23 @@ public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends
         this.emptyItemListener = new EmptyItemListener();
     }
 
+    /**
+     * Add providers to the UITableListDisplay3 to handle specific elements.
+     * 
+     * @param uiTableListDisplay UITableListDisplay3 that handles the list
+     */
     protected abstract void addListDisplayProviders(UITableListDisplay3 uiTableListDisplay);
 
+    /**
+     * Get the name of the list display model to use.
+     * 
+     * @return name of the list display model to use
+     */
     protected abstract String getListDisplayKey();
 
+    /**
+     * Add an empty item at the end of the list.
+     */
     protected final void addEmptyItem() {
         if (this.emptyItem == null || this.emptyItem.isValid()) {
             if (this.emptyItem != null) {
@@ -115,8 +171,19 @@ public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends
         }
     }
 
+    /**
+     * Create a new initialized item.
+     * 
+     * @return new item
+     */
     protected abstract T createNewItem();
 
+    /**
+     * Get a clone of the item.
+     * 
+     * @param item Item to clone
+     * @return cloned item
+     */
     protected abstract T getItemCopy(@Nonnull T item);
 
     private void removeEmptyItem() {
@@ -198,8 +265,14 @@ public abstract class AbstractSharePlotListNut<T extends JFBusinessItem> extends
         addEmptyItem();
     }
 
+    /**
+     * Called after all the items have been saved. Will be called once.
+     */
     protected abstract void postSave();
 
+    /**
+     * Called before all the items are saved. Will be called once.
+     */
     protected abstract void preSave();
 
     // ResourceNotificationListener

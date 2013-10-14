@@ -63,8 +63,9 @@ public class ShareQuantityListNut extends AbstractSharePlotListNut<ShareQuantity
     }
 
     @Override
+    @Nonnull
     protected String getResourceName() {
-        return ShareQuantityResource.RESOURCE_NAME;
+        return AnnotationsHelper.assertNonNull(ShareQuantityResource.RESOURCE_NAME);
     }
 
     @Override

@@ -117,8 +117,9 @@ public class PortfolioListNut extends AbstractSharePlotListNut<Portfolio> {
     }
 
     @Override
+    @Nonnull
     protected String getResourceName() {
-        return PortfolioResource.RESOURCE_NAME;
+        return AnnotationsHelper.assertNonNull(PortfolioResource.RESOURCE_NAME);
     }
 
     @Override

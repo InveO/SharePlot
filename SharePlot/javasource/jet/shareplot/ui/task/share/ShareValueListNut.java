@@ -80,8 +80,9 @@ public class ShareValueListNut extends AbstractSharePlotListNut<ShareValue> impl
     }
 
     @Override
+    @Nonnull
     protected String getResourceName() {
-        return ShareValueResource.RESOURCE_NAME;
+        return AnnotationsHelper.assertNonNull(ShareValueResource.RESOURCE_NAME);
     }
 
     @Override
