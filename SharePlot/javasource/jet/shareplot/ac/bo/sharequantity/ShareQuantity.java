@@ -1,6 +1,7 @@
 package jet.shareplot.ac.bo.sharequantity;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.pojo2.AbstractResourceNotification.NOTIFICATION_TYPE;
@@ -92,29 +93,12 @@ public class ShareQuantity extends ShareQuantityItem implements JFBusinessItem, 
         this.shareQuantityAC = shareQuantity.shareQuantityAC;
     }
 
-    /**
-     * Check if this shareQuantity is valid and can be saved.
-     * 
-     * @return <code>true</code> if this shareQuantity is valid and can be saved.
-     * @see JFBusinessItem
-     */
     @Override
     public final boolean isValid() {
         // TODO add extra validations here
         return !isNotNullableNull();
     }
 
-    /**
-     * Register the object in the database.
-     * The store will only be done if the shareQuantity is valid.
-     * It will updated if it already exists and create it if not.
-     * 
-     * @throws FormatedJetException
-     * @see FormatedJetException
-     * @see #isNew()
-     * @see #isValid()
-     * @see JFBusinessItem
-     */
     @Override
     public final void save() throws FormatedJetException {
         if (isValid()) {
@@ -134,15 +118,6 @@ public class ShareQuantity extends ShareQuantityItem implements JFBusinessItem, 
         }
     }
 
-    /**
-     * Remove the object from the database.
-     * It will be deleted if it already exists.
-     * 
-     * @throws FormatedJetException
-     * @see FormatedJetException
-     * @see #isNew()
-     * @see JFBusinessItem
-     */
     @Override
     public final void delete() throws FormatedJetException {
         if (!isNew()) {
@@ -154,17 +129,8 @@ public class ShareQuantity extends ShareQuantityItem implements JFBusinessItem, 
         }
     }
 
-    /**
-     * Produce error for save / delete.
-     * 
-     * @return FormatedJetException
-     * @see FormatedJetException
-     * @see JFBusinessErrorHelper
-     * @see #save()
-     * @see #delete()
-     */
     @Override
-    public final FormatedJetException getFormatedJetException(final String key, final Exception e) {
+    public final FormatedJetException getFormatedJetException(@Nullable final String key, @Nullable final Exception e) {
         final Object[] args = { getValueDate() };
         return new FormatedJetException(null, key, args, e);
     }

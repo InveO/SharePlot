@@ -1,6 +1,7 @@
 package jet.shareplot.ac.bo.share;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.pojo2.AbstractResourceNotification.NOTIFICATION_TYPE;
@@ -67,29 +68,12 @@ public class Share extends ShareItem implements JFBusinessItem, JFBusinessErrorH
         this.shareAC = share.shareAC;
     }
 
-    /**
-     * Check if this share is valid and can be saved.
-     * 
-     * @return <code>true</code> if this share is valid and can be saved.
-     * @see JFBusinessItem
-     */
     @Override
     public final boolean isValid() {
         // TODO add extra validations here
         return !isNotNullableNull();
     }
 
-    /**
-     * Register the object in the database.
-     * The store will only be done if the share is valid.
-     * It will updated if it already exists and create it if not.
-     * 
-     * @throws FormatedJetException
-     * @see FormatedJetException
-     * @see #isNew()
-     * @see #isValid()
-     * @see JFBusinessItem
-     */
     @Override
     public final void save() throws FormatedJetException {
         if (isValid()) {
@@ -109,15 +93,6 @@ public class Share extends ShareItem implements JFBusinessItem, JFBusinessErrorH
         }
     }
 
-    /**
-     * Remove the object from the database.
-     * It will be deleted if it already exists.
-     * 
-     * @throws FormatedJetException
-     * @see FormatedJetException
-     * @see #isNew()
-     * @see JFBusinessItem
-     */
     @Override
     public final void delete() throws FormatedJetException {
         if (!isNew()) {
@@ -129,17 +104,8 @@ public class Share extends ShareItem implements JFBusinessItem, JFBusinessErrorH
         }
     }
 
-    /**
-     * Produce error for save / delete.
-     * 
-     * @return FormatedJetException
-     * @see FormatedJetException
-     * @see JFBusinessErrorHelper
-     * @see #save()
-     * @see #delete()
-     */
     @Override
-    public final FormatedJetException getFormatedJetException(final String key, final Exception e) {
+    public final FormatedJetException getFormatedJetException(@Nullable final String key, @Nullable final Exception e) {
         final Object[] args = { getName() };
         return new FormatedJetException(null, key, args, e);
     }
