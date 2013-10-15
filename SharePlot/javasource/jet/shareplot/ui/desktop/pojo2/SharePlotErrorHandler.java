@@ -7,10 +7,22 @@ import jet.framework.util.pojo2.InterceptorValidationException;
 import jet.framework.util.pojo2.JFErrorHandler;
 import jet.shareplot.ui.desktop.dialog.DialogConstants;
 
+/**
+ * Implementation of the JFErrorHandler.
+ * 
+ * @author daniel
+ * 
+ */
 public class SharePlotErrorHandler implements JFErrorHandler {
 
+    private static final long serialVersionUID = 1415084048426887553L;
     private final DesktopDialogHelper dialogHelper;
 
+    /**
+     * Constructor.
+     * 
+     * @param session Current session
+     */
     public SharePlotErrorHandler(final Session session) {
         this.dialogHelper = (DesktopDialogHelper) session.getProperty(DesktopDialogHelper.SESSION_KEY);
     }

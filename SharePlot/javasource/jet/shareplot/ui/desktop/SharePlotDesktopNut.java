@@ -56,7 +56,18 @@ public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMe
      */
     public static final Object PROPERTY_MENU_ITEM = new SerializableKey(SharePlotDesktopNut.class, "PROPERTY_MENU_ITEM");
 
+    /**
+     * Dialog box height.
+     */
+    private static final int FRAME_HEIGHT = 480;
+
+    /**
+     * Dialog box width.
+     */
+    private static final int FRAME_WIDTH = 640;
+
     private static final long serialVersionUID = 4588448882094005306L;
+
     private static final String EDITOR_GROUP = "bodyGroup";
 
     private DesktopMenuPlugin desktopMenuPlugin;
@@ -109,7 +120,13 @@ public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMe
         final JetVersion ver = getApplicationProxy().getApplicationVersion();
         versionLabel.setText(ver.getVersion() + "  " + ver.getTime());
 
-        System.err.println("[SharePlotDesktopNut] doSharePlotDesktopNutInit - STARTING BATCH SESSION");
+        // this was for test purposes
+//        startBatchSession();
+
+    }
+
+    public void startBatchSession() {
+        System.err.println("[SharePlotDesktopNut] startBatchSession - STARTING BATCH SESSION");
         try {
             final BatchSessionManagerContext batchSessionCtxt = (BatchSessionManagerContext) getManagerContext(BatchSessionManagerContext.NAME);
             final BatchSessionManagerLoginResponse loginResponse = batchSessionCtxt.createBatchSession("SharePlotBatch", null);
@@ -126,11 +143,10 @@ public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMe
 
             batchSessionCtxt.killBatchSession(sessionId);
         } catch (final JETException e) {
-            logp(JETLevel.SEVERE, "SharePlotDesktopNut", "doSharePlotDesktopNutInit", e.getMessage(), e);
+            logp(JETLevel.SEVERE, "SharePlotDesktopNut", "startBatchSession", e.getMessage(), e);
         } catch (final SessionNotFoundException e) {
-            logp(JETLevel.SEVERE, "SharePlotDesktopNut", "doSharePlotDesktopNutInit", e.getMessage(), e);
+            logp(JETLevel.SEVERE, "SharePlotDesktopNut", "startBatchSession", e.getMessage(), e);
         }
-
     }
 
     /**
@@ -186,8 +202,8 @@ public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMe
     @Override
     public void getChildACParameters(final Map<String, Object> initMap) {
         // nothing to do
-        initMap.put(UIAnchorService.PARAM_FRAME_HEIGHT, Integer.valueOf(480));
-        initMap.put(UIAnchorService.PARAM_FRAME_WIDTH, Integer.valueOf(640));
+        initMap.put(UIAnchorService.PARAM_FRAME_HEIGHT, Integer.valueOf(SharePlotDesktopNut.FRAME_HEIGHT));
+        initMap.put(UIAnchorService.PARAM_FRAME_WIDTH, Integer.valueOf(SharePlotDesktopNut.FRAME_WIDTH));
     }
 
 }

@@ -20,8 +20,21 @@ import jet.util.models.SimpleModelImpl;
 import jet.util.models.interfaces.Displayable;
 import jet.util.models.interfaces.Model;
 
+/**
+ * Dialog box helper class.
+ * 
+ * @author daniel
+ * 
+ */
 public class SharePlotDialogHelper implements DesktopDialogHelper {
 
+    private static final long serialVersionUID = 4641804985188680979L;
+    private static final String VERSION_LABEL = "SharePlot/properties/desktop/Global/label.Version";
+    private static final String SEND_LABEL = "SharePlot/properties/desktop/Buttons/button.Send";
+    private static final String CANCEL_LABEL = "SharePlot/properties/desktop/Buttons/button.Cancel";
+    private static final String OK_LABEL = "SharePlot/properties/desktop/Buttons/button.Ok";
+    private static final String NO_LABEL = "SharePlot/properties/desktop/Buttons/button.No";
+    private static final String YES_LABEL = "SharePlot/properties/desktop/Buttons/button.Yes";
     private static final String TITLE_FG_COLOR = "dialogTitleFGColor";
     private static final String TITLE_FONT = "dialogTitleFont";
     private static final String TITLE_BG_COLOR = "dialogTitleBGColor";
@@ -31,6 +44,13 @@ public class SharePlotDialogHelper implements DesktopDialogHelper {
     private final AbstractDesktopNut abstractDesktopNut;
     private final JETLocale locale;
 
+    /**
+     * Constructor. This should only be called by the desktop. It will then be registered in the session
+     * and will be retrieved via the session when required.
+     * 
+     * @param abstractDesktopNut Desktop nut
+     * @param locale Locale in which the dialogs are to be displayed
+     */
     public SharePlotDialogHelper(final AbstractDesktopNut abstractDesktopNut, final JETLocale locale) {
         this.abstractDesktopNut = abstractDesktopNut;
         this.locale = locale;
@@ -48,8 +68,8 @@ public class SharePlotDialogHelper implements DesktopDialogHelper {
     public Boolean displayYesNoDialog(final Displayable title, final Displayable message) {
         final Model param = new SimpleModelImpl();
         param.setAttribute(YesNoMessageDialogNut.LOCALIZED_MESSAGE, message);
-        param.setAttribute(YesNoMessageDialogNut.LOCALIZED_YES_LABEL, "SharePlot/properties/desktop/Buttons/button.Yes");
-        param.setAttribute(YesNoMessageDialogNut.LOCALIZED_NO_LABEL, "SharePlot/properties/desktop/Buttons/button.No");
+        param.setAttribute(YesNoMessageDialogNut.LOCALIZED_YES_LABEL, YES_LABEL);
+        param.setAttribute(YesNoMessageDialogNut.LOCALIZED_NO_LABEL, NO_LABEL);
         param.setAttribute(AbstractDialogNut.VERSION, getVersionDialogLabel());
 
         this.abstractDesktopNut.displayDialog(title, DEFAULT_DIALOG_WIDTH, DEFAULT_DIALOG_HEIGHT, TITLE_BG_COLOR, TITLE_FONT, TITLE_FG_COLOR, param, "YesNoMessageDialog");
@@ -95,8 +115,8 @@ public class SharePlotDialogHelper implements DesktopDialogHelper {
     public String displayQuestionDialog(final Displayable title, final Displayable message) {
         final Model param = new SimpleModelImpl();
         param.setAttribute(QuestionDialogNut.LOCALIZED_MESSAGE, message);
-        param.setAttribute(QuestionDialogNut.LOCALIZED_OK_LABEL, "SharePlot/properties/desktop/Buttons/button.Ok");
-        param.setAttribute(QuestionDialogNut.LOCALIZED_KO_LABEL, "SharePlot/properties/desktop/Buttons/button.Cancel");
+        param.setAttribute(QuestionDialogNut.LOCALIZED_OK_LABEL, OK_LABEL);
+        param.setAttribute(QuestionDialogNut.LOCALIZED_KO_LABEL, CANCEL_LABEL);
         param.setAttribute(AbstractDialogNut.VERSION, getVersionDialogLabel());
 
         this.abstractDesktopNut.displayDialog(title, DEFAULT_DIALOG_WIDTH, DEFAULT_DIALOG_HEIGHT, TITLE_BG_COLOR, TITLE_FONT, TITLE_FG_COLOR, param, "QuestionDialog");
@@ -121,7 +141,7 @@ public class SharePlotDialogHelper implements DesktopDialogHelper {
 
     @Override
     public Model displayListTableDialog(final Displayable title, final List<Model> modelList, final Model listDisplayModel) {
-        final ListDialogParameterModel listDialogParameterModel = new ListDialogParameterModel(modelList, listDisplayModel, "SharePlot/properties/desktop/Buttons/button.Select", null, "SharePlot/properties/desktop/Buttons/button.Cancel", null);
+        final ListDialogParameterModel listDialogParameterModel = new ListDialogParameterModel(modelList, listDisplayModel, "SharePlot/properties/desktop/Buttons/button.Select", null, CANCEL_LABEL, null);
 
         final Model param = new SimpleModelImpl();
         param.setAttribute(ListTableDialogNut.LISTDIALOGPARAMETERMODEL, listDialogParameterModel);
@@ -147,8 +167,8 @@ public class SharePlotDialogHelper implements DesktopDialogHelper {
         param.setAttribute(SendEmailDialogNut.MESSAGE, message);
         param.setAttribute(SendEmailDialogNut.TITLE, emailTitle);
         param.setAttribute(SendEmailDialogNut.EMAILTO, emailTo);
-        param.setAttribute(SendEmailDialogNut.LOCALIZED_SEND_LABEL, "SharePlot/properties/desktop/Buttons/button.Send");
-        param.setAttribute(SendEmailDialogNut.LOCALIZED_CANCEL_LABEL, "SharePlot/properties/desktop/Buttons/button.Cancel");
+        param.setAttribute(SendEmailDialogNut.LOCALIZED_SEND_LABEL, SEND_LABEL);
+        param.setAttribute(SendEmailDialogNut.LOCALIZED_CANCEL_LABEL, CANCEL_LABEL);
         param.setAttribute(AbstractDialogNut.VERSION, getVersionDialogLabel());
 
         this.abstractDesktopNut.displayDialog(title, DEFAULT_DIALOG_WIDTH, DEFAULT_DIALOG_HEIGHT, TITLE_BG_COLOR, TITLE_FONT, TITLE_FG_COLOR, param, "SendEmailDialog");
@@ -169,8 +189,8 @@ public class SharePlotDialogHelper implements DesktopDialogHelper {
         final Model param = new SimpleModelImpl();
         param.setAttribute(SendEmailDialogNut.MESSAGE, message);
         param.setAttribute(SendEmailDialogNut.TITLE, emailTitle);
-        param.setAttribute(SendEmailDialogNut.LOCALIZED_SEND_LABEL, "SharePlot/properties/desktop/Buttons/button.Send");
-        param.setAttribute(SendEmailDialogNut.LOCALIZED_CANCEL_LABEL, "SharePlot/properties/desktop/Buttons/button.Cancel");
+        param.setAttribute(SendEmailDialogNut.LOCALIZED_SEND_LABEL, SEND_LABEL);
+        param.setAttribute(SendEmailDialogNut.LOCALIZED_CANCEL_LABEL, CANCEL_LABEL);
         param.setAttribute(AbstractDialogNut.VERSION, getVersionDialogLabel());
 
         this.abstractDesktopNut.displayDialog(title, DEFAULT_DIALOG_WIDTH, DEFAULT_DIALOG_HEIGHT, TITLE_BG_COLOR, TITLE_FONT, TITLE_FG_COLOR, param, "SendDialog");
@@ -181,7 +201,7 @@ public class SharePlotDialogHelper implements DesktopDialogHelper {
 
     private String getVersionDialogLabel() {
         final StringBuilder sb = new StringBuilder();
-        final Displayable disp = new LocalizedDisplayable(null, "SharePlot/properties/desktop/Global/label.Version");
+        final Displayable disp = new LocalizedDisplayable(null, VERSION_LABEL);
         sb.append(disp.getDisplayableString(this.locale));
         sb.append(" ");
         sb.append(getVersion());
@@ -196,13 +216,13 @@ public class SharePlotDialogHelper implements DesktopDialogHelper {
 
     @Override
     public String displayQuestionDialog(final String title, final String localizedTitle, final String message, final String localizedMessage, final String defaultValue) {
-        // TODO Auto-generated method stub
+        // nothing to do for the moment
         return null;
     }
 
     @Override
     public String displayQuestionDialog(final Displayable title, final Displayable message, final String defaultValue) {
-        // TODO Auto-generated method stub
+        // nothing to do for the moment
         return null;
     }
 
