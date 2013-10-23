@@ -1,0 +1,21 @@
+<APPLICATION_COMPONENT class="jet.framework.component.SimpleApplicationComponent" initialNutName="PortfolioDetailNut">
+
+    <!-- SimpleApplicationComponent specific declarations -->
+    <APPLICATION_COMPONENT_CONFIG>
+
+        <SHARE_LIST>
+            <COLUMN name="nameColumn" datamodelfield="" type="TEXT" editable="true" width="10" localizedlabel="SharePlot/properties/desktop/Global/list.name" />
+            <COLUMN name="valueColumn" datamodelfield="" type="NUMBER" class="java.math.BigDecimal" editable="true" width="5" localizedlabel="SharePlot/properties/task/Share/list.value" />
+            <COLUMN name="editColumn" datamodelfield="" type="BUTTON" editable="true" width="0" style="tableColumnButton" localizedlabel="SharePlot/properties/desktop/Global/list.edit" />
+        </SHARE_LIST>
+
+    </APPLICATION_COMPONENT_CONFIG>
+
+    <NUTS>
+        <NUT name="PortfolioDetailNut" className="jet.shareplot.ui.task.share.PortfolioDetailNut">
+            <PARAMETER name="formName" value="PortfolioDetailForm" />
+            <PARAMETER name="formXmlFile" value="SharePlot/xml/ui/task/share/PortfolioDetailForm.xml" />
+        </NUT>
+    </NUTS>
+
+</APPLICATION_COMPONENT>

@@ -35,21 +35,19 @@ public class PortfolioListNut extends AbstractSharePlotListNut<Portfolio> {
                 // if the row is double clicked the current contact must be edited
                 final MouseEvent me = (MouseEvent) uiEvent;
                 if (me.getType() == MouseEventType.LEFT_CLICK) {
-
-                    final String colName = this.uiTableListDisplay3.getColumnName(col);
-
-                    if ("editColumn".equals(colName)) {
-                        final Portfolio portfolio = this.items.get(row);
-                        if (portfolio.getIdPortfolio() != null) {
-                            launchEditPortfolio(portfolio);
-                        }
-                    } else if ("valueColumn".equals(colName)) {
-                        final Portfolio portfolio = this.items.get(row);
-                        if (portfolio.getIdPortfolio() != null) {
-                            launchValuesPortfolio(portfolio);
-                        }
-                    }
+                    processTableLeftClick(row, col);
                 }
+            }
+        }
+    }
+
+    private void processTableLeftClick(final int row, final int col) {
+        final String colName = this.uiTableListDisplay3.getColumnName(col);
+
+        if ("editColumn".equals(colName)) {
+            final Portfolio portfolio = this.items.get(row);
+            if (portfolio.getIdPortfolio() != null) {
+                launchEditPortfolio(portfolio);
             }
         }
     }
@@ -57,28 +55,18 @@ public class PortfolioListNut extends AbstractSharePlotListNut<Portfolio> {
     private void launchEditPortfolio(@Nonnull final Portfolio portfolio) {
         final Map<String, Object> initArgs = new HashMap<String, Object>();
 
-        launchPortfolioEditor(TaskNameConstants.SHARE_LIST, portfolio, initArgs);
-    }
-
-    private void launchValuesPortfolio(final Portfolio portfolio) {
-        final Map<String, Object> initArgs = new HashMap<String, Object>();
-        initArgs.put(SharePlotACLauncher.AC_KEY_PARAMETER, new PortfolioValuesNutKey(portfolio.getIdPortfolio()));
-
-        launchPortfolioEditor(TaskNameConstants.PORTFOLIO_VALUES, portfolio, initArgs);
-    }
-
-    private void launchPortfolioEditor(final String editorName, @Nonnull final Portfolio portfolio, final Map<String, Object> initArgs) {
         final ApplicationComponentLauncher acLauncher = (ApplicationComponentLauncher) getSession().getProperty(ApplicationComponentLauncher.SESSION_KEY);
 
         if (acLauncher != null) {
             try {
                 initArgs.put(ShareUIConstants.ARGUMENT_PORTFOLIO, new Portfolio(portfolio));
+                initArgs.put(SharePlotACLauncher.AC_KEY_PARAMETER, new PortfolioDetailNutKey(portfolio.getIdPortfolio()));
 
-                acLauncher.launchApplicationComponent(editorName, initArgs);
+                acLauncher.launchApplicationComponent(TaskNameConstants.PORTFOLIO_DETAIL, initArgs);
             } catch (final JETException e) {
-                logp(JETLevel.SEVERE, "PortfolioListNut", "launchPortfolioEditor", e.getMessage(), e);
+                logp(JETLevel.SEVERE, "PortfolioListNut", "launchEditPortfolio", e.getMessage(), e);
             } catch (final CleanCloseException e) {
-                logp(JETLevel.INFO, "PortfolioListNut", "launchPortfolioEditor", e.getMessage());
+                logp(JETLevel.INFO, "PortfolioListNut", "launchEditPortfolio", e.getMessage());
             }
         }
     }

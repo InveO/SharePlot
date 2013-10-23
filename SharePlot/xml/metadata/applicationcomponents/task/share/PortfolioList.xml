@@ -1,22 +1,21 @@
 <APPLICATION_COMPONENT class="jet.framework.component.SimpleApplicationComponent" initialNutName="PortfolioListNut">
 
-	<!-- SimpleApplicationComponent specific declarations -->
-	<APPLICATION_COMPONENT_CONFIG>
-	
-		<PORTFOLIO_LIST>
-        	<COLUMN name="colSelect" datamodelfield="" type="CHECKBOX" editable="true" width="0" selectall="true" />
-     	    <COLUMN name="nameColumn" datamodelfield="name" type="TEXT" editable="true" width="10" localizedlabel="SharePlot/properties/desktop/Global/list.name" />
-            <COLUMN name="valueColumn" datamodelfield="" type="BUTTON" editable="true" width="0" style="tableColumnButton" localizedlabel="SharePlot/properties/desktop/Global/list.value" />
-			<COLUMN name="editColumn" datamodelfield="" type="BUTTON" editable="true" width="0" style="tableColumnButton" localizedlabel="SharePlot/properties/desktop/Global/list.edit" />
-		</PORTFOLIO_LIST>
+    <!-- SimpleApplicationComponent specific declarations -->
+    <APPLICATION_COMPONENT_CONFIG>
 
-	</APPLICATION_COMPONENT_CONFIG>
+        <PORTFOLIO_LIST>
+            <COLUMN name="colSelect" datamodelfield="" type="CHECKBOX" editable="true" width="0" selectall="true" />
+            <COLUMN name="nameColumn" datamodelfield="name" type="TEXT" editable="true" width="10" localizedlabel="SharePlot/properties/desktop/Global/list.name" />
+            <COLUMN name="editColumn" datamodelfield="" type="BUTTON" editable="true" width="0" style="tableColumnButton" localizedlabel="SharePlot/properties/desktop/Global/list.edit" />
+        </PORTFOLIO_LIST>
 
-	<NUTS>
-		<NUT name="PortfolioListNut" className="jet.shareplot.ui.task.share.PortfolioListNut">
-			<PARAMETER name="formName" value="PortfolioListForm" />
-			<PARAMETER name="formXmlFile" value="SharePlot/xml/ui/task/share/PortfolioListForm.xml" />
-		</NUT>
-	</NUTS>
+    </APPLICATION_COMPONENT_CONFIG>
+
+    <NUTS>
+        <NUT name="PortfolioListNut" className="jet.shareplot.ui.task.share.PortfolioListNut">
+            <PARAMETER name="formName" value="PortfolioListForm" />
+            <PARAMETER name="formXmlFile" value="SharePlot/xml/ui/task/share/PortfolioListForm.xml" />
+        </NUT>
+    </NUTS>
 
 </APPLICATION_COMPONENT>
