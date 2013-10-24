@@ -38,32 +38,25 @@ public class ShareListNut extends AbstractSharePlotListNut<Share> {
                     final String colName = this.uiTableListDisplay3.getColumnName(col);
 
                     if ("editColumn".equals(colName)) {
-                        launchEditor(TaskNameConstants.SHARE_DETAIL, row);
+                        final Share share = this.items.get(row);
+                        launchEditor(TaskNameConstants.SHARE_DETAIL, share, new ShareDetailNutKey(share.getIdShare()));
                     } else if ("editValueColumn".equals(colName)) {
-                        launchEditor(TaskNameConstants.SHARE_VALUE, row);
-                    } else if ("editQuantityColumn".equals(colName)) {
-                        launchEditor(TaskNameConstants.SHARE_QUANTITY, row);
+                        final Share share = this.items.get(row);
+                        launchEditor(TaskNameConstants.SHARE_VALUE, share, new ShareValueListNutKey(share.getIdShare()));
                     }
                 }
             }
         }
     }
 
-    private void launchEditor(final String editorName, final int row) {
-        final Share share = this.items.get(row);
-        if (share.getIdShare() != null) {
-            launchEditor(editorName, share);
-        }
-    }
-
-    private void launchEditor(final String editorName, @Nonnull final Share share) {
+    private void launchEditor(final String editorName, @Nonnull final Share share, final Object key) {
         final ApplicationComponentLauncher acLauncher = (ApplicationComponentLauncher) getSession().getProperty(ApplicationComponentLauncher.SESSION_KEY);
 
         if (acLauncher != null) {
             try {
                 final Map<String, Object> initArgs = new HashMap<String, Object>();
                 initArgs.put(ShareUIConstants.ARGUMENT_SHARE, new Share(share));
-                initArgs.put(SharePlotACLauncher.AC_KEY_PARAMETER, new ShareDetailNutKey(share.getIdShare()));
+                initArgs.put(SharePlotACLauncher.AC_KEY_PARAMETER, key);
 
                 acLauncher.launchApplicationComponent(editorName, initArgs);
             } catch (final JETException e) {

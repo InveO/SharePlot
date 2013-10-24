@@ -1,37 +1,39 @@
-<DOCUMENT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="http://jet.inveo.be/ui/JETComponentExtension.xsd" >
+<DOCUMENT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://jet.inveo.be/ui/JETComponentExtension.xsd">
 
     <GENERIC name="SharePlot/xml/ui/GenericComponent.xml" />
 
-    <GROUP name="ShareDetailForm" extends="EmptyGroup" localizedDisplayableText="SharePlot/properties/task/Share/title.ShareDetail" scrollable="false" layoutmanager="gridbaglayout" >
+    <GROUP name="ShareDetailForm" extends="EmptyGroup" localizedDisplayableText="SharePlot/properties/task/Share/title.ShareDetail" scrollable="false" layoutmanager="gridbaglayout">
         <GROUP name="topGroup" extends="GenericTitleGroup">
             <GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="0" />
             <ATTRIBUTE_PARAM component="titleLabel" name="localizedDisplayableText" value="SharePlot/properties/task/Share/title.ShareDetail" />
         </GROUP>
-        <GROUP name="toolbarGroup" layoutmanager="gridbaglayout" >
-<!--             <BUTTON name="addChangeButton" extends="GenericButton" localizedDisplayableText="SharePlot/properties/task/Share/button.AddChange" > -->
-<!--                 <GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="0" fill="NONE" insetleft="5" /> -->
-<!--             </BUTTON> -->
-<!--             <BUTTON name="addValueButton" extends="GenericButton" localizedDisplayableText="SharePlot/properties/task/Share/button.AddValue" > -->
-<!--                 <GRIDBAGCONSTRAINTS gridx="1" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="0" fill="NONE" insetleft="5" /> -->
-<!--             </BUTTON> -->
+        <GROUP name="toolbarGroup" layoutmanager="gridbaglayout">
+            <!-- <BUTTON name="addChangeButton" extends="GenericButton" localizedDisplayableText="SharePlot/properties/task/Share/button.AddChange" > -->
+            <!-- <GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="0" fill="NONE" insetleft="5" /> -->
+            <!-- </BUTTON> -->
+            <!-- <BUTTON name="addValueButton" extends="GenericButton" localizedDisplayableText="SharePlot/properties/task/Share/button.AddValue" > -->
+            <!-- <GRIDBAGCONSTRAINTS gridx="1" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="0" fill="NONE" insetleft="5" /> -->
+            <!-- </BUTTON> -->
             <GRIDBAGCONSTRAINTS gridx="0" gridy="1" gridwidth="1" gridheight="1" weightx="1" weighty="0" fill="HORIZONTAL" insetleft="5" />
         </GROUP>
-        <GROUP name="detailGroup" layoutmanager="gridbaglayout" >
+        <GROUP name="detailGroup" layoutmanager="gridbaglayout">
             <LABEL name="isinLabel" extends="EditorLabel" localizedDisplayableText="SharePlot/properties/task/Share/label.codeISIN">
                 <GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="0" insetleft="15" insettop="10" insetbottom="10" />
             </LABEL>
-            <TEXT name="isinField" extends="TextFieldEditor" >
-                <GRIDBAGCONSTRAINTS gridx="1" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="0" insetleft="5" insettop="10" insetbottom="10" fill="NONE"/>
+            <TEXT name="isinField" extends="TextFieldEditor">
+                <GRIDBAGCONSTRAINTS gridx="1" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="0" insetleft="5" insettop="10" insetbottom="10" fill="NONE" />
             </TEXT>
             <GRIDBAGCONSTRAINTS gridx="0" gridy="2" gridwidth="1" gridheight="1" weightx="1" weighty="0" fill="HORIZONTAL" insetleft="5" />
         </GROUP>
-        <GROUP name="graphGroup" layoutmanager="gridbaglayout" >
+        <GROUP name="graphGroup" layoutmanager="gridbaglayout">
             <LABEL name="graphLabel" extends="EditorLabel" localizedDisplayableText="SharePlot/properties/task/Share/label.ValueGraph">
                 <GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="0" weighty="0" insetleft="15" insettop="10" insetbottom="10" />
             </LABEL>
+            <GRAPH name="lineChart">
+                <GRIDBAGCONSTRAINTS gridx="0" gridy="1" gridwidth="1" gridheight="1" weightx="1" weighty="1" insettop="5" insetleft="5" insetright="5" insetbottom="5" />
+            </GRAPH>
             <GRIDBAGCONSTRAINTS gridx="0" gridy="3" gridwidth="1" gridheight="1" weightx="1" weighty="1" fill="BOTH" insetleft="5" />
         </GROUP>
-    <GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="1" anchor="NORTH" fill="BOTH"/>
-  </GROUP>
+        <GRIDBAGCONSTRAINTS gridx="0" gridy="0" gridwidth="1" gridheight="1" weightx="1" weighty="1" anchor="NORTH" fill="BOTH" />
+    </GROUP>
 </DOCUMENT>

@@ -1,9 +1,9 @@
 <TOMCATMANAGER>
 
-    <!--  working dir must start with an upper case drive lettre on windows systems  -->
-	<EMBEDDED port="8081" workingdir="C:/Servers/JetTomcat" warpath="d:/Jet/JetLib6.0.0/JetServlet/shareplot.war" context="shareplot" >
-		<!-- & must be escaped with the &amp; sequence  -->
-		<BROWSER starturl="http://127.0.0.1:8081/shareplot/servlet/jetStart?rendering=0&amp;startApplication=SharePlot" />
-	</EMBEDDED>
+    <!-- working dir must start with an upper case drive lettre on windows systems -->
+    <EMBEDDED port="8081" workingdir="C:/Servers/JetTomcat" warpath="C:/Servers/Tomcat7.0/webapps/shareplot.war" context="shareplot">
+        <!-- & must be escaped with the &amp; sequence -->
+        <BROWSER starturl="http://127.0.0.1:8081/shareplot/servlet/jetStart?rendering=0&amp;startApplication=SharePlot" />
+    </EMBEDDED>
 
 </TOMCATMANAGER>

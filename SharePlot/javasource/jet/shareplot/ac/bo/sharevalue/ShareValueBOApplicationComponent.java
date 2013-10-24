@@ -10,7 +10,6 @@ import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.session.interfaces.Session;
 import jet.framework.nuts.desktop.JetDesktop;
 import jet.framework.nuts.select.FinderMethod;
-import jet.framework.ui.desktop.AbstractDesktopNut;
 import jet.lifecycle.annotations.Deinitializer;
 import jet.lifecycle.interfaces.LifeCycleState;
 import jet.shareplot.ac.bo.share.Share;
@@ -108,6 +107,7 @@ public class ShareValueBOApplicationComponent extends AbstractShareValueBOApplic
      * @see ShareValue
      * @see #getShareValues(FinderMethod finder)
      */
+    @Nonnull
     public List<ShareValue> getShareValues(final Share share) {
         final ShareValue_FindByShare1 finder = new ShareValue_FindByShare1();
         finder.setIdShare(share.getIdShare());
