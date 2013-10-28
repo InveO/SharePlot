@@ -44,6 +44,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
     private transient DispatcherModel<PortfolioShareItem> changeQuantityDispatcherModel;
     private transient DispatcherModel<PortfolioShareItem> portfolioNameDispatcherModel;
     private transient DispatcherModel<PortfolioShareItem> shareNameDispatcherModel;
+    private transient DispatcherModel<PortfolioShareItem> valueDispatcherModel;
     private transient DispatcherModel<PortfolioShareItem> valueDateDispatcherModel;
 
     private transient JFErrorHandler jfErrorHandler;
@@ -71,6 +72,8 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
         model = new SimpleEventModelImpl("portfolioName");
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("shareName");
+        this.dataModel.appendChild(model);
+        model = new SimpleEventModelImpl("value");
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("valueDate");
         this.dataModel.appendChild(model);
@@ -104,6 +107,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
         setChangeQuantity(portfolioShare.getChangeQuantity());
         setPortfolioName(portfolioShare.getPortfolioName());
         setShareName(portfolioShare.getShareName());
+        setValue(portfolioShare.getValue());
         setValueDate(portfolioShare.getValueDate());
 
         setNew(portfolioShare.isNew());
@@ -419,6 +423,51 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
     }
 
     /**
+     * Get node value of Data Model node value.
+     * This field should not be <code>null</code> in the database.
+     * 
+     * @return java.math.BigDecimal value of Data Model node value
+     */
+    public final java.math.BigDecimal getValue() {
+        return (java.math.BigDecimal) get_Value_Model().getNodeValue();
+    }
+
+    /**
+     * Set node value of Data Model node value.
+     * This field should not be <code>null</code> in the database.
+     * 
+     * @param value java.math.BigDecimal value of Data Model node value
+     */
+    public final void setValue(final java.math.BigDecimal value) {
+        get_Value_Model().setNodeValue(value);
+    }
+
+    /**
+     * Get Model of Data Model node value.
+     * 
+     * @return Model of Data Model node value
+     */
+    @SuppressWarnings("unchecked")
+    @Nonnull
+    public final DispatcherModel<PortfolioShareItem> get_Value_Model() {
+        if (this.valueDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "value");
+                this.valueDispatcherModel = (DispatcherModel<PortfolioShareItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.valueDispatcherModel == null) {
+                    this.valueDispatcherModel = new DispatcherModel<PortfolioShareItem>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.valueDispatcherModel);
+                }
+            } catch (final JETException e) {
+                throw new JETSystemError("PortfolioShare data model does not have a child named value. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
+        }
+        final DispatcherModel<PortfolioShareItem> dm = this.valueDispatcherModel;
+        assert dm != null;
+        return dm;
+    }
+
+    /**
      * Get node value of Data Model node valueDate.
      * This field should not be <code>null</code> in the database.
      * 
@@ -471,6 +520,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      * <li><b>changeQuantity</b> can not be <code>null</code> in the database.</li>
      * <li><b>portfolioName</b> can not be <code>null</code> in the database.</li>
      * <li><b>shareName</b> can not be <code>null</code> in the database.</li>
+     * <li><b>value</b> can not be <code>null</code> in the database.</li>
      * <li><b>valueDate</b> can not be <code>null</code> in the database.</li>
      * </ul>
      *
@@ -507,6 +557,12 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
         if (shareName == null) {
             getLogger().logp(JETLevel.WARNING, "PortfolioShareItem", "isNotNullableNull",
                 "shareName is null but is not nullable.");
+            return true;
+        }
+        final java.math.BigDecimal value = getValue();
+        if (value == null) {
+            getLogger().logp(JETLevel.WARNING, "PortfolioShareItem", "isNotNullableNull",
+                "value is null but is not nullable.");
             return true;
         }
         final java.util.Date valueDate = getValueDate();

@@ -95,7 +95,7 @@ public class PortfolioListNut extends AbstractSharePlotListNut<Portfolio> {
     protected Portfolio createNewItem() {
         final PortfolioBOApplicationComponent assertNonNull = AnnotationsHelper.assertNonNull(this.portfolioAC);
         final Portfolio portfolio = new Portfolio(assertNonNull);
-        portfolio.setIsFake(BooleanConstants.NO);
+        portfolio.setIsFake(BooleanConstants.NO.getDBValue());
         return portfolio;
     }
 

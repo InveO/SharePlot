@@ -18,9 +18,13 @@ import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.ui.LocalizedMessageFormatDisplayable;
 import jet.shareplot.ac.bo.portfolio.Portfolio;
 import jet.shareplot.ac.bo.portfolio.portfolioshare.PortfolioShareBOApplicationComponent;
+import jet.shareplot.ac.bo.share.ShareAutoCompleteProvider;
+import jet.shareplot.ac.bo.share.ShareBOApplicationComponent;
 import jet.shareplot.persistence.pojo.portfolio.PortfolioShareItem;
 import jet.shareplot.ui.AbstractSharePlotDataItemListNut;
 import jet.shareplot.ui.task.TaskNameConstants;
+import jet.shareplot.ui.task.share.provider.PortfolioShareShareProvider;
+import jet.shareplot.util.DateUtils;
 import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Displayable;
 import jet.util.throwable.JETException;
@@ -29,6 +33,7 @@ public class PortfolioDetailNut extends AbstractSharePlotDataItemListNut<Portfol
 
     private Portfolio portfolio;
     private PortfolioShareBOApplicationComponent portfolioShareAC;
+    private ShareBOApplicationComponent shareAC;
 
     @Override
     public <T extends Enum<T>> void tableCellEvent(final UITableComponent2 table, final int row, final int col, final UIEvent<T> uiEvent) {
@@ -76,6 +81,7 @@ public class PortfolioDetailNut extends AbstractSharePlotDataItemListNut<Portfol
     protected void preInit() throws JETException {
         this.portfolio = (Portfolio) getApplicationComponent().getProperty(ShareUIConstants.ARGUMENT_PORTFOLIO);
         this.portfolioShareAC = PortfolioShareBOApplicationComponent.getInstance(getSession());
+        this.shareAC = ShareBOApplicationComponent.getInstance(getSession());
 
         final Object[] args = { this.portfolio.getName() };
         final Displayable titleDisp = new LocalizedMessageFormatDisplayable("SharePlot/properties/task/Share/title.PortfolioDetailName", args);
@@ -100,12 +106,20 @@ public class PortfolioDetailNut extends AbstractSharePlotDataItemListNut<Portfol
     @Override
     protected PortfolioShareItem createNewItem() {
         final PortfolioShareItem portfolioShare = new PortfolioShareItem();
+        portfolioShare.setIdPortfolio(this.portfolio.getIdPortfolio());
+        portfolioShare.setPortfolioName(this.portfolio.getName());
+        portfolioShare.setValueDate(DateUtils.getToday());
         return portfolioShare;
     }
 
     @Override
     protected void addListDisplayProviders(final UITableListDisplay3 uiTableListDisplay) {
-        // nothing to do
+
+        final ShareAutoCompleteProvider shareAutoCompleteProvider = this.shareAC.getShareAutoCompleteProvider();
+        final PortfolioShareShareProvider portfolioShareShareProvider = new PortfolioShareShareProvider(shareAutoCompleteProvider, "shareColumn");
+        uiTableListDisplay.addListTableCellModelProvider(portfolioShareShareProvider);
+        uiTableListDisplay.addListTableColumnHeaderProvider(portfolioShareShareProvider);
+
     }
 
     @Override

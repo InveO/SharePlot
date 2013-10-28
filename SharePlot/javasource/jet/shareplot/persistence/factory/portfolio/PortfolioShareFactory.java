@@ -87,6 +87,14 @@ public final class PortfolioShareFactory implements Serializable {
             getLogger().logp(JETLevel.INFO, "PortfolioShareItem", "getFromUntypedModel", e.getMessage(), e);
         }
         try {
+            sValue = ModelHelper.getChildNodeValueAsString(untypedModel, "value");
+            if (sValue != null) {
+                item.setValue(new java.math.BigDecimal(sValue));
+            }
+        } catch (final JETException e) {
+            getLogger().logp(JETLevel.INFO, "PortfolioShareItem", "getFromUntypedModel", e.getMessage(), e);
+        }
+        try {
             sValue = ModelHelper.getChildNodeValueAsString(untypedModel, "valueDate");
             if (sValue != null) {
                 final Long timestamp = Long.valueOf(sValue);

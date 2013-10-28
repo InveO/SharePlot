@@ -4,8 +4,11 @@
     <APPLICATION_COMPONENT_CONFIG>
 
         <SHARE_LIST>
-            <COLUMN name="nameColumn" datamodelfield="" type="TEXT" editable="true" width="10" localizedlabel="SharePlot/properties/desktop/Global/list.name" />
-            <COLUMN name="valueColumn" datamodelfield="" type="NUMBER" class="java.math.BigDecimal" editable="true" width="5" localizedlabel="SharePlot/properties/task/Share/list.value" />
+            <COLUMN name="colSelect" datamodelfield="" type="CHECKBOX" editable="true" width="0" selectall="true" />
+            <COLUMN name="shareColumn" datamodelfield="" type="AUTOCOMPLETE" editable="true" width="10" localizedlabel="SharePlot/properties/desktop/Global/list.share" />
+            <COLUMN name="dateColumn" datamodelfield="valueDate" type="DATE" editable="true" width="5" localizedlabel="SharePlot/properties/task/Share/list.valueDate" />
+            <COLUMN name="quantityColumn" datamodelfield="changeQuantity" type="NUMBER" class="java.math.BigDecimal" editable="true" width="5" localizedlabel="SharePlot/properties/task/Share/list.quantity" />
+            <COLUMN name="valueColumn" datamodelfield="value" type="NUMBER" class="java.math.BigDecimal" editable="false" width="5" localizedlabel="SharePlot/properties/task/Share/list.value" />
             <COLUMN name="editColumn" datamodelfield="" type="BUTTON" editable="true" width="0" style="tableColumnButton" localizedlabel="SharePlot/properties/desktop/Global/list.edit" />
         </SHARE_LIST>
 

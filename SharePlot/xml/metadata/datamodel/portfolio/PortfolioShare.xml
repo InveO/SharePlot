@@ -19,4 +19,5 @@
     <NODE type="String" name="shareName" nullable="false" autoincrement="false" length="255" pk="false" default="" />
     <NODE type="java.util.Date" name="valueDate" nullable="false" autoincrement="false" length="10" pk="false" default="" />
     <NODE type="java.math.BigDecimal" name="changeQuantity" nullable="false" autoincrement="false" length="12" pk="false" default="" />
+    <NODE type="java.math.BigDecimal" name="value" nullable="false" autoincrement="false" length="12" pk="false" default="" />
 </DATAMODEL>
