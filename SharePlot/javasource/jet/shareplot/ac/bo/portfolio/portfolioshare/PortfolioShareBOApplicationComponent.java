@@ -15,7 +15,6 @@ import jet.framework.nuts.desktop.JetDesktop;
 import jet.lifecycle.annotations.Deinitializer;
 import jet.lifecycle.interfaces.LifeCycleState;
 import jet.shareplot.ac.bo.portfolio.Portfolio;
-import jet.shareplot.persistence.pojo.portfolio.PortfolioShareItem;
 import jet.util.SerializableKey;
 import jet.util.logger.JETLevel;
 import jet.util.throwable.JETException;
@@ -100,8 +99,8 @@ public class PortfolioShareBOApplicationComponent extends SimpleApplicationCompo
     }
 
     @Nonnull
-    public List<PortfolioShareItem> getPortfolioShares(@Nullable final Portfolio portfolio) {
-        final List<PortfolioShareItem> result = new ArrayList<>();
+    public List<PortfolioShare> getPortfolioShares(@Nullable final Portfolio portfolio) {
+        final List<PortfolioShare> result = new ArrayList<>();
 
         if (portfolio != null) {
 

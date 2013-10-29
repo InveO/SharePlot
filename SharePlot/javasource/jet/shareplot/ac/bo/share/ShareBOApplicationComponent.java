@@ -4,12 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.session.interfaces.Session;
 import jet.framework.nuts.desktop.JetDesktop;
 import jet.lifecycle.annotations.Deinitializer;
 import jet.lifecycle.interfaces.LifeCycleState;
+import jet.shareplot.persistence.finder.share.Share_FindByPrimaryKey1;
 import jet.util.SerializableKey;
 import jet.util.logger.JETLevel;
 import jet.util.throwable.JETException;
@@ -91,6 +93,20 @@ public class ShareBOApplicationComponent extends AbstractShareBOApplicationCompo
     @Deinitializer
     public final void doAccountACDeinit() throws JETException {
         getSession().removeProperty(SESSION_KEY);
+    }
+
+    /**
+     * Get a share by its primary key.
+     * 
+     * @param idShare Share id
+     * @return The share, <code>null</code> if there is no share with that id
+     */
+    @Nullable
+    public Share getShare(@Nonnull final Long idShare) {
+        final Share_FindByPrimaryKey1 finder = new Share_FindByPrimaryKey1();
+        finder.setIdShare(idShare);
+
+        return getShare(finder);
     }
 
     /**

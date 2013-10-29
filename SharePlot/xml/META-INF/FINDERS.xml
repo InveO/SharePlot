@@ -43,6 +43,11 @@
             <INPUT name="idShare" type="Long" localizedDisplayableText=""/>
             <FINDERBODY type="sql" sql_string="where idShare = ? order by valueDate asc" buffersize="-1"/>
         </FINDER>
+        <FINDER name="findByShareAndDate">
+            <INPUT name="idShare" type="Long" localizedDisplayableText=""/>
+            <INPUT name="valueDate" type="java.util.Date" localizedDisplayableText=""/>
+            <FINDERBODY type="sql" sql_string="where idShare = ? and valueDate &lt;= ? order by valueDate desc limit 1" buffersize="-1"/>
+        </FINDER>
         <FINDER name="findByPreparedSQLQuery">
             <INPUT name="sqlWhereClause" type="String" localizedDisplayableText=""/>
             <INPUT name="sqlArguments" type="Object[]" localizedDisplayableText=""/>

@@ -240,6 +240,19 @@ public final class ShareValueBean implements EntityBean {
     /**
      * Finder method.
      *
+     * @param idShare Long value for finder argument idShare
+     * @param valueDate java.util.Date value for finder argument valueDate
+     * @return Collection of records
+     * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
+     */
+    @SuppressWarnings("hiding")
+    public Collection<ShareValueRemote> ejbFindByShareAndDate(final Long idShare, final java.util.Date valueDate) throws FinderException {
+        return null;
+    }
+
+    /**
+     * Finder method.
+     *
      * @param sqlWhereClause String value for finder argument sqlWhereClause
      * @param sqlArguments Object[] value for finder argument sqlArguments
      * @return Collection of records

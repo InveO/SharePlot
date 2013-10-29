@@ -17,19 +17,20 @@ import jet.framework.ui.utils.table.UITableListDisplay3;
 import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.ui.LocalizedMessageFormatDisplayable;
 import jet.shareplot.ac.bo.portfolio.Portfolio;
+import jet.shareplot.ac.bo.portfolio.portfolioshare.PortfolioShare;
 import jet.shareplot.ac.bo.portfolio.portfolioshare.PortfolioShareBOApplicationComponent;
 import jet.shareplot.ac.bo.share.ShareAutoCompleteProvider;
 import jet.shareplot.ac.bo.share.ShareBOApplicationComponent;
-import jet.shareplot.persistence.pojo.portfolio.PortfolioShareItem;
 import jet.shareplot.ui.AbstractSharePlotDataItemListNut;
 import jet.shareplot.ui.task.TaskNameConstants;
 import jet.shareplot.ui.task.share.provider.PortfolioShareShareProvider;
 import jet.shareplot.util.DateUtils;
+import jet.util.annotations.AnnotationsHelper;
 import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Displayable;
 import jet.util.throwable.JETException;
 
-public class PortfolioDetailNut extends AbstractSharePlotDataItemListNut<PortfolioShareItem> {
+public class PortfolioDetailNut extends AbstractSharePlotDataItemListNut<PortfolioShare> {
 
     private Portfolio portfolio;
     private PortfolioShareBOApplicationComponent portfolioShareAC;
@@ -52,14 +53,14 @@ public class PortfolioDetailNut extends AbstractSharePlotDataItemListNut<Portfol
         final String colName = this.uiTableListDisplay3.getColumnName(col);
 
         if ("editColumn".equals(colName)) {
-            final PortfolioShareItem portfolioShare = this.items.get(row);
+            final PortfolioShare portfolioShare = this.items.get(row);
             if (portfolioShare.getIdPortfolio() != null) {
                 launchEditPortfolio(portfolioShare);
             }
         }
     }
 
-    private void launchEditPortfolio(@Nonnull final PortfolioShareItem portfolioShare) {
+    private void launchEditPortfolio(@Nonnull final PortfolioShare portfolioShare) {
         final Map<String, Object> initArgs = new HashMap<String, Object>();
 
         final ApplicationComponentLauncher acLauncher = (ApplicationComponentLauncher) getSession().getProperty(ApplicationComponentLauncher.SESSION_KEY);
@@ -94,7 +95,7 @@ public class PortfolioDetailNut extends AbstractSharePlotDataItemListNut<Portfol
     }
 
     @Override
-    protected List<PortfolioShareItem> findItems() {
+    protected List<PortfolioShare> findItems() {
         return this.portfolioShareAC.getPortfolioShares(this.portfolio);
     }
 
@@ -104,8 +105,8 @@ public class PortfolioDetailNut extends AbstractSharePlotDataItemListNut<Portfol
     }
 
     @Override
-    protected PortfolioShareItem createNewItem() {
-        final PortfolioShareItem portfolioShare = new PortfolioShareItem();
+    protected PortfolioShare createNewItem() {
+        final PortfolioShare portfolioShare = new PortfolioShare(AnnotationsHelper.assertNonNull(this.portfolioShareAC));
         portfolioShare.setIdPortfolio(this.portfolio.getIdPortfolio());
         portfolioShare.setPortfolioName(this.portfolio.getName());
         portfolioShare.setValueDate(DateUtils.getToday());
@@ -133,7 +134,7 @@ public class PortfolioDetailNut extends AbstractSharePlotDataItemListNut<Portfol
     }
 
     @Override
-    protected boolean canAddEmptyItem(@Nullable final PortfolioShareItem currentEmptyItem) {
+    protected boolean canAddEmptyItem(@Nullable final PortfolioShare currentEmptyItem) {
         boolean result = false;
         if (currentEmptyItem == null) {
             result = true;
@@ -146,18 +147,18 @@ public class PortfolioDetailNut extends AbstractSharePlotDataItemListNut<Portfol
     }
 
     @Override
-    protected PortfolioShareItem getItemCopy(@Nonnull final PortfolioShareItem item) {
-        return new PortfolioShareItem(item);
+    protected PortfolioShare getItemCopy(@Nonnull final PortfolioShare item) {
+        return new PortfolioShare(item);
     }
 
     @Override
-    protected PortfolioShareItem deleteItem(@Nonnull final PortfolioShareItem item) throws FormatedJetException {
+    protected PortfolioShare deleteItem(@Nonnull final PortfolioShare item) throws FormatedJetException {
         // TODO Auto-generated method stub
         return item;
     }
 
     @Override
-    protected PortfolioShareItem saveItem(@Nonnull final PortfolioShareItem item) throws FormatedJetException {
+    protected PortfolioShare saveItem(@Nonnull final PortfolioShare item) throws FormatedJetException {
         // TODO Auto-generated method stub
         return item;
     }

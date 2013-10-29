@@ -1,5 +1,8 @@
 package jet.shareplot.ac.bo.share;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -11,8 +14,12 @@ import jet.framework.util.pojo2.JFBusinessErrorHelper;
 import jet.framework.util.pojo2.JFBusinessItem;
 import jet.framework.util.pojo2.JFBusinessSaveCallable;
 import jet.shareplot.ac.SelectStoreApplicationComponent;
+import jet.shareplot.ac.bo.sharevalue.ShareValue;
+import jet.shareplot.ac.bo.sharevalue.ShareValueBOApplicationComponent;
 import jet.shareplot.persistence.pojo.ShareItem;
+import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Model;
+import jet.util.throwable.JETException;
 
 /**
  * Sample bo class, extending the pojo ShareItem.
@@ -108,5 +115,26 @@ public class Share extends ShareItem implements JFBusinessItem, JFBusinessErrorH
     public final FormatedJetException getFormatedJetException(@Nullable final String key, @Nullable final Exception e) {
         final Object[] args = { getName() };
         return new FormatedJetException(null, key, args, e);
+    }
+
+    /**
+     * Get the value of the share at the given date (or nearest previous date with a value).
+     * 
+     * @param valueDate date at which the value is required
+     * @return Value of the share
+     */
+    @Nullable
+    public BigDecimal getValueAtDate(@Nullable final Date valueDate) {
+        BigDecimal result = null;
+        try {
+            final ShareValueBOApplicationComponent shareValueAC = ShareValueBOApplicationComponent.getInstance(this.shareAC.getSession());
+            final ShareValue shareValue = shareValueAC.getValueAtDate(this, valueDate);
+            if (shareValue != null) {
+                result = shareValue.getValue();
+            }
+        } catch (final JETException e) {
+            this.shareAC.logp(JETLevel.SEVERE, "Share", "getValueAtDate", e.getMessage(), e);
+        }
+        return result;
     }
 }

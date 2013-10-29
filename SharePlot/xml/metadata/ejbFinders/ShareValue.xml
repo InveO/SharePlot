@@ -7,6 +7,12 @@
         <USEDFIELD name="valueDate" />
         <FINDERBODY type="sql" sql_string="where idShare = ? order by valueDate asc" buffersize="-1" />
     </FINDER>
+    <FINDER name="findByShareAndDate">
+        <INPUT name="idShare" type="Long" db_field="idShare" />
+        <INPUT name="valueDate" type="Date" db_field="valueDate" />
+        <USEDFIELD name="valueDate" />
+        <FINDERBODY type="sql" sql_string="where idShare = ? and valueDate &lt;= ? order by valueDate desc limit 1" buffersize="-1" />
+    </FINDER>
     <FINDER name="findByDirectSQLQuery">
         <INPUT name="sqlWhereClause" type="String" />
         <FINDERBODY type="sql" sql_string="where $$$_SQL" buffersize="-1" />

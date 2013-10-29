@@ -67,6 +67,17 @@ public interface ShareValueHome extends EJBHome {
 
     /**
      * Find a collections of records.
+     * @param idShare value for the argument idShare
+     * @param valueDate value for the argument valueDate
+     * @return Collection of EJBObject implementations for the bean
+     * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
+     * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
+     */
+    @Nonnull
+    Collection<ShareValueRemote> findByShareAndDate(@Nullable final Long idShare, @Nullable final java.util.Date valueDate) throws FinderException, RemoteException;
+
+    /**
+     * Find a collections of records.
      * @param sqlWhereClause value for the argument sqlWhereClause
      * @param sqlArguments value for the argument sqlArguments
      * @return Collection of EJBObject implementations for the bean

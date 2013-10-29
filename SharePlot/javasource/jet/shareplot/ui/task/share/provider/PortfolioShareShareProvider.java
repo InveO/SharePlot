@@ -92,7 +92,7 @@ public class PortfolioShareShareProvider extends AutoCompleteListTableCellModelP
                     clearShare();
                 } else {
                     this.portfolioShare.setIdShare(share.getIdShare());
-                    this.portfolioShare.setShareName(share.getName());
+
                     super.setNodeValue(shareName);
                 }
             } else {
@@ -102,7 +102,6 @@ public class PortfolioShareShareProvider extends AutoCompleteListTableCellModelP
 
         private void clearShare() {
             this.portfolioShare.setIdShare(null);
-            this.portfolioShare.setShareName(null);
             super.setNodeValue(null);
         }
 
