@@ -18,6 +18,7 @@ import jet.shareplot.persistence.finder.sharevalue.ShareValue_FindByShare1;
 import jet.shareplot.persistence.finder.sharevalue.ShareValue_FindByShareAndDate2;
 import jet.util.SerializableKey;
 import jet.util.logger.JETLevel;
+import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
 /**
@@ -35,7 +36,7 @@ public class ShareValueBOApplicationComponent extends AbstractShareValueBOApplic
      */
     private static final String NAME = "ShareValueBOApplicationComponent";
     /**
-     * <code>SESSION_KEY</code> session key
+     * <code>SESSION_KEY</code> session key.
      */
     private static final Object SESSION_KEY = new SerializableKey(ShareValueBOApplicationComponent.class, "SESSION_KEY");
 
@@ -45,8 +46,9 @@ public class ShareValueBOApplicationComponent extends AbstractShareValueBOApplic
      * 
      * @param session current session
      * @return ShareValueBOApplicationComponent
-     * @throws JETException
+     * @throws JETException if there is an error initializing the ApplicationComponent
      */
+    @Nonnull
     public static final ShareValueBOApplicationComponent getInstance(final Session session) throws JETException {
         ShareValueBOApplicationComponent shareValueAC = (ShareValueBOApplicationComponent) session.getProperty(SESSION_KEY);
 
@@ -73,7 +75,6 @@ public class ShareValueBOApplicationComponent extends AbstractShareValueBOApplic
                 try {
                     final Map<String, Object> initMap = new HashMap<String, Object>();
                     shareValueAC = (ShareValueBOApplicationComponent) appProxy.createApplicationComponent(NAME, desktopNut.getApplicationComponent(), initMap);
-                    assert shareValueAC != null;
                     desktopNut.registerChildApplicationComponent(shareValueAC);
                     session.setProperty(SESSION_KEY, shareValueAC);
                 } catch (final JETException e) {
@@ -92,11 +93,17 @@ public class ShareValueBOApplicationComponent extends AbstractShareValueBOApplic
     /**
      * Deinit, internal use only.
      * 
-     * @throws JETException
+     * @throws JETException if there is an error deinitializing the ApplicationComponent
      */
     @Deinitializer
-    public final void doAccountACDeinit() throws JETException {
+    public final void doShareValueACDeinit() throws JETException {
         getSession().removeProperty(SESSION_KEY);
+    }
+
+    @Override
+    @Nonnull
+    protected ShareValue getShareValue(@Nonnull final Model model) {
+        return new ShareValue(model, this);
     }
 
     /**

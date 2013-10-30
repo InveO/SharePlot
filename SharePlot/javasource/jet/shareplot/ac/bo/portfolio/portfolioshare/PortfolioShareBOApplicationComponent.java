@@ -94,7 +94,7 @@ public class PortfolioShareBOApplicationComponent extends SimpleApplicationCompo
      * @throws JETException if there is an error deinitializing the ApplicationComponent
      */
     @Deinitializer
-    public final void doAccountACDeinit() throws JETException {
+    public final void doPortfolioShareACDeinit() throws JETException {
         getSession().removeProperty(SESSION_KEY);
     }
 

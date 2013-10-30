@@ -1,15 +1,16 @@
 package jet.shareplot.ac.bo.sharequantity;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull; // NOPMD import may not be used in generated code
-import static org.junit.Assert.assertNull; // NOPMD import may not be used in generated code
-import static org.junit.Assert.assertTrue; // NOPMD import may not be used in generated code
+import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.mock;
+// NOPMD import may not be used in generated code
+// NOPMD import may not be used in generated code
+// NOPMD import may not be used in generated code
 
 /**
  * JUnit tests for the ShareQuantity accessor methods, this is where the ShareQuantity business
  * code will be tested.
- *
+ * 
  * @author JetToolsFramework
  */
 public class ShareQuantity_Accessors_JUnitTest {
@@ -20,7 +21,7 @@ public class ShareQuantity_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetIdShareQuantity() {
         // arrange : set up the test
-        final AbstractShareQuantityBOApplicationComponent shareQuantityAC = mock(AbstractShareQuantityBOApplicationComponent.class);
+        final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
         assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
@@ -32,14 +33,13 @@ public class ShareQuantity_Accessors_JUnitTest {
         assertNull(result);
     }
 
-
     /**
      * getChangeFee with an new shareQuantity
      */
     @org.junit.Test
     public void testGetChangeFee() {
         // arrange : set up the test
-        final AbstractShareQuantityBOApplicationComponent shareQuantityAC = mock(AbstractShareQuantityBOApplicationComponent.class);
+        final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
         assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
@@ -57,7 +57,7 @@ public class ShareQuantity_Accessors_JUnitTest {
     @org.junit.Test
     public void testSetChangeFee() {
         // arrange : set up the test
-        final AbstractShareQuantityBOApplicationComponent shareQuantityAC = mock(AbstractShareQuantityBOApplicationComponent.class);
+        final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
         assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
@@ -79,7 +79,7 @@ public class ShareQuantity_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetChangeQuantity() {
         // arrange : set up the test
-        final AbstractShareQuantityBOApplicationComponent shareQuantityAC = mock(AbstractShareQuantityBOApplicationComponent.class);
+        final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
         assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
@@ -97,7 +97,7 @@ public class ShareQuantity_Accessors_JUnitTest {
     @org.junit.Test
     public void testSetChangeQuantity() {
         // arrange : set up the test
-        final AbstractShareQuantityBOApplicationComponent shareQuantityAC = mock(AbstractShareQuantityBOApplicationComponent.class);
+        final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
         assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
@@ -119,7 +119,7 @@ public class ShareQuantity_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetChangeType() {
         // arrange : set up the test
-        final AbstractShareQuantityBOApplicationComponent shareQuantityAC = mock(AbstractShareQuantityBOApplicationComponent.class);
+        final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
         assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
@@ -137,7 +137,7 @@ public class ShareQuantity_Accessors_JUnitTest {
     @org.junit.Test
     public void testSetChangeType() {
         // arrange : set up the test
-        final AbstractShareQuantityBOApplicationComponent shareQuantityAC = mock(AbstractShareQuantityBOApplicationComponent.class);
+        final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
         assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
@@ -159,7 +159,7 @@ public class ShareQuantity_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetChangeValue() {
         // arrange : set up the test
-        final AbstractShareQuantityBOApplicationComponent shareQuantityAC = mock(AbstractShareQuantityBOApplicationComponent.class);
+        final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
         assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
@@ -177,7 +177,7 @@ public class ShareQuantity_Accessors_JUnitTest {
     @org.junit.Test
     public void testSetChangeValue() {
         // arrange : set up the test
-        final AbstractShareQuantityBOApplicationComponent shareQuantityAC = mock(AbstractShareQuantityBOApplicationComponent.class);
+        final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
         assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
@@ -199,7 +199,7 @@ public class ShareQuantity_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetDescription() {
         // arrange : set up the test
-        final AbstractShareQuantityBOApplicationComponent shareQuantityAC = mock(AbstractShareQuantityBOApplicationComponent.class);
+        final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
         assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
@@ -217,7 +217,7 @@ public class ShareQuantity_Accessors_JUnitTest {
     @org.junit.Test
     public void testSetDescription() {
         // arrange : set up the test
-        final AbstractShareQuantityBOApplicationComponent shareQuantityAC = mock(AbstractShareQuantityBOApplicationComponent.class);
+        final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
         assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
@@ -239,7 +239,7 @@ public class ShareQuantity_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetIdPortfolio() {
         // arrange : set up the test
-        final AbstractShareQuantityBOApplicationComponent shareQuantityAC = mock(AbstractShareQuantityBOApplicationComponent.class);
+        final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
         assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
@@ -257,7 +257,7 @@ public class ShareQuantity_Accessors_JUnitTest {
     @org.junit.Test
     public void testSetIdPortfolio() {
         // arrange : set up the test
-        final AbstractShareQuantityBOApplicationComponent shareQuantityAC = mock(AbstractShareQuantityBOApplicationComponent.class);
+        final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
         assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
@@ -279,7 +279,7 @@ public class ShareQuantity_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetIdShare() {
         // arrange : set up the test
-        final AbstractShareQuantityBOApplicationComponent shareQuantityAC = mock(AbstractShareQuantityBOApplicationComponent.class);
+        final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
         assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
@@ -297,7 +297,7 @@ public class ShareQuantity_Accessors_JUnitTest {
     @org.junit.Test
     public void testSetIdShare() {
         // arrange : set up the test
-        final AbstractShareQuantityBOApplicationComponent shareQuantityAC = mock(AbstractShareQuantityBOApplicationComponent.class);
+        final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
         assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
@@ -319,7 +319,7 @@ public class ShareQuantity_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetValueDate() {
         // arrange : set up the test
-        final AbstractShareQuantityBOApplicationComponent shareQuantityAC = mock(AbstractShareQuantityBOApplicationComponent.class);
+        final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
         assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
@@ -337,7 +337,7 @@ public class ShareQuantity_Accessors_JUnitTest {
     @org.junit.Test
     public void testSetValueDate() {
         // arrange : set up the test
-        final AbstractShareQuantityBOApplicationComponent shareQuantityAC = mock(AbstractShareQuantityBOApplicationComponent.class);
+        final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
         assert shareQuantityAC != null;
 
         final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);

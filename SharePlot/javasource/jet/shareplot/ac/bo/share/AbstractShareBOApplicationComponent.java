@@ -40,6 +40,15 @@ abstract class AbstractShareBOApplicationComponent extends SimpleApplicationComp
     private TransactionManager transactionManager;
 
     /**
+     * Get an instance of the POJO2 business object for the data model.
+     *
+     * @param model Data model
+     * @return instance of the POJO2 business object
+     */
+    @Nonnull
+    protected abstract Share getShare(@Nonnull final Model model);
+
+    /**
      * Return all share matching the FinderMethod.
      *
      * @param finder FinderMethod to use to fetch the Shares
@@ -51,7 +60,6 @@ abstract class AbstractShareBOApplicationComponent extends SimpleApplicationComp
     protected List<Share> getShares(@Nonnull final FinderMethod finder) {
         final List<Share> result = new ArrayList<Share>();
         final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.SHARE_SELECT);
-        final AbstractShareBOApplicationComponent shareAC = this;
 
         final Callable<Object> callable = new Callable<Object>() {
             @Override
@@ -62,7 +70,7 @@ abstract class AbstractShareBOApplicationComponent extends SimpleApplicationComp
                     for (int i = 0; i < size; i++) {
                         final Model model = ma.get(i);
                         assert model != null;
-                        final Share share = new Share(model, shareAC);
+                        final Share share = getShare(model);
                         result.add(share);
                     }
                 }
@@ -109,7 +117,7 @@ abstract class AbstractShareBOApplicationComponent extends SimpleApplicationComp
         if (model == null) {
             result = null;
         } else {
-            result = new Share(model, this);
+            result = getShare(model);
         }
 
         return result;

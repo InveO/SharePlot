@@ -1,15 +1,16 @@
 package jet.shareplot.ac.bo.sharevalue;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull; // NOPMD import may not be used in generated code
-import static org.junit.Assert.assertNull; // NOPMD import may not be used in generated code
-import static org.junit.Assert.assertTrue; // NOPMD import may not be used in generated code
+import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.mock;
+// NOPMD import may not be used in generated code
+// NOPMD import may not be used in generated code
+// NOPMD import may not be used in generated code
 
 /**
  * JUnit tests for the ShareValue accessor methods, this is where the ShareValue business
  * code will be tested.
- *
+ * 
  * @author JetToolsFramework
  */
 public class ShareValue_Accessors_JUnitTest {
@@ -20,7 +21,8 @@ public class ShareValue_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetIdShareValue() {
         // arrange : set up the test
-        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);        assert shareValueAC != null;
+        final ShareValueBOApplicationComponent shareValueAC = mock(ShareValueBOApplicationComponent.class);
+        assert shareValueAC != null;
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
 
@@ -31,14 +33,14 @@ public class ShareValue_Accessors_JUnitTest {
         assertNull(result);
     }
 
-
     /**
      * getIdShare with an new shareValue
      */
     @org.junit.Test
     public void testGetIdShare() {
         // arrange : set up the test
-        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);        assert shareValueAC != null;
+        final ShareValueBOApplicationComponent shareValueAC = mock(ShareValueBOApplicationComponent.class);
+        assert shareValueAC != null;
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
 
@@ -55,7 +57,8 @@ public class ShareValue_Accessors_JUnitTest {
     @org.junit.Test
     public void testSetIdShare() {
         // arrange : set up the test
-        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);        assert shareValueAC != null;
+        final ShareValueBOApplicationComponent shareValueAC = mock(ShareValueBOApplicationComponent.class);
+        assert shareValueAC != null;
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
 
@@ -76,7 +79,8 @@ public class ShareValue_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetValue() {
         // arrange : set up the test
-        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);        assert shareValueAC != null;
+        final ShareValueBOApplicationComponent shareValueAC = mock(ShareValueBOApplicationComponent.class);
+        assert shareValueAC != null;
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
 
@@ -93,7 +97,8 @@ public class ShareValue_Accessors_JUnitTest {
     @org.junit.Test
     public void testSetValue() {
         // arrange : set up the test
-        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);        assert shareValueAC != null;
+        final ShareValueBOApplicationComponent shareValueAC = mock(ShareValueBOApplicationComponent.class);
+        assert shareValueAC != null;
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
 
@@ -114,7 +119,8 @@ public class ShareValue_Accessors_JUnitTest {
     @org.junit.Test
     public void testGetValueDate() {
         // arrange : set up the test
-        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);        assert shareValueAC != null;
+        final ShareValueBOApplicationComponent shareValueAC = mock(ShareValueBOApplicationComponent.class);
+        assert shareValueAC != null;
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
 
@@ -131,7 +137,8 @@ public class ShareValue_Accessors_JUnitTest {
     @org.junit.Test
     public void testSetValueDate() {
         // arrange : set up the test
-        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);        assert shareValueAC != null;
+        final ShareValueBOApplicationComponent shareValueAC = mock(ShareValueBOApplicationComponent.class);
+        assert shareValueAC != null;
 
         final ShareValue shareValue = new ShareValue(shareValueAC);
 

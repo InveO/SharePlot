@@ -12,6 +12,7 @@ import jet.lifecycle.annotations.Deinitializer;
 import jet.lifecycle.interfaces.LifeCycleState;
 import jet.util.SerializableKey;
 import jet.util.logger.JETLevel;
+import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
 /**
@@ -29,7 +30,7 @@ public class PortfolioBOApplicationComponent extends AbstractPortfolioBOApplicat
      */
     private static final String NAME = "PortfolioBOApplicationComponent";
     /**
-     * <code>SESSION_KEY</code> session key
+     * <code>SESSION_KEY</code> session key.
      */
     private static final Object SESSION_KEY = new SerializableKey(PortfolioBOApplicationComponent.class, "SESSION_KEY");
 
@@ -39,7 +40,7 @@ public class PortfolioBOApplicationComponent extends AbstractPortfolioBOApplicat
      *
      * @param session current session
      * @return PortfolioBOApplicationComponent
-     * @throws JETException
+     * @throws JETException if there is an error initializing the ApplicationComponent
      */
     @Nonnull
     public static final PortfolioBOApplicationComponent getInstance(final Session session) throws JETException {
@@ -68,7 +69,6 @@ public class PortfolioBOApplicationComponent extends AbstractPortfolioBOApplicat
                 try {
                     final Map<String, Object> initMap = new HashMap<String, Object>();
                     portfolioAC = (PortfolioBOApplicationComponent) appProxy.createApplicationComponent(NAME, desktopNut.getApplicationComponent(), initMap);
-                    assert portfolioAC != null;
                     desktopNut.registerChildApplicationComponent(portfolioAC);
                     session.setProperty(SESSION_KEY, portfolioAC);
                 } catch (final JETException e) {
@@ -87,10 +87,17 @@ public class PortfolioBOApplicationComponent extends AbstractPortfolioBOApplicat
     /**
      * Deinit, internal use only.
      *
-     * @throws JETException
+     * @throws JETException if there is an error deinitializing the ApplicationComponent
      */
     @Deinitializer
-    public final void doAccountACDeinit() throws JETException {
+    public final void doPortfolioACDeinit() throws JETException {
         getSession().removeProperty(SESSION_KEY);
     }
+
+    @Override
+    @Nonnull
+    protected Portfolio getPortfolio(@Nonnull final Model model) {
+        return new Portfolio(model, this);
+    }
+
 }

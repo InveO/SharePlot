@@ -40,6 +40,15 @@ abstract class AbstractPortfolioBOApplicationComponent extends SimpleApplication
     private TransactionManager transactionManager;
 
     /**
+     * Get an instance of the POJO2 business object for the data model.
+     *
+     * @param model Data model
+     * @return instance of the POJO2 business object
+     */
+    @Nonnull
+    protected abstract Portfolio getPortfolio(@Nonnull final Model model);
+
+    /**
      * Return all portfolio matching the FinderMethod.
      *
      * @param finder FinderMethod to use to fetch the Portfolios
@@ -51,7 +60,6 @@ abstract class AbstractPortfolioBOApplicationComponent extends SimpleApplication
     protected List<Portfolio> getPortfolios(@Nonnull final FinderMethod finder) {
         final List<Portfolio> result = new ArrayList<Portfolio>();
         final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.PORTFOLIO_SELECT);
-        final AbstractPortfolioBOApplicationComponent portfolioAC = this;
 
         final Callable<Object> callable = new Callable<Object>() {
             @Override
@@ -62,7 +70,7 @@ abstract class AbstractPortfolioBOApplicationComponent extends SimpleApplication
                     for (int i = 0; i < size; i++) {
                         final Model model = ma.get(i);
                         assert model != null;
-                        final Portfolio portfolio = new Portfolio(model, portfolioAC);
+                        final Portfolio portfolio = getPortfolio(model);
                         result.add(portfolio);
                     }
                 }
@@ -109,7 +117,7 @@ abstract class AbstractPortfolioBOApplicationComponent extends SimpleApplication
         if (model == null) {
             result = null;
         } else {
-            result = new Portfolio(model, this);
+            result = getPortfolio(model);
         }
 
         return result;

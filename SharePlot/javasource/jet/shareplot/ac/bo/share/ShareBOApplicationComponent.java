@@ -14,6 +14,7 @@ import jet.lifecycle.interfaces.LifeCycleState;
 import jet.shareplot.persistence.finder.share.Share_FindByPrimaryKey1;
 import jet.util.SerializableKey;
 import jet.util.logger.JETLevel;
+import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
 /**
@@ -31,7 +32,7 @@ public class ShareBOApplicationComponent extends AbstractShareBOApplicationCompo
      */
     private static final String NAME = "ShareBOApplicationComponent";
     /**
-     * <code>SESSION_KEY</code> session key
+     * <code>SESSION_KEY</code> session key.
      */
     private static final Object SESSION_KEY = new SerializableKey(ShareBOApplicationComponent.class, "SESSION_KEY");
 
@@ -41,7 +42,7 @@ public class ShareBOApplicationComponent extends AbstractShareBOApplicationCompo
      * 
      * @param session current session
      * @return ShareBOApplicationComponent
-     * @throws JETException if something goes wrong
+     * @throws JETException if there is an error initializing the ApplicationComponent
      */
     @Nonnull
     public static final ShareBOApplicationComponent getInstance(final Session session) throws JETException {
@@ -88,11 +89,17 @@ public class ShareBOApplicationComponent extends AbstractShareBOApplicationCompo
     /**
      * Deinit, internal use only.
      * 
-     * @throws JETException if something goes wrong
+     * @throws JETException if there is an error deinitializing the ApplicationComponent
      */
     @Deinitializer
-    public final void doAccountACDeinit() throws JETException {
+    public final void doShareACDeinit() throws JETException {
         getSession().removeProperty(SESSION_KEY);
+    }
+
+    @Override
+    @Nonnull
+    protected Share getShare(@Nonnull final Model model) {
+        return new Share(model, this);
     }
 
     /**

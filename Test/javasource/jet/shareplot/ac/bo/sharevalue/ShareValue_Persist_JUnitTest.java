@@ -15,8 +15,8 @@ import static org.mockito.Mockito.when;
 import jet.container.managers.session.interfaces.Session;
 import jet.framework.component.resource.ResourceNotificationApplicationComponent;
 import jet.framework.nuts.store.StoreNut;
-import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.JUnitAsserter;
+import jet.framework.util.exception.FormatedJetException;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
@@ -26,20 +26,20 @@ import org.mockito.stubbing.Answer;
 /**
  * JUnit tests for the ShareValue accessor methods, this is where the ShareValue business
  * code will be tested.
- *
+ * 
  * @author JetToolsFramework
  */
 public class ShareValue_Persist_JUnitTest {
 
     /**
      * Save, creation
-     *
+     * 
      * @throws FormatedJetException should be thrown as saving invalid shareValue
      */
     @org.junit.Test(expected = FormatedJetException.class)
     public void testSaveCreateInvalid() throws FormatedJetException {
         // arrange : set up the test
-        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
+        final ShareValueBOApplicationComponent shareValueAC = mock(ShareValueBOApplicationComponent.class);
         assert shareValueAC != null;
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
@@ -61,13 +61,13 @@ public class ShareValue_Persist_JUnitTest {
 
     /**
      * Save, creation
-     *
+     * 
      * @throws Exception
      */
     @org.junit.Test
     public void testSaveCreateValid() throws Exception {
         // arrange : set up the test
-        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
+        final ShareValueBOApplicationComponent shareValueAC = mock(ShareValueBOApplicationComponent.class);
         assert shareValueAC != null;
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
@@ -112,13 +112,13 @@ public class ShareValue_Persist_JUnitTest {
 
     /**
      * Save, update
-     *
+     * 
      * @throws Exception
      */
     @org.junit.Test
     public void testSaveUpdate() throws Exception {
         // arrange : set up the test
-        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
+        final ShareValueBOApplicationComponent shareValueAC = mock(ShareValueBOApplicationComponent.class);
         assert shareValueAC != null;
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
@@ -159,7 +159,7 @@ public class ShareValue_Persist_JUnitTest {
     @org.junit.Test
     public void testDeleteNew() {
         // arrange : set up the test
-        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
+        final ShareValueBOApplicationComponent shareValueAC = mock(ShareValueBOApplicationComponent.class);
         assert shareValueAC != null;
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);
@@ -192,13 +192,13 @@ public class ShareValue_Persist_JUnitTest {
 
     /**
      * Delete old record
-     *
+     * 
      * @throws Exception
      */
     @org.junit.Test
     public void testDeleteOld() throws Exception {
         // arrange : set up the test
-        final AbstractShareValueBOApplicationComponent shareValueAC = mock(AbstractShareValueBOApplicationComponent.class);
+        final ShareValueBOApplicationComponent shareValueAC = mock(ShareValueBOApplicationComponent.class);
         assert shareValueAC != null;
         final Session session = mock(Session.class);
         final ResourceNotificationApplicationComponent resourceAC = mock(ResourceNotificationApplicationComponent.class);

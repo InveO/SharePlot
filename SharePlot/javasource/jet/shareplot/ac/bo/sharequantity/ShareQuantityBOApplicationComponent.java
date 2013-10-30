@@ -17,6 +17,7 @@ import jet.shareplot.ac.bo.share.Share;
 import jet.shareplot.persistence.finder.sharequantity.ShareQuantity_FindByShare1;
 import jet.util.SerializableKey;
 import jet.util.logger.JETLevel;
+import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
 /**
@@ -34,7 +35,7 @@ public class ShareQuantityBOApplicationComponent extends AbstractShareQuantityBO
      */
     private static final String NAME = "ShareQuantityBOApplicationComponent";
     /**
-     * <code>SESSION_KEY</code> session key
+     * <code>SESSION_KEY</code> session key.
      */
     private static final Object SESSION_KEY = new SerializableKey(ShareQuantityBOApplicationComponent.class, "SESSION_KEY");
 
@@ -44,7 +45,7 @@ public class ShareQuantityBOApplicationComponent extends AbstractShareQuantityBO
      * 
      * @param session current session
      * @return ShareQuantityBOApplicationComponent
-     * @throws JETException
+     * @throws JETException if there is an error initializing the ApplicationComponent
      */
     @Nonnull
     public static final ShareQuantityBOApplicationComponent getInstance(final Session session) throws JETException {
@@ -73,7 +74,6 @@ public class ShareQuantityBOApplicationComponent extends AbstractShareQuantityBO
                 try {
                     final Map<String, Object> initMap = new HashMap<String, Object>();
                     shareQuantityAC = (ShareQuantityBOApplicationComponent) appProxy.createApplicationComponent(NAME, desktopNut.getApplicationComponent(), initMap);
-                    assert shareQuantityAC != null;
                     desktopNut.registerChildApplicationComponent(shareQuantityAC);
                     session.setProperty(SESSION_KEY, shareQuantityAC);
                 } catch (final JETException e) {
@@ -92,11 +92,17 @@ public class ShareQuantityBOApplicationComponent extends AbstractShareQuantityBO
     /**
      * Deinit, internal use only.
      * 
-     * @throws JETException
+     * @throws JETException if there is an error deinitializing the ApplicationComponent
      */
     @Deinitializer
-    public final void doAccountACDeinit() throws JETException {
+    public final void doShareQuantityACDeinit() throws JETException {
         getSession().removeProperty(SESSION_KEY);
+    }
+
+    @Override
+    @Nonnull
+    protected ShareQuantity getShareQuantity(@Nonnull final Model model) {
+        return new ShareQuantity(model, this);
     }
 
     /**

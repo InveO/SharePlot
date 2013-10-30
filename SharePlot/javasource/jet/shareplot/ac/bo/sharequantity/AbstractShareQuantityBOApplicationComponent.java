@@ -40,6 +40,15 @@ abstract class AbstractShareQuantityBOApplicationComponent extends SimpleApplica
     private TransactionManager transactionManager;
 
     /**
+     * Get an instance of the POJO2 business object for the data model.
+     *
+     * @param model Data model
+     * @return instance of the POJO2 business object
+     */
+    @Nonnull
+    protected abstract ShareQuantity getShareQuantity(@Nonnull final Model model);
+
+    /**
      * Return all shareQuantity matching the FinderMethod.
      *
      * @param finder FinderMethod to use to fetch the ShareQuantitys
@@ -51,7 +60,6 @@ abstract class AbstractShareQuantityBOApplicationComponent extends SimpleApplica
     protected List<ShareQuantity> getShareQuantitys(@Nonnull final FinderMethod finder) {
         final List<ShareQuantity> result = new ArrayList<ShareQuantity>();
         final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.SHAREQUANTITY_SELECT);
-        final AbstractShareQuantityBOApplicationComponent shareQuantityAC = this;
 
         final Callable<Object> callable = new Callable<Object>() {
             @Override
@@ -62,7 +70,7 @@ abstract class AbstractShareQuantityBOApplicationComponent extends SimpleApplica
                     for (int i = 0; i < size; i++) {
                         final Model model = ma.get(i);
                         assert model != null;
-                        final ShareQuantity shareQuantity = new ShareQuantity(model, shareQuantityAC);
+                        final ShareQuantity shareQuantity = getShareQuantity(model);
                         result.add(shareQuantity);
                     }
                 }
@@ -109,7 +117,7 @@ abstract class AbstractShareQuantityBOApplicationComponent extends SimpleApplica
         if (model == null) {
             result = null;
         } else {
-            result = new ShareQuantity(model, this);
+            result = getShareQuantity(model);
         }
 
         return result;

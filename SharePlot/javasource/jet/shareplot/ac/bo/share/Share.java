@@ -36,7 +36,7 @@ public class Share extends ShareItem implements JFBusinessItem, JFBusinessErrorH
     private static final String CAN_NOT_DELETE_KEY = "SharePlot/properties/task/Share/dialog.CanNotDeleteShare";
     private static final String NOT_VALID_KEY = "SharePlot/properties/task/Share/dialog.ShareNotValid";
 
-    private final AbstractShareBOApplicationComponent shareAC;
+    private final ShareBOApplicationComponent shareAC;
 
     /**
      * Constructor, build an empty share.
@@ -46,7 +46,7 @@ public class Share extends ShareItem implements JFBusinessItem, JFBusinessErrorH
      * @see Model
      * @see ShareBOApplicationComponent
      */
-    public Share(@Nonnull final AbstractShareBOApplicationComponent shareAC) {
+    public Share(@Nonnull final ShareBOApplicationComponent shareAC) {
         super();
         this.shareAC = shareAC;
     }
@@ -60,7 +60,7 @@ public class Share extends ShareItem implements JFBusinessItem, JFBusinessErrorH
      * @see Model
      * @see ShareBOApplicationComponent
      */
-    public Share(@Nonnull final Model model, @Nonnull final AbstractShareBOApplicationComponent shareAC) {
+    public Share(@Nonnull final Model model, @Nonnull final ShareBOApplicationComponent shareAC) {
         super(model);
         this.shareAC = shareAC;
     }

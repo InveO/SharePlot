@@ -40,6 +40,15 @@ abstract class AbstractShareValueBOApplicationComponent extends SimpleApplicatio
     private TransactionManager transactionManager;
 
     /**
+     * Get an instance of the POJO2 business object for the data model.
+     *
+     * @param model Data model
+     * @return instance of the POJO2 business object
+     */
+    @Nonnull
+    protected abstract ShareValue getShareValue(@Nonnull final Model model);
+
+    /**
      * Return all shareValue matching the FinderMethod.
      *
      * @param finder FinderMethod to use to fetch the ShareValues
@@ -51,7 +60,6 @@ abstract class AbstractShareValueBOApplicationComponent extends SimpleApplicatio
     protected List<ShareValue> getShareValues(@Nonnull final FinderMethod finder) {
         final List<ShareValue> result = new ArrayList<ShareValue>();
         final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.SHAREVALUE_SELECT);
-        final AbstractShareValueBOApplicationComponent shareValueAC = this;
 
         final Callable<Object> callable = new Callable<Object>() {
             @Override
@@ -62,7 +70,7 @@ abstract class AbstractShareValueBOApplicationComponent extends SimpleApplicatio
                     for (int i = 0; i < size; i++) {
                         final Model model = ma.get(i);
                         assert model != null;
-                        final ShareValue shareValue = new ShareValue(model, shareValueAC);
+                        final ShareValue shareValue = getShareValue(model);
                         result.add(shareValue);
                     }
                 }
@@ -109,7 +117,7 @@ abstract class AbstractShareValueBOApplicationComponent extends SimpleApplicatio
         if (model == null) {
             result = null;
         } else {
-            result = new ShareValue(model, this);
+            result = getShareValue(model);
         }
 
         return result;
