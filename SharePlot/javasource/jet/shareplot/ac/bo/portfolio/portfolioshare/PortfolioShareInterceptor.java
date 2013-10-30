@@ -42,8 +42,6 @@ public class PortfolioShareInterceptor implements Interceptor {
      */
     @Override
     public void validate(final InterceptorContext interceptor) throws InterceptorValidationException {
-        System.err.println("[PortfolioShareInterceptor] validate - ");
-
         if (!this.inValidation) {
             this.inValidation = true;
 
@@ -52,7 +50,6 @@ public class PortfolioShareInterceptor implements Interceptor {
 
             this.inValidation = false;
         }
-
     }
 
     private CalculateValueContext getCalculateValueContext(final InterceptorContext interceptor) {
@@ -86,23 +83,6 @@ public class PortfolioShareInterceptor implements Interceptor {
             // get new quantity
             quantity = (BigDecimal) interceptor.getValue();
         }
-
-        final StringBuilder sb = new StringBuilder();
-        sb.append("Share [");
-        if (share != null) {
-            sb.append(share.getName());
-        }
-        sb.append("] Date [");
-        if (valueDate != null) {
-            sb.append(valueDate);
-        }
-        sb.append("] Quantity [");
-        if (valueDate != null) {
-            sb.append(quantity);
-        }
-        sb.append("]");
-
-        System.err.println("[PortfolioShareInterceptor] getCalculateValueContext - " + sb.toString());
 
         return new CalculateValueContext(item, share, valueDate, quantity);
     }

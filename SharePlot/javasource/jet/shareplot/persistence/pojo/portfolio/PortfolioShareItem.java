@@ -81,7 +81,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Constructor used to edit an existing PortfolioShare Data Model.
-     * 
+     *
      * @param model Model to use to wrap in the pojo, can not be <code>null</code>
      */
     public PortfolioShareItem(@Nonnull final Model model) {
@@ -96,7 +96,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Copy constructor used to clone an existing PortfolioShare Data Model.
-     * 
+     *
      * @param portfolioShare PortfolioShareItem to use to copy in the pojo, can not be <code>null</code>
      */
     public PortfolioShareItem(@Nonnull final PortfolioShareItem portfolioShare) {
@@ -139,7 +139,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Check if this portfolioShare is new.
-     * 
+     *
      * @return <code>true</code> if this portfolioShare is new.
      * @see JFDataItem
      */
@@ -181,7 +181,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Get the PortfolioShare Data Model that is wrapped in this pojo.
-     * 
+     *
      * @return PortfolioShare Data Model
      * @see JFDataItem
      */
@@ -196,7 +196,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
     /**
      * Get node value of Data Model node idPortfolio.
      * This field should not be <code>null</code> in the database.
-     * 
+     *
      * @return Long value of Data Model node idPortfolio
      */
     public final Long getIdPortfolio() {
@@ -206,7 +206,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
     /**
      * Set node value of Data Model node idPortfolio.
      * This field should not be <code>null</code> in the database.
-     * 
+     *
      * @param idPortfolio Long value of Data Model node idPortfolio
      */
     public final void setIdPortfolio(final Long idPortfolio) {
@@ -215,7 +215,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Get Model of Data Model node idPortfolio.
-     * 
+     *
      * @return Model of Data Model node idPortfolio
      */
     @SuppressWarnings("unchecked")
@@ -228,6 +228,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
                 if (this.idPortfolioDispatcherModel == null) {
                     this.idPortfolioDispatcherModel = new DispatcherModel<PortfolioShareItem>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.idPortfolioDispatcherModel);
+                    sourceModel.setAttribute(DispatcherModel.DISPATCHER_MODEL_ATTRIBUTE, this.idPortfolioDispatcherModel);
                 }
             } catch (final JETException e) {
                 throw new JETSystemError("PortfolioShare data model does not have a child named idPortfolio. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
@@ -241,7 +242,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
     /**
      * Get node value of Data Model node idShare.
      * This field should not be <code>null</code> in the database.
-     * 
+     *
      * @return Long value of Data Model node idShare
      */
     public final Long getIdShare() {
@@ -251,7 +252,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
     /**
      * Set node value of Data Model node idShare.
      * This field should not be <code>null</code> in the database.
-     * 
+     *
      * @param idShare Long value of Data Model node idShare
      */
     public final void setIdShare(final Long idShare) {
@@ -260,7 +261,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Get Model of Data Model node idShare.
-     * 
+     *
      * @return Model of Data Model node idShare
      */
     @SuppressWarnings("unchecked")
@@ -273,6 +274,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
                 if (this.idShareDispatcherModel == null) {
                     this.idShareDispatcherModel = new DispatcherModel<PortfolioShareItem>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.idShareDispatcherModel);
+                    sourceModel.setAttribute(DispatcherModel.DISPATCHER_MODEL_ATTRIBUTE, this.idShareDispatcherModel);
                 }
             } catch (final JETException e) {
                 throw new JETSystemError("PortfolioShare data model does not have a child named idShare. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
@@ -286,7 +288,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
     /**
      * Get node value of Data Model node changeQuantity.
      * This field should not be <code>null</code> in the database.
-     * 
+     *
      * @return java.math.BigDecimal value of Data Model node changeQuantity
      */
     public final java.math.BigDecimal getChangeQuantity() {
@@ -296,7 +298,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
     /**
      * Set node value of Data Model node changeQuantity.
      * This field should not be <code>null</code> in the database.
-     * 
+     *
      * @param changeQuantity java.math.BigDecimal value of Data Model node changeQuantity
      */
     public final void setChangeQuantity(final java.math.BigDecimal changeQuantity) {
@@ -305,7 +307,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Get Model of Data Model node changeQuantity.
-     * 
+     *
      * @return Model of Data Model node changeQuantity
      */
     @SuppressWarnings("unchecked")
@@ -318,6 +320,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
                 if (this.changeQuantityDispatcherModel == null) {
                     this.changeQuantityDispatcherModel = new DispatcherModel<PortfolioShareItem>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.changeQuantityDispatcherModel);
+                    sourceModel.setAttribute(DispatcherModel.DISPATCHER_MODEL_ATTRIBUTE, this.changeQuantityDispatcherModel);
                 }
             } catch (final JETException e) {
                 throw new JETSystemError("PortfolioShare data model does not have a child named changeQuantity. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
@@ -331,7 +334,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
     /**
      * Get node value of Data Model node portfolioName.
      * This field should not be <code>null</code> in the database.
-     * 
+     *
      * @return String value of Data Model node portfolioName
      */
     public final String getPortfolioName() {
@@ -341,7 +344,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
     /**
      * Set node value of Data Model node portfolioName.
      * This field should not be <code>null</code> in the database.
-     * 
+     *
      * @param portfolioName String value of Data Model node portfolioName
      */
     public final void setPortfolioName(final String portfolioName) {
@@ -350,7 +353,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Get Model of Data Model node portfolioName.
-     * 
+     *
      * @return Model of Data Model node portfolioName
      */
     @SuppressWarnings("unchecked")
@@ -363,6 +366,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
                 if (this.portfolioNameDispatcherModel == null) {
                     this.portfolioNameDispatcherModel = new DispatcherModel<PortfolioShareItem>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.portfolioNameDispatcherModel);
+                    sourceModel.setAttribute(DispatcherModel.DISPATCHER_MODEL_ATTRIBUTE, this.portfolioNameDispatcherModel);
                 }
 
                 this.portfolioNameDispatcherModel.addInterceptor(StringLengthInterceptor.getStringLengthInterceptor(45));
@@ -378,7 +382,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
     /**
      * Get node value of Data Model node shareName.
      * This field should not be <code>null</code> in the database.
-     * 
+     *
      * @return String value of Data Model node shareName
      */
     public final String getShareName() {
@@ -388,7 +392,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
     /**
      * Set node value of Data Model node shareName.
      * This field should not be <code>null</code> in the database.
-     * 
+     *
      * @param shareName String value of Data Model node shareName
      */
     public final void setShareName(final String shareName) {
@@ -397,7 +401,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Get Model of Data Model node shareName.
-     * 
+     *
      * @return Model of Data Model node shareName
      */
     @SuppressWarnings("unchecked")
@@ -410,6 +414,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
                 if (this.shareNameDispatcherModel == null) {
                     this.shareNameDispatcherModel = new DispatcherModel<PortfolioShareItem>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.shareNameDispatcherModel);
+                    sourceModel.setAttribute(DispatcherModel.DISPATCHER_MODEL_ATTRIBUTE, this.shareNameDispatcherModel);
                 }
 
                 this.shareNameDispatcherModel.addInterceptor(StringLengthInterceptor.getStringLengthInterceptor(255));
@@ -425,7 +430,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
     /**
      * Get node value of Data Model node value.
      * This field should not be <code>null</code> in the database.
-     * 
+     *
      * @return java.math.BigDecimal value of Data Model node value
      */
     public final java.math.BigDecimal getValue() {
@@ -435,7 +440,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
     /**
      * Set node value of Data Model node value.
      * This field should not be <code>null</code> in the database.
-     * 
+     *
      * @param value java.math.BigDecimal value of Data Model node value
      */
     public final void setValue(final java.math.BigDecimal value) {
@@ -444,7 +449,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Get Model of Data Model node value.
-     * 
+     *
      * @return Model of Data Model node value
      */
     @SuppressWarnings("unchecked")
@@ -457,6 +462,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
                 if (this.valueDispatcherModel == null) {
                     this.valueDispatcherModel = new DispatcherModel<PortfolioShareItem>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.valueDispatcherModel);
+                    sourceModel.setAttribute(DispatcherModel.DISPATCHER_MODEL_ATTRIBUTE, this.valueDispatcherModel);
                 }
             } catch (final JETException e) {
                 throw new JETSystemError("PortfolioShare data model does not have a child named value. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
@@ -470,7 +476,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
     /**
      * Get node value of Data Model node valueDate.
      * This field should not be <code>null</code> in the database.
-     * 
+     *
      * @return java.util.Date value of Data Model node valueDate
      */
     public final java.util.Date getValueDate() {
@@ -480,7 +486,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
     /**
      * Set node value of Data Model node valueDate.
      * This field should not be <code>null</code> in the database.
-     * 
+     *
      * @param valueDate java.util.Date value of Data Model node valueDate
      */
     public final void setValueDate(final java.util.Date valueDate) {
@@ -489,7 +495,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
 
     /**
      * Get Model of Data Model node valueDate.
-     * 
+     *
      * @return Model of Data Model node valueDate
      */
     @SuppressWarnings("unchecked")
@@ -502,6 +508,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
                 if (this.valueDateDispatcherModel == null) {
                     this.valueDateDispatcherModel = new DispatcherModel<PortfolioShareItem>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.valueDateDispatcherModel);
+                    sourceModel.setAttribute(DispatcherModel.DISPATCHER_MODEL_ATTRIBUTE, this.valueDateDispatcherModel);
                 }
             } catch (final JETException e) {
                 throw new JETSystemError("PortfolioShare data model does not have a child named valueDate. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
