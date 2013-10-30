@@ -1,5 +1,6 @@
 package jet.shareplot.ui.task.share;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,9 @@ import jet.shareplot.ac.bo.portfolio.portfolioshare.PortfolioShare;
 import jet.shareplot.ac.bo.portfolio.portfolioshare.PortfolioShareBOApplicationComponent;
 import jet.shareplot.ac.bo.share.ShareAutoCompleteProvider;
 import jet.shareplot.ac.bo.share.ShareBOApplicationComponent;
+import jet.shareplot.ac.bo.sharequantity.ChangeType;
+import jet.shareplot.ac.bo.sharequantity.ShareQuantity;
+import jet.shareplot.ac.bo.sharequantity.ShareQuantityBOApplicationComponent;
 import jet.shareplot.ui.AbstractSharePlotDataItemListNut;
 import jet.shareplot.ui.task.TaskNameConstants;
 import jet.shareplot.ui.task.share.provider.PortfolioShareShareProvider;
@@ -35,6 +39,7 @@ public class PortfolioDetailNut extends AbstractSharePlotDataItemListNut<Portfol
     private Portfolio portfolio;
     private PortfolioShareBOApplicationComponent portfolioShareAC;
     private ShareBOApplicationComponent shareAC;
+    private ShareQuantityBOApplicationComponent shareQuantityAC;
 
     @Override
     public <T extends Enum<T>> void tableCellEvent(final UITableComponent2 table, final int row, final int col, final UIEvent<T> uiEvent) {
@@ -83,6 +88,7 @@ public class PortfolioDetailNut extends AbstractSharePlotDataItemListNut<Portfol
         this.portfolio = (Portfolio) getApplicationComponent().getProperty(ShareUIConstants.ARGUMENT_PORTFOLIO);
         this.portfolioShareAC = PortfolioShareBOApplicationComponent.getInstance(getSession());
         this.shareAC = ShareBOApplicationComponent.getInstance(getSession());
+        this.shareQuantityAC = ShareQuantityBOApplicationComponent.getInstance(getSession());
 
         final Object[] args = { this.portfolio.getName() };
         final Displayable titleDisp = new LocalizedMessageFormatDisplayable("SharePlot/properties/task/Share/title.PortfolioDetailName", args);
@@ -115,12 +121,10 @@ public class PortfolioDetailNut extends AbstractSharePlotDataItemListNut<Portfol
 
     @Override
     protected void addListDisplayProviders(final UITableListDisplay3 uiTableListDisplay) {
-
         final ShareAutoCompleteProvider shareAutoCompleteProvider = this.shareAC.getShareAutoCompleteProvider();
         final PortfolioShareShareProvider portfolioShareShareProvider = new PortfolioShareShareProvider(shareAutoCompleteProvider, "shareColumn");
         uiTableListDisplay.addListTableCellModelProvider(portfolioShareShareProvider);
         uiTableListDisplay.addListTableColumnHeaderProvider(portfolioShareShareProvider);
-
     }
 
     @Override
@@ -153,14 +157,33 @@ public class PortfolioDetailNut extends AbstractSharePlotDataItemListNut<Portfol
 
     @Override
     protected PortfolioShare deleteItem(@Nonnull final PortfolioShare item) throws FormatedJetException {
-        // TODO Auto-generated method stub
+        final Long idPortfolio = item.getIdPortfolio();
+        final Long idShare = item.getIdShare();
+        if (idPortfolio != null && idShare != null) {
+            final List<ShareQuantity> shareQuantitys = this.shareQuantityAC.getShareQuantitys(idPortfolio, idShare);
+            for (final ShareQuantity shareQuantity : shareQuantitys) {
+                shareQuantity.delete();
+            }
+        }
         return item;
     }
 
     @Override
     protected PortfolioShare saveItem(@Nonnull final PortfolioShare item) throws FormatedJetException {
-        // TODO Auto-generated method stub
+
+        final ShareQuantity shareQuantity = new ShareQuantity(AnnotationsHelper.assertNonNull(this.shareQuantityAC));
+
+        shareQuantity.setChangeFee(BigDecimal.ZERO);
+        shareQuantity.setChangeQuantity(item.getChangeQuantity());
+        shareQuantity.setChangeType(ChangeType.PURCHASE.getCode());
+        shareQuantity.setChangeValue(BigDecimal.ZERO);
+        shareQuantity.setDescription(null);
+        shareQuantity.setIdPortfolio(item.getIdPortfolio());
+        shareQuantity.setIdShare(item.getIdShare());
+        shareQuantity.setValueDate(item.getValueDate());
+
+        shareQuantity.save();
+
         return item;
     }
-
 }

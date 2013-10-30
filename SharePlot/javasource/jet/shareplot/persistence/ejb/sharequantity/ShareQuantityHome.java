@@ -62,13 +62,14 @@ public interface ShareQuantityHome extends EJBHome {
 
     /**
      * Find a collections of records.
+     * @param idPortfolio value for the argument idPortfolio
      * @param idShare value for the argument idShare
      * @return Collection of EJBObject implementations for the bean
      * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
     @Nonnull
-    Collection<ShareQuantityRemote> findByShare(@Nullable final Long idShare) throws FinderException, RemoteException;
+    Collection<ShareQuantityRemote> findByShareAndPortfolio(@Nullable final Long idPortfolio, @Nullable final Long idShare) throws FinderException, RemoteException;
 
     /**
      * Find a collections of records.

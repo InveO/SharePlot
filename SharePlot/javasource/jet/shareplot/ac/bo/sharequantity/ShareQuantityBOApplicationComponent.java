@@ -10,11 +10,9 @@ import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.session.interfaces.Session;
 import jet.framework.nuts.desktop.JetDesktop;
 import jet.framework.nuts.select.FinderMethod;
-import jet.framework.ui.desktop.AbstractDesktopNut;
 import jet.lifecycle.annotations.Deinitializer;
 import jet.lifecycle.interfaces.LifeCycleState;
-import jet.shareplot.ac.bo.share.Share;
-import jet.shareplot.persistence.finder.sharequantity.ShareQuantity_FindByShare1;
+import jet.shareplot.persistence.finder.sharequantity.ShareQuantity_FindByShareAndPortfolio2;
 import jet.util.SerializableKey;
 import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Model;
@@ -108,16 +106,17 @@ public class ShareQuantityBOApplicationComponent extends AbstractShareQuantityBO
     /**
      * Get all quantities for a given share.
      * 
-     * @param share Share for which the quantities are desired
-     * @return a list of shareQuantity matching the FinderMethod.
+     * @param idPortfolio Portfolio for which the quantities are desired
+     * @param idShare Share for which the quantities are desired
+     * @return a list of shareQuantity matching the query.
      * @see List
      * @see ShareQuantity
-     * @see Share
      * @see #getShareQuantitys(FinderMethod finder)
      */
-    public List<ShareQuantity> getShareQuantitys(final Share share) {
-        final ShareQuantity_FindByShare1 finder = new ShareQuantity_FindByShare1();
-        finder.setIdShare(share.getIdShare());
+    public List<ShareQuantity> getShareQuantitys(@Nonnull final Long idPortfolio, @Nonnull final Long idShare) {
+        final ShareQuantity_FindByShareAndPortfolio2 finder = new ShareQuantity_FindByShareAndPortfolio2();
+        finder.setIdPortfolio(idPortfolio);
+        finder.setIdShare(idShare);
 
         return getShareQuantitys(finder);
     }

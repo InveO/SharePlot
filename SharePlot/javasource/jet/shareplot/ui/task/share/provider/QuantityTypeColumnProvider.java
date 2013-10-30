@@ -1,8 +1,7 @@
 package jet.shareplot.ui.task.share.provider;
 
 import jet.framework.ui.utils.table.AbstractComboBoxColumnHeaderProvider;
-import jet.shareplot.ac.bo.sharequantity.ShareQuantity;
-import jet.shareplot.ac.bo.sharequantity.ShareQuantity.ChangeType;
+import jet.shareplot.ac.bo.sharequantity.ChangeType;
 
 public class QuantityTypeColumnProvider extends AbstractComboBoxColumnHeaderProvider<String> {
 
@@ -14,7 +13,7 @@ public class QuantityTypeColumnProvider extends AbstractComboBoxColumnHeaderProv
 
     @Override
     protected void addItems() {
-        for (final ShareQuantity.ChangeType changeType : ShareQuantity.ChangeType.values()) {
+        for (final ChangeType changeType : ChangeType.values()) {
             addChangeType(changeType);
         }
     }

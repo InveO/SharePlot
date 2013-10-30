@@ -25,31 +25,6 @@ public class ShareQuantity extends ShareQuantityItem implements JFBusinessItem, 
 
     private static final long serialVersionUID = 1077646545L;
 
-    public enum ChangeType {
-        PURCHASE("P", "SharePlot/properties/task/Share/changeType.Purchase"), SALE("S", "SharePlot/properties/task/Share/changeType.Sale"), FEE("F", "SharePlot/properties/task/Share/changeType.Fee");
-
-        private final String code;
-        private String localized;
-
-        ChangeType(final String code, final String localized) {
-            this.code = code;
-            this.localized = localized;
-        }
-
-        public String getCode() {
-            return this.code;
-        }
-
-        public String getLocalized() {
-            return this.localized;
-        }
-
-        public void setLocalized(final String localized) {
-            this.localized = localized;
-        }
-
-    }
-
     private static final String CAN_NOT_SAVE_KEY = "SharePlot/properties/task/Share/dialog.CanNotSaveShareQuantity";
     private static final String CAN_NOT_DELETE_KEY = "SharePlot/properties/task/Share/dialog.CanNotDeleteShareQuantity";
     private static final String NOT_VALID_KEY = "SharePlot/properties/task/Share/dialog.ShareQuantityNotValid";

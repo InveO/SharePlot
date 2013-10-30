@@ -378,12 +378,13 @@ public final class ShareQuantityBean implements EntityBean {
     /**
      * Finder method.
      *
+     * @param idPortfolio Long value for finder argument idPortfolio
      * @param idShare Long value for finder argument idShare
      * @return Collection of records
      * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
      */
     @SuppressWarnings("hiding")
-    public Collection<ShareQuantityRemote> ejbFindByShare(final Long idShare) throws FinderException {
+    public Collection<ShareQuantityRemote> ejbFindByShareAndPortfolio(final Long idPortfolio, final Long idShare) throws FinderException {
         return null;
     }
 

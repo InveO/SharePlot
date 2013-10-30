@@ -25,9 +25,10 @@
         <FINDER name="findAll">
             <FINDERBODY type="sql" sql_string="" buffersize="-1"/>
         </FINDER>
-        <FINDER name="findByShare">
+        <FINDER name="findByShareAndPortfolio">
+            <INPUT name="idPortfolio" type="Long" localizedDisplayableText=""/>
             <INPUT name="idShare" type="Long" localizedDisplayableText=""/>
-            <FINDERBODY type="sql" sql_string="where idShare = ? order by valueDate asc" buffersize="-1"/>
+            <FINDERBODY type="sql" sql_string="where idPortfolio = ? and idShare = ? order by valueDate asc" buffersize="-1"/>
         </FINDER>
         <FINDER name="findByPreparedSQLQuery">
             <INPUT name="sqlWhereClause" type="String" localizedDisplayableText=""/>

@@ -39,7 +39,7 @@ public class ShareQuantityListNut extends AbstractSharePlotListNut<ShareQuantity
 
     @Override
     protected List<ShareQuantity> findItems() {
-        return this.shareQuantityAC.getShareQuantitys(this.share);
+        return null;// this.shareQuantityAC.getShareQuantitys(this.share);
     }
 
     @Override
