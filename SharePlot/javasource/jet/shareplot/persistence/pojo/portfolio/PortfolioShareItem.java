@@ -41,6 +41,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
 
     private transient DispatcherModel<PortfolioShareItem> idPortfolioDispatcherModel;
     private transient DispatcherModel<PortfolioShareItem> idShareDispatcherModel;
+    private transient DispatcherModel<PortfolioShareItem> idShareQuantityDispatcherModel;
     private transient DispatcherModel<PortfolioShareItem> changeQuantityDispatcherModel;
     private transient DispatcherModel<PortfolioShareItem> portfolioNameDispatcherModel;
     private transient DispatcherModel<PortfolioShareItem> shareNameDispatcherModel;
@@ -66,6 +67,8 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
         model = new SimpleEventModelImpl("idPortfolio");
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("idShare");
+        this.dataModel.appendChild(model);
+        model = new SimpleEventModelImpl("idShareQuantity");
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("changeQuantity");
         this.dataModel.appendChild(model);
@@ -104,6 +107,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
 
         setIdPortfolio(portfolioShare.getIdPortfolio());
         setIdShare(portfolioShare.getIdShare());
+        setIdShareQuantity(portfolioShare.getIdShareQuantity());
         setChangeQuantity(portfolioShare.getChangeQuantity());
         setPortfolioName(portfolioShare.getPortfolioName());
         setShareName(portfolioShare.getShareName());
@@ -281,6 +285,50 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
             }
         }
         final DispatcherModel<PortfolioShareItem> dm = this.idShareDispatcherModel;
+        assert dm != null;
+        return dm;
+    }
+
+    /**
+     * Get node value of Data Model node idShareQuantity.
+     *
+     * @return Long value of Data Model node idShareQuantity
+     */
+    public final Long getIdShareQuantity() {
+        return (Long) get_IdShareQuantity_Model().getNodeValue();
+    }
+
+    /**
+     * Set node value of Data Model node idShareQuantity.
+     *
+     * @param idShareQuantity Long value of Data Model node idShareQuantity
+     */
+    public final void setIdShareQuantity(final Long idShareQuantity) {
+        get_IdShareQuantity_Model().setNodeValue(idShareQuantity);
+    }
+
+    /**
+     * Get Model of Data Model node idShareQuantity.
+     *
+     * @return Model of Data Model node idShareQuantity
+     */
+    @SuppressWarnings("unchecked")
+    @Nonnull
+    public final DispatcherModel<PortfolioShareItem> get_IdShareQuantity_Model() {
+        if (this.idShareQuantityDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idShareQuantity");
+                this.idShareQuantityDispatcherModel = (DispatcherModel<PortfolioShareItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.idShareQuantityDispatcherModel == null) {
+                    this.idShareQuantityDispatcherModel = new DispatcherModel<PortfolioShareItem>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.idShareQuantityDispatcherModel);
+                    sourceModel.setAttribute(DispatcherModel.DISPATCHER_MODEL_ATTRIBUTE, this.idShareQuantityDispatcherModel);
+                }
+            } catch (final JETException e) {
+                throw new JETSystemError("PortfolioShare data model does not have a child named idShareQuantity. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
+        }
+        final DispatcherModel<PortfolioShareItem> dm = this.idShareQuantityDispatcherModel;
         assert dm != null;
         return dm;
     }
@@ -592,10 +640,10 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
     public final boolean isPkEquals(final JFDataItem other) {
         boolean result = false;
         
-        if ( getIdPortfolio() != null && getIdShare() != null) {
+        if ( getIdPortfolio() != null && getIdShare() != null && getIdShareQuantity() != null) {
             if (other instanceof PortfolioShareItem) {
                 final PortfolioShareItem otherPortfolioShare = (PortfolioShareItem) other;
-                if ( getIdPortfolio().equals(otherPortfolioShare.getIdPortfolio()) && getIdShare().equals(otherPortfolioShare.getIdShare())) {
+                if ( getIdPortfolio().equals(otherPortfolioShare.getIdPortfolio()) && getIdShare().equals(otherPortfolioShare.getIdShare()) && getIdShareQuantity().equals(otherPortfolioShare.getIdShareQuantity())) {
                     result = true;
                 }
             }
