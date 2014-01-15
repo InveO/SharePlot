@@ -1,0 +1,9 @@
+<TOMCATMANAGER>
+
+    <!--  working dir must start with an upper case drive lettre on windows systems  -->
+    <EMBEDDED port="8081" workingdir="C:/Serveurs/JetTomcat" warpath="c:/Serveurs/Tomcat 7.0/webapps/shareplot.war" context="jettools" >
+        <!-- & must be escaped with the &amp; sequence  -->
+        <BROWSER starturl="http://127.0.0.1:8081/jettools/servlet/jetStart?rendering=0&amp;startApplication=SharePlot" />
+    </EMBEDDED>
+
+</TOMCATMANAGER>
