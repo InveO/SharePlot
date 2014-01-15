@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OGONEMANAGER>
+	<OGONE_DIRECTLINK_URL>https://secure.ogone.com/ncol/test/orderdirect.asp</OGONE_DIRECTLINK_URL>
+	<OGONE_ECOMMERCE_URL>https://secure.ogone.com/ncol/test/orderstandard_utf8.asp</OGONE_ECOMMERCE_URL>
+	<PSPID>amandasolvaxis</PSPID>
+	<USER>amandadl</USER>
+	<PSWD>µ0LWO6@Nmh</PSWD>
+    <!--OPERATION></OPERATION-->
+
+    <SHA_DIRECT_IN>sdFGSDFg$S'"^234=:aZZe</SHA_DIRECT_IN>
+
+    <SHA_EXTERNAL_IN>ef'56e'(§E4(f234))e</SHA_EXTERNAL_IN>
+    <SHA_EXTERNAL_OUT>hjkj'kl9867£8tykb</SHA_EXTERNAL_OUT>
+</OGONEMANAGER>

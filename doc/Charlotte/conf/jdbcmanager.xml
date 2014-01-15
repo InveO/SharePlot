@@ -1,0 +1,84 @@
+<JDBCMANAGER>
+
+    <COMMON>
+         <EXT_CLASSPATH value="file:///D:/Jet/JetLib/configs/amanda_conf/ext/mysql-connector-java-5.1.22-bin.jar">
+            <PERMISSION class="java.net.SocketPermission" name="*" params="connect,accept,resolve,listen"/>
+            <PERMISSION class="java.util.PropertyPermission" name="file.encoding" params="read"/>
+        </EXT_CLASSPATH>
+        <!-- <EXT_CLASSPATH value="file:///D:/Jet/JetLib/configs/amanda_conf/ext/mysql-connector-java-5.0.8-bin.jar">
+            <PERMISSION class="java.net.SocketPermission" name="*" params="connect,accept,resolve,listen"/>
+        </EXT_CLASSPATH>  -->
+        <!-- <EXT_CLASSPATH value="file:///D:/Jet/JetLib/configs/amanda_conf/ext/mysql-connector-java-5.0.4-bin.jar">
+            <PERMISSION class="java.net.SocketPermission" name="*" params="connect,accept,resolve,listen"/>
+        </EXT_CLASSPATH>  -->
+    </COMMON>
+
+    <DATABASES>
+        <DATABASE databasename="jdbc:mysql://192.168.56.50:3306/shareplot" user="root" password="TXzp198" name="SharePlot" type="MYSQL" driverJar="" driver="com.mysql.jdbc.Driver" jndidatasource="SharePlotDatasource" />
+        <!-- <DATABASE databasename="jdbc:mysql://192.168.0.121:3306/amanda" user="root" password="" name="Amanda" type="MYSQL" driverJar="" driver="com.mysql.jdbc.Driver" jndidatasource="AmandaDatasource" /> -->
+    </DATABASES>
+
+	<AUTO_INCREMENT_LISTS>
+		<!--
+		<AUTO_INCREMENT_LIST database="Amanda" >
+			<TABLE name="ArticlePicture" >
+				<COLUMN name="idArticlePicture" />
+			</TABLE>
+			<TABLE name="TagCategory" >
+				<COLUMN name="idTagCategory" />
+			</TABLE>
+			<TABLE name="Tag" >
+				<COLUMN name="idTag" />
+			</TABLE>
+			<TABLE name="Location" >
+				<COLUMN name="idLocation" />
+			</TABLE>
+			<TABLE name="Domain" >
+				<COLUMN name="idDomain" />
+			</TABLE>
+			<TABLE name="BusinessUnit" >
+				<COLUMN name="idBusinessUnit" />
+			</TABLE>
+			<TABLE name="Scan" >
+				<COLUMN name="idScan" />
+			</TABLE>
+			<TABLE name="BusinessLog" >
+				<COLUMN name="idBusinessLog" />
+			</TABLE>
+			<TABLE name="ActionTarget" >
+				<COLUMN name="idActionTarget" />
+			</TABLE>
+			<TABLE name="SpecialPeriod" >
+				<COLUMN name="idSpecialPeriod" />
+			</TABLE>
+			<TABLE name="Statement" >
+				<COLUMN name="idStatement" />
+			</TABLE>
+			<TABLE name="SecondaryCOA" >
+				<COLUMN name="idSecondaryCOA" />
+			</TABLE>
+			<TABLE name="SecondaryAccountPlan" >
+				<COLUMN name="idSecondaryAccountPlan" />
+			</TABLE>
+			<TABLE name="SecondaryAccount" >
+				<COLUMN name="idSecondaryAccount" />
+			</TABLE>
+			<TABLE name="Article" >
+				<COLUMN name="idArticle" />
+			</TABLE>
+			<TABLE name="Catalog" >
+				<COLUMN name="idCatalog" />
+			</TABLE>
+		</AUTO_INCREMENT_LIST>
+		 -->
+	</AUTO_INCREMENT_LISTS>
+
+    <CACHE_LIST default="true" >
+        <CACHE database="SharePlot" default="true" >
+            <!--
+            <TABLE name="Domain" cache="true" />
+                -->
+        </CACHE>
+    </CACHE_LIST>
+
+</JDBCMANAGER>
