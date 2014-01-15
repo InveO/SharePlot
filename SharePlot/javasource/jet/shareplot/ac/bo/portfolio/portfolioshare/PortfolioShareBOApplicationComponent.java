@@ -1,6 +1,7 @@
 package jet.shareplot.ac.bo.portfolio.portfolioshare;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,12 @@ import jet.framework.nuts.desktop.JetDesktop;
 import jet.lifecycle.annotations.Deinitializer;
 import jet.lifecycle.interfaces.LifeCycleState;
 import jet.shareplot.ac.bo.portfolio.Portfolio;
+import jet.shareplot.ac.bo.share.Share;
+import jet.shareplot.ac.bo.share.ShareBOApplicationComponent;
+import jet.shareplot.ac.bo.sharequantity.ShareQuantity;
+import jet.shareplot.ac.bo.sharequantity.ShareQuantityBOApplicationComponent;
+import jet.shareplot.ac.bo.sharevalue.ShareValue;
+import jet.shareplot.ac.bo.sharevalue.ShareValueBOApplicationComponent;
 import jet.util.SerializableKey;
 import jet.util.logger.JETLevel;
 import jet.util.throwable.JETException;
@@ -98,12 +105,49 @@ public class PortfolioShareBOApplicationComponent extends SimpleApplicationCompo
         getSession().removeProperty(SESSION_KEY);
     }
 
+    /**
+     * Get all share linked with the given portfolio.
+     * 
+     * @param portfolio
+     * @return List of Portfolio share
+     */
     @Nonnull
-    public List<PortfolioShare> getPortfolioShares(@Nullable final Portfolio portfolio) {
+    public final List<PortfolioShare> getPortfolioShares(@Nullable final Portfolio portfolio) {
         final List<PortfolioShare> result = new ArrayList<>();
 
         if (portfolio != null) {
+            try {
+                final ShareQuantityBOApplicationComponent shareQAC = ShareQuantityBOApplicationComponent.getInstance(getSession());
+                final Long idPortfolio = portfolio.getIdPortfolio();
+                final List<ShareQuantity> shareQuantities = shareQAC.getPortfolioShareQuantitys(idPortfolio);
+                final PortfolioShareBOApplicationComponent portfolioShareAC = PortfolioShareBOApplicationComponent.getInstance(getSession());
+                final ShareBOApplicationComponent shareAC = ShareBOApplicationComponent.getInstance(getSession());
+                final ShareValueBOApplicationComponent shareVAC = ShareValueBOApplicationComponent.getInstance(getSession());
+                final Date today = new Date();
+                for (final ShareQuantity shareQuantity : shareQuantities) {
+                    assert shareQuantity != null;
+                    final Long idShare = shareQuantity.getIdShare();
+                    assert idShare != null : "It should not be possible.";
+                    final Share share = shareAC.getShare(idShare);
+                    assert share != null : "It should not be possible.";
+                    final ShareValue shareValue = shareVAC.getValueAtDate(share, today);
+                    if (shareValue != null) {
+                        final PortfolioShare portfolioShare = new PortfolioShare(portfolioShareAC);
+                        portfolioShare.setPortfolioName(portfolio.getName());
+                        portfolioShare.setIdPortfolio(idPortfolio);
+                        portfolioShare.setChangeQuantity(shareQuantity.getChangeQuantity());
+                        portfolioShare.setIdShare(idShare);
+                        portfolioShare.setShareName(share.getName());
+                        portfolioShare.setValue(shareValue.getValue());
+                        portfolioShare.setValueDate(shareQuantity.getValueDate());
+                        portfolioShare.setIdShareQuantity(shareQuantity.getIdShareQuantity());
+                        result.add(portfolioShare);
+                    }
+                }
 
+            } catch (final JETException e) {
+                getLogger().logp(JETLevel.SEVERE, "PortfolioShareBOApplicationComponent", "getPortfolioShares", e.getMessage(), e);
+            }
         }
 
         return result;

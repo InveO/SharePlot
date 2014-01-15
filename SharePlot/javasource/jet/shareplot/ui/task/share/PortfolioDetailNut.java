@@ -171,19 +171,30 @@ public class PortfolioDetailNut extends AbstractSharePlotDataItemListNut<Portfol
     @Override
     protected PortfolioShare saveItem(@Nonnull final PortfolioShare item) throws FormatedJetException {
 
-        final ShareQuantity shareQuantity = new ShareQuantity(AnnotationsHelper.assertNonNull(this.shareQuantityAC));
+        try {
+            ShareQuantity shareQuantity = null;
+            final Long idShareQuantity = item.getIdShareQuantity();
+            if (idShareQuantity == null) {
+                shareQuantity = new ShareQuantity(AnnotationsHelper.assertNonNull(this.shareQuantityAC));
+            } else {
+                final ShareQuantityBOApplicationComponent shareQAC = ShareQuantityBOApplicationComponent.getInstance(getSession());
+                shareQuantity = shareQAC.getShareQuantity(idShareQuantity);
+                assert shareQuantity != null : "It should not be possible.";
+            }
+            shareQuantity.setChangeFee(BigDecimal.ZERO);
+            shareQuantity.setChangeQuantity(item.getChangeQuantity());
+            shareQuantity.setChangeType(ChangeType.PURCHASE.getCode());
+            shareQuantity.setChangeValue(BigDecimal.ZERO);
+            shareQuantity.setDescription(null);
+            shareQuantity.setIdPortfolio(item.getIdPortfolio());
+            shareQuantity.setIdShare(item.getIdShare());
+            shareQuantity.setValueDate(item.getValueDate());
 
-        shareQuantity.setChangeFee(BigDecimal.ZERO);
-        shareQuantity.setChangeQuantity(item.getChangeQuantity());
-        shareQuantity.setChangeType(ChangeType.PURCHASE.getCode());
-        shareQuantity.setChangeValue(BigDecimal.ZERO);
-        shareQuantity.setDescription(null);
-        shareQuantity.setIdPortfolio(item.getIdPortfolio());
-        shareQuantity.setIdShare(item.getIdShare());
-        shareQuantity.setValueDate(item.getValueDate());
+            shareQuantity.save();
 
-        shareQuantity.save();
-
+        } catch (final JETException e) {
+            logp(JETLevel.SEVERE, "PortfolioDetailNut", "saveItem", e.getMessage(), e);
+        }
         return item;
     }
 }

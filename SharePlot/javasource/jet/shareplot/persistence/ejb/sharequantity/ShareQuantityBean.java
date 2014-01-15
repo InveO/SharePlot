@@ -391,6 +391,18 @@ public final class ShareQuantityBean implements EntityBean {
     /**
      * Finder method.
      *
+     * @param idPortfolio Long value for finder argument idPortfolio
+     * @return Collection of records
+     * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
+     */
+    @SuppressWarnings("hiding")
+    public Collection<ShareQuantityRemote> ejbFindByPortfolio(final Long idPortfolio) throws FinderException {
+        return null;
+    }
+
+    /**
+     * Finder method.
+     *
      * @param sqlWhereClause String value for finder argument sqlWhereClause
      * @param sqlArguments Object[] value for finder argument sqlArguments
      * @return Collection of records

@@ -139,5 +139,4 @@ public class ShareValueBOApplicationComponent extends AbstractShareValueBOApplic
 
         return getShareValue(finder);
     }
-
 }

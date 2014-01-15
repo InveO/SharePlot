@@ -8,6 +8,11 @@
         <USEDFIELD name="valueDate" />
         <FINDERBODY type="sql" sql_string="where idPortfolio = ? and idShare = ? order by valueDate asc" buffersize="-1" />
     </FINDER>
+    <FINDER name="findByPortfolio">
+        <INPUT name="idPortfolio" type="Long" db_field="idPortfolio" />
+        <USEDFIELD name="valueDate" />
+        <FINDERBODY type="sql" sql_string="where idPortfolio = ? order by valueDate asc" buffersize="-1" />
+    </FINDER>
     <FINDER name="findByDirectSQLQuery">
         <INPUT name="sqlWhereClause" type="String" />
         <FINDERBODY type="sql" sql_string="where $$$_SQL" buffersize="-1" />

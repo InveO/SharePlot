@@ -1,10 +1,12 @@
 package jet.shareplot.ac.bo.sharequantity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.session.interfaces.Session;
@@ -12,6 +14,8 @@ import jet.framework.nuts.desktop.JetDesktop;
 import jet.framework.nuts.select.FinderMethod;
 import jet.lifecycle.annotations.Deinitializer;
 import jet.lifecycle.interfaces.LifeCycleState;
+import jet.shareplot.persistence.finder.sharequantity.ShareQuantity_FindByPortfolio1;
+import jet.shareplot.persistence.finder.sharequantity.ShareQuantity_FindByPrimaryKey1;
 import jet.shareplot.persistence.finder.sharequantity.ShareQuantity_FindByShareAndPortfolio2;
 import jet.util.SerializableKey;
 import jet.util.logger.JETLevel;
@@ -121,4 +125,34 @@ public class ShareQuantityBOApplicationComponent extends AbstractShareQuantityBO
         return getShareQuantitys(finder);
     }
 
+    /**
+     * Get all quantities for a given portfolio.
+     * 
+     * @param idPortfolio
+     * @return list of quantities.
+     */
+    @Nonnull
+    public final List<ShareQuantity> getPortfolioShareQuantitys(@Nullable final Long idPortfolio) {
+        List<ShareQuantity> result = new ArrayList<>();
+
+        if (idPortfolio != null) {
+            final ShareQuantity_FindByPortfolio1 finder = new ShareQuantity_FindByPortfolio1();
+            finder.setIdPortfolio(idPortfolio);
+            result = getShareQuantitys(finder);
+        }
+        return result;
+    }
+
+    /**
+     * Get ShareQuantity by primary key.
+     * 
+     * @param idShareQuantity
+     * @return ShareQuantity
+     */
+    @Nullable
+    public final ShareQuantity getShareQuantity(@Nonnull final Long idShareQuantity) {
+        final ShareQuantity_FindByPrimaryKey1 finder = new ShareQuantity_FindByPrimaryKey1();
+        finder.setIdShareQuantity(idShareQuantity);
+        return getShareQuantity(finder);
+    }
 }
