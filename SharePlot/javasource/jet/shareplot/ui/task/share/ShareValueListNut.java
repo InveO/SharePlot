@@ -111,9 +111,10 @@ public class ShareValueListNut extends AbstractSharePlotListNut<ShareValue> impl
     private void processImport() {
         try {
             final DownloadContext dc = (DownloadContext) getManagerContext(DownloadContext.NAME);
-            this.byteArrayMultiFileReceiver = new ByteArrayMultiFileReceiver(getLogger());
+            final ByteArrayMultiFileReceiver fileReceiver = new ByteArrayMultiFileReceiver(getLogger());
+            this.byteArrayMultiFileReceiver = fileReceiver;
             this.byteArrayMultiFileReceiver.addByteArrayMultiFileReceiverListener(this);
-            dc.startUpload(this.byteArrayMultiFileReceiver, 1);
+            dc.startUpload(fileReceiver, 1);
         } catch (final JETException e) {
             logp(JETLevel.SEVERE, "ShareValueListNut", "processImport", e.getMessage(), e);
         }

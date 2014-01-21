@@ -13,6 +13,7 @@ import jet.container.managers.session.interfaces.SessionManagerContext;
 import jet.container.managers.ui.interfaces.UIComponentFinder;
 import jet.container.nuts.ui.UIAnchorService;
 import jet.framework.component.SelectStoreProvider;
+import jet.framework.manager.batchsession.common.BatchSessionManagerLoginRequest;
 import jet.framework.manager.batchsession.common.BatchSessionManagerLoginResponse;
 import jet.framework.manager.batchsession.common.BatchSessionManagerRequest;
 import jet.framework.manager.batchsession.interfaces.BatchSessionManagerContext;
@@ -129,7 +130,7 @@ public class SharePlotDesktopNut extends AbstractDesktopNut implements DesktopMe
         System.err.println("[SharePlotDesktopNut] startBatchSession - STARTING BATCH SESSION");
         try {
             final BatchSessionManagerContext batchSessionCtxt = (BatchSessionManagerContext) getManagerContext(BatchSessionManagerContext.NAME);
-            final BatchSessionManagerLoginResponse loginResponse = batchSessionCtxt.createBatchSession("SharePlotBatch", null);
+            final BatchSessionManagerLoginResponse loginResponse = batchSessionCtxt.createBatchSession("SharePlotBatch", new BatchSessionManagerLoginRequest(null));
 
             final GlobalSession session = loginResponse.getGlobalSession();
             final String sessionId = session.getGlobalId();
