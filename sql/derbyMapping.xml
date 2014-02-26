@@ -21,6 +21,7 @@
                 <COLUMN name="description" localname="DESCRIPTION" />
                 <COLUMN name="idPortfolio" localname="ID_PORTFOLIO" />
                 <COLUMN name="idShare" localname="ID_SHARE" />
+                <COLUMN name="totalQuantity" localname="TOTAL_QUANTITY" />
                 <COLUMN name="valueDate" localname="VALUE_DATE" />
             </TABLE>
             <TABLE name="ShareValue" localname="SHARE_VALUE" >

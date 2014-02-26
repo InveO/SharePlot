@@ -51,6 +51,7 @@
         <COLUMN paramName="changeValue" type="java.math.BigDecimal" name="changeValue" localname="changeValue" dbtype="DECIMAL" length="12" noOfDecimal="2" nullable="false" autoIncrement="false" default="" />
         <COLUMN paramName="changeFee" type="java.math.BigDecimal" name="changeFee" localname="changeFee" dbtype="DECIMAL" length="12" noOfDecimal="2" nullable="false" autoIncrement="false" default="" />
         <COLUMN paramName="changeQuantity" type="java.math.BigDecimal" name="changeQuantity" localname="changeQuantity" dbtype="DECIMAL" length="12" noOfDecimal="2" nullable="false" autoIncrement="false" default="" />
+        <COLUMN paramName="totalQuantity" type="java.math.BigDecimal" name="totalQuantity" localname="totalQuantity" dbtype="DECIMAL" length="12" noOfDecimal="2" nullable="true" autoIncrement="false" default="" />
 
         <!-- PRIMARYKEY : identifies the columns to use as primary key -->
         <PRIMARYKEY>

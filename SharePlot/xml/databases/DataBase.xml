@@ -26,6 +26,7 @@
         <COLUMN name="description" localname="description" dbtype="VARCHAR"/>
         <COLUMN name="idPortfolio" localname="idPortfolio" dbtype="INTEGER"/>
         <COLUMN name="idShare" localname="idShare" dbtype="INTEGER"/>
+        <COLUMN name="totalQuantity" localname="totalQuantity" dbtype="DECIMAL"/>
         <COLUMN name="valueDate" localname="valueDate" dbtype="DATE"/>
     </TABLE>
     <TABLE name="ShareValue" localname="ShareValue">

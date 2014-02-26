@@ -35,7 +35,7 @@ import jet.util.throwable.JETException;
  */
 abstract class AbstractShareQuantityBOApplicationComponent extends SimpleApplicationComponent {
 
-    private static final long serialVersionUID = 2027097663L;
+    private static final long serialVersionUID = 1612007130L;
 
     private TransactionManager transactionManager;
 
