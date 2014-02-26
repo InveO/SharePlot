@@ -51,6 +51,7 @@ public class ShareQuantity_JUnitTest {
         assertNull(shareQuantity.getDescription());
         assertNull(shareQuantity.getIdPortfolio());
         assertNull(shareQuantity.getIdShare());
+        assertNull(shareQuantity.getTotalQuantity());
         assertNull(shareQuantity.getValueDate());
 
         assertTrue(shareQuantity.isNotNullableNull());
@@ -67,6 +68,7 @@ public class ShareQuantity_JUnitTest {
         assertNotNull(shareQuantity.get_Description_Model());
         assertNotNull(shareQuantity.get_IdPortfolio_Model());
         assertNotNull(shareQuantity.get_IdShare_Model());
+        assertNotNull(shareQuantity.get_TotalQuantity_Model());
         assertNotNull(shareQuantity.get_ValueDate_Model());
 
         assertNotNull(shareQuantity.get_Model());
@@ -107,6 +109,7 @@ public class ShareQuantity_JUnitTest {
         item.setDescription("description");
         item.setIdPortfolio(Long.valueOf(1));
         item.setIdShare(Long.valueOf(1));
+        item.setTotalQuantity(java.math.BigDecimal.valueOf(1));
         item.setValueDate(new java.util.Date());
 
         // act : run the test
@@ -123,6 +126,7 @@ public class ShareQuantity_JUnitTest {
         assertEquals(shareQuantity.getDescription(), "description");
         assertEquals(shareQuantity.getIdPortfolio(), Long.valueOf(1));
         assertEquals(shareQuantity.getIdShare(), Long.valueOf(1));
+        assertEquals(shareQuantity.getTotalQuantity(), java.math.BigDecimal.valueOf(1));
         assertNotNull(shareQuantity.getValueDate());
     }
 
@@ -161,6 +165,7 @@ public class ShareQuantity_JUnitTest {
         item.setDescription("description");
         item.setIdPortfolio(Long.valueOf(1));
         item.setIdShare(Long.valueOf(1));
+        item.setTotalQuantity(java.math.BigDecimal.valueOf(1));
         item.setValueDate(new java.util.Date());
 
         // act : run the test
@@ -177,6 +182,7 @@ public class ShareQuantity_JUnitTest {
         assertEquals(shareQuantity.getDescription(), "description");
         assertEquals(shareQuantity.getIdPortfolio(), Long.valueOf(1));
         assertEquals(shareQuantity.getIdShare(), Long.valueOf(1));
+        assertEquals(shareQuantity.getTotalQuantity(), java.math.BigDecimal.valueOf(1));
         assertNotNull(shareQuantity.getValueDate());
     }
 

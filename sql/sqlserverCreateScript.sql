@@ -61,6 +61,7 @@ CREATE TABLE [dbo].[ShareQuantity](
   [description] [VARCHAR](1000) NULL DEFAULT NULL  ,
   [idPortfolio] [INTEGER]  NOT NULL  ,
   [idShare] [INTEGER]  NOT NULL  ,
+  [totalQuantity] [DECIMAL](12) NULL DEFAULT NULL  ,
   [valueDate] [datetime]  NOT NULL  ,
  CONSTRAINT [PK_ShareQuantity] PRIMARY KEY NONCLUSTERED 
 (

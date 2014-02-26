@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `SharePlot`.`ShareQuantity` (
   `description` VARCHAR(1000) NULL DEFAULT NULL  ,
   `idPortfolio` INTEGER(10)  NOT NULL  ,
   `idShare` INTEGER(10)  NOT NULL  ,
+  `totalQuantity` DECIMAL(12) NULL DEFAULT NULL  ,
   `valueDate` DATE  NOT NULL  ,
   PRIMARY KEY ( `idShareQuantity`),
   INDEX `fk_ShareQuantity_Portfolio` (`idPortfolio` ASC) ,

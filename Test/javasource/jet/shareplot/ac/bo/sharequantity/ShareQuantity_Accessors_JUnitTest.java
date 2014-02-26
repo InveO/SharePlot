@@ -314,6 +314,46 @@ public class ShareQuantity_Accessors_JUnitTest {
     }
 
     /**
+     * getTotalQuantity with an new shareQuantity
+     */
+    @org.junit.Test
+    public void testGetTotalQuantity() {
+        // arrange : set up the test
+        final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
+        assert shareQuantityAC != null;
+
+        final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
+
+        // act : run the test
+        final java.math.BigDecimal result = shareQuantity.getTotalQuantity();
+
+        // assert : verify that the test run correctly
+        assertNull(result);
+    }
+
+    /**
+     * setTotalQuantity with an new shareQuantity
+     */
+    @org.junit.Test
+    public void testSetTotalQuantity() {
+        // arrange : set up the test
+        final ShareQuantityBOApplicationComponent shareQuantityAC = mock(ShareQuantityBOApplicationComponent.class);
+        assert shareQuantityAC != null;
+
+        final ShareQuantity shareQuantity = new ShareQuantity(shareQuantityAC);
+
+        // act : run the test
+        // TODO set proper expected value
+        final java.math.BigDecimal expectedValue = null;
+        shareQuantity.setTotalQuantity(expectedValue);
+        final java.math.BigDecimal result = shareQuantity.getTotalQuantity();
+
+        // assert : verify that the test run correctly
+        assertEquals(expectedValue, result);
+        // TODO add extra validations
+    }
+
+    /**
      * getValueDate with an new shareQuantity
      */
     @org.junit.Test

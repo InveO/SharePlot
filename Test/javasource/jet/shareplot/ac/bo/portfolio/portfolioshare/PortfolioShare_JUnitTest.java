@@ -49,6 +49,7 @@ public class PortfolioShare_JUnitTest {
         assertNull(portfolioShare.getChangeQuantity());
         assertNull(portfolioShare.getPortfolioName());
         assertNull(portfolioShare.getShareName());
+        assertNull(portfolioShare.getValue());
         assertNull(portfolioShare.getValueDate());
 
         assertTrue(portfolioShare.isNotNullableNull());
@@ -59,6 +60,7 @@ public class PortfolioShare_JUnitTest {
         assertNotNull(portfolioShare.get_ChangeQuantity_Model());
         assertNotNull(portfolioShare.get_PortfolioName_Model());
         assertNotNull(portfolioShare.get_ShareName_Model());
+        assertNotNull(portfolioShare.get_Value_Model());
         assertNotNull(portfolioShare.get_ValueDate_Model());
 
         assertNotNull(portfolioShare.get_Model());
@@ -97,6 +99,7 @@ public class PortfolioShare_JUnitTest {
         item.setChangeQuantity(java.math.BigDecimal.valueOf(1));
         item.setPortfolioName("portfolioName");
         item.setShareName("shareName");
+        item.setValue(java.math.BigDecimal.valueOf(1));
         item.setValueDate(new java.util.Date());
 
         // act : run the test
@@ -111,6 +114,7 @@ public class PortfolioShare_JUnitTest {
         assertEquals(portfolioShare.getChangeQuantity(), java.math.BigDecimal.valueOf(1));
         assertEquals(portfolioShare.getPortfolioName(), "portfolioName");
         assertEquals(portfolioShare.getShareName(), "shareName");
+        assertEquals(portfolioShare.getValue(), java.math.BigDecimal.valueOf(1));
         assertNotNull(portfolioShare.getValueDate());
     }
 
@@ -147,6 +151,7 @@ public class PortfolioShare_JUnitTest {
         item.setChangeQuantity(java.math.BigDecimal.valueOf(1));
         item.setPortfolioName("portfolioName");
         item.setShareName("shareName");
+        item.setValue(java.math.BigDecimal.valueOf(1));
         item.setValueDate(new java.util.Date());
 
         // act : run the test
@@ -161,6 +166,7 @@ public class PortfolioShare_JUnitTest {
         assertEquals(portfolioShare.getChangeQuantity(), java.math.BigDecimal.valueOf(1));
         assertEquals(portfolioShare.getPortfolioName(), "portfolioName");
         assertEquals(portfolioShare.getShareName(), "shareName");
+        assertEquals(portfolioShare.getValue(), java.math.BigDecimal.valueOf(1));
         assertNotNull(portfolioShare.getValueDate());
     }
 
@@ -195,6 +201,7 @@ public class PortfolioShare_JUnitTest {
         portfolioShare.setChangeQuantity(java.math.BigDecimal.valueOf(1));
         portfolioShare.setPortfolioName("portfolioName");
         portfolioShare.setShareName("shareName");
+        portfolioShare.setValue(java.math.BigDecimal.valueOf(1));
         portfolioShare.setValueDate(new java.util.Date());
 
         // act : run the test

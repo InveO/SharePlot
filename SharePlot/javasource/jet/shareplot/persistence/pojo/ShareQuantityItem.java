@@ -30,7 +30,7 @@ import jet.util.throwable.JETSystemError;
 @SuppressWarnings("PMD.MethodNamingConventions")
 public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, JFDataItem {
 
-    private static final long serialVersionUID = 2027097663L;
+    private static final long serialVersionUID = 1612007130L;
 
     private static final String ATTRIBUTE_DISPATCHER_MODEL = "jet.shareplot.persistence.pojo.ATTRIBUTE_DISPATCHER_MODEL";
 
@@ -45,6 +45,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     private transient DispatcherModel<ShareQuantityItem> descriptionDispatcherModel;
     private transient DispatcherModel<ShareQuantityItem> idPortfolioDispatcherModel;
     private transient DispatcherModel<ShareQuantityItem> idShareDispatcherModel;
+    private transient DispatcherModel<ShareQuantityItem> totalQuantityDispatcherModel;
     private transient DispatcherModel<ShareQuantityItem> valueDateDispatcherModel;
 
     private transient JFErrorHandler jfErrorHandler;
@@ -78,6 +79,8 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("idShare");
         this.dataModel.appendChild(model);
+        model = new SimpleEventModelImpl("totalQuantity");
+        this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("valueDate");
         this.dataModel.appendChild(model);
     }
@@ -107,6 +110,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
         setDescription(shareQuantity.getDescription());
         setIdPortfolio(shareQuantity.getIdPortfolio());
         setIdShare(shareQuantity.getIdShare());
+        setTotalQuantity(shareQuantity.getTotalQuantity());
         setValueDate(shareQuantity.getValueDate());
     }
 
@@ -541,6 +545,50 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
             }
         }
         final DispatcherModel<ShareQuantityItem> dm = this.idShareDispatcherModel;
+        assert dm != null;
+        return dm;
+    }
+
+    /**
+     * Get node value of Data Model node totalQuantity.
+     *
+     * @return java.math.BigDecimal value of Data Model node totalQuantity
+     */
+    public final java.math.BigDecimal getTotalQuantity() {
+        return (java.math.BigDecimal) get_TotalQuantity_Model().getNodeValue();
+    }
+
+    /**
+     * Set node value of Data Model node totalQuantity.
+     *
+     * @param totalQuantity java.math.BigDecimal value of Data Model node totalQuantity
+     */
+    public final void setTotalQuantity(final java.math.BigDecimal totalQuantity) {
+        get_TotalQuantity_Model().setNodeValue(totalQuantity);
+    }
+
+    /**
+     * Get Model of Data Model node totalQuantity.
+     *
+     * @return Model of Data Model node totalQuantity
+     */
+    @SuppressWarnings("unchecked")
+    @Nonnull
+    public final DispatcherModel<ShareQuantityItem> get_TotalQuantity_Model() {
+        if (this.totalQuantityDispatcherModel == null) {
+            try {
+                final Model sourceModel = ModelHelper.getChildNode(get_Model(), "totalQuantity");
+                this.totalQuantityDispatcherModel = (DispatcherModel<ShareQuantityItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
+                if (this.totalQuantityDispatcherModel == null) {
+                    this.totalQuantityDispatcherModel = new DispatcherModel<ShareQuantityItem>(this, sourceModel);
+                    sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.totalQuantityDispatcherModel);
+                    sourceModel.setAttribute(DispatcherModel.DISPATCHER_MODEL_ATTRIBUTE, this.totalQuantityDispatcherModel);
+                }
+            } catch (final JETException e) {
+                throw new JETSystemError("ShareQuantity data model does not have a child named totalQuantity. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+            }
+        }
+        final DispatcherModel<ShareQuantityItem> dm = this.totalQuantityDispatcherModel;
         assert dm != null;
         return dm;
     }

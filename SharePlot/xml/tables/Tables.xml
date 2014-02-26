@@ -32,6 +32,7 @@
         <COLUMN name="description" type="String" length="1000" nullable="true" autoincrement="false" />
         <COLUMN name="idPortfolio" type="Long" length="10" nullable="false" autoincrement="false" />
         <COLUMN name="idShare" type="Long" length="10" nullable="false" autoincrement="false" />
+        <COLUMN name="totalQuantity" type="java.math.BigDecimal" length="12" nullable="true" autoincrement="false" />
         <COLUMN name="valueDate" type="java.util.Date" length="10" nullable="false" autoincrement="false" />
         <PRIMARYKEY>
             <KEYITEM component="idShareQuantity"/>
