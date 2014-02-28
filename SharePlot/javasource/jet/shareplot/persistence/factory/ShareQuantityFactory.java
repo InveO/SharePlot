@@ -23,7 +23,7 @@ import jet.util.throwable.JETException;
 @SuppressWarnings("PMD.MethodNamingConventions")
 public final class ShareQuantityFactory implements Serializable {
 
-    private static final long serialVersionUID = 2027097663L;
+    private static final long serialVersionUID = 1612007130L;
     private static volatile Logger logger;
 
     private ShareQuantityFactory() {
@@ -103,6 +103,14 @@ public final class ShareQuantityFactory implements Serializable {
             sValue = ModelHelper.getChildNodeValueAsString(untypedModel, "idShare");
             if (sValue != null) {
                 item.setIdShare(Long.valueOf(sValue));
+            }
+        } catch (final JETException e) {
+            getLogger().logp(JETLevel.INFO, "ShareQuantityItem", "getFromUntypedModel", e.getMessage(), e);
+        }
+        try {
+            sValue = ModelHelper.getChildNodeValueAsString(untypedModel, "totalQuantity");
+            if (sValue != null) {
+                item.setTotalQuantity(new java.math.BigDecimal(sValue));
             }
         } catch (final JETException e) {
             getLogger().logp(JETLevel.INFO, "ShareQuantityItem", "getFromUntypedModel", e.getMessage(), e);

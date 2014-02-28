@@ -19,7 +19,7 @@ import jet.util.throwable.JETException;
  */
 public final class ShareQuantityDMC implements DataModelConverter2<ShareQuantityRemote> {
 
-    private static final long serialVersionUID = 2027097663L;
+    private static final long serialVersionUID = 1612007130L;
 
     /**
      * Default constructor.
@@ -43,6 +43,7 @@ public final class ShareQuantityDMC implements DataModelConverter2<ShareQuantity
             shareQuantityItem.get_Description_Model().setNodeValue(shareQuantityRemote.getDescription());
             shareQuantityItem.get_IdPortfolio_Model().setNodeValue(shareQuantityRemote.getIdPortfolio());
             shareQuantityItem.get_IdShare_Model().setNodeValue(shareQuantityRemote.getIdShare());
+            shareQuantityItem.get_TotalQuantity_Model().setNodeValue(shareQuantityRemote.getTotalQuantity());
             shareQuantityItem.get_ValueDate_Model().setNodeValue(shareQuantityRemote.getValueDate());
         } catch (final EJBException e) {
             throw new JETException("EJBException while reading from ShareQuantityRemote.", e);
@@ -72,6 +73,7 @@ public final class ShareQuantityDMC implements DataModelConverter2<ShareQuantity
             shareQuantityRemote.setDescription(shareQuantityItem.getDescription());
             shareQuantityRemote.setIdPortfolio(shareQuantityItem.getIdPortfolio());
             shareQuantityRemote.setIdShare(shareQuantityItem.getIdShare());
+            shareQuantityRemote.setTotalQuantity(shareQuantityItem.getTotalQuantity());
             shareQuantityRemote.setValueDate(shareQuantityItem.getValueDate());
         } catch (final EJBException e) {
             throw new JETException("EJBException while writing to ShareQuantityRemote.", e);

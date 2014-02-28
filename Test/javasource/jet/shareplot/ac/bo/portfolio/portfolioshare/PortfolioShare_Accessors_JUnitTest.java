@@ -221,6 +221,46 @@ public class PortfolioShare_Accessors_JUnitTest {
     }
 
     /**
+     * getValue with an new portfolioShare
+     */
+    @org.junit.Test
+    public void testGetValue() {
+        // arrange : set up the test
+        final PortfolioShareBOApplicationComponent portfolioShareAC = mock(PortfolioShareBOApplicationComponent.class);
+        assert portfolioShareAC != null;
+
+        final PortfolioShare portfolioShare = new PortfolioShare(portfolioShareAC);
+
+        // act : run the test
+        final java.math.BigDecimal result = portfolioShare.getValue();
+
+        // assert : verify that the test run correctly
+        assertNull(result);
+    }
+
+    /**
+     * setValue with an new portfolioShare
+     */
+    @org.junit.Test
+    public void testSetValue() {
+        // arrange : set up the test
+        final PortfolioShareBOApplicationComponent portfolioShareAC = mock(PortfolioShareBOApplicationComponent.class);
+        assert portfolioShareAC != null;
+
+        final PortfolioShare portfolioShare = new PortfolioShare(portfolioShareAC);
+
+        // act : run the test
+        // TODO set proper expected value
+        final java.math.BigDecimal expectedValue = null;
+        portfolioShare.setValue(expectedValue);
+        final java.math.BigDecimal result = portfolioShare.getValue();
+
+        // assert : verify that the test run correctly
+        assertEquals(expectedValue, result);
+        // TODO add extra validations
+    }
+
+    /**
      * getValueDate with an new portfolioShare
      */
     @org.junit.Test

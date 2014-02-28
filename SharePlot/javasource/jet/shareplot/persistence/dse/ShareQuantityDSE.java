@@ -28,7 +28,7 @@ import jet.util.throwable.JETException;
  */
 public final class ShareQuantityDSE extends AbstractDataSourceExecutor2<ShareQuantityHome, ShareQuantityRemote> {
 
-    private static final long serialVersionUID = 2027097663L;
+    private static final long serialVersionUID = 1612007130L;
     private transient ShareQuantityHome ejbHome;
     private transient DataModelConverter2<ShareQuantityRemote> dataModelConverter;
 
@@ -60,7 +60,7 @@ public final class ShareQuantityDSE extends AbstractDataSourceExecutor2<ShareQua
                 final ShareQuantityItem shareQuantityItem = new ShareQuantityItem(dataModel);
 
                 final ShareQuantityHome shareQuantityHome = getEJBHome();
-                final ShareQuantityRemote shareQuantityRemote = shareQuantityHome.create(shareQuantityItem.getIdShareQuantity(), shareQuantityItem.getChangeFee(), shareQuantityItem.getChangeQuantity(), shareQuantityItem.getChangeType(), shareQuantityItem.getChangeValue(), shareQuantityItem.getDescription(), shareQuantityItem.getIdPortfolio(), shareQuantityItem.getIdShare(), shareQuantityItem.getValueDate());
+                final ShareQuantityRemote shareQuantityRemote = shareQuantityHome.create(shareQuantityItem.getIdShareQuantity(), shareQuantityItem.getChangeFee(), shareQuantityItem.getChangeQuantity(), shareQuantityItem.getChangeType(), shareQuantityItem.getChangeValue(), shareQuantityItem.getDescription(), shareQuantityItem.getIdPortfolio(), shareQuantityItem.getIdShare(), shareQuantityItem.getTotalQuantity(), shareQuantityItem.getValueDate());
 
                 // has autoincrement PK, must update
                 shareQuantityItem.get_IdShareQuantity_Model().setNodeValue(shareQuantityRemote.getIdShareQuantity());

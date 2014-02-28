@@ -98,6 +98,10 @@
                 <field-name>idShare</field-name>
             </cmp-field>
             <cmp-field>
+                <description> Desc for totalQuantity</description>
+                <field-name>totalQuantity</field-name>
+            </cmp-field>
+            <cmp-field>
                 <description> Desc for valueDate</description>
                 <field-name>valueDate</field-name>
             </cmp-field>
