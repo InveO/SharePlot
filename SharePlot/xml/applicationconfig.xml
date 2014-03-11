@@ -1,9 +1,5 @@
 <APPLICATION name="SharePlot" depends="JetFramework" initialApplicationComponentName="SharePlotDesktop" >
 
-    <RENDERING_MODES>
-        <RENDERING_MODE value="AJAX" />
-    </RENDERING_MODES>
-
     <CLASSLOADER>
         <CLASSPATH value="SharePlot.jar" />
         <CLASSPATH value="SharePlot-JET.jar" />
@@ -11,7 +7,7 @@
         <CLASSPATH value="SharePlot-ejb-bean.jar" />
         <CLASSPATH value="SharePlot-ejb-interface.jar" />
     </CLASSLOADER>
-    
+
     <PERSISTENCE>
         <DATABASES>
             <GENERIC_STRUCTURE ref="SharePlot/xml/tables/Tables.xml"/>
@@ -23,5 +19,5 @@
             <EJB_TO_DB_MAP ref="META-INF/EnterpriseServer.xml"/>
         </EJBS>
     </PERSISTENCE>
-    
+
 </APPLICATION>

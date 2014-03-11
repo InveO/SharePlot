@@ -8,6 +8,16 @@
         <USEDFIELD name="valueDate" />
         <FINDERBODY type="sql" sql_string="where idPortfolio = ? and idShare = ? order by valueDate asc" buffersize="-1" />
     </FINDER>
+    <FINDER name="findByShareAndPortfolioLimit">
+        <INPUT name="idPortfolio" type="Long" db_field="idPortfolio" />
+        <INPUT name="idShare" type="Long" db_field="idShare" />
+        <USEDFIELD name="valueDate" />
+        <FINDERBODY type="sql" sql_string="where idPortfolio = ? and idShare = ? order by valueDate desc limit 1" buffersize="-1" />
+    </FINDER>
+    <FINDER name="findByPortfolio">
+        <INPUT name="idPortfolio" type="Long" db_field="idPortfolio" />
+        <FINDERBODY type="sql" sql_string="where idPortfolio = ?" buffersize="-1" />
+    </FINDER>
     <FINDER name="findByDirectSQLQuery">
         <INPUT name="sqlWhereClause" type="String" />
         <FINDERBODY type="sql" sql_string="where $$$_SQL" buffersize="-1" />

@@ -109,7 +109,7 @@ public class ShareBOApplicationComponent extends AbstractShareBOApplicationCompo
      * @return The share, <code>null</code> if there is no share with that id
      */
     @Nullable
-    public Share getShare(@Nonnull final Long idShare) {
+    public final Share getShare(@Nonnull final Long idShare) {
         final Share_FindByPrimaryKey1 finder = new Share_FindByPrimaryKey1();
         finder.setIdShare(idShare);
 
