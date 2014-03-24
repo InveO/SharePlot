@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.session.interfaces.Session;
@@ -13,6 +14,7 @@ import jet.framework.nuts.select.FinderMethod;
 import jet.lifecycle.annotations.Deinitializer;
 import jet.lifecycle.interfaces.LifeCycleState;
 import jet.shareplot.persistence.finder.sharequantity.ShareQuantity_FindByShareAndPortfolio2;
+import jet.shareplot.persistence.finder.sharequantity.ShareQuantity_FindByShareAndPortfolioLimit2;
 import jet.util.SerializableKey;
 import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Model;
@@ -113,7 +115,8 @@ public class ShareQuantityBOApplicationComponent extends AbstractShareQuantityBO
      * @see ShareQuantity
      * @see #getShareQuantitys(FinderMethod finder)
      */
-    public List<ShareQuantity> getShareQuantitys(@Nonnull final Long idPortfolio, @Nonnull final Long idShare) {
+    @Nonnull
+    public final List<ShareQuantity> getShareQuantitys(@Nonnull final Long idPortfolio, @Nonnull final Long idShare) {
         final ShareQuantity_FindByShareAndPortfolio2 finder = new ShareQuantity_FindByShareAndPortfolio2();
         finder.setIdPortfolio(idPortfolio);
         finder.setIdShare(idShare);
@@ -121,4 +124,20 @@ public class ShareQuantityBOApplicationComponent extends AbstractShareQuantityBO
         return getShareQuantitys(finder);
     }
 
+    /**
+     * Get last quantity for a given share and portfolio.
+     * 
+     * @param idPortfolio Portfolio for which the quantity are desired
+     * @param idShare Share for which the quantity are desired
+     * @return shareQuantity matching the query.
+     * @see ShareQuantity
+     */
+    @Nullable
+    public final ShareQuantity getLastShareQuantitys(@Nonnull final Long idPortfolio, @Nonnull final Long idShare) {
+        final ShareQuantity_FindByShareAndPortfolioLimit2 finder = new ShareQuantity_FindByShareAndPortfolioLimit2();
+        finder.setIdPortfolio(idPortfolio);
+        finder.setIdShare(idShare);
+
+        return getShareQuantity(finder);
+    }
 }

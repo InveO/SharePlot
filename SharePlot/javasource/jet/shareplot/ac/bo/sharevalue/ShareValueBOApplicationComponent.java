@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.session.interfaces.Session;
@@ -13,6 +14,7 @@ import jet.framework.nuts.desktop.JetDesktop;
 import jet.framework.nuts.select.FinderMethod;
 import jet.lifecycle.annotations.Deinitializer;
 import jet.lifecycle.interfaces.LifeCycleState;
+import jet.shareplot.ac.bo.portfolio.Portfolio;
 import jet.shareplot.ac.bo.share.Share;
 import jet.shareplot.persistence.finder.sharevalue.ShareValue_FindByShare1;
 import jet.shareplot.persistence.finder.sharevalue.ShareValue_FindByShareAndDate2;
@@ -132,12 +134,27 @@ public class ShareValueBOApplicationComponent extends AbstractShareValueBOApplic
      * @param valueDate Date at which the value is desired.
      * @return Value at the date or the nearest previous date.
      */
-    public ShareValue getValueAtDate(final Share share, final Date valueDate) {
+    @Nullable
+    public final ShareValue getValueAtDate(@Nonnull final Share share, @Nonnull final Date valueDate) {
         final ShareValue_FindByShareAndDate2 finder = new ShareValue_FindByShareAndDate2();
         finder.setIdShare(share.getIdShare());
         finder.setValueDate(valueDate);
-
         return getShareValue(finder);
     }
 
+    /**
+     * Get the value of the share at a given date. <code>null</code> if there is no value defined at
+     * the given date (or at a previous date).
+     * 
+     * @param share Shared for which the value is to be fetched
+     * @param valueDate Date at which the value is desired.
+     * @return Value at the date or the nearest previous date.
+     */
+    @Nullable
+    public final ShareValue getValueAtDate(@Nonnull final Portfolio portfolio, @Nonnull final Date valueDate) {
+        final ShareValue_FindByShareAndDate2 finder = new ShareValue_FindByShareAndDate2();
+        finder.setIdShare(share.getIdShare());
+        finder.setValueDate(valueDate);
+        return getShareValue(finder);
+    }
 }

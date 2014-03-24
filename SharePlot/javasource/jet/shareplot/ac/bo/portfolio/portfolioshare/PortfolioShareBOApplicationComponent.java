@@ -1,6 +1,7 @@
 package jet.shareplot.ac.bo.portfolio.portfolioshare;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,12 @@ import jet.framework.nuts.desktop.JetDesktop;
 import jet.lifecycle.annotations.Deinitializer;
 import jet.lifecycle.interfaces.LifeCycleState;
 import jet.shareplot.ac.bo.portfolio.Portfolio;
+import jet.shareplot.ac.bo.share.Share;
+import jet.shareplot.ac.bo.share.ShareBOApplicationComponent;
+import jet.shareplot.ac.bo.sharequantity.ShareQuantity;
+import jet.shareplot.ac.bo.sharequantity.ShareQuantityBOApplicationComponent;
+import jet.shareplot.ac.bo.sharevalue.ShareValue;
+import jet.shareplot.ac.bo.sharevalue.ShareValueBOApplicationComponent;
 import jet.util.SerializableKey;
 import jet.util.logger.JETLevel;
 import jet.util.throwable.JETException;
@@ -98,12 +105,46 @@ public class PortfolioShareBOApplicationComponent extends SimpleApplicationCompo
         getSession().removeProperty(SESSION_KEY);
     }
 
+    /**
+     * Get all last share quantities.
+     * 
+     * @param portfolio
+     * @return all last share quantities.
+     */
     @Nonnull
-    public List<PortfolioShare> getPortfolioShares(@Nullable final Portfolio portfolio) {
+    public final List<PortfolioShare> getPortfolioShares(@Nullable final Portfolio portfolio) {
         final List<PortfolioShare> result = new ArrayList<>();
 
-        if (portfolio != null) {
-
+        if (portfolio != null && !portfolio.isNew()) {
+            try {
+                final Long idPortfolio = portfolio.getIdPortfolio();
+                assert idPortfolio != null : "As it is not new, it should not be possible.";
+                final ShareBOApplicationComponent shareBOAC = ShareBOApplicationComponent.getInstance(getSession());
+                final List<Share> shareList = shareBOAC.getShares();
+                final ShareQuantityBOApplicationComponent shareQuantityBOAC = ShareQuantityBOApplicationComponent.getInstance(getSession());
+                final ShareValueBOApplicationComponent shareValueBOAC = ShareValueBOApplicationComponent.getInstance(getSession());
+                for (final Share share : shareList) {
+                    assert share != null;
+                    final Long idShare = share.getIdShare();
+                    assert idShare != null : "It should not be possible.";
+                    final ShareQuantity shareQuantity = shareQuantityBOAC.getLastShareQuantitys(idPortfolio, idShare);
+                    if (shareQuantity != null) {
+                        final ShareValue shareValue = shareValueBOAC.getValueAtDate(share, new Date());
+                        if (shareValue != null) {
+                            final PortfolioShare portfolioShare = new PortfolioShare(this);
+                            portfolioShare.setIdPortfolio(idPortfolio);
+                            portfolioShare.setChangeQuantity(shareQuantity.getChangeQuantity());
+                            portfolioShare.setIdShare(idShare);
+                            portfolioShare.setPortfolioName(portfolio.getName());
+                            portfolioShare.setShareName(share.getName());
+                            portfolioShare.setValueDate(shareQuantity.getValueDate());
+                            result.add(portfolioShare);
+                        }
+                    }
+                }
+            } catch (final JETException e) {
+                logp(JETLevel.SEVERE, "PortfolioShareBOApplicationComponent", "getPortfolioShares", e.getMessage(), e);
+            }
         }
 
         return result;
