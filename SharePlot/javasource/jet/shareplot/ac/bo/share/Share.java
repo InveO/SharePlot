@@ -124,7 +124,7 @@ public class Share extends ShareItem implements JFBusinessItem, JFBusinessErrorH
      * @return Value of the share
      */
     @Nullable
-    public BigDecimal getValueAtDate(@Nullable final Date valueDate) {
+    public BigDecimal getValueAtDate(@Nonnull final Date valueDate) {
         BigDecimal result = null;
         try {
             final ShareValueBOApplicationComponent shareValueAC = ShareValueBOApplicationComponent.getInstance(this.shareAC.getSession());

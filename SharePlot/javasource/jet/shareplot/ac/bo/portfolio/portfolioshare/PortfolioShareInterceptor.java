@@ -94,10 +94,13 @@ public class PortfolioShareInterceptor implements Interceptor {
         if (parameterObject.share != null) {
             shareName = parameterObject.share.getName();
 
-            final BigDecimal shareValue = parameterObject.share.getValueAtDate(parameterObject.valueDate);
+            final Date valueDate = parameterObject.valueDate;
+            if (valueDate != null) {
+                final BigDecimal shareValue = parameterObject.share.getValueAtDate(valueDate);
 
-            if (shareValue != null && parameterObject.quantity != null) {
-                totalValue = shareValue.multiply(parameterObject.quantity);
+                if (shareValue != null && parameterObject.quantity != null) {
+                    totalValue = shareValue.multiply(parameterObject.quantity);
+                }
             }
         }
 
