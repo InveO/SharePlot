@@ -15,6 +15,7 @@ import jet.framework.ui.desktop.info.dialog.YesNoMessageDialogNut;
 import jet.framework.util.ui.LocalizedDisplayable;
 import jet.java.util.JETLocale;
 import jet.util.JetVersion;
+import jet.util.annotations.AnnotationsHelper;
 import jet.util.logger.JETLevel;
 import jet.util.models.SimpleModelImpl;
 import jet.util.models.interfaces.Displayable;
@@ -95,9 +96,9 @@ public class SharePlotDialogHelper implements DesktopDialogHelper {
 
         // bug 5264: log the content of the message dialogs
         final StringBuilder sb = new StringBuilder();
-        sb.append(title.getDisplayableString(this.locale));
+        sb.append(title.getDisplayableString(AnnotationsHelper.assertNonNull(this.locale)));
         sb.append("\n");
-        sb.append(message.getDisplayableString(this.locale));
+        sb.append(message.getDisplayableString(AnnotationsHelper.assertNonNull(this.locale)));
         this.abstractDesktopNut.logp(JETLevel.INFO, "SharePlotDialogHelper", "displayMessageDialog", sb.toString());
 
         this.abstractDesktopNut.displayDialog(title, DEFAULT_DIALOG_WIDTH, DEFAULT_DIALOG_HEIGHT, TITLE_BG_COLOR, TITLE_FONT, TITLE_FG_COLOR, param, "OKMessageDialog");
@@ -202,7 +203,7 @@ public class SharePlotDialogHelper implements DesktopDialogHelper {
     private String getVersionDialogLabel() {
         final StringBuilder sb = new StringBuilder();
         final Displayable disp = new LocalizedDisplayable(null, VERSION_LABEL);
-        sb.append(disp.getDisplayableString(this.locale));
+        sb.append(disp.getDisplayableString(AnnotationsHelper.assertNonNull(this.locale)));
         sb.append(" ");
         sb.append(getVersion());
 
