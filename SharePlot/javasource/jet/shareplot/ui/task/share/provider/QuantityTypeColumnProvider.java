@@ -19,6 +19,6 @@ public class QuantityTypeColumnProvider extends AbstractComboBoxColumnHeaderProv
     }
 
     private void addChangeType(final ChangeType changeType) {
-        addItem(changeType.getCode(), changeType.getLocalized());
+        addItem(changeType.getCode(), changeType.getDisplayable());
     }
 }
