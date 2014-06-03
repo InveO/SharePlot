@@ -52,7 +52,7 @@ public class ShareDetailNut extends AbstractSharePlotNut {
 
         final UIGraphComponent graph = (UIGraphComponent) UIComponentFinder.findComponent("lineChart", getMainComponent());
 
-        final GraphConfiguration config = new LineChartConfiguration(new Axis("Date"), new Axis("Value"), new Animation(1000, Easing.out.get()));
+        final GraphConfiguration config = new LineChartConfiguration(new Axis("Date"), new Axis("Value"), new Animation(1000, Easing.out));
         graph.setGraphConfiguration(config);
 
         final List<ShareValue> values = this.shareValueAC.getShareValues(this.share);
