@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 import javax.ejb.FinderException;
 import javax.ejb.ObjectNotFoundException;
 
@@ -34,19 +35,19 @@ public final class Share_FindAll0 implements FinderMethod {
 
 
     @Override
-    @Nonnull
+    @NonNull
     public String getFinderName() {
         return "findAll";
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public Map<String, Object> getArguments() {
         return new HashMap<String, Object>();
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
         List<ShareRemote> list;
         DataModelConverter2<ShareRemote> dmc;

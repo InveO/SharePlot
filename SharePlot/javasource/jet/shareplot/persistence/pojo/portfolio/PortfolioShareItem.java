@@ -2,7 +2,7 @@ package jet.shareplot.persistence.pojo.portfolio;
 
 import java.io.Serializable;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 
 import jet.framework.manager.datamodel.interfaces.DataModelRootNode;
 import jet.framework.util.models.ModelHelper;
@@ -87,7 +87,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      *
      * @param model Model to use to wrap in the pojo, can not be <code>null</code>
      */
-    public PortfolioShareItem(@Nonnull final Model model) {
+    public PortfolioShareItem(@NonNull final Model model) {
         this.dataModel = model;
 
         // if isNew is null, the model comes from the database therefore is not null
@@ -102,7 +102,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      *
      * @param portfolioShare PortfolioShareItem to use to copy in the pojo, can not be <code>null</code>
      */
-    public PortfolioShareItem(@Nonnull final PortfolioShareItem portfolioShare) {
+    public PortfolioShareItem(@NonNull final PortfolioShareItem portfolioShare) {
         this();
 
         setIdPortfolio(portfolioShare.getIdPortfolio());
@@ -190,7 +190,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      * @see JFDataItem
      */
     @Override
-    @Nonnull
+    @NonNull
     public final Model get_Model() {
         Model model = this.dataModel;
         assert model != null;
@@ -223,7 +223,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      * @return Model of Data Model node idPortfolio
      */
     @SuppressWarnings("unchecked")
-    @Nonnull
+    @NonNull
     public final DispatcherModel<PortfolioShareItem> get_IdPortfolio_Model() {
         if (this.idPortfolioDispatcherModel == null) {
             try {
@@ -269,7 +269,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      * @return Model of Data Model node idShare
      */
     @SuppressWarnings("unchecked")
-    @Nonnull
+    @NonNull
     public final DispatcherModel<PortfolioShareItem> get_IdShare_Model() {
         if (this.idShareDispatcherModel == null) {
             try {
@@ -315,7 +315,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      * @return Model of Data Model node changeQuantity
      */
     @SuppressWarnings("unchecked")
-    @Nonnull
+    @NonNull
     public final DispatcherModel<PortfolioShareItem> get_ChangeQuantity_Model() {
         if (this.changeQuantityDispatcherModel == null) {
             try {
@@ -361,7 +361,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      * @return Model of Data Model node portfolioName
      */
     @SuppressWarnings("unchecked")
-    @Nonnull
+    @NonNull
     public final DispatcherModel<PortfolioShareItem> get_PortfolioName_Model() {
         if (this.portfolioNameDispatcherModel == null) {
             try {
@@ -409,7 +409,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      * @return Model of Data Model node shareName
      */
     @SuppressWarnings("unchecked")
-    @Nonnull
+    @NonNull
     public final DispatcherModel<PortfolioShareItem> get_ShareName_Model() {
         if (this.shareNameDispatcherModel == null) {
             try {
@@ -457,7 +457,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      * @return Model of Data Model node totalQuantity
      */
     @SuppressWarnings("unchecked")
-    @Nonnull
+    @NonNull
     public final DispatcherModel<PortfolioShareItem> get_TotalQuantity_Model() {
         if (this.totalQuantityDispatcherModel == null) {
             try {
@@ -503,7 +503,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      * @return Model of Data Model node value
      */
     @SuppressWarnings("unchecked")
-    @Nonnull
+    @NonNull
     public final DispatcherModel<PortfolioShareItem> get_Value_Model() {
         if (this.valueDispatcherModel == null) {
             try {
@@ -549,7 +549,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      * @return Model of Data Model node valueDate
      */
     @SuppressWarnings("unchecked")
-    @Nonnull
+    @NonNull
     public final DispatcherModel<PortfolioShareItem> get_ValueDate_Model() {
         if (this.valueDateDispatcherModel == null) {
             try {

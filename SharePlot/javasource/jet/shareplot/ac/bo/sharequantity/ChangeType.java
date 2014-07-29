@@ -1,7 +1,7 @@
 package jet.shareplot.ac.bo.sharequantity;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 
 import jet.framework.util.ui.LocalizedDisplayable;
 import jet.util.models.interfaces.Displayable;
@@ -23,12 +23,12 @@ public enum ChangeType {
      */
     FEE("F", "SharePlot/properties/task/Share/changeType.Fee");
 
-    @Nonnull
+    @NonNull
     private final String code;
-    @Nonnull
+    @NonNull
     private final String localized;
 
-    private ChangeType(@Nonnull final String code, @Nonnull final String localized) {
+    private ChangeType(@NonNull final String code, @NonNull final String localized) {
         this.code = code;
         this.localized = localized;
     }
@@ -38,7 +38,7 @@ public enum ChangeType {
      *
      * @return ChangeType.
      */
-    @Nonnull
+    @NonNull
     public ChangeType get() {
         return this;
     }
@@ -48,7 +48,7 @@ public enum ChangeType {
      *
      * @return value
      */
-    @Nonnull
+    @NonNull
     public String getCode() {
         return this.code;
     }
@@ -58,7 +58,7 @@ public enum ChangeType {
      *
      * @return localization Key
      */
-    @Nonnull
+    @NonNull
     public String getLocalized() {
         return this.localized;
     }
@@ -68,7 +68,7 @@ public enum ChangeType {
      *
      * @return Displayable
      */
-    @Nonnull
+    @NonNull
     public Displayable getDisplayable() {
         return new LocalizedDisplayable(getCode(), getLocalized());
     }

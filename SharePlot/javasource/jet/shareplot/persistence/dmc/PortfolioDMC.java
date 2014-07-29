@@ -2,7 +2,7 @@ package jet.shareplot.persistence.dmc;
 
 import java.rmi.RemoteException;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 import javax.ejb.EJBException;
 
 import jet.framework.manager.datamodel.interfaces.DataModelConverter2;
@@ -30,8 +30,8 @@ public final class PortfolioDMC implements DataModelConverter2<PortfolioRemote> 
     }
 
     @Override
-    @Nonnull
-    public Model readDataModelFromObject(@Nonnull final PortfolioRemote portfolioRemote) throws JETException {
+    @NonNull
+    public Model readDataModelFromObject(@NonNull final PortfolioRemote portfolioRemote) throws JETException {
         final PortfolioItem portfolioItem = new PortfolioItem();
 
         try {
@@ -54,7 +54,7 @@ public final class PortfolioDMC implements DataModelConverter2<PortfolioRemote> 
     }
 
     @Override
-    public void writeDataModelToObject(@Nonnull final Model dataModel, @Nonnull final PortfolioRemote portfolioRemote) throws JETException {
+    public void writeDataModelToObject(@NonNull final Model dataModel, @NonNull final PortfolioRemote portfolioRemote) throws JETException {
         final PortfolioItem portfolioItem = new PortfolioItem(dataModel);
 
         try {

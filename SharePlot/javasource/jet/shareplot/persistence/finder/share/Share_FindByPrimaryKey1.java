@@ -4,8 +4,8 @@ import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 import javax.ejb.FinderException;
 import javax.ejb.ObjectNotFoundException;
 
@@ -41,13 +41,13 @@ public final class Share_FindByPrimaryKey1 implements FinderMethod {
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public String getFinderName() {
         return "findByPrimaryKey";
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public Map<String, Object> getArguments() {
         final Map<String, Object> args = new HashMap<String, Object>();
         args.put("idShare", this.idShare);
@@ -55,7 +55,7 @@ public final class Share_FindByPrimaryKey1 implements FinderMethod {
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
         ShareRemote shareRemote;
         DataModelConverter2<ShareRemote> dmc;
@@ -75,7 +75,7 @@ public final class Share_FindByPrimaryKey1 implements FinderMethod {
         return new EJBModelList2<ShareRemote>(shareRemote, dmc);
     }
 
-    @Nonnull
+    @NonNull
     private DataSourceExecutor2<ShareHome, ShareRemote> getDataSourceExecutor2() {
         DataSourceExecutor2<ShareHome, ShareRemote> result = this.dse;
         if (result == null) {

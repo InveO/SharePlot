@@ -2,7 +2,7 @@ package jet.shareplotbatch;
 
 import java.util.List;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 
 import jet.framework.component.SelectStoreProvider;
 import jet.framework.manager.batchsession.common.BatchSessionManagerRequest;
@@ -42,8 +42,8 @@ public class SharePlotBatchNut extends AbstractBatchDesktopNut implements BatchS
     }
 
     @Override
-    @Nonnull
-    public BatchSessionManagerResponse processSessionUpdate(final @Nonnull BatchSessionManagerRequest req) throws JETException {
+    @NonNull
+    public BatchSessionManagerResponse processSessionUpdate(final @NonNull BatchSessionManagerRequest req) throws JETException {
         logp(JETLevel.INFO, "SharePlotBatchNut", "processSessionUpdate", "Argument :: " + req.getRequestStamp());
 
         final BatchSessionManagerResponse response = new BatchSessionManagerResponse();

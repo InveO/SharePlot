@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 import javax.ejb.FinderException;
 import javax.ejb.ObjectNotFoundException;
 
@@ -31,8 +32,8 @@ public final class ShareValue_FindByShareAndDate2 implements FinderMethod {
 
     private static final long serialVersionUID = 1303211696L;
     private DataSourceExecutor2<ShareValueHome, ShareValueRemote> dse;
-    private Long idShare;
-    private java.util.Date valueDate;
+    private @Nullable Long idShare;
+    private java.util.@Nullable Date valueDate;
 
     /**
      * Set idShare argument value.
@@ -65,13 +66,13 @@ public final class ShareValue_FindByShareAndDate2 implements FinderMethod {
 
 
     @Override
-    @Nonnull
+    @NonNull
     public String getFinderName() {
         return "findByShareAndDate";
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public Map<String, Object> getArguments() {
         final Map<String, Object> args = new HashMap<String, Object>();
         args.put("idShare", this.idShare);
@@ -80,7 +81,7 @@ public final class ShareValue_FindByShareAndDate2 implements FinderMethod {
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
         List<ShareValueRemote> list;
         DataModelConverter2<ShareValueRemote> dmc;

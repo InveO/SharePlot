@@ -1,6 +1,6 @@
 package jet.shareplot.ac.bo.portfolio.portfolioshare;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 
 import jet.shareplot.ac.bo.share.ShareBOApplicationComponent;
 import jet.shareplot.persistence.pojo.portfolio.PortfolioShareItem;
@@ -30,7 +30,7 @@ public class PortfolioShare extends PortfolioShareItem {
      * @see Model
      * @see PortfolioShareBOApplicationComponent
      */
-    public PortfolioShare(@Nonnull final PortfolioShareBOApplicationComponent portfolioShareAC) {
+    public PortfolioShare(@NonNull final PortfolioShareBOApplicationComponent portfolioShareAC) {
         super();
         this.portfolioShareAC = portfolioShareAC;
 
@@ -46,7 +46,7 @@ public class PortfolioShare extends PortfolioShareItem {
      * @see Model
      * @see PortfolioShareBOApplicationComponent
      */
-    public PortfolioShare(@Nonnull final Model model, @Nonnull final PortfolioShareBOApplicationComponent portfolioShareAC) {
+    public PortfolioShare(@NonNull final Model model, @NonNull final PortfolioShareBOApplicationComponent portfolioShareAC) {
         super(model);
         this.portfolioShareAC = portfolioShareAC;
 
@@ -58,7 +58,7 @@ public class PortfolioShare extends PortfolioShareItem {
      * 
      * @param portfolioShare the portfolioShare to copy
      */
-    public PortfolioShare(@Nonnull final PortfolioShare portfolioShare) {
+    public PortfolioShare(@NonNull final PortfolioShare portfolioShare) {
         super(portfolioShare);
         this.portfolioShareAC = portfolioShare.portfolioShareAC;
 

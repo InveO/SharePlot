@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import javax.ejb.ObjectNotFoundException;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -26,6 +24,9 @@ import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
+
 /**
  * ShareValue manipulation API.
  *
@@ -45,8 +46,8 @@ abstract class AbstractShareValueBOApplicationComponent extends SimpleApplicatio
      * @param model Data model
      * @return instance of the POJO2 business object
      */
-    @Nonnull
-    protected abstract ShareValue getShareValue(@Nonnull final Model model);
+    @NonNull
+    protected abstract ShareValue getShareValue(@NonNull final Model model);
 
     /**
      * Return all shareValue matching the FinderMethod.
@@ -56,12 +57,12 @@ abstract class AbstractShareValueBOApplicationComponent extends SimpleApplicatio
      * @see List
      * @see ShareValue
      */
-    @Nonnull
-    protected List<ShareValue> getShareValues(@Nonnull final FinderMethod finder) {
+    @NonNull
+    protected List<ShareValue> getShareValues(@NonNull final FinderMethod finder) {
         final List<ShareValue> result = new ArrayList<ShareValue>();
         final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.SHAREVALUE_SELECT);
 
-        final Callable<Object> callable = new Callable<Object>() {
+        final Callable<@Nullable Object> callable = new Callable<@Nullable Object>() {
             @Override
             public Object call() throws Exception {
                 final ModelArray ma = SelectNutHelper.getModelArray(selectNut, finder, getLogger());
@@ -109,7 +110,7 @@ abstract class AbstractShareValueBOApplicationComponent extends SimpleApplicatio
      * @see ShareValue
      */
     @Nullable
-    protected ShareValue getShareValue(@Nonnull final FinderMethod finder) {
+    protected ShareValue getShareValue(@NonNull final FinderMethod finder) {
         final ShareValue result;
 
         final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.SHAREVALUE_SELECT);
@@ -131,7 +132,7 @@ abstract class AbstractShareValueBOApplicationComponent extends SimpleApplicatio
      * @see ShareValue
      * @see #getShareValues(FinderMethod finder)
      */
-    @Nonnull
+    @NonNull
     public List<ShareValue> getShareValues() {
         final ShareValue_FindAll0 finder = new ShareValue_FindAll0();
 

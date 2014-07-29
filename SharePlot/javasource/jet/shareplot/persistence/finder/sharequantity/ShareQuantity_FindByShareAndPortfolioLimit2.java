@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 import javax.ejb.FinderException;
 import javax.ejb.ObjectNotFoundException;
 
@@ -31,8 +32,8 @@ public final class ShareQuantity_FindByShareAndPortfolioLimit2 implements Finder
 
     private static final long serialVersionUID = 1612007130L;
     private DataSourceExecutor2<ShareQuantityHome, ShareQuantityRemote> dse;
-    private Long idPortfolio;
-    private Long idShare;
+    private @Nullable Long idPortfolio;
+    private @Nullable Long idShare;
 
     /**
      * Set idPortfolio argument value.
@@ -54,13 +55,13 @@ public final class ShareQuantity_FindByShareAndPortfolioLimit2 implements Finder
 
 
     @Override
-    @Nonnull
+    @NonNull
     public String getFinderName() {
         return "findByShareAndPortfolioLimit";
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public Map<String, Object> getArguments() {
         final Map<String, Object> args = new HashMap<String, Object>();
         args.put("idPortfolio", this.idPortfolio);
@@ -69,7 +70,7 @@ public final class ShareQuantity_FindByShareAndPortfolioLimit2 implements Finder
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
         List<ShareQuantityRemote> list;
         DataModelConverter2<ShareQuantityRemote> dmc;

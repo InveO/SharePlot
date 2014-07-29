@@ -2,7 +2,7 @@ package jet.shareplot.ui.task.share.graph;
 
 import java.util.List;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 
 import jet.components.ui.table.common.model.TableContentProvider;
 import jet.components.ui.table.common.model.TableContentProviderListener;
@@ -13,7 +13,7 @@ public class ShareValueLineGraphContentProvider implements TableContentProvider 
 
     private final List<ShareValue> values;
 
-    public ShareValueLineGraphContentProvider(@Nonnull final List<ShareValue> values) {
+    public ShareValueLineGraphContentProvider(@NonNull final List<ShareValue> values) {
         this.values = values;
     }
 

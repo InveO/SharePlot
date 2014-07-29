@@ -1,6 +1,6 @@
 package jet.shareplot.ui.task.share.provider;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 
 import jet.container.managers.session.interfaces.Session;
 import jet.framework.ui.utils.CommonDisplayModelConstants;
@@ -30,13 +30,13 @@ public class PortfolioShareShareProvider extends AutoCompleteListTableCellModelP
      * @param shareAutoCompleteProvider ShareAutoCompleteProvider
      * @param columnName Name of the column
      */
-    public PortfolioShareShareProvider(@Nonnull final ShareAutoCompleteProvider shareAutoCompleteProvider, final String columnName) {
+    public PortfolioShareShareProvider(@NonNull final ShareAutoCompleteProvider shareAutoCompleteProvider, final String columnName) {
         super(shareAutoCompleteProvider, columnName, 0, true);
         this.shareAutoCompleteProvider = shareAutoCompleteProvider;
     }
 
     @Override
-    public final SimpleEventModelImpl getAutoCompleteCellModel(final int row, final int col, @Nonnull final Model columnModel, @Nonnull final AbstractTableContentProvider listTableContentProvider, @Nonnull final Model dataModel, @Nonnull final Session session, @Nonnull final Logger logger) {
+    public final SimpleEventModelImpl getAutoCompleteCellModel(final int row, final int col, @NonNull final Model columnModel, @NonNull final AbstractTableContentProvider listTableContentProvider, @NonNull final Model dataModel, @NonNull final Session session, @NonNull final Logger logger) {
         SimpleEventModelImpl fieldModel = null;
         final String name = (String) columnModel.getAttribute(CommonDisplayModelConstants.ATTRIBUTE_NAME);
         if (this.columnName.equals(name)) {
@@ -57,7 +57,7 @@ public class PortfolioShareShareProvider extends AutoCompleteListTableCellModelP
         private final PortfolioShareItem portfolioShare;
         private final ShareAutoCompleteProvider shareAutoCompleteProvider;
 
-        private ShareNameModel(@Nonnull final Model dataModel, final ShareAutoCompleteProvider shareAutoCompleteProvider) {
+        private ShareNameModel(@NonNull final Model dataModel, final ShareAutoCompleteProvider shareAutoCompleteProvider) {
             this.portfolioShare = new PortfolioShareItem(dataModel);
             this.shareAutoCompleteProvider = shareAutoCompleteProvider;
         }
@@ -69,7 +69,7 @@ public class PortfolioShareShareProvider extends AutoCompleteListTableCellModelP
          * @param shareAutoCompleteProvider ShareAutoCompleteProvider
          * @return ShareNameModel
          */
-        public static ShareNameModel getShareNameModel(@Nonnull final Model dataModel, final ShareAutoCompleteProvider shareAutoCompleteProvider) {
+        public static ShareNameModel getShareNameModel(@NonNull final Model dataModel, final ShareAutoCompleteProvider shareAutoCompleteProvider) {
             final ShareNameModel result = new ShareNameModel(dataModel, shareAutoCompleteProvider);
             result.init();
             return result;

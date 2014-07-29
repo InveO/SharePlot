@@ -20,6 +20,7 @@ import jet.shareplot.ac.bo.sharevalue.ShareValueBOApplicationComponent;
 import jet.shareplot.ui.AbstractSharePlotNut;
 import jet.shareplot.ui.desktop.graph.LineGraphTableRendererProvider;
 import jet.shareplot.ui.task.share.graph.ShareValueLineGraphContentProvider;
+import jet.util.annotations.AnnotationsHelper;
 import jet.util.models.interfaces.Displayable;
 import jet.util.throwable.JETException;
 
@@ -52,7 +53,7 @@ public class ShareDetailNut extends AbstractSharePlotNut {
 
         final UIGraphComponent graph = (UIGraphComponent) UIComponentFinder.findComponent("lineChart", getMainComponent());
 
-        final GraphConfiguration config = new LineChartConfiguration(new Axis("Date"), new Axis("Value"), new Animation(1000, Easing.out));
+        final GraphConfiguration config = new LineChartConfiguration(new Axis("Date"), new Axis("Value"), new Animation(1000, AnnotationsHelper.assertNonNullEnum(Easing.out)));
         graph.setGraphConfiguration(config);
 
         final List<ShareValue> values = this.shareValueAC.getShareValues(this.share);

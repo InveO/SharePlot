@@ -6,7 +6,7 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 
 import jet.components.ui.button.common.UIButtonComponent;
 import jet.components.ui.common.common.UIComponent;
@@ -80,13 +80,13 @@ public class ShareValueListNut extends AbstractSharePlotListNut<ShareValue> impl
     }
 
     @Override
-    @Nonnull
+    @NonNull
     protected String getResourceName() {
         return AnnotationsHelper.assertNonNull(ShareValueResource.RESOURCE_NAME);
     }
 
     @Override
-    protected ShareValue getItemCopy(@Nonnull final ShareValue item) {
+    protected ShareValue getItemCopy(@NonNull final ShareValue item) {
         return new ShareValue(item);
     }
 
@@ -179,7 +179,7 @@ public class ShareValueListNut extends AbstractSharePlotListNut<ShareValue> impl
 
     }
 
-    @Nonnull
+    @NonNull
     private ShareValueBOApplicationComponent getShareValueAC() {
         return AnnotationsHelper.assertNonNull(this.shareValueAC);
     }

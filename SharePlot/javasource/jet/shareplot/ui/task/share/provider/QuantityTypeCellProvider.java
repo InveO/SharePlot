@@ -1,6 +1,6 @@
 package jet.shareplot.ui.task.share.provider;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 
 import jet.framework.ui.utils.table.AbstractComboBoxCellProvider;
 import jet.framework.ui.utils.table.AbstractComboBoxColumnHeaderProvider;
@@ -9,12 +9,12 @@ import jet.util.models.interfaces.Model;
 
 public class QuantityTypeCellProvider extends AbstractComboBoxCellProvider<String, ShareQuantityItem> {
 
-    public QuantityTypeCellProvider(@Nonnull final AbstractComboBoxColumnHeaderProvider<String> columnProvider) {
+    public QuantityTypeCellProvider(@NonNull final AbstractComboBoxColumnHeaderProvider<String> columnProvider) {
         super(columnProvider);
     }
 
     @Override
-    protected jet.framework.ui.utils.table.AbstractComboBoxCellProvider.ComboBoxCellModel<String, ShareQuantityItem> getComboBoxCellModel(@Nonnull final AbstractComboBoxColumnHeaderProvider<String> columnProvider, @Nonnull final Model dataModel) {
+    protected jet.framework.ui.utils.table.AbstractComboBoxCellProvider.ComboBoxCellModel<String, ShareQuantityItem> getComboBoxCellModel(@NonNull final AbstractComboBoxColumnHeaderProvider<String> columnProvider, @NonNull final Model dataModel) {
         // TODO Auto-generated method stub
         return null;
     }

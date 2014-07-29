@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 
 import jet.components.ui.events.MouseEvent;
 import jet.components.ui.events.MouseEventType;
@@ -65,7 +65,7 @@ public class PortfolioDetailNut extends AbstractSharePlotDataItemListNut<Portfol
         }
     }
 
-    private void launchEditPortfolio(@Nonnull final PortfolioShare portfolioShare) {
+    private void launchEditPortfolio(@NonNull final PortfolioShare portfolioShare) {
         final Map<String, Object> initArgs = new HashMap<String, Object>();
 
         final ApplicationComponentLauncher acLauncher = (ApplicationComponentLauncher) getSession().getProperty(ApplicationComponentLauncher.SESSION_KEY);
@@ -151,12 +151,12 @@ public class PortfolioDetailNut extends AbstractSharePlotDataItemListNut<Portfol
     }
 
     @Override
-    protected PortfolioShare getItemCopy(@Nonnull final PortfolioShare item) {
+    protected PortfolioShare getItemCopy(@NonNull final PortfolioShare item) {
         return new PortfolioShare(item);
     }
 
     @Override
-    protected PortfolioShare deleteItem(@Nonnull final PortfolioShare item) throws FormatedJetException {
+    protected PortfolioShare deleteItem(@NonNull final PortfolioShare item) throws FormatedJetException {
         final Long idPortfolio = item.getIdPortfolio();
         final Long idShare = item.getIdShare();
         if (idPortfolio != null && idShare != null) {
@@ -169,7 +169,7 @@ public class PortfolioDetailNut extends AbstractSharePlotDataItemListNut<Portfol
     }
 
     @Override
-    protected PortfolioShare saveItem(@Nonnull final PortfolioShare item) throws FormatedJetException {
+    protected PortfolioShare saveItem(@NonNull final PortfolioShare item) throws FormatedJetException {
 
         final ShareQuantity shareQuantity = new ShareQuantity(AnnotationsHelper.assertNonNull(this.shareQuantityAC));
 

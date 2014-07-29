@@ -3,7 +3,7 @@ package jet.shareplot.ac;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 
 import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.session.interfaces.Session;
@@ -86,7 +86,7 @@ public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicat
      * @return SelectStoreApplicationComponent Instantiated SelectStoreApplicationComponent
      * @throws JETException
      */
-    @Nonnull
+    @NonNull
     public static final SelectStoreApplicationComponent getInstance(final Session session) throws JETException {
         SelectStoreApplicationComponent currentAC = (SelectStoreApplicationComponent) session.getProperty(INTERNAL_SESSION_KEY);
 

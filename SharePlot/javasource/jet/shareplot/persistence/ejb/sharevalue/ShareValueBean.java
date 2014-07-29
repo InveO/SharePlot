@@ -3,8 +3,8 @@ package jet.shareplot.persistence.ejb.sharevalue;
 import java.rmi.RemoteException;
 import java.util.Collection;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 import javax.ejb.CreateException;
 import javax.ejb.EJBException;
 import javax.ejb.EntityBean;
@@ -50,8 +50,7 @@ public final class ShareValueBean implements EntityBean {
      * @return Long value for the field idShareValue
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    @Nullable
-    public Long getIdShareValue() throws EJBException {
+    public @Nullable Long getIdShareValue() throws EJBException {
         return this.idShareValue;
 
     }
@@ -61,7 +60,7 @@ public final class ShareValueBean implements EntityBean {
      * @param idShareValue value for the field idShareValue
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    public void setIdShareValue(@Nullable final Long idShareValue) throws EJBException {
+    public void setIdShareValue(final @Nullable Long idShareValue) throws EJBException {
         this.idShareValue = idShareValue;
     }
 
@@ -71,8 +70,7 @@ public final class ShareValueBean implements EntityBean {
      * @return Long value for the field idShare
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    @Nullable
-    public Long getIdShare() throws EJBException {
+    public @Nullable Long getIdShare() throws EJBException {
         return this.idShare;
 
     }
@@ -82,7 +80,7 @@ public final class ShareValueBean implements EntityBean {
      * @param idShare value for the field idShare
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    public void setIdShare(@Nullable final Long idShare) throws EJBException {
+    public void setIdShare(final @Nullable Long idShare) throws EJBException {
         this.idShare = idShare;
     }
 
@@ -92,8 +90,7 @@ public final class ShareValueBean implements EntityBean {
      * @return java.math.BigDecimal value for the field value
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    @Nullable
-    public java.math.BigDecimal getValue() throws EJBException {
+    public java.math.@Nullable BigDecimal getValue() throws EJBException {
         return this.value;
 
     }
@@ -103,7 +100,7 @@ public final class ShareValueBean implements EntityBean {
      * @param value value for the field value
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    public void setValue(@Nullable final java.math.BigDecimal value) throws EJBException {
+    public void setValue(final java.math.@Nullable BigDecimal value) throws EJBException {
         this.value = value;
     }
 
@@ -113,8 +110,7 @@ public final class ShareValueBean implements EntityBean {
      * @return java.util.Date value for the field valueDate
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    @Nullable
-    public java.util.Date getValueDate() throws EJBException {
+    public java.util.@Nullable Date getValueDate() throws EJBException {
         java.util.Date date = null;
         if (this.valueDate != null) {
             date = (java.util.Date) this.valueDate.clone();
@@ -128,7 +124,7 @@ public final class ShareValueBean implements EntityBean {
      * @param valueDate value for the field valueDate
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    public void setValueDate(@Nullable final java.util.Date valueDate) throws EJBException {
+    public void setValueDate(final java.util.@Nullable Date valueDate) throws EJBException {
         if (valueDate == null) {
             this.valueDate = null;
         } else {
@@ -148,8 +144,7 @@ public final class ShareValueBean implements EntityBean {
      * @throws CreateException Thrown by the method to indicate a failure during the creation.
      */
     @SuppressWarnings("hiding")
-    @Nullable
-    public java.lang.Object ejbCreate(final Long idShareValue, final Long idShare, final java.math.BigDecimal value, final java.util.Date valueDate) throws CreateException {
+    public java.lang.@Nullable Object ejbCreate(final Long idShareValue, final Long idShare, final java.math.BigDecimal value, final java.util.Date valueDate) throws CreateException {
         this.idShareValue = idShareValue;
         this.idShare = idShare;
         this.value = value;
@@ -186,8 +181,7 @@ public final class ShareValueBean implements EntityBean {
      * @return java.lang.Object primary key object
      * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
      */
-    @Nonnull
-    public java.lang.Object ejbFindByPrimaryKey(@Nonnull final java.lang.Object pkField) throws FinderException {
+    public java.lang.@NonNull Object ejbFindByPrimaryKey(final java.lang.@NonNull Object pkField) throws FinderException {
         if (pkField instanceof jet.container.managers.jdbc.interfaces.AutoGeneratedPrimaryKey) {
             jet.container.managers.jdbc.interfaces.AutoGeneratedPrimaryKey _pk = (jet.container.managers.jdbc.interfaces.AutoGeneratedPrimaryKey) pkField;
             this.idShareValue = (Long) _pk.getAutoGeneratedPrimaryKey();

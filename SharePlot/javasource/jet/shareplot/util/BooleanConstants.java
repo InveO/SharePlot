@@ -1,7 +1,7 @@
 package jet.shareplot.util;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 
 import jet.util.annotations.AnnotationsHelper;
 
@@ -25,7 +25,7 @@ public enum BooleanConstants {
 
     private String dbValue;
 
-    private BooleanConstants(@Nonnull final String dbValue) {
+    private BooleanConstants(@NonNull final String dbValue) {
         this.dbValue = dbValue;
     }
 
@@ -34,7 +34,7 @@ public enum BooleanConstants {
      * 
      * @return BooleanConstants.
      */
-    @Nonnull
+    @NonNull
     public BooleanConstants get() {
         return this;
     }
@@ -44,7 +44,7 @@ public enum BooleanConstants {
      * 
      * @return value
      */
-    @Nonnull
+    @NonNull
     public String getDBValue() {
         return AnnotationsHelper.assertNonNull(this.dbValue);
     }

@@ -1,6 +1,6 @@
 package jet.shareplot.persistence.ejb.sharevalue;
 
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.Nullable;
 import javax.ejb.EJBException;
 import javax.ejb.EJBObject;
 
@@ -21,8 +21,7 @@ public interface ShareValueRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    Long getIdShareValue() throws EJBException, RemoteException;
+    @Nullable Long getIdShareValue() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field idShareValue.
@@ -31,7 +30,7 @@ public interface ShareValueRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setIdShareValue(@Nullable final Long idShareValue) throws EJBException, RemoteException;
+    void setIdShareValue(final @Nullable Long idShareValue) throws EJBException, RemoteException;
 
 
     /**
@@ -41,8 +40,7 @@ public interface ShareValueRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    Long getIdShare() throws EJBException, RemoteException;
+    @Nullable Long getIdShare() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field idShare.
@@ -51,7 +49,7 @@ public interface ShareValueRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setIdShare(@Nullable final Long idShare) throws EJBException, RemoteException;
+    void setIdShare(final @Nullable Long idShare) throws EJBException, RemoteException;
 
 
     /**
@@ -61,8 +59,7 @@ public interface ShareValueRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    java.math.BigDecimal getValue() throws EJBException, RemoteException;
+    java.math.@Nullable BigDecimal getValue() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field value.
@@ -71,7 +68,7 @@ public interface ShareValueRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setValue(@Nullable final java.math.BigDecimal value) throws EJBException, RemoteException;
+    void setValue(final java.math.@Nullable BigDecimal value) throws EJBException, RemoteException;
 
 
     /**
@@ -81,8 +78,7 @@ public interface ShareValueRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    java.util.Date getValueDate() throws EJBException, RemoteException;
+    java.util.@Nullable Date getValueDate() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field valueDate.
@@ -91,7 +87,7 @@ public interface ShareValueRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setValueDate(@Nullable final java.util.Date valueDate) throws EJBException, RemoteException;
+    void setValueDate(final java.util.@Nullable Date valueDate) throws EJBException, RemoteException;
 
 
     /**
@@ -103,5 +99,5 @@ public interface ShareValueRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void update(@Nullable final Long idShare ,@Nullable final java.math.BigDecimal value ,@Nullable final java.util.Date valueDate) throws EJBException, RemoteException;
+    void update(final @Nullable Long idShare, final java.math.@Nullable BigDecimal value, final java.util.@Nullable Date valueDate) throws EJBException, RemoteException;
 }

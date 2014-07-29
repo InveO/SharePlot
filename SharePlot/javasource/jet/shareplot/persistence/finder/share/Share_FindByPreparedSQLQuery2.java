@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 import javax.ejb.FinderException;
 import javax.ejb.ObjectNotFoundException;
 
@@ -31,8 +32,8 @@ public final class Share_FindByPreparedSQLQuery2 implements FinderMethod {
 
     private static final long serialVersionUID = -1939421298L;
     private DataSourceExecutor2<ShareHome, ShareRemote> dse;
-    private String sqlWhereClause;
-    private Object[] sqlArguments;
+    private @Nullable String sqlWhereClause;
+    private Object @Nullable [] sqlArguments;
 
     /**
      * Set sqlWhereClause argument value.
@@ -49,19 +50,19 @@ public final class Share_FindByPreparedSQLQuery2 implements FinderMethod {
      * @param sqlArguments argument value
      */
     public void setSqlArguments(final Object[] sqlArguments) {
-        this.sqlArguments = new Object[sqlArguments.length];
+        this.sqlArguments = new Object @Nullable [sqlArguments.length];
         System.arraycopy(sqlArguments, 0, this.sqlArguments, 0, sqlArguments.length);
     }
 
 
     @Override
-    @Nonnull
+    @NonNull
     public String getFinderName() {
         return "findByPreparedSQLQuery";
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public Map<String, Object> getArguments() {
         final Map<String, Object> args = new HashMap<String, Object>();
         args.put("sqlWhereClause", this.sqlWhereClause);
@@ -70,7 +71,7 @@ public final class Share_FindByPreparedSQLQuery2 implements FinderMethod {
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
         List<ShareRemote> list;
         DataModelConverter2<ShareRemote> dmc;

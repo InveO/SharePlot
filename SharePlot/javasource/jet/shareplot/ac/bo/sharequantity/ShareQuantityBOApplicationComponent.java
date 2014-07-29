@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 
 import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.session.interfaces.Session;
@@ -47,7 +47,7 @@ public class ShareQuantityBOApplicationComponent extends AbstractShareQuantityBO
      * @return ShareQuantityBOApplicationComponent
      * @throws JETException if there is an error initializing the ApplicationComponent
      */
-    @Nonnull
+    @NonNull
     public static final ShareQuantityBOApplicationComponent getInstance(final Session session) throws JETException {
         ShareQuantityBOApplicationComponent shareQuantityAC = (ShareQuantityBOApplicationComponent) session.getProperty(SESSION_KEY);
 
@@ -100,8 +100,8 @@ public class ShareQuantityBOApplicationComponent extends AbstractShareQuantityBO
     }
 
     @Override
-    @Nonnull
-    protected ShareQuantity getShareQuantity(@Nonnull final Model model) {
+    @NonNull
+    protected ShareQuantity getShareQuantity(@NonNull final Model model) {
         return new ShareQuantity(model, this);
     }
 
@@ -115,8 +115,8 @@ public class ShareQuantityBOApplicationComponent extends AbstractShareQuantityBO
      * @see ShareQuantity
      * @see #getShareQuantitys(FinderMethod finder)
      */
-    @Nonnull
-    public final List<ShareQuantity> getShareQuantitys(@Nonnull final Long idPortfolio, @Nonnull final Long idShare) {
+    @NonNull
+    public final List<ShareQuantity> getShareQuantitys(@NonNull final Long idPortfolio, @NonNull final Long idShare) {
         final ShareQuantity_FindByShareAndPortfolio2 finder = new ShareQuantity_FindByShareAndPortfolio2();
         finder.setIdPortfolio(idPortfolio);
         finder.setIdShare(idShare);
@@ -133,7 +133,7 @@ public class ShareQuantityBOApplicationComponent extends AbstractShareQuantityBO
      * @see ShareQuantity
      */
     @Nullable
-    public final ShareQuantity getLastShareQuantitys(@Nonnull final Long idPortfolio, @Nonnull final Long idShare) {
+    public final ShareQuantity getLastShareQuantitys(@NonNull final Long idPortfolio, @NonNull final Long idShare) {
         final ShareQuantity_FindByShareAndPortfolioLimit2 finder = new ShareQuantity_FindByShareAndPortfolioLimit2();
         finder.setIdPortfolio(idPortfolio);
         finder.setIdShare(idShare);

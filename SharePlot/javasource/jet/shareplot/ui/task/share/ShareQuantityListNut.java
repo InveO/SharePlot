@@ -2,7 +2,7 @@ package jet.shareplot.ui.task.share;
 
 import java.util.List;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 
 import jet.framework.ui.utils.table.UITableListDisplay3;
 import jet.framework.util.ui.LocalizedMessageFormatDisplayable;
@@ -63,13 +63,13 @@ public class ShareQuantityListNut extends AbstractSharePlotListNut<ShareQuantity
     }
 
     @Override
-    @Nonnull
+    @NonNull
     protected String getResourceName() {
         return AnnotationsHelper.assertNonNull(ShareQuantityResource.RESOURCE_NAME);
     }
 
     @Override
-    protected ShareQuantity getItemCopy(@Nonnull final ShareQuantity item) {
+    protected ShareQuantity getItemCopy(@NonNull final ShareQuantity item) {
         return new ShareQuantity(item);
     }
 
