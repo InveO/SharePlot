@@ -24,6 +24,8 @@ import jet.util.annotations.AnnotationsHelper;
 import jet.util.models.interfaces.Displayable;
 import jet.util.throwable.JETException;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 public class ShareDetailNut extends AbstractSharePlotNut {
 
     private Share share;
@@ -35,7 +37,7 @@ public class ShareDetailNut extends AbstractSharePlotNut {
         this.share = (Share) getApplicationComponent().getProperty(ShareUIConstants.ARGUMENT_SHARE);
         this.shareValueAC = ShareValueBOApplicationComponent.getInstance(getSession());
 
-        final Object[] args = { this.share.getName() };
+        final Object @NonNull [] args = { this.share.getName() };
         final Displayable titleDisp = new LocalizedMessageFormatDisplayable("SharePlot/properties/task/Share/title.ShareDetailName", args);
         setHeaderTitle(titleDisp);
 

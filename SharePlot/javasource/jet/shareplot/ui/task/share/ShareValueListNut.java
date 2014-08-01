@@ -6,8 +6,6 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
-import org.eclipse.jdt.annotation.NonNull;
-
 import jet.components.ui.button.common.UIButtonComponent;
 import jet.components.ui.common.common.UIComponent;
 import jet.components.ui.events.KeyEvent;
@@ -34,6 +32,8 @@ import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Displayable;
 import jet.util.throwable.JETException;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 public class ShareValueListNut extends AbstractSharePlotListNut<ShareValue> implements ByteArrayMultiFileReceiverListener, CSVLineProcessor {
 
     private ShareValueBOApplicationComponent shareValueAC;
@@ -46,7 +46,7 @@ public class ShareValueListNut extends AbstractSharePlotListNut<ShareValue> impl
         this.share = (Share) getApplicationComponent().getProperty(ShareUIConstants.ARGUMENT_SHARE);
         this.shareValueAC = ShareValueBOApplicationComponent.getInstance(getSession());
 
-        final Object[] objects = { this.share.getName() };
+        final Object @NonNull [] objects = { this.share.getName() };
         final Displayable displayable = new LocalizedMessageFormatDisplayable("SharePlot/properties/task/Share/title.ShareValueListName", objects);
         setHeaderTitle(displayable);
     }
@@ -155,7 +155,7 @@ public class ShareValueListNut extends AbstractSharePlotListNut<ShareValue> impl
     }
 
     @Override
-    public void processCSVLine(final String[] csvLine) {
+    public void processCSVLine(final String @NonNull [] csvLine) {
 
         final String dateString = csvLine[0];
         final String valueString = csvLine[1];

@@ -3,7 +3,6 @@ package jet.shareplot.persistence.dse;
 import java.rmi.RemoteException;
 import java.util.concurrent.Callable;
 
-import org.eclipse.jdt.annotation.NonNull;
 import javax.ejb.FinderException;
 import javax.ejb.ObjectNotFoundException;
 import javax.naming.InitialContext;
@@ -21,6 +20,9 @@ import jet.shareplot.persistence.pojo.PortfolioItem;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
+
 /**
  * Portfolio DataSourceExecutor2.
  *
@@ -34,7 +36,7 @@ public final class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHom
 
     @Override
     public void updateFromDataModel(@NonNull final Model dataModel) throws JETException, ObjectNotFoundException {
-        final Callable<Object> callable = new Callable<Object>() {
+        final Callable<@Nullable Object> callable = new Callable<@Nullable Object>() {
             @Override
             public Object call() throws Exception {
                 final PortfolioRemote ejbObject = getObjectFromStore(dataModel);
@@ -54,7 +56,7 @@ public final class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHom
 
     @Override
     public void createFromDataModel(@NonNull final Model dataModel) throws JETException, JETDuplicateKeyException {
-        final Callable<Object> callable = new Callable<Object>() {
+        final Callable<@Nullable Object> callable = new Callable<@Nullable Object>() {
             @Override
             public Object call() throws Exception {
                 final PortfolioItem portfolioItem = new PortfolioItem(dataModel);
@@ -80,7 +82,7 @@ public final class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHom
 
     @Override
     public void removeFromDataModel(@NonNull final Model dataModel) throws JETException, ObjectNotFoundException {
-        final Callable<Object> callable = new Callable<Object>() {
+        final Callable<@Nullable Object> callable = new Callable<@Nullable Object>() {
             @Override
             public Object call() throws Exception {
                 final PortfolioRemote portfolioRemote = getObjectFromStore(dataModel);

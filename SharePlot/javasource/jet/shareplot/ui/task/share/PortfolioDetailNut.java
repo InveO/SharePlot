@@ -5,9 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
-
 import jet.components.ui.events.MouseEvent;
 import jet.components.ui.events.MouseEventType;
 import jet.components.ui.events.UIEvent;
@@ -33,6 +30,9 @@ import jet.util.annotations.AnnotationsHelper;
 import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Displayable;
 import jet.util.throwable.JETException;
+
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 
 public class PortfolioDetailNut extends AbstractSharePlotDataItemListNut<PortfolioShare> {
 
@@ -90,7 +90,7 @@ public class PortfolioDetailNut extends AbstractSharePlotDataItemListNut<Portfol
         this.shareAC = ShareBOApplicationComponent.getInstance(getSession());
         this.shareQuantityAC = ShareQuantityBOApplicationComponent.getInstance(getSession());
 
-        final Object[] args = { this.portfolio.getName() };
+        final Object @NonNull [] args = { this.portfolio.getName() };
         final Displayable titleDisp = new LocalizedMessageFormatDisplayable("SharePlot/properties/task/Share/title.PortfolioDetailName", args);
         setHeaderTitle(titleDisp);
     }

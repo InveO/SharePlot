@@ -2,8 +2,6 @@ package jet.shareplot.ui.task.share;
 
 import java.util.List;
 
-import org.eclipse.jdt.annotation.NonNull;
-
 import jet.framework.ui.utils.table.UITableListDisplay3;
 import jet.framework.util.ui.LocalizedMessageFormatDisplayable;
 import jet.shareplot.ac.bo.share.Share;
@@ -17,6 +15,8 @@ import jet.util.annotations.AnnotationsHelper;
 import jet.util.models.interfaces.Displayable;
 import jet.util.throwable.JETException;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 public class ShareQuantityListNut extends AbstractSharePlotListNut<ShareQuantity> {
 
     private ShareQuantityBOApplicationComponent shareQuantityAC;
@@ -27,7 +27,7 @@ public class ShareQuantityListNut extends AbstractSharePlotListNut<ShareQuantity
         this.share = (Share) getApplicationComponent().getProperty(ShareUIConstants.ARGUMENT_SHARE);
         this.shareQuantityAC = ShareQuantityBOApplicationComponent.getInstance(getSession());
 
-        final Object[] objects = { this.share.getName() };
+        final Object @NonNull [] objects = { this.share.getName() };
         final Displayable displayable = new LocalizedMessageFormatDisplayable("SharePlot/properties/task/Share/title.ShareQuantityListName", objects);
         setHeaderTitle(displayable);
     }
