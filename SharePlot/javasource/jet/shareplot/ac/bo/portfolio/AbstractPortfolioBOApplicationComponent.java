@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import javax.ejb.ObjectNotFoundException;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -26,6 +24,9 @@ import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
+
 /**
  * Portfolio manipulation API.
  *
@@ -45,8 +46,8 @@ abstract class AbstractPortfolioBOApplicationComponent extends SimpleApplication
      * @param model Data model
      * @return instance of the POJO2 business object
      */
-    @Nonnull
-    protected abstract Portfolio getPortfolio(@Nonnull final Model model);
+    @NonNull
+    protected abstract Portfolio getPortfolio(@NonNull final Model model);
 
     /**
      * Return all portfolio matching the FinderMethod.
@@ -56,12 +57,12 @@ abstract class AbstractPortfolioBOApplicationComponent extends SimpleApplication
      * @see List
      * @see Portfolio
      */
-    @Nonnull
-    protected List<Portfolio> getPortfolios(@Nonnull final FinderMethod finder) {
+    @NonNull
+    protected List<Portfolio> getPortfolios(@NonNull final FinderMethod finder) {
         final List<Portfolio> result = new ArrayList<Portfolio>();
         final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.PORTFOLIO_SELECT);
 
-        final Callable<Object> callable = new Callable<Object>() {
+        final Callable<@Nullable Object> callable = new Callable<@Nullable Object>() {
             @Override
             public Object call() throws Exception {
                 final ModelArray ma = SelectNutHelper.getModelArray(selectNut, finder, getLogger());
@@ -109,7 +110,7 @@ abstract class AbstractPortfolioBOApplicationComponent extends SimpleApplication
      * @see Portfolio
      */
     @Nullable
-    protected Portfolio getPortfolio(@Nonnull final FinderMethod finder) {
+    protected Portfolio getPortfolio(@NonNull final FinderMethod finder) {
         final Portfolio result;
 
         final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.PORTFOLIO_SELECT);
@@ -131,7 +132,7 @@ abstract class AbstractPortfolioBOApplicationComponent extends SimpleApplication
      * @see Portfolio
      * @see #getPortfolios(FinderMethod finder)
      */
-    @Nonnull
+    @NonNull
     public List<Portfolio> getPortfolios() {
         final Portfolio_FindAll0 finder = new Portfolio_FindAll0();
 

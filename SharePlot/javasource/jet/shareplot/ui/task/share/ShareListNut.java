@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 
 import jet.components.ui.events.MouseEvent;
 import jet.components.ui.events.MouseEventType;
@@ -49,7 +49,7 @@ public class ShareListNut extends AbstractSharePlotListNut<Share> {
         }
     }
 
-    private void launchEditor(final String editorName, @Nonnull final Share share, final Object key) {
+    private void launchEditor(final String editorName, @NonNull final Share share, final Object key) {
         final ApplicationComponentLauncher acLauncher = (ApplicationComponentLauncher) getSession().getProperty(ApplicationComponentLauncher.SESSION_KEY);
 
         if (acLauncher != null) {
@@ -100,13 +100,13 @@ public class ShareListNut extends AbstractSharePlotListNut<Share> {
     }
 
     @Override
-    @Nonnull
+    @NonNull
     protected String getResourceName() {
         return AnnotationsHelper.assertNonNull(ShareResource.RESOURCE_NAME);
     }
 
     @Override
-    protected Share getItemCopy(@Nonnull final Share item) {
+    protected Share getItemCopy(@NonNull final Share item) {
         return new Share(item);
     }
 

@@ -3,8 +3,8 @@ package jet.shareplot.persistence.ejb.share;
 import java.rmi.RemoteException;
 import java.util.Collection;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 import javax.ejb.CreateException;
 import javax.ejb.EJBException;
 import javax.ejb.EntityBean;
@@ -54,8 +54,7 @@ public final class ShareBean implements EntityBean {
      * @return Long value for the field idShare
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    @Nullable
-    public Long getIdShare() throws EJBException {
+    public @Nullable Long getIdShare() throws EJBException {
         return this.idShare;
 
     }
@@ -65,7 +64,7 @@ public final class ShareBean implements EntityBean {
      * @param idShare value for the field idShare
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    public void setIdShare(@Nullable final Long idShare) throws EJBException {
+    public void setIdShare(final @Nullable Long idShare) throws EJBException {
         this.idShare = idShare;
     }
 
@@ -75,8 +74,7 @@ public final class ShareBean implements EntityBean {
      * @return String value for the field codeISIN
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    @Nullable
-    public String getCodeISIN() throws EJBException {
+    public @Nullable String getCodeISIN() throws EJBException {
         return this.codeISIN;
 
     }
@@ -86,7 +84,7 @@ public final class ShareBean implements EntityBean {
      * @param codeISIN value for the field codeISIN
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    public void setCodeISIN(@Nullable final String codeISIN) throws EJBException {
+    public void setCodeISIN(final @Nullable String codeISIN) throws EJBException {
         this.codeISIN = codeISIN;
     }
 
@@ -96,8 +94,7 @@ public final class ShareBean implements EntityBean {
      * @return String value for the field codeYahoo
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    @Nullable
-    public String getCodeYahoo() throws EJBException {
+    public @Nullable String getCodeYahoo() throws EJBException {
         return this.codeYahoo;
 
     }
@@ -107,7 +104,7 @@ public final class ShareBean implements EntityBean {
      * @param codeYahoo value for the field codeYahoo
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    public void setCodeYahoo(@Nullable final String codeYahoo) throws EJBException {
+    public void setCodeYahoo(final @Nullable String codeYahoo) throws EJBException {
         this.codeYahoo = codeYahoo;
     }
 
@@ -117,8 +114,7 @@ public final class ShareBean implements EntityBean {
      * @return String value for the field description
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    @Nullable
-    public String getDescription() throws EJBException {
+    public @Nullable String getDescription() throws EJBException {
         return this.description;
 
     }
@@ -128,7 +124,7 @@ public final class ShareBean implements EntityBean {
      * @param description value for the field description
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    public void setDescription(@Nullable final String description) throws EJBException {
+    public void setDescription(final @Nullable String description) throws EJBException {
         this.description = description;
     }
 
@@ -138,8 +134,7 @@ public final class ShareBean implements EntityBean {
      * @return String value for the field name
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    @Nullable
-    public String getName() throws EJBException {
+    public @Nullable String getName() throws EJBException {
         return this.name;
 
     }
@@ -149,7 +144,7 @@ public final class ShareBean implements EntityBean {
      * @param name value for the field name
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    public void setName(@Nullable final String name) throws EJBException {
+    public void setName(final @Nullable String name) throws EJBException {
         this.name = name;
     }
 
@@ -166,8 +161,7 @@ public final class ShareBean implements EntityBean {
      * @throws CreateException Thrown by the method to indicate a failure during the creation.
      */
     @SuppressWarnings("hiding")
-    @Nullable
-    public java.lang.Object ejbCreate(final Long idShare, final String codeISIN, final String codeYahoo, final String description, final String name) throws CreateException {
+    public java.lang.@Nullable Object ejbCreate(final Long idShare, final String codeISIN, final String codeYahoo, final String description, final String name) throws CreateException {
         this.idShare = idShare;
         this.codeISIN = codeISIN;
         this.codeYahoo = codeYahoo;
@@ -202,8 +196,7 @@ public final class ShareBean implements EntityBean {
      * @return java.lang.Object primary key object
      * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
      */
-    @Nonnull
-    public java.lang.Object ejbFindByPrimaryKey(@Nonnull final java.lang.Object pkField) throws FinderException {
+    public java.lang.@NonNull Object ejbFindByPrimaryKey(final java.lang.@NonNull Object pkField) throws FinderException {
         if (pkField instanceof jet.container.managers.jdbc.interfaces.AutoGeneratedPrimaryKey) {
             jet.container.managers.jdbc.interfaces.AutoGeneratedPrimaryKey _pk = (jet.container.managers.jdbc.interfaces.AutoGeneratedPrimaryKey) pkField;
             this.idShare = (Long) _pk.getAutoGeneratedPrimaryKey();

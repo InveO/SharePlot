@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import javax.ejb.ObjectNotFoundException;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -26,6 +24,9 @@ import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
+
 /**
  * ShareQuantity manipulation API.
  *
@@ -45,8 +46,8 @@ abstract class AbstractShareQuantityBOApplicationComponent extends SimpleApplica
      * @param model Data model
      * @return instance of the POJO2 business object
      */
-    @Nonnull
-    protected abstract ShareQuantity getShareQuantity(@Nonnull final Model model);
+    @NonNull
+    protected abstract ShareQuantity getShareQuantity(@NonNull final Model model);
 
     /**
      * Return all shareQuantity matching the FinderMethod.
@@ -56,12 +57,12 @@ abstract class AbstractShareQuantityBOApplicationComponent extends SimpleApplica
      * @see List
      * @see ShareQuantity
      */
-    @Nonnull
-    protected List<ShareQuantity> getShareQuantitys(@Nonnull final FinderMethod finder) {
+    @NonNull
+    protected List<ShareQuantity> getShareQuantitys(@NonNull final FinderMethod finder) {
         final List<ShareQuantity> result = new ArrayList<ShareQuantity>();
         final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.SHAREQUANTITY_SELECT);
 
-        final Callable<Object> callable = new Callable<Object>() {
+        final Callable<@Nullable Object> callable = new Callable<@Nullable Object>() {
             @Override
             public Object call() throws Exception {
                 final ModelArray ma = SelectNutHelper.getModelArray(selectNut, finder, getLogger());
@@ -109,7 +110,7 @@ abstract class AbstractShareQuantityBOApplicationComponent extends SimpleApplica
      * @see ShareQuantity
      */
     @Nullable
-    protected ShareQuantity getShareQuantity(@Nonnull final FinderMethod finder) {
+    protected ShareQuantity getShareQuantity(@NonNull final FinderMethod finder) {
         final ShareQuantity result;
 
         final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.SHAREQUANTITY_SELECT);
@@ -131,7 +132,7 @@ abstract class AbstractShareQuantityBOApplicationComponent extends SimpleApplica
      * @see ShareQuantity
      * @see #getShareQuantitys(FinderMethod finder)
      */
-    @Nonnull
+    @NonNull
     public List<ShareQuantity> getShareQuantitys() {
         final ShareQuantity_FindAll0 finder = new ShareQuantity_FindAll0();
 

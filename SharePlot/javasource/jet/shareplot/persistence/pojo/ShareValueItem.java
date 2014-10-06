@@ -2,7 +2,7 @@ package jet.shareplot.persistence.pojo;
 
 import java.io.Serializable;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 
 import jet.framework.manager.datamodel.interfaces.DataModelRootNode;
 import jet.framework.util.models.ModelHelper;
@@ -72,7 +72,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
      *
      * @param model Model to use to wrap in the pojo, can not be <code>null</code>
      */
-    public ShareValueItem(@Nonnull final Model model) {
+    public ShareValueItem(@NonNull final Model model) {
         this.dataModel = model;
     }
 
@@ -81,7 +81,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
      *
      * @param shareValue ShareValueItem to use to copy in the pojo, can not be <code>null</code>
      */
-    public ShareValueItem(@Nonnull final ShareValueItem shareValue) {
+    public ShareValueItem(@NonNull final ShareValueItem shareValue) {
         this();
 
         setIdShareValue(shareValue.getIdShareValue());
@@ -148,7 +148,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
      * @see JFDataItem
      */
     @Override
-    @Nonnull
+    @NonNull
     public final Model get_Model() {
         Model model = this.dataModel;
         assert model != null;
@@ -181,7 +181,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
      * @return Model of Data Model node idShareValue
      */
     @SuppressWarnings("unchecked")
-    @Nonnull
+    @NonNull
     public final DispatcherModel<ShareValueItem> get_IdShareValue_Model() {
         if (this.idShareValueDispatcherModel == null) {
             try {
@@ -227,7 +227,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
      * @return Model of Data Model node idShare
      */
     @SuppressWarnings("unchecked")
-    @Nonnull
+    @NonNull
     public final DispatcherModel<ShareValueItem> get_IdShare_Model() {
         if (this.idShareDispatcherModel == null) {
             try {
@@ -273,7 +273,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
      * @return Model of Data Model node value
      */
     @SuppressWarnings("unchecked")
-    @Nonnull
+    @NonNull
     public final DispatcherModel<ShareValueItem> get_Value_Model() {
         if (this.valueDispatcherModel == null) {
             try {
@@ -319,7 +319,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
      * @return Model of Data Model node valueDate
      */
     @SuppressWarnings("unchecked")
-    @Nonnull
+    @NonNull
     public final DispatcherModel<ShareValueItem> get_ValueDate_Model() {
         if (this.valueDateDispatcherModel == null) {
             try {

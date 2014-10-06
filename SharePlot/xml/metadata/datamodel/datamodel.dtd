@@ -10,6 +10,7 @@
 <!ATTLIST NODE
     name NMTOKEN #REQUIRED
     type CDATA #REQUIRED
+    subtype CDATA ""
     nullable (true | false) #REQUIRED
     autoincrement (true | false) #REQUIRED
     length CDATA #REQUIRED

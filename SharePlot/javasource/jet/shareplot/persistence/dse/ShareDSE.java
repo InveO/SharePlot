@@ -3,7 +3,6 @@ package jet.shareplot.persistence.dse;
 import java.rmi.RemoteException;
 import java.util.concurrent.Callable;
 
-import javax.annotation.Nonnull;
 import javax.ejb.FinderException;
 import javax.ejb.ObjectNotFoundException;
 import javax.naming.InitialContext;
@@ -21,6 +20,9 @@ import jet.shareplot.persistence.pojo.ShareItem;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
 
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
+
 /**
  * Share DataSourceExecutor2.
  *
@@ -33,8 +35,8 @@ public final class ShareDSE extends AbstractDataSourceExecutor2<ShareHome, Share
     private transient DataModelConverter2<ShareRemote> dataModelConverter;
 
     @Override
-    public void updateFromDataModel(@Nonnull final Model dataModel) throws JETException, ObjectNotFoundException {
-        final Callable<Object> callable = new Callable<Object>() {
+    public void updateFromDataModel(@NonNull final Model dataModel) throws JETException, ObjectNotFoundException {
+        final Callable<@Nullable Object> callable = new Callable<@Nullable Object>() {
             @Override
             public Object call() throws Exception {
                 final ShareRemote ejbObject = getObjectFromStore(dataModel);
@@ -53,8 +55,8 @@ public final class ShareDSE extends AbstractDataSourceExecutor2<ShareHome, Share
     }
 
     @Override
-    public void createFromDataModel(@Nonnull final Model dataModel) throws JETException, JETDuplicateKeyException {
-        final Callable<Object> callable = new Callable<Object>() {
+    public void createFromDataModel(@NonNull final Model dataModel) throws JETException, JETDuplicateKeyException {
+        final Callable<@Nullable Object> callable = new Callable<@Nullable Object>() {
             @Override
             public Object call() throws Exception {
                 final ShareItem shareItem = new ShareItem(dataModel);
@@ -79,8 +81,8 @@ public final class ShareDSE extends AbstractDataSourceExecutor2<ShareHome, Share
     }
 
     @Override
-    public void removeFromDataModel(@Nonnull final Model dataModel) throws JETException, ObjectNotFoundException {
-        final Callable<Object> callable = new Callable<Object>() {
+    public void removeFromDataModel(@NonNull final Model dataModel) throws JETException, ObjectNotFoundException {
+        final Callable<@Nullable Object> callable = new Callable<@Nullable Object>() {
             @Override
             public Object call() throws Exception {
                 final ShareRemote shareRemote = getObjectFromStore(dataModel);
@@ -103,7 +105,7 @@ public final class ShareDSE extends AbstractDataSourceExecutor2<ShareHome, Share
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public ShareHome getEJBHome() {
         ShareHome result = this.ejbHome;
         if (result == null) {
@@ -120,7 +122,7 @@ public final class ShareDSE extends AbstractDataSourceExecutor2<ShareHome, Share
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public DataModelConverter2<ShareRemote> getDataModelConverter() {
         DataModelConverter2<ShareRemote> result = this.dataModelConverter;
         if (result == null) {
@@ -142,8 +144,8 @@ public final class ShareDSE extends AbstractDataSourceExecutor2<ShareHome, Share
      * @throws JETException Thrown if there was an error whilst retrieving the object
      * @throws ObjectNotFoundException Thrown if there is no corresponding object
      */
-    @Nonnull
-    private ShareRemote getObjectFromStore(@Nonnull final Model dataModel) throws JETException, ObjectNotFoundException {
+    @NonNull
+    private ShareRemote getObjectFromStore(@NonNull final Model dataModel) throws JETException, ObjectNotFoundException {
         assert dataModel != null : "Can not delete null model";
 
         final ShareItem shareItem = new ShareItem(dataModel);

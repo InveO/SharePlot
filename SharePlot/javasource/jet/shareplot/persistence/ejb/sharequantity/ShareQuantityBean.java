@@ -3,8 +3,8 @@ package jet.shareplot.persistence.ejb.sharequantity;
 import java.rmi.RemoteException;
 import java.util.Collection;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 import javax.ejb.CreateException;
 import javax.ejb.EJBException;
 import javax.ejb.EntityBean;
@@ -74,8 +74,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @return Long value for the field idShareQuantity
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    @Nullable
-    public Long getIdShareQuantity() throws EJBException {
+    public @Nullable Long getIdShareQuantity() throws EJBException {
         return this.idShareQuantity;
 
     }
@@ -85,7 +84,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @param idShareQuantity value for the field idShareQuantity
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    public void setIdShareQuantity(@Nullable final Long idShareQuantity) throws EJBException {
+    public void setIdShareQuantity(final @Nullable Long idShareQuantity) throws EJBException {
         this.idShareQuantity = idShareQuantity;
     }
 
@@ -95,8 +94,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @return java.math.BigDecimal value for the field changeFee
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    @Nullable
-    public java.math.BigDecimal getChangeFee() throws EJBException {
+    public java.math.@Nullable BigDecimal getChangeFee() throws EJBException {
         return this.changeFee;
 
     }
@@ -106,7 +104,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @param changeFee value for the field changeFee
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    public void setChangeFee(@Nullable final java.math.BigDecimal changeFee) throws EJBException {
+    public void setChangeFee(final java.math.@Nullable BigDecimal changeFee) throws EJBException {
         this.changeFee = changeFee;
     }
 
@@ -116,8 +114,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @return java.math.BigDecimal value for the field changeQuantity
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    @Nullable
-    public java.math.BigDecimal getChangeQuantity() throws EJBException {
+    public java.math.@Nullable BigDecimal getChangeQuantity() throws EJBException {
         return this.changeQuantity;
 
     }
@@ -127,7 +124,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @param changeQuantity value for the field changeQuantity
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    public void setChangeQuantity(@Nullable final java.math.BigDecimal changeQuantity) throws EJBException {
+    public void setChangeQuantity(final java.math.@Nullable BigDecimal changeQuantity) throws EJBException {
         this.changeQuantity = changeQuantity;
     }
 
@@ -137,8 +134,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @return String value for the field changeType
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    @Nullable
-    public String getChangeType() throws EJBException {
+    public @Nullable String getChangeType() throws EJBException {
         return this.changeType;
 
     }
@@ -148,7 +144,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @param changeType value for the field changeType
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    public void setChangeType(@Nullable final String changeType) throws EJBException {
+    public void setChangeType(final @Nullable String changeType) throws EJBException {
         this.changeType = changeType;
     }
 
@@ -158,8 +154,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @return java.math.BigDecimal value for the field changeValue
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    @Nullable
-    public java.math.BigDecimal getChangeValue() throws EJBException {
+    public java.math.@Nullable BigDecimal getChangeValue() throws EJBException {
         return this.changeValue;
 
     }
@@ -169,7 +164,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @param changeValue value for the field changeValue
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    public void setChangeValue(@Nullable final java.math.BigDecimal changeValue) throws EJBException {
+    public void setChangeValue(final java.math.@Nullable BigDecimal changeValue) throws EJBException {
         this.changeValue = changeValue;
     }
 
@@ -179,8 +174,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @return String value for the field description
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    @Nullable
-    public String getDescription() throws EJBException {
+    public @Nullable String getDescription() throws EJBException {
         return this.description;
 
     }
@@ -190,7 +184,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @param description value for the field description
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    public void setDescription(@Nullable final String description) throws EJBException {
+    public void setDescription(final @Nullable String description) throws EJBException {
         this.description = description;
     }
 
@@ -200,8 +194,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @return Long value for the field idPortfolio
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    @Nullable
-    public Long getIdPortfolio() throws EJBException {
+    public @Nullable Long getIdPortfolio() throws EJBException {
         return this.idPortfolio;
 
     }
@@ -211,7 +204,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @param idPortfolio value for the field idPortfolio
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    public void setIdPortfolio(@Nullable final Long idPortfolio) throws EJBException {
+    public void setIdPortfolio(final @Nullable Long idPortfolio) throws EJBException {
         this.idPortfolio = idPortfolio;
     }
 
@@ -221,8 +214,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @return Long value for the field idShare
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    @Nullable
-    public Long getIdShare() throws EJBException {
+    public @Nullable Long getIdShare() throws EJBException {
         return this.idShare;
 
     }
@@ -232,7 +224,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @param idShare value for the field idShare
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    public void setIdShare(@Nullable final Long idShare) throws EJBException {
+    public void setIdShare(final @Nullable Long idShare) throws EJBException {
         this.idShare = idShare;
     }
 
@@ -242,8 +234,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @return java.math.BigDecimal value for the field totalQuantity
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    @Nullable
-    public java.math.BigDecimal getTotalQuantity() throws EJBException {
+    public java.math.@Nullable BigDecimal getTotalQuantity() throws EJBException {
         return this.totalQuantity;
 
     }
@@ -253,7 +244,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @param totalQuantity value for the field totalQuantity
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    public void setTotalQuantity(@Nullable final java.math.BigDecimal totalQuantity) throws EJBException {
+    public void setTotalQuantity(final java.math.@Nullable BigDecimal totalQuantity) throws EJBException {
         this.totalQuantity = totalQuantity;
     }
 
@@ -263,8 +254,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @return java.util.Date value for the field valueDate
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    @Nullable
-    public java.util.Date getValueDate() throws EJBException {
+    public java.util.@Nullable Date getValueDate() throws EJBException {
         java.util.Date date = null;
         if (this.valueDate != null) {
             date = (java.util.Date) this.valueDate.clone();
@@ -278,7 +268,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @param valueDate value for the field valueDate
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      */
-    public void setValueDate(@Nullable final java.util.Date valueDate) throws EJBException {
+    public void setValueDate(final java.util.@Nullable Date valueDate) throws EJBException {
         if (valueDate == null) {
             this.valueDate = null;
         } else {
@@ -304,8 +294,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @throws CreateException Thrown by the method to indicate a failure during the creation.
      */
     @SuppressWarnings("hiding")
-    @Nullable
-    public java.lang.Object ejbCreate(final Long idShareQuantity, final java.math.BigDecimal changeFee, final java.math.BigDecimal changeQuantity, final String changeType, final java.math.BigDecimal changeValue, final String description, final Long idPortfolio, final Long idShare, final java.math.BigDecimal totalQuantity, final java.util.Date valueDate) throws CreateException {
+    public java.lang.@Nullable Object ejbCreate(final Long idShareQuantity, final java.math.BigDecimal changeFee, final java.math.BigDecimal changeQuantity, final String changeType, final java.math.BigDecimal changeValue, final String description, final Long idPortfolio, final Long idShare, final java.math.BigDecimal totalQuantity, final java.util.Date valueDate) throws CreateException {
         this.idShareQuantity = idShareQuantity;
         this.changeFee = changeFee;
         this.changeQuantity = changeQuantity;
@@ -354,8 +343,7 @@ public final class ShareQuantityBean implements EntityBean {
      * @return java.lang.Object primary key object
      * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
      */
-    @Nonnull
-    public java.lang.Object ejbFindByPrimaryKey(@Nonnull final java.lang.Object pkField) throws FinderException {
+    public java.lang.@NonNull Object ejbFindByPrimaryKey(final java.lang.@NonNull Object pkField) throws FinderException {
         if (pkField instanceof jet.container.managers.jdbc.interfaces.AutoGeneratedPrimaryKey) {
             jet.container.managers.jdbc.interfaces.AutoGeneratedPrimaryKey _pk = (jet.container.managers.jdbc.interfaces.AutoGeneratedPrimaryKey) pkField;
             this.idShareQuantity = (Long) _pk.getAutoGeneratedPrimaryKey();

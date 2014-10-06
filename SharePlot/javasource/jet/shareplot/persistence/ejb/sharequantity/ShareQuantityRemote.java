@@ -1,6 +1,6 @@
 package jet.shareplot.persistence.ejb.sharequantity;
 
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.Nullable;
 import javax.ejb.EJBException;
 import javax.ejb.EJBObject;
 
@@ -21,8 +21,7 @@ public interface ShareQuantityRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    Long getIdShareQuantity() throws EJBException, RemoteException;
+    @Nullable Long getIdShareQuantity() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field idShareQuantity.
@@ -31,7 +30,7 @@ public interface ShareQuantityRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setIdShareQuantity(@Nullable final Long idShareQuantity) throws EJBException, RemoteException;
+    void setIdShareQuantity(final @Nullable Long idShareQuantity) throws EJBException, RemoteException;
 
 
     /**
@@ -41,8 +40,7 @@ public interface ShareQuantityRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    java.math.BigDecimal getChangeFee() throws EJBException, RemoteException;
+    java.math.@Nullable BigDecimal getChangeFee() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field changeFee.
@@ -51,7 +49,7 @@ public interface ShareQuantityRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setChangeFee(@Nullable final java.math.BigDecimal changeFee) throws EJBException, RemoteException;
+    void setChangeFee(final java.math.@Nullable BigDecimal changeFee) throws EJBException, RemoteException;
 
 
     /**
@@ -61,8 +59,7 @@ public interface ShareQuantityRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    java.math.BigDecimal getChangeQuantity() throws EJBException, RemoteException;
+    java.math.@Nullable BigDecimal getChangeQuantity() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field changeQuantity.
@@ -71,7 +68,7 @@ public interface ShareQuantityRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setChangeQuantity(@Nullable final java.math.BigDecimal changeQuantity) throws EJBException, RemoteException;
+    void setChangeQuantity(final java.math.@Nullable BigDecimal changeQuantity) throws EJBException, RemoteException;
 
 
     /**
@@ -81,8 +78,7 @@ public interface ShareQuantityRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    String getChangeType() throws EJBException, RemoteException;
+    @Nullable String getChangeType() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field changeType.
@@ -91,7 +87,7 @@ public interface ShareQuantityRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setChangeType(@Nullable final String changeType) throws EJBException, RemoteException;
+    void setChangeType(final @Nullable String changeType) throws EJBException, RemoteException;
 
 
     /**
@@ -101,8 +97,7 @@ public interface ShareQuantityRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    java.math.BigDecimal getChangeValue() throws EJBException, RemoteException;
+    java.math.@Nullable BigDecimal getChangeValue() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field changeValue.
@@ -111,7 +106,7 @@ public interface ShareQuantityRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setChangeValue(@Nullable final java.math.BigDecimal changeValue) throws EJBException, RemoteException;
+    void setChangeValue(final java.math.@Nullable BigDecimal changeValue) throws EJBException, RemoteException;
 
 
     /**
@@ -121,8 +116,7 @@ public interface ShareQuantityRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    String getDescription() throws EJBException, RemoteException;
+    @Nullable String getDescription() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field description.
@@ -131,7 +125,7 @@ public interface ShareQuantityRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setDescription(@Nullable final String description) throws EJBException, RemoteException;
+    void setDescription(final @Nullable String description) throws EJBException, RemoteException;
 
 
     /**
@@ -141,8 +135,7 @@ public interface ShareQuantityRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    Long getIdPortfolio() throws EJBException, RemoteException;
+    @Nullable Long getIdPortfolio() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field idPortfolio.
@@ -151,7 +144,7 @@ public interface ShareQuantityRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setIdPortfolio(@Nullable final Long idPortfolio) throws EJBException, RemoteException;
+    void setIdPortfolio(final @Nullable Long idPortfolio) throws EJBException, RemoteException;
 
 
     /**
@@ -161,8 +154,7 @@ public interface ShareQuantityRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    Long getIdShare() throws EJBException, RemoteException;
+    @Nullable Long getIdShare() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field idShare.
@@ -171,7 +163,7 @@ public interface ShareQuantityRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setIdShare(@Nullable final Long idShare) throws EJBException, RemoteException;
+    void setIdShare(final @Nullable Long idShare) throws EJBException, RemoteException;
 
 
     /**
@@ -181,8 +173,7 @@ public interface ShareQuantityRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    java.math.BigDecimal getTotalQuantity() throws EJBException, RemoteException;
+    java.math.@Nullable BigDecimal getTotalQuantity() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field totalQuantity.
@@ -191,7 +182,7 @@ public interface ShareQuantityRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setTotalQuantity(@Nullable final java.math.BigDecimal totalQuantity) throws EJBException, RemoteException;
+    void setTotalQuantity(final java.math.@Nullable BigDecimal totalQuantity) throws EJBException, RemoteException;
 
 
     /**
@@ -201,8 +192,7 @@ public interface ShareQuantityRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    java.util.Date getValueDate() throws EJBException, RemoteException;
+    java.util.@Nullable Date getValueDate() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field valueDate.
@@ -211,7 +201,7 @@ public interface ShareQuantityRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setValueDate(@Nullable final java.util.Date valueDate) throws EJBException, RemoteException;
+    void setValueDate(final java.util.@Nullable Date valueDate) throws EJBException, RemoteException;
 
 
     /**
@@ -229,5 +219,5 @@ public interface ShareQuantityRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void update(@Nullable final java.math.BigDecimal changeFee ,@Nullable final java.math.BigDecimal changeQuantity ,@Nullable final String changeType ,@Nullable final java.math.BigDecimal changeValue ,@Nullable final String description ,@Nullable final Long idPortfolio ,@Nullable final Long idShare ,@Nullable final java.math.BigDecimal totalQuantity ,@Nullable final java.util.Date valueDate) throws EJBException, RemoteException;
+    void update(final java.math.@Nullable BigDecimal changeFee, final java.math.@Nullable BigDecimal changeQuantity, final @Nullable String changeType, final java.math.@Nullable BigDecimal changeValue, final @Nullable String description, final @Nullable Long idPortfolio, final @Nullable Long idShare, final java.math.@Nullable BigDecimal totalQuantity, final java.util.@Nullable Date valueDate) throws EJBException, RemoteException;
 }

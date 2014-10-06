@@ -2,7 +2,7 @@ package jet.shareplot.persistence.pojo;
 
 import java.io.Serializable;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 
 import jet.framework.manager.datamodel.interfaces.DataModelRootNode;
 import jet.framework.util.models.ModelHelper;
@@ -75,7 +75,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      *
      * @param model Model to use to wrap in the pojo, can not be <code>null</code>
      */
-    public ShareItem(@Nonnull final Model model) {
+    public ShareItem(@NonNull final Model model) {
         this.dataModel = model;
     }
 
@@ -84,7 +84,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      *
      * @param share ShareItem to use to copy in the pojo, can not be <code>null</code>
      */
-    public ShareItem(@Nonnull final ShareItem share) {
+    public ShareItem(@NonNull final ShareItem share) {
         this();
 
         setIdShare(share.getIdShare());
@@ -152,7 +152,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * @see JFDataItem
      */
     @Override
-    @Nonnull
+    @NonNull
     public final Model get_Model() {
         Model model = this.dataModel;
         assert model != null;
@@ -185,7 +185,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * @return Model of Data Model node idShare
      */
     @SuppressWarnings("unchecked")
-    @Nonnull
+    @NonNull
     public final DispatcherModel<ShareItem> get_IdShare_Model() {
         if (this.idShareDispatcherModel == null) {
             try {
@@ -229,7 +229,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * @return Model of Data Model node codeISIN
      */
     @SuppressWarnings("unchecked")
-    @Nonnull
+    @NonNull
     public final DispatcherModel<ShareItem> get_CodeISIN_Model() {
         if (this.codeISINDispatcherModel == null) {
             try {
@@ -275,7 +275,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * @return Model of Data Model node codeYahoo
      */
     @SuppressWarnings("unchecked")
-    @Nonnull
+    @NonNull
     public final DispatcherModel<ShareItem> get_CodeYahoo_Model() {
         if (this.codeYahooDispatcherModel == null) {
             try {
@@ -321,7 +321,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * @return Model of Data Model node description
      */
     @SuppressWarnings("unchecked")
-    @Nonnull
+    @NonNull
     public final DispatcherModel<ShareItem> get_Description_Model() {
         if (this.descriptionDispatcherModel == null) {
             try {
@@ -369,7 +369,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * @return Model of Data Model node name
      */
     @SuppressWarnings("unchecked")
-    @Nonnull
+    @NonNull
     public final DispatcherModel<ShareItem> get_Name_Model() {
         if (this.nameDispatcherModel == null) {
             try {

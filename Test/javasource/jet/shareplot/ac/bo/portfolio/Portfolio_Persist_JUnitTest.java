@@ -1,13 +1,13 @@
 package jet.shareplot.ac.bo.portfolio;
 
+import static jet.framework.util.JUnitAsserter.any;
+import static jet.framework.util.JUnitAsserter.mock;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.only;
 import static org.mockito.Mockito.verify;
@@ -26,14 +26,14 @@ import org.mockito.stubbing.Answer;
 /**
  * JUnit tests for the Portfolio accessor methods, this is where the Portfolio business
  * code will be tested.
- * 
+ *
  * @author JetToolsFramework
  */
 public class Portfolio_Persist_JUnitTest {
 
     /**
      * Save, creation
-     * 
+     *
      * @throws FormatedJetException should be thrown as saving invalid portfolio
      */
     @org.junit.Test(expected = FormatedJetException.class)
@@ -61,7 +61,7 @@ public class Portfolio_Persist_JUnitTest {
 
     /**
      * Save, creation
-     * 
+     *
      * @throws Exception
      */
     @org.junit.Test
@@ -112,7 +112,7 @@ public class Portfolio_Persist_JUnitTest {
 
     /**
      * Save, update
-     * 
+     *
      * @throws Exception
      */
     @org.junit.Test
@@ -192,7 +192,7 @@ public class Portfolio_Persist_JUnitTest {
 
     /**
      * Delete old record
-     * 
+     *
      * @throws Exception
      */
     @org.junit.Test

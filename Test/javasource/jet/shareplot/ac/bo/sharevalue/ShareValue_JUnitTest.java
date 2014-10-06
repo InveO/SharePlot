@@ -6,7 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static org.mockito.Mockito.mock;
+import static jet.framework.util.JUnitAsserter.mock;
 import jet.framework.util.pojo2.JFErrorHandler;
 import jet.shareplot.persistence.pojo.ShareValueItem;
 import jet.util.models.interfaces.Model;

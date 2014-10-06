@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull; // NOPMD import may not be used in generated code
 import static org.junit.Assert.assertNull; // NOPMD import may not be used in generated code
 import static org.junit.Assert.assertTrue; // NOPMD import may not be used in generated code
-import static org.mockito.Mockito.mock;
+import static jet.framework.util.JUnitAsserter.mock;
 
 /**
  * JUnit tests for the PortfolioShare accessor methods, this is where the PortfolioShare business

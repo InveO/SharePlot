@@ -3,7 +3,7 @@ package jet.shareplot.ac.bo.portfolio;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 
 import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.session.interfaces.Session;
@@ -42,7 +42,7 @@ public class PortfolioBOApplicationComponent extends AbstractPortfolioBOApplicat
      * @return PortfolioBOApplicationComponent
      * @throws JETException if there is an error initializing the ApplicationComponent
      */
-    @Nonnull
+    @NonNull
     public static final PortfolioBOApplicationComponent getInstance(final Session session) throws JETException {
         PortfolioBOApplicationComponent portfolioAC = (PortfolioBOApplicationComponent) session.getProperty(SESSION_KEY);
 
@@ -95,8 +95,8 @@ public class PortfolioBOApplicationComponent extends AbstractPortfolioBOApplicat
     }
 
     @Override
-    @Nonnull
-    protected Portfolio getPortfolio(@Nonnull final Model model) {
+    @NonNull
+    protected Portfolio getPortfolio(@NonNull final Model model) {
         return new Portfolio(model, this);
     }
 

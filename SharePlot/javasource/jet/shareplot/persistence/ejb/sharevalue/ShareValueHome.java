@@ -3,8 +3,8 @@ package jet.shareplot.persistence.ejb.sharevalue;
 import java.rmi.RemoteException;
 import java.util.Collection;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 import javax.ejb.CreateException;
 import javax.ejb.FinderException;
 import javax.ejb.EJBHome;
@@ -33,7 +33,7 @@ public interface ShareValueHome extends EJBHome {
      * @throws CreateException Thrown by the method to indicate a failure during the creation.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nonnull
+    @NonNull
     ShareValueRemote create(@EJBParam(name = "idShareValue") Long idShareValue, @EJBParam(name = "idShare") Long idShare, @EJBParam(name = "value") java.math.BigDecimal value, @EJBParam(name = "valueDate") java.util.Date valueDate) throws CreateException, RemoteException;
 
     /**
@@ -43,8 +43,8 @@ public interface ShareValueHome extends EJBHome {
      * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nonnull
-    ShareValueRemote findByPrimaryKey(@Nullable final java.lang.Object pkField) throws FinderException, RemoteException;
+    @NonNull
+    ShareValueRemote findByPrimaryKey(final java.lang.@Nullable Object pkField) throws FinderException, RemoteException;
 
     /**
      * Find a collections of records.
@@ -52,7 +52,7 @@ public interface ShareValueHome extends EJBHome {
      * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nonnull
+    @NonNull
     Collection<ShareValueRemote> findAll() throws FinderException, RemoteException;
 
     /**
@@ -62,8 +62,8 @@ public interface ShareValueHome extends EJBHome {
      * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nonnull
-    Collection<ShareValueRemote> findByShare(@Nullable final Long idShare) throws FinderException, RemoteException;
+    @NonNull
+    Collection<ShareValueRemote> findByShare(final @Nullable Long idShare) throws FinderException, RemoteException;
 
     /**
      * Find a collections of records.
@@ -73,8 +73,8 @@ public interface ShareValueHome extends EJBHome {
      * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nonnull
-    Collection<ShareValueRemote> findByShareAndDate(@Nullable final Long idShare, @Nullable final java.util.Date valueDate) throws FinderException, RemoteException;
+    @NonNull
+    Collection<ShareValueRemote> findByShareAndDate(final @Nullable Long idShare, final java.util.@Nullable Date valueDate) throws FinderException, RemoteException;
 
     /**
      * Find a collections of records.
@@ -84,7 +84,7 @@ public interface ShareValueHome extends EJBHome {
      * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nonnull
-    Collection<ShareValueRemote> findByPreparedSQLQuery(@Nullable final String sqlWhereClause, @Nullable final Object[] sqlArguments) throws FinderException, RemoteException;
+    @NonNull
+    Collection<ShareValueRemote> findByPreparedSQLQuery(final @Nullable String sqlWhereClause, final Object @Nullable [] sqlArguments) throws FinderException, RemoteException;
 
 }

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 
 import jet.components.ui.events.MouseEvent;
 import jet.components.ui.events.MouseEventType;
@@ -52,7 +52,7 @@ public class PortfolioListNut extends AbstractSharePlotListNut<Portfolio> {
         }
     }
 
-    private void launchEditPortfolio(@Nonnull final Portfolio portfolio) {
+    private void launchEditPortfolio(@NonNull final Portfolio portfolio) {
         final Map<String, Object> initArgs = new HashMap<String, Object>();
 
         final ApplicationComponentLauncher acLauncher = (ApplicationComponentLauncher) getSession().getProperty(ApplicationComponentLauncher.SESSION_KEY);
@@ -105,13 +105,13 @@ public class PortfolioListNut extends AbstractSharePlotListNut<Portfolio> {
     }
 
     @Override
-    @Nonnull
+    @NonNull
     protected String getResourceName() {
         return AnnotationsHelper.assertNonNull(PortfolioResource.RESOURCE_NAME);
     }
 
     @Override
-    protected Portfolio getItemCopy(@Nonnull final Portfolio item) {
+    protected Portfolio getItemCopy(@NonNull final Portfolio item) {
         return new Portfolio(item);
     }
 

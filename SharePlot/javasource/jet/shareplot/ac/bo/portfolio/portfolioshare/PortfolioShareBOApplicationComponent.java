@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 
 import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.session.interfaces.Session;
@@ -53,7 +53,7 @@ public class PortfolioShareBOApplicationComponent extends SimpleApplicationCompo
      * @return PortfolioShareBOApplicationComponent
      * @throws JETException if there is an error initializing the ApplicationComponent
      */
-    @Nonnull
+    @NonNull
     public static final PortfolioShareBOApplicationComponent getInstance(final Session session) throws JETException {
         PortfolioShareBOApplicationComponent portfolioShareAC = (PortfolioShareBOApplicationComponent) session.getProperty(SESSION_KEY);
 
@@ -111,7 +111,7 @@ public class PortfolioShareBOApplicationComponent extends SimpleApplicationCompo
      * @param portfolio
      * @return all last share quantities.
      */
-    @Nonnull
+    @NonNull
     public final List<PortfolioShare> getPortfolioShares(@Nullable final Portfolio portfolio) {
         final List<PortfolioShare> result = new ArrayList<>();
 

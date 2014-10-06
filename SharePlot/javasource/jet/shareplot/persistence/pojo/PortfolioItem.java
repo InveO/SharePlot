@@ -2,7 +2,7 @@ package jet.shareplot.persistence.pojo;
 
 import java.io.Serializable;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 
 import jet.framework.manager.datamodel.interfaces.DataModelRootNode;
 import jet.framework.util.models.ModelHelper;
@@ -71,7 +71,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      *
      * @param model Model to use to wrap in the pojo, can not be <code>null</code>
      */
-    public PortfolioItem(@Nonnull final Model model) {
+    public PortfolioItem(@NonNull final Model model) {
         this.dataModel = model;
     }
 
@@ -80,7 +80,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      *
      * @param portfolio PortfolioItem to use to copy in the pojo, can not be <code>null</code>
      */
-    public PortfolioItem(@Nonnull final PortfolioItem portfolio) {
+    public PortfolioItem(@NonNull final PortfolioItem portfolio) {
         this();
 
         setIdPortfolio(portfolio.getIdPortfolio());
@@ -146,7 +146,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      * @see JFDataItem
      */
     @Override
-    @Nonnull
+    @NonNull
     public final Model get_Model() {
         Model model = this.dataModel;
         assert model != null;
@@ -179,7 +179,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      * @return Model of Data Model node idPortfolio
      */
     @SuppressWarnings("unchecked")
-    @Nonnull
+    @NonNull
     public final DispatcherModel<PortfolioItem> get_IdPortfolio_Model() {
         if (this.idPortfolioDispatcherModel == null) {
             try {
@@ -225,7 +225,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      * @return Model of Data Model node isFake
      */
     @SuppressWarnings("unchecked")
-    @Nonnull
+    @NonNull
     public final DispatcherModel<PortfolioItem> get_IsFake_Model() {
         if (this.isFakeDispatcherModel == null) {
             try {
@@ -273,7 +273,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      * @return Model of Data Model node name
      */
     @SuppressWarnings("unchecked")
-    @Nonnull
+    @NonNull
     public final DispatcherModel<PortfolioItem> get_Name_Model() {
         if (this.nameDispatcherModel == null) {
             try {

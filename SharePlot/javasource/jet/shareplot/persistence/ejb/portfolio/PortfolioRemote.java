@@ -1,6 +1,6 @@
 package jet.shareplot.persistence.ejb.portfolio;
 
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.Nullable;
 import javax.ejb.EJBException;
 import javax.ejb.EJBObject;
 
@@ -21,8 +21,7 @@ public interface PortfolioRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    Long getIdPortfolio() throws EJBException, RemoteException;
+    @Nullable Long getIdPortfolio() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field idPortfolio.
@@ -31,7 +30,7 @@ public interface PortfolioRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setIdPortfolio(@Nullable final Long idPortfolio) throws EJBException, RemoteException;
+    void setIdPortfolio(final @Nullable Long idPortfolio) throws EJBException, RemoteException;
 
 
     /**
@@ -41,8 +40,7 @@ public interface PortfolioRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    String getIsFake() throws EJBException, RemoteException;
+    @Nullable String getIsFake() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field isFake.
@@ -51,7 +49,7 @@ public interface PortfolioRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setIsFake(@Nullable final String isFake) throws EJBException, RemoteException;
+    void setIsFake(final @Nullable String isFake) throws EJBException, RemoteException;
 
 
     /**
@@ -61,8 +59,7 @@ public interface PortfolioRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    String getName() throws EJBException, RemoteException;
+    @Nullable String getName() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field name.
@@ -71,7 +68,7 @@ public interface PortfolioRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setName(@Nullable final String name) throws EJBException, RemoteException;
+    void setName(final @Nullable String name) throws EJBException, RemoteException;
 
 
     /**
@@ -82,5 +79,5 @@ public interface PortfolioRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void update(@Nullable final String isFake ,@Nullable final String name) throws EJBException, RemoteException;
+    void update(final @Nullable String isFake, final @Nullable String name) throws EJBException, RemoteException;
 }

@@ -1,6 +1,6 @@
 package jet.shareplot.persistence.ejb.share;
 
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.Nullable;
 import javax.ejb.EJBException;
 import javax.ejb.EJBObject;
 
@@ -21,8 +21,7 @@ public interface ShareRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    Long getIdShare() throws EJBException, RemoteException;
+    @Nullable Long getIdShare() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field idShare.
@@ -31,7 +30,7 @@ public interface ShareRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setIdShare(@Nullable final Long idShare) throws EJBException, RemoteException;
+    void setIdShare(final @Nullable Long idShare) throws EJBException, RemoteException;
 
 
     /**
@@ -41,8 +40,7 @@ public interface ShareRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    String getCodeISIN() throws EJBException, RemoteException;
+    @Nullable String getCodeISIN() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field codeISIN.
@@ -51,7 +49,7 @@ public interface ShareRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setCodeISIN(@Nullable final String codeISIN) throws EJBException, RemoteException;
+    void setCodeISIN(final @Nullable String codeISIN) throws EJBException, RemoteException;
 
 
     /**
@@ -61,8 +59,7 @@ public interface ShareRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    String getCodeYahoo() throws EJBException, RemoteException;
+    @Nullable String getCodeYahoo() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field codeYahoo.
@@ -71,7 +68,7 @@ public interface ShareRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setCodeYahoo(@Nullable final String codeYahoo) throws EJBException, RemoteException;
+    void setCodeYahoo(final @Nullable String codeYahoo) throws EJBException, RemoteException;
 
 
     /**
@@ -81,8 +78,7 @@ public interface ShareRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    String getDescription() throws EJBException, RemoteException;
+    @Nullable String getDescription() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field description.
@@ -91,7 +87,7 @@ public interface ShareRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setDescription(@Nullable final String description) throws EJBException, RemoteException;
+    void setDescription(final @Nullable String description) throws EJBException, RemoteException;
 
 
     /**
@@ -101,8 +97,7 @@ public interface ShareRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @Nullable
-    String getName() throws EJBException, RemoteException;
+    @Nullable String getName() throws EJBException, RemoteException;
     
     /**
      * Set the value for the field name.
@@ -111,7 +106,7 @@ public interface ShareRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void setName(@Nullable final String name) throws EJBException, RemoteException;
+    void setName(final @Nullable String name) throws EJBException, RemoteException;
 
 
     /**
@@ -124,5 +119,5 @@ public interface ShareRemote extends EJBObject {
      * @throws EJBException Thrown by the method to indicate a failure caused by a system-level error.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    void update(@Nullable final String codeISIN ,@Nullable final String codeYahoo ,@Nullable final String description ,@Nullable final String name) throws EJBException, RemoteException;
+    void update(final @Nullable String codeISIN, final @Nullable String codeYahoo, final @Nullable String description, final @Nullable String name) throws EJBException, RemoteException;
 }

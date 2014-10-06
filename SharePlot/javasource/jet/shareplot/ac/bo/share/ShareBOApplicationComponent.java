@@ -3,8 +3,8 @@ package jet.shareplot.ac.bo.share;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 
 import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.session.interfaces.Session;
@@ -44,7 +44,7 @@ public class ShareBOApplicationComponent extends AbstractShareBOApplicationCompo
      * @return ShareBOApplicationComponent
      * @throws JETException if there is an error initializing the ApplicationComponent
      */
-    @Nonnull
+    @NonNull
     public static final ShareBOApplicationComponent getInstance(final Session session) throws JETException {
         ShareBOApplicationComponent shareAC = (ShareBOApplicationComponent) session.getProperty(SESSION_KEY);
 
@@ -97,8 +97,8 @@ public class ShareBOApplicationComponent extends AbstractShareBOApplicationCompo
     }
 
     @Override
-    @Nonnull
-    protected Share getShare(@Nonnull final Model model) {
+    @NonNull
+    protected Share getShare(@NonNull final Model model) {
         return new Share(model, this);
     }
 
@@ -109,7 +109,7 @@ public class ShareBOApplicationComponent extends AbstractShareBOApplicationCompo
      * @return The share, <code>null</code> if there is no share with that id
      */
     @Nullable
-    public final Share getShare(@Nonnull final Long idShare) {
+    public final Share getShare(@NonNull final Long idShare) {
         final Share_FindByPrimaryKey1 finder = new Share_FindByPrimaryKey1();
         finder.setIdShare(idShare);
 
@@ -121,7 +121,7 @@ public class ShareBOApplicationComponent extends AbstractShareBOApplicationCompo
      * 
      * @return ShareAutoCompleteProvider
      */
-    @Nonnull
+    @NonNull
     public ShareAutoCompleteProvider getShareAutoCompleteProvider() {
         return new ShareAutoCompleteProvider(this);
     }

@@ -2,7 +2,7 @@ package jet.shareplot.ac.bo.share;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import static org.mockito.Mockito.mock;
+import static jet.framework.util.JUnitAsserter.mock;
 // NOPMD import may not be used in generated code
 // NOPMD import may not be used in generated code
 // NOPMD import may not be used in generated code

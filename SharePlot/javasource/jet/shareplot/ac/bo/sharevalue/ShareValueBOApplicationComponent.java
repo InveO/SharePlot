@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 
 import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.session.interfaces.Session;
@@ -49,7 +49,7 @@ public class ShareValueBOApplicationComponent extends AbstractShareValueBOApplic
      * @return ShareValueBOApplicationComponent
      * @throws JETException if there is an error initializing the ApplicationComponent
      */
-    @Nonnull
+    @NonNull
     public static final ShareValueBOApplicationComponent getInstance(final Session session) throws JETException {
         ShareValueBOApplicationComponent shareValueAC = (ShareValueBOApplicationComponent) session.getProperty(SESSION_KEY);
 
@@ -102,8 +102,8 @@ public class ShareValueBOApplicationComponent extends AbstractShareValueBOApplic
     }
 
     @Override
-    @Nonnull
-    protected ShareValue getShareValue(@Nonnull final Model model) {
+    @NonNull
+    protected ShareValue getShareValue(@NonNull final Model model) {
         return new ShareValue(model, this);
     }
 
@@ -117,7 +117,7 @@ public class ShareValueBOApplicationComponent extends AbstractShareValueBOApplic
      * @see ShareValue
      * @see #getShareValues(FinderMethod finder)
      */
-    @Nonnull
+    @NonNull
     public List<ShareValue> getShareValues(final Share share) {
         final ShareValue_FindByShare1 finder = new ShareValue_FindByShare1();
         finder.setIdShare(share.getIdShare());
@@ -134,7 +134,7 @@ public class ShareValueBOApplicationComponent extends AbstractShareValueBOApplic
      * @return Value at the date or the nearest previous date.
      */
     @Nullable
-    public final ShareValue getValueAtDate(@Nonnull final Share share, @Nonnull final Date valueDate) {
+    public final ShareValue getValueAtDate(@NonNull final Share share, @NonNull final Date valueDate) {
         final ShareValue_FindByShareAndDate2 finder = new ShareValue_FindByShareAndDate2();
         finder.setIdShare(share.getIdShare());
         finder.setValueDate(valueDate);

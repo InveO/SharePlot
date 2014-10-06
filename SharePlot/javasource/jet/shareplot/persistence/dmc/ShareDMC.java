@@ -2,7 +2,7 @@ package jet.shareplot.persistence.dmc;
 
 import java.rmi.RemoteException;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 import javax.ejb.EJBException;
 
 import jet.framework.manager.datamodel.interfaces.DataModelConverter2;
@@ -30,8 +30,8 @@ public final class ShareDMC implements DataModelConverter2<ShareRemote> {
     }
 
     @Override
-    @Nonnull
-    public Model readDataModelFromObject(@Nonnull final ShareRemote shareRemote) throws JETException {
+    @NonNull
+    public Model readDataModelFromObject(@NonNull final ShareRemote shareRemote) throws JETException {
         final ShareItem shareItem = new ShareItem();
 
         try {
@@ -56,7 +56,7 @@ public final class ShareDMC implements DataModelConverter2<ShareRemote> {
     }
 
     @Override
-    public void writeDataModelToObject(@Nonnull final Model dataModel, @Nonnull final ShareRemote shareRemote) throws JETException {
+    public void writeDataModelToObject(@NonNull final Model dataModel, @NonNull final ShareRemote shareRemote) throws JETException {
         final ShareItem shareItem = new ShareItem(dataModel);
 
         try {

@@ -3,8 +3,8 @@ package jet.shareplot.ac.bo.share;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 
 import jet.components.ui.text.common.model.AutoCompleteContentProvider;
 import jet.components.ui.text.common.model.AutoCompleteContentProviderChoices;
@@ -45,7 +45,7 @@ public class ShareAutoCompleteProvider implements AutoCompleteContentProvider {
      * @return Desired Share, may be <code>null</code> if the Share is unknown
      */
     @Nullable
-    public Share getShare(@Nonnull final String shareName) {
+    public Share getShare(@NonNull final String shareName) {
         Share result = null;
         for (final Share item : this.shares) {
             if (shareName.equals(item.getName())) {

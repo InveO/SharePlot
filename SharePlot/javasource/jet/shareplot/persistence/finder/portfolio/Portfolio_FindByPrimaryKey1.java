@@ -4,8 +4,8 @@ import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 import javax.ejb.FinderException;
 import javax.ejb.ObjectNotFoundException;
 
@@ -41,13 +41,13 @@ public final class Portfolio_FindByPrimaryKey1 implements FinderMethod {
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public String getFinderName() {
         return "findByPrimaryKey";
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public Map<String, Object> getArguments() {
         final Map<String, Object> args = new HashMap<String, Object>();
         args.put("idPortfolio", this.idPortfolio);
@@ -55,7 +55,7 @@ public final class Portfolio_FindByPrimaryKey1 implements FinderMethod {
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
         PortfolioRemote portfolioRemote;
         DataModelConverter2<PortfolioRemote> dmc;
@@ -75,7 +75,7 @@ public final class Portfolio_FindByPrimaryKey1 implements FinderMethod {
         return new EJBModelList2<PortfolioRemote>(portfolioRemote, dmc);
     }
 
-    @Nonnull
+    @NonNull
     private DataSourceExecutor2<PortfolioHome, PortfolioRemote> getDataSourceExecutor2() {
         DataSourceExecutor2<PortfolioHome, PortfolioRemote> result = this.dse;
         if (result == null) {
