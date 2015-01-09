@@ -71,7 +71,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      *
      * @param model Model to use to wrap in the pojo, can not be <code>null</code>
      */
-    public PortfolioItem(@NonNull final Model model) {
+    public PortfolioItem(final @NonNull Model model) {
         this.dataModel = model;
     }
 
@@ -80,7 +80,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      *
      * @param portfolio PortfolioItem to use to copy in the pojo, can not be <code>null</code>
      */
-    public PortfolioItem(@NonNull final PortfolioItem portfolio) {
+    public PortfolioItem(final @NonNull PortfolioItem portfolio) {
         this();
 
         setIdPortfolio(portfolio.getIdPortfolio());
@@ -146,8 +146,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      * @see JFDataItem
      */
     @Override
-    @NonNull
-    public final Model get_Model() {
+    public final @NonNull Model get_Model() {
         Model model = this.dataModel;
         assert model != null;
         return model;
@@ -179,8 +178,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      * @return Model of Data Model node idPortfolio
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<PortfolioItem> get_IdPortfolio_Model() {
+    public final @NonNull DispatcherModel<PortfolioItem> get_IdPortfolio_Model() {
         if (this.idPortfolioDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idPortfolio");
@@ -225,8 +223,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      * @return Model of Data Model node isFake
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<PortfolioItem> get_IsFake_Model() {
+    public final @NonNull DispatcherModel<PortfolioItem> get_IsFake_Model() {
         if (this.isFakeDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "isFake");
@@ -273,8 +270,7 @@ public class PortfolioItem implements Serializable, JFErrorHandlerProvider, JFDa
      * @return Model of Data Model node name
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<PortfolioItem> get_Name_Model() {
+    public final @NonNull DispatcherModel<PortfolioItem> get_Name_Model() {
         if (this.nameDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "name");

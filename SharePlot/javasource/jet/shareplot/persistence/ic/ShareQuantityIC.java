@@ -35,8 +35,7 @@ public final class ShareQuantityIC implements ImutConverter<ShareQuantityRemote,
     }
 
     @Override
-    @NonNull
-    public ShareQuantityImut readImutFromRemote(@NonNull final ShareQuantityRemote remote) throws JETException, ValidationException {
+    public @NonNull ShareQuantityImut readImutFromRemote(final @NonNull ShareQuantityRemote remote) throws JETException, ValidationException {
         ShareQuantityImut shareQuantityImut = null;
 
         try {
@@ -71,7 +70,7 @@ public final class ShareQuantityIC implements ImutConverter<ShareQuantityRemote,
     }
 
     @Override
-    public void writeImutToRemote(@NonNull final ShareQuantityImut imut, @NonNull final ShareQuantityRemote remote) throws JETException {
+    public void writeImutToRemote(final @NonNull ShareQuantityImut imut, final @NonNull ShareQuantityRemote remote) throws JETException {
         try {
             // do not update pk fields
             remote.setChangeFee(imut.getChangeFee());
@@ -91,8 +90,7 @@ public final class ShareQuantityIC implements ImutConverter<ShareQuantityRemote,
     }
 
     @Override
-    @NonNull
-    public ShareQuantityImut readImutFromPojo(@NonNull final ShareQuantityItem item) throws ValidationException {
+    public @NonNull ShareQuantityImut readImutFromPojo(final @NonNull ShareQuantityItem item) throws ValidationException {
         ShareQuantityImut shareQuantityImut = null;
 
         if (item.isNew()) {
@@ -129,8 +127,7 @@ public final class ShareQuantityIC implements ImutConverter<ShareQuantityRemote,
     }
 
     @Override
-    @NonNull
-    public ShareQuantityItem writeImutToPojo(@NonNull final ShareQuantityImut imut) {
+    public @NonNull ShareQuantityItem writeImutToPojo(final @NonNull ShareQuantityImut imut) {
         ShareQuantityItem item = new ShareQuantityItem();
         item.get_IdShareQuantity_Model().setNodeValue(imut.getIdShareQuantity());
         item.setChangeFee(imut.getChangeFee());
@@ -146,8 +143,7 @@ public final class ShareQuantityIC implements ImutConverter<ShareQuantityRemote,
     }
 
     @Override
-    @NonNull
-    public ShareQuantityImut readImutFromResultSet(@NonNull final ResultSet resultSet) throws ValidationException, JETException {
+    public @NonNull ShareQuantityImut readImutFromResultSet(final @NonNull ResultSet resultSet) throws ValidationException, JETException {
         ShareQuantityImut shareQuantityImut = null;
 
         try {

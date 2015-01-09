@@ -35,8 +35,7 @@ public final class PortfolioIC implements ImutConverter<PortfolioRemote, Portfol
     }
 
     @Override
-    @NonNull
-    public PortfolioImut readImutFromRemote(@NonNull final PortfolioRemote remote) throws JETException, ValidationException {
+    public @NonNull PortfolioImut readImutFromRemote(final @NonNull PortfolioRemote remote) throws JETException, ValidationException {
         PortfolioImut portfolioImut = null;
 
         try {
@@ -58,7 +57,7 @@ public final class PortfolioIC implements ImutConverter<PortfolioRemote, Portfol
     }
 
     @Override
-    public void writeImutToRemote(@NonNull final PortfolioImut imut, @NonNull final PortfolioRemote remote) throws JETException {
+    public void writeImutToRemote(final @NonNull PortfolioImut imut, final @NonNull PortfolioRemote remote) throws JETException {
         try {
             // do not update pk fields
             remote.setIsFake(imut.getIsFake());
@@ -71,8 +70,7 @@ public final class PortfolioIC implements ImutConverter<PortfolioRemote, Portfol
     }
 
     @Override
-    @NonNull
-    public PortfolioImut readImutFromPojo(@NonNull final PortfolioItem item) throws ValidationException {
+    public @NonNull PortfolioImut readImutFromPojo(final @NonNull PortfolioItem item) throws ValidationException {
         PortfolioImut portfolioImut = null;
 
         if (item.isNew()) {
@@ -96,8 +94,7 @@ public final class PortfolioIC implements ImutConverter<PortfolioRemote, Portfol
     }
 
     @Override
-    @NonNull
-    public PortfolioItem writeImutToPojo(@NonNull final PortfolioImut imut) {
+    public @NonNull PortfolioItem writeImutToPojo(final @NonNull PortfolioImut imut) {
         PortfolioItem item = new PortfolioItem();
         item.get_IdPortfolio_Model().setNodeValue(imut.getIdPortfolio());
         item.setIsFake(imut.getIsFake());
@@ -106,8 +103,7 @@ public final class PortfolioIC implements ImutConverter<PortfolioRemote, Portfol
     }
 
     @Override
-    @NonNull
-    public PortfolioImut readImutFromResultSet(@NonNull final ResultSet resultSet) throws ValidationException, JETException {
+    public @NonNull PortfolioImut readImutFromResultSet(final @NonNull ResultSet resultSet) throws ValidationException, JETException {
         PortfolioImut portfolioImut = null;
 
         try {

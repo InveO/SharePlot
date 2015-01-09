@@ -75,7 +75,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      *
      * @param model Model to use to wrap in the pojo, can not be <code>null</code>
      */
-    public ShareItem(@NonNull final Model model) {
+    public ShareItem(final @NonNull Model model) {
         this.dataModel = model;
     }
 
@@ -84,7 +84,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      *
      * @param share ShareItem to use to copy in the pojo, can not be <code>null</code>
      */
-    public ShareItem(@NonNull final ShareItem share) {
+    public ShareItem(final @NonNull ShareItem share) {
         this();
 
         setIdShare(share.getIdShare());
@@ -152,8 +152,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * @see JFDataItem
      */
     @Override
-    @NonNull
-    public final Model get_Model() {
+    public final @NonNull Model get_Model() {
         Model model = this.dataModel;
         assert model != null;
         return model;
@@ -185,8 +184,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * @return Model of Data Model node idShare
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<ShareItem> get_IdShare_Model() {
+    public final @NonNull DispatcherModel<ShareItem> get_IdShare_Model() {
         if (this.idShareDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idShare");
@@ -229,8 +227,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * @return Model of Data Model node codeISIN
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<ShareItem> get_CodeISIN_Model() {
+    public final @NonNull DispatcherModel<ShareItem> get_CodeISIN_Model() {
         if (this.codeISINDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "codeISIN");
@@ -275,8 +272,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * @return Model of Data Model node codeYahoo
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<ShareItem> get_CodeYahoo_Model() {
+    public final @NonNull DispatcherModel<ShareItem> get_CodeYahoo_Model() {
         if (this.codeYahooDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "codeYahoo");
@@ -321,8 +317,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * @return Model of Data Model node description
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<ShareItem> get_Description_Model() {
+    public final @NonNull DispatcherModel<ShareItem> get_Description_Model() {
         if (this.descriptionDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "description");
@@ -369,8 +364,7 @@ public class ShareItem implements Serializable, JFErrorHandlerProvider, JFDataIt
      * @return Model of Data Model node name
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<ShareItem> get_Name_Model() {
+    public final @NonNull DispatcherModel<ShareItem> get_Name_Model() {
         if (this.nameDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "name");

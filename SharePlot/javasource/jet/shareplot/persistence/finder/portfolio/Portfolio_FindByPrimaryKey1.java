@@ -36,27 +36,24 @@ public final class Portfolio_FindByPrimaryKey1 implements FinderMethod {
      *
      * @param idPortfolio argument value
      */
-    public void setIdPortfolio(@Nullable final Long idPortfolio) {
+    public void setIdPortfolio(final Long idPortfolio) {
         this.idPortfolio = idPortfolio;
     }
 
     @Override
-    @NonNull
-    public String getFinderName() {
+    public @NonNull String getFinderName() {
         return "findByPrimaryKey";
     }
 
     @Override
-    @NonNull
-    public Map<String, Object> getArguments() {
+    public @NonNull Map<String, Object> getArguments() {
         final Map<String, Object> args = new HashMap<String, Object>();
         args.put("idPortfolio", this.idPortfolio);
         return args;
     }
 
     @Override
-    @NonNull
-    public ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
+    public @NonNull ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
         PortfolioRemote portfolioRemote;
         DataModelConverter2<PortfolioRemote> dmc;
         try {
@@ -75,8 +72,7 @@ public final class Portfolio_FindByPrimaryKey1 implements FinderMethod {
         return new EJBModelList2<PortfolioRemote>(portfolioRemote, dmc);
     }
 
-    @NonNull
-    private DataSourceExecutor2<PortfolioHome, PortfolioRemote> getDataSourceExecutor2() {
+    private @NonNull DataSourceExecutor2<PortfolioHome, PortfolioRemote> getDataSourceExecutor2() {
         DataSourceExecutor2<PortfolioHome, PortfolioRemote> result = this.dse;
         if (result == null) {
             result = this.dse = new PortfolioDSE();

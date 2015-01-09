@@ -59,7 +59,7 @@ public final class ShareImut implements Serializable {
      * @param imut ShareImut
      * @throws ValidationException if a field break its nullity constraints
      */
-    public static final void checkNonNullIsNull(@NonNull final ShareImut imut) throws ValidationException {
+    public static final void checkNonNullIsNull(final @NonNull ShareImut imut) throws ValidationException {
         final List<ValidationIssue> issues = new ArrayList<>();
         if (imut.idShare == null) {
             final ValidationIssue issue = new ValidationIssue("idShare", ValidationIssue.TYPE_NON_NULL_IS_NULL, null);

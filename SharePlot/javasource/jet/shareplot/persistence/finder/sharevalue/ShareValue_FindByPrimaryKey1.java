@@ -36,27 +36,24 @@ public final class ShareValue_FindByPrimaryKey1 implements FinderMethod {
      *
      * @param idShareValue argument value
      */
-    public void setIdShareValue(@Nullable final Long idShareValue) {
+    public void setIdShareValue(final Long idShareValue) {
         this.idShareValue = idShareValue;
     }
 
     @Override
-    @NonNull
-    public String getFinderName() {
+    public @NonNull String getFinderName() {
         return "findByPrimaryKey";
     }
 
     @Override
-    @NonNull
-    public Map<String, Object> getArguments() {
+    public @NonNull Map<String, Object> getArguments() {
         final Map<String, Object> args = new HashMap<String, Object>();
         args.put("idShareValue", this.idShareValue);
         return args;
     }
 
     @Override
-    @NonNull
-    public ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
+    public @NonNull ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
         ShareValueRemote sharevalueRemote;
         DataModelConverter2<ShareValueRemote> dmc;
         try {
@@ -75,8 +72,7 @@ public final class ShareValue_FindByPrimaryKey1 implements FinderMethod {
         return new EJBModelList2<ShareValueRemote>(sharevalueRemote, dmc);
     }
 
-    @NonNull
-    private DataSourceExecutor2<ShareValueHome, ShareValueRemote> getDataSourceExecutor2() {
+    private @NonNull DataSourceExecutor2<ShareValueHome, ShareValueRemote> getDataSourceExecutor2() {
         DataSourceExecutor2<ShareValueHome, ShareValueRemote> result = this.dse;
         if (result == null) {
             result = this.dse = new ShareValueDSE();

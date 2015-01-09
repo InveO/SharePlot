@@ -35,7 +35,7 @@ public final class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHom
     private transient DataModelConverter2<PortfolioRemote> dataModelConverter;
 
     @Override
-    public void updateFromDataModel(@NonNull final Model dataModel) throws JETException, ObjectNotFoundException {
+    public void updateFromDataModel(final @NonNull Model dataModel) throws JETException, ObjectNotFoundException {
         final Callable<@Nullable Object> callable = new Callable<@Nullable Object>() {
             @Override
             public Object call() throws Exception {
@@ -55,7 +55,7 @@ public final class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHom
     }
 
     @Override
-    public void createFromDataModel(@NonNull final Model dataModel) throws JETException, JETDuplicateKeyException {
+    public void createFromDataModel(final @NonNull Model dataModel) throws JETException, JETDuplicateKeyException {
         final Callable<@Nullable Object> callable = new Callable<@Nullable Object>() {
             @Override
             public Object call() throws Exception {
@@ -81,7 +81,7 @@ public final class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHom
     }
 
     @Override
-    public void removeFromDataModel(@NonNull final Model dataModel) throws JETException, ObjectNotFoundException {
+    public void removeFromDataModel(final @NonNull Model dataModel) throws JETException, ObjectNotFoundException {
         final Callable<@Nullable Object> callable = new Callable<@Nullable Object>() {
             @Override
             public Object call() throws Exception {
@@ -105,8 +105,7 @@ public final class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHom
     }
 
     @Override
-    @NonNull
-    public PortfolioHome getEJBHome() {
+    public @NonNull PortfolioHome getEJBHome() {
         PortfolioHome result = this.ejbHome;
         if (result == null) {
             try {
@@ -122,8 +121,7 @@ public final class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHom
     }
 
     @Override
-    @NonNull
-    public DataModelConverter2<PortfolioRemote> getDataModelConverter() {
+    public @NonNull DataModelConverter2<PortfolioRemote> getDataModelConverter() {
         DataModelConverter2<PortfolioRemote> result = this.dataModelConverter;
         if (result == null) {
             result = this.dataModelConverter = new PortfolioDMC();
@@ -144,8 +142,7 @@ public final class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHom
      * @throws JETException Thrown if there was an error whilst retrieving the object
      * @throws ObjectNotFoundException Thrown if there is no corresponding object
      */
-    @NonNull
-    private PortfolioRemote getObjectFromStore(@NonNull final Model dataModel) throws JETException, ObjectNotFoundException {
+    private @NonNull PortfolioRemote getObjectFromStore(final @NonNull Model dataModel) throws JETException, ObjectNotFoundException {
         assert dataModel != null : "Can not delete null model";
 
         final PortfolioItem portfolioItem = new PortfolioItem(dataModel);

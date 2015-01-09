@@ -87,7 +87,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      *
      * @param model Model to use to wrap in the pojo, can not be <code>null</code>
      */
-    public PortfolioShareItem(@NonNull final Model model) {
+    public PortfolioShareItem(final @NonNull Model model) {
         this.dataModel = model;
 
         // if isNew is null, the model comes from the database therefore is not null
@@ -102,7 +102,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      *
      * @param portfolioShare PortfolioShareItem to use to copy in the pojo, can not be <code>null</code>
      */
-    public PortfolioShareItem(@NonNull final PortfolioShareItem portfolioShare) {
+    public PortfolioShareItem(final @NonNull PortfolioShareItem portfolioShare) {
         this();
 
         setIdPortfolio(portfolioShare.getIdPortfolio());
@@ -190,8 +190,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      * @see JFDataItem
      */
     @Override
-    @NonNull
-    public final Model get_Model() {
+    public final @NonNull Model get_Model() {
         Model model = this.dataModel;
         assert model != null;
         return model;
@@ -223,8 +222,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      * @return Model of Data Model node idPortfolio
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<PortfolioShareItem> get_IdPortfolio_Model() {
+    public final @NonNull DispatcherModel<PortfolioShareItem> get_IdPortfolio_Model() {
         if (this.idPortfolioDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idPortfolio");
@@ -269,8 +267,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      * @return Model of Data Model node idShare
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<PortfolioShareItem> get_IdShare_Model() {
+    public final @NonNull DispatcherModel<PortfolioShareItem> get_IdShare_Model() {
         if (this.idShareDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idShare");
@@ -315,8 +312,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      * @return Model of Data Model node changeQuantity
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<PortfolioShareItem> get_ChangeQuantity_Model() {
+    public final @NonNull DispatcherModel<PortfolioShareItem> get_ChangeQuantity_Model() {
         if (this.changeQuantityDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "changeQuantity");
@@ -361,8 +357,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      * @return Model of Data Model node portfolioName
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<PortfolioShareItem> get_PortfolioName_Model() {
+    public final @NonNull DispatcherModel<PortfolioShareItem> get_PortfolioName_Model() {
         if (this.portfolioNameDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "portfolioName");
@@ -409,8 +404,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      * @return Model of Data Model node shareName
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<PortfolioShareItem> get_ShareName_Model() {
+    public final @NonNull DispatcherModel<PortfolioShareItem> get_ShareName_Model() {
         if (this.shareNameDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "shareName");
@@ -457,8 +451,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      * @return Model of Data Model node totalQuantity
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<PortfolioShareItem> get_TotalQuantity_Model() {
+    public final @NonNull DispatcherModel<PortfolioShareItem> get_TotalQuantity_Model() {
         if (this.totalQuantityDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "totalQuantity");
@@ -503,8 +496,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      * @return Model of Data Model node value
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<PortfolioShareItem> get_Value_Model() {
+    public final @NonNull DispatcherModel<PortfolioShareItem> get_Value_Model() {
         if (this.valueDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "value");
@@ -549,8 +541,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
      * @return Model of Data Model node valueDate
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<PortfolioShareItem> get_ValueDate_Model() {
+    public final @NonNull DispatcherModel<PortfolioShareItem> get_ValueDate_Model() {
         if (this.valueDateDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "valueDate");

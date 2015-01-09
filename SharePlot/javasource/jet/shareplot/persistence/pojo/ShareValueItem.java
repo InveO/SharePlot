@@ -72,7 +72,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
      *
      * @param model Model to use to wrap in the pojo, can not be <code>null</code>
      */
-    public ShareValueItem(@NonNull final Model model) {
+    public ShareValueItem(final @NonNull Model model) {
         this.dataModel = model;
     }
 
@@ -81,7 +81,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
      *
      * @param shareValue ShareValueItem to use to copy in the pojo, can not be <code>null</code>
      */
-    public ShareValueItem(@NonNull final ShareValueItem shareValue) {
+    public ShareValueItem(final @NonNull ShareValueItem shareValue) {
         this();
 
         setIdShareValue(shareValue.getIdShareValue());
@@ -148,8 +148,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
      * @see JFDataItem
      */
     @Override
-    @NonNull
-    public final Model get_Model() {
+    public final @NonNull Model get_Model() {
         Model model = this.dataModel;
         assert model != null;
         return model;
@@ -181,8 +180,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
      * @return Model of Data Model node idShareValue
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<ShareValueItem> get_IdShareValue_Model() {
+    public final @NonNull DispatcherModel<ShareValueItem> get_IdShareValue_Model() {
         if (this.idShareValueDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idShareValue");
@@ -227,8 +225,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
      * @return Model of Data Model node idShare
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<ShareValueItem> get_IdShare_Model() {
+    public final @NonNull DispatcherModel<ShareValueItem> get_IdShare_Model() {
         if (this.idShareDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idShare");
@@ -273,8 +270,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
      * @return Model of Data Model node value
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<ShareValueItem> get_Value_Model() {
+    public final @NonNull DispatcherModel<ShareValueItem> get_Value_Model() {
         if (this.valueDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "value");
@@ -319,8 +315,7 @@ public class ShareValueItem implements Serializable, JFErrorHandlerProvider, JFD
      * @return Model of Data Model node valueDate
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<ShareValueItem> get_ValueDate_Model() {
+    public final @NonNull DispatcherModel<ShareValueItem> get_ValueDate_Model() {
         if (this.valueDateDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "valueDate");

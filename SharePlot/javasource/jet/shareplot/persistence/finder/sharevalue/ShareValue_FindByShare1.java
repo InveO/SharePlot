@@ -45,22 +45,19 @@ public final class ShareValue_FindByShare1 implements FinderMethod {
 
 
     @Override
-    @NonNull
-    public String getFinderName() {
+    public @NonNull String getFinderName() {
         return "findByShare";
     }
 
     @Override
-    @NonNull
-    public Map<String, Object> getArguments() {
+    public @NonNull Map<String, Object> getArguments() {
         final Map<String, Object> args = new HashMap<String, Object>();
         args.put("idShare", this.idShare);
         return args;
     }
 
     @Override
-    @NonNull
-    public ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
+    public @NonNull ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
         List<ShareValueRemote> list;
         DataModelConverter2<ShareValueRemote> dmc;
         try {

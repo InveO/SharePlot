@@ -56,14 +56,12 @@ public final class Portfolio_FindByPreparedSQLQuery2 implements FinderMethod {
 
 
     @Override
-    @NonNull
-    public String getFinderName() {
+    public @NonNull String getFinderName() {
         return "findByPreparedSQLQuery";
     }
 
     @Override
-    @NonNull
-    public Map<String, Object> getArguments() {
+    public @NonNull Map<String, Object> getArguments() {
         final Map<String, Object> args = new HashMap<String, Object>();
         args.put("sqlWhereClause", this.sqlWhereClause);
         args.put("sqlArguments", this.sqlArguments);
@@ -71,8 +69,7 @@ public final class Portfolio_FindByPreparedSQLQuery2 implements FinderMethod {
     }
 
     @Override
-    @NonNull
-    public ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
+    public @NonNull ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
         List<PortfolioRemote> list;
         DataModelConverter2<PortfolioRemote> dmc;
         try {

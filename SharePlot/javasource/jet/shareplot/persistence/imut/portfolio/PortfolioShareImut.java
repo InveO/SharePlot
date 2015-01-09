@@ -68,7 +68,7 @@ public final class PortfolioShareImut implements Serializable {
      * @param imut PortfolioShareImut
      * @throws ValidationException if a field break its nullity constraints
      */
-    public static final void checkNonNullIsNull(@NonNull final PortfolioShareImut imut) throws ValidationException {
+    public static final void checkNonNullIsNull(final @NonNull PortfolioShareImut imut) throws ValidationException {
         final List<ValidationIssue> issues = new ArrayList<>();
         if (imut.idPortfolio == null) {
             final ValidationIssue issue = new ValidationIssue("idPortfolio", ValidationIssue.TYPE_NON_NULL_IS_NULL, null);

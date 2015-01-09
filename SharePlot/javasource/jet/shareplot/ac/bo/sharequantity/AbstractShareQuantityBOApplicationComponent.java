@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 import javax.ejb.ObjectNotFoundException;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -14,7 +16,6 @@ import jet.container.managers.jta.interfaces.JTAManagerContext;
 import jet.framework.component.SimpleApplicationComponent;
 import jet.framework.manager.datamodel.interfaces.ModelArray;
 import jet.framework.nuts.select.FinderMethod;
-import jet.framework.nuts.select.SelectNut;
 import jet.framework.nuts.select.SelectNutHelper;
 import jet.framework.util.JetConstants;
 import jet.framework.util.jta.TransactionHelper;
@@ -23,9 +24,6 @@ import jet.shareplot.persistence.finder.sharequantity.ShareQuantity_FindAll0;
 import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
-
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 
 /**
  * ShareQuantity manipulation API.
@@ -46,8 +44,7 @@ abstract class AbstractShareQuantityBOApplicationComponent extends SimpleApplica
      * @param model Data model
      * @return instance of the POJO2 business object
      */
-    @NonNull
-    protected abstract ShareQuantity getShareQuantity(@NonNull final Model model);
+    protected abstract @NonNull ShareQuantity getShareQuantity(final @NonNull Model model);
 
     /**
      * Return all shareQuantity matching the FinderMethod.
@@ -57,15 +54,13 @@ abstract class AbstractShareQuantityBOApplicationComponent extends SimpleApplica
      * @see List
      * @see ShareQuantity
      */
-    @NonNull
-    protected List<ShareQuantity> getShareQuantitys(@NonNull final FinderMethod finder) {
-        final List<ShareQuantity> result = new ArrayList<ShareQuantity>();
-        final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.SHAREQUANTITY_SELECT);
+    protected @NonNull List<@NonNull ShareQuantity> getShareQuantitys(final @NonNull FinderMethod finder) {
+        final List<@NonNull ShareQuantity> result = new ArrayList<>();
 
         final Callable<@Nullable Object> callable = new Callable<@Nullable Object>() {
             @Override
             public Object call() throws Exception {
-                final ModelArray ma = SelectNutHelper.getModelArray(selectNut, finder, getLogger());
+                final ModelArray ma = SelectNutHelper.getModelArray(finder, getLogger());
                 if (ma != null) {
                     final int size = ma.getSize();
                     for (int i = 0; i < size; i++) {
@@ -109,12 +104,10 @@ abstract class AbstractShareQuantityBOApplicationComponent extends SimpleApplica
      * @return the shareQuantity matching the FinderMethod.
      * @see ShareQuantity
      */
-    @Nullable
-    protected ShareQuantity getShareQuantity(@NonNull final FinderMethod finder) {
+    protected @Nullable ShareQuantity getShareQuantity(final @NonNull FinderMethod finder) {
         final ShareQuantity result;
 
-        final SelectNut selectNut = getSelectNut(SelectStoreApplicationComponent.SHAREQUANTITY_SELECT);
-        final Model model = SelectNutHelper.getModel(selectNut, finder, getLogger());
+        final Model model = SelectNutHelper.getModel(finder, getLogger());
         if (model == null) {
             result = null;
         } else {
@@ -132,8 +125,7 @@ abstract class AbstractShareQuantityBOApplicationComponent extends SimpleApplica
      * @see ShareQuantity
      * @see #getShareQuantitys(FinderMethod finder)
      */
-    @NonNull
-    public List<ShareQuantity> getShareQuantitys() {
+    public @NonNull List<ShareQuantity> getShareQuantitys() {
         final ShareQuantity_FindAll0 finder = new ShareQuantity_FindAll0();
 
         return getShareQuantitys(finder);

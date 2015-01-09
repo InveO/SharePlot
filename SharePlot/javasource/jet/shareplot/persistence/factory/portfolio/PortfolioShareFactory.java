@@ -6,7 +6,6 @@ import org.eclipse.jdt.annotation.NonNull;
 
 import jet.framework.util.models.ModelHelper;
 import jet.shareplot.persistence.pojo.portfolio.PortfolioShareItem;
-import jet.util.annotations.AnnotationsHelper;
 import jet.util.logger.JETLevel;
 import jet.util.logger.JETLoggerManager;
 import jet.util.logger.Logger;
@@ -38,8 +37,7 @@ public final class PortfolioShareFactory implements Serializable {
      * @param untypedModel Model with String node values
      * @return PortfolioShareItem
      */
-    @NonNull
-    public static PortfolioShareItem getFromUntypedModel(final Model untypedModel) {
+    public static @NonNull PortfolioShareItem getFromUntypedModel(final Model untypedModel) {
         final PortfolioShareItem item = new PortfolioShareItem();
 
         String sValue = null;
@@ -116,21 +114,21 @@ public final class PortfolioShareFactory implements Serializable {
 
     /**
      * Get logger.
-     * 
+     *
      * @return Logger
      * @see "http://en.wikipedia.org/wiki/Double-checked_locking#Usage_in_Java"
      */
-    @NonNull
-    private static Logger getLogger() {
+    private static @NonNull Logger getLogger() {
         Logger result = logger;
         if (result == null) {
             synchronized (PortfolioShareFactory.class) {
                 result = logger;
                 if (result == null) {
                     result = logger = JETLoggerManager.getJETLoggerManager().getLogger("jet.shareplot.persistence.factory.portfolio");
+                    assert result != null;
                 }
             }
         }
-        return AnnotationsHelper.assertNonNull(result);
+        return result;
     }
 }

@@ -27,18 +27,8 @@ public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicat
     /**
      * {@value}.
      */
-    public static final String PORTFOLIO_SELECT = "PortfolioSelect";
-    
-    /**
-     * {@value}.
-     */
     public static final String PORTFOLIO_STORE = "PortfolioStore";
 
-    /**
-     * {@value}.
-     */
-    public static final String SHARE_SELECT = "ShareSelect";
-    
     /**
      * {@value}.
      */
@@ -47,18 +37,8 @@ public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicat
     /**
      * {@value}.
      */
-    public static final String SHAREQUANTITY_SELECT = "ShareQuantitySelect";
-    
-    /**
-     * {@value}.
-     */
     public static final String SHAREQUANTITY_STORE = "ShareQuantityStore";
 
-    /**
-     * {@value}.
-     */
-    public static final String SHAREVALUE_SELECT = "ShareValueSelect";
-    
     /**
      * {@value}.
      */
@@ -86,8 +66,7 @@ public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicat
      * @return SelectStoreApplicationComponent Instantiated SelectStoreApplicationComponent
      * @throws JETException
      */
-    @NonNull
-    public static final SelectStoreApplicationComponent getInstance(final Session session) throws JETException {
+    public static final @NonNull SelectStoreApplicationComponent getInstance(final Session session) throws JETException {
         SelectStoreApplicationComponent currentAC = (SelectStoreApplicationComponent) session.getProperty(INTERNAL_SESSION_KEY);
 
         if (currentAC == null) {

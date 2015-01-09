@@ -35,8 +35,7 @@ public final class ShareIC implements ImutConverter<ShareRemote, ShareImut, Shar
     }
 
     @Override
-    @NonNull
-    public ShareImut readImutFromRemote(@NonNull final ShareRemote remote) throws JETException, ValidationException {
+    public @NonNull ShareImut readImutFromRemote(final @NonNull ShareRemote remote) throws JETException, ValidationException {
         ShareImut shareImut = null;
 
         try {
@@ -60,7 +59,7 @@ public final class ShareIC implements ImutConverter<ShareRemote, ShareImut, Shar
     }
 
     @Override
-    public void writeImutToRemote(@NonNull final ShareImut imut, @NonNull final ShareRemote remote) throws JETException {
+    public void writeImutToRemote(final @NonNull ShareImut imut, final @NonNull ShareRemote remote) throws JETException {
         try {
             // do not update pk fields
             remote.setCodeISIN(imut.getCodeISIN());
@@ -75,8 +74,7 @@ public final class ShareIC implements ImutConverter<ShareRemote, ShareImut, Shar
     }
 
     @Override
-    @NonNull
-    public ShareImut readImutFromPojo(@NonNull final ShareItem item) throws ValidationException {
+    public @NonNull ShareImut readImutFromPojo(final @NonNull ShareItem item) throws ValidationException {
         ShareImut shareImut = null;
 
         if (item.isNew()) {
@@ -102,8 +100,7 @@ public final class ShareIC implements ImutConverter<ShareRemote, ShareImut, Shar
     }
 
     @Override
-    @NonNull
-    public ShareItem writeImutToPojo(@NonNull final ShareImut imut) {
+    public @NonNull ShareItem writeImutToPojo(final @NonNull ShareImut imut) {
         ShareItem item = new ShareItem();
         item.get_IdShare_Model().setNodeValue(imut.getIdShare());
         item.setCodeISIN(imut.getCodeISIN());
@@ -114,8 +111,7 @@ public final class ShareIC implements ImutConverter<ShareRemote, ShareImut, Shar
     }
 
     @Override
-    @NonNull
-    public ShareImut readImutFromResultSet(@NonNull final ResultSet resultSet) throws ValidationException, JETException {
+    public @NonNull ShareImut readImutFromResultSet(final @NonNull ResultSet resultSet) throws ValidationException, JETException {
         ShareImut shareImut = null;
 
         try {

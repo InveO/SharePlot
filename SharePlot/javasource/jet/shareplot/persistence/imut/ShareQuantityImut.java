@@ -74,7 +74,7 @@ public final class ShareQuantityImut implements Serializable {
      * @param imut ShareQuantityImut
      * @throws ValidationException if a field break its nullity constraints
      */
-    public static final void checkNonNullIsNull(@NonNull final ShareQuantityImut imut) throws ValidationException {
+    public static final void checkNonNullIsNull(final @NonNull ShareQuantityImut imut) throws ValidationException {
         final List<ValidationIssue> issues = new ArrayList<>();
         if (imut.idShareQuantity == null) {
             final ValidationIssue issue = new ValidationIssue("idShareQuantity", ValidationIssue.TYPE_NON_NULL_IS_NULL, null);

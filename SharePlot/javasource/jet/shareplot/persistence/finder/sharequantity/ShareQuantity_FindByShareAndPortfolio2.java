@@ -55,14 +55,12 @@ public final class ShareQuantity_FindByShareAndPortfolio2 implements FinderMetho
 
 
     @Override
-    @NonNull
-    public String getFinderName() {
+    public @NonNull String getFinderName() {
         return "findByShareAndPortfolio";
     }
 
     @Override
-    @NonNull
-    public Map<String, Object> getArguments() {
+    public @NonNull Map<String, Object> getArguments() {
         final Map<String, Object> args = new HashMap<String, Object>();
         args.put("idPortfolio", this.idPortfolio);
         args.put("idShare", this.idShare);
@@ -70,8 +68,7 @@ public final class ShareQuantity_FindByShareAndPortfolio2 implements FinderMetho
     }
 
     @Override
-    @NonNull
-    public ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
+    public @NonNull ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
         List<ShareQuantityRemote> list;
         DataModelConverter2<ShareQuantityRemote> dmc;
         try {

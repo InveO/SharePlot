@@ -30,8 +30,7 @@ public final class ShareValueDMC implements DataModelConverter2<ShareValueRemote
     }
 
     @Override
-    @NonNull
-    public Model readDataModelFromObject(@NonNull final ShareValueRemote shareValueRemote) throws JETException {
+    public @NonNull Model readDataModelFromObject(final @NonNull ShareValueRemote shareValueRemote) throws JETException {
         final ShareValueItem shareValueItem = new ShareValueItem();
 
         try {
@@ -55,7 +54,7 @@ public final class ShareValueDMC implements DataModelConverter2<ShareValueRemote
     }
 
     @Override
-    public void writeDataModelToObject(@NonNull final Model dataModel, @NonNull final ShareValueRemote shareValueRemote) throws JETException {
+    public void writeDataModelToObject(final @NonNull Model dataModel, final @NonNull ShareValueRemote shareValueRemote) throws JETException {
         final ShareValueItem shareValueItem = new ShareValueItem(dataModel);
 
         try {

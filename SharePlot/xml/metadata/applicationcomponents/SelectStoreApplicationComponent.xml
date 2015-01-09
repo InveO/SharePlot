@@ -1,4 +1,4 @@
-<APPLICATION_COMPONENT class="jet.shareplot.ac.SelectStoreApplicationComponent" initialNutName="EmptyNut" >
+<APPLICATION_COMPONENT class="jet.shareplot.ac.SelectStoreApplicationComponent">
 
     <APPLICATION_COMPONENT_CONFIG>
 
@@ -15,9 +15,5 @@
         <STORE_NUT name="ShareValueStore" datasourceexecutor2="jet.shareplot.persistence.dse.ShareValueDSE" />
 
     </APPLICATION_COMPONENT_CONFIG>
-
-    <NUTS>
-        <NUT name="EmptyNut" className="jet.framework.nuts.EmptyNut" />
-    </NUTS>
 
 </APPLICATION_COMPONENT>

@@ -35,7 +35,7 @@ public final class ShareValueDSE extends AbstractDataSourceExecutor2<ShareValueH
     private transient DataModelConverter2<ShareValueRemote> dataModelConverter;
 
     @Override
-    public void updateFromDataModel(@NonNull final Model dataModel) throws JETException, ObjectNotFoundException {
+    public void updateFromDataModel(final @NonNull Model dataModel) throws JETException, ObjectNotFoundException {
         final Callable<@Nullable Object> callable = new Callable<@Nullable Object>() {
             @Override
             public Object call() throws Exception {
@@ -55,7 +55,7 @@ public final class ShareValueDSE extends AbstractDataSourceExecutor2<ShareValueH
     }
 
     @Override
-    public void createFromDataModel(@NonNull final Model dataModel) throws JETException, JETDuplicateKeyException {
+    public void createFromDataModel(final @NonNull Model dataModel) throws JETException, JETDuplicateKeyException {
         final Callable<@Nullable Object> callable = new Callable<@Nullable Object>() {
             @Override
             public Object call() throws Exception {
@@ -81,7 +81,7 @@ public final class ShareValueDSE extends AbstractDataSourceExecutor2<ShareValueH
     }
 
     @Override
-    public void removeFromDataModel(@NonNull final Model dataModel) throws JETException, ObjectNotFoundException {
+    public void removeFromDataModel(final @NonNull Model dataModel) throws JETException, ObjectNotFoundException {
         final Callable<@Nullable Object> callable = new Callable<@Nullable Object>() {
             @Override
             public Object call() throws Exception {
@@ -105,8 +105,7 @@ public final class ShareValueDSE extends AbstractDataSourceExecutor2<ShareValueH
     }
 
     @Override
-    @NonNull
-    public ShareValueHome getEJBHome() {
+    public @NonNull ShareValueHome getEJBHome() {
         ShareValueHome result = this.ejbHome;
         if (result == null) {
             try {
@@ -122,8 +121,7 @@ public final class ShareValueDSE extends AbstractDataSourceExecutor2<ShareValueH
     }
 
     @Override
-    @NonNull
-    public DataModelConverter2<ShareValueRemote> getDataModelConverter() {
+    public @NonNull DataModelConverter2<ShareValueRemote> getDataModelConverter() {
         DataModelConverter2<ShareValueRemote> result = this.dataModelConverter;
         if (result == null) {
             result = this.dataModelConverter = new ShareValueDMC();
@@ -144,8 +142,7 @@ public final class ShareValueDSE extends AbstractDataSourceExecutor2<ShareValueH
      * @throws JETException Thrown if there was an error whilst retrieving the object
      * @throws ObjectNotFoundException Thrown if there is no corresponding object
      */
-    @NonNull
-    private ShareValueRemote getObjectFromStore(@NonNull final Model dataModel) throws JETException, ObjectNotFoundException {
+    private @NonNull ShareValueRemote getObjectFromStore(final @NonNull Model dataModel) throws JETException, ObjectNotFoundException {
         assert dataModel != null : "Can not delete null model";
 
         final ShareValueItem shareValueItem = new ShareValueItem(dataModel);

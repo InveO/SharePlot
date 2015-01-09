@@ -35,20 +35,17 @@ public final class Share_FindAll0 implements FinderMethod {
 
 
     @Override
-    @NonNull
-    public String getFinderName() {
+    public @NonNull String getFinderName() {
         return "findAll";
     }
 
     @Override
-    @NonNull
-    public Map<String, Object> getArguments() {
+    public @NonNull Map<String, Object> getArguments() {
         return new HashMap<String, Object>();
     }
 
     @Override
-    @NonNull
-    public ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
+    public @NonNull ModelArray callFinder() throws JETException, FinderObjectNotFoundException {
         List<ShareRemote> list;
         DataModelConverter2<ShareRemote> dmc;
         try {

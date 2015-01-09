@@ -30,8 +30,7 @@ public final class PortfolioDMC implements DataModelConverter2<PortfolioRemote> 
     }
 
     @Override
-    @NonNull
-    public Model readDataModelFromObject(@NonNull final PortfolioRemote portfolioRemote) throws JETException {
+    public @NonNull Model readDataModelFromObject(final @NonNull PortfolioRemote portfolioRemote) throws JETException {
         final PortfolioItem portfolioItem = new PortfolioItem();
 
         try {
@@ -54,7 +53,7 @@ public final class PortfolioDMC implements DataModelConverter2<PortfolioRemote> 
     }
 
     @Override
-    public void writeDataModelToObject(@NonNull final Model dataModel, @NonNull final PortfolioRemote portfolioRemote) throws JETException {
+    public void writeDataModelToObject(final @NonNull Model dataModel, final @NonNull PortfolioRemote portfolioRemote) throws JETException {
         final PortfolioItem portfolioItem = new PortfolioItem(dataModel);
 
         try {

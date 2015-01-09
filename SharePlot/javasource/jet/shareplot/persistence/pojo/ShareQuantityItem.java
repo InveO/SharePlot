@@ -90,7 +90,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      *
      * @param model Model to use to wrap in the pojo, can not be <code>null</code>
      */
-    public ShareQuantityItem(@NonNull final Model model) {
+    public ShareQuantityItem(final @NonNull Model model) {
         this.dataModel = model;
     }
 
@@ -99,7 +99,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      *
      * @param shareQuantity ShareQuantityItem to use to copy in the pojo, can not be <code>null</code>
      */
-    public ShareQuantityItem(@NonNull final ShareQuantityItem shareQuantity) {
+    public ShareQuantityItem(final @NonNull ShareQuantityItem shareQuantity) {
         this();
 
         setIdShareQuantity(shareQuantity.getIdShareQuantity());
@@ -172,8 +172,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @see JFDataItem
      */
     @Override
-    @NonNull
-    public final Model get_Model() {
+    public final @NonNull Model get_Model() {
         Model model = this.dataModel;
         assert model != null;
         return model;
@@ -205,8 +204,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @return Model of Data Model node idShareQuantity
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<ShareQuantityItem> get_IdShareQuantity_Model() {
+    public final @NonNull DispatcherModel<ShareQuantityItem> get_IdShareQuantity_Model() {
         if (this.idShareQuantityDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idShareQuantity");
@@ -251,8 +249,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @return Model of Data Model node changeFee
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<ShareQuantityItem> get_ChangeFee_Model() {
+    public final @NonNull DispatcherModel<ShareQuantityItem> get_ChangeFee_Model() {
         if (this.changeFeeDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "changeFee");
@@ -297,8 +294,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @return Model of Data Model node changeQuantity
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<ShareQuantityItem> get_ChangeQuantity_Model() {
+    public final @NonNull DispatcherModel<ShareQuantityItem> get_ChangeQuantity_Model() {
         if (this.changeQuantityDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "changeQuantity");
@@ -343,8 +339,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @return Model of Data Model node changeType
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<ShareQuantityItem> get_ChangeType_Model() {
+    public final @NonNull DispatcherModel<ShareQuantityItem> get_ChangeType_Model() {
         if (this.changeTypeDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "changeType");
@@ -391,8 +386,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @return Model of Data Model node changeValue
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<ShareQuantityItem> get_ChangeValue_Model() {
+    public final @NonNull DispatcherModel<ShareQuantityItem> get_ChangeValue_Model() {
         if (this.changeValueDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "changeValue");
@@ -435,8 +429,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @return Model of Data Model node description
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<ShareQuantityItem> get_Description_Model() {
+    public final @NonNull DispatcherModel<ShareQuantityItem> get_Description_Model() {
         if (this.descriptionDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "description");
@@ -483,8 +476,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @return Model of Data Model node idPortfolio
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<ShareQuantityItem> get_IdPortfolio_Model() {
+    public final @NonNull DispatcherModel<ShareQuantityItem> get_IdPortfolio_Model() {
         if (this.idPortfolioDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idPortfolio");
@@ -529,8 +521,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @return Model of Data Model node idShare
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<ShareQuantityItem> get_IdShare_Model() {
+    public final @NonNull DispatcherModel<ShareQuantityItem> get_IdShare_Model() {
         if (this.idShareDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idShare");
@@ -573,8 +564,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @return Model of Data Model node totalQuantity
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<ShareQuantityItem> get_TotalQuantity_Model() {
+    public final @NonNull DispatcherModel<ShareQuantityItem> get_TotalQuantity_Model() {
         if (this.totalQuantityDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "totalQuantity");
@@ -619,8 +609,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @return Model of Data Model node valueDate
      */
     @SuppressWarnings("unchecked")
-    @NonNull
-    public final DispatcherModel<ShareQuantityItem> get_ValueDate_Model() {
+    public final @NonNull DispatcherModel<ShareQuantityItem> get_ValueDate_Model() {
         if (this.valueDateDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "valueDate");
