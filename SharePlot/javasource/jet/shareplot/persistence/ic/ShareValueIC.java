@@ -42,7 +42,7 @@ public final class ShareValueIC implements ImutConverter<ShareValueRemote, Share
             final Long idShareValue = remote.getIdShareValue();
             final Long idShare = remote.getIdShare();
             final java.math.BigDecimal value = remote.getValue();
-            final jet.java.time.LocalDate valueDate;
+            final java.time.LocalDate valueDate;
             final java.util.Date valueDate_TMP = remote.getValueDate();
             if (valueDate_TMP == null) {
                 valueDate = null;
@@ -91,7 +91,7 @@ public final class ShareValueIC implements ImutConverter<ShareValueRemote, Share
             final Long idShareValue = item.getIdShareValue();
             final Long idShare = item.getIdShare();
             final java.math.BigDecimal value = item.getValue();
-            final jet.java.time.LocalDate valueDate;
+            final java.time.LocalDate valueDate;
             final java.util.Date valueDate_TMP = item.getValueDate();
             if (valueDate_TMP == null) {
                 valueDate = null;
@@ -127,7 +127,7 @@ public final class ShareValueIC implements ImutConverter<ShareValueRemote, Share
             final Long idShare = Long.valueOf(resultSet.getLong("idShare"));
             final java.math.BigDecimal value = resultSet.getBigDecimal("value");
             final java.sql.Date sqlValueDate = resultSet.getDate("valueDate");
-            final jet.java.time.LocalDate valueDate;
+            final java.time.LocalDate valueDate;
             if (sqlValueDate == null) {
                 valueDate = null;
             } else {

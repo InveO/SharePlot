@@ -33,7 +33,7 @@ public final class ShareQuantityImut implements Serializable {
     private final Long idPortfolio;
     private final Long idShare;
     private final java.math.BigDecimal totalQuantity;
-    private final jet.java.time.LocalDate valueDate;
+    private final java.time.LocalDate valueDate;
 
     /**
      * Constructor.
@@ -50,7 +50,7 @@ public final class ShareQuantityImut implements Serializable {
      * @param valueDate valueDate value, if <code>null</code> will throw a ValidationException
      * @throws ValidationException if failed to validate
      */
-    public ShareQuantityImut(final @Nullable Long idShareQuantity, final java.math.@Nullable BigDecimal changeFee, final java.math.@Nullable BigDecimal changeQuantity, final @Nullable String changeType, final java.math.@Nullable BigDecimal changeValue, final @Nullable String description, final @Nullable Long idPortfolio, final @Nullable Long idShare, final java.math.@Nullable BigDecimal totalQuantity, final jet.java.time.@Nullable LocalDate valueDate) throws ValidationException {
+    public ShareQuantityImut(final @Nullable Long idShareQuantity, final java.math.@Nullable BigDecimal changeFee, final java.math.@Nullable BigDecimal changeQuantity, final @Nullable String changeType, final java.math.@Nullable BigDecimal changeValue, final @Nullable String description, final @Nullable Long idPortfolio, final @Nullable Long idShare, final java.math.@Nullable BigDecimal totalQuantity, final java.time.@Nullable LocalDate valueDate) throws ValidationException {
         this.idShareQuantity = idShareQuantity;
         this.changeFee = changeFee;
         this.changeQuantity = changeQuantity;
@@ -197,9 +197,9 @@ public final class ShareQuantityImut implements Serializable {
     /**
      * Get value of field valueDate.
      *
-     * @return jet.java.time.@NonNull LocalDate value of the field valueDate
+     * @return java.time.@NonNull LocalDate value of the field valueDate
      */
-    public final jet.java.time.@NonNull LocalDate getValueDate() {
+    public final java.time.@NonNull LocalDate getValueDate() {
         return AnnotationsHelper.assertNonNull(this.valueDate);
     }
 

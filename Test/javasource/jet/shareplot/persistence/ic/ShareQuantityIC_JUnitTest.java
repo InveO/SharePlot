@@ -103,7 +103,7 @@ public class ShareQuantityIC_JUnitTest {
         final Long idPortfolio = Long.valueOf(1);
         final Long idShare = Long.valueOf(1);
         final java.math.BigDecimal totalQuantity = java.math.BigDecimal.valueOf(1);
-        final jet.java.time.LocalDate valueDate = jet.framework.util.pojo2.imut.ImutDateUtilities.newLocalDate(new java.util.Date());
+        final java.time.LocalDate valueDate = jet.framework.util.pojo2.imut.ImutDateUtilities.newLocalDate(new java.util.Date());
 
         final ShareQuantityImut shareQuantityImut = new ShareQuantityImut(idShareQuantity, changeFee, changeQuantity, changeType, changeValue, description, idPortfolio, idShare, totalQuantity, valueDate);
 
@@ -206,7 +206,7 @@ public class ShareQuantityIC_JUnitTest {
         final Long idPortfolio = Long.valueOf(1);
         final Long idShare = Long.valueOf(1);
         final java.math.BigDecimal totalQuantity = java.math.BigDecimal.valueOf(1);
-        final jet.java.time.LocalDate valueDate = jet.framework.util.pojo2.imut.ImutDateUtilities.newLocalDate(new java.util.Date());
+        final java.time.LocalDate valueDate = jet.framework.util.pojo2.imut.ImutDateUtilities.newLocalDate(new java.util.Date());
 
         final ShareQuantityImut shareQuantityImut = new ShareQuantityImut(idShareQuantity, changeFee, changeQuantity, changeType, changeValue, description, idPortfolio, idShare, totalQuantity, valueDate);
 

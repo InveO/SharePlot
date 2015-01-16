@@ -48,7 +48,7 @@ public final class ShareQuantityIC implements ImutConverter<ShareQuantityRemote,
             final Long idPortfolio = remote.getIdPortfolio();
             final Long idShare = remote.getIdShare();
             final java.math.BigDecimal totalQuantity = remote.getTotalQuantity();
-            final jet.java.time.LocalDate valueDate;
+            final java.time.LocalDate valueDate;
             final java.util.Date valueDate_TMP = remote.getValueDate();
             if (valueDate_TMP == null) {
                 valueDate = null;
@@ -109,7 +109,7 @@ public final class ShareQuantityIC implements ImutConverter<ShareQuantityRemote,
             final Long idPortfolio = item.getIdPortfolio();
             final Long idShare = item.getIdShare();
             final java.math.BigDecimal totalQuantity = item.getTotalQuantity();
-            final jet.java.time.LocalDate valueDate;
+            final java.time.LocalDate valueDate;
             final java.util.Date valueDate_TMP = item.getValueDate();
             if (valueDate_TMP == null) {
                 valueDate = null;
@@ -157,7 +157,7 @@ public final class ShareQuantityIC implements ImutConverter<ShareQuantityRemote,
             final Long idShare = Long.valueOf(resultSet.getLong("idShare"));
             final java.math.BigDecimal totalQuantity = resultSet.getBigDecimal("totalQuantity");
             final java.sql.Date sqlValueDate = resultSet.getDate("valueDate");
-            final jet.java.time.LocalDate valueDate;
+            final java.time.LocalDate valueDate;
             if (sqlValueDate == null) {
                 valueDate = null;
             } else {

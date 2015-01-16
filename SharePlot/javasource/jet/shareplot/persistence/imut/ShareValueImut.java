@@ -27,7 +27,7 @@ public final class ShareValueImut implements Serializable {
     private final Long idShareValue;
     private final Long idShare;
     private final java.math.BigDecimal value;
-    private final jet.java.time.LocalDate valueDate;
+    private final java.time.LocalDate valueDate;
 
     /**
      * Constructor.
@@ -38,7 +38,7 @@ public final class ShareValueImut implements Serializable {
      * @param valueDate valueDate value, if <code>null</code> will throw a ValidationException
      * @throws ValidationException if failed to validate
      */
-    public ShareValueImut(final @Nullable Long idShareValue, final @Nullable Long idShare, final java.math.@Nullable BigDecimal value, final jet.java.time.@Nullable LocalDate valueDate) throws ValidationException {
+    public ShareValueImut(final @Nullable Long idShareValue, final @Nullable Long idShare, final java.math.@Nullable BigDecimal value, final java.time.@Nullable LocalDate valueDate) throws ValidationException {
         this.idShareValue = idShareValue;
         this.idShare = idShare;
         this.value = value;
@@ -109,9 +109,9 @@ public final class ShareValueImut implements Serializable {
     /**
      * Get value of field valueDate.
      *
-     * @return jet.java.time.@NonNull LocalDate value of the field valueDate
+     * @return java.time.@NonNull LocalDate value of the field valueDate
      */
-    public final jet.java.time.@NonNull LocalDate getValueDate() {
+    public final java.time.@NonNull LocalDate getValueDate() {
         return AnnotationsHelper.assertNonNull(this.valueDate);
     }
 

@@ -77,7 +77,7 @@ public class ShareValueIC_JUnitTest {
         final Long idShareValue = Long.valueOf(1);
         final Long idShare = Long.valueOf(1);
         final java.math.BigDecimal value = java.math.BigDecimal.valueOf(1);
-        final jet.java.time.LocalDate valueDate = jet.framework.util.pojo2.imut.ImutDateUtilities.newLocalDate(new java.util.Date());
+        final java.time.LocalDate valueDate = jet.framework.util.pojo2.imut.ImutDateUtilities.newLocalDate(new java.util.Date());
 
         final ShareValueImut shareValueImut = new ShareValueImut(idShareValue, idShare, value, valueDate);
 
@@ -150,7 +150,7 @@ public class ShareValueIC_JUnitTest {
         final Long idShareValue = Long.valueOf(1);
         final Long idShare = Long.valueOf(1);
         final java.math.BigDecimal value = java.math.BigDecimal.valueOf(1);
-        final jet.java.time.LocalDate valueDate = jet.framework.util.pojo2.imut.ImutDateUtilities.newLocalDate(new java.util.Date());
+        final java.time.LocalDate valueDate = jet.framework.util.pojo2.imut.ImutDateUtilities.newLocalDate(new java.util.Date());
 
         final ShareValueImut shareValueImut = new ShareValueImut(idShareValue, idShare, value, valueDate);
 

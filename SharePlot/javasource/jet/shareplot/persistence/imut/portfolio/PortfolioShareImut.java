@@ -31,7 +31,7 @@ public final class PortfolioShareImut implements Serializable {
     private final String shareName;
     private final java.math.BigDecimal totalQuantity;
     private final java.math.BigDecimal value;
-    private final jet.java.time.LocalDate valueDate;
+    private final java.time.LocalDate valueDate;
 
     /**
      * Constructor.
@@ -46,7 +46,7 @@ public final class PortfolioShareImut implements Serializable {
      * @param valueDate valueDate value, if <code>null</code> will throw a ValidationException
      * @throws ValidationException if failed to validate
      */
-    public PortfolioShareImut(final @Nullable Long idPortfolio, final @Nullable Long idShare, final java.math.@Nullable BigDecimal changeQuantity, final @Nullable String portfolioName, final @Nullable String shareName, final java.math.@Nullable BigDecimal totalQuantity, final java.math.@Nullable BigDecimal value, final jet.java.time.@Nullable LocalDate valueDate) throws ValidationException {
+    public PortfolioShareImut(final @Nullable Long idPortfolio, final @Nullable Long idShare, final java.math.@Nullable BigDecimal changeQuantity, final @Nullable String portfolioName, final @Nullable String shareName, final java.math.@Nullable BigDecimal totalQuantity, final java.math.@Nullable BigDecimal value, final java.time.@Nullable LocalDate valueDate) throws ValidationException {
         this.idPortfolio = idPortfolio;
         this.idShare = idShare;
         this.changeQuantity = changeQuantity;
@@ -173,9 +173,9 @@ public final class PortfolioShareImut implements Serializable {
     /**
      * Get value of field valueDate.
      *
-     * @return jet.java.time.@NonNull LocalDate value of the field valueDate
+     * @return java.time.@NonNull LocalDate value of the field valueDate
      */
-    public final jet.java.time.@NonNull LocalDate getValueDate() {
+    public final java.time.@NonNull LocalDate getValueDate() {
         return AnnotationsHelper.assertNonNull(this.valueDate);
     }
 
