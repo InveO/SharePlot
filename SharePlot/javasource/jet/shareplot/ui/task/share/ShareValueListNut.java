@@ -155,7 +155,7 @@ public class ShareValueListNut extends AbstractSharePlotListNut<ShareValue> impl
     }
 
     @Override
-    public void processCSVLine(final String @NonNull [] csvLine) {
+    public void processCSVLine(final String[] csvLine) {
 
         final String dateString = csvLine[0];
         final String valueString = csvLine[1];
