@@ -3,6 +3,10 @@ package jet.shareplot.ui.desktop.dialog;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
+
+import jet.container.nuts.Nut;
 import jet.framework.ui.desktop.AbstractDesktopNut;
 import jet.framework.ui.desktop.DesktopDialogHelper;
 import jet.framework.ui.desktop.info.dialog.AbstractDialogNut;
@@ -20,12 +24,13 @@ import jet.util.logger.JETLevel;
 import jet.util.models.SimpleModelImpl;
 import jet.util.models.interfaces.Displayable;
 import jet.util.models.interfaces.Model;
+import jet.util.throwable.JETSystemError;
 
 /**
  * Dialog box helper class.
- * 
+ *
  * @author daniel
- * 
+ *
  */
 public class SharePlotDialogHelper implements DesktopDialogHelper {
 
@@ -48,7 +53,7 @@ public class SharePlotDialogHelper implements DesktopDialogHelper {
     /**
      * Constructor. This should only be called by the desktop. It will then be registered in the session
      * and will be retrieved via the session when required.
-     * 
+     *
      * @param abstractDesktopNut Desktop nut
      * @param locale Locale in which the dialogs are to be displayed
      */
@@ -128,9 +133,18 @@ public class SharePlotDialogHelper implements DesktopDialogHelper {
     }
 
     @Override
+    public @NonNull Model displayApplicationComponent(@Nullable final String title, @NonNull final String localizedTitle, @NonNull final String acName, final int width, final int height, @NonNull final Map<@NonNull String, @Nullable Object> initMap) {
+        throw new JETSystemError("Not implemented");
+    }
+
+    @Override
     public Model displayApplicationComponent(final String title, final String localizedTitle, final String acName, final Map<String, Object> initMap) {
+        final Model param = new SimpleModelImpl();
+        param.setAttribute(AbstractDialogNut.VERSION, getVersionDialogLabel());
+        initMap.put(Nut.USER_DEFINED_PARAMETERS, param);
         this.abstractDesktopNut.displayDialogApplicationComponent(acName, this.abstractDesktopNut.getApplicationComponent(), initMap, title, localizedTitle, DEFAULT_DIALOG_WIDTH * 2, DEFAULT_DIALOG_HEIGHT * 2, TITLE_BG_COLOR, TITLE_FONT, TITLE_FG_COLOR);
-        return null;
+
+        return param;
     }
 
     @Override
