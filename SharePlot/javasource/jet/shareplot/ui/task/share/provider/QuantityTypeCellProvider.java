@@ -1,6 +1,7 @@
 package jet.shareplot.ui.task.share.provider;
 
 import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 
 import jet.framework.ui.utils.table.AbstractComboBoxCellProvider;
 import jet.framework.ui.utils.table.AbstractComboBoxColumnHeaderProvider;
@@ -23,17 +24,19 @@ public class QuantityTypeCellProvider extends AbstractComboBoxCellProvider<Strin
 
         private static final long serialVersionUID = -7965941469935762552L;
 
-        public QuantityTypeModel(final AbstractComboBoxColumnHeaderProvider<String> columnProvider, final ShareQuantityItem item) {
+        public QuantityTypeModel(final @NonNull AbstractComboBoxColumnHeaderProvider<String> columnProvider, final @NonNull ShareQuantityItem item) {
             super(columnProvider, item);
+
+            initComboBox();
         }
 
         @Override
-        protected String getKey(final ShareQuantityItem item) {
+        protected String getKey(final @NonNull ShareQuantityItem item) {
             return item.getChangeType();
         }
 
         @Override
-        protected void setKey(final ShareQuantityItem item, final String keyString) {
+        protected void setKey(final @NonNull ShareQuantityItem item, final @Nullable String keyString) {
             item.setChangeType(keyString);
         }
 
