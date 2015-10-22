@@ -148,14 +148,14 @@ public class SharePlotDialogHelper implements DesktopDialogHelper {
     }
 
     @Override
-    public Model displayListTableDialog(final String title, final String localizedTitle, final List<Model> modelList, final Model listDisplayModel) {
+    public Model displayListTableDialog(final String title, final String localizedTitle, final List<@NonNull Model> modelList, final Model listDisplayModel) {
         final Displayable titDisp = new LocalizedDisplayable(title, localizedTitle);
 
         return displayListTableDialog(titDisp, modelList, listDisplayModel);
     }
 
     @Override
-    public Model displayListTableDialog(final Displayable title, final List<Model> modelList, final Model listDisplayModel) {
+    public Model displayListTableDialog(final Displayable title, final List<@NonNull Model> modelList, final Model listDisplayModel) {
         final ListDialogParameterModel listDialogParameterModel = new ListDialogParameterModel(modelList, listDisplayModel, "SharePlot/properties/desktop/Buttons/button.Select", null, CANCEL_LABEL, null);
 
         final Model param = new SimpleModelImpl();
