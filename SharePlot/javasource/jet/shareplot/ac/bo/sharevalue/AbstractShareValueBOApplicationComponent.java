@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 import javax.ejb.ObjectNotFoundException;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.transaction.RollbackException;
 import javax.transaction.TransactionManager;
+
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 
 import jet.container.managers.jta.interfaces.JTAManagerContext;
 import jet.framework.component.SimpleApplicationComponent;
@@ -19,7 +20,6 @@ import jet.framework.nuts.select.FinderMethod;
 import jet.framework.nuts.select.SelectNutHelper;
 import jet.framework.util.JetConstants;
 import jet.framework.util.jta.TransactionHelper;
-import jet.shareplot.ac.SelectStoreApplicationComponent;
 import jet.shareplot.persistence.finder.sharevalue.ShareValue_FindAll0;
 import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Model;
@@ -64,8 +64,7 @@ abstract class AbstractShareValueBOApplicationComponent extends SimpleApplicatio
                 if (ma != null) {
                     final int size = ma.getSize();
                     for (int i = 0; i < size; i++) {
-                        final Model model = ma.get(i);
-                        assert model != null;
+                        final @NonNull Model model = ma.get(i);
                         final ShareValue shareValue = getShareValue(model);
                         result.add(shareValue);
                     }
@@ -125,7 +124,7 @@ abstract class AbstractShareValueBOApplicationComponent extends SimpleApplicatio
      * @see ShareValue
      * @see #getShareValues(FinderMethod finder)
      */
-    public @NonNull List<ShareValue> getShareValues() {
+    public @NonNull List<@NonNull ShareValue> getShareValues() {
         final ShareValue_FindAll0 finder = new ShareValue_FindAll0();
 
         return getShareValues(finder);

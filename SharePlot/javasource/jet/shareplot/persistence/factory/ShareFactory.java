@@ -93,7 +93,6 @@ public final class ShareFactory implements Serializable {
                 result = logger;
                 if (result == null) {
                     result = logger = JETLoggerManager.getJETLoggerManager().getLogger("jet.shareplot.persistence.factory");
-                    assert result != null;
                 }
             }
         }

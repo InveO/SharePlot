@@ -36,6 +36,11 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
 
     private static final String IS_NEW_ATTRIBUTE = "jet.shareplot.persistence.pojo.portfolio.PortfolioShare.IS_NEW_ATTRIBUTE";
 
+    /**
+     * Name of the root node in an XML DOM.
+     */
+    public static final String TAG_NAME = "PortfolioShare";
+
     private final Model dataModel;
     private transient Logger logger;
 
@@ -60,7 +65,7 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
     }
 
     private void init_DataModel() {
-        this.dataModel.setTagName("PortfolioShare");
+        this.dataModel.setTagName(TAG_NAME);
 
         SimpleEventModelImpl model = null;
 
@@ -117,18 +122,20 @@ public class PortfolioShareItem implements Serializable, JFErrorHandlerProvider,
         setNew(portfolioShare.isNew());
     }
 
-    private Logger getLogger() {
-        if (this.logger == null) {
+    private @NonNull Logger getLogger() {
+        Logger result = this.logger;
+        if (result == null) {
             // initialise the logger
             try {
                 final JETLoggerManager loggerManager = JETLoggerManager.getJETLoggerManager();
-                this.logger = loggerManager.getLogger("jet.shareplot.persistence.pojo.portfolio");
+                result = loggerManager.getLogger("jet.shareplot.persistence.pojo.portfolio");
             } catch (final JETSystemError e) {
                 // probably running in junit, use junitLogger
-                this.logger = LoggerJUnit.getInstance();
+                result = LoggerJUnit.getInstance();
             }
+            this.logger = result;
         }
-        return this.logger;
+        return result;
     }
 
     @Override

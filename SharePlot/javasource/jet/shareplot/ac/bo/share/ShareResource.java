@@ -1,5 +1,8 @@
 package jet.shareplot.ac.bo.share;
 
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
+
 import jet.framework.component.resource.ResourceNotificationApplicationComponent;
 import jet.framework.util.pojo2.AbstractResourceNotification;
 import jet.util.logger.JETLevel;
@@ -17,9 +20,12 @@ public class ShareResource extends AbstractResourceNotification<Share> {
     /**
      * Resource name : {@value}.
      */
+    @NonNull
     public static final String RESOURCE_NAME = "jet.shareplot.ac.bo.share.ShareResource";
 
     private ResourceNotificationApplicationComponent resourceAC;
+
+    private Long oldPK;
 
     /**
      * Constructor.
@@ -49,5 +55,19 @@ public class ShareResource extends AbstractResourceNotification<Share> {
         if (this.resourceAC != null) {
             this.resourceAC.notifyListeners(RESOURCE_NAME, this);
         }
+    }
+
+    /**
+     * @param oldPK
+     */
+    public void setOldPK(final Long oldPK) {
+        this.oldPK = oldPK;
+    }
+
+    /**
+     * @return oldPK value
+     */
+    public @Nullable Long getOldPK() {
+        return this.oldPK;
     }
 }

@@ -138,7 +138,6 @@ public final class ShareQuantityFactory implements Serializable {
                 result = logger;
                 if (result == null) {
                     result = logger = JETLoggerManager.getJETLoggerManager().getLogger("jet.shareplot.persistence.factory");
-                    assert result != null;
                 }
             }
         }

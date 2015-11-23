@@ -15,6 +15,8 @@ import jet.util.annotations.AnnotationsHelper;
 import jet.util.logger.JETLevel;
 import jet.util.throwable.JETException;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 /**
  * Implementation of the AbstractSelectStoreApplicationComponent class.
  *
@@ -27,22 +29,22 @@ public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicat
     /**
      * {@value}.
      */
-    public static final String PORTFOLIO_STORE = "PortfolioStore";
+    public static final @NonNull String PORTFOLIO_STORE = "PortfolioStore";
 
     /**
      * {@value}.
      */
-    public static final String SHARE_STORE = "ShareStore";
+    public static final @NonNull String SHARE_STORE = "ShareStore";
 
     /**
      * {@value}.
      */
-    public static final String SHAREQUANTITY_STORE = "ShareQuantityStore";
+    public static final @NonNull String SHAREQUANTITY_STORE = "ShareQuantityStore";
 
     /**
      * {@value}.
      */
-    public static final String SHAREVALUE_STORE = "ShareValueStore";
+    public static final @NonNull String SHAREVALUE_STORE = "ShareValueStore";
 
     private static final long serialVersionUID = -8890923097443600938L;
 

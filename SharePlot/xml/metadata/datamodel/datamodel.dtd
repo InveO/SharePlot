@@ -5,6 +5,8 @@
     name NMTOKEN #REQUIRED
     serialuid CDATA #REQUIRED
     persist (true | false) "true"
+    bo (true | false) "true"
+    package CDATA ""
 >
 <!ELEMENT NODE EMPTY>
 <!ATTLIST NODE

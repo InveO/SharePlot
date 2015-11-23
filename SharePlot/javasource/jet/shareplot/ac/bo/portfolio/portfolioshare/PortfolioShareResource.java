@@ -1,5 +1,8 @@
 package jet.shareplot.ac.bo.portfolio.portfolioshare;
 
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
+
 import jet.framework.component.resource.ResourceNotificationApplicationComponent;
 import jet.framework.util.pojo2.AbstractResourceNotification;
 import jet.util.logger.JETLevel;
@@ -17,6 +20,7 @@ public class PortfolioShareResource extends AbstractResourceNotification<Portfol
     /**
      * Resource name : {@value}.
      */
+    @NonNull
     public static final String RESOURCE_NAME = "jet.shareplot.ac.bo.portfolio.portfolioshare.PortfolioShareResource";
 
     private ResourceNotificationApplicationComponent resourceAC;
@@ -50,4 +54,5 @@ public class PortfolioShareResource extends AbstractResourceNotification<Portfol
             this.resourceAC.notifyListeners(RESOURCE_NAME, this);
         }
     }
+
 }

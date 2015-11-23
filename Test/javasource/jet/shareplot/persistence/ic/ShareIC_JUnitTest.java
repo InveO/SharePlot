@@ -139,10 +139,10 @@ public class ShareIC_JUnitTest {
         final ShareImut imut = ic.readImutFromPojo(shareItem);
 
         // test that all data read from remote
-        assertEquals("codeISIN".substring(0, Math.min(45, "codeISIN".length())), imut.getCodeISIN());
-        assertEquals("codeYahoo".substring(0, Math.min(45, "codeYahoo".length())), imut.getCodeYahoo());
-        assertEquals("description".substring(0, Math.min(4000, "description".length())), imut.getDescription());
-        assertEquals("name".substring(0, Math.min(255, "name".length())), imut.getName());
+        assertEquals("codeISIN", imut.getCodeISIN());
+        assertEquals("codeYahoo", imut.getCodeYahoo());
+        assertEquals("description", imut.getDescription());
+        assertEquals("name", imut.getName());
     }
 
     @org.junit.Test
@@ -151,10 +151,10 @@ public class ShareIC_JUnitTest {
         final ShareIC ic = new ShareIC();
 
         final Long idShare = Long.valueOf(1);
-        final String codeISIN = "codeISIN".substring(0, Math.min(45, "codeISIN".length()));
-        final String codeYahoo = "codeYahoo".substring(0, Math.min(45, "codeYahoo".length()));
-        final String description = "description".substring(0, Math.min(4000, "description".length()));
-        final String name = "name".substring(0, Math.min(255, "name".length()));
+        final String codeISIN = "codeISIN";
+        final String codeYahoo = "codeYahoo";
+        final String description = "description";
+        final String name = "name";
 
         final ShareImut shareImut = new ShareImut(idShare, codeISIN, codeYahoo, description, name);
 
@@ -175,10 +175,10 @@ public class ShareIC_JUnitTest {
     public void testReadImutFromResultSet() throws Exception {
         // arrange : set up the test
         final Long idShare = Long.valueOf(1);
-        final String codeISIN = "codeISIN".substring(0, Math.min(45, "codeISIN".length()));
-        final String codeYahoo = "codeYahoo".substring(0, Math.min(45, "codeYahoo".length()));
-        final String description = "description".substring(0, Math.min(4000, "description".length()));
-        final String name = "name".substring(0, Math.min(255, "name".length()));
+        final String codeISIN = "codeISIN";
+        final String codeYahoo = "codeYahoo";
+        final String description = "description";
+        final String name = "name";
 
         final ResultSet resultSet = mock(ResultSet.class);
         assert resultSet != null;

@@ -34,6 +34,11 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
 
     private static final String ATTRIBUTE_DISPATCHER_MODEL = "jet.shareplot.persistence.pojo.ATTRIBUTE_DISPATCHER_MODEL";
 
+    /**
+     * Name of the root node in an XML DOM.
+     */
+    public static final String TAG_NAME = "ShareQuantity";
+
     private final Model dataModel;
     private transient Logger logger;
 
@@ -59,7 +64,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     }
 
     private void init_DataModel() {
-        this.dataModel.setTagName("ShareQuantity");
+        this.dataModel.setTagName(TAG_NAME);
 
         SimpleEventModelImpl model = null;
 
@@ -114,18 +119,20 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
         setValueDate(shareQuantity.getValueDate());
     }
 
-    private Logger getLogger() {
-        if (this.logger == null) {
+    private @NonNull Logger getLogger() {
+        Logger result = this.logger;
+        if (result == null) {
             // initialise the logger
             try {
                 final JETLoggerManager loggerManager = JETLoggerManager.getJETLoggerManager();
-                this.logger = loggerManager.getLogger("jet.shareplot.persistence.pojo");
+                result = loggerManager.getLogger("jet.shareplot.persistence.pojo");
             } catch (final JETSystemError e) {
                 // probably running in junit, use junitLogger
-                this.logger = LoggerJUnit.getInstance();
+                result = LoggerJUnit.getInstance();
             }
+            this.logger = result;
         }
-        return this.logger;
+        return result;
     }
 
     @Override

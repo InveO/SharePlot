@@ -51,7 +51,7 @@ public class PortfolioIC_JUnitTest {
         final PortfolioRemote portfolioRemote = mock(PortfolioRemote.class);
         assert portfolioRemote != null;
         when(portfolioRemote.getIdPortfolio()).thenReturn(Long.valueOf(1));
-        when(portfolioRemote.getIsFake()).thenReturn("isFake");
+        when(portfolioRemote.getIsFake()).thenReturn("i");
         when(portfolioRemote.getName()).thenReturn("name");
 
         // act : run the test
@@ -71,7 +71,7 @@ public class PortfolioIC_JUnitTest {
         assert portfolioRemote != null;
 
         final Long idPortfolio = Long.valueOf(1);
-        final String isFake = "isFake";
+        final String isFake = "i";
         final String name = "name";
 
         final PortfolioImut portfolioImut = new PortfolioImut(idPortfolio, isFake, name);
@@ -129,8 +129,8 @@ public class PortfolioIC_JUnitTest {
         final PortfolioImut imut = ic.readImutFromPojo(portfolioItem);
 
         // test that all data read from remote
-        assertEquals("isFake".substring(0, Math.min(1, "isFake".length())), imut.getIsFake());
-        assertEquals("name".substring(0, Math.min(45, "name".length())), imut.getName());
+        assertEquals("i", imut.getIsFake());
+        assertEquals("name", imut.getName());
     }
 
     @org.junit.Test
@@ -139,8 +139,8 @@ public class PortfolioIC_JUnitTest {
         final PortfolioIC ic = new PortfolioIC();
 
         final Long idPortfolio = Long.valueOf(1);
-        final String isFake = "isFake".substring(0, Math.min(1, "isFake".length()));
-        final String name = "name".substring(0, Math.min(45, "name".length()));
+        final String isFake = "i";
+        final String name = "name";
 
         final PortfolioImut portfolioImut = new PortfolioImut(idPortfolio, isFake, name);
 
@@ -159,8 +159,8 @@ public class PortfolioIC_JUnitTest {
     public void testReadImutFromResultSet() throws Exception {
         // arrange : set up the test
         final Long idPortfolio = Long.valueOf(1);
-        final String isFake = "isFake".substring(0, Math.min(1, "isFake".length()));
-        final String name = "name".substring(0, Math.min(45, "name".length()));
+        final String isFake = "i";
+        final String name = "name";
 
         final ResultSet resultSet = mock(ResultSet.class);
         assert resultSet != null;

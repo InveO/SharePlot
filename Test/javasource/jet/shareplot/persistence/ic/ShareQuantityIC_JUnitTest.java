@@ -65,7 +65,7 @@ public class ShareQuantityIC_JUnitTest {
         when(shareQuantityRemote.getIdShareQuantity()).thenReturn(Long.valueOf(1));
         when(shareQuantityRemote.getChangeFee()).thenReturn(java.math.BigDecimal.valueOf(1));
         when(shareQuantityRemote.getChangeQuantity()).thenReturn(java.math.BigDecimal.valueOf(1));
-        when(shareQuantityRemote.getChangeType()).thenReturn("changeType");
+        when(shareQuantityRemote.getChangeType()).thenReturn("c");
         when(shareQuantityRemote.getChangeValue()).thenReturn(java.math.BigDecimal.valueOf(1));
         when(shareQuantityRemote.getIdPortfolio()).thenReturn(Long.valueOf(1));
         when(shareQuantityRemote.getIdShare()).thenReturn(Long.valueOf(1));
@@ -97,7 +97,7 @@ public class ShareQuantityIC_JUnitTest {
         final Long idShareQuantity = Long.valueOf(1);
         final java.math.BigDecimal changeFee = java.math.BigDecimal.valueOf(1);
         final java.math.BigDecimal changeQuantity = java.math.BigDecimal.valueOf(1);
-        final String changeType = "changeType";
+        final String changeType = "c";
         final java.math.BigDecimal changeValue = java.math.BigDecimal.valueOf(1);
         final String description = "description";
         final Long idPortfolio = Long.valueOf(1);
@@ -183,9 +183,9 @@ public class ShareQuantityIC_JUnitTest {
         // test that all data read from remote
         assertEquals(java.math.BigDecimal.valueOf(1), imut.getChangeFee());
         assertEquals(java.math.BigDecimal.valueOf(1), imut.getChangeQuantity());
-        assertEquals("changeType".substring(0, Math.min(1, "changeType".length())), imut.getChangeType());
+        assertEquals("c", imut.getChangeType());
         assertEquals(java.math.BigDecimal.valueOf(1), imut.getChangeValue());
-        assertEquals("description".substring(0, Math.min(1000, "description".length())), imut.getDescription());
+        assertEquals("description", imut.getDescription());
         assertEquals(Long.valueOf(1), imut.getIdPortfolio());
         assertEquals(Long.valueOf(1), imut.getIdShare());
         assertEquals(java.math.BigDecimal.valueOf(1), imut.getTotalQuantity());
@@ -200,9 +200,9 @@ public class ShareQuantityIC_JUnitTest {
         final Long idShareQuantity = Long.valueOf(1);
         final java.math.BigDecimal changeFee = java.math.BigDecimal.valueOf(1);
         final java.math.BigDecimal changeQuantity = java.math.BigDecimal.valueOf(1);
-        final String changeType = "changeType".substring(0, Math.min(1, "changeType".length()));
+        final String changeType = "c";
         final java.math.BigDecimal changeValue = java.math.BigDecimal.valueOf(1);
-        final String description = "description".substring(0, Math.min(1000, "description".length()));
+        final String description = "description";
         final Long idPortfolio = Long.valueOf(1);
         final Long idShare = Long.valueOf(1);
         final java.math.BigDecimal totalQuantity = java.math.BigDecimal.valueOf(1);
@@ -234,9 +234,9 @@ public class ShareQuantityIC_JUnitTest {
         final Long idShareQuantity = Long.valueOf(1);
         final java.math.BigDecimal changeFee = java.math.BigDecimal.valueOf(1);
         final java.math.BigDecimal changeQuantity = java.math.BigDecimal.valueOf(1);
-        final String changeType = "changeType".substring(0, Math.min(1, "changeType".length()));
+        final String changeType = "c";
         final java.math.BigDecimal changeValue = java.math.BigDecimal.valueOf(1);
-        final String description = "description".substring(0, Math.min(1000, "description".length()));
+        final String description = "description";
         final Long idPortfolio = Long.valueOf(1);
         final Long idShare = Long.valueOf(1);
         final java.math.BigDecimal totalQuantity = java.math.BigDecimal.valueOf(1);

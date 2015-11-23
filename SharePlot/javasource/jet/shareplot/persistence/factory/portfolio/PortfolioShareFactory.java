@@ -125,7 +125,6 @@ public final class PortfolioShareFactory implements Serializable {
                 result = logger;
                 if (result == null) {
                     result = logger = JETLoggerManager.getJETLoggerManager().getLogger("jet.shareplot.persistence.factory.portfolio");
-                    assert result != null;
                 }
             }
         }
