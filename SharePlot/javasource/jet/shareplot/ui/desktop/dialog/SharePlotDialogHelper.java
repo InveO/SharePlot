@@ -80,8 +80,11 @@ public class SharePlotDialogHelper implements DesktopDialogHelper {
 
         this.abstractDesktopNut.displayDialog(title, DEFAULT_DIALOG_WIDTH, DEFAULT_DIALOG_HEIGHT, TITLE_BG_COLOR, TITLE_FONT, TITLE_FG_COLOR, param, "YesNoMessageDialog");
 
-        Boolean result = null;
-        result = (Boolean) param.getNodeValue();
+        Boolean result = (Boolean) param.getNodeValue();
+        if (result == null) {
+            result = Boolean.FALSE;
+            assert result != null;
+        }
         return result;
     }
 
