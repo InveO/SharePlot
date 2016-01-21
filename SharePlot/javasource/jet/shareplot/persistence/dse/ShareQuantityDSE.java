@@ -152,7 +152,6 @@ public final class ShareQuantityDSE extends AbstractDataSourceExecutor2<ShareQua
         try {
             // As it come from the database, it should not be possible that field(s) in the PK are null.
             shareQuantityRemote = shareQuantityHome.findByPrimaryKey(shareQuantityItem.getIdShareQuantity());
-            assert shareQuantityRemote != null;
         } catch (final RemoteException e) {
             throw new JETException(e.getMessage(), e);
         } catch (final ObjectNotFoundException e) {

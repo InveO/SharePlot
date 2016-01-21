@@ -63,12 +63,39 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
         init_DataModel();
     }
 
+    /**
+     * Constructor used to edit an existing ShareQuantity Data Model.
+     *
+     * @param model Model to use to wrap in the pojo, can not be <code>null</code>
+     */
+    public ShareQuantityItem(@NonNull final Model model) {
+        this.dataModel = model;
+    }
+
+    /**
+     * Copy constructor used to clone an existing ShareQuantity Data Model.
+     *
+     * @param shareQuantity ShareQuantityItem to use to copy in the pojo, can not be <code>null</code>
+     */
+    public ShareQuantityItem(@NonNull final ShareQuantityItem shareQuantity) {
+        this();
+
+        setIdShareQuantity(shareQuantity.getIdShareQuantity());
+        setChangeFee(shareQuantity.getChangeFee());
+        setChangeQuantity(shareQuantity.getChangeQuantity());
+        setChangeType(shareQuantity.getChangeType());
+        setChangeValue(shareQuantity.getChangeValue());
+        setDescription(shareQuantity.getDescription());
+        setIdPortfolio(shareQuantity.getIdPortfolio());
+        setIdShare(shareQuantity.getIdShare());
+        setTotalQuantity(shareQuantity.getTotalQuantity());
+        setValueDate(shareQuantity.getValueDate());
+    }
+
     private void init_DataModel() {
         this.dataModel.setTagName(TAG_NAME);
 
-        SimpleEventModelImpl model = null;
-
-        model = new SimpleEventModelImpl("idShareQuantity");
+        SimpleEventModelImpl model = new SimpleEventModelImpl("idShareQuantity");
         this.dataModel.appendChild(model);
         model = new SimpleEventModelImpl("changeFee");
         this.dataModel.appendChild(model);
@@ -90,36 +117,8 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
         this.dataModel.appendChild(model);
     }
 
-    /**
-     * Constructor used to edit an existing ShareQuantity Data Model.
-     *
-     * @param model Model to use to wrap in the pojo, can not be <code>null</code>
-     */
-    public ShareQuantityItem(final @NonNull Model model) {
-        this.dataModel = model;
-    }
-
-    /**
-     * Copy constructor used to clone an existing ShareQuantity Data Model.
-     *
-     * @param shareQuantity ShareQuantityItem to use to copy in the pojo, can not be <code>null</code>
-     */
-    public ShareQuantityItem(final @NonNull ShareQuantityItem shareQuantity) {
-        this();
-
-        setIdShareQuantity(shareQuantity.getIdShareQuantity());
-        setChangeFee(shareQuantity.getChangeFee());
-        setChangeQuantity(shareQuantity.getChangeQuantity());
-        setChangeType(shareQuantity.getChangeType());
-        setChangeValue(shareQuantity.getChangeValue());
-        setDescription(shareQuantity.getDescription());
-        setIdPortfolio(shareQuantity.getIdPortfolio());
-        setIdShare(shareQuantity.getIdShare());
-        setTotalQuantity(shareQuantity.getTotalQuantity());
-        setValueDate(shareQuantity.getValueDate());
-    }
-
-    private @NonNull Logger getLogger() {
+    @NonNull
+    private Logger getLogger() {
         Logger result = this.logger;
         if (result == null) {
             // initialise the logger
@@ -141,7 +140,7 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
             final DataModelRootNode dmrn = (DataModelRootNode) get_Model();
             return dmrn.isDirty();
         }
-        getLogger().logp(JETLevel.INFO, "ShareQuantityItem", "isDirty", "Model is not a DataModelRootNode can not define if it is dirty.");
+        getLogger().logp(JETLevel.INFO, getClass().getName(), "isDirty", "Model is not a DataModelRootNode can not define if it is dirty.");
         return false;
     }
 
@@ -179,7 +178,8 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @see JFDataItem
      */
     @Override
-    public final @NonNull Model get_Model() {
+    @NonNull
+    public final Model get_Model() {
         Model model = this.dataModel;
         assert model != null;
         return model;
@@ -211,18 +211,19 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @return Model of Data Model node idShareQuantity
      */
     @SuppressWarnings("unchecked")
-    public final @NonNull DispatcherModel<ShareQuantityItem> get_IdShareQuantity_Model() {
+    @NonNull
+    public final DispatcherModel<ShareQuantityItem> get_IdShareQuantity_Model() {
         if (this.idShareQuantityDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idShareQuantity");
                 this.idShareQuantityDispatcherModel = (DispatcherModel<ShareQuantityItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.idShareQuantityDispatcherModel == null) {
-                    this.idShareQuantityDispatcherModel = new DispatcherModel<ShareQuantityItem>(this, sourceModel);
+                    this.idShareQuantityDispatcherModel = new DispatcherModel<>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.idShareQuantityDispatcherModel);
                     sourceModel.setAttribute(DispatcherModel.DISPATCHER_MODEL_ATTRIBUTE, this.idShareQuantityDispatcherModel);
                 }
             } catch (final JETException e) {
-                throw new JETSystemError("ShareQuantity data model does not have a child named idShareQuantity. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+                throw new JETSystemError("ShareQuantity data model does not have a child named idShareQuantity. Should be impossible, if the pojo and datamodel are up to date.", e);
             }
         }
         final DispatcherModel<ShareQuantityItem> dm = this.idShareQuantityDispatcherModel;
@@ -256,18 +257,19 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @return Model of Data Model node changeFee
      */
     @SuppressWarnings("unchecked")
-    public final @NonNull DispatcherModel<ShareQuantityItem> get_ChangeFee_Model() {
+    @NonNull
+    public final DispatcherModel<ShareQuantityItem> get_ChangeFee_Model() {
         if (this.changeFeeDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "changeFee");
                 this.changeFeeDispatcherModel = (DispatcherModel<ShareQuantityItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.changeFeeDispatcherModel == null) {
-                    this.changeFeeDispatcherModel = new DispatcherModel<ShareQuantityItem>(this, sourceModel);
+                    this.changeFeeDispatcherModel = new DispatcherModel<>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.changeFeeDispatcherModel);
                     sourceModel.setAttribute(DispatcherModel.DISPATCHER_MODEL_ATTRIBUTE, this.changeFeeDispatcherModel);
                 }
             } catch (final JETException e) {
-                throw new JETSystemError("ShareQuantity data model does not have a child named changeFee. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+                throw new JETSystemError("ShareQuantity data model does not have a child named changeFee. Should be impossible, if the pojo and datamodel are up to date.", e);
             }
         }
         final DispatcherModel<ShareQuantityItem> dm = this.changeFeeDispatcherModel;
@@ -301,18 +303,19 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @return Model of Data Model node changeQuantity
      */
     @SuppressWarnings("unchecked")
-    public final @NonNull DispatcherModel<ShareQuantityItem> get_ChangeQuantity_Model() {
+    @NonNull
+    public final DispatcherModel<ShareQuantityItem> get_ChangeQuantity_Model() {
         if (this.changeQuantityDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "changeQuantity");
                 this.changeQuantityDispatcherModel = (DispatcherModel<ShareQuantityItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.changeQuantityDispatcherModel == null) {
-                    this.changeQuantityDispatcherModel = new DispatcherModel<ShareQuantityItem>(this, sourceModel);
+                    this.changeQuantityDispatcherModel = new DispatcherModel<>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.changeQuantityDispatcherModel);
                     sourceModel.setAttribute(DispatcherModel.DISPATCHER_MODEL_ATTRIBUTE, this.changeQuantityDispatcherModel);
                 }
             } catch (final JETException e) {
-                throw new JETSystemError("ShareQuantity data model does not have a child named changeQuantity. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+                throw new JETSystemError("ShareQuantity data model does not have a child named changeQuantity. Should be impossible, if the pojo and datamodel are up to date.", e);
             }
         }
         final DispatcherModel<ShareQuantityItem> dm = this.changeQuantityDispatcherModel;
@@ -346,20 +349,21 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @return Model of Data Model node changeType
      */
     @SuppressWarnings("unchecked")
-    public final @NonNull DispatcherModel<ShareQuantityItem> get_ChangeType_Model() {
+    @NonNull
+    public final DispatcherModel<ShareQuantityItem> get_ChangeType_Model() {
         if (this.changeTypeDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "changeType");
                 this.changeTypeDispatcherModel = (DispatcherModel<ShareQuantityItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.changeTypeDispatcherModel == null) {
-                    this.changeTypeDispatcherModel = new DispatcherModel<ShareQuantityItem>(this, sourceModel);
+                    this.changeTypeDispatcherModel = new DispatcherModel<>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.changeTypeDispatcherModel);
                     sourceModel.setAttribute(DispatcherModel.DISPATCHER_MODEL_ATTRIBUTE, this.changeTypeDispatcherModel);
                 }
 
                 this.changeTypeDispatcherModel.addInterceptor(StringLengthInterceptor.getStringLengthInterceptor(1));
             } catch (final JETException e) {
-                throw new JETSystemError("ShareQuantity data model does not have a child named changeType. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+                throw new JETSystemError("ShareQuantity data model does not have a child named changeType. Should be impossible, if the pojo and datamodel are up to date.", e);
             }
         }
         final DispatcherModel<ShareQuantityItem> dm = this.changeTypeDispatcherModel;
@@ -393,18 +397,19 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @return Model of Data Model node changeValue
      */
     @SuppressWarnings("unchecked")
-    public final @NonNull DispatcherModel<ShareQuantityItem> get_ChangeValue_Model() {
+    @NonNull
+    public final DispatcherModel<ShareQuantityItem> get_ChangeValue_Model() {
         if (this.changeValueDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "changeValue");
                 this.changeValueDispatcherModel = (DispatcherModel<ShareQuantityItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.changeValueDispatcherModel == null) {
-                    this.changeValueDispatcherModel = new DispatcherModel<ShareQuantityItem>(this, sourceModel);
+                    this.changeValueDispatcherModel = new DispatcherModel<>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.changeValueDispatcherModel);
                     sourceModel.setAttribute(DispatcherModel.DISPATCHER_MODEL_ATTRIBUTE, this.changeValueDispatcherModel);
                 }
             } catch (final JETException e) {
-                throw new JETSystemError("ShareQuantity data model does not have a child named changeValue. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+                throw new JETSystemError("ShareQuantity data model does not have a child named changeValue. Should be impossible, if the pojo and datamodel are up to date.", e);
             }
         }
         final DispatcherModel<ShareQuantityItem> dm = this.changeValueDispatcherModel;
@@ -436,20 +441,21 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @return Model of Data Model node description
      */
     @SuppressWarnings("unchecked")
-    public final @NonNull DispatcherModel<ShareQuantityItem> get_Description_Model() {
+    @NonNull
+    public final DispatcherModel<ShareQuantityItem> get_Description_Model() {
         if (this.descriptionDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "description");
                 this.descriptionDispatcherModel = (DispatcherModel<ShareQuantityItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.descriptionDispatcherModel == null) {
-                    this.descriptionDispatcherModel = new DispatcherModel<ShareQuantityItem>(this, sourceModel);
+                    this.descriptionDispatcherModel = new DispatcherModel<>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.descriptionDispatcherModel);
                     sourceModel.setAttribute(DispatcherModel.DISPATCHER_MODEL_ATTRIBUTE, this.descriptionDispatcherModel);
                 }
 
                 this.descriptionDispatcherModel.addInterceptor(StringLengthInterceptor.getStringLengthInterceptor(1000));
             } catch (final JETException e) {
-                throw new JETSystemError("ShareQuantity data model does not have a child named description. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+                throw new JETSystemError("ShareQuantity data model does not have a child named description. Should be impossible, if the pojo and datamodel are up to date.", e);
             }
         }
         final DispatcherModel<ShareQuantityItem> dm = this.descriptionDispatcherModel;
@@ -483,18 +489,19 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @return Model of Data Model node idPortfolio
      */
     @SuppressWarnings("unchecked")
-    public final @NonNull DispatcherModel<ShareQuantityItem> get_IdPortfolio_Model() {
+    @NonNull
+    public final DispatcherModel<ShareQuantityItem> get_IdPortfolio_Model() {
         if (this.idPortfolioDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idPortfolio");
                 this.idPortfolioDispatcherModel = (DispatcherModel<ShareQuantityItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.idPortfolioDispatcherModel == null) {
-                    this.idPortfolioDispatcherModel = new DispatcherModel<ShareQuantityItem>(this, sourceModel);
+                    this.idPortfolioDispatcherModel = new DispatcherModel<>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.idPortfolioDispatcherModel);
                     sourceModel.setAttribute(DispatcherModel.DISPATCHER_MODEL_ATTRIBUTE, this.idPortfolioDispatcherModel);
                 }
             } catch (final JETException e) {
-                throw new JETSystemError("ShareQuantity data model does not have a child named idPortfolio. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+                throw new JETSystemError("ShareQuantity data model does not have a child named idPortfolio. Should be impossible, if the pojo and datamodel are up to date.", e);
             }
         }
         final DispatcherModel<ShareQuantityItem> dm = this.idPortfolioDispatcherModel;
@@ -528,18 +535,19 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @return Model of Data Model node idShare
      */
     @SuppressWarnings("unchecked")
-    public final @NonNull DispatcherModel<ShareQuantityItem> get_IdShare_Model() {
+    @NonNull
+    public final DispatcherModel<ShareQuantityItem> get_IdShare_Model() {
         if (this.idShareDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "idShare");
                 this.idShareDispatcherModel = (DispatcherModel<ShareQuantityItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.idShareDispatcherModel == null) {
-                    this.idShareDispatcherModel = new DispatcherModel<ShareQuantityItem>(this, sourceModel);
+                    this.idShareDispatcherModel = new DispatcherModel<>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.idShareDispatcherModel);
                     sourceModel.setAttribute(DispatcherModel.DISPATCHER_MODEL_ATTRIBUTE, this.idShareDispatcherModel);
                 }
             } catch (final JETException e) {
-                throw new JETSystemError("ShareQuantity data model does not have a child named idShare. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+                throw new JETSystemError("ShareQuantity data model does not have a child named idShare. Should be impossible, if the pojo and datamodel are up to date.", e);
             }
         }
         final DispatcherModel<ShareQuantityItem> dm = this.idShareDispatcherModel;
@@ -571,18 +579,19 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @return Model of Data Model node totalQuantity
      */
     @SuppressWarnings("unchecked")
-    public final @NonNull DispatcherModel<ShareQuantityItem> get_TotalQuantity_Model() {
+    @NonNull
+    public final DispatcherModel<ShareQuantityItem> get_TotalQuantity_Model() {
         if (this.totalQuantityDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "totalQuantity");
                 this.totalQuantityDispatcherModel = (DispatcherModel<ShareQuantityItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.totalQuantityDispatcherModel == null) {
-                    this.totalQuantityDispatcherModel = new DispatcherModel<ShareQuantityItem>(this, sourceModel);
+                    this.totalQuantityDispatcherModel = new DispatcherModel<>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.totalQuantityDispatcherModel);
                     sourceModel.setAttribute(DispatcherModel.DISPATCHER_MODEL_ATTRIBUTE, this.totalQuantityDispatcherModel);
                 }
             } catch (final JETException e) {
-                throw new JETSystemError("ShareQuantity data model does not have a child named totalQuantity. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+                throw new JETSystemError("ShareQuantity data model does not have a child named totalQuantity. Should be impossible, if the pojo and datamodel are up to date.", e);
             }
         }
         final DispatcherModel<ShareQuantityItem> dm = this.totalQuantityDispatcherModel;
@@ -616,18 +625,19 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
      * @return Model of Data Model node valueDate
      */
     @SuppressWarnings("unchecked")
-    public final @NonNull DispatcherModel<ShareQuantityItem> get_ValueDate_Model() {
+    @NonNull
+    public final DispatcherModel<ShareQuantityItem> get_ValueDate_Model() {
         if (this.valueDateDispatcherModel == null) {
             try {
                 final Model sourceModel = ModelHelper.getChildNode(get_Model(), "valueDate");
                 this.valueDateDispatcherModel = (DispatcherModel<ShareQuantityItem>) sourceModel.getAttribute(ATTRIBUTE_DISPATCHER_MODEL);
                 if (this.valueDateDispatcherModel == null) {
-                    this.valueDateDispatcherModel = new DispatcherModel<ShareQuantityItem>(this, sourceModel);
+                    this.valueDateDispatcherModel = new DispatcherModel<>(this, sourceModel);
                     sourceModel.setAttribute(ATTRIBUTE_DISPATCHER_MODEL, this.valueDateDispatcherModel);
                     sourceModel.setAttribute(DispatcherModel.DISPATCHER_MODEL_ATTRIBUTE, this.valueDateDispatcherModel);
                 }
             } catch (final JETException e) {
-                throw new JETSystemError("ShareQuantity data model does not have a child named valueDate. Should be impossible, " + "if the pojo and datamodel are up to date.", e);
+                throw new JETSystemError("ShareQuantity data model does not have a child named valueDate. Should be impossible, if the pojo and datamodel are up to date.", e);
             }
         }
         final DispatcherModel<ShareQuantityItem> dm = this.valueDateDispatcherModel;
@@ -654,43 +664,43 @@ public class ShareQuantityItem implements Serializable, JFErrorHandlerProvider, 
     public final boolean isNotNullableNull() {
         final java.math.BigDecimal changeFee = getChangeFee();
         if (changeFee == null) {
-            getLogger().logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull",
+            getLogger().logp(JETLevel.WARNING, getClass().getName(), "isNotNullableNull",
                 "changeFee is null but is not nullable.");
             return true;
         }
         final java.math.BigDecimal changeQuantity = getChangeQuantity();
         if (changeQuantity == null) {
-            getLogger().logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull",
+            getLogger().logp(JETLevel.WARNING, getClass().getName(), "isNotNullableNull",
                 "changeQuantity is null but is not nullable.");
             return true;
         }
         final String changeType = getChangeType();
         if (changeType == null) {
-            getLogger().logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull",
+            getLogger().logp(JETLevel.WARNING, getClass().getName(), "isNotNullableNull",
                 "changeType is null but is not nullable.");
             return true;
         }
         final java.math.BigDecimal changeValue = getChangeValue();
         if (changeValue == null) {
-            getLogger().logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull",
+            getLogger().logp(JETLevel.WARNING, getClass().getName(), "isNotNullableNull",
                 "changeValue is null but is not nullable.");
             return true;
         }
         final Long idPortfolio = getIdPortfolio();
         if (idPortfolio == null) {
-            getLogger().logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull",
+            getLogger().logp(JETLevel.WARNING, getClass().getName(), "isNotNullableNull",
                 "idPortfolio is null but is not nullable.");
             return true;
         }
         final Long idShare = getIdShare();
         if (idShare == null) {
-            getLogger().logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull",
+            getLogger().logp(JETLevel.WARNING, getClass().getName(), "isNotNullableNull",
                 "idShare is null but is not nullable.");
             return true;
         }
         final java.util.Date valueDate = getValueDate();
         if (valueDate == null) {
-            getLogger().logp(JETLevel.WARNING, "ShareQuantityItem", "isNotNullableNull",
+            getLogger().logp(JETLevel.WARNING, getClass().getName(), "isNotNullableNull",
                 "valueDate is null but is not nullable.");
             return true;
         }

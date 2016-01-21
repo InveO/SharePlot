@@ -21,6 +21,7 @@ import jet.framework.nuts.select.SelectNutHelper;
 import jet.framework.util.JetConstants;
 import jet.framework.util.jta.TransactionHelper;
 import jet.shareplot.persistence.finder.portfolio.Portfolio_FindAll0;
+import jet.shareplot.persistence.imut.PortfolioImut;
 import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
@@ -36,7 +37,7 @@ abstract class AbstractPortfolioBOApplicationComponent extends SimpleApplication
 
     private static final long serialVersionUID = 993423458L;
 
-    private TransactionManager transactionManager;
+    private transient TransactionManager transactionManager;
 
     /**
      * Get an instance of the POJO2 business object for the data model.
@@ -54,7 +55,7 @@ abstract class AbstractPortfolioBOApplicationComponent extends SimpleApplication
      * @see List
      * @see Portfolio
      */
-    protected @NonNull List<@NonNull Portfolio> getPortfolios(final @NonNull FinderMethod finder) {
+    protected @NonNull List<@NonNull Portfolio> getPortfolios(final @NonNull FinderMethod<PortfolioImut> finder) {
         final List<@NonNull Portfolio> result = new ArrayList<>();
 
         final Callable<@Nullable Object> callable = new Callable<@Nullable Object>() {
@@ -88,6 +89,39 @@ abstract class AbstractPortfolioBOApplicationComponent extends SimpleApplication
         return result;
     }
 
+    /**
+     * Return all portfolio matching the FinderMethod.
+     *
+     * @param finder FinderMethod to use to fetch the Portfolios
+     * @return a list of portfolio matching the FinderMethod.
+     * @see List
+     * @see Portfolio
+     */
+    protected @NonNull List<@NonNull PortfolioImut> getPortfolioImuts(final @NonNull FinderMethod<PortfolioImut> finder) {
+        final List<@NonNull PortfolioImut> result = new ArrayList<>();
+
+        final Callable<@NonNull List<@NonNull PortfolioImut>> callable = new Callable<@NonNull List<@NonNull PortfolioImut>>() {
+            @Override
+            public @NonNull List<@NonNull PortfolioImut> call() throws Exception {
+                return finder.callImutFinder();
+            }
+        };
+        try {
+            final TransactionManager transactionMgr = getTransactionManager();
+            result.addAll(TransactionHelper.runTransaction(callable, transactionMgr));
+        } catch (final ObjectNotFoundException e) {
+            logp(JETLevel.SEVERE, "AbstractPortfolioBOApplicationComponent", "getPortfolioImuts", e.getMessage(), e);
+        } catch (final JETException e) {
+            logp(JETLevel.SEVERE, "AbstractPortfolioBOApplicationComponent", "getPortfolioImuts", e.getMessage(), e);
+        } catch (final RollbackException e) {
+            logp(JETLevel.SEVERE, "AbstractPortfolioBOApplicationComponent", "getPortfolioImuts", e.getMessage(), e);
+        } catch (final NamingException e) {
+            logp(JETLevel.SEVERE, "AbstractPortfolioBOApplicationComponent", "getPortfolioImuts", e.getMessage(), e);
+        }
+
+        return result;
+    }
+
     private TransactionManager getTransactionManager() throws NamingException {
         if (this.transactionManager == null) {
             final JTAManagerContext jtaCtxt = (JTAManagerContext) new InitialContext().lookup(JetConstants.MANAGERS_CONTEXT + JTAManagerContext.NAME);
@@ -103,7 +137,7 @@ abstract class AbstractPortfolioBOApplicationComponent extends SimpleApplication
      * @return the portfolio matching the FinderMethod.
      * @see Portfolio
      */
-    protected @Nullable Portfolio getPortfolio(final @NonNull FinderMethod finder) {
+    protected @Nullable Portfolio getPortfolio(final @NonNull FinderMethod<PortfolioImut> finder) {
         final Portfolio result;
 
         final Model model = SelectNutHelper.getModel(finder, getLogger());

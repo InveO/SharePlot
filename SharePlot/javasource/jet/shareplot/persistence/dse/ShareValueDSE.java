@@ -152,7 +152,6 @@ public final class ShareValueDSE extends AbstractDataSourceExecutor2<ShareValueH
         try {
             // As it come from the database, it should not be possible that field(s) in the PK are null.
             shareValueRemote = shareValueHome.findByPrimaryKey(shareValueItem.getIdShareValue());
-            assert shareValueRemote != null;
         } catch (final RemoteException e) {
             throw new JETException(e.getMessage(), e);
         } catch (final ObjectNotFoundException e) {

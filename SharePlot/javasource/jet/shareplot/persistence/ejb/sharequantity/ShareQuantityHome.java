@@ -39,8 +39,7 @@ public interface ShareQuantityHome extends EJBHome {
      * @throws CreateException Thrown by the method to indicate a failure during the creation.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @NonNull
-    ShareQuantityRemote create(@EJBParam(name = "idShareQuantity") Long idShareQuantity, @EJBParam(name = "changeFee") java.math.BigDecimal changeFee, @EJBParam(name = "changeQuantity") java.math.BigDecimal changeQuantity, @EJBParam(name = "changeType") String changeType, @EJBParam(name = "changeValue") java.math.BigDecimal changeValue, @EJBParam(name = "description") String description, @EJBParam(name = "idPortfolio") Long idPortfolio, @EJBParam(name = "idShare") Long idShare, @EJBParam(name = "totalQuantity") java.math.BigDecimal totalQuantity, @EJBParam(name = "valueDate") java.util.Date valueDate) throws CreateException, RemoteException;
+    @NonNull ShareQuantityRemote create(@EJBParam(name = "idShareQuantity") Long idShareQuantity, @EJBParam(name = "changeFee") java.math.BigDecimal changeFee, @EJBParam(name = "changeQuantity") java.math.BigDecimal changeQuantity, @EJBParam(name = "changeType") String changeType, @EJBParam(name = "changeValue") java.math.BigDecimal changeValue, @EJBParam(name = "description") String description, @EJBParam(name = "idPortfolio") Long idPortfolio, @EJBParam(name = "idShare") Long idShare, @EJBParam(name = "totalQuantity") java.math.BigDecimal totalQuantity, @EJBParam(name = "valueDate") java.util.Date valueDate) throws CreateException, RemoteException;
 
     /**
      * Find a record by its primary key.
@@ -49,8 +48,7 @@ public interface ShareQuantityHome extends EJBHome {
      * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @NonNull
-    ShareQuantityRemote findByPrimaryKey(final java.lang.@Nullable Object pkField) throws FinderException, RemoteException;
+    @NonNull ShareQuantityRemote findByPrimaryKey(final java.lang.@Nullable Object pkField) throws FinderException, RemoteException;
 
     /**
      * Find a collections of records.
@@ -58,19 +56,7 @@ public interface ShareQuantityHome extends EJBHome {
      * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @NonNull
-    Collection<ShareQuantityRemote> findAll() throws FinderException, RemoteException;
-
-    /**
-     * Find a collections of records.
-     * @param idPortfolio value for the argument idPortfolio
-     * @param idShare value for the argument idShare
-     * @return Collection of EJBObject implementations for the bean
-     * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
-     * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
-     */
-    @NonNull
-    Collection<ShareQuantityRemote> findByShareAndPortfolio(final @Nullable Long idPortfolio, final @Nullable Long idShare) throws FinderException, RemoteException;
+    @NonNull Collection<@NonNull ShareQuantityRemote> findAll() throws FinderException, RemoteException;
 
     /**
      * Find a collections of records.
@@ -80,8 +66,17 @@ public interface ShareQuantityHome extends EJBHome {
      * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @NonNull
-    Collection<ShareQuantityRemote> findByShareAndPortfolioLimit(final @Nullable Long idPortfolio, final @Nullable Long idShare) throws FinderException, RemoteException;
+    @NonNull Collection<@NonNull ShareQuantityRemote> findByShareAndPortfolio(final @Nullable Long idPortfolio, final @Nullable Long idShare) throws FinderException, RemoteException;
+
+    /**
+     * Find a collections of records.
+     * @param idPortfolio value for the argument idPortfolio
+     * @param idShare value for the argument idShare
+     * @return Collection of EJBObject implementations for the bean
+     * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
+     * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
+     */
+    @NonNull Collection<@NonNull ShareQuantityRemote> findByShareAndPortfolioLimit(final @Nullable Long idPortfolio, final @Nullable Long idShare) throws FinderException, RemoteException;
 
     /**
      * Find a collections of records.
@@ -90,8 +85,7 @@ public interface ShareQuantityHome extends EJBHome {
      * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @NonNull
-    Collection<ShareQuantityRemote> findByPortfolio(final @Nullable Long idPortfolio) throws FinderException, RemoteException;
+    @NonNull Collection<@NonNull ShareQuantityRemote> findByPortfolio(final @Nullable Long idPortfolio) throws FinderException, RemoteException;
 
     /**
      * Find a collections of records.
@@ -101,7 +95,6 @@ public interface ShareQuantityHome extends EJBHome {
      * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @NonNull
-    Collection<ShareQuantityRemote> findByPreparedSQLQuery(final @Nullable String sqlWhereClause, final Object @Nullable [] sqlArguments) throws FinderException, RemoteException;
+    @NonNull Collection<@NonNull ShareQuantityRemote> findByPreparedSQLQuery(final @Nullable String sqlWhereClause, final Object @Nullable [] sqlArguments) throws FinderException, RemoteException;
 
 }

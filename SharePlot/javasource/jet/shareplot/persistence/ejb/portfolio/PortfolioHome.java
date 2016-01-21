@@ -32,8 +32,7 @@ public interface PortfolioHome extends EJBHome {
      * @throws CreateException Thrown by the method to indicate a failure during the creation.
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @NonNull
-    PortfolioRemote create(@EJBParam(name = "idPortfolio") Long idPortfolio, @EJBParam(name = "isFake") String isFake, @EJBParam(name = "name") String name) throws CreateException, RemoteException;
+    @NonNull PortfolioRemote create(@EJBParam(name = "idPortfolio") Long idPortfolio, @EJBParam(name = "isFake") String isFake, @EJBParam(name = "name") String name) throws CreateException, RemoteException;
 
     /**
      * Find a record by its primary key.
@@ -42,8 +41,7 @@ public interface PortfolioHome extends EJBHome {
      * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @NonNull
-    PortfolioRemote findByPrimaryKey(final java.lang.@Nullable Object pkField) throws FinderException, RemoteException;
+    @NonNull PortfolioRemote findByPrimaryKey(final java.lang.@Nullable Object pkField) throws FinderException, RemoteException;
 
     /**
      * Find a collections of records.
@@ -51,8 +49,7 @@ public interface PortfolioHome extends EJBHome {
      * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @NonNull
-    Collection<PortfolioRemote> findAll() throws FinderException, RemoteException;
+    @NonNull Collection<@NonNull PortfolioRemote> findAll() throws FinderException, RemoteException;
 
     /**
      * Find a collections of records.
@@ -62,7 +59,6 @@ public interface PortfolioHome extends EJBHome {
      * @throws FinderException The exception is used as a standard application-level exception to report a failure to find the requested EJB object(s).
      * @throws RemoteException Thrown if one of a number of communication-related exceptions occurs during the execution of the remote method call.
      */
-    @NonNull
-    Collection<PortfolioRemote> findByPreparedSQLQuery(final @Nullable String sqlWhereClause, final Object @Nullable [] sqlArguments) throws FinderException, RemoteException;
+    @NonNull Collection<@NonNull PortfolioRemote> findByPreparedSQLQuery(final @Nullable String sqlWhereClause, final Object @Nullable [] sqlArguments) throws FinderException, RemoteException;
 
 }

@@ -152,7 +152,6 @@ public final class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHom
         try {
             // As it come from the database, it should not be possible that field(s) in the PK are null.
             portfolioRemote = portfolioHome.findByPrimaryKey(portfolioItem.getIdPortfolio());
-            assert portfolioRemote != null;
         } catch (final RemoteException e) {
             throw new JETException(e.getMessage(), e);
         } catch (final ObjectNotFoundException e) {

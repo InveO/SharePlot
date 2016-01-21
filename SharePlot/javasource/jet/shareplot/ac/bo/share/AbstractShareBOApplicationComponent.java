@@ -21,6 +21,7 @@ import jet.framework.nuts.select.SelectNutHelper;
 import jet.framework.util.JetConstants;
 import jet.framework.util.jta.TransactionHelper;
 import jet.shareplot.persistence.finder.share.Share_FindAll0;
+import jet.shareplot.persistence.imut.ShareImut;
 import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
@@ -36,7 +37,7 @@ abstract class AbstractShareBOApplicationComponent extends SimpleApplicationComp
 
     private static final long serialVersionUID = -1939421298L;
 
-    private TransactionManager transactionManager;
+    private transient TransactionManager transactionManager;
 
     /**
      * Get an instance of the POJO2 business object for the data model.
@@ -54,7 +55,7 @@ abstract class AbstractShareBOApplicationComponent extends SimpleApplicationComp
      * @see List
      * @see Share
      */
-    protected @NonNull List<@NonNull Share> getShares(final @NonNull FinderMethod finder) {
+    protected @NonNull List<@NonNull Share> getShares(final @NonNull FinderMethod<ShareImut> finder) {
         final List<@NonNull Share> result = new ArrayList<>();
 
         final Callable<@Nullable Object> callable = new Callable<@Nullable Object>() {
@@ -88,6 +89,39 @@ abstract class AbstractShareBOApplicationComponent extends SimpleApplicationComp
         return result;
     }
 
+    /**
+     * Return all share matching the FinderMethod.
+     *
+     * @param finder FinderMethod to use to fetch the Shares
+     * @return a list of share matching the FinderMethod.
+     * @see List
+     * @see Share
+     */
+    protected @NonNull List<@NonNull ShareImut> getShareImuts(final @NonNull FinderMethod<ShareImut> finder) {
+        final List<@NonNull ShareImut> result = new ArrayList<>();
+
+        final Callable<@NonNull List<@NonNull ShareImut>> callable = new Callable<@NonNull List<@NonNull ShareImut>>() {
+            @Override
+            public @NonNull List<@NonNull ShareImut> call() throws Exception {
+                return finder.callImutFinder();
+            }
+        };
+        try {
+            final TransactionManager transactionMgr = getTransactionManager();
+            result.addAll(TransactionHelper.runTransaction(callable, transactionMgr));
+        } catch (final ObjectNotFoundException e) {
+            logp(JETLevel.SEVERE, "AbstractShareBOApplicationComponent", "getShareImuts", e.getMessage(), e);
+        } catch (final JETException e) {
+            logp(JETLevel.SEVERE, "AbstractShareBOApplicationComponent", "getShareImuts", e.getMessage(), e);
+        } catch (final RollbackException e) {
+            logp(JETLevel.SEVERE, "AbstractShareBOApplicationComponent", "getShareImuts", e.getMessage(), e);
+        } catch (final NamingException e) {
+            logp(JETLevel.SEVERE, "AbstractShareBOApplicationComponent", "getShareImuts", e.getMessage(), e);
+        }
+
+        return result;
+    }
+
     private TransactionManager getTransactionManager() throws NamingException {
         if (this.transactionManager == null) {
             final JTAManagerContext jtaCtxt = (JTAManagerContext) new InitialContext().lookup(JetConstants.MANAGERS_CONTEXT + JTAManagerContext.NAME);
@@ -103,7 +137,7 @@ abstract class AbstractShareBOApplicationComponent extends SimpleApplicationComp
      * @return the share matching the FinderMethod.
      * @see Share
      */
-    protected @Nullable Share getShare(final @NonNull FinderMethod finder) {
+    protected @Nullable Share getShare(final @NonNull FinderMethod<ShareImut> finder) {
         final Share result;
 
         final Model model = SelectNutHelper.getModel(finder, getLogger());

@@ -37,12 +37,7 @@ public class PortfolioResource extends AbstractResourceNotification<Portfolio> {
     public PortfolioResource(final AbstractPortfolioBOApplicationComponent portfolioAC, final Portfolio portfolio, final NOTIFICATION_TYPE type) {
         super("Portfolio", portfolio, type);
 
-        try {
-            this.resourceAC = ResourceNotificationApplicationComponent.getInstance(portfolioAC.getSession());
-        } catch (final JETException e) {
-            portfolioAC.logp(JETLevel.SEVERE, "PortfolioResource", "PortfolioResource", e.getMessage(), e);
-            this.resourceAC = null;
-        }
+        this.resourceAC = ResourceNotificationApplicationComponent.getInstance(portfolioAC.getSession());
     }
 
     /**

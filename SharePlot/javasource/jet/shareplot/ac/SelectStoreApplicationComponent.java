@@ -9,6 +9,7 @@ import jet.container.managers.application.interfaces.ApplicationProxy;
 import jet.container.managers.session.interfaces.Session;
 import jet.framework.component.AbstractSelectStoreApplicationComponent;
 import jet.framework.nuts.desktop.JetDesktop;
+import jet.framework.util.exception.ACLaunchException;
 import jet.lifecycle.annotations.Deinitializer;
 import jet.util.SerializableKey;
 import jet.util.annotations.AnnotationsHelper;
@@ -66,15 +67,15 @@ public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicat
      *
      * @param session Session this <code>SelectStoreApplicationComponent</code> is to be linked to
      * @return SelectStoreApplicationComponent Instantiated SelectStoreApplicationComponent
-     * @throws JETException
+     * @throws ACLaunchException
      */
-    public static final @NonNull SelectStoreApplicationComponent getInstance(final Session session) throws JETException {
+    public static final @NonNull SelectStoreApplicationComponent getInstance(final Session session) throws ACLaunchException {
         SelectStoreApplicationComponent currentAC = (SelectStoreApplicationComponent) session.getProperty(INTERNAL_SESSION_KEY);
 
         if (currentAC == null) {
             final JetDesktop desktopNut = (JetDesktop) session.getProperty(JetDesktop.SESSION_KEY_DESKTOP);
             if (desktopNut == null) {
-                throw new JETException("Can only be used with an JetDesktop for the desktop.");
+                throw new ACLaunchException("Can only be used with an JetDesktop for the desktop.");
             }
 
             final ApplicationProxy appProxy = desktopNut.getApplicationProxy();
@@ -86,11 +87,11 @@ public class SelectStoreApplicationComponent extends AbstractSelectStoreApplicat
                     session.setProperty(INTERNAL_SESSION_KEY, currentAC);
                 } catch (final JETException e) {
                     desktopNut.logp(JETLevel.SEVERE, NAME, "getInstance", e.getMessage(), e);
-                    throw new JETException("Could not instantiate the SelectStoreApplicationComponent.", e);
+                    throw new ACLaunchException("Could not instantiate the SelectStoreApplicationComponent.", e);
                 }
             } else {
                 desktopNut.logp(JETLevel.INFO, NAME, "getInstance", "NO APPLICATION COMPONENT FOUND FOR : " + NAME);
-                throw new JETException("NO APPLICATION COMPONENT FOUND FOR : " + NAME);
+                throw new ACLaunchException("NO APPLICATION COMPONENT FOUND FOR : " + NAME);
             }
         }
 

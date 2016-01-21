@@ -37,12 +37,7 @@ public class ShareValueResource extends AbstractResourceNotification<ShareValue>
     public ShareValueResource(final AbstractShareValueBOApplicationComponent shareValueAC, final ShareValue shareValue, final NOTIFICATION_TYPE type) {
         super("ShareValue", shareValue, type);
 
-        try {
-            this.resourceAC = ResourceNotificationApplicationComponent.getInstance(shareValueAC.getSession());
-        } catch (final JETException e) {
-            shareValueAC.logp(JETLevel.SEVERE, "ShareValueResource", "ShareValueResource", e.getMessage(), e);
-            this.resourceAC = null;
-        }
+        this.resourceAC = ResourceNotificationApplicationComponent.getInstance(shareValueAC.getSession());
     }
 
     /**

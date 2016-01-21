@@ -35,12 +35,7 @@ public class PortfolioShareResource extends AbstractResourceNotification<Portfol
     public PortfolioShareResource(final PortfolioShareBOApplicationComponent portfolioShareAC, final PortfolioShare portfolioShare, final NOTIFICATION_TYPE type) {
         super("PortfolioShare", portfolioShare, type);
 
-        try {
-            this.resourceAC = ResourceNotificationApplicationComponent.getInstance(portfolioShareAC.getSession());
-        } catch (final JETException e) {
-            portfolioShareAC.logp(JETLevel.SEVERE, "PortfolioShareResource", "PortfolioShareResource", e.getMessage(), e);
-            this.resourceAC = null;
-        }
+        this.resourceAC = ResourceNotificationApplicationComponent.getInstance(portfolioShareAC.getSession());
     }
 
     /**

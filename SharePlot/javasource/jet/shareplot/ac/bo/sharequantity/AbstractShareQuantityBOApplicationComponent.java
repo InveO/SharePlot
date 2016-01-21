@@ -21,6 +21,7 @@ import jet.framework.nuts.select.SelectNutHelper;
 import jet.framework.util.JetConstants;
 import jet.framework.util.jta.TransactionHelper;
 import jet.shareplot.persistence.finder.sharequantity.ShareQuantity_FindAll0;
+import jet.shareplot.persistence.imut.ShareQuantityImut;
 import jet.util.logger.JETLevel;
 import jet.util.models.interfaces.Model;
 import jet.util.throwable.JETException;
@@ -36,7 +37,7 @@ abstract class AbstractShareQuantityBOApplicationComponent extends SimpleApplica
 
     private static final long serialVersionUID = 1612007130L;
 
-    private TransactionManager transactionManager;
+    private transient TransactionManager transactionManager;
 
     /**
      * Get an instance of the POJO2 business object for the data model.
@@ -54,7 +55,7 @@ abstract class AbstractShareQuantityBOApplicationComponent extends SimpleApplica
      * @see List
      * @see ShareQuantity
      */
-    protected @NonNull List<@NonNull ShareQuantity> getShareQuantitys(final @NonNull FinderMethod finder) {
+    protected @NonNull List<@NonNull ShareQuantity> getShareQuantitys(final @NonNull FinderMethod<ShareQuantityImut> finder) {
         final List<@NonNull ShareQuantity> result = new ArrayList<>();
 
         final Callable<@Nullable Object> callable = new Callable<@Nullable Object>() {
@@ -88,6 +89,39 @@ abstract class AbstractShareQuantityBOApplicationComponent extends SimpleApplica
         return result;
     }
 
+    /**
+     * Return all shareQuantity matching the FinderMethod.
+     *
+     * @param finder FinderMethod to use to fetch the ShareQuantitys
+     * @return a list of shareQuantity matching the FinderMethod.
+     * @see List
+     * @see ShareQuantity
+     */
+    protected @NonNull List<@NonNull ShareQuantityImut> getShareQuantityImuts(final @NonNull FinderMethod<ShareQuantityImut> finder) {
+        final List<@NonNull ShareQuantityImut> result = new ArrayList<>();
+
+        final Callable<@NonNull List<@NonNull ShareQuantityImut>> callable = new Callable<@NonNull List<@NonNull ShareQuantityImut>>() {
+            @Override
+            public @NonNull List<@NonNull ShareQuantityImut> call() throws Exception {
+                return finder.callImutFinder();
+            }
+        };
+        try {
+            final TransactionManager transactionMgr = getTransactionManager();
+            result.addAll(TransactionHelper.runTransaction(callable, transactionMgr));
+        } catch (final ObjectNotFoundException e) {
+            logp(JETLevel.SEVERE, "AbstractShareQuantityBOApplicationComponent", "getShareQuantityImuts", e.getMessage(), e);
+        } catch (final JETException e) {
+            logp(JETLevel.SEVERE, "AbstractShareQuantityBOApplicationComponent", "getShareQuantityImuts", e.getMessage(), e);
+        } catch (final RollbackException e) {
+            logp(JETLevel.SEVERE, "AbstractShareQuantityBOApplicationComponent", "getShareQuantityImuts", e.getMessage(), e);
+        } catch (final NamingException e) {
+            logp(JETLevel.SEVERE, "AbstractShareQuantityBOApplicationComponent", "getShareQuantityImuts", e.getMessage(), e);
+        }
+
+        return result;
+    }
+
     private TransactionManager getTransactionManager() throws NamingException {
         if (this.transactionManager == null) {
             final JTAManagerContext jtaCtxt = (JTAManagerContext) new InitialContext().lookup(JetConstants.MANAGERS_CONTEXT + JTAManagerContext.NAME);
@@ -103,7 +137,7 @@ abstract class AbstractShareQuantityBOApplicationComponent extends SimpleApplica
      * @return the shareQuantity matching the FinderMethod.
      * @see ShareQuantity
      */
-    protected @Nullable ShareQuantity getShareQuantity(final @NonNull FinderMethod finder) {
+    protected @Nullable ShareQuantity getShareQuantity(final @NonNull FinderMethod<ShareQuantityImut> finder) {
         final ShareQuantity result;
 
         final Model model = SelectNutHelper.getModel(finder, getLogger());

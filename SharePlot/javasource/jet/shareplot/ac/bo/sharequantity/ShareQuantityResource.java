@@ -37,12 +37,7 @@ public class ShareQuantityResource extends AbstractResourceNotification<ShareQua
     public ShareQuantityResource(final AbstractShareQuantityBOApplicationComponent shareQuantityAC, final ShareQuantity shareQuantity, final NOTIFICATION_TYPE type) {
         super("ShareQuantity", shareQuantity, type);
 
-        try {
-            this.resourceAC = ResourceNotificationApplicationComponent.getInstance(shareQuantityAC.getSession());
-        } catch (final JETException e) {
-            shareQuantityAC.logp(JETLevel.SEVERE, "ShareQuantityResource", "ShareQuantityResource", e.getMessage(), e);
-            this.resourceAC = null;
-        }
+        this.resourceAC = ResourceNotificationApplicationComponent.getInstance(shareQuantityAC.getSession());
     }
 
     /**
