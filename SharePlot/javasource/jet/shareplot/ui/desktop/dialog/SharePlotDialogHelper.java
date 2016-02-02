@@ -244,4 +244,10 @@ public class SharePlotDialogHelper implements DesktopDialogHelper {
         return null;
     }
 
+    @Override
+    public Model displayListTableDialog(@Nullable final String title, @NonNull final String localizedTitle, @NonNull final List<@NonNull Model> modelList, @NonNull final Model listDisplayModel, final int width, final int height) {
+        // nothing to do for the moment
+        return null;
+    }
+
 }
