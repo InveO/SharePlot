@@ -66,4 +66,9 @@ public class LineGraphTableRendererProvider implements TableRendererProvider {
         return false;
     }
 
+    @Override
+    public UIStyle getRowStyleAt(final int row, final TableContentProvider tableContentProvider, final UIComponentsFile uiComponentsFile) {
+        return null;
+    }
+
 }
