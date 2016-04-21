@@ -113,9 +113,6 @@ public final class ShareValueDSE extends AbstractDataSourceExecutor2<ShareValueH
             } catch (final NamingException e) {
                 throw new IllegalArgumentException("Unable to locate EJB Home : " + ShareValueHome.BEAN_NAME, e);
             }
-            if (result == null) {
-                throw new IllegalArgumentException("Unknown EJB : " + ShareValueHome.BEAN_NAME);
-            }
         }
         return result;
     }

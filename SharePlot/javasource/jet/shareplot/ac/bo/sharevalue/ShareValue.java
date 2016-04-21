@@ -1,5 +1,8 @@
 package jet.shareplot.ac.bo.sharevalue;
 
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
+
 import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.pojo2.AbstractResourceNotification.NOTIFICATION_TYPE;
 import jet.framework.util.pojo2.JFBusinessCallableHelper;
@@ -10,9 +13,6 @@ import jet.framework.util.pojo2.JFBusinessSaveCallable;
 import jet.shareplot.ac.SelectStoreApplicationComponent;
 import jet.shareplot.persistence.pojo.ShareValueItem;
 import jet.util.models.interfaces.Model;
-
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 
 /**
  * Sample bo class, extending the pojo ShareValueItem.
@@ -29,7 +29,7 @@ public class ShareValue extends ShareValueItem implements JFBusinessItem, JFBusi
     private static final String CAN_NOT_DELETE_KEY = "SharePlot/properties/task/Share/dialog.CanNotDeleteShareValue";
     private static final String NOT_VALID_KEY = "SharePlot/properties/task/Share/dialog.ShareValueNotValid";
 
-    private final ShareValueBOApplicationComponent shareValueAC;
+    private final @NonNull ShareValueBOApplicationComponent shareValueAC;
 
     /**
      * Constructor, build an empty shareValue.

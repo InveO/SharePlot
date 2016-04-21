@@ -1,5 +1,8 @@
 package jet.shareplot.ac.bo.portfolio;
 
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
+
 import jet.framework.util.exception.FormatedJetException;
 import jet.framework.util.pojo2.AbstractResourceNotification.NOTIFICATION_TYPE;
 import jet.framework.util.pojo2.JFBusinessCallableHelper;
@@ -11,9 +14,6 @@ import jet.shareplot.ac.SelectStoreApplicationComponent;
 import jet.shareplot.persistence.pojo.PortfolioItem;
 import jet.shareplot.util.TextUtils;
 import jet.util.models.interfaces.Model;
-
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 
 /**
  * Sample bo class, extending the pojo PortfolioItem.
@@ -30,7 +30,7 @@ public class Portfolio extends PortfolioItem implements JFBusinessItem, JFBusine
     private static final String CAN_NOT_DELETE_KEY = "SharePlot/properties/task/Share/dialog.CanNotDeletePortfolio";
     private static final String NOT_VALID_KEY = "SharePlot/properties/task/Share/dialog.PortfolioNotValid";
 
-    private final PortfolioBOApplicationComponent portfolioAC;
+    private final @NonNull PortfolioBOApplicationComponent portfolioAC;
 
     /**
      * Constructor, build an empty portfolio.

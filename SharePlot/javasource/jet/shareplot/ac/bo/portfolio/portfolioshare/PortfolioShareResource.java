@@ -1,12 +1,9 @@
 package jet.shareplot.ac.bo.portfolio.portfolioshare;
 
 import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 
 import jet.framework.component.resource.ResourceNotificationApplicationComponent;
 import jet.framework.util.pojo2.AbstractResourceNotification;
-import jet.util.logger.JETLevel;
-import jet.util.throwable.JETException;
 
 /**
  * Object used in the PortfolioShare resource notifications.
@@ -22,8 +19,7 @@ public class PortfolioShareResource extends AbstractResourceNotification<Portfol
      */
     @NonNull
     public static final String RESOURCE_NAME = "jet.shareplot.ac.bo.portfolio.portfolioshare.PortfolioShareResource";
-
-    private ResourceNotificationApplicationComponent resourceAC;
+    private @NonNull final ResourceNotificationApplicationComponent resourceAC;
 
     /**
      * Constructor.
@@ -32,7 +28,7 @@ public class PortfolioShareResource extends AbstractResourceNotification<Portfol
      * @param portfolioShare business object
      * @param type Notification type
      */
-    public PortfolioShareResource(final PortfolioShareBOApplicationComponent portfolioShareAC, final PortfolioShare portfolioShare, final NOTIFICATION_TYPE type) {
+    public PortfolioShareResource(@NonNull final PortfolioShareBOApplicationComponent portfolioShareAC, @NonNull final PortfolioShare portfolioShare, @NonNull final NOTIFICATION_TYPE type) {
         super("PortfolioShare", portfolioShare, type);
 
         this.resourceAC = ResourceNotificationApplicationComponent.getInstance(portfolioShareAC.getSession());
@@ -45,9 +41,7 @@ public class PortfolioShareResource extends AbstractResourceNotification<Portfol
      */
     @Override
     public void notifyResource() {
-        if (this.resourceAC != null) {
-            this.resourceAC.notifyListeners(RESOURCE_NAME, this);
-        }
+        this.resourceAC.notifyListeners(RESOURCE_NAME, this);
     }
 
 }

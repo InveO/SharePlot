@@ -5,8 +5,6 @@ import org.eclipse.jdt.annotation.Nullable;
 
 import jet.framework.component.resource.ResourceNotificationApplicationComponent;
 import jet.framework.util.pojo2.AbstractResourceNotification;
-import jet.util.logger.JETLevel;
-import jet.util.throwable.JETException;
 
 /**
  * Object used in the Portfolio resource notifications.
@@ -22,10 +20,8 @@ public class PortfolioResource extends AbstractResourceNotification<Portfolio> {
      */
     @NonNull
     public static final String RESOURCE_NAME = "jet.shareplot.ac.bo.portfolio.PortfolioResource";
-
-    private ResourceNotificationApplicationComponent resourceAC;
-
-    private Long oldPK;
+    private @NonNull final ResourceNotificationApplicationComponent resourceAC;
+    private @Nullable Long oldPK;
 
     /**
      * Constructor.
@@ -34,7 +30,7 @@ public class PortfolioResource extends AbstractResourceNotification<Portfolio> {
      * @param portfolio business object
      * @param type Notification type
      */
-    public PortfolioResource(final AbstractPortfolioBOApplicationComponent portfolioAC, final Portfolio portfolio, final NOTIFICATION_TYPE type) {
+    public PortfolioResource(@NonNull final AbstractPortfolioBOApplicationComponent portfolioAC, @NonNull final Portfolio portfolio, @NonNull final NOTIFICATION_TYPE type) {
         super("Portfolio", portfolio, type);
 
         this.resourceAC = ResourceNotificationApplicationComponent.getInstance(portfolioAC.getSession());
@@ -47,15 +43,13 @@ public class PortfolioResource extends AbstractResourceNotification<Portfolio> {
      */
     @Override
     public void notifyResource() {
-        if (this.resourceAC != null) {
-            this.resourceAC.notifyListeners(RESOURCE_NAME, this);
-        }
+        this.resourceAC.notifyListeners(RESOURCE_NAME, this);
     }
 
     /**
      * @param oldPK
      */
-    public void setOldPK(final Long oldPK) {
+    public void setOldPK(@Nullable final Long oldPK) {
         this.oldPK = oldPK;
     }
 

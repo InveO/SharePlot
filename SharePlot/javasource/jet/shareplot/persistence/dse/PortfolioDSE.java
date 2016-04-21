@@ -113,9 +113,6 @@ public final class PortfolioDSE extends AbstractDataSourceExecutor2<PortfolioHom
             } catch (final NamingException e) {
                 throw new IllegalArgumentException("Unable to locate EJB Home : " + PortfolioHome.BEAN_NAME, e);
             }
-            if (result == null) {
-                throw new IllegalArgumentException("Unknown EJB : " + PortfolioHome.BEAN_NAME);
-            }
         }
         return result;
     }

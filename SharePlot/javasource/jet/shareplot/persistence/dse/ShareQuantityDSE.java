@@ -113,9 +113,6 @@ public final class ShareQuantityDSE extends AbstractDataSourceExecutor2<ShareQua
             } catch (final NamingException e) {
                 throw new IllegalArgumentException("Unable to locate EJB Home : " + ShareQuantityHome.BEAN_NAME, e);
             }
-            if (result == null) {
-                throw new IllegalArgumentException("Unknown EJB : " + ShareQuantityHome.BEAN_NAME);
-            }
         }
         return result;
     }

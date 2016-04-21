@@ -5,8 +5,6 @@ import org.eclipse.jdt.annotation.Nullable;
 
 import jet.framework.component.resource.ResourceNotificationApplicationComponent;
 import jet.framework.util.pojo2.AbstractResourceNotification;
-import jet.util.logger.JETLevel;
-import jet.util.throwable.JETException;
 
 /**
  * Object used in the Share resource notifications.
@@ -22,10 +20,8 @@ public class ShareResource extends AbstractResourceNotification<Share> {
      */
     @NonNull
     public static final String RESOURCE_NAME = "jet.shareplot.ac.bo.share.ShareResource";
-
-    private ResourceNotificationApplicationComponent resourceAC;
-
-    private Long oldPK;
+    private @NonNull final ResourceNotificationApplicationComponent resourceAC;
+    private @Nullable Long oldPK;
 
     /**
      * Constructor.
@@ -34,7 +30,7 @@ public class ShareResource extends AbstractResourceNotification<Share> {
      * @param share business object
      * @param type Notification type
      */
-    public ShareResource(final AbstractShareBOApplicationComponent shareAC, final Share share, final NOTIFICATION_TYPE type) {
+    public ShareResource(@NonNull final AbstractShareBOApplicationComponent shareAC, @NonNull final Share share, @NonNull final NOTIFICATION_TYPE type) {
         super("Share", share, type);
 
         this.resourceAC = ResourceNotificationApplicationComponent.getInstance(shareAC.getSession());
@@ -47,15 +43,13 @@ public class ShareResource extends AbstractResourceNotification<Share> {
      */
     @Override
     public void notifyResource() {
-        if (this.resourceAC != null) {
-            this.resourceAC.notifyListeners(RESOURCE_NAME, this);
-        }
+        this.resourceAC.notifyListeners(RESOURCE_NAME, this);
     }
 
     /**
      * @param oldPK
      */
-    public void setOldPK(final Long oldPK) {
+    public void setOldPK(@Nullable final Long oldPK) {
         this.oldPK = oldPK;
     }
 

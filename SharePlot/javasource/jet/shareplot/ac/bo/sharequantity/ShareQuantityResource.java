@@ -5,8 +5,6 @@ import org.eclipse.jdt.annotation.Nullable;
 
 import jet.framework.component.resource.ResourceNotificationApplicationComponent;
 import jet.framework.util.pojo2.AbstractResourceNotification;
-import jet.util.logger.JETLevel;
-import jet.util.throwable.JETException;
 
 /**
  * Object used in the ShareQuantity resource notifications.
@@ -22,10 +20,8 @@ public class ShareQuantityResource extends AbstractResourceNotification<ShareQua
      */
     @NonNull
     public static final String RESOURCE_NAME = "jet.shareplot.ac.bo.sharequantity.ShareQuantityResource";
-
-    private ResourceNotificationApplicationComponent resourceAC;
-
-    private Long oldPK;
+    private @NonNull final ResourceNotificationApplicationComponent resourceAC;
+    private @Nullable Long oldPK;
 
     /**
      * Constructor.
@@ -34,7 +30,7 @@ public class ShareQuantityResource extends AbstractResourceNotification<ShareQua
      * @param shareQuantity business object
      * @param type Notification type
      */
-    public ShareQuantityResource(final AbstractShareQuantityBOApplicationComponent shareQuantityAC, final ShareQuantity shareQuantity, final NOTIFICATION_TYPE type) {
+    public ShareQuantityResource(@NonNull final AbstractShareQuantityBOApplicationComponent shareQuantityAC, @NonNull final ShareQuantity shareQuantity, @NonNull final NOTIFICATION_TYPE type) {
         super("ShareQuantity", shareQuantity, type);
 
         this.resourceAC = ResourceNotificationApplicationComponent.getInstance(shareQuantityAC.getSession());
@@ -47,15 +43,13 @@ public class ShareQuantityResource extends AbstractResourceNotification<ShareQua
      */
     @Override
     public void notifyResource() {
-        if (this.resourceAC != null) {
-            this.resourceAC.notifyListeners(RESOURCE_NAME, this);
-        }
+        this.resourceAC.notifyListeners(RESOURCE_NAME, this);
     }
 
     /**
      * @param oldPK
      */
-    public void setOldPK(final Long oldPK) {
+    public void setOldPK(@Nullable final Long oldPK) {
         this.oldPK = oldPK;
     }
 
